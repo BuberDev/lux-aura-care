@@ -3,16 +3,34 @@ import type { Metadata } from "next";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { Heading } from "@/components/heading";
-import { FadeIn } from "@/components/motion/fade-in";
+import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { ProductCard } from "@/components/product-card";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
+import { toAbsoluteUrl } from "@/lib/seo";
 import { getCategoryById, getFavoritesCollections } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Amazon Favorites",
+  title: "Shop the Feed | Pinterest Collections",
   description:
-    "Shop curated affiliate-ready beauty and self-care collections organized for fast, confident decision making.",
+    "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed.",
+  alternates: {
+    canonical: "/favorites",
+  },
+  openGraph: {
+    title: "Shop the Pinterest Feed | Lux Aura Care",
+    description:
+      "Direct Amazon links to the 8 essentials currently trending on our Pinterest feed. Minimalist quality for an elevated lifestyle.",
+    url: "/favorites",
+    type: "website",
+    images: [
+      {
+        url: toAbsoluteUrl("/mixsoon_Bean_Essence_Exfoliating.png"),
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function FavoritesPage() {
@@ -22,18 +40,27 @@ export default function FavoritesPage() {
     <>
       <Section className="border-b border-white/10 pb-12 pt-16 md:pt-20">
         <Container>
-          <FadeIn>
-            <Heading
-              eyebrow="Curated Favorites"
-              title="Amazon collections organized for clean, confident product discovery"
-              description="Every list is edited for lifestyle fit, trust signals, and routine performance so readers can decide quickly."
-            />
-          </FadeIn>
+          <Heading
+            eyebrow="Shop the Feed"
+            title="The Lux Aura Pinterest Collection"
+            description="The 8 high-performing essentials currently driving our daily rituals. Directly linked for easy, confident discovery."
+          />
 
-          <FadeIn className="mt-8 flex flex-wrap gap-4" delay={0.06}>
-            <CTAButton href="/blog" label="Read Product Guides" variant="secondary" />
-            <CTAButton href="/" label="Back to Landing" variant="ghost" />
-          </FadeIn>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <CTAButton href="/blog" label="Explore Routine Guides" variant="secondary" />
+            <CTAButton href="/" label="Back to Home" variant="ghost" />
+          </div>
+
+          <InlineCtaPanel
+            className="mt-10"
+            eyebrow="Pinterest Favorites"
+            title="Pick one routine, shop the essentials, and start your reset tonight"
+            description="We focus on quality over quantity. Start with the collection that matches your immediate goal—whether it is 'Glass Skin' or 'Biological Sleep.'"
+            primaryHref="/blog"
+            primaryLabel="See Routine Manuals"
+            secondaryHref="/"
+            secondaryLabel="See Featured Categories"
+          />
         </Container>
       </Section>
 
@@ -41,21 +68,26 @@ export default function FavoritesPage() {
         const category = getCategoryById(collection.categoryId);
 
         return (
-          <Section key={collection.id} className={collectionIndex % 2 === 0 ? "atmosphere-surface" : undefined}>
+          <Section
+            key={collection.id}
+            className={collectionIndex % 2 === 0 ? "atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_1200px]" : "[content-visibility:auto] [contain-intrinsic-size:1px_1200px]"}
+          >
             <Container>
-              <FadeIn>
-                <div className="mb-8 max-w-3xl space-y-4">
-                  {category ? <Badge>{category.name}</Badge> : null}
-                  <h2 className="font-heading text-3xl leading-tight md:text-4xl">{collection.title}</h2>
-                  <p className="text-text-secondary">{collection.description}</p>
-                </div>
-              </FadeIn>
+              <div className="mb-8 max-w-3xl space-y-4">
+                {category ? <Badge>{category.name}</Badge> : null}
+                <h2 className="font-heading text-3xl leading-tight md:text-4xl">{collection.title}</h2>
+                <p className="leading-relaxed text-text-secondary">{collection.description}</p>
+              </div>
 
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {collection.products.map((product, index) => (
-                  <FadeIn key={product.id} delay={index * 0.05}>
-                    <ProductCard product={product} compact />
-                  </FadeIn>
+                {collection.products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    compact
+                    ctaLabel="View on Amazon"
+                    detailsHref={`/favorites/${product.id}`}
+                  />
                 ))}
               </div>
             </Container>

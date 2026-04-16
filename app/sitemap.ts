@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { articles } from "@/lib/site-data";
+import { articles, products } from "@/lib/site-data";
 
 const SITE_URL = "https://luxaura.care";
 
@@ -33,5 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...articleRoutes];
+  const productRoutes = products.map((product) => ({
+    url: `${SITE_URL}/favorites/${product.id}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.72,
+  }));
+
+  return [...staticRoutes, ...articleRoutes, ...productRoutes];
 }

@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 
 export function NewsletterBlock() {
   return (
-    <Section>
+    <Section id="newsletter" className="[content-visibility:auto] [contain-intrinsic-size:1px_520px]">
       <Container>
         <div className="rounded-[2rem] border border-accent-gold/40 bg-background-secondary px-6 py-12 text-background-primary md:px-10 md:py-14">
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1.3fr_1fr] md:items-center">
@@ -39,7 +39,7 @@ export function NewsletterBlock() {
               <Button type="submit" className="w-full bg-background-primary text-text-primary hover:brightness-110">
                 Subscribe
               </Button>
-              <p className="text-xs text-background-primary/65">No spam. Unsubscribe anytime.</p>
+              <p className="text-xs text-background-primary/65">No spam. Weekly only. Unsubscribe anytime.</p>
             </form>
           </div>
         </div>

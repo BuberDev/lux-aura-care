@@ -26,6 +26,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
           <h3 className="font-heading text-2xl text-text-primary">{category.name}</h3>
           <p className="text-sm text-text-secondary">{category.description}</p>
           <p className="text-xs uppercase tracking-[0.2em] text-accent-gold">{category.heroLine}</p>
+          <p className="pt-1 text-xs uppercase tracking-[0.16em] text-text-secondary">Explore top routines</p>
         </div>
       </Link>
     </Card>

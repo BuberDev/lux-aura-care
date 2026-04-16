@@ -17,7 +17,7 @@ export function SiteHeader() {
       <Container className="rounded-2xl border border-white/15 bg-black/40 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/30">
         <div className="flex h-16 items-center justify-between gap-6 md:h-20">
           <Link href="/" className="inline-flex items-center gap-3">
-            <Image src={Logo} className="w-20" alt="logo"/>
+            <Image src={Logo} className="w-10 opacity-80 rounded-full" alt="logo"/>
             <span className="font-heading text-lg tracking-[0.06em] text-text-primary sm:text-2xl">
               {siteMeta.name}
             </span>

@@ -20,11 +20,11 @@ export function Heading({
       {eyebrow ? (
         <p className="mb-3 text-xs uppercase tracking-[0.22em] text-accent-gold">{eyebrow}</p>
       ) : null}
-      <h2 className="font-heading text-3xl leading-tight text-text-primary sm:text-4xl md:text-5xl">
+      <h2 className="max-w-4xl font-heading text-3xl leading-[1.15] text-text-primary sm:text-4xl md:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 max-w-2xl text-base text-text-secondary md:text-lg">{description}</p>
+        <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">{description}</p>
       ) : null}
     </div>
   );

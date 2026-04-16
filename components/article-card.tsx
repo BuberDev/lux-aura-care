@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, Clock3 } from "lucide-react";
+import { ArrowRight, CalendarDays, Clock3 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -30,11 +30,12 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <div className="space-y-5 p-6">
           <div className="flex flex-wrap items-center gap-2">
             {category ? <Badge>{category.name}</Badge> : null}
-            <Badge variant="subtle">{article.pinHook}</Badge>
+            <Badge variant="subtle">Trending on Pinterest</Badge>
           </div>
 
           <h3 className="font-heading text-2xl leading-tight text-text-primary">{article.title}</h3>
           <p className="text-sm leading-relaxed text-text-secondary">{article.excerpt}</p>
+          <p className="text-sm text-text-secondary/90">{article.pinHook}</p>
 
           <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.16em] text-text-secondary">
             <span className="inline-flex items-center gap-2">
@@ -46,6 +47,11 @@ export function ArticleCard({ article }: ArticleCardProps) {
               {article.readTime}
             </span>
           </div>
+
+          <p className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.14em] text-accent-gold">
+            Read guide
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </p>
         </div>
       </Link>
     </Card>

@@ -11,9 +11,9 @@ type CTAButtonProps = {
 };
 
 export function CTAButton({ href, label, variant = "default", className }: CTAButtonProps) {
-  const isExternal = href.startsWith("http");
+  const isOutbound = href.startsWith("http") || href.startsWith("/go/");
 
-  if (isExternal) {
+  if (isOutbound) {
     return (
       <Button asChild size="lg" variant={variant} className={className}>
         <a href={href} target="_blank" rel="noopener noreferrer sponsored">

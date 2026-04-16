@@ -4,9 +4,11 @@ import Link from "next/link";
 import { ArticleCard } from "@/components/article-card";
 import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
-import { FadeIn } from "@/components/motion/fade-in";
+import { InlineCtaPanel } from "@/components/inline-cta-panel";
+import { TopPicksSection } from "@/components/sections/top-picks-section";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
+import { toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { articles, categories, getCategoryById, isCategoryId } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +16,23 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Lux Aura Journal | Lux Aura Care",
+    description:
+      "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
+    url: "/blog",
+    type: "website",
+    images: [
+      {
+        url: toAbsoluteUrl("/Cliganic_Organic_Aromatherapy.png"),
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 type BlogPageProps = {
@@ -39,20 +58,38 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const visibleArticles = selectedCategory
     ? articles.filter((article) => article.categoryId === selectedCategory.id)
     : articles;
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: selectedCategory ? `${selectedCategory.name} Articles` : "Lux Aura Journal",
+    url: toAbsoluteUrl(
+      selectedCategory ? `/blog?category=${selectedCategory.id}` : "/blog"
+    ),
+    hasPart: visibleArticles.map((article) => ({
+      "@type": "BlogPosting",
+      headline: article.title,
+      url: toAbsoluteUrl(`/blog/${article.slug}`),
+      datePublished: article.publishedAt,
+      articleSection: article.categoryId,
+      image: toAbsoluteUrl(article.heroImage),
+    })),
+  };
 
   return (
     <>
-      <Section className="border-b border-white/10 pb-12 pt-16 md:pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(blogJsonLd) }}
+      />
+      <Section className="border-b border-white/10 pb-14 pt-16 md:pt-20">
         <Container>
-          <FadeIn>
-            <Heading
-              eyebrow="Lux Aura Journal"
-              title="Conversion-ready articles crafted for Pinterest readers"
-              description="Fast-scannable guides that pair lifestyle transformation hooks with trustworthy product recommendations."
-            />
-          </FadeIn>
+          <Heading
+            eyebrow="Lux Aura Journal"
+            title="Conversion-ready ritual guides crafted for Pinterest readers"
+            description="Fast-scannable articles with clear transformation hooks, trust signals, and soft product CTAs."
+          />
 
-          <FadeIn className="mt-8 flex flex-wrap gap-3" delay={0.08}>
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/blog"
               className={cn(
@@ -83,30 +120,39 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 </Link>
               );
             })}
-          </FadeIn>
+          </div>
 
           {selectedCategory ? (
-            <FadeIn className="mt-8 max-w-3xl rounded-3xl border border-white/10 bg-white/[0.02] p-6" delay={0.12}>
+            <div className="mt-8 max-w-3xl rounded-3xl border border-white/10 bg-white/[0.02] p-6">
               <Badge>{selectedCategory.name}</Badge>
-              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                {selectedCategory.description}
-              </p>
-            </FadeIn>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">{selectedCategory.description}</p>
+            </div>
           ) : null}
+
+          <InlineCtaPanel
+            className="mt-10"
+            eyebrow="Need quick product wins?"
+            title="Open a guide, then compare the top picks in one flow"
+            description="Readers convert more confidently when they read one focused guide first and shop with context."
+            primaryHref="/favorites"
+            primaryLabel="View Amazon Favorites"
+            secondaryHref="/"
+            secondaryLabel="Back to Landing"
+          />
         </Container>
       </Section>
 
-      <Section>
+      <Section className="[content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
         <Container>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {visibleArticles.map((article, index) => (
-              <FadeIn key={article.slug} delay={index * 0.04}>
-                <ArticleCard article={article} />
-              </FadeIn>
+            {visibleArticles.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
             ))}
           </div>
         </Container>
       </Section>
+
+      <TopPicksSection className="pt-0" />
     </>
   );
 }
