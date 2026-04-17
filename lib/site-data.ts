@@ -68,6 +68,38 @@ export const siteMeta = {
   tagline: "Professional routine guides for the Pinterest listener.",
   description:
     "We curate the viral essentials for skincare, sleep, and body glow, providing direct Amazon links for a seamless transition from inspiration to reality.",
+  keywords: [
+    "self-care rituals",
+    "skincare guides",
+    "body glow routines",
+    "sleep reset rituals",
+    "pinterest aesthetic skincare",
+    "viral amazon beauty favorites",
+    "luxury wellness editorial",
+    "glass skin routine",
+    "at-home spa experience",
+    "evening wind-down habits",
+    "beauty ritual guides",
+    "holistic self-care",
+    "minimalist skincare",
+    "clean beauty essentials",
+    "wellness lifestyle",
+  ],
+  plKeywords: [
+    "rytuały self-care",
+    "przewodnik po pielęgnacji",
+    "metody na body glow",
+    "higiena snu",
+    "estetyka pinterest",
+    "ulubieńcy z amazon",
+    "luksusowa pielęgnacja",
+    "efekt glass skin",
+    "domowe spa",
+    "wieczorne rytuały",
+    "nawyki przed snem",
+    "pielęgnacja ciała i twarzy",
+    "wellness polska",
+  ],
 };
 
 export const categories: Category[] = [
@@ -128,9 +160,9 @@ export const products: Product[] = [
       "Quiet mist diffusion paired with warm light to transform your bedroom or bath into a calm ritual space.",
     trustSignal: "Popular",
     image:
-      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=80",
+      "/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
     imageAlt: "Minimal ceramic diffuser on a wooden side table",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4ci1wsS",
   },
   {
     id: "gua-sha-set",
@@ -141,9 +173,9 @@ export const products: Product[] = [
       "A facial massage duo designed to support lymphatic flow and make serum application more effective.",
     trustSignal: "Editor favorite",
     image:
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=900&q=80",
+      "/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
     imageAlt: "Rose quartz gua sha and roller next to facial oil",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/3OOjASh",
   },
   {
     id: "body-oil",
@@ -975,13 +1007,253 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "ultimate-body-glow-protocol",
+    title: "The Ultimate Body Glow Protocol: A Science-Backed Guide to Luminous Skin",
+    excerpt:
+      "Stop skipping body care. This exhaustive guide breaks down the multi-step protocol for achieving a resilient, healthy satin glow that catches the light beautifully.",
+    intro:
+      "While face-first skincare dominated the last decade, the 'body-glow' movement is about treating the skin on your body with the same active-led precision. Luminous body skin isn't just about shine; it's about texture refinement, lymphatic support, and a disciplined moisture-locking window.",
+    heroImage: "/cover_aveeno_oil.png",
+    heroAlt: "Polished body skin catching the golden hour light next to ritual tools",
+    categoryId: "body-glow",
+    readTime: "9 min read",
+    publishedAt: "2026-04-16",
+    pinHook: "From surface dullness to a deep, healthy satin glow.",
+    sections: [
+      {
+        id: "lymphatic-awakening",
+        title: "Step 1: The Lymphatic Awakening with Dry Brushing",
+        copy: "Before any product touches your skin, you must address the physical surface. Dry brushing with natural bristles serves two critical functions: mechanical exfoliation and lymphatic stimulation. By brushing in light, rhythmic strokes toward the heart, you assist the body's natural detoxification process and remove the layer of dead cells that prevents oils from absorbing properly. This step is the difference between a surface shine and a deep, healthy glow.",
+        productId: "dry-brush",
+      },
+      {
+        id: "three-minute-window",
+        title: "Step 2: The Three-Minute Moisture Window",
+        copy: "The most common mistake in body care is waiting until your skin is bone-dry to apply products. Science shows that the most effective time to seal in hydration is within the first three minutes of exiting the shower. While your skin is damp and your pores are receptive, a lightweight mist can penetrate more deeply. This 'flash-hydration' creates a moisture-trap that keeps skin looking plump and reflective throughout the day, without the heavy, sticky feel of traditional lotions.",
+        productId: "aveeno-oil-mist",
+      },
+      {
+        id: "satin-seal",
+        title: "Step 3: The Satin Seal and Botanical Barrier",
+        copy: "Once you've established hydration, you need a lipid layer to prevent water loss. Botanical oils rich in antioxidants and fatty acids mimic the skin's natural sebum, providing a polished, satin-like finish that doesn't feel greasy on your clothes. Focusing on areas where light naturally hits—the collarbones, shins, and shoulders—creates that expensive-looking glow seen in viral Pinterest saves. This is the seal that maintains your skin's luminosity until your next ritual.",
+        productId: "body-oil",
+      },
+      {
+        id: "scalp-ritual",
+        title: "Step 4: Don't Forget the Scalp Connection",
+        copy: "True body care extends from head to toe. Tension often manifests in the scalp, restricting blood flow to the forehead and face. Using a silicone massager during your hair routine isn't just a sensory luxury; it's a way to release physical tension that contributes to a 'locked' expression. A relaxed scalp supports better circulation and makes your entire evening reset feel exponentially more restorative.",
+        productId: "scalp-massager",
+      },
+    ],
+  },
+  {
+    slug: "biological-sleep-reset",
+    title: "The Biological Sleep Reset: Why Lighting and Minerals are Your Bedtime Non-Negotiables",
+    excerpt:
+      "Struggling to switch off? This deep-dive guide explores the biological triggers for deep rest, focusing on nervous system regulation and visual cues.",
+    intro:
+      "Modern environments are 'noisy'—not just auditorily, but visually and biologically. If your heart rate is still elevated or your brain is detecting light leaks, you won't transition into restorative REM cycles. This reset protocol uses internal mineral support and external environmental anchors to tell your nervous system that the day is officially done.",
+    heroImage: "/Pure_Encapsulations_Magnesium_Glycinate.png",
+    heroAlt: "A calm, dark bedroom setup featuring a silk mask and weighted blanket",
+    categoryId: "self-care",
+    readTime: "10 min read",
+    publishedAt: "2026-04-16",
+    pinHook: "Biological rest is a skill. This protocol helps you master it.",
+    sections: [
+      {
+        id: "nervous-system-support",
+        title: "Step 1: Internal Nervous System Regulation",
+        copy: "Sleep readiness starts internally. Magnesium Glycinate is widely recognized as the gold standard for relaxation because it binds to GABA receptors, calming the central nervous system. By supporting the body's natural mineral baseline, you reduce the physical 'jitter' that often leads to middle-of-the-night wakefulness. This is the foundation upon which all other environmental cues are built.",
+        productId: "magnesium-supplement",
+      },
+      {
+        id: "scent-brain-connection",
+        title: "Step 2: Leveraging the Scent-Brain Connection",
+        copy: "Scent is the only sense with a direct pathway to the limbic system—the part of the brain that manages emotions and memories. By using a consistent evening essential oil blend, you create a Pavlovian response. Over time, the mere smell of lavender or sandalwood signals to your brain that it's time to slow down. It’s a low-effort habit that yields high-impact results for routine consistency.",
+        productId: "cliganic-essential-oils",
+      },
+      {
+        id: "complete-visual-silence",
+        title: "Step 3: Protocol for Complete Visual Silence",
+        copy: "Even the smallest LED from a charger can disrupt the production of melatonin. Total darkness is required for the pineal gland to function optimally. A high-quality silk mask provides this 'visual silence' without the friction that can cause fine lines or hair breakage. It's a non-negotiable for anyone living in an urban environment where ambient light is constant.",
+        productId: "silk-sleep-mask",
+      },
+      {
+        id: "neutral-weighted-pressure",
+        title: "Step 4: The Power of Neutral Weighted Pressure",
+        copy: "Deep Pressure Stimulation (DPS) is a technique used to lower cortisol levels and increase serotonin. A weighted blanket mimics the physical sensation of being held, which naturally lowers the heart rate and anchors the body. For those who experience bedtime anxiety or physical restlessness, this added weight provides the security needed for the brain to finally 'let go' and fall into deep rest.",
+        productId: "weighted-blanket",
+      },
+    ],
+  },
+  {
+    slug: "at-home-spa-sanctuary",
+    title: "From Pinterest to Reality: How to Design a Professional At-Home Spa Sanctuary",
+    excerpt:
+      "Learn the art of atmospheric calibration. This guide shows you how to turn your basic bathroom into a high-performance sanctuary for stress recovery.",
+    intro:
+      "The 'Spa Sunday' trend is popular because it offers a clear bridge between a high-output week and a fresh start. But a true sanctuary isn't about aesthetics alone—it's about sensory layering. Scent, warmth, and texture must work together to create a repeatable environment for emotional and physical recovery.",
+    heroImage: "/Cliganic_Organic_Aromatherapy.png",
+    heroAlt: "Luxury spa setup with candles, diffuser, and soft robes",
+    categoryId: "spa-relax",
+    readTime: "8 min read",
+    publishedAt: "2026-04-16",
+    pinHook: "A spa day shouldn't be a luxury; it should be a strategy.",
+    sections: [
+      {
+        id: "atmospheric-calibration",
+        title: "Step 1: Calibrate Your Atmospheric Baseline",
+        copy: "A sanctuary starts with what you don't see. Using a ceramic ultrasonic diffuser allows for a clean, consistent mist that layers the air with scent without the heavy feel of cheaper models. By choosing grounding scents like cedarwood or eucalyptus, you immediately shift your room's baseline from 'functional' to 'restorative.' This atmospheric cue is what makes your routine feel intentional.",
+        productId: "aroma-diffuser",
+      },
+      {
+        id: "mineral-immersion",
+        title: "Step 2: The Art of Mineral Immersion",
+        copy: "Bathing for the sake of cleanliness is a daily task; bathing for recovery is a mineral ritual. Magnesium bath flakes are notably more absorbable than traditional salts, allowing for deeper muscle relaxation and improved skin barrier support. The heat of the water paired with the mineral infusion helps drop your internal temperature afterward, which is a key signal for sleep readiness.",
+        productId: "bath-salts",
+      },
+      {
+        id: "warmth-layering",
+        title: "Step 3: Scent and Warmth Layering",
+        copy: "Lighting candles is the final touch of atmospheric layering. Sandalwood, with its milky and woody profile, is particularly effective for evening rituals. The dancing flame provides a primal focal point for 'soft gaze' meditation, helping to quiet the chatter of a busy mind. This combination of scent and warmth is the ultimate cue for transition.",
+        productId: "candle-set",
+      },
+      {
+        id: "sensory-anchor",
+        title: "Step 4: Anchor Your Body in Texture",
+        copy: "The most overlooked part of many spa routines is the 'exit.' Moving from a warm, mineral-rich environment into a cold room can shock the system. A premium plush robe acts as a sensory anchor, maintaining your heat and extending the 'calm' state. It's the final texture in your sensory layer that signals to your skin that the active day is officially over.",
+        productId: "pavilia-plush-robe",
+      },
+    ],
+  },
+  {
+    slug: "morning-momentum-protocol",
+    title: "The Morning Momentum Protocol: Daily Habits for High-Performance Hydration",
+    excerpt:
+      "Success is a habit, but so is energy. This exhaustive protocol focuses on internal hydration and physical awakening to keep you steady all day.",
+    intro:
+      "Afternoon burnout isn't inevitable; it's often the result of poor morning calibration. Starting your day with a focused protocol ensures your baseline is set for high output without the crash. This guide uses pure hydration, internal mineral support, and tactile awakening to give you a visible head start on your goals.",
+    heroImage: "/Copper_Water_Bottle.png",
+    heroAlt: "Copper water bottle and morning essentials on an aesthetic workspace",
+    categoryId: "self-care",
+    readTime: "7 min read",
+    publishedAt: "2026-04-16",
+    pinHook: "Win your morning, protect your energy, own your afternoon.",
+    sections: [
+      {
+        id: "elevated-hydration",
+        title: "Step 1: Elevated Internal Hydration",
+        copy: "Your first act of the day should be pure hydration. A copper water bottle is more than an aesthetic choice; it’s a ritual anchor. The tactile feel of the metal and the ritual of keeping it at your workspace ensures you don't start the day in a state of depletion. It’s about building momentum from the very first minute.",
+        productId: "copper-water-bottle",
+      },
+      {
+        id: "metabolic-support",
+        title: "Step 2: Internal Baseline and Metabolic Support",
+        copy: "While many focus on caffeine, true energy comes from mineral balance. Magnesium supports over 300 biochemical reactions in the body, including the production of ATP (energy). By ensuring your internal baseline is solid before you start your active hours, you avoid the artificial energy spikes and subsequent crashes that derail your productivity.",
+        productId: "magnesium-supplement",
+      },
+      {
+        id: "tactile-awakening",
+        title: "Step 3: Tactile Awakening and Skin Clarity",
+        copy: "Physical awakening helps transition your brain from 'rest' to 'active.' Using a facial cleansing brush in the morning increases circulation and removes any overnight buildup, allowing your daily actives like Niacinamide to absorb more effectively. This three-minute step makes you feel more 'present' and provides a clear physical signal to your brain that the day has begun.",
+        productId: "coslus-cleansing-brush",
+      },
+      {
+        id: "glow-foundation",
+        title: "Step 4: The Glow Foundation Layer",
+        copy: "Finish your morning ritual with a brightening layer. Niacinamide (Vitamin B3) is a versatile powerhouse that calms the look of redness and supports a clearer-looking complexion throughout the day. It provides the 'insurance' your skin needs against environmental stressors and keeps you looking polished from your first meeting to your last.",
+        productId: "niacinamide-toner",
+      },
+    ],
+  },
+  {
+    slug: "advanced-skincare-layering-glass-skin",
+    title: "Advanced Skincare Layering: How to Master the Viral 'Glass Skin' Finish",
+    excerpt:
+      "Move beyond basics. Learn the exact layering protocol using Pinterest's high-performance actives for that reflective, luminous skin finish.",
+    intro:
+      "Glass skin is a result of consistent, low-friction texture refinement and high-saturation hydration. It requires understanding how to layer actives like Retinol and Niacinamide without overwhelming the skin barrier. This guide breaks down the viral Pinterest workflow into repeatable, science-backed steps.",
+    heroImage: "/mixsoon_Bean_Essence_Exfoliating.png",
+    heroAlt: "Polished skincare products on a vanity reflection",
+    categoryId: "skincare",
+    readTime: "11 min read",
+    publishedAt: "2026-04-16",
+    pinHook: "Reflective, luminous skin—simplified but sophisticated.",
+    sections: [
+      {
+        id: "low-friction-exfoliation",
+        title: "Step 1: The Secret to Smooth Texture",
+        copy: "Cheaper scrubs cause micro-tears and inflammation. The 'glass skin' aesthetic relies on gentle, low-friction exfoliation. The viral Bean Essence handles rough texture by using fermented ingredients to smooth the surface without irritation. This allows for that reflective finish that catches the light so beautifully in photos.",
+        productId: "mixsoon-bean-essence",
+      },
+      {
+        id: "brightness-saturation",
+        title: "Step 2: Saturation and Tone Balance",
+        copy: "Hydration is the 'filler' that makes skin look plump and glassy. Layering a high-percentage Niacinamide serum while skin is still damp from your essence ensures that your tone remains balanced and your pores appear refined. This is the 'clarity layer' that defines the modern skincare aesthetic.",
+        productId: "niacinamide-toner",
+      },
+      {
+        id: "overnight-resurfacing",
+        title: "Step 3: Controlled Overnight Resurfacing",
+        copy: "While daytime is for protection, nighttime is for renewal. A stabilized Retinol serum buffered with squalane allows for steady cell turnover without the typical 'retinol burn.' By using one smart active, you improve skin texture over time, ensuring your glass-skin results are sustainable and not just temporary hydration.",
+        productId: "retinol-serum",
+      },
+      {
+        id: "lymphatic-finish",
+        title: "Step 4: Mechanical De-Puffing and Drain",
+        copy: "The final touch to any advanced skincare routine is a facial massage. Using a rose quartz Gua Sha set helps with lymphatic drainage, especially around the jawline and eyes. This 'sculpts' the face and ensures that your products are pressed into the skin rather than sitting on the surface. It’s the ritual finish that makes you look rested and polished.",
+        productId: "gua-sha-set",
+      },
+    ],
+  },
+  {
+    slug: "stress-reset-handbook",
+    title: "The Stress-Reset Handbook: Small Rituals That Stop Daily Burnout",
+    excerpt:
+      "Burnout isn't a moment; it's a slow accumulation. These tactile and sensory reset rituals help you lower cortisol and protect your peace.",
+    intro:
+      "When we feel overwhelmed, our sensory system is usually 'flooded.' A stress-reset isn't about doing more—it's about clearing the baseline. By using tactile grounding and atmospheric shifts, you can lower your body's alert level in minutes, preventing daily stress from turning into chronic burnout.",
+    heroImage: "/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+    heroAlt: "A comfortable, grounded setting for an evening reset ritual",
+    categoryId: "self-care",
+    readTime: "6 min read",
+    publishedAt: "2026-04-16",
+    pinHook: "Your peace is a project. These tools help you build it.",
+    sections: [
+      {
+        id: "tactile-grounding",
+        title: "Step 1: Sensory Weight and Grounding",
+        copy: "When your mind is racing, your body needs weight to feel safe. A weighted blanket provides 'grounding' that encourages the nervous system to shift from sympathetic (alert) to parasympathetic (rest). It’s one of the most effective non-chemical ways to lower acute stress and recalibrate your focus.",
+        productId: "weighted-blanket",
+      },
+      {
+        id: "cranial-release",
+        title: "Step 2: Physical Release and Cranial Ritual",
+        copy: "Stress often manifests as physical rigidity around the head and neck. A silicone scalp massager is an easy way to release this tension during a shower or while journaling. By physically 'breaking' the pattern of tension, you signal to your brain that the high-alert phase of the day is over. It’s a small step with massive emotional payoff.",
+        productId: "scalp-massager",
+      },
+      {
+        id: "atmospheric-shift",
+        title: "Step 3: The Scent and Atmosphere Pivot",
+        copy: "Your environment is a reflection of your state. By shifting the atmosphere with an ultrasonic diffuser, you create a clear boundary between your 'work self' and 'ritual self.' Calming scents like lavender or bergamot lower your baseline and invite slower, deeper breathing—the most direct way to control your physiology.",
+        productId: "aroma-diffuser",
+      },
+      {
+        id: "mineral-anchor",
+        title: "Step 4: The Internal Peace Anchor",
+        copy: "Finish your reset by addressing internal stressors. Magnesium is the body's 'anti-stress' mineral, yet most of us are depleted. Taking a high-quality supplement at the end of your reset ritual ensures your body has the raw materials it needs to recover physically and mentally, protecting you against tomorrow's challenges.",
+        productId: "magnesium-supplement",
+      },
+    ],
+  },
 ];
 
 export const featuredArticleSlugs = [
-  "the-viral-glass-skin-guide",
+  "ultimate-body-glow-protocol",
+  "advanced-skincare-layering-glass-skin",
   "biological-sleep-reset",
-  "body-glow-habit-guide",
-  "evening-reset-ritual",
+  "at-home-spa-sanctuary",
 ];
 
 export const amazonFavoriteProductIds = [
@@ -1143,4 +1415,31 @@ export function getGlowRoutineSteps() {
       (step): step is RoutineStep & { product: Product } =>
         Boolean(step)
     );
+}
+export function getProductsByCategoryId(categoryId: CategoryId) {
+  return products.filter((product) => product.id && product.categoryId === categoryId);
+}
+
+export function getTopPicksByCategory(categoryId: CategoryId, limit = 4) {
+  const categoryProducts = getProductsByCategoryId(categoryId);
+
+  // Group by badge priority or just take the first few
+  const topPickIds = topPicks.map((tp) => tp.productId);
+
+  return categoryProducts
+    .sort((a, b) => {
+      const aIsTop = topPickIds.includes(a.id);
+      const bIsTop = topPickIds.includes(b.id);
+      if (aIsTop && !bIsTop) return -1;
+      if (!aIsTop && bIsTop) return 1;
+      return 0;
+    })
+    .slice(0, limit)
+    .map((product) => {
+      const topPick = topPicks.find((tp) => tp.productId === product.id);
+      return {
+        product,
+        badge: topPick?.badge,
+      };
+    });
 }

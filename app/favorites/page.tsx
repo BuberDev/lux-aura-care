@@ -7,37 +7,53 @@ import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { ProductCard } from "@/components/product-card";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { toAbsoluteUrl } from "@/lib/seo";
-import { getCategoryById, getFavoritesCollections } from "@/lib/site-data";
+import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
+import { getCategoryById, getFavoritesCollections, siteMeta } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Shop the Feed | Pinterest Collections",
+  title: "Shop the Feed | Pinterest Favorites & Seasonal Picks",
   description:
-    "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed.",
+    "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed. High-glow skincare and sleep rituals.",
   alternates: {
     canonical: "/favorites",
   },
-  openGraph: {
-    title: "Shop the Pinterest Feed | Lux Aura Care",
-    description:
-      "Direct Amazon links to the 8 essentials currently trending on our Pinterest feed. Minimalist quality for an elevated lifestyle.",
-    url: "/favorites",
-    type: "website",
-    images: [
-      {
-        url: toAbsoluteUrl("/mixsoon_Bean_Essence_Exfoliating.png"),
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  keywords: ["pinterest favorites", "amazon beauty finds", "ritual essentials", ...siteMeta.keywords],
 };
 
 export default function FavoritesPage() {
   const collections = getFavoritesCollections();
 
+  const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
+    { name: "Home", item: "/" },
+    { name: "Favorites", item: "/favorites" },
+  ]);
+
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Shop the Pinterest Feed",
+    description: "Curated collections of high-glow essentials.",
+    url: toAbsoluteUrl("/favorites"),
+    hasPart: collections.flatMap((col) =>
+      col.products.map((p) => ({
+        "@type": "Product",
+        name: p.name,
+        url: toAbsoluteUrl(`/favorites/${p.id}`),
+        image: toAbsoluteUrl(p.image),
+      }))
+    ),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(breadcrumbsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(collectionJsonLd) }}
+      />
       <Section className="border-b border-white/10 pb-12 pt-16 md:pt-20">
         <Container>
           <Heading

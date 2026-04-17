@@ -16,7 +16,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Card className="group overflow-hidden border-white/12 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold/60">
       <Link href={`/blog/${article.slug}`} className="block">
-        <div className="relative h-56 overflow-hidden">
+        <div className="relative aspect-[2/3] overflow-hidden">
           <Image
             src={article.heroImage}
             alt={article.heroAlt}
@@ -24,7 +24,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         </div>
 
         <div className="space-y-5 p-6">

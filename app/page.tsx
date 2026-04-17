@@ -15,29 +15,16 @@ import { RoutineSection } from "@/components/sections/routine-section";
 import { TopPicksSection } from "@/components/sections/top-picks-section";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { toAbsoluteUrl, toJsonLd } from "@/lib/seo";
+import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { categories, getAmazonFavorites, getFeaturedArticles, siteMeta } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Luxury Self-Care Rituals",
+  title: "Luxury Self-Care Rituals | High-Glow Habits",
   description:
-    "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.",
+    "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle. Rituals for sleep, skin, and body glow.",
+  keywords: [...siteMeta.keywords, ...siteMeta.plKeywords],
   alternates: {
     canonical: "/",
-  },
-  openGraph: {
-    title: "Lux Aura Care | Professional High-Glow Rituals",
-    description:
-      "Curated skincare, body-glow, and sleep-reset rituals. Shop our viral Pinterest favorites directly from Amazon.",
-    url: "/",
-    type: "website",
-    images: [
-      {
-        url: toAbsoluteUrl("/mixsoon_Bean_Essence_Exfoliating.png"),
-        width: 1200,
-        height: 630,
-      },
-    ],
   },
 };
 
@@ -62,24 +49,43 @@ const trustSignals = [
 export default function HomePage() {
   const featuredArticles = getFeaturedArticles();
   const favorites = getAmazonFavorites();
+
+  const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
+    { name: "Home", item: "/" },
+  ]);
+
   const homeJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
+        "@id": toAbsoluteUrl("/#organization"),
         name: siteMeta.name,
         url: toAbsoluteUrl("/"),
+        logo: {
+          "@type": "ImageObject",
+          url: toAbsoluteUrl("/lux_aura_care_logo.png"),
+          width: 600,
+          height: 600,
+        },
+        sameAs: [
+          "https://pinterest.com/luxauracare",
+          "https://instagram.com/luxauracare",
+        ],
       },
       {
         "@type": "WebSite",
+        "@id": toAbsoluteUrl("/#website"),
         name: siteMeta.name,
         url: toAbsoluteUrl("/"),
         description: siteMeta.description,
+        publisher: { "@id": toAbsoluteUrl("/#organization") },
         inLanguage: "en",
       },
       {
         "@type": "ItemList",
         name: "Featured Articles",
+        description: "Latest ritual guides for a polished lifestyle.",
         itemListElement: featuredArticles.map((article, index) => ({
           "@type": "ListItem",
           position: index + 1,
@@ -92,6 +98,10 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(breadcrumbsJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(homeJsonLd) }}

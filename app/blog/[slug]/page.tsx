@@ -11,7 +11,7 @@ import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { getAffiliateRoute } from "@/lib/affiliate";
-import { toAbsoluteUrl, toJsonLd } from "@/lib/seo";
+import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import {
   articles,
   getArticleBySlug,
@@ -20,6 +20,7 @@ import {
   getProductProof,
   getProductsByIds,
   getRelatedArticles,
+  siteMeta,
 } from "@/lib/site-data";
 
 type ArticlePageProps = {
@@ -41,17 +42,20 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   return {
-    title: article.title,
+    title: `${article.title} | Ritual Guide`,
     description: article.excerpt,
     alternates: {
       canonical: `/blog/${article.slug}`,
     },
+    keywords: [article.categoryId, "routine guide", "lifestyle reset", ...siteMeta.keywords],
     openGraph: {
       title: article.title,
       description: article.excerpt,
       url: `/blog/${article.slug}`,
-      images: [article.heroImage],
+      images: [{ url: article.heroImage, width: 1200, height: 630, alt: article.heroAlt }],
       type: "article",
+      publishedTime: article.publishedAt,
+      authors: ["Lux Aura Editorial"],
     },
     twitter: {
       card: "summary_large_image",
@@ -74,7 +78,7 @@ function ArticleProductBlock({ productId }: { productId: string }) {
   return (
     <div className="my-10 rounded-3xl border border-accent-gold/30 bg-white/[0.02] p-6 md:p-8">
       <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)] md:items-center">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10">
+        <div className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-white/10">
           <Image
             src={product.image}
             alt={product.imageAlt}
@@ -129,29 +133,82 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     "bath-salts",
   ]);
 
+  const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
+    { name: "Home", item: "/" },
+    { name: "Journal", item: "/blog" },
+    ...(category ? [{ name: category.name, item: `/blog?category=${category.id}` }] : []),
+    { name: article.title, item: `/blog/${article.slug}` },
+  ]);
+
+  const faqs = article.sections.map((section) => ({
+    question: section.title,
+    answer: section.copy,
+  }));
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   const hookPoints = article.sections.slice(0, 3).map((section) => section.title);
   const firstProduct = getProductById(article.sections[0]?.productId ?? "");
+
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.publishedAt,
-    author: {
-      "@type": "Organization",
-      name: "Lux Aura Care",
-    },
-    image: [toAbsoluteUrl(article.heroImage)],
-    mainEntityOfPage: toAbsoluteUrl(`/blog/${article.slug}`),
-    articleSection: category?.name ?? article.categoryId,
-    about: article.sections.map((section) => section.title),
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": toAbsoluteUrl(`/blog/${article.slug}#article`),
+        headline: article.title,
+        description: article.excerpt,
+        datePublished: article.publishedAt,
+        author: {
+          "@type": "Organization",
+          "@id": toAbsoluteUrl("/#organization"),
+          name: "Lux Aura Editorial",
+          url: toAbsoluteUrl("/"),
+        },
+        image: [toAbsoluteUrl(article.heroImage)],
+        mainEntityOfPage: toAbsoluteUrl(`/blog/${article.slug}`),
+        articleSection: category?.name ?? article.categoryId,
+        publisher: {
+          "@type": "Organization",
+          "@id": toAbsoluteUrl("/#organization"),
+          name: "Lux Aura Care",
+          logo: {
+            "@type": "ImageObject",
+            url: toAbsoluteUrl("/lux_aura_care_logo.png"),
+          },
+        },
+        isPartOf: {
+          "@type": "WebSite",
+          "@id": toAbsoluteUrl("/#website"),
+        },
+      },
+    ],
   };
 
   return (
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(breadcrumbsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(faqJsonLd) }}
       />
       <section className="relative isolate overflow-hidden border-b border-white/10">
         <div className="relative h-[58vh] min-h-[440px]">

@@ -33,7 +33,7 @@ export function ProductCard({
   return (
     <Card className="overflow-hidden border-white/12 bg-white/[0.02] transition-colors hover:border-accent-gold/45">
       <div className={compact ? "grid gap-4 p-4" : "grid gap-5 p-5 md:p-6"}>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
           <Image
             src={product.image}
             alt={product.imageAlt}

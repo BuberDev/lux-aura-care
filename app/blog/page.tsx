@@ -8,31 +8,26 @@ import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { TopPicksSection } from "@/components/sections/top-picks-section";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { toAbsoluteUrl, toJsonLd } from "@/lib/seo";
-import { articles, categories, getCategoryById, isCategoryId } from "@/lib/site-data";
+import { ProductCard } from "@/components/product-card";
+import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
+import {
+  articles,
+  categories,
+  getCategoryById,
+  getTopPicksByCategory,
+  isCategoryId,
+  siteMeta,
+} from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Lux Aura Journal | Luxury Self-Care & Ritual Guides",
   description:
-    "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
+    "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery. Curated guides for your Pinterest lifestyle.",
   alternates: {
     canonical: "/blog",
   },
-  openGraph: {
-    title: "Lux Aura Journal | Lux Aura Care",
-    description:
-      "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
-    url: "/blog",
-    type: "website",
-    images: [
-      {
-        url: toAbsoluteUrl("/Cliganic_Organic_Aromatherapy.png"),
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  keywords: ["ritual guides", "self-care journal", "skincare routines", ...siteMeta.keywords],
 };
 
 type BlogPageProps = {
@@ -58,6 +53,16 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const visibleArticles = selectedCategory
     ? articles.filter((article) => article.categoryId === selectedCategory.id)
     : articles;
+
+  const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
+    { name: "Home", item: "/" },
+    { name: "Journal", item: "/blog" },
+    ...(selectedCategory
+      ? [{ name: selectedCategory.name, item: `/blog?category=${selectedCategory.id}` }]
+      : []),
+  ]);
+
+  const categoryPicks = selectedCategory ? getTopPicksByCategory(selectedCategory.id) : [];
   const blogJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -73,6 +78,19 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       articleSection: article.categoryId,
       image: toAbsoluteUrl(article.heroImage),
     })),
+    publisher: {
+      "@type": "Organization",
+      name: "Lux Aura Care",
+      logo: {
+        "@type": "ImageObject",
+        url: toAbsoluteUrl("/logo.png"), // Assuming logo existence or fallback
+      },
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Lux Aura Care",
+      url: toAbsoluteUrl("/"),
+    },
   };
 
   return (
@@ -129,21 +147,57 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </div>
           ) : null}
 
-          <InlineCtaPanel
-            className="mt-10"
-            eyebrow="Need quick product wins?"
-            title="Open a guide, then compare the top picks in one flow"
-            description="Readers convert more confidently when they read one focused guide first and shop with context."
-            primaryHref="/favorites"
-            primaryLabel="View Amazon Favorites"
-            secondaryHref="/"
-            secondaryLabel="Back to Landing"
-          />
-        </Container>
+            {!selectedCategory ? (
+              <InlineCtaPanel
+                className="mt-10"
+                eyebrow="Need quick product wins?"
+                title="Open a guide, then compare the top picks in one flow"
+                description="Readers convert more confidently when they read one focused guide first and shop with context."
+                primaryHref="/favorites"
+                primaryLabel="View Amazon Favorites"
+                secondaryHref="/"
+                secondaryLabel="Back to Landing"
+              />
+            ) : null}
+
+            {selectedCategory && categoryPicks.length > 0 ? (
+              <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
+                  <div>
+                    <h2 className="font-heading text-3xl text-text-primary">
+                      Essential {selectedCategory.name} Favorites
+                    </h2>
+                    <p className="mt-2 text-text-secondary">
+                      Direct Amazon links to the highest-rated picks for this ritual.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                  {categoryPicks.map((item) => (
+                    <ProductCard
+                      key={item.product.id}
+                      product={item.product}
+                      compact
+                      featuredBadge={item.badge}
+                      ctaLabel="View on Amazon"
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </Container>
       </Section>
 
-      <Section className="[content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
+      <Section>
         <Container>
+          <div className="mb-10">
+            <h2 className="font-heading text-3xl text-text-primary">
+              {selectedCategory ? `${selectedCategory.name} Ritual Guides` : "Latest Ritual Guides"}
+            </h2>
+            <p className="mt-2 text-text-secondary">
+              Step-by-step transformation instructions for your Pinterest lifestyle.
+            </p>
+          </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {visibleArticles.map((article) => (
               <ArticleCard key={article.slug} article={article} />
