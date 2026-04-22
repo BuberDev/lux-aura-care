@@ -6,8 +6,10 @@ export { resend };
 
 export async function sendWelcomeEmail(email: string) {
   try {
+    console.log(`[RESEND] Sending welcome email to: ${email}`);
+
     const result = await resend.emails.send({
-      from: "Lux Aura Care <onboarding@resend.dev>",
+      from: "Lux Aura Care <hello@luxauracare.pl>",
       to: email,
       subject: "Your 15% Off Code is Inside ✨",
       html: `
@@ -76,9 +78,10 @@ Explore bundles: https://luxaura.care/favorites
 We send Friday mornings only. Unsubscribe anytime.`,
     });
 
+    console.log(`[RESEND] Email sent successfully:`, result);
     return result;
   } catch (error) {
-    console.error("Failed to send welcome email:", error);
+    console.error("[RESEND] Failed to send welcome email:", error);
     throw error;
   }
 }
@@ -110,7 +113,7 @@ export async function sendProductRecommendationEmail(
 
   try {
     const result = await resend.emails.send({
-      from: "Lux Aura Care <onboarding@resend.dev>",
+      from: "Lux Aura Care <hello@luxauracare.pl>",
       to: email,
       subject: `Based on Your Interest: ${rec.title}`,
       html: `
