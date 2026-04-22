@@ -38,31 +38,44 @@ export async function subscribeToNewsletter(data: SubscriberData): Promise<{
 
 async function subscribeViaResend(data: SubscriberData) {
   try {
-    const response = await fetch("https://api.resend.com/contacts", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.EMAIL_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: data.email,
-        audience_id: process.env.EMAIL_AUDIENCE_ID,
-        tags: [data.source, data.segment].filter(Boolean),
-      }),
-    });
+    const audienceId = process.env.EMAIL_AUDIENCE_ID;
 
-    if (!response.ok) {
-      const error = await response.json();
-      return {
-        success: false,
-        error: error.message || "Failed to subscribe",
-      };
+    if (!audienceId) {
+      console.warn(
+        "EMAIL_AUDIENCE_ID not set - will send welcome email but not add to audience. Set it for full functionality."
+      );
     }
 
-    const result = await response.json();
+    if (audienceId) {
+      try {
+        const response = await fetch("https://api.resend.com/contacts", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.EMAIL_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: data.email,
+            audience_id: audienceId,
+            tags: [data.source, data.segment].filter(Boolean),
+          }),
+        });
+
+        if (!response.ok) {
+          const error = (await response.json()) as { message?: string; error?: string };
+          console.error(`Failed to add contact to audience:`, error);
+        } else {
+          const result = (await response.json()) as { id?: string; contact_id?: string };
+          console.log(`Contact added: ${result.id || result.contact_id}`);
+        }
+      } catch (error) {
+        console.error(`Error adding contact to audience:`, error);
+      }
+    }
+
     return {
       success: true,
-      subscriberId: result.id,
+      subscriberId: data.email,
     };
   } catch (error) {
     return {

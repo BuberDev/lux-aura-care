@@ -50,10 +50,10 @@ Choose one and configure environment variables:
 **Option A: Resend (Recommended for creators)**
 ```bash
 EMAIL_PROVIDER=resend
-EMAIL_API_KEY=re_xxxxxxxxxxxxx
-EMAIL_AUDIENCE_ID=your-audience-id
+EMAIL_API_KEY=your-resend-api-key
+EMAIL_AUDIENCE_ID=your-audience-id  # Optional for Resend
 ```
-Sign up: https://resend.com
+Sign up: https://resend.com → Get API key from dashboard
 
 **Option B: Mailchimp (Free tier available)**
 ```bash
