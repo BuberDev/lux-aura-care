@@ -9,7 +9,7 @@ export async function sendWelcomeEmail(email: string) {
     console.log(`[RESEND] Sending welcome email to: ${email}`);
 
     const result = await resend.emails.send({
-      from: "Lux Aura Care <hello@luxauracare.pl>",
+      from: "Lux Aura Care <hello@luxauracare.com>",
       to: email,
       subject: "Welcome to Lux Aura Care - Weekly Ritual Guides",
       html: `
@@ -38,7 +38,7 @@ export async function sendWelcomeEmail(email: string) {
           </div>
 
           <div style="text-align: center; margin-bottom: 24px;">
-            <a href="https://www.luxauracare.pl/favorites" style="display: inline-block; background: #d4af37; color: #000; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 14px;">
+            <a href="https://www.luxauracare.com/favorites" style="display: inline-block; background: #d4af37; color: #000; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 14px;">
               Explore Our Collections
             </a>
           </div>
@@ -49,7 +49,7 @@ export async function sendWelcomeEmail(email: string) {
             <p style="margin: 0;">We send emails Friday mornings (Polish time).</p>
             <p style="margin: 8px 0 0 0;">You can unsubscribe anytime by clicking the link at the bottom of any email.</p>
             <p style="margin: 12px 0 0 0; color: #999;">
-              © 2026 Lux Aura Care | www.luxauracare.pl
+              © 2026 Lux Aura Care | www.luxauracare.com
             </p>
           </div>
         </div>
@@ -65,14 +65,14 @@ What You'll Receive:
 - Early announcements of new products
 - Helpful tips from our editorial team
 
-Explore our collections: https://www.luxauracare.pl/favorites
+Explore our collections: https://www.luxauracare.com/favorites
 
 We send emails Friday mornings (Polish time). You can unsubscribe anytime.
 
 © 2026 Lux Aura Care
-www.luxauracare.pl`,
+www.luxauracare.com`,
       headers: {
-        "List-Unsubscribe": `<mailto:unsubscribe@luxauracare.pl?subject=unsubscribe>`,
+        "List-Unsubscribe": `<mailto:unsubscribe@luxauracare.com?subject=unsubscribe>`,
       },
     });
 
@@ -111,7 +111,7 @@ export async function sendProductRecommendationEmail(
 
   try {
     const result = await resend.emails.send({
-      from: "Lux Aura Care <hello@luxauracare.pl>",
+      from: "Lux Aura Care <hello@luxauracare.com>",
       to: email,
       subject: `Based on Your Interest: ${rec.title}`,
       html: `
