@@ -61,3 +61,24 @@ export function buildAmazonAffiliateUrl(
 
   return destination;
 }
+
+export function buildBundleAffiliateUrl(
+  bundleProductIds: string[],
+  context: TrafficContext & { bundleId?: string }
+) {
+  if (bundleProductIds.length === 0) {
+    return undefined;
+  }
+
+  const firstProduct = getProductById(bundleProductIds[0]);
+  if (!firstProduct) {
+    return undefined;
+  }
+
+  const bundleTrackingContext = {
+    ...context,
+    campaign: context.bundleId ? `bundle-${context.bundleId}` : context.campaign,
+  };
+
+  return buildAmazonAffiliateUrl(bundleProductIds[0], bundleTrackingContext);
+}

@@ -13,6 +13,7 @@ import { NewsletterBlock } from "@/components/newsletter-block";
 import { ProductCard } from "@/components/product-card";
 import { RoutineSection } from "@/components/sections/routine-section";
 import { TopPicksSection } from "@/components/sections/top-picks-section";
+import { BundlesSection } from "@/components/sections/bundles-section";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
@@ -149,6 +150,8 @@ export default function HomePage() {
       </Section>
 
       <TopPicksSection />
+
+      <BundlesSection />
 
       <Section id="categories" className="[content-visibility:auto] [contain-intrinsic-size:1px_900px]">
         <Container>

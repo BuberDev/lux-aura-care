@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Lux Aura Care | Professional High-Glow Rituals",
     description: siteMeta.description,
     creator: "@luxauracare",
-    images: ["/og-image.jpg"], // Ensure this exists or fallback
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -77,6 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="pinterest" content="nohover" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: toJsonLd(organizationJsonLd) }}

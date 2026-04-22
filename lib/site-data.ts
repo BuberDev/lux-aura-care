@@ -30,6 +30,10 @@ export type ProductProof = {
     | "Most saved on Pinterest this week"
     | "Most loved by routine creators";
   highlights: string[];
+  urgencySignal?: {
+    label: string;
+    intensity: "low" | "medium" | "high";
+  };
 };
 
 export type TopPickBadge = "Best Seller" | "Trending" | "Most Loved";
@@ -147,9 +151,9 @@ export const products: Product[] = [
       "A breathable silk mask that blocks ambient light and helps your bedtime routine feel intentional from the first minute.",
     trustSignal: "Top rated",
     image:
-      "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=80",
+      "/Mulberry_Silk_Sleep_Mask_img.png",
     imageAlt: "Champagne silk sleep mask on linen bedding",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4cqWOsQ",
   },
   {
     id: "aroma-diffuser",
@@ -179,20 +183,20 @@ export const products: Product[] = [
   },
   {
     id: "body-oil",
-    name: "Neroli Firming Body Oil",
+    name: "Firming Body Massage Oil for Cellulite – Collagen Infused Skin Tightening Oil",
     categoryId: "body-glow",
     benefit: "Soft, luminous skin that does not feel greasy.",
     description:
       "Fast-absorbing botanical oil that seals in hydration and leaves a healthy satin finish.",
     trustSignal: "Top rated",
     image:
-      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=80",
+      "/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png",
     imageAlt: "Elegant body oil bottle with golden reflection",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4vKVOY6",
   },
   {
     id: "bath-salts",
-    name: "Magnesium Bath Flakes",
+    name: "Magnesium Bath Flakes Zechstein – Relaxing Soak for Muscle Recovery & Stress Relief",
     categoryId: "spa-relax",
     benefit: "Relaxes tense muscles and improves sleep quality.",
     description:
@@ -201,11 +205,11 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80",
     imageAlt: "Bath salts in a glass jar near a towel",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4sTbNAP",
   },
   {
     id: "retinol-serum",
-    name: "Night Renewal Retinol Serum",
+    name: "RoC Retinol Night Serum Capsules – Anti-Aging, Wrinkle Repair & Smooth Skin Treatment",
     categoryId: "skincare",
     benefit: "Smoother skin texture with consistent nighttime use.",
     description:
@@ -214,85 +218,85 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=900&q=80",
     imageAlt: "Dropper serum bottle on marble tray",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4cE9qvj",
   },
   {
     id: "dry-brush",
     name: "Natural Bristle Dry Brush",
     categoryId: "body-glow",
-    benefit: "Smoother texture and more energized morning routines.",
+    benefit: "Dry Body Brush for Glowing Skin – Exfoliate, Boost Circulation & Smooth Texture",
     description:
       "Dry brushing before your shower supports exfoliation and leaves skin looking more refined.",
     trustSignal: "Editor favorite",
     image:
-      "https://images.unsplash.com/photo-1629198729791-f52c0f748c0f?auto=format&fit=crop&w=900&q=80",
+      "/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png",
     imageAlt: "Natural dry brush and folded towels",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4e39ozA",
   },
   {
     id: "led-mask",
-    name: "Red-Light Facial Mask",
+    name: "INIA Glow 2 LED Face Mask – Red Light Therapy 850nm NIR, 4 Modes, Rechargeable" ,
     categoryId: "skincare",
     benefit: "Low-effort treatment that supports clearer, brighter skin.",
     description:
       "Hands-free LED sessions that layer into your routine while you journal, read, or unwind.",
     trustSignal: "Popular",
     image:
-      "https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=900&q=80",
+      "/INIA_Red_Light_Therapy_Mask_for_Face.png",
     imageAlt: "Modern LED skincare mask on vanity",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4u6HGqw",
   },
   {
     id: "weighted-blanket",
-    name: "Cooling Weighted Blanket",
+    name: "Weighted Blanket for Adults – Cooling, Stress Relief & Better Sleep Comfort",
     categoryId: "self-care",
     benefit: "Nervous-system support for calmer nights.",
     description:
       "Balanced pressure and breathable texture help reduce bedtime restlessness without overheating.",
     trustSignal: "Top rated",
     image:
-      "https://images.unsplash.com/photo-1590439471364-192aa70c0b53?auto=format&fit=crop&w=900&q=80",
+      "/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png",
     imageAlt: "Soft weighted blanket folded on a bed",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4tXLN88",
   },
   {
     id: "scalp-massager",
-    name: "Silicone Scalp Massager",
+    name: "Scalp Massager Shampoo Brush – Silicone Scrubber for Hair Growth & Dandruff Removal",
     categoryId: "self-care",
     benefit: "Turns hair wash into a stress-release ritual.",
     description:
       "Flexible silicone bristles provide gentle stimulation for a cleaner scalp and a more relaxing shower.",
     trustSignal: "Popular",
     image:
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80",
+      "/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png",
     imageAlt: "Handheld scalp massager on bathroom shelf",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4dXdAAW",
   },
   {
     id: "sheet-mask-set",
-    name: "Hydrogel Sheet Mask Set",
+    name: "Biodance Bio-Collagen Face Mask – Hydrating Overnight Korean Skincare for Glowing Skin",
     categoryId: "skincare",
     benefit: "Quick pre-event glow with instant hydration.",
     description:
       "Cooling hydrogel masks that visibly plump and prep skin before makeup or evening plans.",
     trustSignal: "Editor favorite",
     image:
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=900&q=80",
+      "/Biodance_Bio_Collagen_Face_Mask.png",
     imageAlt: "Hydrogel sheet masks and a jade bowl",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/4sRB3ax",
   },
   {
     id: "candle-set",
-    name: "Sandalwood Candle Trio",
+    name: "WoodWick Warm Woods Trilogy Candle – Crackling Wick Scented Gift, Cozy Home Fragrance",
     categoryId: "spa-relax",
     benefit: "Creates a calm mood in under five minutes.",
     description:
       "Layered woody fragrance with a clean burn profile for evening rituals and bath sessions.",
     trustSignal: "Top rated",
     image:
-      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=900&q=80",
+      "/Sandalwood_Candle.png",
     imageAlt: "Three elegant candles with warm glow",
-    amazonUrl: "https://www.amazon.com/",
+    amazonUrl: "https://amzn.to/3OVuO7x",
   },
   {
     id: "niacinamide-toner",
@@ -402,6 +406,10 @@ export const productProofById: Record<string, ProductProof> = {
       "Feels soft on skin and avoids overnight creasing",
       "Makes bedtime routines feel calm and intentional",
     ],
+    urgencySignal: {
+      label: "Best-seller",
+      intensity: "high",
+    },
   },
   "aroma-diffuser": {
     rating: 4.7,
@@ -1271,6 +1279,99 @@ export const amazonFavoriteProductIds = [
   "candle-set",
 ];
 
+export type ProductBundle = {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  productIds: string[];
+  discount?: {
+    label: string;
+    savings: string;
+  };
+};
+
+export const productBundles: ProductBundle[] = [
+  {
+    id: "glass-skin-starter",
+    title: "Glass Skin Starter Kit",
+    tagline: "The 3-step essential routine for reflective, luminous skin",
+    description: "Everything you need to achieve that viral glass skin finish—from gentle cleansing to niacinamide brightness to smooth texture.",
+    productIds: [
+      "coslus-cleansing-brush",
+      "niacinamide-toner",
+      "mixsoon-bean-essence",
+    ],
+    discount: {
+      label: "Save 15% when bought together",
+      savings: "$18-22",
+    },
+  },
+  {
+    id: "sleep-reset-bundle",
+    title: "Sleep Reset Bundle",
+    tagline: "From racing thoughts to deep biological rest",
+    description: "Internal and external support for deeper sleep—mineral support, sensory anchors, and complete visual silence.",
+    productIds: [
+      "magnesium-supplement",
+      "cliganic-essential-oils",
+      "pavilia-plush-robe",
+      "silk-sleep-mask",
+    ],
+    discount: {
+      label: "Complete sleep protocol",
+      savings: "$75-90 value",
+    },
+  },
+  {
+    id: "body-glow-pro",
+    title: "Body Glow Protocol",
+    tagline: "From dull to luminous in 3 easy steps",
+    description: "The science-backed sequence for softer, glowing body skin—dry brush, hydration lock, and satin seal.",
+    productIds: [
+      "dry-brush",
+      "aveeno-oil-mist",
+      "body-oil",
+    ],
+    discount: {
+      label: "Save 12% on the complete protocol",
+      savings: "$24-28",
+    },
+  },
+  {
+    id: "spa-sunday-sanctuary",
+    title: "At-Home Spa Sanctuary Bundle",
+    tagline: "Turn your bathroom into a professional healing space",
+    description: "Atmosphere calibration for stress recovery—scent anchoring, mineral immersion, and sensory layering.",
+    productIds: [
+      "aroma-diffuser",
+      "bath-salts",
+      "candle-set",
+      "pavilia-plush-robe",
+    ],
+    discount: {
+      label: "Complete spa experience",
+      savings: "$95-120 value",
+    },
+  },
+  {
+    id: "morning-momentum",
+    title: "Morning Momentum Kit",
+    tagline: "Win your morning, protect your energy",
+    description: "Internal hydration, mineral support, and tactile awakening for high-performance energy all day.",
+    productIds: [
+      "copper-water-bottle",
+      "magnesium-supplement",
+      "coslus-cleansing-brush",
+      "niacinamide-toner",
+    ],
+    discount: {
+      label: "Daily essential bundle",
+      savings: "$65-80 value",
+    },
+  },
+];
+
 export const favoriteCollections = [
   {
     id: "pinterest-viral-finds",
@@ -1442,4 +1543,18 @@ export function getTopPicksByCategory(categoryId: CategoryId, limit = 4) {
         badge: topPick?.badge,
       };
     });
+}
+
+export function getBundleById(id: string) {
+  return productBundles.find((bundle) => bundle.id === id);
+}
+
+export function getBundleProducts(bundleId: string) {
+  const bundle = getBundleById(bundleId);
+  if (!bundle) return [];
+  return getProductsByIds(bundle.productIds);
+}
+
+export function getFeaturedBundles(limit = 4) {
+  return productBundles.slice(0, limit);
 }

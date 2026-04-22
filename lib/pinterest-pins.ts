@@ -41,7 +41,7 @@ export const pinterestPins: PinterestPin[] = [
     id: "magnesium-glycinate-support",
     title: "Magnesium evening support",
     campaign: "sleep-reset",
-    target: { type: "product", productId: "vitamin-d3-k2" },
+    target: { type: "product", productId: "magnesium-supplement" },
   },
   {
     id: "essential-oils-gift-set",
