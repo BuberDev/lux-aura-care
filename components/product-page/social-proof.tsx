@@ -5,14 +5,24 @@ import { CTAButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 
 type SocialProofProps = {
-  headline: string;
-  socialLine: string;
-  ratingLabel: string;
-  reviews: string;
-  ctaHref: string;
+  readonly headline: string;
+  readonly socialLine: string;
+  readonly ratingLabel: string;
+  readonly reviews: string;
+  readonly ctaHref: string;
+  readonly productId?: string;
+  readonly productName?: string;
 };
 
-export function SocialProof({ headline, socialLine, ratingLabel, reviews, ctaHref }: SocialProofProps) {
+export function SocialProof({
+  headline,
+  socialLine,
+  ratingLabel,
+  reviews,
+  ctaHref,
+  productId,
+  productName,
+}: SocialProofProps) {
   return (
     <Section className="atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_520px]">
       <Container>
@@ -33,7 +43,13 @@ export function SocialProof({ headline, socialLine, ratingLabel, reviews, ctaHre
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-black/70">&ldquo;{socialLine}&rdquo;</p>
 
           <div className="mt-7">
-            <CTAButton href={ctaHref} label="Check on Amazon" />
+            <CTAButton
+              href={ctaHref}
+              label="Check on Amazon"
+              productId={productId}
+              productName={productName}
+              placement="product-social-proof"
+            />
           </div>
         </div>
       </Container>

@@ -4,14 +4,20 @@ import { Sparkles } from "lucide-react";
 import { CTAButton } from "@/components/cta-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { getBundleProducts, type ProductBundle } from "@/lib/site-data";
+import { getAffiliateRoute } from "@/lib/affiliate";
+import { getBundleProducts, getProductById, type ProductBundle } from "@/lib/site-data";
 
 type BundleCardProps = {
-  bundle: ProductBundle;
+  readonly bundle: ProductBundle;
 };
 
 export function BundleCard({ bundle }: BundleCardProps) {
   const products = getBundleProducts(bundle.id);
+  const firstProduct = getProductById(bundle.productIds[0]);
+
+  if (!firstProduct) return null;
+
+  const bundleHref = getAffiliateRoute(firstProduct.id, "bundle").concat(`&bundle=${bundle.id}`);
 
   return (
     <Card className="overflow-hidden border-white/12 bg-gradient-to-br from-accent-gold/10 via-white/[0.02] to-white/[0.02] transition-all hover:border-accent-gold/45">
@@ -62,9 +68,12 @@ export function BundleCard({ bundle }: BundleCardProps) {
         </div>
 
         <CTAButton
-          href="#"
+          href={bundleHref}
           label={`View Bundle - ${products.length} Items`}
           className="w-full"
+          productId={firstProduct.id}
+          productName={firstProduct.name}
+          placement="bundle"
         />
       </div>
     </Card>

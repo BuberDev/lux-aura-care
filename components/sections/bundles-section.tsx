@@ -28,7 +28,7 @@ export function BundlesSection() {
           eyebrow="Ready to commit"
           title="Start with one complete ritual, then add as your routine evolves"
           description="Bundles are designed for commitment and results. Each collection creates habit momentum faster than individual products."
-          primaryHref="#"
+          primaryHref="/favorites"
           primaryLabel="Browse All Ritual Bundles"
           secondaryHref="/blog"
           secondaryLabel="Read More Guides"

@@ -3,10 +3,12 @@ import { CTAButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 
 type CTASectionProps = {
-  ctaHref: string;
+  readonly ctaHref: string;
+  readonly productId?: string;
+  readonly productName?: string;
 };
 
-export function CTASection({ ctaHref }: CTASectionProps) {
+export function CTASection({ ctaHref, productId, productName }: CTASectionProps) {
   return (
     <Section className="border-t border-white/10 py-16 md:py-20">
       <Container>
@@ -16,7 +18,13 @@ export function CTASection({ ctaHref }: CTASectionProps) {
             Explore this ritual pick on Amazon and choose what fits your evening flow best.
           </p>
           <div className="mt-7 flex justify-center">
-            <CTAButton href={ctaHref} label="View on Amazon" />
+            <CTAButton
+              href={ctaHref}
+              label="View on Amazon"
+              productId={productId}
+              productName={productName}
+              placement="product-final-cta"
+            />
           </div>
         </div>
       </Container>

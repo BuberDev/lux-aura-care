@@ -159,6 +159,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
         problemParagraph={content.problemParagraph}
         solutionParagraph={content.solutionParagraph}
         ctaHref={getAffiliateRoute(product.id, "product-problem-solution")}
+        productId={product.id}
+        productName={product.name}
       />
       <BenefitList items={content.detailedBenefits} />
       <RoutineSection
@@ -172,9 +174,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ratingLabel={content.socialRatingLabel}
         reviews={proof.reviews}
         ctaHref={getAffiliateRoute(product.id, "product-social-proof")}
+        productId={product.id}
+        productName={product.name}
       />
       <RelatedProducts products={relatedProducts} />
-      <CTASection ctaHref={getAffiliateRoute(product.id, "product-final-cta")} />
+      <CTASection
+        ctaHref={getAffiliateRoute(product.id, "product-final-cta")}
+        productId={product.id}
+        productName={product.name}
+      />
     </>
   );
 }

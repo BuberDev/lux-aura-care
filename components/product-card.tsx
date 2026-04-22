@@ -6,16 +6,17 @@ import { CTAButton } from "@/components/cta-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { getAffiliateRoute } from "@/lib/affiliate";
+import { generateCTALabel, selectCTAStrategy } from "@/lib/cta-generator";
 import { getProductProof, type Product, type TopPickBadge } from "@/lib/site-data";
 
 type ProductCardProps = {
-  product: Product;
-  compact?: boolean;
-  featuredBadge?: TopPickBadge;
-  urgencyOverride?: string;
-  ctaLabel?: string;
-  detailsHref?: string;
-  detailsLabel?: string;
+  readonly product: Product;
+  readonly compact?: boolean;
+  readonly featuredBadge?: TopPickBadge;
+  readonly urgencyOverride?: string;
+  readonly ctaLabel?: string;
+  readonly detailsHref?: string;
+  readonly detailsLabel?: string;
 };
 
 export function ProductCard({
@@ -29,6 +30,9 @@ export function ProductCard({
 }: ProductCardProps) {
   const proof = getProductProof(product.id);
   const highlights = proof.highlights.slice(0, compact ? 2 : 3);
+
+  const strategy = selectCTAStrategy(product);
+  const dynamicCTALabel = generateCTALabel(product, strategy, compact);
 
   return (
     <Card className="overflow-hidden border-white/12 bg-white/[0.02] transition-colors hover:border-accent-gold/45">
@@ -80,8 +84,11 @@ export function ProductCard({
 
         <CTAButton
           href={getAffiliateRoute(product.id, "product-card")}
-          label={ctaLabel ?? (compact ? "View on Amazon" : "Check on Amazon")}
+          label={ctaLabel ?? dynamicCTALabel}
           className="w-full"
+          productId={product.id}
+          productName={product.name}
+          placement="product-card"
         />
         {detailsHref ? (
           <Link

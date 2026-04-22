@@ -1,4 +1,7 @@
-import { Sparkles } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Sparkles, CheckCircle2, AlertCircle } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
@@ -6,6 +9,44 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export function NewsletterBlock() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          source: "newsletter",
+        }),
+      });
+
+      const data = (await response.json()) as { success?: boolean; error?: string; message?: string };
+
+      if (data.success) {
+        setStatus("success");
+        setMessage("Check your email for your 15% off code!");
+        setEmail("");
+        setTimeout(() => {
+          setStatus("idle");
+          setMessage("");
+        }, 5000);
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  };
+
   return (
     <Section id="newsletter" className="[content-visibility:auto] [contain-intrinsic-size:1px_520px]">
       <Container>
@@ -38,7 +79,7 @@ export function NewsletterBlock() {
               </ul>
             </div>
 
-            <form className="space-y-3" aria-label="Newsletter signup">
+            <form className="space-y-3" onSubmit={handleSubmit} aria-label="Newsletter signup">
               <label htmlFor="newsletter-email" className="sr-only">
                 Email address
               </label>
@@ -47,12 +88,34 @@ export function NewsletterBlock() {
                 name="email"
                 type="email"
                 required
+                disabled={status === "loading"}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="border-background-primary/20 bg-white text-background-primary placeholder:text-background-primary/55"
+                className="border-background-primary/20 bg-white text-background-primary placeholder:text-background-primary/55 disabled:opacity-50"
               />
-              <Button type="submit" className="w-full bg-background-primary text-text-primary hover:brightness-110">
-                Get 15% Off + Weekly Guides
+              <Button
+                type="submit"
+                disabled={status === "loading" || status === "success"}
+                className="w-full bg-background-primary text-text-primary hover:brightness-110 disabled:opacity-50"
+              >
+                {status === "loading" ? "Subscribing..." : "Get 15% Off + Weekly Guides"}
               </Button>
+
+              {status === "success" && (
+                <div className="flex items-center gap-2 rounded-lg bg-green-500/10 px-3 py-2 text-sm text-green-600">
+                  <CheckCircle2 className="size-4 shrink-0" aria-hidden="true" />
+                  <p>{message}</p>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="flex items-center gap-2 rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-600">
+                  <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
+                  <p>{message}</p>
+                </div>
+              )}
+
               <p className="text-xs text-background-primary/65">We send Friday mornings only. Unsubscribe instantly.</p>
             </form>
           </div>

@@ -8,10 +8,10 @@ import { getAffiliateRoute } from "@/lib/affiliate";
 import type { Product, ProductProof } from "@/lib/site-data";
 
 type ProductHeroProps = {
-  product: Product;
-  proof: ProductProof;
-  emotionalHook: string;
-  keyBenefits: string[];
+  readonly product: Product;
+  readonly proof: ProductProof;
+  readonly emotionalHook: string;
+  readonly keyBenefits: string[];
 };
 
 export function ProductHero({ product, proof, emotionalHook, keyBenefits }: ProductHeroProps) {
@@ -60,6 +60,9 @@ export function ProductHero({ product, proof, emotionalHook, keyBenefits }: Prod
               href={getAffiliateRoute(product.id, "product-hero")}
               label="Check on Amazon"
               className="w-full sm:w-auto"
+              productId={product.id}
+              productName={product.name}
+              placement="hero"
             />
           </div>
         </div>

@@ -1,7 +1,17 @@
 export type AffiliateClickEvent = {
   productId: string;
   productName: string;
-  placement: "product-card" | "bundle" | "article" | "inline-cta" | "hero";
+  placement:
+    | "product-card"
+    | "bundle"
+    | "article"
+    | "inline-cta"
+    | "hero"
+    | "product-hero"
+    | "product-problem-solution"
+    | "product-routine"
+    | "product-social-proof"
+    | "product-final-cta";
   bundleId?: string;
   category?: string;
 };

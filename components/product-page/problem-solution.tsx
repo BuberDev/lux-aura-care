@@ -3,10 +3,12 @@ import { CTAButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 
 type ProblemSolutionProps = {
-  headline: string;
-  problemParagraph: string;
-  solutionParagraph: string;
-  ctaHref: string;
+  readonly headline: string;
+  readonly problemParagraph: string;
+  readonly solutionParagraph: string;
+  readonly ctaHref: string;
+  readonly productId?: string;
+  readonly productName?: string;
 };
 
 export function ProblemSolution({
@@ -14,6 +16,8 @@ export function ProblemSolution({
   problemParagraph,
   solutionParagraph,
   ctaHref,
+  productId,
+  productName,
 }: ProblemSolutionProps) {
   return (
     <Section className="[content-visibility:auto] [contain-intrinsic-size:1px_440px]">
@@ -26,7 +30,14 @@ export function ProblemSolution({
           </p>
 
           <div className="mt-7">
-            <CTAButton href={ctaHref} label="Check on Amazon" variant="secondary" />
+            <CTAButton
+              href={ctaHref}
+              label="Check on Amazon"
+              variant="secondary"
+              productId={productId}
+              productName={productName}
+              placement="product-problem-solution"
+            />
           </div>
         </div>
       </Container>
