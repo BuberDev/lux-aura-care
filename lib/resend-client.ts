@@ -11,71 +11,69 @@ export async function sendWelcomeEmail(email: string) {
     const result = await resend.emails.send({
       from: "Lux Aura Care <hello@luxauracare.pl>",
       to: email,
-      subject: "Your 15% Off Code is Inside ✨",
+      subject: "Welcome to Lux Aura Care - Weekly Ritual Guides",
       html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #1a1a1a;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #1a1a1a; margin: 0; font-size: 28px;">Welcome to Lux Aura Care ✨</h1>
+            <h1 style="margin: 0; font-size: 24px; font-weight: 600;">Welcome to Lux Aura Care</h1>
+            <p style="margin: 8px 0 0 0; color: #666; font-size: 14px;">Professional Ritual Guides for a Polished Life</p>
           </div>
 
-          <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%); border-radius: 16px; padding: 24px; margin-bottom: 24px; border: 1px solid rgba(212, 175, 55, 0.2);">
-            <p style="color: #666; margin: 0 0 16px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Your Exclusive Offer</p>
-            <h2 style="color: #d4af37; margin: 0 0 12px 0; font-size: 24px;">15% OFF Your First Bundle</h2>
-            <p style="color: #333; margin: 0; font-size: 16px; line-height: 1.5;">
-              Use this exclusive discount on any bundle when you shop through Lux Aura Care.
+          <div style="background: #f9f9f9; border-left: 4px solid #d4af37; padding: 20px; margin-bottom: 24px;">
+            <h2 style="margin: 0 0 8px 0; font-size: 18px; color: #1a1a1a;">You're Part of an Exclusive Community</h2>
+            <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">
+              Join 500+ subscribers who receive carefully curated ritual guides and product recommendations every Friday morning.
             </p>
           </div>
 
-          <div style="background: #f5f5f5; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
-            <h3 style="color: #1a1a1a; margin: 0 0 12px 0; font-size: 16px;">What You'll Get:</h3>
-            <ul style="color: #666; margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8;">
-              <li>Curated ritual guides each Friday morning</li>
-              <li>New product picks before Instagram (exclusive access)</li>
-              <li>Exclusive bundle discounts (15-25% off)</li>
-              <li>Abandoned routine recovery emails (never miss a beat)</li>
-              <li>Early access to new launches</li>
+          <div style="background: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+            <h3 style="margin: 0 0 12px 0; font-size: 14px; color: #1a1a1a; font-weight: 600;">What You'll Receive:</h3>
+            <ul style="margin: 0; padding-left: 20px; color: #666; font-size: 13px; line-height: 1.8;">
+              <li>Weekly ritual guides (Friday mornings only)</li>
+              <li>Curated product recommendations for your interests</li>
+              <li>Exclusive access to bundle deals</li>
+              <li>Early announcements of new products</li>
+              <li>Helpful tips from our editorial team</li>
             </ul>
           </div>
 
           <div style="text-align: center; margin-bottom: 24px;">
-            <a href="https://luxaura.care/favorites" style="display: inline-block; background: #d4af37; color: #000; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; transition: background 0.3s;">
-              Explore Ritual Bundles →
+            <a href="https://www.luxauracare.pl/favorites" style="display: inline-block; background: #d4af37; color: #000; text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 14px;">
+              Explore Our Collections
             </a>
           </div>
 
           <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 24px 0;">
 
-          <div style="background: #fafafa; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
-            <h4 style="color: #1a1a1a; margin: 0 0 8px 0; font-size: 14px;">💡 Pro Tip:</h4>
-            <p style="color: #666; margin: 0; font-size: 13px; line-height: 1.6;">
-              Our <strong>Sleep Reset Bundle</strong> is trending on Pinterest this week. 4 products, complete sleep protocol, save $75-90 when bought together.
-            </p>
-          </div>
-
-          <div style="color: #999; font-size: 12px; text-align: center; line-height: 1.6;">
-            <p style="margin: 0;">We send ritual guides Friday mornings only.</p>
-            <p style="margin: 8px 0 0 0;">Unsubscribe anytime—no hard feelings.</p>
-            <p style="margin: 12px 0 0 0; color: #bbb;">
-              © 2026 Lux Aura Care | Professional Ritual Guides
+          <div style="color: #666; font-size: 12px; line-height: 1.6;">
+            <p style="margin: 0;">We send emails Friday mornings (Polish time).</p>
+            <p style="margin: 8px 0 0 0;">You can unsubscribe anytime by clicking the link at the bottom of any email.</p>
+            <p style="margin: 12px 0 0 0; color: #999;">
+              © 2026 Lux Aura Care | www.luxauracare.pl
             </p>
           </div>
         </div>
       `,
-      text: `Welcome to Lux Aura Care!
+      text: `Welcome to Lux Aura Care
 
-Your 15% OFF code is ready.
-Use it on any bundle for exclusive savings.
+You're now part of an exclusive community of 500+ subscribers who receive carefully curated ritual guides and product recommendations every Friday morning.
 
-What you'll get:
-- Curated ritual guides each Friday morning
-- New product picks before Instagram
-- Exclusive bundle discounts (15-25% off)
-- Abandoned routine recovery emails
-- Early access to new launches
+What You'll Receive:
+- Weekly ritual guides (Friday mornings only)
+- Curated product recommendations
+- Exclusive access to bundle deals
+- Early announcements of new products
+- Helpful tips from our editorial team
 
-Explore bundles: https://luxaura.care/favorites
+Explore our collections: https://www.luxauracare.pl/favorites
 
-We send Friday mornings only. Unsubscribe anytime.`,
+We send emails Friday mornings (Polish time). You can unsubscribe anytime.
+
+© 2026 Lux Aura Care
+www.luxauracare.pl`,
+      headers: {
+        "List-Unsubscribe": `<mailto:unsubscribe@luxauracare.pl?subject=unsubscribe>`,
+      },
     });
 
     console.log(`[RESEND] Email sent successfully:`, result);
