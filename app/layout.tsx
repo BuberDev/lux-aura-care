@@ -10,7 +10,7 @@ import "@fontsource/playfair-display/latin-700.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { generateOrganizationJsonLd, toJsonLd } from "@/lib/seo";
-import { siteMeta } from "@/lib/site-data";
+import { products, siteMeta } from "@/lib/site-data";
 
 import "./globals.css";
 
@@ -73,6 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const organizationJsonLd = generateOrganizationJsonLd();
+  const searchProducts = products.map((product) => ({ id: product.id, name: product.name }));
 
   return (
     <html lang="en">
@@ -84,7 +85,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background-primary text-text-primary antialiased">
-        <SiteHeader />
+        <SiteHeader searchProducts={searchProducts} />
         <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>
