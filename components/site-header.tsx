@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Search } from "lucide-react";
@@ -29,6 +29,19 @@ const nav = [
 export function SiteHeader({ searchProducts }: SiteHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!isSearchOpen) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      mobileSearchInputRef.current?.focus();
+    }, 180);
+
+    return () => window.clearTimeout(timer);
+  }, [isSearchOpen]);
 
   return (
     <>
@@ -114,6 +127,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
               products={searchProducts}
               placeholder="Search products..."
               inputClassName="h-10 border-white/20 bg-black/50 text-[13px]"
+              inputRef={mobileSearchInputRef}
             />
           </div>
         </Container>

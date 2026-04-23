@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useMemo, useState, type KeyboardEvent } from "react";
+import { useId, useMemo, useState, type KeyboardEvent, type Ref } from "react";
 import { Search } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ type HeaderProductSearchProps = {
   placeholder?: string;
   inputClassName?: string;
   maxResults?: number;
+  inputRef?: Ref<HTMLInputElement>;
 };
 
 export function HeaderProductSearch({
@@ -25,6 +26,7 @@ export function HeaderProductSearch({
   placeholder = "Search products...",
   inputClassName,
   maxResults = 6,
+  inputRef,
 }: HeaderProductSearchProps) {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -72,6 +74,7 @@ export function HeaderProductSearch({
         />
         <input
           id={inputId}
+          ref={inputRef}
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
