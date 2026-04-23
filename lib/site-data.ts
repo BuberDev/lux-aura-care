@@ -203,7 +203,7 @@ export const products: Product[] = [
       "Mineral-rich bath salts that help release body tension and support calm, heavy-limb rest.",
     trustSignal: "Popular",
     image:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80",
+      "/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png",
     imageAlt: "Bath salts in a glass jar near a towel",
     amazonUrl: "https://amzn.to/4sTbNAP",
   },
