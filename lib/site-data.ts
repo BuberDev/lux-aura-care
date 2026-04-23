@@ -216,7 +216,7 @@ export const products: Product[] = [
       "A beginner-friendly retinol blend buffered with squalane to reduce irritation while improving radiance.",
     trustSignal: "Top rated",
     image:
-      "https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=900&q=80",
+      "/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png",
     imageAlt: "Dropper serum bottle on marble tray",
     amazonUrl: "https://amzn.to/4cE9qvj",
   },
