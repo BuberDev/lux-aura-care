@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,12 +7,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/go/", "/pin/"],
       },
       {
         userAgent: ["GPTBot", "Google-Extended", "CCBot", "anthropic-ai", "Omgilibot"],
         allow: "/",
       },
     ],
-    sitemap: "https://luxaura.care/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

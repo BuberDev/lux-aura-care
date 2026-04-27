@@ -28,6 +28,7 @@ export async function GET(request: NextRequest, context: PinRouteContext) {
   });
 
   const response = NextResponse.redirect(new URL(destinationWithTracking, request.url), 307);
+  response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
   response.cookies.set(TRACKING_COOKIES.source, "pinterest", trackingCookieOptions);
   response.cookies.set(
     TRACKING_COOKIES.campaign,

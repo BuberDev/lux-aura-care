@@ -28,8 +28,12 @@ export async function GET(request: NextRequest, context: GoRouteContext) {
   const destination = buildAmazonAffiliateUrl(productId, { source, campaign, pinId });
 
   if (!destination) {
-    return NextResponse.redirect(new URL("/favorites", request.url), 307);
+    const fallback = NextResponse.redirect(new URL("/favorites", request.url), 307);
+    fallback.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+    return fallback;
   }
 
-  return NextResponse.redirect(destination, 307);
+  const response = NextResponse.redirect(destination, 307);
+  response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  return response;
 }

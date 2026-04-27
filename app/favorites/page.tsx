@@ -17,6 +17,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/favorites",
   },
+  openGraph: {
+    title: "Shop the Feed | Pinterest Favorites & Seasonal Picks",
+    description:
+      "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed.",
+    url: "/favorites",
+    type: "website",
+    siteName: "Lux Aura Care",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shop the Feed | Pinterest Favorites & Seasonal Picks",
+    description:
+      "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed.",
+  },
   keywords: ["pinterest favorites", "amazon beauty finds", "ritual essentials", ...siteMeta.keywords],
 };
 

@@ -9,7 +9,7 @@ import { ProductHero } from "@/components/product-page/product-hero";
 import { RelatedProducts } from "@/components/product-page/related-products";
 import { RoutineSection } from "@/components/product-page/routine-section";
 import { SocialProof } from "@/components/product-page/social-proof";
-import { getAffiliateRoute } from "@/lib/affiliate";
+import { buildAmazonAffiliateUrl, getAffiliateRoute } from "@/lib/affiliate";
 import { getProductPageContent } from "@/lib/product-page-content";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { getProductById, getProductProof, products, siteMeta, type Product } from "@/lib/site-data";
@@ -128,7 +128,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
           priceCurrency: "USD",
-          url: toAbsoluteUrl(`/go/${product.id}`),
+          url:
+            buildAmazonAffiliateUrl(product.id, {
+              source: "website",
+              campaign: "product-page",
+            })?.toString() ?? toAbsoluteUrl(`/favorites/${product.id}`),
           seller: {
             "@id": toAbsoluteUrl("/#organization"),
           },

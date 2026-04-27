@@ -10,12 +10,13 @@ import "@fontsource/playfair-display/latin-700.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { generateOrganizationJsonLd, toJsonLd } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import { products, siteMeta } from "@/lib/site-data";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://luxaura.care"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Lux Aura Care | Luxury Self-Care & Ritual Guides",
     template: "%s | Lux Aura Care",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lux Aura Care | Professional High-Glow Rituals",
     description: siteMeta.description,
-    url: "https://luxaura.care",
+    url: SITE_URL,
     siteName: "Lux Aura Care",
     locale: "en_US",
     type: "website",
@@ -59,11 +60,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://luxaura.care",
-    languages: {
-      "en-US": "https://luxaura.care",
-      "pl-PL": "https://luxaura.care",
-    },
+    canonical: SITE_URL,
   },
 };
 

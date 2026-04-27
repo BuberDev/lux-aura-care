@@ -35,7 +35,7 @@ export function CTAButton({
   productName,
   placement = "inline-cta",
 }: CTAButtonProps) {
-  const isOutbound = href.startsWith("http") || href.startsWith("/go/");
+  const isOutbound = href.startsWith("http");
 
   const handleClick = () => {
     if (productId && productName) {

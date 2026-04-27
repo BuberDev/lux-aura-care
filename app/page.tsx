@@ -27,6 +27,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  openGraph: {
+    title: "Luxury Self-Care Rituals | High-Glow Habits",
+    description:
+      "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.",
+    url: "/",
+    type: "website",
+    siteName: "Lux Aura Care",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Luxury Self-Care Rituals | High-Glow Habits",
+    description:
+      "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.",
+  },
 };
 
 const trustSignals = [

@@ -1,5 +1,5 @@
 import { getProductById } from "@/lib/site-data";
-import { sanitizeTrackingValue, withQuery, type TrafficContext } from "@/lib/tracking";
+import { sanitizeTrackingValue, type TrafficContext } from "@/lib/tracking";
 
 const AMAZON_HOST_PATTERN = /(^|\.)amazon\./i;
 
@@ -8,7 +8,12 @@ function isAmazonUrl(url: URL) {
 }
 
 export function getAffiliateRoute(productId: string, placement?: string) {
-  return withQuery(`/go/${productId}`, { placement });
+  const destination = buildAmazonAffiliateUrl(productId, {
+    source: "website",
+    campaign: placement,
+  });
+
+  return destination ? destination.toString() : "/favorites";
 }
 
 export function getTrafficContextFromSearchParams(searchParams: URLSearchParams): TrafficContext {

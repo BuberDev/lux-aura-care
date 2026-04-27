@@ -27,6 +27,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/blog",
   },
+  openGraph: {
+    title: "Lux Aura Journal | Luxury Self-Care & Ritual Guides",
+    description:
+      "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
+    url: "/blog",
+    type: "website",
+    siteName: "Lux Aura Care",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lux Aura Journal | Luxury Self-Care & Ritual Guides",
+    description:
+      "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
+  },
   keywords: ["ritual guides", "self-care journal", "skincare routines", ...siteMeta.keywords],
 };
 
@@ -91,6 +105,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       name: "Lux Aura Care",
       url: toAbsoluteUrl("/"),
     },
+    about: selectedCategory
+      ? {
+          "@type": "Thing",
+          name: selectedCategory.name,
+          description: selectedCategory.description,
+        }
+      : undefined,
   };
 
   return (

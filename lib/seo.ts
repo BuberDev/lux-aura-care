@@ -1,8 +1,7 @@
-const SITE_URL = "https://luxaura.care";
+import { toSiteUrl } from "@/lib/site";
 
 export function toAbsoluteUrl(path: string) {
-  if (path.startsWith("http")) return path;
-  return new URL(path, SITE_URL).toString();
+  return toSiteUrl(path);
 }
 
 export function toJsonLd(data: unknown) {
