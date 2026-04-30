@@ -1,4 +1,4 @@
-const FALLBACK_SITE_URL = "https://luxauracare.pl";
+const FALLBACK_SITE_URL = "https://luxauracare.com";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.trim() || FALLBACK_SITE_URL;
 
