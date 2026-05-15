@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import Link from "next/link";
+import { ShieldCheck, Sparkles, TrendingUp, Check } from "lucide-react";
+import ScrollMorphHero from "@/components/ui/scroll-morph-hero";
 
 import { ArticleCard } from "@/components/article-card";
 import { CategoryCard } from "@/components/category-card";
@@ -8,16 +10,15 @@ import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { Heading } from "@/components/heading";
 import { InlineCtaPanel } from "@/components/inline-cta-panel";
-import { FadeIn } from "@/components/motion/fade-in";
 import { NewsletterBlock } from "@/components/newsletter-block";
 import { ProductCard } from "@/components/product-card";
 import { RoutineSection } from "@/components/sections/routine-section";
 import { TopPicksSection } from "@/components/sections/top-picks-section";
 import { BundlesSection } from "@/components/sections/bundles-section";
 import { Section } from "@/components/section";
-import { Badge } from "@/components/ui/badge";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { categories, getAmazonFavorites, getFeaturedArticles, siteMeta } from "@/lib/site-data";
+import { shopProducts } from "@/lib/shop-data";
 
 export const metadata: Metadata = {
   title: "Luxury Self-Care Rituals | High-Glow Habits",
@@ -121,30 +122,8 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(homeJsonLd) }}
       />
-      <section className="relative isolate min-h-[85vh] overflow-hidden border-b border-white/10">
-        <Image
-          src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?auto=format&fit=crop&w=2200&q=80"
-          alt="Luxury self-care setup with candles, skincare, and soft linen textures"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/55" />
-
-        <Container className="relative flex min-h-[85vh] items-end pb-20 pt-28 md:pb-24">
-          <FadeIn className="max-w-3xl space-y-8">
-            <Badge>Designed for Pinterest Ritual Seekers</Badge>
-            <h1 className="font-heading text-5xl leading-[1.05] text-text-primary sm:text-6xl md:text-7xl">
-              Transform your evenings into rituals that feel private, luxurious, and deeply restorative.
-            </h1>
-            <p className="max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">{siteMeta.tagline}</p>
-            <div className="flex flex-wrap gap-4">
-              <CTAButton href="/blog" label="Explore Ritual Guides" />
-              <CTAButton href="/favorites" label="Shop Amazon Favorites" variant="secondary" />
-            </div>
-          </FadeIn>
-        </Container>
+      <section className="relative isolate border-b border-white/10" style={{ height: "85vh" }}>
+        <ScrollMorphHero />
       </section>
 
       <Section className="border-b border-white/10 py-8 md:py-10">
@@ -162,6 +141,71 @@ export default function HomePage() {
           </ul>
         </Container>
       </Section>
+
+      {/* ===== SHOP SECTION ===== */}
+      <Section className="border-b border-white/10 py-16">
+        <Container>
+          <div className="text-center mb-10">
+            <p className="text-xs uppercase tracking-[0.2em] mb-3" style={{ color: "#c9a96e" }}>
+              New · Skin Rituals
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
+              Shop our ritual essentials
+            </h2>
+            <p className="text-base max-w-lg mx-auto" style={{ color: "#a8a8a8" }}>
+              Clinic-quality results at home. Designed for women 40+.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3 mb-10">
+            {shopProducts.map((product) => (
+              <Link
+                key={product.id}
+                href={`/shop/${product.id}`}
+                className="group block rounded-2xl border border-white/10 overflow-hidden hover:border-white/25 transition-all duration-300"
+                style={{ background: "rgb(255 255 255 / 0.02)" }}
+              >
+                <div className="relative aspect-video overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <span
+                    className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full"
+                    style={{ background: "#c9a96e", color: "#000" }}
+                  >
+                    {product.badge}
+                  </span>
+                </div>
+                <div className="p-5 space-y-3">
+                  <h3 className="font-heading text-lg text-white">{product.name}</h3>
+                  <ul className="space-y-1">
+                    {product.benefits.slice(0, 2).map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-xs" style={{ color: "#a8a8a8" }}>
+                        <Check className="size-3.5 mt-0.5 shrink-0" style={{ color: "#c9a96e" }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-baseline gap-2 pt-1">
+                    <span className="text-xl font-bold text-white">€{product.price.toFixed(2)}</span>
+                    <span className="text-sm line-through" style={{ color: "#a8a8a8" }}>€{product.compareAtPrice.toFixed(2)}</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <CTAButton href="/shop" label="View All Products" />
+          </div>
+        </Container>
+      </Section>
+      {/* ===== END SHOP SECTION ===== */}
 
       <TopPicksSection />
 
