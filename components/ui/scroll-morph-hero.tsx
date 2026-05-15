@@ -1,23 +1,28 @@
 "use client";
 import React, { useState, useEffect, useMemo, useRef } from "react";
+import Image from "next/image";
 import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
 
 // --- Types ---
 export type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
 interface FlipCardProps {
-  src: string;
+  product: HeroProduct;
   index: number;
-  total: number;
-  phase: AnimationPhase;
   target: { x: number; y: number; rotation: number; scale: number; opacity: number };
 }
+
+export type HeroProduct = {
+  src: string;
+  alt: string;
+  name: string;
+};
 
 // --- FlipCard Component ---
 const IMG_WIDTH = 60;
 const IMG_HEIGHT = 85;
 
-function FlipCard({ src, index, phase, target }: FlipCardProps) {
+function FlipCard({ product, index, target }: FlipCardProps) {
   return (
     <motion.div
       animate={{
@@ -49,15 +54,17 @@ function FlipCard({ src, index, phase, target }: FlipCardProps) {
       >
         {/* Front Face */}
         <div
-          className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-white/10"
+          className="absolute inset-0 h-full w-full overflow-hidden rounded-lg"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <img
-            src={src}
-            alt={`ritual-${index}`}
-            className="h-full w-full object-cover"
+          <Image
+            src={product.src}
+            alt={product.alt}
+            fill
+            sizes="120px"
+            className="object-cover"
+            priority={index < 8}
           />
-          <div className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-transparent" />
         </div>
         {/* Back Face */}
         <div
@@ -66,9 +73,19 @@ function FlipCard({ src, index, phase, target }: FlipCardProps) {
         >
           <div className="text-center">
             <p className="text-[8px] font-bold uppercase tracking-widest mb-1" style={{ color: "#c9a96e" }}>
-              Ritual
+              Product
             </p>
-            <p className="text-xs font-medium text-white">Details</p>
+            <p
+              className="text-[9px] font-medium leading-tight text-white"
+              style={{
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 3,
+                overflow: "hidden",
+              }}
+            >
+              {product.name}
+            </p>
           </div>
         </div>
       </motion.div>
@@ -76,39 +93,50 @@ function FlipCard({ src, index, phase, target }: FlipCardProps) {
   );
 }
 
-// --- Images — luxury self-care & skincare ---
-const TOTAL_IMAGES = 20;
+// --- Product images ---
+const HERO_IMAGE_COUNT = 20;
 const MAX_SCROLL = 3000;
 
-const IMAGES = [
-  "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&q=80",
-  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=300&q=80",
-  "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=300&q=80",
-  "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=300&q=80",
-  "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&q=80",
-  "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&q=80",
-  "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=300&q=80",
-  "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=300&q=80",
-  "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&q=80",
-  "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=300&q=80",
-  "https://images.unsplash.com/photo-1553867745-6e038d085e86?w=300&q=80",
-  "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300&q=80",
-  "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=300&q=80",
-  "https://images.unsplash.com/photo-1526758097130-bab247274f58?w=300&q=80",
-  "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=80",
-  "https://images.unsplash.com/photo-1617897903246-719242758050?w=300&q=80",
-  "https://images.unsplash.com/photo-1583241475880-083f84372725?w=300&q=80",
-  "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=300&q=80",
-  "https://images.unsplash.com/photo-1571781565036-d3f759be73e4?w=300&q=80",
-  "https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?w=300&q=80",
+const FALLBACK_PRODUCTS: HeroProduct[] = [
+  {
+    src: "/Naturium_Niacinamide_Face_Serum_12.png",
+    alt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
+    name: "Naturium Niacinamide Face Serum 12% Plus Zinc 2%",
+  },
+  {
+    src: "/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
+    alt: "Rose quartz gua sha and roller set product image",
+    name: "Rose Quartz Gua Sha Set",
+  },
+  {
+    src: "/cover_aveeno_oil.png",
+    alt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
+    name: "Aveeno Daily Moisturizing Body Oil Mist",
+  },
 ];
 
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
+const clamp = (value: number, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 
-export default function ScrollMorphHero() {
+function seededUnit(index: number, salt: number) {
+  const value = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;
+  return value - Math.floor(value);
+}
+
+type ScrollMorphHeroProps = {
+  products: HeroProduct[];
+};
+
+export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
   const [introPhase, setIntroPhase] = useState<AnimationPhase>("scatter");
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroProducts = useMemo(() => {
+    const source = products.length > 0 ? products : FALLBACK_PRODUCTS;
+
+    return Array.from({ length: HERO_IMAGE_COUNT }, (_, index) => source[index % source.length]);
+  }, [products]);
+  const totalImages = heroProducts.length;
 
   // --- Container Size ---
   useEffect(() => {
@@ -130,40 +158,43 @@ export default function ScrollMorphHero() {
     return () => observer.disconnect();
   }, []);
 
-  // --- Virtual Scroll ---
+  // --- Scroll-linked animation ---
   const virtualScroll = useMotionValue(0);
-  const scrollRef = useRef(0);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    let frame = 0;
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const newScroll = Math.min(Math.max(scrollRef.current + e.deltaY, 0), MAX_SCROLL);
-      scrollRef.current = newScroll;
-      virtualScroll.set(newScroll);
+    const updateScroll = () => {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const container = containerRef.current;
+        if (!container) {
+          return;
+        }
+
+        const rect = container.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || 1;
+        const activeDistance = Math.max(rect.height * 0.72, viewportHeight * 0.5);
+        const progress = clamp((viewportHeight * 0.12 - rect.top) / activeDistance);
+
+        virtualScroll.set(progress * MAX_SCROLL);
+      });
     };
 
-    let touchStartY = 0;
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-    };
-    const handleTouchMove = (e: TouchEvent) => {
-      const deltaY = touchStartY - e.touches[0].clientY;
-      touchStartY = e.touches[0].clientY;
-      const newScroll = Math.min(Math.max(scrollRef.current + deltaY, 0), MAX_SCROLL);
-      scrollRef.current = newScroll;
-      virtualScroll.set(newScroll);
-    };
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    window.addEventListener("resize", updateScroll);
 
-    container.addEventListener("wheel", handleWheel, { passive: false });
-    container.addEventListener("touchstart", handleTouchStart, { passive: false });
-    container.addEventListener("touchmove", handleTouchMove, { passive: false });
     return () => {
-      container.removeEventListener("wheel", handleWheel);
-      container.removeEventListener("touchstart", handleTouchStart);
-      container.removeEventListener("touchmove", handleTouchMove);
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+      window.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("resize", updateScroll);
     };
   }, [virtualScroll]);
 
@@ -197,14 +228,14 @@ export default function ScrollMorphHero() {
 
   // --- Random Scatter ---
   const scatterPositions = useMemo(() => {
-    return IMAGES.map(() => ({
-      x: (Math.random() - 0.5) * 1500,
-      y: (Math.random() - 0.5) * 1000,
-      rotation: (Math.random() - 0.5) * 180,
+    return heroProducts.map((_, index) => ({
+      x: (seededUnit(index, 1) - 0.5) * 1500,
+      y: (seededUnit(index, 2) - 0.5) * 1000,
+      rotation: (seededUnit(index, 3) - 0.5) * 180,
       scale: 0.6,
       opacity: 0,
     }));
-  }, []);
+  }, [heroProducts]);
 
   // --- Render State ---
   const [morphValue, setMorphValue] = useState(0);
@@ -225,12 +256,74 @@ export default function ScrollMorphHero() {
     <div
       ref={containerRef}
       className="relative w-full h-full overflow-hidden"
-      style={{ background: "#000000" }}
+      style={{ background: "#030303", touchAction: "pan-y" }}
     >
-      <div className="flex h-full w-full flex-col items-center justify-center perspective-1000">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(145deg, rgba(201,169,110,0.10) 0%, transparent 31%), linear-gradient(220deg, rgba(255,255,255,0.055) 0%, transparent 30%), linear-gradient(180deg, #020202 0%, #080706 48%, #020202 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.16] mix-blend-screen"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.62'/%3E%3C/svg%3E\")",
+          }}
+        />
+        <div
+          className="absolute inset-x-[-14%] top-[3%] h-[70%] -rotate-3 border-y border-white/10 opacity-80 shadow-[inset_0_1px_0_rgba(255,255,255,0.20),inset_0_-1px_0_rgba(255,255,255,0.06),0_48px_160px_rgba(201,169,110,0.08)] backdrop-blur-3xl"
+          style={{
+            background:
+              "linear-gradient(112deg, transparent 0%, rgba(255,255,255,0.030) 16%, rgba(255,255,255,0.105) 37%, rgba(201,169,110,0.075) 55%, rgba(255,255,255,0.035) 72%, transparent 100%)",
+            borderRadius: "52% 48% 50% 46% / 22% 30% 24% 34%",
+            maskImage:
+              "linear-gradient(90deg, transparent 0%, black 13%, black 87%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(90deg, transparent 0%, black 13%, black 87%, transparent 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-x-[-18%] bottom-[-30%] h-[62%] rotate-2 border-t border-white/10 opacity-65 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_-42px_150px_rgba(255,255,255,0.035)] backdrop-blur-2xl"
+          style={{
+            background:
+              "linear-gradient(8deg, rgba(255,255,255,0.070) 0%, rgba(255,255,255,0.018) 39%, transparent 76%)",
+            borderRadius: "48% 52% 0 0 / 38% 32% 0 0",
+            maskImage:
+              "linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-x-0 top-[18%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-70"
+          style={{
+            maskImage: "linear-gradient(90deg, transparent, black 28%, black 72%, transparent)",
+            WebkitMaskImage: "linear-gradient(90deg, transparent, black 28%, black 72%, transparent)",
+          }}
+        />
+        <div
+          className="absolute inset-x-0 top-[36%] h-[32%] backdrop-blur-[1.5px]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.70) 24%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,0.70) 76%, transparent 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.62) 0%, transparent 20%, transparent 74%, rgba(0,0,0,0.70) 100%), linear-gradient(90deg, rgba(0,0,0,0.62) 0%, transparent 22%, transparent 78%, rgba(0,0,0,0.62) 100%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center perspective-1000">
 
         {/* Intro Text */}
-        <div className="absolute z-0 flex flex-col items-center justify-center text-center pointer-events-none top-1/2 -translate-y-1/2 px-4">
+        <div className="absolute z-30 flex flex-col items-center justify-center text-center pointer-events-none top-1/2 -translate-y-1/2 px-4">
           <motion.h1
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={
@@ -239,8 +332,11 @@ export default function ScrollMorphHero() {
                 : { opacity: 0, filter: "blur(10px)" }
             }
             transition={{ duration: 1 }}
-            className="text-2xl font-medium tracking-tight text-white md:text-4xl"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="max-w-[min(760px,90vw)] text-3xl font-medium tracking-tight text-white md:text-6xl"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              textShadow: "0 2px 22px rgba(0,0,0,0.92), 0 0 48px rgba(201,169,110,0.18)",
+            }}
           >
             Elevate your evening ritual.
           </motion.h1>
@@ -253,7 +349,10 @@ export default function ScrollMorphHero() {
             }
             transition={{ duration: 1, delay: 0.2 }}
             className="mt-4 text-xs font-bold tracking-[0.2em]"
-            style={{ color: "#c9a96e" }}
+            style={{
+              color: "#c9a96e",
+              textShadow: "0 1px 18px rgba(0,0,0,0.9)",
+            }}
           >
             SCROLL TO EXPLORE
           </motion.p>
@@ -262,15 +361,24 @@ export default function ScrollMorphHero() {
         {/* Arc Content */}
         <motion.div
           style={{ opacity: contentOpacity, y: contentY }}
-          className="absolute top-[10%] z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4"
+          className="absolute top-[18%] z-30 flex flex-col items-center justify-center text-center pointer-events-none px-4"
         >
           <h2
-            className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-white"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="mb-4 max-w-[min(780px,92vw)] text-3xl font-semibold tracking-tight text-white md:text-5xl"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              textShadow: "0 2px 24px rgba(0,0,0,0.95), 0 0 42px rgba(201,169,110,0.16)",
+            }}
           >
             Your Luxury Self-Care Ritual
           </h2>
-          <p className="text-sm md:text-base max-w-lg leading-relaxed" style={{ color: "#a8a8a8" }}>
+          <p
+            className="max-w-lg text-sm leading-relaxed md:text-base"
+            style={{
+              color: "#d2d2d2",
+              textShadow: "0 1px 20px rgba(0,0,0,0.95)",
+            }}
+          >
             Curated rituals for sleep, skin, and body glow.{" "}
             <br className="hidden md:block" />
             Discover products designed for a calm, polished lifestyle.
@@ -278,15 +386,15 @@ export default function ScrollMorphHero() {
         </motion.div>
 
         {/* Cards */}
-        <div className="relative flex items-center justify-center w-full h-full">
-          {IMAGES.slice(0, TOTAL_IMAGES).map((src, i) => {
+        <div className="relative z-20 flex h-full w-full items-center justify-center">
+          {heroProducts.map((product, i) => {
             let target = { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 };
 
             if (introPhase === "scatter") {
               target = scatterPositions[i];
             } else if (introPhase === "line") {
               const lineSpacing = 70;
-              const lineTotalWidth = TOTAL_IMAGES * lineSpacing;
+              const lineTotalWidth = totalImages * lineSpacing;
               target = {
                 x: i * lineSpacing - lineTotalWidth / 2,
                 y: 0,
@@ -298,7 +406,7 @@ export default function ScrollMorphHero() {
               const isMobile = containerSize.width < 768;
               const minDimension = Math.min(containerSize.width, containerSize.height);
               const circleRadius = Math.min(minDimension * 0.35, 350);
-              const circleAngle = (i / TOTAL_IMAGES) * 360;
+              const circleAngle = (i / totalImages) * 360;
               const circleRad = (circleAngle * Math.PI) / 180;
               const circlePos = {
                 x: Math.cos(circleRad) * circleRadius,
@@ -312,7 +420,7 @@ export default function ScrollMorphHero() {
               const arcCenterY = arcApexY + arcRadius;
               const spreadAngle = isMobile ? 100 : 130;
               const startAngle = -90 - spreadAngle / 2;
-              const step = spreadAngle / (TOTAL_IMAGES - 1);
+              const step = spreadAngle / (totalImages - 1);
               const scrollProgress = Math.min(Math.max(rotateValue / 360, 0), 1);
               const maxRotation = spreadAngle * 0.8;
               const boundedRotation = -scrollProgress * maxRotation;
@@ -337,10 +445,8 @@ export default function ScrollMorphHero() {
             return (
               <FlipCard
                 key={i}
-                src={src}
+                product={product}
                 index={i}
-                total={TOTAL_IMAGES}
-                phase={introPhase}
                 target={target}
               />
             );

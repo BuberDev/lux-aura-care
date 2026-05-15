@@ -17,7 +17,7 @@ import { TopPicksSection } from "@/components/sections/top-picks-section";
 import { BundlesSection } from "@/components/sections/bundles-section";
 import { Section } from "@/components/section";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
-import { categories, getAmazonFavorites, getFeaturedArticles, siteMeta } from "@/lib/site-data";
+import { categories, getAmazonFavorites, getFeaturedArticles, products, siteMeta } from "@/lib/site-data";
 import { shopProducts } from "@/lib/shop-data";
 
 export const metadata: Metadata = {
@@ -65,6 +65,11 @@ const trustSignals = [
 export default function HomePage() {
   const featuredArticles = getFeaturedArticles();
   const favorites = getAmazonFavorites();
+  const heroProducts = products.map((product) => ({
+    src: product.image,
+    alt: product.imageAlt,
+    name: product.name,
+  }));
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
     { name: "Home", item: "/" },
@@ -122,8 +127,8 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(homeJsonLd) }}
       />
-      <section className="relative isolate border-b border-white/10" style={{ height: "85vh" }}>
-        <ScrollMorphHero />
+      <section className="relative isolate h-[min(720px,calc(100svh-7rem))] min-h-[500px] border-b border-white/10">
+        <ScrollMorphHero products={heroProducts} />
       </section>
 
       <Section className="border-b border-white/10 py-8 md:py-10">
