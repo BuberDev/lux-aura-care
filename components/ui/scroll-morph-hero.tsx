@@ -118,6 +118,37 @@ const FALLBACK_PRODUCTS: HeroProduct[] = [
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
 const clamp = (value: number, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 
+function LiquidGlassText({
+  children,
+  className = "",
+  contentClassName = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  contentClassName?: string;
+}) {
+  return (
+    <span
+      className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/18 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_18px_54px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.28),inset_0_-1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl md:px-5 md:text-base ${className}`}
+      style={{
+        background:
+          "radial-gradient(ellipse 120% 90% at 20% 0%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.075) 36%, rgba(255,255,255,0.035) 100%)",
+      }}
+    >
+      <span
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          background:
+            "conic-gradient(from 210deg at 38% 40%, transparent 0deg, rgba(255,255,255,0.18) 48deg, transparent 112deg, rgba(201,169,110,0.13) 186deg, transparent 270deg)",
+          filter: "blur(18px)",
+        }}
+        aria-hidden="true"
+      />
+      <span className={`relative ${contentClassName}`}>{children}</span>
+    </span>
+  );
+}
+
 function seededUnit(index: number, salt: number) {
   const value = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;
   return value - Math.floor(value);
@@ -263,59 +294,54 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(145deg, rgba(201,169,110,0.10) 0%, transparent 31%), linear-gradient(220deg, rgba(255,255,255,0.055) 0%, transparent 30%), linear-gradient(180deg, #020202 0%, #080706 48%, #020202 100%)",
+              "radial-gradient(ellipse 110% 86% at 50% 42%, #0b0907 0%, #050403 48%, #010101 100%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.16] mix-blend-screen"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.62'/%3E%3C/svg%3E\")",
-          }}
-        />
-        <div
-          className="absolute inset-x-[-14%] top-[3%] h-[70%] -rotate-3 border-y border-white/10 opacity-80 shadow-[inset_0_1px_0_rgba(255,255,255,0.20),inset_0_-1px_0_rgba(255,255,255,0.06),0_48px_160px_rgba(201,169,110,0.08)] backdrop-blur-3xl"
+          className="absolute inset-[-18%] opacity-55"
           style={{
             background:
-              "linear-gradient(112deg, transparent 0%, rgba(255,255,255,0.030) 16%, rgba(255,255,255,0.105) 37%, rgba(201,169,110,0.075) 55%, rgba(255,255,255,0.035) 72%, transparent 100%)",
-            borderRadius: "52% 48% 50% 46% / 22% 30% 24% 34%",
-            maskImage:
-              "linear-gradient(90deg, transparent 0%, black 13%, black 87%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(90deg, transparent 0%, black 13%, black 87%, transparent 100%)",
+              "conic-gradient(from 220deg at 50% 48%, transparent 0deg, rgba(255,255,255,0.065) 46deg, rgba(201,169,110,0.080) 104deg, transparent 172deg, rgba(255,255,255,0.040) 252deg, transparent 360deg)",
+            borderRadius: "44% 56% 48% 52% / 54% 42% 58% 46%",
+            filter: "blur(58px)",
+            mixBlendMode: "screen",
+            transform: "rotate(-8deg) scale(1.08)",
           }}
         />
         <div
-          className="absolute inset-x-[-18%] bottom-[-30%] h-[62%] rotate-2 border-t border-white/10 opacity-65 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),0_-42px_150px_rgba(255,255,255,0.035)] backdrop-blur-2xl"
+          className="absolute left-[-18%] top-[-8%] h-[92%] w-[136%] opacity-45"
           style={{
             background:
-              "linear-gradient(8deg, rgba(255,255,255,0.070) 0%, rgba(255,255,255,0.018) 39%, transparent 76%)",
-            borderRadius: "48% 52% 0 0 / 38% 32% 0 0",
-            maskImage:
-              "linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%)",
+              "radial-gradient(ellipse 82% 68% at 46% 44%, rgba(255,255,255,0.090) 0%, rgba(255,255,255,0.038) 32%, transparent 70%)",
+            borderRadius: "58% 42% 54% 46% / 36% 62% 38% 64%",
+            backdropFilter: "blur(28px) saturate(1.24)",
+            filter: "blur(24px)",
+            transform: "rotate(5deg)",
           }}
         />
         <div
-          className="absolute inset-x-0 top-[18%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-70"
-          style={{
-            maskImage: "linear-gradient(90deg, transparent, black 28%, black 72%, transparent)",
-            WebkitMaskImage: "linear-gradient(90deg, transparent, black 28%, black 72%, transparent)",
-          }}
-        />
-        <div
-          className="absolute inset-x-0 top-[36%] h-[32%] backdrop-blur-[1.5px]"
+          className="absolute right-[-22%] bottom-[-18%] h-[76%] w-[118%] opacity-40"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.70) 24%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,0.70) 76%, transparent 100%)",
+              "radial-gradient(ellipse 78% 70% at 58% 48%, rgba(201,169,110,0.105) 0%, rgba(201,169,110,0.036) 36%, transparent 72%)",
+            borderRadius: "46% 54% 48% 52% / 58% 34% 66% 42%",
+            backdropFilter: "blur(34px) saturate(1.18)",
+            filter: "blur(30px)",
+            transform: "rotate(-10deg)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-85"
+          style={{
+            background:
+              "radial-gradient(ellipse 56% 42% at 50% 50%, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0.54) 42%, rgba(0,0,0,0.18) 72%, transparent 100%)",
           }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.62) 0%, transparent 20%, transparent 74%, rgba(0,0,0,0.70) 100%), linear-gradient(90deg, rgba(0,0,0,0.62) 0%, transparent 22%, transparent 78%, rgba(0,0,0,0.62) 100%)",
+              "radial-gradient(ellipse 118% 95% at 50% 48%, transparent 40%, rgba(0,0,0,0.54) 82%, rgba(0,0,0,0.86) 100%)",
           }}
         />
       </div>
@@ -332,13 +358,15 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
                 : { opacity: 0, filter: "blur(10px)" }
             }
             transition={{ duration: 1 }}
-            className="max-w-[min(760px,90vw)] text-3xl font-medium tracking-tight text-white md:text-6xl"
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              textShadow: "0 2px 22px rgba(0,0,0,0.92), 0 0 48px rgba(201,169,110,0.18)",
-            }}
+            className="max-w-[min(820px,92vw)]"
+            style={{ textShadow: "0 2px 22px rgba(0,0,0,0.92), 0 0 48px rgba(201,169,110,0.18)" }}
           >
-            Elevate your evening ritual.
+            <LiquidGlassText
+              className="mt-0 max-w-[min(820px,92vw)] rounded-[1.75rem] px-5 py-3.5 md:px-8 md:py-5"
+              contentClassName="font-heading text-3xl font-medium tracking-tight text-white md:text-6xl"
+            >
+              Elevate your evening ritual.
+            </LiquidGlassText>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -360,8 +388,12 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
 
         {/* Arc Content */}
         <motion.div
-          style={{ opacity: contentOpacity, y: contentY }}
-          className="absolute top-[18%] z-30 flex flex-col items-center justify-center text-center pointer-events-none px-4"
+          style={{
+            opacity: contentOpacity,
+            top: "clamp(12.5rem, 36%, 18rem)",
+            y: contentY,
+          }}
+          className="absolute z-30 flex flex-col items-center justify-center text-center pointer-events-none px-4"
         >
           <h2
             className="mb-4 max-w-[min(780px,92vw)] text-3xl font-semibold tracking-tight text-white md:text-5xl"
@@ -372,17 +404,18 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
           >
             Your Luxury Self-Care Ritual
           </h2>
-          <p
-            className="max-w-lg text-sm leading-relaxed md:text-base"
+          <div
+            className="flex max-w-lg flex-col items-center text-sm leading-relaxed md:text-base"
             style={{
               color: "#d2d2d2",
               textShadow: "0 1px 20px rgba(0,0,0,0.95)",
             }}
           >
-            Curated rituals for sleep, skin, and body glow.{" "}
-            <br className="hidden md:block" />
-            Discover products designed for a calm, polished lifestyle.
-          </p>
+            <span>Curated rituals for sleep, skin, and body glow.</span>
+            <LiquidGlassText>
+              Discover products designed for a calm, polished lifestyle.
+            </LiquidGlassText>
+          </div>
         </motion.div>
 
         {/* Cards */}

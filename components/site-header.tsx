@@ -120,8 +120,8 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
 
           <div
             id="mobile-product-search"
-            className={`overflow-hidden transition-all duration-300 md:hidden ${
-              isSearchOpen ? "max-h-20 pb-3 opacity-100" : "max-h-0 pb-0 opacity-0"
+            className={`transition-all duration-300 md:hidden ${
+              isSearchOpen ? "max-h-20 overflow-visible pb-3 opacity-100" : "max-h-0 overflow-hidden pb-0 opacity-0"
             }`}
           >
             <HeaderProductSearch

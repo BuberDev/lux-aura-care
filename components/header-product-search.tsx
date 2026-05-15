@@ -96,7 +96,7 @@ export function HeaderProductSearch({
       </div>
 
       {showDropdown ? (
-        <div className="absolute left-0 right-0 top-[calc(100%+0.55rem)] z-[70] overflow-hidden rounded-2xl border border-white/15 bg-[#0b0b0b]/95 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+        <div className="absolute left-0 right-0 top-[calc(100%+0.55rem)] z-[100] overflow-hidden rounded-2xl border border-white/15 bg-[#0b0b0b]/95 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
           {hasResults ? (
             <ul id={listboxId} className="max-h-80 overflow-y-auto py-2" role="listbox" aria-label="Product suggestions">
               {suggestions.map((product) => (
