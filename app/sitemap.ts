@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { articles, products } from "@/lib/site-data";
+import { shopProducts } from "@/lib/shop-data";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,22 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/privacy`,
+      url: `${SITE_URL}/shop`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/disclaimer`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
   ];
 
@@ -57,5 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.72,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...productRoutes];
+  const shopRoutes = shopProducts.map((product) => ({
+    url: `${SITE_URL}/shop/${product.id}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...articleRoutes, ...productRoutes, ...shopRoutes];
 }
