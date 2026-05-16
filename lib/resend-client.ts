@@ -154,8 +154,8 @@ export async function sendContactEmail(data: {
   message: string;
 }) {
   try {
-    const contactEmail = process.env.CONTACT_EMAIL || "info@luxauracare.pl";
-    
+    const contactEmail = process.env.CONTACT_EMAIL || "info@luxauracare.com";
+
     console.log(`[RESEND] Sending contact email from ${data.email} to ${contactEmail}`);
 
     const result = await resend.emails.send({
@@ -172,7 +172,7 @@ export async function sendContactEmail(data: {
             ${data.message.replace(/\n/g, '<br/>')}
           </div>
           <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;" />
-          <p style="font-size: 12px; color: #999;">This message was sent via the contact form on luxauracare.pl</p>
+          <p style="font-size: 12px; color: #999;">This message was sent via the contact form on luxauracare.com</p>
         </div>
       `,
     });

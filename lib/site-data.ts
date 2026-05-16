@@ -24,11 +24,11 @@ export type ProductProof = {
   rating: number;
   reviews: string;
   socialProof:
-    | "Popular right now"
-    | "Limited-time favorite"
-    | "Trending on social media"
-    | "Most saved on Pinterest this week"
-    | "Most loved by routine creators";
+  | "Popular right now"
+  | "Limited-time favorite"
+  | "Trending on social media"
+  | "Most saved on Pinterest this week"
+  | "Most loved by routine creators";
   highlights: string[];
   urgencySignal?: {
     label: string;
@@ -72,7 +72,7 @@ export const siteMeta = {
   tagline: "Professional routine guides for the Pinterest listener.",
   description:
     "We curate the viral essentials for skincare, sleep, and body glow, providing direct Amazon links for a seamless transition from inspiration to reality.",
-  contactEmail: "info@luxauracare.pl",
+  contactEmail: "info@luxauracare.com",
   keywords: [
     "self-care rituals",
     "skincare guides",
@@ -236,7 +236,7 @@ export const products: Product[] = [
   },
   {
     id: "led-mask",
-    name: "INIA Glow 2 LED Face Mask – Red Light Therapy 850nm NIR, 4 Modes, Rechargeable" ,
+    name: "INIA Glow 2 LED Face Mask – Red Light Therapy 850nm NIR, 4 Modes, Rechargeable",
     categoryId: "skincare",
     benefit: "Low-effort treatment that supports clearer, brighter skin.",
     description:
