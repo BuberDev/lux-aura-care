@@ -30,10 +30,9 @@ export const shopProducts: ShopProduct[] = [
     price: 12.99,
     compareAtPrice: 24.99,
     currency: "EUR",
-    image:
-      "https://images.unsplash.com/photo-1583241475880-083f84372725?w=800&q=80",
-    imageAlt: "Dermaplaning face razor kit on marble surface",
-    badge: "🔥 Best Seller",
+    image: "/Glow_Ritual_Face_Razor_Kit.png",
+    imageAlt: "Skincare beauty tools and face razor kit on display",
+    badge: "Best Seller",
     rating: 4.8,
     reviews: "2 847",
     benefits: [
@@ -78,9 +77,8 @@ export const shopProducts: ShopProduct[] = [
     price: 8.99,
     compareAtPrice: 16.99,
     currency: "EUR",
-    image:
-      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&q=80",
-    imageAlt: "Clear hydrocolloid patches on clean skin",
+    image: "/Clear_Skin_Hydrocolloid_Patches.png",
+    imageAlt: "Close-up of woman receiving a professional facial skincare treatment",
     badge: "⭐ New Favourite",
     rating: 4.7,
     reviews: "1 624",
@@ -126,10 +124,9 @@ export const shopProducts: ShopProduct[] = [
     price: 18.99,
     compareAtPrice: 32.99,
     currency: "EUR",
-    image:
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80",
-    imageAlt: "Skin ritual kit with dermaplaning razor and hydrocolloid patches on marble",
-    badge: "💰 Best Value",
+    image: "/Skin_Ritual_Starter_Kit.png",
+    imageAlt: "Flat lay of premium skincare products on white background",
+    badge: "Best Value",
     rating: 4.9,
     reviews: "836",
     benefits: [
