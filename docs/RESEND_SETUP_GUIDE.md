@@ -7,7 +7,7 @@
 ## 📋 What You Have
 
 You've already:
-- ✅ Added `EMAIL_API_KEY=re_...` to `.env.local`
+- ✅ Added `EMAIL_API_KEY=re_...` to `.env`
 - ✅ Set `EMAIL_PROVIDER=resend` 
 - ✅ Have welcome email templates built
 - ✅ Have `/api/subscribe` endpoint working
@@ -33,7 +33,7 @@ Resend "Audiences" are just contact lists. You need this to organize subscribers
 
 ## 🔑 Step 2: Add Audience ID to Environment
 
-Add this to `.env.local`:
+Add this to `.env`:
 
 ```bash
 EMAIL_AUDIENCE_ID=01arq69rnmg1sjajp4j7ghwhta  # Your audience ID from step 1
@@ -179,7 +179,7 @@ Error: EMAIL_AUDIENCE_ID not configured for Resend
 1. Go to Resend dashboard
 2. Create audience (if not done)
 3. Copy the audience ID
-4. Add to `.env.local`
+4. Add to `.env`
 5. Restart server
 
 ### Contact already exists

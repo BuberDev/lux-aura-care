@@ -146,3 +146,40 @@ export async function sendProductRecommendationEmail(
     throw error;
   }
 }
+
+export async function sendContactEmail(data: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) {
+  try {
+    const contactEmail = process.env.CONTACT_EMAIL || "info@luxauracare.pl";
+    
+    console.log(`[RESEND] Sending contact email from ${data.email} to ${contactEmail}`);
+
+    const result = await resend.emails.send({
+      from: "Lux Aura Care <hello@luxauracare.com>", // This should be a verified domain in Resend
+      to: contactEmail,
+      replyTo: data.email,
+      subject: `[Contact Form] ${data.subject}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+          <h2 style="color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px;">New Contact Message</h2>
+          <p><strong>From:</strong> ${data.name} (${data.email})</p>
+          <p><strong>Subject:</strong> ${data.subject}</p>
+          <div style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-radius: 5px; line-height: 1.6;">
+            ${data.message.replace(/\n/g, '<br/>')}
+          </div>
+          <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;" />
+          <p style="font-size: 12px; color: #999;">This message was sent via the contact form on luxauracare.pl</p>
+        </div>
+      `,
+    });
+
+    return result;
+  } catch (error) {
+    console.error("[RESEND] Failed to send contact email:", error);
+    throw error;
+  }
+}

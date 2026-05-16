@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
+import { siteMeta } from "@/lib/site-data";
 
 function HoverFooter() {
   const footerLinks = [
@@ -31,6 +32,7 @@ function HoverFooter() {
       links: [
         { label: "Amazon Favorites", href: "/favorites" },
         { label: "Latest Articles", href: "/blog" },
+        { label: "Contact Us", href: "/contact" },
         { label: "Newsletter", href: "#newsletter", pulse: true },
       ],
     },
@@ -39,17 +41,17 @@ function HoverFooter() {
   const contactInfo = [
     {
       icon: <Mail size={18} className="text-accent-gold" aria-hidden="true" />,
-      text: "hello@luxaura.care",
-      href: "mailto:hello@luxaura.care",
+      text: siteMeta.contactEmail,
+      href: `mailto:${siteMeta.contactEmail}`,
     },
     {
       icon: <Phone size={18} className="text-accent-gold" aria-hidden="true" />,
-      text: "+1 (415) 555-0198",
-      href: "tel:+14155550198",
+      text: "+491776931916",
+      href: "tel:+491776931916",
     },
     {
       icon: <MapPin size={18} className="text-accent-gold" aria-hidden="true" />,
-      text: "San Francisco, California",
+      text: "Wroclaw, Poland",
     },
   ];
 

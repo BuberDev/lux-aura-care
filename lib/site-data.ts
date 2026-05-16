@@ -72,6 +72,7 @@ export const siteMeta = {
   tagline: "Professional routine guides for the Pinterest listener.",
   description:
     "We curate the viral essentials for skincare, sleep, and body glow, providing direct Amazon links for a seamless transition from inspiration to reality.",
+  contactEmail: "info@luxauracare.pl",
   keywords: [
     "self-care rituals",
     "skincare guides",
