@@ -129,22 +129,29 @@ function LiquidGlassText({
 }) {
   return (
     <span
-      className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/18 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_18px_54px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.28),inset_0_-1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl md:px-5 md:text-base ${className}`}
+      className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/12 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_24px_68px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-3xl md:px-5 md:text-base ${className}`}
       style={{
         background:
-          "radial-gradient(ellipse 120% 90% at 20% 0%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.075) 36%, rgba(255,255,255,0.035) 100%)",
+          "radial-gradient(ellipse 120% 90% at 20% 0%, rgba(15, 12, 10, 0.78) 0%, rgba(6, 6, 6, 0.68) 100%)",
       }}
     >
       <span
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-80"
         style={{
           background:
-            "conic-gradient(from 210deg at 38% 40%, transparent 0deg, rgba(255,255,255,0.18) 48deg, transparent 112deg, rgba(201,169,110,0.13) 186deg, transparent 270deg)",
-          filter: "blur(18px)",
+            "conic-gradient(from 210deg at 38% 40%, transparent 0deg, rgba(255,255,255,0.14) 48deg, transparent 112deg, rgba(201,169,110,0.18) 186deg, transparent 270deg)",
+          filter: "blur(16px)",
         }}
         aria-hidden="true"
       />
-      <span className={`relative ${contentClassName}`}>{children}</span>
+      <span
+        className={`relative ${contentClassName}`}
+        style={{
+          textShadow: "0 2px 10px rgba(0,0,0,0.5), 0 0 24px rgba(0,0,0,0.35)",
+        }}
+      >
+        {children}
+      </span>
     </span>
   );
 }
