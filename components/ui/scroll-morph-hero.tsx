@@ -132,15 +132,15 @@ function LiquidGlassText({
       className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/12 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_24px_68px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-3xl md:px-5 md:text-base ${className}`}
       style={{
         background:
-          "radial-gradient(ellipse 120% 90% at 20% 0%, rgba(15, 12, 10, 0.78) 0%, rgba(6, 6, 6, 0.68) 100%)",
+          "linear-gradient(135deg, rgba(10, 8, 7, 0.88) 0%, rgba(3, 3, 3, 0.84) 100%)",
       }}
     >
       <span
-        className="pointer-events-none absolute inset-0 opacity-80"
+        className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           background:
-            "conic-gradient(from 210deg at 38% 40%, transparent 0deg, rgba(255,255,255,0.14) 48deg, transparent 112deg, rgba(201,169,110,0.18) 186deg, transparent 270deg)",
-          filter: "blur(16px)",
+            "conic-gradient(from 210deg at 38% 40%, transparent 0deg, rgba(255,255,255,0.1) 48deg, transparent 112deg, rgba(201,169,110,0.12) 186deg, transparent 270deg)",
+          filter: "blur(12px)",
         }}
         aria-hidden="true"
       />
@@ -370,7 +370,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
           >
             <LiquidGlassText
               className="mt-0 max-w-[min(820px,92vw)] rounded-[1.75rem] px-5 py-3.5 md:px-8 md:py-5"
-              contentClassName="font-heading text-3xl font-medium tracking-tight text-white md:text-6xl"
+              contentClassName="font-heading text-3xl font-semibold tracking-tight text-white md:text-6xl"
             >
               Elevate your evening ritual.
             </LiquidGlassText>
