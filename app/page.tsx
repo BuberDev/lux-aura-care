@@ -276,6 +276,7 @@ export default function HomePage() {
                 product={product}
                 compact
                 urgencyOverride={index < 2 ? "Limited-time favorite" : undefined}
+                detailsHref={`/favorites/${product.id}`}
               />
             ))}
           </div>

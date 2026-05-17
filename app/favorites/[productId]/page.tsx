@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { BenefitList } from "@/components/product-page/benefit-list";
-import { BenefitStrip } from "@/components/product-page/benefit-strip";
-import { CTASection } from "@/components/product-page/cta-section";
-import { ProblemSolution } from "@/components/product-page/problem-solution";
-import { ProductHero } from "@/components/product-page/product-hero";
-import { RelatedProducts } from "@/components/product-page/related-products";
-import { RoutineSection } from "@/components/product-page/routine-section";
-import { SocialProof } from "@/components/product-page/social-proof";
-import { buildAmazonAffiliateUrl, getAffiliateRoute } from "@/lib/affiliate";
+import { FavoritesProductSales } from "@/components/favorites/favorites-product-sales";
+import { buildAmazonAffiliateUrl } from "@/lib/affiliate";
 import { getProductPageContent } from "@/lib/product-page-content";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { getProductById, getProductProof, products, siteMeta, type Product } from "@/lib/site-data";
@@ -151,41 +144,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(productJsonLd) }}
       />
-      <ProductHero
+      <FavoritesProductSales
         product={product}
         proof={proof}
-        emotionalHook={content.emotionalHook}
-        keyBenefits={content.heroBenefits}
-      />
-      <BenefitStrip items={content.quickBenefits} />
-      <ProblemSolution
-        headline={content.problemHeadline}
-        problemParagraph={content.problemParagraph}
-        solutionParagraph={content.solutionParagraph}
-        ctaHref={getAffiliateRoute(product.id, "product-problem-solution")}
-        productId={product.id}
-        productName={product.name}
-      />
-      <BenefitList items={content.detailedBenefits} />
-      <RoutineSection
-        title={content.ritualTitle}
-        steps={content.ritualSteps}
-        ctaHref={getAffiliateRoute(product.id, "product-routine")}
-      />
-      <SocialProof
-        headline={content.socialHeadline}
-        socialLine={content.socialProofLine}
-        ratingLabel={content.socialRatingLabel}
-        reviews={proof.reviews}
-        ctaHref={getAffiliateRoute(product.id, "product-social-proof")}
-        productId={product.id}
-        productName={product.name}
-      />
-      <RelatedProducts products={relatedProducts} />
-      <CTASection
-        ctaHref={getAffiliateRoute(product.id, "product-final-cta")}
-        productId={product.id}
-        productName={product.name}
+        content={content}
+        related={relatedProducts}
       />
     </>
   );
