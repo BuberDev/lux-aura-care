@@ -211,7 +211,7 @@ export const shopProducts: ShopProduct[] = [
         a: "We recommend using the Jade Roller daily for 5-10 minutes (ideally in the morning to de-puff) and the Gua Sha tool 2-3 times a week to sculpt.",
       },
     ],
-    shopifyUrl: "https://luxauracare.myshopify.com/cart/53918490788173:1",
+    shopifyUrl: "https://luxauracare.myshopify.com/cart/53944188174669:1",
     category: "skincare",
     isNew: true,
     gallery: [
