@@ -18,6 +18,13 @@ export type ShopProduct = {
   category: "skincare" | "body-glow" | "bundle";
   isNew?: boolean;
   isBestSeller?: boolean;
+  gallery?: {
+    url: string;
+    label: string;
+    badge: string;
+    desc: string;
+    filter?: string;
+  }[];
 };
 
 export const shopProducts: ShopProduct[] = [
@@ -160,6 +167,73 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://luxauracare.myshopify.com/cart/53918490820941:1",
     category: "bundle",
     isBestSeller: true,
+  },
+  {
+    id: "gua-sha-jade-roller-set",
+    name: "Rose Quartz Gua Sha & Jade Roller Set",
+    tagline: "Sculpt, de-puff, and glow. The ancient beauty ritual for youthful skin.",
+    description:
+      "A premium 2-piece facial massage set handcrafted from 100% natural, authentic Rose Quartz. Designed to stimulate lymphatic drainage, reduce morning puffiness, promote blood circulation, and enhance the absorption of your favorite serums up to 3x.",
+    price: 15.99,
+    compareAtPrice: 29.99,
+    currency: "EUR",
+    image: "/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png",
+    imageAlt: "Handcrafted natural Rose Quartz Gua Sha and Jade Roller set on a soft pastel background",
+    badge: "✨ Self-Care Favorite",
+    rating: 4.8,
+    reviews: "2 147",
+    benefits: [
+      "Handcrafted from 100% natural, authentic certified Rose Quartz",
+      "Reduces morning puffiness and boosts blood circulation instantly",
+      "Promotes lymphatic drainage for a sculpted, lifted jawline",
+      "Improves skin elasticity and smooths fine lines over time",
+      "Enhances facial oil and serum absorption up to 300% deeper",
+      "Double-sided roller with noiseless, squeak-free silicone inserts",
+    ],
+    howToUse: [
+      "Cleanse face and apply your favorite facial oil or serum",
+      "Roll the Jade Roller in gentle upward strokes from neck to forehead",
+      "Use the Gua Sha tool flat against skin, scraping outward along jawline",
+      "Cool tools in the fridge for 10 minutes before use for maximum de-puffing",
+      "Cleanse tools with a damp cloth and warm soapy water after each use",
+    ],
+    faq: [
+      {
+        q: "Is it made of 100% real Rose Quartz?",
+        a: "Yes. Our massage tools are handcrafted from certified, natural rose quartz stone. Each piece has its own unique rose shading and mineral patterns.",
+      },
+      {
+        q: "Does the roller make squeaking noises during use?",
+        a: "No. We integrate special soft silicone inserts between the metal frames and roller stones to guarantee a completely noiseless, smooth roll.",
+      },
+      {
+        q: "How often should I perform this massage?",
+        a: "We recommend using the Jade Roller daily for 5-10 minutes (ideally in the morning to de-puff) and the Gua Sha tool 2-3 times a week to sculpt.",
+      },
+    ],
+    shopifyUrl: "https://luxauracare.myshopify.com/cart/53918490788173:1",
+    category: "skincare",
+    isNew: true,
+    gallery: [
+      {
+        url: "/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png",
+        label: "Luxe Set",
+        badge: "Organic Quartz",
+        desc: "Handcrafted natural Rose Quartz Gua Sha and double-sided Jade Roller",
+      },
+      {
+        url: "/Rose_Quartz_Gua_Sha_close.png",
+        label: "Stone Texture",
+        badge: "Premium Polish",
+        desc: "Seamless rose gold frame details and ultra-smooth polished stone edges",
+      },
+      {
+        url: "/Rose_Quartz_Gua_Sha_lifestyle.png",
+        label: "Daily Ritual",
+        badge: "Spa Routine",
+        desc: "Relaxing lymphatic drainage massage for a sculpted, radiant complexion",
+      },
+    ],
   },
 ];
 

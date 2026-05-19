@@ -19,8 +19,10 @@ import {
   ThumbsUp, 
   Heart,
   ChevronRight,
+  ChevronLeft,
   TrendingUp,
-  Activity
+  Activity,
+  ZoomIn
 } from "lucide-react";
 import { Container } from "@/components/container";
 import type { ShopProduct } from "@/lib/shop-data";
@@ -184,6 +186,49 @@ const reviewsData: Record<string, {
         helpfulCount: 33,
       }
     ]
+  },
+  "gua-sha-jade-roller-set": {
+    rating: 4.8,
+    reviewsCount: 2147,
+    breakdown: [
+      { stars: 5, percentage: 89 },
+      { stars: 4, percentage: 8 },
+      { stars: 3, percentage: 2 },
+      { stars: 2, percentage: 1 },
+      { stars: 1, percentage: 0 },
+    ],
+    items: [
+      {
+        author: "Isabella M.",
+        location: "Vienna, Austria",
+        rating: 5,
+        title: "Exceptional spa-like quality!",
+        content: "This rose quartz set is absolutely gorgeous! The stone is heavy, cooling, and beautifully polished with zero rough edges. The roller is completely silent and smooth due to the noiseless silicone inserts. I use it every morning straight out of the fridge, and it instantly de-puffs my eyes and leaves my skin feeling sculpted and awake.",
+        date: "May 14, 2026",
+        verified: true,
+        helpfulCount: 84,
+      },
+      {
+        author: "Chloe D.",
+        location: "Paris, France",
+        rating: 5,
+        title: "Highly relaxing and effective",
+        content: "I've integrated this set into my nightly skincare routine and the results are incredible. It helps my face oils absorb beautifully and has visibly smoothed out fine tension lines around my forehead. Massaging my jawline with the Gua Sha is pure heaven after a long day of work. Beautifully packaged too!",
+        date: "May 08, 2026",
+        verified: true,
+        helpfulCount: 62,
+      },
+      {
+        author: "Karolina W.",
+        location: "Warsaw, Poland",
+        rating: 5,
+        title: "100% authentic natural stone",
+        content: "You can feel the premium quality immediately. It has a heavy, cold feel that synthetic stones just don't have, and the natural rose patterns are beautiful. It is an amazing value for a double set and has become my favorite self-care ritual. Highly recommended for mature skin!",
+        date: "April 29, 2026",
+        verified: true,
+        helpfulCount: 51,
+      }
+    ]
   }
 };
 
@@ -259,6 +304,20 @@ const beforeAfterData: Record<string, {
       "A complete cohesive weekly ritual that is extremely relaxing.",
       "Restored skin glow, seamless makeup, and zero irritation."
     ]
+  },
+  "gua-sha-jade-roller-set": {
+    before: [
+      "Morning facial puffiness and fluid retention under the eyes.",
+      "Tension and tightness built up in jawline and brow muscles.",
+      "Poor blood micro-circulation leads to a pale, tired complexion.",
+      "Serums sit on the skin's surface without absorbing deeply."
+    ],
+    after: [
+      "Instant lymphatic drainage sweeps away morning puffiness.",
+      "Deeply relaxed facial muscles and a visibly sculpted jawline.",
+      "Boosted blood circulation reveals a healthy, rosy skin flush.",
+      "Massage motion pushes nourishing active ingredients 3x deeper."
+    ]
   }
 };
 
@@ -317,6 +376,23 @@ const detailedScienceBenefits: Record<string, {
       desc: "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, saving you €14 compared to separate purchases.",
       badge: "Result: Radiance"
     }
+  ],
+  "gua-sha-jade-roller-set": [
+    {
+      title: "Lymphatic Drainage",
+      desc: "The scraping motion of the Rose Quartz Gua Sha stimulates the movement of lymphatic fluid, effectively draining accumulated fluids and waste to reduce puffiness.",
+      badge: "De-Puff Tech"
+    },
+    {
+      title: "Crystalline Cooling",
+      desc: "Authentic Rose Quartz holds natural cold temperatures exceptionally well. This natural cooling constricts blood vessels, calming inflammation and tightening pores.",
+      badge: "Cryo Calm"
+    },
+    {
+      title: "Myofascial Release",
+      desc: "Deep pressure massage along muscle fibers releases tightness and smooths the fascia. This helps melt away fine expression lines and tension in the brow and jaw.",
+      badge: "Muscle Sculpt"
+    }
   ]
 };
 
@@ -332,6 +408,50 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
 
+  // Zoom magnifier states
+  const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({
+    transformOrigin: "center center",
+    transform: "scale(1)"
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setZoomStyle({
+      transformOrigin: `${x}% ${y}%`,
+      transform: "scale(1.8)" // Elegant magnifier scale factor
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setZoomStyle({
+      transformOrigin: "center center",
+      transform: "scale(1)"
+    });
+  };
+
+  // Amazon-style Lightbox Overlay states
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Sync lightbox active index with gallery active index
+  useEffect(() => {
+    setLightboxIndex(activeGalleryIndex);
+  }, [activeGalleryIndex]);
+
+  // Lock body scroll when Lightbox is active
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLightboxOpen]);
+
   // Scarcity & Social Proof Mock States (Fluctuating)
   const [viewersCount, setViewersCount] = useState(14);
   const [timeLeft, setTimeLeft] = useState({ minutes: 14, seconds: 32 });
@@ -340,8 +460,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const reviewsSectionRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
 
-  // Gallery Simulated Variations (to make it look rich)
-  const galleryImages = [
+  // Gallery Variations (uses real multi-images if defined, otherwise falls back to simulated filters)
+  const galleryImages = product.gallery || [
     { 
       url: product.image, 
       label: "Main Display", 
@@ -403,6 +523,23 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     };
   }, []);
 
+  // Keyboard navigation for Lightbox (Escape, ArrowLeft, ArrowRight)
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsLightboxOpen(false);
+      } else if (e.key === "ArrowRight") {
+        setLightboxIndex(prev => (prev + 1) % galleryImages.length);
+      } else if (e.key === "ArrowLeft") {
+        setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isLightboxOpen, galleryImages.length]);
+
   const scrollToReviews = () => {
     reviewsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -453,27 +590,42 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             
             {/* LEFT: Premium Image Gallery */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/12 bg-white/[0.01] group shadow-2xl">
-                <Image
-                  src={galleryImages[activeGalleryIndex].url}
-                  alt={product.imageAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 55vw"
-                  className={`object-cover transition-all duration-700 ${galleryImages[activeGalleryIndex].filter || ""}`}
-                />
+              <div 
+                className="relative aspect-square overflow-hidden rounded-2xl border border-white/12 bg-white/[0.01] group shadow-2xl cursor-zoom-in"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => setIsLightboxOpen(true)}
+              >
+                <div 
+                  className="w-full h-full relative transition-transform duration-200 ease-out"
+                  style={zoomStyle}
+                >
+                  <Image
+                    src={galleryImages[activeGalleryIndex].url}
+                    alt={product.imageAlt}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className={`object-cover ${galleryImages[activeGalleryIndex].filter || ""}`}
+                  />
+                </div>
                 
                 {/* Image Overlay Educational Info Badges */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                 
                 <span
-                  className="absolute top-4 left-4 text-xs md:text-sm font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider"
+                  className="absolute top-4 left-4 text-xs md:text-sm font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider pointer-events-none"
                   style={{ background: "#c9a96e", color: "#000" }}
                 >
                   {galleryImages[activeGalleryIndex].badge}
                 </span>
 
-                <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10">
+                {/* Amazon-style "Click to expand" floating indicator */}
+                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white/95 rounded-full p-2.5 border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <ZoomIn className="size-4 text-accent-gold" />
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10 pointer-events-none">
                   <p className="text-xs text-white/90 font-medium">
                     {galleryImages[activeGalleryIndex].desc}
                   </p>
@@ -1204,6 +1356,143 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </div>
+
+      {/* AMAZON-STYLE HIGH-END PORTAL/LIGHTBOX OVERLAY */}
+      {isLightboxOpen && (
+        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 md:p-6 animate-in fade-in zoom-in duration-300">
+          
+          {/* Top Bar */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <div>
+              <h3 className="text-sm md:text-base font-bold text-white tracking-wide">
+                {product.name}
+              </h3>
+              <p className="text-[10px] md:text-xs text-accent-gold font-semibold tracking-wider uppercase mt-0.5">
+                Image {lightboxIndex + 1} of {galleryImages.length}
+              </p>
+            </div>
+            <button 
+              onClick={() => setIsLightboxOpen(false)}
+              className="p-2 rounded-full bg-white/5 hover:bg-white/15 text-white/80 hover:text-white transition-all border border-white/10 flex items-center justify-center shadow-lg"
+              title="Close overlay (Esc)"
+            >
+              <X className="size-5" />
+            </button>
+          </div>
+
+          {/* Main Interactive Grid */}
+          <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center justify-center my-4 overflow-hidden">
+            
+            {/* Left Column (Desktop): Vertical Thumbnails List */}
+            <div className="hidden lg:flex lg:col-span-2 flex-col gap-3 justify-center max-h-[70vh] overflow-y-auto pr-2">
+              {galleryImages.map((img, idx) => (
+                <button
+                  key={`lightbox-thumb-${idx}`}
+                  onClick={() => setLightboxIndex(idx)}
+                  className={`relative aspect-square w-full rounded-xl overflow-hidden border transition-all duration-300 ${
+                    lightboxIndex === idx
+                      ? "border-accent-gold ring-2 ring-accent-gold/40 scale-[1.03]"
+                      : "border-white/10 hover:border-white/30 opacity-60 hover:opacity-100"
+                  }`}
+                >
+                  <Image 
+                    src={img.url} 
+                    alt={img.label} 
+                    fill 
+                    sizes="10vw"
+                    className={`object-cover ${img.filter || ""}`} 
+                  />
+                  <div className="absolute inset-0 bg-black/10 hover:bg-transparent" />
+                  <div className="absolute bottom-1 left-1 right-1 text-[9px] bg-black/85 text-white/90 py-0.5 rounded text-center truncate">
+                    {img.label}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Center Column: Large Interactive Image with Arrow Navigations */}
+            <div className="col-span-1 lg:col-span-8 flex items-center justify-center relative h-[50vh] sm:h-[60vh] lg:h-[70vh] w-full">
+              
+              {/* Left Navigation Arrow */}
+              <button
+                onClick={() => setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                className="absolute left-2 md:left-4 z-10 p-3 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/10 hover:border-white/30 hover:scale-105 transition-all shadow-xl"
+                title="Previous image (Left Arrow)"
+              >
+                <ChevronLeft className="size-5 md:size-6" />
+              </button>
+
+              {/* Main Rendered Image Container */}
+              <div className="relative w-full h-full max-w-xl aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/[0.01]">
+                <Image
+                  src={galleryImages[lightboxIndex].url}
+                  alt={galleryImages[lightboxIndex].label}
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 50vw"
+                  priority
+                  className={`object-contain transition-all duration-500 p-2 md:p-6 ${galleryImages[lightboxIndex].filter || ""}`}
+                />
+                
+                {/* Badge Overlay */}
+                <span
+                  className="absolute top-4 left-4 text-xs font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider"
+                  style={{ background: "#c9a96e", color: "#000" }}
+                >
+                  {galleryImages[lightboxIndex].badge}
+                </span>
+              </div>
+
+              {/* Right Navigation Arrow */}
+              <button
+                onClick={() => setLightboxIndex(prev => (prev + 1) % galleryImages.length)}
+                className="absolute right-2 md:right-4 z-10 p-3 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/10 hover:border-white/30 hover:scale-105 transition-all shadow-xl"
+                title="Next image (Right Arrow)"
+              >
+                <ChevronRight className="size-5 md:size-6" />
+              </button>
+            </div>
+
+            {/* Right Column: Educational Description */}
+            <div className="col-span-1 lg:col-span-2 flex flex-col gap-4 text-center lg:text-left justify-center lg:h-full lg:max-h-[70vh] bg-white/[0.02] border border-white/5 rounded-2xl p-4 lg:p-5">
+              <span className="text-[10px] md:text-xs font-extrabold uppercase tracking-wider text-accent-gold">
+                Highlight feature
+              </span>
+              <h4 className="text-sm md:text-base font-bold text-white leading-tight">
+                {galleryImages[lightboxIndex].label}
+              </h4>
+              <p className="text-xs text-white/80 leading-relaxed">
+                {galleryImages[lightboxIndex].desc}
+              </p>
+              <div className="border-t border-white/10 pt-4 mt-2 hidden lg:block">
+                <a
+                  href={product.shopifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-2.5 rounded-lg text-xs font-extrabold text-black bg-accent-gold text-center hover:opacity-90 active:scale-[0.98] transition-all"
+                >
+                  Kup Teraz — €{product.price.toFixed(2)}
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar: Mobile indicators */}
+          <div className="flex lg:hidden items-center justify-center gap-2 pb-2">
+            {galleryImages.map((_, idx) => (
+              <button
+                key={`lightbox-dot-${idx}`}
+                onClick={() => setLightboxIndex(idx)}
+                className={`size-2.5 rounded-full transition-all duration-300 ${
+                  lightboxIndex === idx ? "bg-accent-gold w-6" : "bg-white/20 hover:bg-white/40"
+                }`}
+                title={`Go to image ${idx + 1}`}
+              />
+            ))}
+          </div>
+          
+        </div>
+      )}
 
     </div>
   );
