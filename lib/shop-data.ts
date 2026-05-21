@@ -123,6 +123,73 @@ export const shopProducts: ShopProduct[] = [
     isNew: true,
   },
   {
+    id: "gold-eye-patches",
+    name: "24K Gold Collagen Eye Patches",
+    tagline: "Wake up to brighter, firmer eyes — starting tonight.",
+    description:
+      "60 ultra-thin 24K gold collagen eye patches that target dark circles, puffiness and fine lines while you sleep. Marine collagen + hyaluronic acid + real gold particles — 30 full treatments per pack. The overnight eye ritual for women 40+.",
+    price: 16.99,
+    compareAtPrice: 29.99,
+    currency: "EUR",
+    image: "/24K_Gold_Collagen_Eye_Patches.png",
+    imageAlt: "24K Gold Collagen Eye Patches skincare treatment",
+    badge: "✨ Gold Formula",
+    rating: 4.7,
+    reviews: "1 203",
+    benefits: [
+      "Reduces dark circles and under-eye bags overnight",
+      "Firms fine lines around the eye area",
+      "24K gold boosts ingredient absorption",
+      "Deep hydration with hyaluronic acid + marine collagen",
+      "Depuffs in 20 minutes — perfect before events",
+      "60 patches — 30 full treatments per pack",
+    ],
+    howToUse: [
+      "Cleanse and dry the eye area completely",
+      "Apply one patch under each eye, gold side up",
+      "Leave on for 20–30 minutes or overnight",
+      "Remove and gently pat in remaining serum — do not rinse",
+      "Use 3–4 times per week for best results",
+    ],
+    faq: [
+      {
+        q: "Can I use them every night?",
+        a: "Yes, they are gentle enough for nightly use. For best results, use 3–4 times per week to allow skin to breathe.",
+      },
+      {
+        q: "Are they suitable for sensitive skin?",
+        a: "Yes. Dermatologist-tested, free from parabens and alcohol. Always patch-test first.",
+      },
+      {
+        q: "How many treatments are in one pack?",
+        a: "60 patches = 30 full treatments (one patch per eye per session).",
+      },
+    ],
+    shopifyUrl: "https://luxauracare.myshopify.com/cart/53954300772685:1",
+    category: "skincare",
+    isNew: true,
+    gallery: [
+      {
+        url: "/24K_Gold_Collagen_Eye_Patches.png",
+        label: "Luxe Patches",
+        badge: "24K Gold",
+        desc: "Luxurious 24K gold hydrogel eye patches with marine collagen",
+      },
+      {
+        url: "/24K_Gold_Collagen_Eye_Patches_close.png",
+        label: "Formula Close-up",
+        badge: "Active Gold",
+        desc: "Hydrogel texture glistening with premium marine collagen and hyaluronic acid serum",
+      },
+      {
+        url: "/24K_Gold_Collagen_Eye_Patches_lifestyle.png",
+        label: "Evening Ritual",
+        badge: "Spa Care",
+        desc: "Premium self-care wellness routine for bright, depuffed under-eyes",
+      },
+    ],
+  },
+  {
     id: "skin-ritual-bundle",
     name: "Skin Ritual Starter Kit",
     tagline: "The complete glow ritual — smooth, clear, radiant.",
