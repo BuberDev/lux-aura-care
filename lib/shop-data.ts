@@ -302,6 +302,73 @@ export const shopProducts: ShopProduct[] = [
       },
     ],
   },
+  {
+    id: "bian-stone-gua-sha",
+    name: "Black Bian Stone Gua Sha Stick",
+    tagline: "Sculpt your jawline. Release tension. Reveal younger-looking skin.",
+    description:
+      "Carved from authentic volcanic Bian Stone — one of the rarest healing stones in the world — this gua sha stick emits far-infrared rays and natural negative ions that boost circulation and collagen from within. Designed for women 40+ who want visible facial sculpting results without needles or clinic visits.",
+    price: 34.99,
+    compareAtPrice: 59.99,
+    currency: "EUR",
+    image: "/Black_Bian_Stone_Gua_Sha_Stick.png",
+    imageAlt: "Black Bian Stone Gua Sha facial massage stick on dark marble surface",
+    badge: "🖤 Rarest Stone",
+    rating: 4.9,
+    reviews: "1 089",
+    benefits: [
+      "Emits far-infrared rays — boosts circulation 3× more than regular jade tools",
+      "Natural negative ions reduce inflammation and accelerate skin renewal",
+      "Sculpts jawline, cheekbones & brow bone in one 5-minute ritual",
+      "Depuffs instantly — cool in fridge for maximum morning de-puff",
+      "Boosts serum absorption up to 300% deeper",
+      "Ultra-smooth volcanic stone — glides without pulling or dragging",
+    ],
+    howToUse: [
+      "Apply your favourite facial oil or serum to clean skin",
+      "Hold the stick flat against skin at a 15° angle",
+      "Glide in firm upward strokes along jawline, cheeks and forehead",
+      "Use the pointed end for brow bone and under-eye area",
+      "5–10 minutes daily — results visible from week 2",
+    ],
+    faq: [
+      {
+        q: "What makes Bian Stone different from jade or rose quartz?",
+        a: "Bian Stone is a volcanic mineral that emits far-infrared rays and natural negative ions — properties not found in jade or quartz. This means it actively stimulates circulation and collagen, rather than just massaging the surface.",
+      },
+      {
+        q: "How often should I use it?",
+        a: "Daily use is safe and recommended. 5 minutes in the morning (after storing overnight in the fridge) gives the best de-puffing results. 3–4 evenings per week for sculpting.",
+      },
+      {
+        q: "Is it suitable for sensitive skin?",
+        a: "Yes. The smooth polished stone surface is gentle and non-abrasive. Always use with a facial oil — never drag dry skin.",
+      },
+    ],
+    shopifyUrl: "https://luxauracare.myshopify.com/cart/53955987276109:1",
+    category: "skincare",
+    isNew: true,
+    gallery: [
+      {
+        url: "/Black_Bian_Stone_Gua_Sha_Stick.png",
+        label: "Volcanic Stone",
+        badge: "Bian Stone",
+        desc: "Authentic black volcanic Bian Stone gua sha stick — hand-polished to a flawless finish",
+      },
+      {
+        url: "/Black_Bian_Stone_Gua_Sha_Stick_close.png",
+        label: "Stone Texture",
+        badge: "Far-Infrared",
+        desc: "Natural mineral matrix emitting far-infrared rays and negative ions for deep skin renewal",
+      },
+      {
+        url: "/Black_Bian_Stone_Gua_Sha_Stick_lifestyle.png",
+        label: "Morning Ritual",
+        badge: "5-Min Ritual",
+        desc: "Sculpting and depuffing facial massage ritual designed for women 40+",
+      },
+    ],
+  },
 ];
 
 export function getShopProductById(id: string): ShopProduct | undefined {
