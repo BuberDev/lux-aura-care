@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Sparkles, TrendingUp, Check } from "lucide-react";
 import ScrollMorphHero from "@/components/ui/scroll-morph-hero";
+import { Component as EtheralShadow } from "@/components/ui/etheral-shadow";
 
 import { ArticleCard } from "@/components/article-card";
 import { CategoryCard } from "@/components/category-card";
@@ -127,25 +128,36 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(homeJsonLd) }}
       />
-      <section className="relative isolate h-[min(720px,calc(100svh-7rem))] min-h-[500px] border-b border-white/10">
-        <ScrollMorphHero products={heroProducts} />
-      </section>
+      <div className="absolute top-0 left-0 w-full h-[100svh] -z-20 pointer-events-none">
+        <EtheralShadow
+          color="rgba(128, 128, 128, 1)"
+          animation={{ scale: 100, speed: 90 }}
+          noise={{ opacity: 1, scale: 1.2 }}
+          sizing="fill"
+        />
+      </div>
 
-      <Section className="border-b border-white/10 py-8 md:py-10">
-        <Container>
-          <ul className="grid gap-3 md:grid-cols-3" aria-label="Trust signals">
-            {trustSignals.map((item) => (
-              <li key={item.label} className="rounded-2xl border border-white/12 bg-white/[0.02] px-4 py-4">
-                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-accent-gold">
-                  <item.icon className="size-4" aria-hidden="true" />
-                  {item.label}
-                </p>
-                <p className="mt-2 text-2xl font-semibold text-text-primary">{item.value}</p>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+      <section className="relative isolate h-[calc(100svh-4.5rem)] md:h-[calc(100svh-6.25rem)] min-h-[650px] border-b border-white/10 overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <ScrollMorphHero products={heroProducts} />
+        </div>
+
+        <div className="absolute bottom-6 md:bottom-8 left-0 right-0 z-20 pointer-events-none">
+          <Container className="pointer-events-auto">
+            <ul className="grid gap-3 md:grid-cols-3" aria-label="Trust signals">
+              {trustSignals.map((item) => (
+                <li key={item.label} className="rounded-2xl border border-white/12 bg-black/30 backdrop-blur-md px-4 py-4 shadow-xl">
+                  <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-accent-gold">
+                    <item.icon className="size-4" aria-hidden="true" />
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold text-text-primary">{item.value}</p>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </div>
+      </section>
 
       {/* ===== SHOP SECTION ===== */}
       <Section className="border-b border-white/10 py-16">

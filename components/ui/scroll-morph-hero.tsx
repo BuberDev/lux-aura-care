@@ -129,11 +129,7 @@ function LiquidGlassText({
 }) {
   return (
     <span
-      className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/12 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_24px_68px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-3xl md:px-5 md:text-base ${className}`}
-      style={{
-        background:
-          "linear-gradient(135deg, rgba(10, 8, 7, 0.88) 0%, rgba(3, 3, 3, 0.84) 100%)",
-      }}
+      className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/12 bg-black/30 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_24px_68px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-md md:px-5 md:text-base ${className}`}
     >
       <span
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -294,64 +290,9 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
     <div
       ref={containerRef}
       className="relative w-full h-full overflow-hidden"
-      style={{ background: "#030303", touchAction: "pan-y" }}
+      style={{ background: "transparent", touchAction: "pan-y" }}
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 110% 86% at 50% 42%, #0b0907 0%, #050403 48%, #010101 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-[-18%] opacity-55"
-          style={{
-            background:
-              "conic-gradient(from 220deg at 50% 48%, transparent 0deg, rgba(255,255,255,0.065) 46deg, rgba(201,169,110,0.080) 104deg, transparent 172deg, rgba(255,255,255,0.040) 252deg, transparent 360deg)",
-            borderRadius: "44% 56% 48% 52% / 54% 42% 58% 46%",
-            filter: "blur(58px)",
-            mixBlendMode: "screen",
-            transform: "rotate(-8deg) scale(1.08)",
-          }}
-        />
-        <div
-          className="absolute left-[-18%] top-[-8%] h-[92%] w-[136%] opacity-45"
-          style={{
-            background:
-              "radial-gradient(ellipse 82% 68% at 46% 44%, rgba(255,255,255,0.090) 0%, rgba(255,255,255,0.038) 32%, transparent 70%)",
-            borderRadius: "58% 42% 54% 46% / 36% 62% 38% 64%",
-            backdropFilter: "blur(28px) saturate(1.24)",
-            filter: "blur(24px)",
-            transform: "rotate(5deg)",
-          }}
-        />
-        <div
-          className="absolute right-[-22%] bottom-[-18%] h-[76%] w-[118%] opacity-40"
-          style={{
-            background:
-              "radial-gradient(ellipse 78% 70% at 58% 48%, rgba(201,169,110,0.105) 0%, rgba(201,169,110,0.036) 36%, transparent 72%)",
-            borderRadius: "46% 54% 48% 52% / 58% 34% 66% 42%",
-            backdropFilter: "blur(34px) saturate(1.18)",
-            filter: "blur(30px)",
-            transform: "rotate(-10deg)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-85"
-          style={{
-            background:
-              "radial-gradient(ellipse 56% 42% at 50% 50%, rgba(0,0,0,0.76) 0%, rgba(0,0,0,0.54) 42%, rgba(0,0,0,0.18) 72%, transparent 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 118% 95% at 50% 48%, transparent 40%, rgba(0,0,0,0.54) 82%, rgba(0,0,0,0.86) 100%)",
-          }}
-        />
-      </div>
+
 
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center perspective-1000">
 
@@ -456,7 +397,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
 
               const baseRadius = Math.min(containerSize.width, containerSize.height * 1.5);
               const arcRadius = baseRadius * (isMobile ? 1.4 : 1.1);
-              const arcApexY = containerSize.height * (isMobile ? 0.35 : 0.25);
+              const arcApexY = containerSize.height * (isMobile ? 0.20 : 0.05);
               const arcCenterY = arcApexY + arcRadius;
               const spreadAngle = isMobile ? 100 : 130;
               const startAngle = -90 - spreadAngle / 2;
