@@ -26,7 +26,7 @@ export function RoutineSection() {
             const proof = getProductProof(step.product.id);
 
             return (
-              <li key={step.step} className="rounded-3xl border border-white/12 bg-white/[0.02] p-5 md:p-6">
+              <li key={step.step} className="rounded-3xl border border-border-subtle bg-surface-subtle p-5 md:p-6">
                 <div className="grid gap-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:items-center">
                   <div className="relative aspect-square overflow-hidden rounded-2xl">
                     <Image
@@ -51,7 +51,7 @@ export function RoutineSection() {
                     <p className="text-sm leading-relaxed text-text-secondary">{step.description}</p>
                     <p className="text-xs uppercase tracking-[0.14em] text-accent-gold">{proof.socialProof}</p>
 
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border-subtle pt-3">
                       <p className="text-sm text-text-secondary">{step.product.name}</p>
                       <CTAButton
                         href={getAffiliateRoute(step.product.id, "routine-step")}

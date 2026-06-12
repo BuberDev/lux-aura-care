@@ -130,14 +130,14 @@ export default function HomePage() {
       />
       <div className="absolute top-0 left-0 w-full h-[100svh] -z-20 pointer-events-none">
         <EtheralShadow
-          color="rgba(128, 128, 128, 1)"
+          color="var(--hero-aura)"
           animation={{ scale: 100, speed: 90 }}
           noise={{ opacity: 1, scale: 1.2 }}
           sizing="fill"
         />
       </div>
 
-      <section className="relative isolate h-[calc(100svh-4.5rem)] md:h-[calc(100svh-6.25rem)] min-h-[650px] border-b border-white/10 overflow-hidden">
+      <section className="relative isolate h-[calc(100svh-4.5rem)] md:h-[calc(100svh-6.25rem)] min-h-[650px] border-b border-border-subtle overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <ScrollMorphHero products={heroProducts} />
         </div>
@@ -146,7 +146,7 @@ export default function HomePage() {
           <Container className="pointer-events-auto">
             <ul className="grid gap-3 md:grid-cols-3" aria-label="Trust signals">
               {trustSignals.map((item) => (
-                <li key={item.label} className="rounded-2xl border border-white/12 bg-black/30 backdrop-blur-md px-4 py-4 shadow-xl">
+                <li key={item.label} className="theme-on-image rounded-2xl border border-border-subtle bg-black/30 backdrop-blur-md px-4 py-4 shadow-xl">
                   <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-accent-gold">
                     <item.icon className="size-4" aria-hidden="true" />
                     {item.label}
@@ -160,16 +160,16 @@ export default function HomePage() {
       </section>
 
       {/* ===== SHOP SECTION ===== */}
-      <Section className="border-b border-white/10 py-16">
+      <Section className="border-b border-border-subtle py-16">
         <Container>
           <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.2em] mb-3" style={{ color: "#c9a96e" }}>
+            <p className="text-xs uppercase tracking-[0.2em] mb-3" style={{ color: "var(--accent-gold)" }}>
               New · Skin Rituals
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl text-text-primary mb-4">
               Shop our ritual essentials
             </h2>
-            <p className="text-base max-w-lg mx-auto" style={{ color: "#a8a8a8" }}>
+            <p className="text-base max-w-lg mx-auto" style={{ color: "var(--text-secondary)" }}>
               Clinic-quality results at home. Designed for women 40+.
             </p>
           </div>
@@ -179,8 +179,7 @@ export default function HomePage() {
               <Link
                 key={product.id}
                 href={`/shop/${product.id}`}
-                className="group block rounded-2xl border border-white/10 overflow-hidden hover:border-white/25 transition-all duration-300"
-                style={{ background: "rgb(255 255 255 / 0.02)" }}
+                className="group block overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle transition-all duration-300 hover:border-border-strong"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
@@ -193,24 +192,24 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <span
                     className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full"
-                    style={{ background: "#c9a96e", color: "#000" }}
+                    style={{ background: "var(--accent-gold)", color: "#000" }}
                   >
                     {product.badge}
                   </span>
                 </div>
                 <div className="p-5 space-y-3">
-                  <h3 className="font-heading text-lg text-white">{product.name}</h3>
+                  <h3 className="font-heading text-lg text-text-primary">{product.name}</h3>
                   <ul className="space-y-1">
                     {product.benefits.slice(0, 2).map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-xs" style={{ color: "#a8a8a8" }}>
-                        <Check className="size-3.5 mt-0.5 shrink-0" style={{ color: "#c9a96e" }} />
+                      <li key={b} className="flex items-start gap-2 text-xs" style={{ color: "var(--text-secondary)" }}>
+                        <Check className="size-3.5 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
                         {b}
                       </li>
                     ))}
                   </ul>
                   <div className="flex items-baseline gap-2 pt-1">
-                    <span className="text-xl font-bold text-white">€{product.price.toFixed(2)}</span>
-                    <span className="text-sm line-through" style={{ color: "#a8a8a8" }}>€{product.compareAtPrice.toFixed(2)}</span>
+                    <span className="text-xl font-bold text-text-primary">€{product.price.toFixed(2)}</span>
+                    <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>€{product.compareAtPrice.toFixed(2)}</span>
                   </div>
                 </div>
               </Link>

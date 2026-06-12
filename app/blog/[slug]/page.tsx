@@ -76,9 +76,9 @@ function ArticleProductBlock({ productId }: { productId: string }) {
   const proof = getProductProof(product.id);
 
   return (
-    <div className="my-10 rounded-3xl border border-accent-gold/30 bg-white/[0.02] p-6 md:p-8">
+    <div className="my-10 rounded-3xl border border-accent-gold/30 bg-surface-subtle p-6 md:p-8">
       <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)] md:items-center">
-        <div className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-white/10">
+        <div className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-border-subtle">
           <Image
             src={product.image}
             alt={product.imageAlt}
@@ -210,7 +210,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(faqJsonLd) }}
       />
-      <section className="relative isolate overflow-hidden border-b border-white/10">
+      <section className="relative isolate overflow-hidden border-b border-border-subtle">
         <div className="relative h-[58vh] min-h-[440px]">
           <Image
             src={article.heroImage}
@@ -224,9 +224,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div>
 
         <Container className="relative -mt-40 pb-14">
-          <div className="max-w-4xl rounded-[2.5rem] border border-white/12 bg-black/70 p-8 backdrop-blur-sm md:p-10">
+          <div className="theme-on-image max-w-4xl rounded-[2.5rem] border border-border-subtle bg-black/70 p-8 text-text-primary backdrop-blur-sm md:p-10">
             {category ? <Badge>{category.name}</Badge> : null}
-            <h1 className="mt-4 font-heading text-4xl leading-tight sm:text-5xl md:text-6xl">{article.title}</h1>
+            <h1 className="mt-4 font-heading text-4xl leading-tight text-text-primary sm:text-5xl md:text-6xl">
+              {article.title}
+            </h1>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">{article.intro}</p>
 
             <div className="mt-6 flex flex-wrap gap-4 text-xs uppercase tracking-[0.16em] text-text-secondary">
@@ -235,7 +237,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <span>{article.pinHook}</span>
             </div>
 
-            <div className="mt-7 rounded-2xl border border-white/15 bg-white/[0.03] p-5">
+            <div className="mt-7 rounded-2xl border border-border-default bg-surface-raised p-5">
               <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">What you will get from this guide</p>
               <ul className="mt-3 space-y-2 text-sm text-text-secondary md:text-base">
                 {hookPoints.map((point) => (
@@ -263,7 +265,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
             <article className="max-w-4xl">
               {article.sections.map((section, index) => (
-                <div key={section.id} className="mb-8 scroll-mt-28 rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8" id={section.id}>
+                <div key={section.id} className="mb-8 scroll-mt-28 rounded-3xl border border-border-subtle bg-surface-subtle p-6 md:p-8" id={section.id}>
                   <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">Step {index + 1}</p>
                   <h2 className="mt-2 font-heading text-3xl leading-tight">{section.title}</h2>
                   <p className="mt-4 text-base leading-relaxed text-text-secondary">{section.copy}</p>
@@ -291,7 +293,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </article>
 
             <aside className="hidden lg:block lg:sticky lg:top-28">
-              <div className="space-y-5 rounded-3xl border border-white/12 bg-white/[0.02] p-6">
+              <div className="space-y-5 rounded-3xl border border-border-subtle bg-surface-subtle p-6">
                 <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-accent-gold">
                   <Layers3 className="size-4" aria-hidden="true" />
                   Quick Jump
@@ -302,7 +304,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     <Link
                       key={section.id}
                       href={`#${section.id}`}
-                      className="group flex items-center justify-between rounded-xl border border-transparent px-3 py-2 text-sm text-text-secondary transition-colors hover:border-white/10 hover:text-text-primary"
+                      className="group flex items-center justify-between rounded-xl border border-transparent px-3 py-2 text-sm text-text-secondary transition-colors hover:border-border-subtle hover:text-text-primary"
                     >
                       {section.title}
                       <ArrowRight className="size-4 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
@@ -310,7 +312,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   ))}
                 </nav>
 
-                <div className="rounded-2xl border border-white/12 bg-black/35 p-4">
+                <div className="rounded-2xl border border-border-subtle bg-surface-raised p-4">
                   <p className="mb-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
                     <Flame className="size-4" aria-hidden="true" />
                     Popular This Week
@@ -325,7 +327,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                             href={getAffiliateRoute(product.id, "article-sidebar")}
                             target="_blank"
                             rel="noopener noreferrer sponsored"
-                            className="group block rounded-lg border border-transparent px-2 py-2 text-sm text-text-secondary transition-colors hover:border-white/10 hover:text-text-primary"
+                            className="group block rounded-lg border border-transparent px-2 py-2 text-sm text-text-secondary transition-colors hover:border-border-subtle hover:text-text-primary"
                           >
                             <span className="flex items-center justify-between gap-2">
                               {product.name}

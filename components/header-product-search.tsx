@@ -86,7 +86,7 @@ export function HeaderProductSearch({
           placeholder={placeholder}
           autoComplete="off"
           className={cn(
-            "h-11 w-full rounded-full border border-white/15 bg-black/35 pl-10 pr-4 text-sm text-text-primary shadow-[0_6px_20px_rgba(0,0,0,0.28)] outline-none transition-colors placeholder:text-text-secondary focus-visible:border-accent-gold",
+            "h-11 w-full rounded-full border border-border-default bg-surface-glass pl-10 pr-4 text-sm text-text-primary shadow-[0_6px_20px_rgba(0,0,0,0.28)] outline-none transition-colors placeholder:text-text-secondary focus-visible:border-accent-gold",
             inputClassName
           )}
           aria-autocomplete="list"
@@ -96,14 +96,14 @@ export function HeaderProductSearch({
       </div>
 
       {showDropdown ? (
-        <div className="absolute left-0 right-0 top-[calc(100%+0.55rem)] z-[100] overflow-hidden rounded-2xl border border-white/15 bg-[#0b0b0b]/95 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+        <div className="absolute left-0 right-0 top-[calc(100%+0.55rem)] z-[100] overflow-hidden rounded-2xl border border-border-default bg-surface-base/95 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
           {hasResults ? (
             <ul id={listboxId} className="max-h-80 overflow-y-auto py-2" role="listbox" aria-label="Product suggestions">
               {suggestions.map((product) => (
                 <li key={product.id}>
                   <Link
                     href={`/favorites/${product.id}`}
-                    className="block px-4 py-2.5 text-sm text-text-primary transition-colors hover:bg-white/8 hover:text-accent-gold"
+                    className="block px-4 py-2.5 text-sm text-text-primary transition-colors hover:bg-surface-raised hover:text-accent-gold"
                     onClick={() => {
                       setQuery("");
                       setIsFocused(false);

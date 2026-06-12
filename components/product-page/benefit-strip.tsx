@@ -10,7 +10,7 @@ const icons = [Droplets, Sparkles, Wind, ShieldCheck] as const;
 
 export function BenefitStrip({ items }: BenefitStripProps) {
   return (
-    <section className="border-b border-black/10 bg-background-secondary py-7 md:py-9">
+    <section className="border-b border-inverse-border bg-background-secondary py-7 md:py-9">
       <Container>
         <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label="Quick benefits">
           {items.map((item, index) => {
@@ -19,7 +19,7 @@ export function BenefitStrip({ items }: BenefitStripProps) {
             return (
               <li
                 key={item}
-                className="flex items-center gap-3 rounded-2xl border border-black/10 bg-black/[0.02] px-4 py-4 text-background-primary"
+                className="flex items-center gap-3 rounded-2xl border border-inverse-border bg-inverse-surface px-4 py-4 text-background-primary"
               >
                 <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-accent-gold/15 text-accent-gold">
                   <Icon className="size-4" aria-hidden="true" />

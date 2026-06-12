@@ -35,7 +35,7 @@ export function ProductCard({
   const dynamicCTALabel = generateCTALabel(product, strategy, compact);
 
   return (
-    <Card className="overflow-hidden border-white/12 bg-white/[0.02] transition-colors hover:border-accent-gold/45">
+    <Card className="overflow-hidden border-border-subtle bg-surface-subtle transition-colors hover:border-accent-gold/45">
       <div className={compact ? "grid gap-4 p-4" : "grid gap-5 p-5 md:p-6"}>
         <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
           <Image
@@ -71,7 +71,7 @@ export function ProductCard({
             ))}
           </ul>
 
-          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle pt-3">
             <span className="text-xs uppercase tracking-[0.14em] text-text-secondary">{proof.reviews}</span>
             <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.14em] text-accent-gold">
               <TrendingUp className="size-3.5" aria-hidden="true" />

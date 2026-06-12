@@ -33,7 +33,7 @@ export default function PinMapPage() {
             return (
               <article
                 key={pin.id}
-                className="rounded-2xl border border-white/12 bg-white/[0.02] p-5"
+                className="rounded-2xl border border-border-subtle bg-surface-subtle p-5"
               >
                 <div className="flex flex-wrap items-center gap-3">
                   <Badge>{pin.campaign}</Badge>

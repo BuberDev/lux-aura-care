@@ -553,7 +553,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : reviews.items;
 
   return (
-    <div className="min-h-screen font-sans selection:bg-accent-gold/20 selection:text-white" style={{ background: "#000000" }}>
+    <div className="min-h-screen bg-background-primary font-sans selection:bg-accent-gold/20 selection:text-text-primary">
       
       {/* 1. URGENCY TOP ANNOUNCEMENT BANNER */}
       <div className="bg-accent-gold py-2 px-4 text-center select-none text-[11px] md:text-xs font-bold text-black uppercase tracking-[0.2em] relative overflow-hidden z-30">
@@ -567,14 +567,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </div>
 
       {/* Breadcrumb Navigation */}
-      <div className="border-b border-white/10 py-3 px-4 relative z-10 bg-black/50 backdrop-blur-md">
+      <div className="border-b border-border-subtle py-3 px-4 relative z-10 bg-surface-glass backdrop-blur-md">
         <Container>
-          <nav className="text-xs flex gap-2" style={{ color: "#a8a8a8" }}>
-            <a href="/" className="hover:text-white transition-colors">Home</a>
+          <nav className="text-xs flex gap-2" style={{ color: "var(--text-secondary)" }}>
+            <a href="/" className="hover:text-text-primary transition-colors">Home</a>
             <span>/</span>
-            <a href="/shop" className="hover:text-white transition-colors">Shop</a>
+            <a href="/shop" className="hover:text-text-primary transition-colors">Shop</a>
             <span>/</span>
-            <span className="text-white">{product.name}</span>
+            <span className="text-text-primary">{product.name}</span>
           </nav>
         </Container>
       </div>
@@ -583,7 +583,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <section ref={heroSectionRef} className="py-8 md:py-16 px-4 relative overflow-hidden">
         {/* Subtle Luxury Glowing Orbs */}
         <div className="absolute top-[10%] left-[-10%] size-96 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[20%] right-[-10%] size-96 rounded-full bg-white/5 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[20%] right-[-10%] size-96 rounded-full bg-surface-raised blur-[120px] pointer-events-none" />
 
         <Container>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start relative z-10">
@@ -591,7 +591,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {/* LEFT: Premium Image Gallery */}
             <div className="lg:col-span-7 space-y-4">
               <div 
-                className="relative aspect-square overflow-hidden rounded-2xl border border-white/12 bg-white/[0.01] group shadow-2xl cursor-zoom-in"
+                className="relative aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle group shadow-2xl cursor-zoom-in"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsLightboxOpen(true)}
@@ -615,18 +615,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 
                 <span
                   className="absolute top-4 left-4 text-xs md:text-sm font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider pointer-events-none"
-                  style={{ background: "#c9a96e", color: "#000" }}
+                  style={{ background: "var(--accent-gold)", color: "#000" }}
                 >
                   {galleryImages[activeGalleryIndex].badge}
                 </span>
 
                 {/* Amazon-style "Click to expand" floating indicator */}
-                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white/95 rounded-full p-2.5 border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="theme-on-image absolute top-4 right-4 bg-black/60 backdrop-blur-md text-text-primary/95 rounded-full p-2.5 border border-border-subtle opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <ZoomIn className="size-4 text-accent-gold" />
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10 pointer-events-none">
-                  <p className="text-xs text-white/90 font-medium">
+                <div className="theme-on-image absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-border-subtle pointer-events-none">
+                  <p className="text-xs text-text-primary/90 font-medium">
                     {galleryImages[activeGalleryIndex].desc}
                   </p>
                 </div>
@@ -638,10 +638,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <button
                     key={img.label}
                     onClick={() => setActiveGalleryIndex(i)}
-                    className={`relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
+                    className={`theme-on-image relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
                       activeGalleryIndex === i 
                         ? "border-accent-gold scale-[1.03] ring-1 ring-accent-gold/30 shadow-[0_0_15px_rgba(201,169,110,0.15)]" 
-                        : "border-white/10 hover:border-white/35 opacity-70 hover:opacity-95"
+                        : "border-border-subtle hover:border-border-strong opacity-70 hover:opacity-95"
                     }`}
                   >
                     <Image
@@ -652,7 +652,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       className={`object-cover ${img.filter || ""}`}
                     />
                     <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
-                    <div className="absolute bottom-1 left-1 right-1 text-[8px] md:text-[9px] bg-black/80 text-white/80 py-0.5 rounded text-center truncate">
+                    <div className="absolute bottom-1 left-1 right-1 text-[8px] md:text-[9px] bg-black/80 text-text-primary/80 py-0.5 rounded text-center truncate">
                       {img.label}
                     </div>
                   </button>
@@ -661,18 +661,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </div>
 
             {/* RIGHT: Conversion Buy Box */}
-            <div className="lg:col-span-5 space-y-6 bg-white/[0.01] border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative">
+            <div className="lg:col-span-5 space-y-6 bg-surface-subtle border border-border-subtle rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative">
               <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-red-950/40 text-red-400 border border-red-900/30 px-3 py-1 rounded-full text-xs font-semibold animate-pulse">
                 <Flame className="size-3.5 fill-red-400" />
                 <span>Trending Pick</span>
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] mb-2 font-bold" style={{ color: "#c9a96e" }}>
+                <p className="text-xs uppercase tracking-[0.2em] mb-2 font-bold" style={{ color: "var(--accent-gold)" }}>
                   {product.category === "bundle" ? "⭐ Best Value Bundle" : "✨ Skin Ritual Essential"}
                 </p>
                 <h1
-                  className="text-3xl md:text-4xl font-semibold text-white mb-3"
+                  className="text-3xl md:text-4xl font-semibold text-text-primary mb-3"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                 >
                   {product.name}
@@ -685,7 +685,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {/* Verified Rating click-to-scroll */}
               <div 
                 onClick={scrollToReviews} 
-                className="flex items-center gap-3 cursor-pointer group bg-white/[0.02] hover:bg-white/[0.04] p-2 rounded-xl transition-all duration-300 inline-flex"
+                className="flex items-center gap-3 cursor-pointer group bg-surface-subtle hover:bg-surface-raised p-2 rounded-xl transition-all duration-300 inline-flex"
               >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -693,31 +693,31 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       key={i}
                       className="size-4 group-hover:scale-110 transition-transform duration-300"
                       style={{
-                        fill: i < Math.floor(product.rating) ? "#c9a96e" : "transparent",
-                        color: "#c9a96e",
+                        fill: i < Math.floor(product.rating) ? "var(--accent-gold)" : "transparent",
+                        color: "var(--accent-gold)",
                       }}
                     />
                   ))}
                 </div>
-                <span className="text-sm font-semibold text-white">{product.rating}</span>
-                <span className="text-xs border-b border-text-secondary group-hover:text-white group-hover:border-white transition-colors" style={{ color: "#a8a8a8" }}>
+                <span className="text-sm font-semibold text-text-primary">{product.rating}</span>
+                <span className="text-xs border-b border-text-secondary group-hover:text-text-primary group-hover:border-border-strong transition-colors" style={{ color: "var(--text-secondary)" }}>
                   ({reviews.reviewsCount} verified reviews)
                 </span>
               </div>
 
               {/* Price Block & Save Indicator */}
-              <div className="border-t border-b border-white/10 py-4 flex items-center justify-between gap-4">
+              <div className="border-t border-b border-border-subtle py-4 flex items-center justify-between gap-4">
                 <div className="space-y-1">
                   <p className="text-[10px] text-text-secondary uppercase tracking-widest font-semibold">Special Offer Price</p>
                   <div className="flex items-baseline gap-3">
-                    <span className="text-4xl font-extrabold text-white">€{product.price.toFixed(2)}</span>
+                    <span className="text-4xl font-extrabold text-text-primary">€{product.price.toFixed(2)}</span>
                     <span className="text-base line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
                   </div>
                 </div>
                 <div className="text-right">
                   <span
                     className="text-xs md:text-sm font-extrabold px-3.5 py-1.5 rounded-full inline-block animate-bounce shadow-lg"
-                    style={{ background: "rgb(201 169 110 / 0.18)", color: "#c9a96e", border: "1px solid rgb(201 169 110 / 0.3)" }}
+                    style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
                   >
                     Save {discount}% Now
                   </span>
@@ -726,10 +726,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
 
               {/* SCARCITY ELEMENTS PANEL */}
-              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 space-y-3.5 text-xs">
+              <div className="bg-surface-subtle border border-border-subtle rounded-2xl p-4 space-y-3.5 text-xs">
                 
                 {/* 1. Real-time viewers */}
-                <div className="flex items-center justify-between text-white/95">
+                <div className="flex items-center justify-between text-text-primary/95">
                   <div className="flex items-center gap-2">
                     <span className="relative flex size-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75"></span>
@@ -749,7 +749,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     <span>Stock status</span>
                     <span className="text-red-400 font-bold">Only {stockLeft} items left in stock</span>
                   </div>
-                  <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
                     <div 
                       className="h-full rounded-full bg-gradient-to-r from-red-500 to-accent-gold transition-all duration-1000 shadow-[0_0_8px_rgba(201,169,110,0.5)]" 
                       style={{ width: `${(stockLeft / 15) * 100}%` }}
@@ -758,7 +758,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
 
                 {/* 3. Timer Scarcity */}
-                <div className="flex items-center justify-between text-text-secondary border-t border-white/5 pt-2">
+                <div className="flex items-center justify-between text-text-secondary border-t border-border-subtle pt-2">
                   <div className="flex items-center gap-1.5">
                     <Clock className="size-3.5 text-accent-gold" />
                     <span>Flash Sale Ending Soon:</span>
@@ -778,7 +778,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative block w-full text-center py-4.5 rounded-xl text-base font-extrabold text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden"
-                  style={{ background: "#c9a96e" }}
+                  style={{ background: "var(--accent-gold)" }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     BUY NOW & START YOUR GLOW RITUAL
@@ -791,32 +791,32 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {/* Secure payments strip */}
                 <div className="flex items-center justify-center gap-2 pt-1">
                   <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-widest">Guaranteed Safe Checkout</span>
-                  <div className="h-px bg-white/10 flex-1" />
-                  <span className="text-[10px] text-white/40 font-bold">VISA • MC • AMEX • APPLE PAY</span>
+                  <div className="h-px bg-surface-hover flex-1" />
+                  <span className="text-[10px] text-text-primary/40 font-bold">VISA • MC • AMEX • APPLE PAY</span>
                 </div>
               </div>
 
               {/* Benefit Bullet points list */}
               <ul className="space-y-3 pt-2 text-xs md:text-sm">
                 {product.benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start gap-3" style={{ color: "#a8a8a8" }}>
-                    <Check className="size-4.5 mt-0.5 shrink-0" style={{ color: "#c9a96e" }} />
+                  <li key={benefit} className="flex items-start gap-3" style={{ color: "var(--text-secondary)" }}>
+                    <Check className="size-4.5 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
                     <span>{benefit}</span>
                   </li>
                 ))}
               </ul>
 
               {/* Delivery and Guarantee Strip */}
-              <div className="grid grid-cols-3 gap-3 border-t border-white/10 pt-4">
+              <div className="grid grid-cols-3 gap-3 border-t border-border-subtle pt-4">
                 {[
                   { icon: Truck, text: "Free EU Delivery", sub: "Orders €30+" },
                   { icon: ShieldCheck, text: "30-Day Guarantee", sub: "100% Risk-Free" },
                   { icon: RotateCcw, text: "Hassle-Free Returns", sub: "Easy refund support" },
                 ].map(({ icon: Icon, text, sub }) => (
-                  <div key={text} className="flex flex-col items-center gap-1 text-center rounded-xl border border-white/5 bg-white/[0.01] p-3">
-                    <Icon className="size-4" style={{ color: "#c9a96e" }} />
-                    <span className="text-[10px] font-bold text-white leading-tight">{text}</span>
-                    <span className="text-[9px]" style={{ color: "#a8a8a8" }}>{sub}</span>
+                  <div key={text} className="flex flex-col items-center gap-1 text-center rounded-xl border border-border-subtle bg-surface-subtle p-3">
+                    <Icon className="size-4" style={{ color: "var(--accent-gold)" }} />
+                    <span className="text-[10px] font-bold text-text-primary leading-tight">{text}</span>
+                    <span className="text-[9px]" style={{ color: "var(--text-secondary)" }}>{sub}</span>
                   </div>
                 ))}
               </div>
@@ -828,7 +828,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 3. SCIENCE & TRUST BADGE STRIP */}
-      <section className="border-t border-b border-white/10 py-8 bg-white/[0.01]">
+      <section className="border-t border-b border-border-subtle py-8 bg-surface-subtle">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -838,8 +838,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               { label: "ZERO IRRITATION", value: "Micro-safety guards built" }
             ].map(({ label, value }) => (
               <div key={label} className="space-y-1">
-                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "#c9a96e" }}>{label}</p>
-                <p className="text-xs text-white font-medium">{value}</p>
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>{label}</p>
+                <p className="text-xs text-text-primary font-medium">{value}</p>
               </div>
             ))}
           </div>
@@ -847,13 +847,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 4. VISUAL BEFORE & AFTER SECTION */}
-      <section className="py-16 px-4 border-b border-white/10 relative">
+      <section className="py-16 px-4 border-b border-border-subtle relative">
         <div className="absolute top-[20%] right-[-10%] size-80 rounded-full bg-accent-gold/3 blur-[100px] pointer-events-none" />
 
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "#c9a96e" }}>VISUAL RESULTS PROVEN</span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>VISUAL RESULTS PROVEN</span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               See The Glow Transformation
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
@@ -870,7 +870,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
               <ul className="space-y-3.5">
                 {beforeAfter.before.map(step => (
-                  <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-white/70">
+                  <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-text-primary/70">
                     <X className="size-4 text-red-500 shrink-0 mt-0.5" />
                     <span>{step}</span>
                   </li>
@@ -891,7 +891,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
               <ul className="space-y-3.5">
                 {beforeAfter.after.map(step => (
-                  <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-white font-semibold">
+                  <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-text-primary font-semibold">
                     <Check className="size-4 text-accent-gold shrink-0 mt-0.5" />
                     <span>{step}</span>
                   </li>
@@ -903,11 +903,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 5. LUX AURA CARE VS. TRADITIONAL BRANDS MATRIX */}
-      <section className="py-16 px-4 border-b border-white/10 relative bg-white/[0.005]">
+      <section className="py-16 px-4 border-b border-border-subtle relative bg-surface-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "#c9a96e" }}>AWARENESS OF EXCELLENCE</span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>AWARENESS OF EXCELLENCE</span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               How We Benchmark Against Generics
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
@@ -915,32 +915,32 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+          <div className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-border-subtle shadow-2xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-white/[0.02] border-b border-white/10 text-xs md:text-sm uppercase tracking-wider font-semibold text-white">
+                  <tr className="bg-surface-subtle border-b border-border-subtle text-xs md:text-sm uppercase tracking-wider font-semibold text-text-primary">
                     <th className="p-4 md:p-5">Ritual Standard</th>
                     <th className="p-4 md:p-5 text-accent-gold bg-accent-gold/5 font-extrabold text-center">Lux Aura Care</th>
                     <th className="p-4 md:p-5 text-text-secondary text-center">Standard Brands</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-xs md:text-sm text-white/80">
+                <tbody className="divide-y divide-border-subtle text-xs md:text-sm text-text-primary/80">
                   {compareMatrix.map(({ feature, premium, cheap, icon: Icon }) => (
-                    <tr key={feature} className="hover:bg-white/[0.01] transition-colors">
-                      <td className="p-4 md:p-5 font-semibold text-white flex items-center gap-2">
+                    <tr key={feature} className="hover:bg-surface-subtle transition-colors">
+                      <td className="p-4 md:p-5 font-semibold text-text-primary flex items-center gap-2">
                         <Icon className="size-4 text-accent-gold shrink-0" />
                         <span>{feature}</span>
                       </td>
-                      <td className="p-4 md:p-5 bg-accent-gold/[0.02] font-semibold border-l border-r border-white/5 text-center">
-                        <div className="flex flex-col items-center gap-1 text-white">
+                      <td className="p-4 md:p-5 bg-accent-gold/[0.02] font-semibold border-l border-r border-border-subtle text-center">
+                        <div className="flex flex-col items-center gap-1 text-text-primary">
                           <Check className="size-5 text-accent-gold" />
                           <span className="text-[10px] md:text-xs text-accent-gold/90 font-medium leading-tight">{premium}</span>
                         </div>
                       </td>
                       <td className="p-4 md:p-5 text-center text-text-secondary">
                         <div className="flex flex-col items-center gap-1">
-                          <X className="size-4 text-white/30" />
+                          <X className="size-4 text-text-primary/30" />
                           <span className="text-[10px] md:text-xs leading-tight">{cheap}</span>
                         </div>
                       </td>
@@ -954,11 +954,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
-      <section className="py-16 px-4 border-b border-white/10">
+      <section className="py-16 px-4 border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "#c9a96e" }}>ENGINEERED BEAUTY</span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>ENGINEERED BEAUTY</span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               The Science Behind The Glow
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
@@ -970,15 +970,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {scienceBenefits.map((science, idx) => (
               <div 
                 key={science.title} 
-                className="border border-white/10 bg-white/[0.01] rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent-gold/30 hover:bg-white/[0.02] hover:shadow-[0_10px_30px_rgba(201,169,110,0.05)] transition-all duration-500"
+                className="border border-border-subtle bg-surface-subtle rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent-gold/30 hover:bg-surface-subtle hover:shadow-[0_10px_30px_rgba(201,169,110,0.05)] transition-all duration-500"
               >
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase bg-accent-gold/10 px-3 py-1 rounded-full border border-accent-gold/20">
                     {science.badge}
                   </span>
-                  <span className="text-2xl font-bold text-white/20 font-serif">0{idx + 1}</span>
+                  <span className="text-2xl font-bold text-text-primary/20 font-serif">0{idx + 1}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white font-serif">{science.title}</h3>
+                <h3 className="text-xl font-bold text-text-primary font-serif">{science.title}</h3>
                 <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
                   {science.desc}
                 </p>
@@ -989,11 +989,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 7. "THE GLOW RITUAL" GUIDE (HOW TO USE) */}
-      <section className="py-16 px-4 border-b border-white/10 bg-white/[0.005]">
+      <section className="py-16 px-4 border-b border-border-subtle bg-surface-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "#c9a96e" }}>SENSORY SELF-CARE STEP-BY-STEP</span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>SENSORY SELF-CARE STEP-BY-STEP</span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Your Guided Weekly Glow Ritual
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
@@ -1005,19 +1005,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {product.howToUse.map((step, i) => (
               <li
                 key={step}
-                className="relative flex flex-col gap-4 p-6 md:p-8 rounded-2xl border border-white/10 bg-white/[0.01] hover:border-white/20 transition-all duration-300"
+                className="relative flex flex-col gap-4 p-6 md:p-8 rounded-2xl border border-border-subtle bg-surface-subtle hover:border-border-default transition-all duration-300"
               >
                 <div 
                   className="size-10 rounded-full flex items-center justify-center text-sm font-extrabold shrink-0 text-black shadow-lg"
-                  style={{ background: "#c9a96e" }}
+                  style={{ background: "var(--accent-gold)" }}
                 >
                   {i + 1}
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-1.5">
+                  <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-1.5">
                     Phase 0{i + 1}
                   </h4>
-                  <p className="text-xs md:text-sm leading-relaxed" style={{ color: "#a8a8a8" }}>
+                  <p className="text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                     {step}
                   </p>
                 </div>
@@ -1028,13 +1028,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 8. AMAZON-STYLE CUSTOMER REVIEWS BREAKDOWN & REVIEWS */}
-      <section ref={reviewsSectionRef} className="py-16 px-4 border-b border-white/10 relative">
+      <section ref={reviewsSectionRef} className="py-16 px-4 border-b border-border-subtle relative">
         <div className="absolute top-[20%] left-[-10%] size-80 rounded-full bg-accent-gold/4 blur-[100px] pointer-events-none" />
 
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "#c9a96e" }}>AUTHENTIC PROOF</span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>AUTHENTIC PROOF</span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Real Customer Verified Experiences
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
@@ -1045,17 +1045,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-12 items-start">
             
             {/* Scorecard (Left - 5 columns) */}
-            <div className="lg:col-span-4 bg-white/[0.01] border border-white/10 rounded-2xl p-6 space-y-4">
+            <div className="lg:col-span-4 bg-surface-subtle border border-border-subtle rounded-2xl p-6 space-y-4">
               <div className="text-center space-y-1">
-                <p className="text-5xl font-extrabold text-white">{reviews.rating}</p>
+                <p className="text-5xl font-extrabold text-text-primary">{reviews.rating}</p>
                 <div className="flex justify-center">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className="size-5"
                       style={{
-                        fill: i < Math.floor(reviews.rating) ? "#c9a96e" : "transparent",
-                        color: "#c9a96e",
+                        fill: i < Math.floor(reviews.rating) ? "var(--accent-gold)" : "transparent",
+                        color: "var(--accent-gold)",
                       }}
                     />
                   ))}
@@ -1064,19 +1064,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
 
               {/* Star Distribution Breakdown */}
-              <div className="space-y-2.5 pt-4 border-t border-white/10 text-xs">
+              <div className="space-y-2.5 pt-4 border-t border-border-subtle text-xs">
                 {reviews.breakdown.map(({ stars, percentage }) => (
                   <button
                     key={stars}
                     onClick={() => {
                       setSelectedReviewStarFilter(prev => prev === stars ? null : stars);
                     }}
-                    className={`w-full flex items-center gap-3 text-text-secondary hover:text-white transition-colors group text-left ${
-                      selectedReviewStarFilter === stars ? "text-white font-bold" : ""
+                    className={`w-full flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors group text-left ${
+                      selectedReviewStarFilter === stars ? "text-text-primary font-bold" : ""
                     }`}
                   >
                     <span className="w-10 text-right group-hover:underline">{stars} star</span>
-                    <div className="h-2.5 flex-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-2.5 flex-1 bg-surface-hover rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full transition-all duration-500 ${
                           selectedReviewStarFilter === stars ? "bg-accent-gold" : "bg-accent-gold/60 group-hover:bg-accent-gold"
@@ -1101,7 +1101,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
             {/* Individual Reviews list (Right - 8 columns) */}
             <div className="lg:col-span-8 space-y-5">
-              <div className="flex justify-between items-center text-xs text-text-secondary border-b border-white/5 pb-3">
+              <div className="flex justify-between items-center text-xs text-text-secondary border-b border-border-subtle pb-3">
                 <span>Showing {filteredReviews.length} of {reviews.items.length} featured comments</span>
                 <span className="flex items-center gap-1 font-bold text-accent-gold">
                   <ShieldCheck className="size-3.5" /> 100% Authentic Verified Buyers
@@ -1109,7 +1109,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
 
               {filteredReviews.length === 0 ? (
-                <div className="text-center py-8 border border-white/5 rounded-2xl bg-white/[0.01]">
+                <div className="text-center py-8 border border-border-subtle rounded-2xl bg-surface-subtle">
                   <p className="text-text-secondary text-sm">No reviews found for this star selection.</p>
                   <button 
                     onClick={() => setSelectedReviewStarFilter(null)} 
@@ -1120,11 +1120,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
               ) : (
                 filteredReviews.map((item) => (
-                  <div key={item.author} className="border border-white/10 bg-white/[0.01] rounded-2xl p-5 md:p-6 space-y-3.5 hover:border-white/20 transition-all duration-300">
+                  <div key={item.author} className="border border-border-subtle bg-surface-subtle rounded-2xl p-5 md:p-6 space-y-3.5 hover:border-border-default transition-all duration-300">
                     <div className="flex flex-wrap justify-between items-start gap-2">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-white">{item.author}</span>
+                          <span className="text-sm font-bold text-text-primary">{item.author}</span>
                           <span className="text-[10px] text-accent-gold/90 font-extrabold uppercase bg-accent-gold/10 px-2 py-0.5 rounded border border-accent-gold/20 flex items-center gap-1">
                             <ShieldCheck className="size-3" /> Verified Buyer
                           </span>
@@ -1137,8 +1137,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                             key={i}
                             className="size-3.5"
                             style={{
-                              fill: i < item.rating ? "#c9a96e" : "transparent",
-                              color: "#c9a96e",
+                              fill: i < item.rating ? "var(--accent-gold)" : "transparent",
+                              color: "var(--accent-gold)",
                             }}
                           />
                         ))}
@@ -1146,15 +1146,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     </div>
 
                     <div className="space-y-1.5">
-                      <p className="text-sm md:text-base font-bold text-white">{item.title}</p>
+                      <p className="text-sm md:text-base font-bold text-text-primary">{item.title}</p>
                       <p className="text-xs md:text-sm leading-relaxed text-text-secondary">
                         "{item.content}"
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-4 text-[10px] md:text-xs text-text-secondary border-t border-white/5 pt-3">
+                    <div className="flex items-center gap-4 text-[10px] md:text-xs text-text-secondary border-t border-border-subtle pt-3">
                       <span>Was this review helpful?</span>
-                      <button className="flex items-center gap-1 hover:text-white transition-colors bg-white/[0.03] hover:bg-white/[0.06] px-2.5 py-1 rounded-full border border-white/5">
+                      <button className="flex items-center gap-1 hover:text-text-primary transition-colors bg-surface-raised hover:bg-surface-raised px-2.5 py-1 rounded-full border border-border-subtle">
                         <ThumbsUp className="size-3" />
                         <span>Helpful ({item.helpfulCount})</span>
                       </button>
@@ -1169,11 +1169,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 9. FAQ ACCORDION SECTION */}
-      <section className="py-16 px-4 border-b border-white/10">
+      <section className="py-16 px-4 border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "#c9a96e" }}>CONFIDENCE IN MIND</span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>CONFIDENCE IN MIND</span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Frequently Asked Questions
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
@@ -1185,11 +1185,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {product.faq.map(({ q, a }, idx) => (
               <div
                 key={q}
-                className="rounded-xl border border-white/10 overflow-hidden bg-white/[0.01] hover:border-white/20 transition-all duration-300"
+                className="rounded-xl border border-border-subtle overflow-hidden bg-surface-subtle hover:border-border-default transition-all duration-300"
               >
                 <button 
                   onClick={() => setOpenFAQIndex(prev => prev === idx ? null : idx)}
-                  className="w-full flex items-center justify-between p-5 cursor-pointer text-white font-semibold text-left text-sm md:text-base hover:bg-white/[0.02]"
+                  className="w-full flex items-center justify-between p-5 cursor-pointer text-text-primary font-semibold text-left text-sm md:text-base hover:bg-surface-subtle"
                 >
                   <span>{q}</span>
                   <ChevronDown className={`size-4 transition-transform duration-300 shrink-0 ml-3 text-accent-gold ${
@@ -1198,10 +1198,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </button>
                 <div 
                   className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    openFAQIndex === idx ? "max-h-60 opacity-100 border-t border-white/5" : "max-h-0 opacity-0"
+                    openFAQIndex === idx ? "max-h-60 opacity-100 border-t border-border-subtle" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="p-5 text-xs md:text-sm leading-relaxed" style={{ color: "#a8a8a8" }}>
+                  <p className="p-5 text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                     {a}
                   </p>
                 </div>
@@ -1212,21 +1212,21 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 10. RISK-FREE "GLOW GUARANTEE" STAMP BANNER */}
-      <section className="py-16 px-4 bg-white/[0.005]">
+      <section className="py-16 px-4 bg-surface-subtle">
         <Container>
           <div className="max-w-4xl mx-auto rounded-3xl border border-accent-gold/20 bg-accent-gold/[0.02] p-8 md:p-12 shadow-[0_0_50px_rgba(201,169,110,0.05)] relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
             
             {/* Guarantee Circular Gold Badge Graphic */}
-            <div className="relative shrink-0 size-32 md:size-40 border-4 border-double border-accent-gold rounded-full flex flex-col items-center justify-center text-center p-3 rotate-[-5deg] select-none bg-black/60 shadow-2xl">
+            <div className="theme-on-image relative shrink-0 size-32 md:size-40 border-4 border-double border-accent-gold rounded-full flex flex-col items-center justify-center text-center p-3 rotate-[-5deg] select-none bg-black/60 shadow-2xl">
               <span className="text-[9px] font-extrabold tracking-widest text-accent-gold uppercase">GLOW RITUAL</span>
-              <span className="text-lg md:text-xl font-black text-white font-serif leading-none py-1">30-DAY</span>
+              <span className="text-lg md:text-xl font-black text-text-primary font-serif leading-none py-1">30-DAY</span>
               <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase leading-none">RISK FREE</span>
-              <span className="text-[8px] text-white/50 pt-1">GUARANTEE</span>
+              <span className="text-[8px] text-text-primary/50 pt-1">GUARANTEE</span>
             </div>
 
             <div className="space-y-4 text-center md:text-left flex-1">
-              <span className="text-xs font-extrabold tracking-[0.25em]" style={{ color: "#c9a96e" }}>ZERO HASSLE • ZERO ANXIETY</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-white font-serif">
+              <span className="text-xs font-extrabold tracking-[0.25em]" style={{ color: "var(--accent-gold)" }}>ZERO HASSLE • ZERO ANXIETY</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-text-primary font-serif">
                 Try It Out Risk-Free For 30 Days
               </h2>
               <p className="text-xs md:text-sm leading-relaxed text-text-secondary">
@@ -1238,19 +1238,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 11. FINAL HIGH IMPACT CTA */}
-      <section className="py-20 px-4 text-center border-t border-white/10 relative overflow-hidden">
+      <section className="py-20 px-4 text-center border-t border-border-subtle relative overflow-hidden">
         {/* Glow behind final CTA */}
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] size-96 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
 
         <Container className="relative z-10 space-y-6">
-          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#c9a96e" }}>YOUR RADIANT COMPLEXION AWAITS</span>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "var(--accent-gold)" }}>YOUR RADIANT COMPLEXION AWAITS</span>
           <h2
-            className="text-3xl md:text-5xl font-semibold text-white max-w-xl mx-auto"
+            className="text-3xl md:text-5xl font-semibold text-text-primary max-w-xl mx-auto"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             Ready to start your weekly glow ritual?
           </h2>
-          <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: "#a8a8a8" }}>
+          <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: "var(--text-secondary)" }}>
             Join 12,000+ happy women who elevated their skin care routine with clinic-quality results.
           </p>
           
@@ -1260,7 +1260,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full py-4.5 rounded-xl text-base font-extrabold text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-[0_0_20px_rgba(201,169,110,0.2)]"
-              style={{ background: "#c9a96e" }}
+              style={{ background: "var(--accent-gold)" }}
             >
               Kup Teraz — €{product.price.toFixed(2)}
             </a>
@@ -1273,10 +1273,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* RELATED PRODUCTS */}
       {related.length > 0 && (
-        <section className="border-t border-white/10 py-16 px-4">
+        <section className="border-t border-border-subtle py-16 px-4">
           <Container>
             <h2
-              className="text-2xl md:text-3xl font-semibold text-white text-center mb-10"
+              className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Complete your weekly ritual
@@ -1288,15 +1288,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <a
                     key={rel.id}
                     href={`/shop/${rel.id}`}
-                    className="group flex gap-4 p-4 rounded-xl border border-white/10 hover:border-accent-gold/40 hover:bg-white/[0.02] hover:shadow-[0_0_15px_rgba(201,169,110,0.05)] transition-all duration-300"
-                    style={{ background: "rgb(255 255 255 / 0.01)" }}
+                    className="group flex gap-4 p-4 rounded-xl border border-border-subtle hover:border-accent-gold/40 hover:bg-surface-subtle hover:shadow-[0_0_15px_rgba(201,169,110,0.05)] transition-all duration-300"
+                    style={{ background: "var(--surface-subtle)" }}
                   >
-                    <div className="relative size-20 rounded-lg overflow-hidden shrink-0 border border-white/5">
+                    <div className="relative size-20 rounded-lg overflow-hidden shrink-0 border border-border-subtle">
                       <Image src={rel.image} alt={rel.imageAlt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="min-w-0 flex-1 flex flex-col justify-between">
                       <div>
-                        <p className="text-sm font-bold text-white truncate group-hover:text-accent-gold transition-colors">{rel.name}</p>
+                        <p className="text-sm font-bold text-text-primary truncate group-hover:text-accent-gold transition-colors">{rel.name}</p>
                         <p className="text-[11px] mt-0.5 text-text-secondary line-clamp-1">{rel.tagline}</p>
                       </div>
                       <div className="flex items-center justify-between pt-1">
@@ -1319,17 +1319,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* 12. RESPONSIVE FLOATING BOTTOM STICKY CHECKOUT DRAWER */}
       <div 
-        className={`fixed bottom-0 left-0 right-0 z-40 bg-black/90 border-t border-white/15 py-3.5 px-4 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transform transition-transform duration-500 ease-out flex items-center justify-between ${
+        className={`fixed bottom-0 left-0 right-0 z-40 bg-surface-glass border-t border-border-default py-3.5 px-4 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transform transition-transform duration-500 ease-out flex items-center justify-between ${
           showStickyDrawer ? "translate-y-0" : "translate-y-full"
         }`}
       >
         <Container className="w-full flex items-center justify-between gap-4 max-w-4xl px-0">
           <div className="flex items-center gap-3">
-            <div className="relative size-11 rounded-lg overflow-hidden shrink-0 border border-white/10 hidden sm:block">
+            <div className="relative size-11 rounded-lg overflow-hidden shrink-0 border border-border-subtle hidden sm:block">
               <Image src={product.image} alt={product.name} fill className="object-cover" />
             </div>
             <div className="min-w-0">
-              <p className="text-xs md:text-sm font-bold text-white truncate max-w-[150px] md:max-w-xs">{product.name}</p>
+              <p className="text-xs md:text-sm font-bold text-text-primary truncate max-w-[150px] md:max-w-xs">{product.name}</p>
               <div className="flex items-center gap-2">
                 <span className="text-xs md:text-sm font-extrabold text-accent-gold">€{product.price.toFixed(2)}</span>
                 <span className="text-[10px] line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
@@ -1348,7 +1348,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="py-2.5 px-6 rounded-lg text-xs md:text-sm font-extrabold text-black transition-all hover:opacity-90 active:scale-[0.98] shadow-lg flex items-center gap-1.5 uppercase tracking-wider"
-              style={{ background: "#c9a96e" }}
+              style={{ background: "var(--accent-gold)" }}
             >
               <span>Kup Teraz</span>
               <ChevronRight className="size-4" />
@@ -1359,12 +1359,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* AMAZON-STYLE HIGH-END PORTAL/LIGHTBOX OVERLAY */}
       {isLightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 md:p-6 animate-in fade-in zoom-in duration-300">
+        <div className="theme-on-image fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 md:p-6 animate-in fade-in zoom-in duration-300">
           
           {/* Top Bar */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+          <div className="flex items-center justify-between border-b border-border-subtle pb-3">
             <div>
-              <h3 className="text-sm md:text-base font-bold text-white tracking-wide">
+              <h3 className="text-sm md:text-base font-bold text-text-primary tracking-wide">
                 {product.name}
               </h3>
               <p className="text-[10px] md:text-xs text-accent-gold font-semibold tracking-wider uppercase mt-0.5">
@@ -1373,7 +1373,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </div>
             <button 
               onClick={() => setIsLightboxOpen(false)}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/15 text-white/80 hover:text-white transition-all border border-white/10 flex items-center justify-center shadow-lg"
+              className="p-2 rounded-full bg-surface-raised hover:bg-surface-hover text-text-primary/80 hover:text-text-primary transition-all border border-border-subtle flex items-center justify-center shadow-lg"
               title="Close overlay (Esc)"
             >
               <X className="size-5" />
@@ -1392,7 +1392,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   className={`relative aspect-square w-full rounded-xl overflow-hidden border transition-all duration-300 ${
                     lightboxIndex === idx
                       ? "border-accent-gold ring-2 ring-accent-gold/40 scale-[1.03]"
-                      : "border-white/10 hover:border-white/30 opacity-60 hover:opacity-100"
+                      : "border-border-subtle hover:border-border-strong opacity-60 hover:opacity-100"
                   }`}
                 >
                   <Image 
@@ -1403,7 +1403,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     className={`object-cover ${img.filter || ""}`} 
                   />
                   <div className="absolute inset-0 bg-black/10 hover:bg-transparent" />
-                  <div className="absolute bottom-1 left-1 right-1 text-[9px] bg-black/85 text-white/90 py-0.5 rounded text-center truncate">
+                  <div className="absolute bottom-1 left-1 right-1 text-[9px] bg-black/85 text-text-primary/90 py-0.5 rounded text-center truncate">
                     {img.label}
                   </div>
                 </button>
@@ -1416,14 +1416,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {/* Left Navigation Arrow */}
               <button
                 onClick={() => setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
-                className="absolute left-2 md:left-4 z-10 p-3 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/10 hover:border-white/30 hover:scale-105 transition-all shadow-xl"
+                className="absolute left-2 md:left-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
                 title="Previous image (Left Arrow)"
               >
                 <ChevronLeft className="size-5 md:size-6" />
               </button>
 
               {/* Main Rendered Image Container */}
-              <div className="relative w-full h-full max-w-xl aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/[0.01]">
+              <div className="relative w-full h-full max-w-xl aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle">
                 <Image
                   src={galleryImages[lightboxIndex].url}
                   alt={galleryImages[lightboxIndex].label}
@@ -1436,7 +1436,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {/* Badge Overlay */}
                 <span
                   className="absolute top-4 left-4 text-xs font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider"
-                  style={{ background: "#c9a96e", color: "#000" }}
+                  style={{ background: "var(--accent-gold)", color: "#000" }}
                 >
                   {galleryImages[lightboxIndex].badge}
                 </span>
@@ -1445,7 +1445,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {/* Right Navigation Arrow */}
               <button
                 onClick={() => setLightboxIndex(prev => (prev + 1) % galleryImages.length)}
-                className="absolute right-2 md:right-4 z-10 p-3 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/10 hover:border-white/30 hover:scale-105 transition-all shadow-xl"
+                className="absolute right-2 md:right-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
                 title="Next image (Right Arrow)"
               >
                 <ChevronRight className="size-5 md:size-6" />
@@ -1453,17 +1453,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </div>
 
             {/* Right Column: Educational Description */}
-            <div className="col-span-1 lg:col-span-2 flex flex-col gap-4 text-center lg:text-left justify-center lg:h-full lg:max-h-[70vh] bg-white/[0.02] border border-white/5 rounded-2xl p-4 lg:p-5">
+            <div className="col-span-1 lg:col-span-2 flex flex-col gap-4 text-center lg:text-left justify-center lg:h-full lg:max-h-[70vh] bg-surface-subtle border border-border-subtle rounded-2xl p-4 lg:p-5">
               <span className="text-[10px] md:text-xs font-extrabold uppercase tracking-wider text-accent-gold">
                 Highlight feature
               </span>
-              <h4 className="text-sm md:text-base font-bold text-white leading-tight">
+              <h4 className="text-sm md:text-base font-bold text-text-primary leading-tight">
                 {galleryImages[lightboxIndex].label}
               </h4>
-              <p className="text-xs text-white/80 leading-relaxed">
+              <p className="text-xs text-text-primary/80 leading-relaxed">
                 {galleryImages[lightboxIndex].desc}
               </p>
-              <div className="border-t border-white/10 pt-4 mt-2 hidden lg:block">
+              <div className="border-t border-border-subtle pt-4 mt-2 hidden lg:block">
                 <a
                   href={product.shopifyUrl}
                   target="_blank"

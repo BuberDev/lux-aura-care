@@ -29,7 +29,7 @@ export function RoutineSection({ title, steps, ctaHref }: RoutineSectionProps) {
 
         <ol className="grid gap-4 md:grid-cols-3" aria-label="How to use as a ritual">
           {steps.map((step, index) => (
-            <li key={step.title} className="rounded-3xl border border-white/12 bg-white/[0.02] p-6">
+            <li key={step.title} className="rounded-3xl border border-border-subtle bg-surface-subtle p-6">
               <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
                 <Clock3 className="size-4" aria-hidden="true" />
                 Step {index + 1}

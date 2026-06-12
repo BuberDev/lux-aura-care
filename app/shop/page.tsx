@@ -26,35 +26,35 @@ const guarantees = [
 
 export default function ShopPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#000000" }}>
+    <div className="min-h-screen bg-background-primary">
 
       {/* Hero */}
-      <section className="border-b border-white/10 py-20 text-center px-4">
+      <section className="border-b border-border-subtle py-20 text-center px-4">
         <Container>
-          <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: "#c9a96e" }}>
+          <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent-gold)" }}>
             Glow Rituals · Women 40+
           </p>
           <h1
-            className="text-4xl md:text-6xl font-semibold text-white mb-6"
+            className="text-4xl md:text-6xl font-semibold text-text-primary mb-6"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             Your Weekly Skin Ritual
           </h1>
-          <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: "#a8a8a8" }}>
+          <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: "var(--text-secondary)" }}>
             Two products. One ritual. Visible results in 4 weeks — without a clinic visit.
           </p>
         </Container>
       </section>
 
       {/* Guarantees */}
-      <section className="border-b border-white/10 py-6">
+      <section className="border-b border-border-subtle py-6">
         <Container>
           <ul className="grid grid-cols-3 gap-4">
             {guarantees.map(({ icon: Icon, label, sub }) => (
               <li key={label} className="flex flex-col items-center text-center gap-1">
-                <Icon className="size-5 mb-1" style={{ color: "#c9a96e" }} />
-                <span className="text-xs font-semibold text-white">{label}</span>
-                <span className="text-[11px]" style={{ color: "#a8a8a8" }}>{sub}</span>
+                <Icon className="size-5 mb-1" style={{ color: "var(--accent-gold)" }} />
+                <span className="text-xs font-semibold text-text-primary">{label}</span>
+                <span className="text-[11px]" style={{ color: "var(--text-secondary)" }}>{sub}</span>
               </li>
             ))}
           </ul>
@@ -69,8 +69,7 @@ export default function ShopPage() {
               <Link
                 key={product.id}
                 href={`/shop/${product.id}`}
-                className="group block rounded-2xl border border-white/10 overflow-hidden hover:border-white/25 transition-all duration-300"
-                style={{ background: "rgb(255 255 255 / 0.02)" }}
+                className="group block overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle transition-all duration-300 hover:border-border-strong"
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -84,7 +83,7 @@ export default function ShopPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <span
                     className="absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full"
-                    style={{ background: "#c9a96e", color: "#000" }}
+                    style={{ background: "var(--accent-gold)", color: "#000" }}
                   >
                     {product.badge}
                   </span>
@@ -93,10 +92,10 @@ export default function ShopPage() {
                 {/* Content */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <h2 className="text-xl font-semibold text-white mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                    <h2 className="text-xl font-semibold text-text-primary mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                       {product.name}
                     </h2>
-                    <p className="text-sm" style={{ color: "#a8a8a8" }}>{product.tagline}</p>
+                    <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{product.tagline}</p>
                   </div>
 
                   {/* Rating */}
@@ -107,13 +106,13 @@ export default function ShopPage() {
                           key={i}
                           className="size-3.5"
                           style={{
-                            fill: i < Math.floor(product.rating) ? "#c9a96e" : "transparent",
-                            color: "#c9a96e",
+                            fill: i < Math.floor(product.rating) ? "var(--accent-gold)" : "transparent",
+                            color: "var(--accent-gold)",
                           }}
                         />
                       ))}
                     </div>
-                    <span className="text-xs" style={{ color: "#a8a8a8" }}>
+                    <span className="text-xs" style={{ color: "var(--text-secondary)" }}>
                       {product.rating} ({product.reviews} reviews)
                     </span>
                   </div>
@@ -121,8 +120,8 @@ export default function ShopPage() {
                   {/* Benefits preview */}
                   <ul className="space-y-1.5">
                     {product.benefits.slice(0, 3).map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-xs" style={{ color: "#a8a8a8" }}>
-                        <Check className="size-3.5 mt-0.5 shrink-0" style={{ color: "#c9a96e" }} />
+                      <li key={b} className="flex items-start gap-2 text-xs" style={{ color: "var(--text-secondary)" }}>
+                        <Check className="size-3.5 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
                         {b}
                       </li>
                     ))}
@@ -130,20 +129,20 @@ export default function ShopPage() {
 
                   {/* Price */}
                   <div className="flex items-baseline gap-3 pt-1">
-                    <span className="text-2xl font-bold text-white">
+                    <span className="text-2xl font-bold text-text-primary">
                       €{product.price.toFixed(2)}
                     </span>
-                    <span className="text-sm line-through" style={{ color: "#a8a8a8" }}>
+                    <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>
                       €{product.compareAtPrice.toFixed(2)}
                     </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded" style={{ background: "rgb(201 169 110 / 0.15)", color: "#c9a96e" }}>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded" style={{ background: "rgb(201 169 110 / 0.15)", color: "var(--accent-gold)" }}>
                       -{Math.round((1 - product.price / product.compareAtPrice) * 100)}%
                     </span>
                   </div>
 
                   <div
                     className="w-full text-center py-3 rounded-xl text-sm font-semibold text-black transition-opacity group-hover:opacity-90"
-                    style={{ background: "#c9a96e" }}
+                    style={{ background: "var(--accent-gold)" }}
                   >
                     View Product →
                   </div>
@@ -155,11 +154,11 @@ export default function ShopPage() {
       </section>
 
       {/* Trust bar */}
-      <section className="border-t border-white/10 py-12 px-4">
+      <section className="border-t border-border-subtle py-12 px-4">
         <Container>
           <p
             className="text-center text-lg font-medium mb-8"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#fff" }}
+            style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--text-primary)" }}
           >
             Why women 40+ love our rituals
           </p>
@@ -170,8 +169,8 @@ export default function ShopPage() {
               { stat: "12K+", label: "happy customers across Europe" },
             ].map(({ stat, label }) => (
               <div key={stat} className="space-y-1">
-                <p className="text-3xl font-bold" style={{ color: "#c9a96e" }}>{stat}</p>
-                <p className="text-sm" style={{ color: "#a8a8a8" }}>{label}</p>
+                <p className="text-3xl font-bold" style={{ color: "var(--accent-gold)" }}>{stat}</p>
+                <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{label}</p>
               </div>
             ))}
           </div>

@@ -10,10 +10,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-accent-gold text-background-primary hover:-translate-y-0.5 hover:brightness-110",
+          "bg-accent-gold text-text-on-accent hover:-translate-y-0.5 hover:brightness-110",
         secondary:
           "border border-accent-gold/40 bg-transparent text-text-primary hover:border-accent-gold hover:bg-accent-gold/10",
-        ghost: "text-text-primary hover:bg-white/10",
+        ghost: "text-text-primary hover:bg-surface-hover",
       },
       size: {
         default: "h-11 px-6",

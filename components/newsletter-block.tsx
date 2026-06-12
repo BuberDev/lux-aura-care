@@ -92,7 +92,7 @@ export function NewsletterBlock() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="border-background-primary/20 bg-white text-background-primary placeholder:text-background-primary/55 disabled:opacity-50"
+                className="border-black/20 bg-white text-text-on-light placeholder:text-text-on-light/55 disabled:opacity-50"
               />
               <Button
                 type="submit"

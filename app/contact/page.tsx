@@ -53,7 +53,7 @@ export default function ContactPage() {
               {contactFeatures.map((feature, i) => (
                 <div 
                   key={i} 
-                  className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors hover:border-white/10"
+                  className="rounded-2xl border border-border-subtle bg-surface-raised p-6 backdrop-blur-sm transition-colors hover:border-border-subtle"
                 >
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-gold/10">
                     {feature.icon}
@@ -75,7 +75,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-2">
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-8 backdrop-blur-xl md:p-12">
+            <div className="rounded-3xl border border-border-subtle bg-surface-glass p-8 backdrop-blur-xl md:p-12">
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-text-primary">Send us a message</h2>
                 <p className="text-text-secondary">Fill out the form below and we'll get back to you shortly.</p>

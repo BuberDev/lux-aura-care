@@ -20,7 +20,7 @@ export function BundleCard({ bundle }: BundleCardProps) {
   const bundleHref = getAffiliateRoute(firstProduct.id, "bundle").concat(`&bundle=${bundle.id}`);
 
   return (
-    <Card className="overflow-hidden border-white/12 bg-gradient-to-br from-accent-gold/10 via-white/[0.02] to-white/[0.02] transition-all hover:border-accent-gold/45">
+    <Card className="overflow-hidden border-border-subtle bg-gradient-to-br from-accent-gold/10 via-white/[0.02] to-white/[0.02] transition-all hover:border-accent-gold/45">
       <div className="grid gap-5 p-5 md:p-6">
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-2">
@@ -41,7 +41,7 @@ export function BundleCard({ bundle }: BundleCardProps) {
         <p className="text-base font-semibold leading-relaxed text-text-primary">{bundle.tagline}</p>
         <p className="text-sm leading-relaxed text-text-secondary">{bundle.description}</p>
 
-        <div className="space-y-3 border-t border-white/10 pt-4">
+        <div className="space-y-3 border-t border-border-subtle pt-4">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-text-secondary">
             Includes:
           </p>
@@ -49,7 +49,7 @@ export function BundleCard({ bundle }: BundleCardProps) {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="flex flex-col items-center gap-2 rounded-lg bg-white/[0.03] p-3 text-center"
+                className="flex flex-col items-center gap-2 rounded-lg bg-surface-raised p-3 text-center"
               >
                 <div className="relative h-16 w-12 overflow-hidden rounded">
                   <Image

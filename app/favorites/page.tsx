@@ -68,7 +68,7 @@ export default function FavoritesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(collectionJsonLd) }}
       />
-      <Section className="border-b border-white/10 pb-12 pt-16 md:pt-20">
+      <Section className="border-b border-border-subtle pb-12 pt-16 md:pt-20">
         <Container>
           <Heading
             eyebrow="Shop the Feed"

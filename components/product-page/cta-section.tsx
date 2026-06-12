@@ -10,7 +10,7 @@ type CTASectionProps = {
 
 export function CTASection({ ctaHref, productId, productName }: CTASectionProps) {
   return (
-    <Section className="border-t border-white/10 py-16 md:py-20">
+    <Section className="border-t border-border-subtle py-16 md:py-20">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-4xl leading-tight sm:text-5xl">Upgrade your self-care routine</h2>

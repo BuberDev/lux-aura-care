@@ -1,11 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  --background-primary: #000000;
+  --background-primary: #090807;
   --background-secondary: #f5f1eb;
+  --surface-base: #0f0d0b;
+  --surface-subtle: rgb(255 255 255 / 0.025);
+  --surface-raised: rgb(255 255 255 / 0.055);
+  --surface-hover: rgb(255 255 255 / 0.085);
+  --surface-glass: rgb(9 8 7 / 0.72);
+  --surface-inverse: #f5f1eb;
+  --border-subtle: rgb(255 255 255 / 0.1);
+  --border-default: rgb(255 255 255 / 0.15);
+  --border-strong: rgb(255 255 255 / 0.24);
   --accent-gold: #c9a96e;
-  --text-primary: #ffffff;
-  --text-secondary: #a8a8a8;
+  --accent-gold-strong: #dfc083;
+  --text-primary: #f8f6f2;
+  --text-secondary: #aaa6a0;
+  --text-tertiary: #7f7a73;
+  --text-inverse: #18130f;
+  --text-on-accent: #17120d;
+  --text-on-light: #18130f;
+  --overlay-primary: #ffffff;
+  --overlay-secondary: rgb(255 255 255 / 0.78);
+  --shadow-color: rgb(0 0 0 / 0.42);
+  --selection-background: rgb(201 169 110 / 0.25);
+  --atmosphere-gold: rgb(201 169 110 / 0.18);
+  --atmosphere-neutral: rgb(245 241 235 / 0.08);
+  --inverse-border: rgb(24 19 15 / 0.13);
+  --inverse-surface: rgb(24 19 15 / 0.035);
+  --hero-aura: rgb(128 128 128);
+  --footer-gradient: radial-gradient(120% 120% at 50% 8%, rgb(201 169 110 / 0.14) 0%, rgb(201 169 110 / 0.06) 38%, rgb(0 0 0 / 0.92) 100%);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --background-primary: #f8f5ef;
+  --background-secondary: #211b16;
+  --surface-base: #fffdf9;
+  --surface-subtle: rgb(70 52 36 / 0.035);
+  --surface-raised: rgb(70 52 36 / 0.065);
+  --surface-hover: rgb(70 52 36 / 0.1);
+  --surface-glass: rgb(255 253 249 / 0.82);
+  --surface-inverse: #211b16;
+  --border-subtle: rgb(69 52 37 / 0.12);
+  --border-default: rgb(69 52 37 / 0.18);
+  --border-strong: rgb(69 52 37 / 0.28);
+  --accent-gold: #92713c;
+  --accent-gold-strong: #755726;
+  --text-primary: #241d17;
+  --text-secondary: #6d6258;
+  --text-tertiary: #91857a;
+  --text-inverse: #fffaf2;
+  --shadow-color: rgb(61 43 26 / 0.14);
+  --selection-background: rgb(146 113 60 / 0.2);
+  --atmosphere-gold: rgb(181 142 78 / 0.14);
+  --atmosphere-neutral: rgb(126 101 72 / 0.07);
+  --inverse-border: rgb(255 250 242 / 0.14);
+  --inverse-surface: rgb(255 250 242 / 0.055);
+  --hero-aura: rgb(112 108 102);
+  --footer-gradient: radial-gradient(120% 120% at 50% 8%, rgb(181 142 78 / 0.13) 0%, rgb(181 142 78 / 0.04) 42%, rgb(255 253 249 / 0.94) 100%);
+  color-scheme: light;
 }
 
 @theme inline {
@@ -14,6 +68,25 @@
   --color-accent-gold: var(--accent-gold);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-on-accent: var(--text-on-accent);
+  --color-text-on-light: var(--text-on-light);
+  --color-surface-base: var(--surface-base);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-glass: var(--surface-glass);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-overlay-primary: var(--overlay-primary);
+  --color-overlay-secondary: var(--overlay-secondary);
+  --color-inverse-border: var(--inverse-border);
+  --color-inverse-surface: var(--inverse-surface);
+  --shadow-theme-sm: 0 4px 16px var(--shadow-color);
+  --shadow-theme-lg: 0 12px 40px var(--shadow-color);
 
   --font-body: "Inter", "Helvetica Neue", sans-serif;
   --font-heading: "Playfair Display", Georgia, serif;
@@ -22,7 +95,7 @@
 }
 
 * {
-  border-color: rgb(255 255 255 / 0.12);
+  border-color: var(--border-subtle);
 }
 
 html,
@@ -36,6 +109,7 @@ body {
   color: var(--text-primary);
   font-family: "Inter", "Helvetica Neue", sans-serif;
   text-rendering: optimizeLegibility;
+  transition: background-color 240ms ease, color 240ms ease;
 }
 
 h1,
@@ -58,13 +132,54 @@ a {
 }
 
 ::selection {
-  background: rgb(201 169 110 / 25%);
+  background: var(--selection-background);
   color: var(--text-primary);
 }
 
 .atmosphere-surface {
   background:
-    radial-gradient(circle at 18% 18%, rgb(201 169 110 / 18%), transparent 42%),
-    radial-gradient(circle at 75% 20%, rgb(245 241 235 / 10%), transparent 40%),
-    rgb(255 255 255 / 1%);
+    radial-gradient(circle at 18% 18%, var(--atmosphere-gold), transparent 42%),
+    radial-gradient(circle at 75% 20%, var(--atmosphere-neutral), transparent 40%),
+    var(--surface-base);
+}
+
+.theme-on-image {
+  --accent-gold: #d1b171;
+  --accent-gold-strong: #e2c98f;
+  --text-primary: #ffffff;
+  --text-secondary: #d5d0ca;
+  --text-tertiary: #aaa39b;
+  --text-on-accent: #17120d;
+  --border-subtle: rgb(255 255 255 / 0.12);
+  --border-default: rgb(255 255 255 / 0.18);
+  --border-strong: rgb(255 255 255 / 0.3);
+  --surface-subtle: rgb(255 255 255 / 0.03);
+  --surface-raised: rgb(255 255 255 / 0.06);
+  --surface-hover: rgb(255 255 255 / 0.1);
+  --surface-glass: rgb(0 0 0 / 0.68);
+  color: var(--text-primary);
+  color-scheme: dark;
+}
+
+.theme-icon-light,
+.theme-icon-dark {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+:root[data-theme="dark"] .theme-icon-light,
+:root[data-theme="light"] .theme-icon-dark {
+  transform: rotate(90deg) scale(0.5);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

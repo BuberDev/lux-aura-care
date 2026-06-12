@@ -56,7 +56,7 @@ export function ContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-black/40 p-12 text-center backdrop-blur-xl"
+            className="flex flex-col items-center justify-center rounded-2xl border border-border-subtle bg-surface-glass p-12 text-center backdrop-blur-xl"
           >
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/20 text-green-500">
               <CheckCircle2 size={32} />
@@ -93,7 +93,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   placeholder="Your name"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-text-primary placeholder:text-white/20 focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
+                  className="w-full rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
                 />
               </div>
               <div className="space-y-2">
@@ -108,7 +108,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   placeholder="your@email.com"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-text-primary placeholder:text-white/20 focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
+                  className="w-full rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
                 />
               </div>
             </div>
@@ -125,7 +125,7 @@ export function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="What can we help you with?"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-text-primary placeholder:text-white/20 focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
+                className="w-full rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
               />
             </div>
 
@@ -141,7 +141,7 @@ export function ContactForm() {
                 required
                 rows={5}
                 placeholder="Write your message here..."
-                className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-text-primary placeholder:text-white/20 focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
+                className="w-full resize-none rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
               />
             </div>
 

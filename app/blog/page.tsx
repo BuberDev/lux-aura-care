@@ -120,7 +120,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(blogJsonLd) }}
       />
-      <Section className="border-b border-white/10 pb-14 pt-16 md:pt-20">
+      <Section className="border-b border-border-subtle pb-14 pt-16 md:pt-20">
         <Container>
           <Heading
             eyebrow="Lux Aura Journal"
@@ -135,7 +135,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 "rounded-full border px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors",
                 !selectedCategory
                   ? "border-accent-gold bg-accent-gold/10 text-accent-gold"
-                  : "border-white/20 text-text-secondary hover:text-text-primary"
+                  : "border-border-default text-text-secondary hover:text-text-primary"
               )}
             >
               All Articles
@@ -152,7 +152,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     "rounded-full border px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors",
                     isActive
                       ? "border-accent-gold bg-accent-gold/10 text-accent-gold"
-                      : "border-white/20 text-text-secondary hover:text-text-primary"
+                      : "border-border-default text-text-secondary hover:text-text-primary"
                   )}
                 >
                   {category.name}
@@ -162,7 +162,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </div>
 
           {selectedCategory ? (
-            <div className="mt-8 max-w-3xl rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="mt-8 max-w-3xl rounded-3xl border border-border-subtle bg-surface-subtle p-6">
               <Badge>{selectedCategory.name}</Badge>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">{selectedCategory.description}</p>
             </div>
@@ -183,7 +183,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
             {selectedCategory && categoryPicks.length > 0 ? (
               <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
+                <div className="mb-8 flex items-end justify-between border-b border-border-subtle pb-4">
                   <div>
                     <h2 className="font-heading text-3xl text-text-primary">
                       Essential {selectedCategory.name} Favorites

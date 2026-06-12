@@ -368,35 +368,35 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
   ];
 
   return (
-    <div className="min-h-screen text-white font-sans bg-black">
+    <div className="min-h-screen text-text-primary font-sans bg-background-primary">
       {/* Dynamic Urgency Top Announcement */}
-      <div className="bg-[#c9a96e] text-black text-xs font-bold py-2.5 px-4 text-center tracking-wider uppercase flex items-center justify-center gap-2 relative z-10">
+      <div className="bg-accent-gold text-black text-xs font-bold py-2.5 px-4 text-center tracking-wider uppercase flex items-center justify-center gap-2 relative z-10">
         <Sparkles className="size-4 animate-pulse" />
         <span>Rekomendacja Redakcji Lux Aura · Bezpieczne zakupy na Amazon · Darmowa Dostawa Prime</span>
         <Sparkles className="size-4 animate-pulse" />
       </div>
 
       {/* Breadcrumb Navigation */}
-      <div className="border-b border-white/10 py-3 px-4 bg-[#0a0a0a]">
+      <div className="border-b border-border-subtle py-3 px-4 bg-surface-base">
         <Container>
-          <nav className="text-xs flex gap-2 text-[#a8a8a8]">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <nav className="text-xs flex gap-2 text-text-secondary">
+            <Link href="/" className="hover:text-text-primary transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/favorites" className="hover:text-white transition-colors">Ulubione</Link>
+            <Link href="/favorites" className="hover:text-text-primary transition-colors">Ulubione</Link>
             <span>/</span>
-            <span className="text-white truncate">{product.name}</span>
+            <span className="text-text-primary truncate">{product.name}</span>
           </nav>
         </Container>
       </div>
 
       {/* Main Luxury Product Section */}
-      <section className="py-10 md:py-16 px-4 bg-[#050505]">
+      <section className="py-10 md:py-16 px-4 bg-surface-base">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
             
             {/* LEFT COLUMN: Premium Interactive Gallery Switcher */}
             <div className="space-y-4">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/[0.01]">
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle">
                 <Image
                   src={galleryImages[activeTab]}
                   alt={product.imageAlt}
@@ -408,21 +408,21 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 
                 {/* Floating scarcity badges */}
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-[#c9a96e] text-black tracking-wider uppercase shadow-lg">
+                  <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-accent-gold text-black tracking-wider uppercase shadow-lg">
                     {proof.socialProof}
                   </span>
                   {proof.urgencySignal && (
-                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-red-600 text-white tracking-widest uppercase animate-pulse shadow-lg self-start">
+                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-red-600 text-overlay-primary tracking-widest uppercase animate-pulse shadow-lg self-start">
                       🔥 {proof.urgencySignal.label}
                     </span>
                   )}
                 </div>
 
                 {/* Simulated Viewer Count Panel */}
-                <div className="absolute bottom-4 left-4 bg-black/85 backdrop-blur border border-white/10 px-3.5 py-1.5 rounded-xl flex items-center gap-2">
+                <div className="theme-on-image absolute bottom-4 left-4 bg-black/85 backdrop-blur border border-border-subtle px-3.5 py-1.5 rounded-xl flex items-center gap-2">
                   <span className="size-2 rounded-full bg-green-500 animate-ping" />
-                  <span className="text-xs font-medium text-white flex items-center gap-1.5">
-                    <Users className="size-3.5 text-[#c9a96e]" />
+                  <span className="text-xs font-medium text-text-primary flex items-center gap-1.5">
+                    <Users className="size-3.5 text-accent-gold" />
                     {viewers} klientów ogląda ten produkt
                   </span>
                 </div>
@@ -434,13 +434,13 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   <button
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className={`relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
-                      activeTab === i ? "border-[#c9a96e] scale-[1.03] ring-1 ring-[#c9a96e]/30" : "border-white/10 opacity-60 hover:opacity-100"
+                    className={`theme-on-image relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
+                      activeTab === i ? "border-accent-gold scale-[1.03] ring-1 ring-accent-gold/30" : "border-border-subtle opacity-60 hover:opacity-100"
                     }`}
                   >
                     <Image src={img} alt={`Widok ${i+1}`} fill className="object-cover" />
                     <div className="absolute inset-0 bg-black/40 hover:bg-transparent transition-colors" />
-                    <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-bold text-white bg-black/80 px-1.5 py-0.5 rounded tracking-wide truncate w-[90%] text-center">
+                    <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-bold text-text-primary bg-black/80 px-1.5 py-0.5 rounded tracking-wide truncate w-[90%] text-center">
                       {galleryTitles[i]}
                     </span>
                   </button>
@@ -451,76 +451,76 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             {/* RIGHT COLUMN: Luxury Conversion Panel */}
             <div className="space-y-6">
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] mb-2 text-[#c9a96e] font-semibold">
+                <p className="text-xs uppercase tracking-[0.25em] mb-2 text-accent-gold font-semibold">
                   Ulubieńcy Pinteresta · {product.trustSignal}
                 </p>
                 <h1
-                  className="text-3xl md:text-5xl font-semibold text-white tracking-tight leading-tight"
+                  className="text-3xl md:text-5xl font-semibold text-text-primary tracking-tight leading-tight"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                 >
                   {product.name}
                 </h1>
-                <p className="text-base text-[#a8a8a8] mt-3 leading-relaxed">
+                <p className="text-base text-text-secondary mt-3 leading-relaxed">
                   {content.emotionalHook}
                 </p>
               </div>
 
               {/* Stars & Reviews summary card */}
-              <div className="flex items-center gap-3 py-1 border-y border-white/5">
+              <div className="flex items-center gap-3 py-1 border-y border-border-subtle">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className="size-4"
                       style={{
-                        fill: i < Math.floor(averageRating) ? "#c9a96e" : "transparent",
-                        color: "#c9a96e",
+                        fill: i < Math.floor(averageRating) ? "var(--accent-gold)" : "transparent",
+                        color: "var(--accent-gold)",
                       }}
                     />
                   ))}
                 </div>
-                <span className="text-sm font-semibold text-white">{averageRating.toFixed(1)} / 5.0</span>
-                <span className="text-sm text-[#a8a8a8] flex items-center gap-1.5">
+                <span className="text-sm font-semibold text-text-primary">{averageRating.toFixed(1)} / 5.0</span>
+                <span className="text-sm text-text-secondary flex items-center gap-1.5">
                   ({proof.reviews} z Amazon)
                 </span>
               </div>
 
               {/* Best Price Card on Amazon (Affiliate-friendly Price Widget) */}
-              <div className="rounded-2xl border border-[#c9a96e]/20 p-5 bg-[#c9a96e]/[0.02] space-y-4">
+              <div className="rounded-2xl border border-accent-gold/20 p-5 bg-accent-gold/[0.02] space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded bg-[#c9a96e]/10 text-[#c9a96e] tracking-widest uppercase">
+                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded bg-accent-gold/10 text-accent-gold tracking-widest uppercase">
                       Gwarancja Najniższej Ceny
                     </span>
-                    <p className="text-2xl font-bold text-white mt-2">Sprawdź Ofertę na Amazon</p>
+                    <p className="text-2xl font-bold text-text-primary mt-2">Sprawdź Ofertę na Amazon</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs font-bold px-2.5 py-1 rounded bg-[#c9a96e]/15 text-[#c9a96e]">
+                    <span className="text-xs font-bold px-2.5 py-1 rounded bg-accent-gold/15 text-accent-gold">
                       DARMOWA DOSTAWA
                     </span>
-                    <p className="text-[10px] text-[#a8a8a8] mt-1">Dla członków Prime</p>
+                    <p className="text-[10px] text-text-secondary mt-1">Dla członków Prime</p>
                   </div>
                 </div>
 
                 {/* Scarcity Live Depletion Bar */}
-                <div className="space-y-2 bg-black/40 p-3 rounded-xl border border-white/5">
+                <div className="space-y-2 bg-surface-subtle p-3 rounded-xl border border-border-subtle">
                   <div className="flex justify-between text-xs font-medium">
-                    <span className="text-[#a8a8a8] flex items-center gap-1">
+                    <span className="text-text-secondary flex items-center gap-1">
                       <Flame className="size-3.5 text-red-500 animate-bounce" />
                       Wyprzedaż Błyskawiczna: Pula wyczerpuje się
                     </span>
                     <span className="text-red-400 font-bold">Zostało tylko {100 - stockPercentage}% zapasów</span>
                   </div>
-                  <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-red-600 via-orange-500 to-[#c9a96e] transition-all duration-1000"
+                      className="h-full bg-gradient-to-r from-red-600 via-orange-500 to-accent-gold transition-all duration-1000"
                       style={{ width: `${100 - stockPercentage}%` }}
                     />
                   </div>
                   
                   {/* Countdown Ticking */}
-                  <p className="text-[11px] text-[#a8a8a8] text-right font-mono">
-                    Gwarancja ceny wygasa za: <span className="text-[#c9a96e] font-bold">{formatTime(timeLeft)}</span>
+                  <p className="text-[11px] text-text-secondary text-right font-mono">
+                    Gwarancja ceny wygasa za: <span className="text-accent-gold font-bold">{formatTime(timeLeft)}</span>
                   </p>
                 </div>
               </div>
@@ -528,8 +528,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               {/* Highlights Bullet List */}
               <ul className="space-y-3 pt-2">
                 {proof.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-3 text-sm text-[#d4d4d4]" style={{ lineHeight: "1.5" }}>
-                    <Check className="size-4 mt-0.5 shrink-0 text-[#c9a96e]" />
+                  <li key={highlight} className="flex items-start gap-3 text-sm text-text-primary/85" style={{ lineHeight: "1.5" }}>
+                    <Check className="size-4 mt-0.5 shrink-0 text-accent-gold" />
                     <span>{highlight}</span>
                   </li>
                 ))}
@@ -541,25 +541,25 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   href={getAffiliateRoute(product.id, "product-hero-premium")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-center py-4 rounded-xl text-base font-bold text-black transition-all bg-[#c9a96e] hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-[#c9a96e]/10"
+                  className="block w-full text-center py-4 rounded-xl text-base font-bold text-black transition-all bg-accent-gold hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-accent-gold/10"
                 >
                   Sprawdź Cenę i Kup Teraz na Amazon
                 </a>
-                <p className="text-center text-xs text-[#a8a8a8] flex items-center justify-center gap-1.5">
+                <p className="text-center text-xs text-text-secondary flex items-center justify-center gap-1.5">
                   🛡️ Bezpieczne szyfrowanie SSL · 30 dni na darmowy zwrot · Oficjalny link partnerski
                 </p>
               </div>
 
               {/* Delivery trust signals strip */}
-              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-white/5">
+              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-border-subtle">
                 {[
                   { icon: Truck, text: "Szybka Wysyłka Amazon" },
                   { icon: ShieldCheck, text: "100% Oryginalny" },
                   { icon: RotateCcw, text: "Darmowy Zwrot 30 dni" },
                 ].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex flex-col items-center gap-1.5 text-center rounded-xl border border-white/5 p-3 bg-white/[0.01]">
-                    <Icon className="size-4 text-[#c9a96e]" />
-                    <span className="text-[10px] text-[#a8a8a8] font-medium leading-tight">{text}</span>
+                  <div key={text} className="flex flex-col items-center gap-1.5 text-center rounded-xl border border-border-subtle p-3 bg-surface-subtle">
+                    <Icon className="size-4 text-accent-gold" />
+                    <span className="text-[10px] text-text-secondary font-medium leading-tight">{text}</span>
                   </div>
                 ))}
               </div>
@@ -570,15 +570,15 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* BENEFIT STRIP (Quick benefits) */}
-      <section className="border-y border-white/10 py-8 px-4 bg-black">
+      <section className="border-y border-border-subtle py-8 px-4 bg-background-primary">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {content.quickBenefits.map((benefit, idx) => (
               <div key={benefit} className="flex items-center gap-3 justify-center text-center md:text-left">
-                <span className="size-8 rounded-full bg-[#c9a96e]/10 flex items-center justify-center text-xs font-bold text-[#c9a96e]">
+                <span className="size-8 rounded-full bg-accent-gold/10 flex items-center justify-center text-xs font-bold text-accent-gold">
                   0{idx + 1}
                 </span>
-                <span className="text-xs uppercase tracking-wider font-semibold text-[#e5e5e5]">{benefit}</span>
+                <span className="text-xs uppercase tracking-wider font-semibold text-text-primary/90">{benefit}</span>
               </div>
             ))}
           </div>
@@ -586,10 +586,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* PROBLEM & SOLUTION BEFORE/AFTER COMPARISON */}
-      <section className="py-16 px-4 bg-[#030303] border-b border-white/5">
+      <section className="py-16 px-4 bg-surface-base border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a96e] mb-2">Pielęgnacja Celowana</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Pielęgnacja Celowana</p>
             <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Dlaczego ten rytuał ma znaczenie?
             </h2>
@@ -602,18 +602,18 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <ShieldAlert className="size-5" />
                 <span>Problem Pielęgnacyjny</span>
               </div>
-              <h3 className="text-xl font-semibold text-white">{content.problemHeadline}</h3>
-              <p className="text-sm leading-relaxed text-[#a8a8a8]">{content.problemParagraph}</p>
+              <h3 className="text-xl font-semibold text-text-primary">{content.problemHeadline}</h3>
+              <p className="text-sm leading-relaxed text-text-secondary">{content.problemParagraph}</p>
             </div>
 
             {/* The Solution */}
-            <div className="rounded-2xl border border-[#c9a96e]/20 p-6 bg-[#c9a96e]/[0.02] space-y-4">
-              <div className="flex items-center gap-2 text-[#c9a96e] text-sm font-semibold uppercase tracking-wider">
+            <div className="rounded-2xl border border-accent-gold/20 p-6 bg-accent-gold/[0.02] space-y-4">
+              <div className="flex items-center gap-2 text-accent-gold text-sm font-semibold uppercase tracking-wider">
                 <Award className="size-5" />
                 <span>Rekomendacja Lux Aura</span>
               </div>
-              <h3 className="text-xl font-semibold text-[#c9a96e]">Natychmiastowy reset zmysłowy</h3>
-              <p className="text-sm leading-relaxed text-[#d4d4d4]">
+              <h3 className="text-xl font-semibold text-accent-gold">Natychmiastowy reset zmysłowy</h3>
+              <p className="text-sm leading-relaxed text-text-primary/85">
                 Zastąp stres świadomym rytuałem, {content.solutionParagraph}
               </p>
             </div>
@@ -622,32 +622,32 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* RITUAL VS DRUGSTORE COMPARISON TABLE */}
-      <section className="py-16 px-4 bg-[#070707] border-b border-white/5">
+      <section className="py-16 px-4 bg-surface-base border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a96e] mb-2">Porównanie Jakości</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Porównanie Jakości</p>
             <h2 className="text-2xl md:text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               {comparison.header}
             </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto border border-white/10 rounded-2xl overflow-hidden bg-black/40">
-            <div className="grid grid-cols-2 border-b border-white/10 bg-white/[0.01]">
-              <div className="p-4 text-center font-bold text-[#c9a96e] border-r border-white/10 text-sm md:text-base">
+          <div className="max-w-3xl mx-auto border border-border-subtle rounded-2xl overflow-hidden bg-surface-glass">
+            <div className="grid grid-cols-2 border-b border-border-subtle bg-surface-subtle">
+              <div className="p-4 text-center font-bold text-accent-gold border-r border-border-subtle text-sm md:text-base">
                 Rekomendacja Redakcji Lux Aura
               </div>
-              <div className="p-4 text-center font-bold text-[#a8a8a8] text-sm md:text-base">
+              <div className="p-4 text-center font-bold text-text-secondary text-sm md:text-base">
                 Tanie Zamienniki Drogeryjne
               </div>
             </div>
             
             {[0, 1, 2, 3].map(idx => (
-              <div key={idx} className="grid grid-cols-2 border-b border-white/5 last:border-none">
-                <div className="p-4 text-xs md:text-sm text-[#e5e5e5] border-r border-white/10 flex items-start gap-2">
-                  <Check className="size-4 mt-0.5 shrink-0 text-[#c9a96e]" />
+              <div key={idx} className="grid grid-cols-2 border-b border-border-subtle last:border-none">
+                <div className="p-4 text-xs md:text-sm text-text-primary/90 border-r border-border-subtle flex items-start gap-2">
+                  <Check className="size-4 mt-0.5 shrink-0 text-accent-gold" />
                   <span>{comparison.us[idx]}</span>
                 </div>
-                <div className="p-4 text-xs md:text-sm text-[#a8a8a8] flex items-start gap-2">
+                <div className="p-4 text-xs md:text-sm text-text-secondary flex items-start gap-2">
                   <span className="text-red-500 font-bold shrink-0 mt-0.5 text-xs">✕</span>
                   <span>{comparison.them[idx]}</span>
                 </div>
@@ -658,10 +658,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* DETAILED SCIENCE BENEFITS DEEP-DIVE */}
-      <section className="py-16 px-4 bg-[#030303]">
+      <section className="py-16 px-4 bg-surface-base">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a96e] mb-2">Zalety Fizjologiczne</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Zalety Fizjologiczne</p>
             <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               Naukowo potwierdzone korzyści
             </h2>
@@ -669,12 +669,12 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
 
           <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
             {content.detailedBenefits.map((benefit, idx) => (
-              <div key={benefit.title} className="p-6 rounded-2xl border border-white/10 bg-white/[0.01] hover:border-white/20 transition-all duration-300 group">
-                <span className="text-3xl font-bold text-[#c9a96e]/10 group-hover:text-[#c9a96e]/30 transition-colors">
+              <div key={benefit.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle hover:border-border-default transition-all duration-300 group">
+                <span className="text-3xl font-bold text-accent-gold/10 group-hover:text-accent-gold/30 transition-colors">
                   0{idx + 1}
                 </span>
-                <h3 className="text-lg font-semibold text-white mt-2 mb-3">{benefit.title}</h3>
-                <p className="text-sm leading-relaxed text-[#a8a8a8]">{benefit.description}</p>
+                <h3 className="text-lg font-semibold text-text-primary mt-2 mb-3">{benefit.title}</h3>
+                <p className="text-sm leading-relaxed text-text-secondary">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -682,25 +682,25 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* THE 3-STEP SENSORY RITUAL */}
-      <section className="border-t border-white/10 py-16 px-4 bg-black">
+      <section className="border-t border-border-subtle py-16 px-4 bg-background-primary">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a96e] mb-2">Sztuka Pielęgnacji</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Sztuka Pielęgnacji</p>
             <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               {content.ritualTitle}
             </h2>
-            <p className="text-sm text-[#a8a8a8] mt-2">Przeprowadź swój rytuał z pełną uwagą i wyciszeniem.</p>
+            <p className="text-sm text-text-secondary mt-2">Przeprowadź swój rytuał z pełną uwagą i wyciszeniem.</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
             {content.ritualSteps.map((step, idx) => (
-              <div key={step.title} className="p-6 rounded-2xl border border-white/10 bg-white/[0.01] relative overflow-hidden group">
-                <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-[#c9a96e]/5 to-transparent rounded-tr-2xl" />
-                <span className="size-8 rounded-full bg-[#c9a96e] text-black font-bold flex items-center justify-center text-sm mb-4">
+              <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
+                <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
+                <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
                   {idx + 1}
                 </span>
-                <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-[#a8a8a8]">{step.description}</p>
+                <h3 className="text-lg font-semibold text-text-primary mb-2">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-text-secondary">{step.description}</p>
               </div>
             ))}
           </div>
@@ -708,11 +708,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* AMAZON-STYLE STAR SCORECARD & VERIFIED REVIEWS */}
-      <section id="reviews" className="border-t border-white/10 py-16 px-4 bg-[#050505]">
+      <section id="reviews" className="border-t border-border-subtle py-16 px-4 bg-surface-base">
         <Container>
           <div className="max-w-4xl mx-auto">
             <h2 
-              className="text-2xl md:text-3xl font-semibold text-white mb-8"
+              className="text-2xl md:text-3xl font-semibold text-text-primary mb-8"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Opinie i Oceny z Amazon
@@ -720,12 +720,12 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
 
             <div className="grid gap-8 lg:grid-cols-[1fr_2fr] items-start mb-12">
               {/* Scorecard */}
-              <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.01] space-y-4">
+              <div className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle space-y-4">
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-[#a8a8a8]">Średnia Ocena</p>
+                  <p className="text-xs uppercase tracking-wider text-text-secondary">Średnia Ocena</p>
                   <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-5xl font-bold text-white">{averageRating.toFixed(1)}</span>
-                    <span className="text-lg text-[#a8a8a8]">/ 5.0</span>
+                    <span className="text-5xl font-bold text-text-primary">{averageRating.toFixed(1)}</span>
+                    <span className="text-lg text-text-secondary">/ 5.0</span>
                   </div>
                 </div>
 
@@ -736,19 +736,19 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                         key={i}
                         className="size-4"
                         style={{
-                          fill: i < Math.floor(averageRating) ? "#c9a96e" : "transparent",
-                          color: "#c9a96e",
+                          fill: i < Math.floor(averageRating) ? "var(--accent-gold)" : "transparent",
+                          color: "var(--accent-gold)",
                         }}
                       />
                     ))}
                   </div>
-                  <span className="text-xs text-[#a8a8a8] uppercase tracking-wider font-semibold">
+                  <span className="text-xs text-text-secondary uppercase tracking-wider font-semibold">
                     Zweryfikowane Zakupy
                   </span>
                 </div>
 
                 {/* Rating Distribution list */}
-                <div className="space-y-2 pt-2 border-t border-white/5">
+                <div className="space-y-2 pt-2 border-t border-border-subtle">
                   {[
                     { stars: 5, pct: 88 },
                     { stars: 4, pct: 9 },
@@ -759,14 +759,14 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     <button
                       key={stars}
                       onClick={() => setSelectedRating(selectedRating === stars ? null : stars)}
-                      className={`w-full flex items-center gap-3 text-xs transition-colors hover:text-white ${
-                        selectedRating === stars ? "text-white font-bold" : "text-[#a8a8a8]"
+                      className={`w-full flex items-center gap-3 text-xs transition-colors hover:text-text-primary ${
+                        selectedRating === stars ? "text-text-primary font-bold" : "text-text-secondary"
                       }`}
                     >
                       <span className="w-4 font-mono">{stars}★</span>
-                      <div className="h-2 flex-1 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-2 flex-1 bg-surface-hover rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-[#c9a96e] rounded-full" 
+                          className="h-full bg-accent-gold rounded-full"
                           style={{ width: `${pct}%` }}
                         />
                       </div>
@@ -778,7 +778,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 {selectedRating && (
                   <button 
                     onClick={() => setSelectedRating(null)}
-                    className="w-full text-center text-xs text-[#c9a96e] hover:underline font-semibold pt-1"
+                    className="w-full text-center text-xs text-accent-gold hover:underline font-semibold pt-1"
                   >
                     Pokaż wszystkie opinie
                   </button>
@@ -787,26 +787,26 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
 
               {/* Reviews List */}
               <div className="space-y-6">
-                <div className="flex justify-between items-center text-xs text-[#a8a8a8] uppercase tracking-wider border-b border-white/10 pb-3">
+                <div className="flex justify-between items-center text-xs text-text-secondary uppercase tracking-wider border-b border-border-subtle pb-3">
                   <span>Pokazano {filteredReviews.length} opinii</span>
                   <span>Sortowanie: Najbardziej pomocne</span>
                 </div>
 
                 {filteredReviews.length === 0 ? (
-                  <div className="py-8 text-center text-[#a8a8a8] text-sm">
+                  <div className="py-8 text-center text-text-secondary text-sm">
                     Brak opinii z wybraną oceną.
                   </div>
                 ) : (
                   filteredReviews.map((rev) => (
-                    <div key={rev.id} className="p-5 rounded-2xl border border-white/5 bg-white/[0.01] space-y-3">
+                    <div key={rev.id} className="p-5 rounded-2xl border border-border-subtle bg-surface-subtle space-y-3">
                       <div className="flex justify-between items-start">
                         <div className="flex items-center gap-3">
-                          <div className="size-8 rounded-full bg-[#c9a96e]/15 border border-[#c9a96e]/30 flex items-center justify-center text-xs font-bold text-[#c9a96e]">
+                          <div className="size-8 rounded-full bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center text-xs font-bold text-accent-gold">
                             {rev.avatar}
                           </div>
                           <div>
-                            <p className="text-xs font-semibold text-white">{rev.name}</p>
-                            <p className="text-[10px] text-[#a8a8a8] mt-0.5">{rev.date}</p>
+                            <p className="text-xs font-semibold text-text-primary">{rev.name}</p>
+                            <p className="text-[10px] text-text-secondary mt-0.5">{rev.date}</p>
                           </div>
                         </div>
                         <div className="flex">
@@ -815,17 +815,17 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                               key={i}
                               className="size-3"
                               style={{
-                                fill: i < rev.rating ? "#c9a96e" : "transparent",
-                                color: "#c9a96e",
+                                fill: i < rev.rating ? "var(--accent-gold)" : "transparent",
+                                color: "var(--accent-gold)",
                               }}
                             />
                           ))}
                         </div>
                       </div>
-                      <h4 className="text-sm font-semibold text-white">{rev.title}</h4>
-                      <p className="text-xs leading-relaxed text-[#b3b3b3]">{rev.comment}</p>
-                      <div className="flex items-center gap-4 pt-1 text-[10px] text-[#a8a8a8]">
-                        <button className="flex items-center gap-1 hover:text-white transition-colors border border-white/10 px-2.5 py-1 rounded bg-black/40">
+                      <h4 className="text-sm font-semibold text-text-primary">{rev.title}</h4>
+                      <p className="text-xs leading-relaxed text-text-secondary">{rev.comment}</p>
+                      <div className="flex items-center gap-4 pt-1 text-[10px] text-text-secondary">
+                        <button className="flex items-center gap-1 hover:text-text-primary transition-colors border border-border-subtle px-2.5 py-1 rounded bg-surface-raised">
                           Pomocne ({rev.helpfulCount})
                         </button>
                         <span>·</span>
@@ -841,11 +841,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* FREQUENTLY ASKED QUESTIONS */}
-      <section className="border-t border-white/10 py-16 px-4 bg-black">
+      <section className="border-t border-border-subtle py-16 px-4 bg-background-primary">
         <Container>
           <div className="max-w-2xl mx-auto">
             <h2 
-              className="text-2xl md:text-3xl font-semibold text-white text-center mb-10"
+              className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Często zadawane pytania
@@ -854,25 +854,25 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               {faqs.map(({ q, a }, idx) => (
                 <div 
                   key={q}
-                  className="rounded-xl border border-white/10 overflow-hidden bg-white/[0.01]"
+                  className="rounded-xl border border-border-subtle overflow-hidden bg-surface-subtle"
                 >
                   <button 
                     onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                    className="w-full flex items-center justify-between p-5 text-left text-white font-medium text-sm transition-colors hover:bg-white/[0.02]"
+                    className="w-full flex items-center justify-between p-5 text-left text-text-primary font-medium text-sm transition-colors hover:bg-surface-subtle"
                   >
                     <span>{q}</span>
                     <ChevronDown 
-                      className={`size-4 text-[#c9a96e] transition-transform duration-300 shrink-0 ml-3 ${
+                      className={`size-4 text-accent-gold transition-transform duration-300 shrink-0 ml-3 ${
                         expandedFaq === idx ? "rotate-180" : ""
                       }`} 
                     />
                   </button>
                   <div 
                     className={`transition-all duration-300 overflow-hidden ${
-                      expandedFaq === idx ? "max-h-48 border-t border-white/5" : "max-h-0"
+                      expandedFaq === idx ? "max-h-48 border-t border-border-subtle" : "max-h-0"
                     }`}
                   >
-                    <p className="p-5 text-xs leading-relaxed text-[#a8a8a8]">{a}</p>
+                    <p className="p-5 text-xs leading-relaxed text-text-secondary">{a}</p>
                   </div>
                 </div>
               ))}
@@ -882,22 +882,22 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       </section>
 
       {/* FINAL SCARCITY CTA SECTION */}
-      <section className="border-t border-white/10 py-16 px-4 text-center bg-[#050505]">
+      <section className="border-t border-border-subtle py-16 px-4 text-center bg-surface-base">
         <Container>
           <div className="max-w-xl mx-auto space-y-6">
             {/* Guarantee Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#c9a96e]/10 border border-[#c9a96e]/20 text-[#c9a96e] text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-xs font-semibold uppercase tracking-wider">
               <Award className="size-4" />
               <span>Gwarancja Satysfakcji Amazon 30 dni</span>
             </div>
             
             <h2
-              className="text-3xl font-semibold text-white leading-tight"
+              className="text-3xl font-semibold text-text-primary leading-tight"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Rozpocznij swój wieczorny rytuał wyciszenia
             </h2>
-            <p className="text-sm leading-relaxed text-[#a8a8a8]">
+            <p className="text-sm leading-relaxed text-text-secondary">
               Wybierz sprawdzony, najwyższej jakości produkt, zamów bezpośrednio na Amazon z szybką dostawą Prime i zacznij swoją przemianę już dziś.
             </p>
             
@@ -906,7 +906,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 href={getAffiliateRoute(product.id, "product-final-cta-premium")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-10 py-4 rounded-xl text-base font-bold text-black transition-all bg-[#c9a96e] hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#c9a96e]/10"
+                className="inline-block px-10 py-4 rounded-xl text-base font-bold text-black transition-all bg-accent-gold hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-accent-gold/10"
               >
                 Sprawdź Ofertę na Amazon
               </a>
@@ -917,10 +917,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
 
       {/* RELATED FAVORITES */}
       {related.length > 0 && (
-        <section className="border-t border-white/10 py-14 px-4 bg-[#020202]">
+        <section className="border-t border-border-subtle py-14 px-4 bg-surface-base">
           <Container>
             <h2
-              className="text-2xl font-semibold text-white text-center mb-10"
+              className="text-2xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Inne ulubione z tej kategorii
@@ -930,17 +930,17 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <Link
                   key={rel.id}
                   href={`/favorites/${rel.id}`}
-                  className="group flex gap-4 p-4 rounded-xl border border-white/10 hover:border-white/20 transition-all bg-[#0a0a0a]"
+                  className="group flex gap-4 p-4 rounded-xl border border-border-subtle hover:border-border-default transition-all bg-surface-base"
                 >
-                  <div className="relative size-20 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-white/[0.01]">
+                  <div className="relative size-20 rounded-lg overflow-hidden shrink-0 border border-border-subtle bg-surface-subtle">
                     <Image src={rel.image} alt={rel.imageAlt} fill className="object-cover" />
                   </div>
                   <div className="min-w-0 flex-1 flex flex-col justify-center">
-                    <p className="text-sm font-semibold text-white truncate group-hover:text-[#c9a96e] transition-colors">
+                    <p className="text-sm font-semibold text-text-primary truncate group-hover:text-accent-gold transition-colors">
                       {rel.name}
                     </p>
-                    <p className="text-xs mt-1 text-[#a8a8a8] line-clamp-1">{rel.benefit}</p>
-                    <p className="text-xs font-semibold mt-2 text-[#c9a96e] flex items-center gap-1">
+                    <p className="text-xs mt-1 text-text-secondary line-clamp-1">{rel.benefit}</p>
+                    <p className="text-xs font-semibold mt-2 text-accent-gold flex items-center gap-1">
                       Sprawdź szczegóły <ArrowRight className="size-3 group-hover:translate-x-1 transition-transform" />
                     </p>
                   </div>
@@ -953,18 +953,18 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
 
       {/* FLOATING STICKY CHECKOUT DRAWER */}
       <div 
-        className={`fixed bottom-0 left-0 right-0 bg-[#0a0a0af0] backdrop-blur-md border-t border-white/10 py-3.5 px-4 z-50 transition-all duration-500 transform ${
+        className={`fixed bottom-0 left-0 right-0 bg-surface-glass backdrop-blur-md border-t border-border-subtle py-3.5 px-4 z-50 transition-all duration-500 transform ${
           showSticky ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
         }`}
       >
         <Container>
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="relative size-12 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-white/[0.01] hidden sm:block">
+              <div className="relative size-12 rounded-lg overflow-hidden shrink-0 border border-border-subtle bg-surface-subtle hidden sm:block">
                 <Image src={product.image} alt={product.imageAlt} fill className="object-cover" />
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-white truncate max-w-[240px] md:max-w-[400px]">
+                <p className="text-sm font-bold text-text-primary truncate max-w-[240px] md:max-w-[400px]">
                   {product.name}
                 </p>
                 <div className="flex items-center gap-2 mt-0.5">
@@ -974,13 +974,13 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                         key={i}
                         className="size-3"
                         style={{
-                          fill: i < Math.floor(averageRating) ? "#c9a96e" : "transparent",
-                          color: "#c9a96e",
+                          fill: i < Math.floor(averageRating) ? "var(--accent-gold)" : "transparent",
+                          color: "var(--accent-gold)",
                         }}
                       />
                     ))}
                   </div>
-                  <span className="text-[10px] text-[#a8a8a8] font-medium">({proof.reviews})</span>
+                  <span className="text-[10px] text-text-secondary font-medium">({proof.reviews})</span>
                 </div>
               </div>
             </div>
@@ -990,7 +990,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 href={getAffiliateRoute(product.id, "product-sticky-premium")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-lg text-xs font-bold text-black bg-[#c9a96e] hover:opacity-95 transition-all text-center"
+                className="px-5 py-2.5 rounded-lg text-xs font-bold text-black bg-accent-gold hover:opacity-95 transition-all text-center"
               >
                 Sprawdź na Amazon
               </a>

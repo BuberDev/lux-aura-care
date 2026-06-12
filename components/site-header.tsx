@@ -9,6 +9,7 @@ import Logo from "../public/lux_aura_care_logo.png";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { HeaderProductSearch } from "@/components/header-product-search";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteMeta } from "@/lib/site-data";
 
 type HeaderSearchProduct = {
@@ -47,7 +48,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-40 p-2 md:px-5 md:pt-3">
-        <Container className="rounded-2xl border border-white/15 bg-black/40 px-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/30 sm:px-4 md:px-6">
+        <Container className="rounded-2xl border border-border-subtle bg-surface-glass px-3 shadow-theme-lg backdrop-blur-2xl sm:px-4 md:px-6">
           <div className="flex h-14 items-center justify-between gap-3 md:h-20 md:gap-6">
             <Link href="/" className="inline-flex shrink-0 items-center gap-2 md:gap-3">
               <Image src={Logo} className="w-8 rounded-full opacity-80 md:w-10" alt="logo" />
@@ -76,6 +77,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
 
             <div className="ml-auto flex items-center gap-2 sm:gap-4">
               <CTAButton href="/blog" label="Start Reading" variant="secondary" className="hidden xl:inline-flex" />
+              <ThemeToggle className="hidden md:inline-flex" />
 
               <button
                 className="rounded-full p-2 text-text-secondary transition-colors hover:text-accent-gold focus:outline-none md:hidden"
@@ -127,7 +129,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
             <HeaderProductSearch
               products={searchProducts}
               placeholder="Search products..."
-              inputClassName="h-10 border-white/20 bg-black/50 text-[13px]"
+              inputClassName="h-10 text-[13px]"
               inputRef={mobileSearchInputRef}
             />
           </div>
@@ -142,13 +144,13 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
       />
 
       <div
-        className={`fixed right-0 top-0 z-[60] flex h-full w-[280px] transform flex-col border-l border-white/10 bg-[#0a0a0a] shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed right-0 top-0 z-[60] flex h-full w-[280px] transform flex-col border-l border-border-subtle bg-surface-base shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex justify-end p-4">
           <button
-            className="rounded-full bg-white/5 p-2 text-text-secondary transition-colors hover:text-accent-gold focus:outline-none"
+            className="rounded-full bg-surface-raised p-2 text-text-secondary transition-colors hover:text-accent-gold focus:outline-none"
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
             type="button"
@@ -170,7 +172,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
         </div>
 
         <nav className="flex flex-col gap-6 overflow-y-auto px-6 pb-6">
-          <div className="flex items-center gap-3 border-b border-white/5 pb-6">
+          <div className="flex items-center gap-3 border-b border-border-subtle pb-6">
             <Image src={Logo} className="w-8 rounded-full opacity-80" alt="logo" />
             <span className="font-heading text-lg tracking-[0.06em] text-text-primary">{siteMeta.name}</span>
           </div>
@@ -189,7 +191,8 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
             ))}
           </ul>
 
-          <div className="mt-6 border-t border-white/5 pt-6">
+          <div className="mt-6 space-y-4 border-t border-border-subtle pt-6">
+            <ThemeToggle showLabel className="w-full" />
             <CTAButton href="/blog" label="Start Reading" variant="secondary" className="w-full justify-center" />
           </div>
         </nav>

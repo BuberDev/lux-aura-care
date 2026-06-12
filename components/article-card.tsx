@@ -14,7 +14,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
   const category = getCategoryById(article.categoryId);
 
   return (
-    <Card className="group overflow-hidden border-white/12 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold/60">
+    <Card className="group overflow-hidden border-border-subtle bg-surface-subtle transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold/60">
       <Link href={`/blog/${article.slug}`} className="block">
         <div className="relative aspect-[2/3] overflow-hidden">
           <Image

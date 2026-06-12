@@ -9,8 +9,8 @@ type UrgencyBadgeProps = {
 export function UrgencyBadge({ label, intensity, compact = false }: UrgencyBadgeProps) {
   const intensityConfig = {
     low: {
-      bgColor: "bg-white/[0.05]",
-      borderColor: "border-white/10",
+      bgColor: "bg-surface-raised",
+      borderColor: "border-border-subtle",
       textColor: "text-text-secondary",
       icon: null,
     },

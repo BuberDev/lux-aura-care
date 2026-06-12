@@ -10,7 +10,7 @@ type CategoryCardProps = {
 
 export function CategoryCard({ category }: CategoryCardProps) {
   return (
-    <Card className="group overflow-hidden border-white/12 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold/60 hover:bg-white/[0.04]">
+    <Card className="group overflow-hidden border-border-subtle bg-surface-subtle transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold/60 hover:bg-surface-raised">
       <Link href={`/blog?category=${category.id}`} className="block">
         <div className="relative h-52 overflow-hidden">
           <Image

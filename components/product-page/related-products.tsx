@@ -29,7 +29,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
 
         <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4" aria-label="Related products">
           {products.map((product) => (
-            <li key={product.id} className="overflow-hidden rounded-3xl border border-white/12 bg-white/[0.02]">
+            <li key={product.id} className="overflow-hidden rounded-3xl border border-border-subtle bg-surface-subtle">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={product.image}

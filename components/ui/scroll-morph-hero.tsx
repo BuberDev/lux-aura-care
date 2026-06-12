@@ -68,15 +68,15 @@ function FlipCard({ product, index, target }: FlipCardProps) {
         </div>
         {/* Back Face */}
         <div
-          className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-black/80 flex flex-col items-center justify-center p-4 border border-white/20"
+          className="theme-on-image absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-black/80 flex flex-col items-center justify-center p-4 border border-border-default"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           <div className="text-center">
-            <p className="text-[8px] font-bold uppercase tracking-widest mb-1" style={{ color: "#c9a96e" }}>
+            <p className="text-[8px] font-bold uppercase tracking-widest mb-1" style={{ color: "var(--accent-gold)" }}>
               Product
             </p>
             <p
-              className="text-[9px] font-medium leading-tight text-white"
+              className="text-[9px] font-medium leading-tight text-text-primary"
               style={{
                 display: "-webkit-box",
                 WebkitBoxOrient: "vertical",
@@ -129,7 +129,7 @@ function LiquidGlassText({
 }) {
   return (
     <span
-      className={`relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-white/12 bg-black/30 px-4 py-3 text-sm leading-relaxed text-white shadow-[0_24px_68px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-md md:px-5 md:text-base ${className}`}
+      className={`theme-on-image relative mt-4 inline-flex max-w-[min(560px,88vw)] overflow-hidden rounded-2xl border border-border-subtle bg-black/30 px-4 py-3 text-sm leading-relaxed text-text-primary shadow-[0_24px_68px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(255,255,255,0.05)] backdrop-blur-md md:px-5 md:text-base ${className}`}
     >
       <span
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -289,7 +289,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full overflow-hidden"
+      className="theme-on-image relative w-full h-full overflow-hidden"
       style={{ background: "transparent", touchAction: "pan-y" }}
     >
 
@@ -311,7 +311,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
           >
             <LiquidGlassText
               className="mt-0 max-w-[min(820px,92vw)] rounded-[1.75rem] px-5 py-3.5 md:px-8 md:py-5"
-              contentClassName="font-heading text-3xl font-semibold tracking-tight text-white md:text-6xl"
+              contentClassName="font-heading text-3xl font-semibold tracking-tight text-text-primary md:text-6xl"
             >
               Elevate your evening ritual.
             </LiquidGlassText>
@@ -326,7 +326,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
             transition={{ duration: 1, delay: 0.2 }}
             className="mt-4 text-xs font-bold tracking-[0.2em]"
             style={{
-              color: "#c9a96e",
+              color: "var(--accent-gold)",
               textShadow: "0 1px 18px rgba(0,0,0,0.9)",
             }}
           >
@@ -344,7 +344,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
           className="absolute z-30 flex flex-col items-center justify-center text-center pointer-events-none px-4"
         >
           <h2
-            className="mb-4 max-w-[min(780px,92vw)] text-3xl font-semibold tracking-tight text-white md:text-5xl"
+            className="mb-4 max-w-[min(780px,92vw)] text-3xl font-semibold tracking-tight text-text-primary md:text-5xl"
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
               textShadow: "0 2px 24px rgba(0,0,0,0.95), 0 0 42px rgba(201,169,110,0.16)",
@@ -355,7 +355,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
           <div
             className="flex max-w-lg flex-col items-center text-sm leading-relaxed md:text-base"
             style={{
-              color: "#d2d2d2",
+              color: "var(--text-secondary)",
               textShadow: "0 1px 20px rgba(0,0,0,0.95)",
             }}
           >
