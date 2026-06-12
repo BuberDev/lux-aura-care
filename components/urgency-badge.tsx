@@ -1,4 +1,5 @@
-import { AlertCircle, TrendingUp, Zap } from "lucide-react";
+import { TrendingUp, Zap } from "lucide-react";
+import { T } from "@/components/translated-text";
 
 type UrgencyBadgeProps = {
   readonly label: string;
@@ -54,7 +55,7 @@ export function UrgencyBadge({ label, intensity, compact = false }: UrgencyBadge
           {label}
         </p>
         {intensity === "high" && (
-          <p className="text-xs text-text-secondary">Limited availability</p>
+          <p className="text-xs text-text-secondary"><T text={"Limited availability"} /></p>
         )}
       </div>
     </div>

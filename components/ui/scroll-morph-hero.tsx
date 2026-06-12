@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
+import { T } from "@/components/translated-text";
 
 // --- Types ---
 export type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
@@ -73,7 +74,7 @@ function FlipCard({ product, index, target }: FlipCardProps) {
         >
           <div className="text-center">
             <p className="text-[8px] font-bold uppercase tracking-widest mb-1" style={{ color: "var(--accent-gold)" }}>
-              Product
+              <T text={"Product"} />
             </p>
             <p
               className="text-[9px] font-medium leading-tight text-text-primary"
@@ -313,7 +314,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               className="mt-0 max-w-[min(820px,92vw)] rounded-[1.75rem] px-5 py-3.5 md:px-8 md:py-5"
               contentClassName="font-heading text-3xl font-semibold tracking-tight text-text-primary md:text-6xl"
             >
-              Elevate your evening ritual.
+              <T text={"Elevate your evening ritual."} />
             </LiquidGlassText>
           </motion.h1>
           <motion.p
@@ -330,7 +331,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               textShadow: "0 1px 18px rgba(0,0,0,0.9)",
             }}
           >
-            SCROLL TO EXPLORE
+            <T text={"SCROLL TO EXPLORE"} />
           </motion.p>
         </div>
 
@@ -350,7 +351,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               textShadow: "0 2px 24px rgba(0,0,0,0.95), 0 0 42px rgba(201,169,110,0.16)",
             }}
           >
-            Your Luxury Self-Care Ritual
+            <T text={"Your Luxury Self-Care Ritual"} />
           </h2>
           <div
             className="flex max-w-lg flex-col items-center text-sm leading-relaxed md:text-base"
@@ -359,9 +360,9 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               textShadow: "0 1px 20px rgba(0,0,0,0.95)",
             }}
           >
-            <span>Curated rituals for sleep, skin, and body glow.</span>
+            <span><T text={"Curated rituals for sleep, skin, and body glow."} /></span>
             <LiquidGlassText>
-              Discover products designed for a calm, polished lifestyle.
+              <T text={"Discover products designed for a calm, polished lifestyle."} />
             </LiquidGlassText>
           </div>
         </motion.div>

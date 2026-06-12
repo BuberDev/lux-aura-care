@@ -3,6 +3,10 @@
 const VISITOR_ID_KEY = "lux_aura_visitor_id";
 const VISITOR_DATA_KEY = "lux_aura_visitor_data";
 
+type AnalyticsWindow = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
+
 export type VisitorData = {
   id: string;
   firstVisit: number;
@@ -103,7 +107,7 @@ export function recordVisitorInteraction(type: "article" | "product", id: string
 export function sendVisitorEvent(eventName: string, eventData: Record<string, unknown>): void {
   if (typeof window === "undefined") return;
 
-  const gtag = (window as any).gtag;
+  const gtag = (window as AnalyticsWindow).gtag;
   if (!gtag) return;
 
   const visitorData = getVisitorData();

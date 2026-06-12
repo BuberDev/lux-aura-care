@@ -8,9 +8,13 @@ import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { getAffiliateRoute } from "@/lib/affiliate";
 import { getGlowRoutineSteps, getProductProof } from "@/lib/site-data";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent } from "@/lib/i18n/messages";
+import { T } from "@/components/translated-text";
 
-export function RoutineSection() {
-  const steps = getGlowRoutineSteps();
+export async function RoutineSection() {
+  const locale = await getRequestLocale();
+  const steps = localizeContent(locale, getGlowRoutineSteps());
 
   return (
     <Section id="routine" className="atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
@@ -23,7 +27,7 @@ export function RoutineSection() {
 
         <ol className="mt-12 grid gap-6 lg:grid-cols-2">
           {steps.map((step) => {
-            const proof = getProductProof(step.product.id);
+            const proof = localizeContent(locale, getProductProof(step.product.id));
 
             return (
               <li key={step.step} className="rounded-3xl border border-border-subtle bg-surface-subtle p-5 md:p-6">
@@ -40,19 +44,19 @@ export function RoutineSection() {
 
                   <div className="space-y-3">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <Badge>Step {step.step}</Badge>
+                      <Badge><T text={"Step"} /> {step.step}</Badge>
                       <span className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-text-secondary">
                         <Clock3 className="size-3.5" aria-hidden="true" />
-                        {step.timing}
+                        <T text={step.timing} />
                       </span>
                     </div>
 
-                    <h3 className="font-heading text-2xl leading-tight">{step.title}</h3>
-                    <p className="text-sm leading-relaxed text-text-secondary">{step.description}</p>
-                    <p className="text-xs uppercase tracking-[0.14em] text-accent-gold">{proof.socialProof}</p>
+                    <h3 className="font-heading text-2xl leading-tight"><T text={step.title} /></h3>
+                    <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
+                    <p className="text-xs uppercase tracking-[0.14em] text-accent-gold"><T text={proof.socialProof} /></p>
 
                     <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border-subtle pt-3">
-                      <p className="text-sm text-text-secondary">{step.product.name}</p>
+                      <p className="text-sm text-text-secondary"><T text={step.product.name} /></p>
                       <CTAButton
                         href={getAffiliateRoute(step.product.id, "routine-step")}
                         label="Check on Amazon"

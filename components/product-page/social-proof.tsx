@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
+import { T } from "@/components/translated-text";
 
 type SocialProofProps = {
   readonly headline: string;
@@ -27,7 +28,7 @@ export function SocialProof({
     <Section className="atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_520px]">
       <Container>
         <div className="rounded-[2rem] border border-border-subtle bg-surface-raised p-7 text-text-primary md:p-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-accent-gold">Social Proof</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-accent-gold"><T text={"Social Proof"} /></p>
           <h2 className="mt-3 max-w-3xl font-heading text-3xl leading-tight sm:text-4xl">{headline}</h2>
 
           <div className="mt-5 flex flex-wrap items-center gap-3">
@@ -40,7 +41,7 @@ export function SocialProof({
             <span className="text-xs uppercase tracking-[0.14em] text-text-secondary">{reviews}</span>
           </div>
 
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-text-secondary">&ldquo;{socialLine}&rdquo;</p>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-text-secondary"><T text={"&ldquo;"} />{socialLine}<T text={"&rdquo;"} /></p>
 
           <div className="mt-7">
             <CTAButton

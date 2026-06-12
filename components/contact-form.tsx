@@ -3,8 +3,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { T } from "@/components/translated-text";
+import { useI18n } from "@/components/i18n-provider";
 
 export function ContactForm() {
+  const { locale, text } = useI18n();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,13 +28,13 @@ export function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, locale }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
+        throw new Error(data.error || text("Failed to send message"));
       }
 
       setStatus("success");
@@ -39,7 +42,7 @@ export function ContactForm() {
     } catch (error) {
       console.error("Error submitting contact form:", error);
       setStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again later.");
+      setErrorMessage(error instanceof Error ? error.message : text("Something went wrong. Please try again later."));
     }
   };
 
@@ -61,15 +64,15 @@ export function ContactForm() {
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/20 text-green-500">
               <CheckCircle2 size={32} />
             </div>
-            <h3 className="mb-2 text-2xl font-semibold text-text-primary">Message Sent!</h3>
+            <h3 className="mb-2 text-2xl font-semibold text-text-primary"><T text={"Message Sent!"} /></h3>
             <p className="text-text-secondary">
-              Thank you for reaching out. We'll get back to you as soon as possible.
+              <T text={"Thank you for reaching out. We'll get back to you as soon as possible."} />
             </p>
             <button
               onClick={() => setStatus("idle")}
               className="mt-8 rounded-full bg-accent-gold px-8 py-3 font-semibold text-black transition-transform hover:scale-105 active:scale-95"
             >
-              Send Another Message
+              <T text={"Send Another Message"} />
             </button>
           </motion.div>
         ) : (
@@ -83,7 +86,7 @@ export function ContactForm() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium text-text-secondary">
-                  Name
+                  <T text={"Name"} />
                 </label>
                 <input
                   type="text"
@@ -92,13 +95,13 @@ export function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Your name"
+                  placeholder={text("Your name")}
                   className="w-full rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
                 />
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium text-text-secondary">
-                  Email
+                  <T text={"Email"} />
                 </label>
                 <input
                   type="email"
@@ -107,7 +110,7 @@ export function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="your@email.com"
+                  placeholder={text("your@email.com")}
                   className="w-full rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
                 />
               </div>
@@ -115,7 +118,7 @@ export function ContactForm() {
 
             <div className="space-y-2">
               <label htmlFor="subject" className="text-sm font-medium text-text-secondary">
-                Subject
+                <T text={"Subject"} />
               </label>
               <input
                 type="text"
@@ -124,14 +127,14 @@ export function ContactForm() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                placeholder="What can we help you with?"
+                placeholder={text("What can we help you with?")}
                 className="w-full rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
               />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="message" className="text-sm font-medium text-text-secondary">
-                Message
+                <T text={"Message"} />
               </label>
               <textarea
                 id="message"
@@ -140,7 +143,7 @@ export function ContactForm() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="Write your message here..."
+                placeholder={text("Write your message here...")}
                 className="w-full resize-none rounded-xl border border-border-subtle bg-surface-raised px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:border-accent-gold/50 focus:outline-none focus:ring-1 focus:ring-accent-gold/50 transition-all"
               />
             </div>
@@ -160,12 +163,12 @@ export function ContactForm() {
               {status === "loading" ? (
                 <>
                   <Loader2 className="animate-spin" size={20} />
-                  Sending...
+                  <T text={"Sending..."} />
                 </>
               ) : (
                 <>
                   <Send size={20} />
-                  Send Message
+                  <T text={"Send Message"} />
                 </>
               )}
             </button>

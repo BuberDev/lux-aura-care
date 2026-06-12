@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import React from "react";
 import {
   Mail,
@@ -15,6 +15,7 @@ import {
 
 import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
 import { siteMeta } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
 
 function HoverFooter() {
   const footerLinks = [
@@ -70,26 +71,26 @@ function HoverFooter() {
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-accent-gold/50 bg-accent-gold/10">
                 <Flower2 className="size-5 text-accent-gold" aria-hidden="true" />
               </span>
-              <span className="font-heading text-3xl text-text-primary">Lux Aura Care</span>
+              <span className="font-heading text-3xl text-text-primary"><T text={"Lux Aura Care"} /></span>
             </div>
             <p className="text-sm leading-relaxed text-text-secondary">
-              Editorial self-care platform curated to help Pinterest readers move from inspiration to confident product choices.
+              <T text={"Editorial self-care platform curated to help Pinterest readers move from inspiration to confident product choices."} />
             </p>
             <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
               <Sparkles className="size-4" aria-hidden="true" />
-              Calm luxury. Better routines.
+              <T text={"Calm luxury. Better routines."} />
             </p>
           </div>
 
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-6 text-lg font-semibold text-text-primary">{section.title}</h4>
+              <h4 className="mb-6 text-lg font-semibold text-text-primary"><T text={section.title} /></h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.label} className="relative">
-                    <Link href={link.href} className="text-text-secondary transition-colors hover:text-accent-gold">
-                      {link.label}
-                    </Link>
+                    <LocalizedLink href={link.href} className="text-text-secondary transition-colors hover:text-accent-gold">
+                      <T text={link.label} />
+                    </LocalizedLink>
                     {link.pulse ? (
                       <span className="absolute right-[-10px] top-0 h-2 w-2 animate-pulse rounded-full bg-accent-gold" />
                     ) : null}
@@ -100,17 +101,17 @@ function HoverFooter() {
           ))}
 
           <div>
-            <h4 className="mb-6 text-lg font-semibold text-text-primary">Contact</h4>
+            <h4 className="mb-6 text-lg font-semibold text-text-primary"><T text={"Contact"} /></h4>
             <ul className="space-y-4">
               {contactInfo.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-text-secondary">
                   {item.icon}
                   {item.href ? (
                     <a href={item.href} className="transition-colors hover:text-accent-gold">
-                      {item.text}
+                      <T text={item.text} />
                     </a>
                   ) : (
-                    <span>{item.text}</span>
+                    <span><T text={item.text} /></span>
                   )}
                 </li>
               ))}
@@ -135,7 +136,7 @@ function HoverFooter() {
           </div>
 
           <p className="text-center text-text-secondary md:text-left">
-            &copy; {new Date().getFullYear()} Lux Aura Care. All rights reserved.
+            © {new Date().getFullYear()} <T text={"Lux Aura Care. All rights reserved."} />
           </p>
         </div>
       </div>

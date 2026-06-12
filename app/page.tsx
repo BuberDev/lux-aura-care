@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import { ShieldCheck, Sparkles, TrendingUp, Check } from "lucide-react";
 import ScrollMorphHero from "@/components/ui/scroll-morph-hero";
 import { Component as EtheralShadow } from "@/components/ui/etheral-shadow";
@@ -20,30 +20,39 @@ import { Section } from "@/components/section";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { categories, getAmazonFavorites, getFeaturedArticles, products, siteMeta } from "@/lib/site-data";
 import { shopProducts } from "@/lib/shop-data";
+import { T } from "@/components/translated-text";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 
-export const metadata: Metadata = {
-  title: "Luxury Self-Care Rituals | High-Glow Habits",
-  description:
-    "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle. Rituals for sleep, skin, and body glow.",
-  keywords: [...siteMeta.keywords, ...siteMeta.plKeywords],
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Luxury Self-Care Rituals | High-Glow Habits",
-    description:
-      "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.",
-    url: "/",
-    type: "website",
-    siteName: "Lux Aura Care",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Luxury Self-Care Rituals | High-Glow Habits",
-    description:
-      "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const title = translateText(locale, "Luxury Self-Care Rituals | High-Glow Habits");
+  const description = translateText(
+    locale,
+    "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle. Rituals for sleep, skin, and body glow."
+  );
+
+  return {
+    title,
+    description,
+    keywords: locale === "pl" ? siteMeta.plKeywords : siteMeta.keywords,
+    alternates: getLocalizedAlternates("/", locale),
+    openGraph: {
+      title,
+      description,
+      url: localizePathname("/", locale),
+      type: "website",
+      siteName: "Lux Aura Care",
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 const trustSignals = [
   {
@@ -63,17 +72,22 @@ const trustSignals = [
   },
 ];
 
-export default function HomePage() {
-  const featuredArticles = getFeaturedArticles();
-  const favorites = getAmazonFavorites();
-  const heroProducts = products.map((product) => ({
+export default async function HomePage() {
+  const locale = await getRequestLocale();
+  const featuredArticles = localizeContent(locale, getFeaturedArticles());
+  const favorites = localizeContent(locale, getAmazonFavorites());
+  const localizedProducts = localizeContent(locale, products);
+  const localizedShopProducts = localizeContent(locale, shopProducts);
+  const localizedCategories = localizeContent(locale, categories);
+  const localizedTrustSignals = localizeContent(locale, trustSignals);
+  const heroProducts = localizedProducts.map((product) => ({
     src: product.image,
     alt: product.imageAlt,
     name: product.name,
   }));
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
-    { name: "Home", item: "/" },
+    { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
   ]);
 
   const homeJsonLd = {
@@ -83,7 +97,7 @@ export default function HomePage() {
         "@type": "Organization",
         "@id": toAbsoluteUrl("/#organization"),
         name: siteMeta.name,
-        url: toAbsoluteUrl("/"),
+        url: toAbsoluteUrl(localizePathname("/", locale)),
         logo: {
           "@type": "ImageObject",
           url: toAbsoluteUrl("/lux_aura_care_logo.png"),
@@ -99,19 +113,19 @@ export default function HomePage() {
         "@type": "WebSite",
         "@id": toAbsoluteUrl("/#website"),
         name: siteMeta.name,
-        url: toAbsoluteUrl("/"),
-        description: siteMeta.description,
+        url: toAbsoluteUrl(localizePathname("/", locale)),
+        description: translateText(locale, siteMeta.description),
         publisher: { "@id": toAbsoluteUrl("/#organization") },
-        inLanguage: "en",
+        inLanguage: locale,
       },
       {
         "@type": "ItemList",
-        name: "Featured Articles",
-        description: "Latest ritual guides for a polished lifestyle.",
+        name: translateText(locale, "Featured Articles"),
+        description: translateText(locale, "Latest ritual guides for a polished lifestyle."),
         itemListElement: featuredArticles.map((article, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          url: toAbsoluteUrl(`/blog/${article.slug}`),
+          url: toAbsoluteUrl(localizePathname(`/blog/${article.slug}`, locale)),
           name: article.title,
         })),
       },
@@ -144,8 +158,8 @@ export default function HomePage() {
 
         <div className="absolute bottom-6 md:bottom-8 left-0 right-0 z-20 pointer-events-none">
           <Container className="pointer-events-auto">
-            <ul className="grid gap-3 md:grid-cols-3" aria-label="Trust signals">
-              {trustSignals.map((item) => (
+            <ul className="grid gap-3 md:grid-cols-3" aria-label={translateText(locale, "Trust signals")}>
+              {localizedTrustSignals.map((item) => (
                 <li key={item.label} className="theme-on-image rounded-2xl border border-border-subtle bg-black/30 backdrop-blur-md px-4 py-4 shadow-xl">
                   <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-accent-gold">
                     <item.icon className="size-4" aria-hidden="true" />
@@ -164,19 +178,19 @@ export default function HomePage() {
         <Container>
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-[0.2em] mb-3" style={{ color: "var(--accent-gold)" }}>
-              New · Skin Rituals
+              <T text={"New · Skin Rituals"} />
             </p>
             <h2 className="font-heading text-3xl md:text-4xl text-text-primary mb-4">
-              Shop our ritual essentials
+              <T text={"Shop our ritual essentials"} />
             </h2>
             <p className="text-base max-w-lg mx-auto" style={{ color: "var(--text-secondary)" }}>
-              Clinic-quality results at home. Designed for women 40+.
+              <T text={"Clinic-quality results at home. Designed for women 40+."} />
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3 mb-10">
-            {shopProducts.map((product) => (
-              <Link
+            {localizedShopProducts.map((product) => (
+              <LocalizedLink
                 key={product.id}
                 href={`/shop/${product.id}`}
                 className="group block overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle transition-all duration-300 hover:border-border-strong"
@@ -212,7 +226,7 @@ export default function HomePage() {
                     <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>€{product.compareAtPrice.toFixed(2)}</span>
                   </div>
                 </div>
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
 
@@ -236,7 +250,7 @@ export default function HomePage() {
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((category) => (
+            {localizedCategories.map((category) => (
               <CategoryCard key={category.id} category={category} />
             ))}
           </div>

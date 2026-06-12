@@ -1,22 +1,35 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
 import { Star, Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { Container } from "@/components/container";
 import { shopProducts } from "@/lib/shop-data";
+import { T } from "@/components/translated-text";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 
-export const metadata: Metadata = {
-  title: "Shop Skin Rituals | Lux Aura Care",
-  description:
-    "Dermaplaning razors and hydrocolloid patches for women 40+. Clinic-quality skincare rituals at home. Free EU delivery.",
-  alternates: { canonical: "/shop" },
-  openGraph: {
-    title: "Shop Skin Rituals | Lux Aura Care",
-    description: "Clinic-quality skincare rituals at home. Free EU delivery.",
-    url: "/shop",
-    type: "website",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const title = translateText(locale, "Shop Skin Rituals | Lux Aura Care");
+  const description = translateText(
+    locale,
+    "Dermaplaning razors and hydrocolloid patches for women 40+. Clinic-quality skincare rituals at home. Free EU delivery."
+  );
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: getLocalizedAlternates("/shop", locale),
+    openGraph: {
+      title,
+      description,
+      url: localizePathname("/shop", locale),
+      type: "website",
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+    },
+  };
+}
 
 const guarantees = [
   { icon: Truck, label: "Free EU Delivery", sub: "7–14 business days" },
@@ -24,7 +37,16 @@ const guarantees = [
   { icon: RotateCcw, label: "Easy Returns", sub: "Hassle-free process" },
 ];
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const locale = await getRequestLocale();
+  const localizedGuarantees = localizeContent(locale, guarantees);
+  const localizedProducts = localizeContent(locale, shopProducts);
+  const trustStats = localizeContent(locale, [
+    { stat: "94%", label: "noticed smoother skin after first use" },
+    { stat: "4 weeks", label: "average time to visible glow results" },
+    { stat: "12K+", label: "happy customers across Europe" },
+  ]);
+
   return (
     <div className="min-h-screen bg-background-primary">
 
@@ -32,16 +54,16 @@ export default function ShopPage() {
       <section className="border-b border-border-subtle py-20 text-center px-4">
         <Container>
           <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent-gold)" }}>
-            Glow Rituals · Women 40+
+            <T text={"Glow Rituals · Women 40+"} />
           </p>
           <h1
             className="text-4xl md:text-6xl font-semibold text-text-primary mb-6"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            Your Weekly Skin Ritual
+            <T text={"Your Weekly Skin Ritual"} />
           </h1>
           <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: "var(--text-secondary)" }}>
-            Two products. One ritual. Visible results in 4 weeks — without a clinic visit.
+            <T text={"Two products. One ritual. Visible results in 4 weeks — without a clinic visit."} />
           </p>
         </Container>
       </section>
@@ -50,7 +72,7 @@ export default function ShopPage() {
       <section className="border-b border-border-subtle py-6">
         <Container>
           <ul className="grid grid-cols-3 gap-4">
-            {guarantees.map(({ icon: Icon, label, sub }) => (
+            {localizedGuarantees.map(({ icon: Icon, label, sub }) => (
               <li key={label} className="flex flex-col items-center text-center gap-1">
                 <Icon className="size-5 mb-1" style={{ color: "var(--accent-gold)" }} />
                 <span className="text-xs font-semibold text-text-primary">{label}</span>
@@ -65,8 +87,8 @@ export default function ShopPage() {
       <section className="py-16 px-4">
         <Container>
           <div className="grid gap-8 md:grid-cols-3">
-            {shopProducts.map((product) => (
-              <Link
+            {localizedProducts.map((product) => (
+              <LocalizedLink
                 key={product.id}
                 href={`/shop/${product.id}`}
                 className="group block overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle transition-all duration-300 hover:border-border-strong"
@@ -113,7 +135,7 @@ export default function ShopPage() {
                       ))}
                     </div>
                     <span className="text-xs" style={{ color: "var(--text-secondary)" }}>
-                      {product.rating} ({product.reviews} reviews)
+                      {product.rating} ({product.reviews} <T text={"reviews)"} />
                     </span>
                   </div>
 
@@ -144,10 +166,10 @@ export default function ShopPage() {
                     className="w-full text-center py-3 rounded-xl text-sm font-semibold text-black transition-opacity group-hover:opacity-90"
                     style={{ background: "var(--accent-gold)" }}
                   >
-                    View Product →
+                    <T text={"View Product →"} />
                   </div>
                 </div>
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
         </Container>
@@ -160,14 +182,10 @@ export default function ShopPage() {
             className="text-center text-lg font-medium mb-8"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--text-primary)" }}
           >
-            Why women 40+ love our rituals
+            <T text={"Why women 40+ love our rituals"} />
           </p>
           <div className="grid gap-6 md:grid-cols-3 text-center">
-            {[
-              { stat: "94%", label: "noticed smoother skin after first use" },
-              { stat: "4 weeks", label: "average time to visible glow results" },
-              { stat: "12K+", label: "happy customers across Europe" },
-            ].map(({ stat, label }) => (
+            {trustStats.map(({ stat, label }) => (
               <div key={stat} className="space-y-1">
                 <p className="text-3xl font-bold" style={{ color: "var(--accent-gold)" }}>{stat}</p>
                 <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{label}</p>

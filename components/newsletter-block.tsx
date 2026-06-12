@@ -7,8 +7,11 @@ import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { T } from "@/components/translated-text";
+import { useI18n } from "@/components/i18n-provider";
 
 export function NewsletterBlock() {
+  const { text } = useI18n();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -31,7 +34,7 @@ export function NewsletterBlock() {
 
       if (data.success) {
         setStatus("success");
-        setMessage("Check your email for your 15% off code!");
+        setMessage(text("Check your email for your 15% off code!"));
         setEmail("");
         setTimeout(() => {
           setStatus("idle");
@@ -39,11 +42,11 @@ export function NewsletterBlock() {
         }, 5000);
       } else {
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessage(text(data.error || "Something went wrong. Please try again."));
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
-      setMessage("Network error. Please try again.");
+      setMessage(text("Network error. Please try again."));
     }
   };
 
@@ -55,33 +58,33 @@ export function NewsletterBlock() {
             <div className="space-y-4">
               <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-background-primary/70">
                 <Sparkles className="size-4" aria-hidden="true" />
-                Exclusive Subscriber Benefit
+                <T text={"Exclusive Subscriber Benefit"} />
               </p>
               <h2 className="font-heading text-3xl leading-tight sm:text-4xl">
-                Get 15% off your first bundle + weekly ritual guides.
+                <T text={"Get 15% off your first bundle + weekly ritual guides."} />
               </h2>
               <p className="text-sm text-background-primary/70">
-                1 curated ritual + 3 product picks sent Friday mornings. Unsubscribe anytime—no hard feelings.
+                <T text={"1 curated ritual + 3 product picks sent Friday mornings. Unsubscribe anytime—no hard feelings."} />
               </p>
               <ul className="mt-3 space-y-1 text-xs text-background-primary/70">
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-background-primary/50" />
-                  Exclusive bundle discounts (15-25% off)
+                  <T text={"Exclusive bundle discounts (15-25% off)"} />
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-background-primary/50" />
-                  New product picks before Instagram
+                  <T text={"New product picks before Instagram"} />
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-background-primary/50" />
-                  Abandoned routine recovery emails
+                  <T text={"Abandoned routine recovery emails"} />
                 </li>
               </ul>
             </div>
 
-            <form className="space-y-3" onSubmit={handleSubmit} aria-label="Newsletter signup">
+            <form className="space-y-3" onSubmit={handleSubmit} aria-label={text("Newsletter signup")}>
               <label htmlFor="newsletter-email" className="sr-only">
-                Email address
+                <T text={"Email address"} />
               </label>
               <Input
                 id="newsletter-email"
@@ -91,7 +94,7 @@ export function NewsletterBlock() {
                 disabled={status === "loading"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder={text("Enter your email")}
                 className="border-black/20 bg-white text-text-on-light placeholder:text-text-on-light/55 disabled:opacity-50"
               />
               <Button
@@ -99,7 +102,9 @@ export function NewsletterBlock() {
                 disabled={status === "loading" || status === "success"}
                 className="w-full bg-background-primary text-text-primary hover:brightness-110 disabled:opacity-50"
               >
-                {status === "loading" ? "Subscribing..." : "Get 15% Off + Weekly Guides"}
+                {status === "loading"
+                  ? text("Subscribing...")
+                  : text("Get 15% Off + Weekly Guides")}
               </Button>
 
               {status === "success" && (
@@ -116,7 +121,7 @@ export function NewsletterBlock() {
                 </div>
               )}
 
-              <p className="text-xs text-background-primary/65">We send Friday mornings only. Unsubscribe instantly.</p>
+              <p className="text-xs text-background-primary/65"><T text={"We send Friday mornings only. Unsubscribe instantly."} /></p>
             </form>
           </div>
         </div>

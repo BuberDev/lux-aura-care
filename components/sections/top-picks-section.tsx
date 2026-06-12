@@ -4,14 +4,17 @@ import { Heading } from "@/components/heading";
 import { ProductCard } from "@/components/product-card";
 import { Section } from "@/components/section";
 import { getTopPickProducts } from "@/lib/site-data";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent } from "@/lib/i18n/messages";
 import { cn } from "@/lib/utils";
 
 type TopPicksSectionProps = {
   className?: string;
 };
 
-export function TopPicksSection({ className }: TopPicksSectionProps) {
-  const picks = getTopPickProducts();
+export async function TopPicksSection({ className }: TopPicksSectionProps) {
+  const locale = await getRequestLocale();
+  const picks = localizeContent(locale, getTopPickProducts());
 
   return (
     <Section id="top-picks" className={cn("[content-visibility:auto] [contain-intrinsic-size:1px_900px]", className)}>

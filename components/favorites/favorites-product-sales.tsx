@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import { 
   Check, Star, Truck, ShieldCheck, RotateCcw, ChevronDown, 
   Users, Flame, Sparkles, ArrowRight, ShieldAlert, Award
@@ -11,6 +11,9 @@ import { Container } from "@/components/container";
 import { getAffiliateRoute } from "@/lib/affiliate";
 import type { Product, ProductProof } from "@/lib/site-data";
 import type { ProductPageContent } from "@/lib/product-page-content";
+import { T } from "@/components/translated-text";
+import { useI18n } from "@/components/i18n-provider";
+import { localizeContent } from "@/lib/i18n/messages";
 
 type FavoritesProductSalesProps = {
   product: Product;
@@ -32,6 +35,7 @@ type Review = {
 };
 
 export function FavoritesProductSales({ product, proof, content, related }: FavoritesProductSalesProps) {
+  const { locale } = useI18n();
   // Scarcity simulation states
   const [viewers, setViewers] = useState(12);
   const [stockPercentage, setStockPercentage] = useState(82);
@@ -244,7 +248,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
     }
   };
 
-  const currentReviews = getReviewsByCategory(product.categoryId);
+  const currentReviews = localizeContent(locale, getReviewsByCategory(product.categoryId));
   
   // Calculate average dynamically
   const averageRating = proof.rating;
@@ -283,7 +287,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
     }
   };
 
-  const comparison = getComparisonData(product.categoryId);
+  const comparison = localizeContent(locale, getComparisonData(product.categoryId));
 
   // Render Category-specific FAQ
   const getFaqData = (category: string) => {
@@ -352,7 +356,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
     }
   };
 
-  const faqs = getFaqData(product.categoryId);
+  const faqs = localizeContent(locale, getFaqData(product.categoryId));
 
   // Gallery tabs images
   const galleryImages = [
@@ -361,18 +365,18 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
     "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80"
   ];
 
-  const galleryTitles = [
+  const galleryTitles = localizeContent(locale, [
     "Widok Główny",
     "Strefa Pielęgnacji",
     " Sensoryczny Rytuał"
-  ];
+  ]);
 
   return (
     <div className="min-h-screen text-text-primary font-sans bg-background-primary">
       {/* Dynamic Urgency Top Announcement */}
       <div className="bg-accent-gold text-black text-xs font-bold py-2.5 px-4 text-center tracking-wider uppercase flex items-center justify-center gap-2 relative z-10">
         <Sparkles className="size-4 animate-pulse" />
-        <span>Rekomendacja Redakcji Lux Aura · Bezpieczne zakupy na Amazon · Darmowa Dostawa Prime</span>
+        <span><T text={"Rekomendacja Redakcji Lux Aura · Bezpieczne zakupy na Amazon · Darmowa Dostawa Prime"} /></span>
         <Sparkles className="size-4 animate-pulse" />
       </div>
 
@@ -380,9 +384,9 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <div className="border-b border-border-subtle py-3 px-4 bg-surface-base">
         <Container>
           <nav className="text-xs flex gap-2 text-text-secondary">
-            <Link href="/" className="hover:text-text-primary transition-colors">Home</Link>
+            <LocalizedLink href="/" className="hover:text-text-primary transition-colors"><T text={"Home"} /></LocalizedLink>
             <span>/</span>
-            <Link href="/favorites" className="hover:text-text-primary transition-colors">Ulubione</Link>
+            <LocalizedLink href="/favorites" className="hover:text-text-primary transition-colors"><T text={"Ulubione"} /></LocalizedLink>
             <span>/</span>
             <span className="text-text-primary truncate">{product.name}</span>
           </nav>
@@ -423,7 +427,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   <span className="size-2 rounded-full bg-green-500 animate-ping" />
                   <span className="text-xs font-medium text-text-primary flex items-center gap-1.5">
                     <Users className="size-3.5 text-accent-gold" />
-                    {viewers} klientów ogląda ten produkt
+                    {viewers} <T text={"klientów ogląda ten produkt"} />
                   </span>
                 </div>
               </div>
@@ -441,7 +445,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     <Image src={img} alt={`Widok ${i+1}`} fill className="object-cover" />
                     <div className="absolute inset-0 bg-black/40 hover:bg-transparent transition-colors" />
                     <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-bold text-text-primary bg-black/80 px-1.5 py-0.5 rounded tracking-wide truncate w-[90%] text-center">
-                      {galleryTitles[i]}
+                      <T text={galleryTitles[i]} />
                     </span>
                   </button>
                 ))}
@@ -452,7 +456,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <div className="space-y-6">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] mb-2 text-accent-gold font-semibold">
-                  Ulubieńcy Pinteresta · {product.trustSignal}
+                  <T text={"Ulubieńcy Pinteresta ·"} /> {product.trustSignal}
                 </p>
                 <h1
                   className="text-3xl md:text-5xl font-semibold text-text-primary tracking-tight leading-tight"
@@ -481,7 +485,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 </div>
                 <span className="text-sm font-semibold text-text-primary">{averageRating.toFixed(1)} / 5.0</span>
                 <span className="text-sm text-text-secondary flex items-center gap-1.5">
-                  ({proof.reviews} z Amazon)
+                  ({proof.reviews} <T text={"z Amazon)"} />
                 </span>
               </div>
 
@@ -490,15 +494,15 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="text-[10px] font-bold px-2.5 py-0.5 rounded bg-accent-gold/10 text-accent-gold tracking-widest uppercase">
-                      Gwarancja Najniższej Ceny
+                      <T text={"Gwarancja Najniższej Ceny"} />
                     </span>
-                    <p className="text-2xl font-bold text-text-primary mt-2">Sprawdź Ofertę na Amazon</p>
+                    <p className="text-2xl font-bold text-text-primary mt-2"><T text={"Sprawdź Ofertę na Amazon"} /></p>
                   </div>
                   <div className="text-right">
                     <span className="text-xs font-bold px-2.5 py-1 rounded bg-accent-gold/15 text-accent-gold">
-                      DARMOWA DOSTAWA
+                      <T text={"DARMOWA DOSTAWA"} />
                     </span>
-                    <p className="text-[10px] text-text-secondary mt-1">Dla członków Prime</p>
+                    <p className="text-[10px] text-text-secondary mt-1"><T text={"Dla członków Prime"} /></p>
                   </div>
                 </div>
 
@@ -507,9 +511,9 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   <div className="flex justify-between text-xs font-medium">
                     <span className="text-text-secondary flex items-center gap-1">
                       <Flame className="size-3.5 text-red-500 animate-bounce" />
-                      Wyprzedaż Błyskawiczna: Pula wyczerpuje się
+                      <T text={"Wyprzedaż Błyskawiczna: Pula wyczerpuje się"} />
                     </span>
-                    <span className="text-red-400 font-bold">Zostało tylko {100 - stockPercentage}% zapasów</span>
+                    <span className="text-red-400 font-bold"><T text={"Zostało tylko"} /> {100 - stockPercentage}<T text={"% zapasów"} /></span>
                   </div>
                   <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
                     <div 
@@ -520,7 +524,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   
                   {/* Countdown Ticking */}
                   <p className="text-[11px] text-text-secondary text-right font-mono">
-                    Gwarancja ceny wygasa za: <span className="text-accent-gold font-bold">{formatTime(timeLeft)}</span>
+                    <T text={"Gwarancja ceny wygasa za:"} /> <span className="text-accent-gold font-bold">{formatTime(timeLeft)}</span>
                   </p>
                 </div>
               </div>
@@ -530,7 +534,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 {proof.highlights.map((highlight) => (
                   <li key={highlight} className="flex items-start gap-3 text-sm text-text-primary/85" style={{ lineHeight: "1.5" }}>
                     <Check className="size-4 mt-0.5 shrink-0 text-accent-gold" />
-                    <span>{highlight}</span>
+                    <span><T text={highlight} /></span>
                   </li>
                 ))}
               </ul>
@@ -543,10 +547,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   rel="noopener noreferrer"
                   className="block w-full text-center py-4 rounded-xl text-base font-bold text-black transition-all bg-accent-gold hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-accent-gold/10"
                 >
-                  Sprawdź Cenę i Kup Teraz na Amazon
+                  <T text={"Sprawdź Cenę i Kup Teraz na Amazon"} />
                 </a>
                 <p className="text-center text-xs text-text-secondary flex items-center justify-center gap-1.5">
-                  🛡️ Bezpieczne szyfrowanie SSL · 30 dni na darmowy zwrot · Oficjalny link partnerski
+                  <T text={"🛡️ Bezpieczne szyfrowanie SSL · 30 dni na darmowy zwrot · Oficjalny link partnerski"} />
                 </p>
               </div>
 
@@ -559,7 +563,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex flex-col items-center gap-1.5 text-center rounded-xl border border-border-subtle p-3 bg-surface-subtle">
                     <Icon className="size-4 text-accent-gold" />
-                    <span className="text-[10px] text-text-secondary font-medium leading-tight">{text}</span>
+                    <span className="text-[10px] text-text-secondary font-medium leading-tight"><T text={text} /></span>
                   </div>
                 ))}
               </div>
@@ -578,7 +582,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <span className="size-8 rounded-full bg-accent-gold/10 flex items-center justify-center text-xs font-bold text-accent-gold">
                   0{idx + 1}
                 </span>
-                <span className="text-xs uppercase tracking-wider font-semibold text-text-primary/90">{benefit}</span>
+                <span className="text-xs uppercase tracking-wider font-semibold text-text-primary/90"><T text={benefit} /></span>
               </div>
             ))}
           </div>
@@ -589,9 +593,9 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section className="py-16 px-4 bg-surface-base border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Pielęgnacja Celowana</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2"><T text={"Pielęgnacja Celowana"} /></p>
             <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Dlaczego ten rytuał ma znaczenie?
+              <T text={"Dlaczego ten rytuał ma znaczenie?"} />
             </h2>
           </div>
 
@@ -600,21 +604,21 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <div className="rounded-2xl border border-red-950/20 p-6 bg-red-950/[0.02] space-y-4">
               <div className="flex items-center gap-2 text-red-500 text-sm font-semibold uppercase tracking-wider">
                 <ShieldAlert className="size-5" />
-                <span>Problem Pielęgnacyjny</span>
+                <span><T text={"Problem Pielęgnacyjny"} /></span>
               </div>
-              <h3 className="text-xl font-semibold text-text-primary">{content.problemHeadline}</h3>
-              <p className="text-sm leading-relaxed text-text-secondary">{content.problemParagraph}</p>
+              <h3 className="text-xl font-semibold text-text-primary"><T text={content.problemHeadline} /></h3>
+              <p className="text-sm leading-relaxed text-text-secondary"><T text={content.problemParagraph} /></p>
             </div>
 
             {/* The Solution */}
             <div className="rounded-2xl border border-accent-gold/20 p-6 bg-accent-gold/[0.02] space-y-4">
               <div className="flex items-center gap-2 text-accent-gold text-sm font-semibold uppercase tracking-wider">
                 <Award className="size-5" />
-                <span>Rekomendacja Lux Aura</span>
+                <span><T text={"Rekomendacja Lux Aura"} /></span>
               </div>
-              <h3 className="text-xl font-semibold text-accent-gold">Natychmiastowy reset zmysłowy</h3>
+              <h3 className="text-xl font-semibold text-accent-gold"><T text={"Natychmiastowy reset zmysłowy"} /></h3>
               <p className="text-sm leading-relaxed text-text-primary/85">
-                Zastąp stres świadomym rytuałem, {content.solutionParagraph}
+                <T text={"Zastąp stres świadomym rytuałem,"} /> <T text={content.solutionParagraph} />
               </p>
             </div>
           </div>
@@ -625,19 +629,19 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section className="py-16 px-4 bg-surface-base border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Porównanie Jakości</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2"><T text={"Porównanie Jakości"} /></p>
             <h2 className="text-2xl md:text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              {comparison.header}
+              <T text={comparison.header} />
             </h2>
           </div>
 
           <div className="max-w-3xl mx-auto border border-border-subtle rounded-2xl overflow-hidden bg-surface-glass">
             <div className="grid grid-cols-2 border-b border-border-subtle bg-surface-subtle">
               <div className="p-4 text-center font-bold text-accent-gold border-r border-border-subtle text-sm md:text-base">
-                Rekomendacja Redakcji Lux Aura
+                <T text={"Rekomendacja Redakcji Lux Aura"} />
               </div>
               <div className="p-4 text-center font-bold text-text-secondary text-sm md:text-base">
-                Tanie Zamienniki Drogeryjne
+                <T text={"Tanie Zamienniki Drogeryjne"} />
               </div>
             </div>
             
@@ -645,11 +649,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               <div key={idx} className="grid grid-cols-2 border-b border-border-subtle last:border-none">
                 <div className="p-4 text-xs md:text-sm text-text-primary/90 border-r border-border-subtle flex items-start gap-2">
                   <Check className="size-4 mt-0.5 shrink-0 text-accent-gold" />
-                  <span>{comparison.us[idx]}</span>
+                  <span><T text={comparison.us[idx]} /></span>
                 </div>
                 <div className="p-4 text-xs md:text-sm text-text-secondary flex items-start gap-2">
                   <span className="text-red-500 font-bold shrink-0 mt-0.5 text-xs">✕</span>
-                  <span>{comparison.them[idx]}</span>
+                  <span><T text={comparison.them[idx]} /></span>
                 </div>
               </div>
             ))}
@@ -661,9 +665,9 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section className="py-16 px-4 bg-surface-base">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Zalety Fizjologiczne</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2"><T text={"Zalety Fizjologiczne"} /></p>
             <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Naukowo potwierdzone korzyści
+              <T text={"Naukowo potwierdzone korzyści"} />
             </h2>
           </div>
 
@@ -673,8 +677,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <span className="text-3xl font-bold text-accent-gold/10 group-hover:text-accent-gold/30 transition-colors">
                   0{idx + 1}
                 </span>
-                <h3 className="text-lg font-semibold text-text-primary mt-2 mb-3">{benefit.title}</h3>
-                <p className="text-sm leading-relaxed text-text-secondary">{benefit.description}</p>
+                <h3 className="text-lg font-semibold text-text-primary mt-2 mb-3"><T text={benefit.title} /></h3>
+                <p className="text-sm leading-relaxed text-text-secondary"><T text={benefit.description} /></p>
               </div>
             ))}
           </div>
@@ -685,11 +689,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section className="border-t border-border-subtle py-16 px-4 bg-background-primary">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2">Sztuka Pielęgnacji</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2"><T text={"Sztuka Pielęgnacji"} /></p>
             <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              {content.ritualTitle}
+              <T text={content.ritualTitle} />
             </h2>
-            <p className="text-sm text-text-secondary mt-2">Przeprowadź swój rytuał z pełną uwagą i wyciszeniem.</p>
+            <p className="text-sm text-text-secondary mt-2"><T text={"Przeprowadź swój rytuał z pełną uwagą i wyciszeniem."} /></p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
@@ -699,8 +703,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
                   {idx + 1}
                 </span>
-                <h3 className="text-lg font-semibold text-text-primary mb-2">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-text-secondary">{step.description}</p>
+                <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
+                <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
               </div>
             ))}
           </div>
@@ -715,14 +719,14 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               className="text-2xl md:text-3xl font-semibold text-text-primary mb-8"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Opinie i Oceny z Amazon
+              <T text={"Opinie i Oceny z Amazon"} />
             </h2>
 
             <div className="grid gap-8 lg:grid-cols-[1fr_2fr] items-start mb-12">
               {/* Scorecard */}
               <div className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle space-y-4">
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-text-secondary">Średnia Ocena</p>
+                  <p className="text-xs uppercase tracking-wider text-text-secondary"><T text={"Średnia Ocena"} /></p>
                   <div className="flex items-baseline gap-2 mt-1">
                     <span className="text-5xl font-bold text-text-primary">{averageRating.toFixed(1)}</span>
                     <span className="text-lg text-text-secondary">/ 5.0</span>
@@ -743,7 +747,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     ))}
                   </div>
                   <span className="text-xs text-text-secondary uppercase tracking-wider font-semibold">
-                    Zweryfikowane Zakupy
+                    <T text={"Zweryfikowane Zakupy"} />
                   </span>
                 </div>
 
@@ -780,7 +784,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     onClick={() => setSelectedRating(null)}
                     className="w-full text-center text-xs text-accent-gold hover:underline font-semibold pt-1"
                   >
-                    Pokaż wszystkie opinie
+                    <T text={"Pokaż wszystkie opinie"} />
                   </button>
                 )}
               </div>
@@ -788,13 +792,13 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               {/* Reviews List */}
               <div className="space-y-6">
                 <div className="flex justify-between items-center text-xs text-text-secondary uppercase tracking-wider border-b border-border-subtle pb-3">
-                  <span>Pokazano {filteredReviews.length} opinii</span>
-                  <span>Sortowanie: Najbardziej pomocne</span>
+                  <span><T text={"Pokazano"} /> {filteredReviews.length} <T text={"opinii"} /></span>
+                  <span><T text={"Sortowanie: Najbardziej pomocne"} /></span>
                 </div>
 
                 {filteredReviews.length === 0 ? (
                   <div className="py-8 text-center text-text-secondary text-sm">
-                    Brak opinii z wybraną oceną.
+                    <T text={"Brak opinii z wybraną oceną."} />
                   </div>
                 ) : (
                   filteredReviews.map((rev) => (
@@ -826,10 +830,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       <p className="text-xs leading-relaxed text-text-secondary">{rev.comment}</p>
                       <div className="flex items-center gap-4 pt-1 text-[10px] text-text-secondary">
                         <button className="flex items-center gap-1 hover:text-text-primary transition-colors border border-border-subtle px-2.5 py-1 rounded bg-surface-raised">
-                          Pomocne ({rev.helpfulCount})
+                          <T text={"Pomocne ("} />{rev.helpfulCount})
                         </button>
                         <span>·</span>
-                        <span>Zgłoś nadużycie</span>
+                        <span><T text={"Zgłoś nadużycie"} /></span>
                       </div>
                     </div>
                   ))
@@ -848,7 +852,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Często zadawane pytania
+              <T text={"Często zadawane pytania"} />
             </h2>
             <div className="space-y-4">
               {faqs.map(({ q, a }, idx) => (
@@ -860,7 +864,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
                     className="w-full flex items-center justify-between p-5 text-left text-text-primary font-medium text-sm transition-colors hover:bg-surface-subtle"
                   >
-                    <span>{q}</span>
+                    <span><T text={q} /></span>
                     <ChevronDown 
                       className={`size-4 text-accent-gold transition-transform duration-300 shrink-0 ml-3 ${
                         expandedFaq === idx ? "rotate-180" : ""
@@ -872,7 +876,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       expandedFaq === idx ? "max-h-48 border-t border-border-subtle" : "max-h-0"
                     }`}
                   >
-                    <p className="p-5 text-xs leading-relaxed text-text-secondary">{a}</p>
+                    <p className="p-5 text-xs leading-relaxed text-text-secondary"><T text={a} /></p>
                   </div>
                 </div>
               ))}
@@ -888,17 +892,17 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             {/* Guarantee Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-xs font-semibold uppercase tracking-wider">
               <Award className="size-4" />
-              <span>Gwarancja Satysfakcji Amazon 30 dni</span>
+              <span><T text={"Gwarancja Satysfakcji Amazon 30 dni"} /></span>
             </div>
             
             <h2
               className="text-3xl font-semibold text-text-primary leading-tight"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Rozpocznij swój wieczorny rytuał wyciszenia
+              <T text={"Rozpocznij swój wieczorny rytuał wyciszenia"} />
             </h2>
             <p className="text-sm leading-relaxed text-text-secondary">
-              Wybierz sprawdzony, najwyższej jakości produkt, zamów bezpośrednio na Amazon z szybką dostawą Prime i zacznij swoją przemianę już dziś.
+              <T text={"Wybierz sprawdzony, najwyższej jakości produkt, zamów bezpośrednio na Amazon z szybką dostawą Prime i zacznij swoją przemianę już dziś."} />
             </p>
             
             <div className="pt-2">
@@ -908,7 +912,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 rel="noopener noreferrer"
                 className="inline-block px-10 py-4 rounded-xl text-base font-bold text-black transition-all bg-accent-gold hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-accent-gold/10"
               >
-                Sprawdź Ofertę na Amazon
+                <T text={"Sprawdź Ofertę na Amazon"} />
               </a>
             </div>
           </div>
@@ -923,11 +927,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               className="text-2xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Inne ulubione z tej kategorii
+              <T text={"Inne ulubione z tej kategorii"} />
             </h2>
             <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
               {related.map((rel) => (
-                <Link
+                <LocalizedLink
                   key={rel.id}
                   href={`/favorites/${rel.id}`}
                   className="group flex gap-4 p-4 rounded-xl border border-border-subtle hover:border-border-default transition-all bg-surface-base"
@@ -941,10 +945,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     </p>
                     <p className="text-xs mt-1 text-text-secondary line-clamp-1">{rel.benefit}</p>
                     <p className="text-xs font-semibold mt-2 text-accent-gold flex items-center gap-1">
-                      Sprawdź szczegóły <ArrowRight className="size-3 group-hover:translate-x-1 transition-transform" />
+                      <T text={"Sprawdź szczegóły"} /> <ArrowRight className="size-3 group-hover:translate-x-1 transition-transform" />
                     </p>
                   </div>
-                </Link>
+                </LocalizedLink>
               ))}
             </div>
           </Container>
@@ -992,7 +996,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-lg text-xs font-bold text-black bg-accent-gold hover:opacity-95 transition-all text-center"
               >
-                Sprawdź na Amazon
+                <T text={"Sprawdź na Amazon"} />
               </a>
             </div>
           </div>

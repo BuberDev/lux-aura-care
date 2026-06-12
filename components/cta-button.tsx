@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import { ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { T } from "@/components/translated-text";
 import { trackAffiliateClick } from "@/lib/ga4-tracking";
 
 type CTAButtonProps = {
@@ -51,7 +52,7 @@ export function CTAButton({
     return (
       <Button asChild size="lg" variant={variant} className={className} onClick={handleClick}>
         <a href={href} target="_blank" rel="noopener noreferrer sponsored">
-          {label}
+          <T text={label} />
           <ArrowUpRight className="ml-2 size-4" aria-hidden="true" />
         </a>
       </Button>
@@ -60,10 +61,10 @@ export function CTAButton({
 
   return (
     <Button asChild size="lg" variant={variant} className={className} onClick={handleClick}>
-      <Link href={href}>
-        {label}
+      <LocalizedLink href={href}>
+        <T text={label} />
         <ArrowUpRight className="ml-2 size-4" aria-hidden="true" />
-      </Link>
+      </LocalizedLink>
     </Button>
   );
 }

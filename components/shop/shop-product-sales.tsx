@@ -15,17 +15,18 @@ import {
   Clock, 
   Award, 
   Sparkles, 
-  ShieldAlert, 
   ThumbsUp, 
   Heart,
   ChevronRight,
   ChevronLeft,
-  TrendingUp,
-  Activity,
   ZoomIn
 } from "lucide-react";
 import { Container } from "@/components/container";
+import { LocalizedLink } from "@/components/localized-link";
+import { useI18n } from "@/components/i18n-provider";
 import type { ShopProduct } from "@/lib/shop-data";
+import { localizeContent } from "@/lib/i18n/messages";
+import { T } from "@/components/translated-text";
 
 type ShopProductSalesProps = {
   readonly product: ShopProduct;
@@ -397,10 +398,21 @@ const detailedScienceBenefits: Record<string, {
 };
 
 export function ShopProductSales({ product, related }: ShopProductSalesProps) {
+  const { locale, text } = useI18n();
   const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
-  const reviews = reviewsData[product.id] || reviewsData["dermaplaning-razor-kit"];
-  const beforeAfter = beforeAfterData[product.id] || beforeAfterData["dermaplaning-razor-kit"];
-  const scienceBenefits = detailedScienceBenefits[product.id] || detailedScienceBenefits["dermaplaning-razor-kit"];
+  const reviews = localizeContent(
+    locale,
+    reviewsData[product.id] || reviewsData["dermaplaning-razor-kit"]
+  );
+  const beforeAfter = localizeContent(
+    locale,
+    beforeAfterData[product.id] || beforeAfterData["dermaplaning-razor-kit"]
+  );
+  const scienceBenefits = localizeContent(
+    locale,
+    detailedScienceBenefits[product.id] || detailedScienceBenefits["dermaplaning-razor-kit"]
+  );
+  const localizedCompareMatrix = localizeContent(locale, compareMatrix);
 
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
@@ -455,7 +467,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   // Scarcity & Social Proof Mock States (Fluctuating)
   const [viewersCount, setViewersCount] = useState(14);
   const [timeLeft, setTimeLeft] = useState({ minutes: 14, seconds: 32 });
-  const [stockLeft, setStockLeft] = useState(7);
+  const stockLeft = 7;
 
   const reviewsSectionRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
@@ -544,10 +556,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     reviewsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToHero = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const filteredReviews = selectedReviewStarFilter 
     ? reviews.items.filter(item => item.rating === selectedReviewStarFilter)
     : reviews.items;
@@ -558,11 +566,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       {/* 1. URGENCY TOP ANNOUNCEMENT BANNER */}
       <div className="bg-accent-gold py-2 px-4 text-center select-none text-[11px] md:text-xs font-bold text-black uppercase tracking-[0.2em] relative overflow-hidden z-30">
         <div className="flex items-center justify-center gap-6 animate-pulse">
-          <span>✨ FREE EU SHIPPING ON ORDERS OVER €30</span>
+          <span><T text={"✨ FREE EU SHIPPING ON ORDERS OVER €30"} /></span>
           <span className="hidden md:inline">•</span>
-          <span className="hidden md:inline">🔒 SECURE CHECKOUT</span>
+          <span className="hidden md:inline"><T text={"🔒 SECURE CHECKOUT"} /></span>
           <span className="hidden md:inline">•</span>
-          <span>💎 30-DAY RISK-FREE GLOW GUARANTEE</span>
+          <span><T text={"💎 30-DAY RISK-FREE GLOW GUARANTEE"} /></span>
         </div>
       </div>
 
@@ -570,9 +578,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <div className="border-b border-border-subtle py-3 px-4 relative z-10 bg-surface-glass backdrop-blur-md">
         <Container>
           <nav className="text-xs flex gap-2" style={{ color: "var(--text-secondary)" }}>
-            <a href="/" className="hover:text-text-primary transition-colors">Home</a>
+            <LocalizedLink href="/" className="hover:text-text-primary transition-colors"><T text={"Home"} /></LocalizedLink>
             <span>/</span>
-            <a href="/shop" className="hover:text-text-primary transition-colors">Shop</a>
+            <LocalizedLink href="/shop" className="hover:text-text-primary transition-colors"><T text={"Shop"} /></LocalizedLink>
             <span>/</span>
             <span className="text-text-primary">{product.name}</span>
           </nav>
@@ -664,7 +672,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             <div className="lg:col-span-5 space-y-6 bg-surface-subtle border border-border-subtle rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative">
               <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-red-950/40 text-red-400 border border-red-900/30 px-3 py-1 rounded-full text-xs font-semibold animate-pulse">
                 <Flame className="size-3.5 fill-red-400" />
-                <span>Trending Pick</span>
+                <span><T text={"Trending Pick"} /></span>
               </div>
 
               <div>
@@ -701,14 +709,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
                 <span className="text-sm font-semibold text-text-primary">{product.rating}</span>
                 <span className="text-xs border-b border-text-secondary group-hover:text-text-primary group-hover:border-border-strong transition-colors" style={{ color: "var(--text-secondary)" }}>
-                  ({reviews.reviewsCount} verified reviews)
+                  ({reviews.reviewsCount} <T text={"verified reviews)"} />
                 </span>
               </div>
 
               {/* Price Block & Save Indicator */}
               <div className="border-t border-b border-border-subtle py-4 flex items-center justify-between gap-4">
                 <div className="space-y-1">
-                  <p className="text-[10px] text-text-secondary uppercase tracking-widest font-semibold">Special Offer Price</p>
+                  <p className="text-[10px] text-text-secondary uppercase tracking-widest font-semibold"><T text={"Special Offer Price"} /></p>
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl font-extrabold text-text-primary">€{product.price.toFixed(2)}</span>
                     <span className="text-base line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
@@ -719,9 +727,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     className="text-xs md:text-sm font-extrabold px-3.5 py-1.5 rounded-full inline-block animate-bounce shadow-lg"
                     style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
                   >
-                    Save {discount}% Now
+                    <T text={"Save"} /> {discount}<T text={"% Now"} />
                   </span>
-                  <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">€{(product.compareAtPrice - product.price).toFixed(2)} kept in your pocket</p>
+                  <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">€{(product.compareAtPrice - product.price).toFixed(2)} <T text={"kept in your pocket"} /></p>
                 </div>
               </div>
 
@@ -735,19 +743,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75"></span>
                       <span className="relative inline-flex rounded-full size-2 bg-accent-gold"></span>
                     </span>
-                    <span className="font-medium text-text-secondary">Customers browsing</span>
+                    <span className="font-medium text-text-secondary"><T text={"Customers browsing"} /></span>
                   </div>
                   <div className="flex items-center gap-1 font-bold text-accent-gold">
                     <Eye className="size-3.5" />
-                    <span>{viewersCount} active viewers</span>
+                    <span>{viewersCount} <T text={"active viewers"} /></span>
                   </div>
                 </div>
 
                 {/* 2. Stock Countdown bar */}
                 <div className="space-y-1.5">
                   <div className="flex justify-between text-text-secondary font-medium">
-                    <span>Stock status</span>
-                    <span className="text-red-400 font-bold">Only {stockLeft} items left in stock</span>
+                    <span><T text={"Stock status"} /></span>
+                    <span className="text-red-400 font-bold"><T text={"Only"} /> {stockLeft} <T text={"items left in stock"} /></span>
                   </div>
                   <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
                     <div 
@@ -761,12 +769,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 <div className="flex items-center justify-between text-text-secondary border-t border-border-subtle pt-2">
                   <div className="flex items-center gap-1.5">
                     <Clock className="size-3.5 text-accent-gold" />
-                    <span>Flash Sale Ending Soon:</span>
+                    <span><T text={"Flash Sale Ending Soon:"} /></span>
                   </div>
                   <div className="flex gap-1 text-[11px] font-extrabold text-black">
-                    <span className="bg-accent-gold px-2 py-0.5 rounded">{String(timeLeft.minutes).padStart(2, '0')}m</span>
+                    <span className="bg-accent-gold px-2 py-0.5 rounded">{String(timeLeft.minutes).padStart(2, '0')}<T text={"m"} /></span>
                     <span className="text-accent-gold self-center">:</span>
-                    <span className="bg-accent-gold px-2 py-0.5 rounded">{String(timeLeft.seconds).padStart(2, '0')}s</span>
+                    <span className="bg-accent-gold px-2 py-0.5 rounded">{String(timeLeft.seconds).padStart(2, '0')}<T text={"s"} /></span>
                   </div>
                 </div>
               </div>
@@ -781,7 +789,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   style={{ background: "var(--accent-gold)" }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    BUY NOW & START YOUR GLOW RITUAL
+                    <T text={"BUY NOW & START YOUR GLOW RITUAL"} />
                     <ChevronRight className="size-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   {/* Glowing hover light */}
@@ -790,9 +798,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
                 {/* Secure payments strip */}
                 <div className="flex items-center justify-center gap-2 pt-1">
-                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-widest">Guaranteed Safe Checkout</span>
+                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-widest"><T text={"Guaranteed Safe Checkout"} /></span>
                   <div className="h-px bg-surface-hover flex-1" />
-                  <span className="text-[10px] text-text-primary/40 font-bold">VISA • MC • AMEX • APPLE PAY</span>
+                  <span className="text-[10px] text-text-primary/40 font-bold"><T text={"VISA • MC • AMEX • APPLE PAY"} /></span>
                 </div>
               </div>
 
@@ -801,7 +809,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {product.benefits.map((benefit) => (
                   <li key={benefit} className="flex items-start gap-3" style={{ color: "var(--text-secondary)" }}>
                     <Check className="size-4.5 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
-                    <span>{benefit}</span>
+                    <span><T text={benefit} /></span>
                   </li>
                 ))}
               </ul>
@@ -815,8 +823,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 ].map(({ icon: Icon, text, sub }) => (
                   <div key={text} className="flex flex-col items-center gap-1 text-center rounded-xl border border-border-subtle bg-surface-subtle p-3">
                     <Icon className="size-4" style={{ color: "var(--accent-gold)" }} />
-                    <span className="text-[10px] font-bold text-text-primary leading-tight">{text}</span>
-                    <span className="text-[9px]" style={{ color: "var(--text-secondary)" }}>{sub}</span>
+                    <span className="text-[10px] font-bold text-text-primary leading-tight"><T text={text} /></span>
+                    <span className="text-[9px]" style={{ color: "var(--text-secondary)" }}><T text={sub} /></span>
                   </div>
                 ))}
               </div>
@@ -838,8 +846,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               { label: "ZERO IRRITATION", value: "Micro-safety guards built" }
             ].map(({ label, value }) => (
               <div key={label} className="space-y-1">
-                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>{label}</p>
-                <p className="text-xs text-text-primary font-medium">{value}</p>
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={label} /></p>
+                <p className="text-xs text-text-primary font-medium"><T text={value} /></p>
               </div>
             ))}
           </div>
@@ -852,12 +860,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>VISUAL RESULTS PROVEN</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"VISUAL RESULTS PROVEN"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              See The Glow Transformation
+              <T text={"See The Glow Transformation"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              Here is how your weekly ritual actively targets dead cell barriers, hair meshe, and unexpected blemishes to reveal glass skin.
+              <T text={"Here is how your weekly ritual actively targets dead cell barriers, hair meshe, and unexpected blemishes to reveal glass skin."} />
             </p>
           </div>
 
@@ -865,14 +873,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {/* Before Box */}
             <div className="border border-red-950/20 bg-red-950/[0.03] rounded-2xl p-6 md:p-8 space-y-4">
               <div className="flex items-center justify-between border-b border-red-900/10 pb-3">
-                <span className="text-sm font-bold uppercase tracking-wider text-red-400">Standard / Before Ritual</span>
-                <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Dull State</span>
+                <span className="text-sm font-bold uppercase tracking-wider text-red-400"><T text={"Standard / Before Ritual"} /></span>
+                <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest"><T text={"Dull State"} /></span>
               </div>
               <ul className="space-y-3.5">
                 {beforeAfter.before.map(step => (
                   <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-text-primary/70">
                     <X className="size-4 text-red-500 shrink-0 mt-0.5" />
-                    <span>{step}</span>
+                    <span><T text={step} /></span>
                   </li>
                 ))}
               </ul>
@@ -882,18 +890,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             <div className="border border-accent-gold/20 bg-accent-gold/[0.03] rounded-2xl p-6 md:p-8 space-y-4 shadow-[0_0_30px_rgba(201,169,110,0.05)] relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-accent-gold/10 text-accent-gold border-b border-l border-accent-gold/20 px-3 py-1 rounded-bl-xl text-[10px] font-bold tracking-widest flex items-center gap-1 uppercase">
                 <Sparkles className="size-3" />
-                <span>Glow Effect</span>
+                <span><T text={"Glow Effect"} /></span>
               </div>
               
               <div className="flex items-center justify-between border-b border-accent-gold/10 pb-3">
-                <span className="text-sm font-bold uppercase tracking-wider text-accent-gold">With Lux Aura Care</span>
-                <span className="bg-accent-gold/15 text-accent-gold border border-accent-gold/20 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Radiant Skin</span>
+                <span className="text-sm font-bold uppercase tracking-wider text-accent-gold"><T text={"With Lux Aura Care"} /></span>
+                <span className="bg-accent-gold/15 text-accent-gold border border-accent-gold/20 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest"><T text={"Radiant Skin"} /></span>
               </div>
               <ul className="space-y-3.5">
                 {beforeAfter.after.map(step => (
                   <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-text-primary font-semibold">
                     <Check className="size-4 text-accent-gold shrink-0 mt-0.5" />
-                    <span>{step}</span>
+                    <span><T text={step} /></span>
                   </li>
                 ))}
               </ul>
@@ -906,12 +914,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <section className="py-16 px-4 border-b border-border-subtle relative bg-surface-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>AWARENESS OF EXCELLENCE</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"AWARENESS OF EXCELLENCE"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              How We Benchmark Against Generics
+              <T text={"How We Benchmark Against Generics"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              Not all skincare tools are created equal. Do not compromise sensitive skin with cheap disposable pharmacy options.
+              <T text={"Not all skincare tools are created equal. Do not compromise sensitive skin with cheap disposable pharmacy options."} />
             </p>
           </div>
 
@@ -920,28 +928,28 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-surface-subtle border-b border-border-subtle text-xs md:text-sm uppercase tracking-wider font-semibold text-text-primary">
-                    <th className="p-4 md:p-5">Ritual Standard</th>
-                    <th className="p-4 md:p-5 text-accent-gold bg-accent-gold/5 font-extrabold text-center">Lux Aura Care</th>
-                    <th className="p-4 md:p-5 text-text-secondary text-center">Standard Brands</th>
+                    <th className="p-4 md:p-5"><T text={"Ritual Standard"} /></th>
+                    <th className="p-4 md:p-5 text-accent-gold bg-accent-gold/5 font-extrabold text-center"><T text={"Lux Aura Care"} /></th>
+                    <th className="p-4 md:p-5 text-text-secondary text-center"><T text={"Standard Brands"} /></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border-subtle text-xs md:text-sm text-text-primary/80">
-                  {compareMatrix.map(({ feature, premium, cheap, icon: Icon }) => (
+                  {localizedCompareMatrix.map(({ feature, premium, cheap, icon: Icon }) => (
                     <tr key={feature} className="hover:bg-surface-subtle transition-colors">
                       <td className="p-4 md:p-5 font-semibold text-text-primary flex items-center gap-2">
                         <Icon className="size-4 text-accent-gold shrink-0" />
-                        <span>{feature}</span>
+                        <span><T text={feature} /></span>
                       </td>
                       <td className="p-4 md:p-5 bg-accent-gold/[0.02] font-semibold border-l border-r border-border-subtle text-center">
                         <div className="flex flex-col items-center gap-1 text-text-primary">
                           <Check className="size-5 text-accent-gold" />
-                          <span className="text-[10px] md:text-xs text-accent-gold/90 font-medium leading-tight">{premium}</span>
+                          <span className="text-[10px] md:text-xs text-accent-gold/90 font-medium leading-tight"><T text={premium} /></span>
                         </div>
                       </td>
                       <td className="p-4 md:p-5 text-center text-text-secondary">
                         <div className="flex flex-col items-center gap-1">
                           <X className="size-4 text-text-primary/30" />
-                          <span className="text-[10px] md:text-xs leading-tight">{cheap}</span>
+                          <span className="text-[10px] md:text-xs leading-tight"><T text={cheap} /></span>
                         </div>
                       </td>
                     </tr>
@@ -957,12 +965,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <section className="py-16 px-4 border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>ENGINEERED BEAUTY</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"ENGINEERED BEAUTY"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              The Science Behind The Glow
+              <T text={"The Science Behind The Glow"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              Every detail is engineered with absolute dermatological rigor to deliver instant, visible improvements without compromises.
+              <T text={"Every detail is engineered with absolute dermatological rigor to deliver instant, visible improvements without compromises."} />
             </p>
           </div>
 
@@ -974,13 +982,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               >
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase bg-accent-gold/10 px-3 py-1 rounded-full border border-accent-gold/20">
-                    {science.badge}
+                    <T text={science.badge} />
                   </span>
                   <span className="text-2xl font-bold text-text-primary/20 font-serif">0{idx + 1}</span>
                 </div>
-                <h3 className="text-xl font-bold text-text-primary font-serif">{science.title}</h3>
+                <h3 className="text-xl font-bold text-text-primary font-serif"><T text={science.title} /></h3>
                 <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                  {science.desc}
+                  <T text={science.desc} />
                 </p>
               </div>
             ))}
@@ -992,12 +1000,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <section className="py-16 px-4 border-b border-border-subtle bg-surface-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>SENSORY SELF-CARE STEP-BY-STEP</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"SENSORY SELF-CARE STEP-BY-STEP"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Your Guided Weekly Glow Ritual
+              <T text={"Your Guided Weekly Glow Ritual"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.
+              <T text={"Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes."} />
             </p>
           </div>
 
@@ -1015,10 +1023,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-1.5">
-                    Phase 0{i + 1}
+                    <T text={"Phase 0"} />{i + 1}
                   </h4>
                   <p className="text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    {step}
+                    <T text={step} />
                   </p>
                 </div>
               </li>
@@ -1033,12 +1041,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>AUTHENTIC PROOF</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"AUTHENTIC PROOF"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Real Customer Verified Experiences
+              <T text={"Real Customer Verified Experiences"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              We source real reviews from global product bestsellers. Here is what women cross Europe are sharing.
+              <T text={"We source real reviews from global product bestsellers. Here is what women cross Europe are sharing."} />
             </p>
           </div>
 
@@ -1060,7 +1068,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     />
                   ))}
                 </div>
-                <p className="text-xs text-text-secondary">{reviews.reviewsCount} Global Verified Ratings</p>
+                <p className="text-xs text-text-secondary">{reviews.reviewsCount} <T text={"Global Verified Ratings"} /></p>
               </div>
 
               {/* Star Distribution Breakdown */}
@@ -1075,7 +1083,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       selectedReviewStarFilter === stars ? "text-text-primary font-bold" : ""
                     }`}
                   >
-                    <span className="w-10 text-right group-hover:underline">{stars} star</span>
+                    <span className="w-10 text-right group-hover:underline">{stars} <T text={"star"} /></span>
                     <div className="h-2.5 flex-1 bg-surface-hover rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full transition-all duration-500 ${
@@ -1094,7 +1102,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   onClick={() => setSelectedReviewStarFilter(null)}
                   className="w-full text-center text-xs text-accent-gold hover:underline font-bold mt-2"
                 >
-                  Clear Star Filter
+                  <T text={"Clear Star Filter"} />
                 </button>
               )}
             </div>
@@ -1102,20 +1110,20 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {/* Individual Reviews list (Right - 8 columns) */}
             <div className="lg:col-span-8 space-y-5">
               <div className="flex justify-between items-center text-xs text-text-secondary border-b border-border-subtle pb-3">
-                <span>Showing {filteredReviews.length} of {reviews.items.length} featured comments</span>
+                <span><T text={"Showing"} /> {filteredReviews.length} <T text={"of"} /> {reviews.items.length} <T text={"featured comments"} /></span>
                 <span className="flex items-center gap-1 font-bold text-accent-gold">
-                  <ShieldCheck className="size-3.5" /> 100% Authentic Verified Buyers
+                  <ShieldCheck className="size-3.5" /> <T text={"100% Authentic Verified Buyers"} />
                 </span>
               </div>
 
               {filteredReviews.length === 0 ? (
                 <div className="text-center py-8 border border-border-subtle rounded-2xl bg-surface-subtle">
-                  <p className="text-text-secondary text-sm">No reviews found for this star selection.</p>
+                  <p className="text-text-secondary text-sm"><T text={"No reviews found for this star selection."} /></p>
                   <button 
                     onClick={() => setSelectedReviewStarFilter(null)} 
                     className="text-xs text-accent-gold hover:underline font-bold mt-2"
                   >
-                    View all reviews
+                    <T text={"View all reviews"} />
                   </button>
                 </div>
               ) : (
@@ -1124,12 +1132,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     <div className="flex flex-wrap justify-between items-start gap-2">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-text-primary">{item.author}</span>
+                          <span className="text-sm font-bold text-text-primary"><T text={item.author} /></span>
                           <span className="text-[10px] text-accent-gold/90 font-extrabold uppercase bg-accent-gold/10 px-2 py-0.5 rounded border border-accent-gold/20 flex items-center gap-1">
-                            <ShieldCheck className="size-3" /> Verified Buyer
+                            <ShieldCheck className="size-3" /> <T text={"Verified Buyer"} />
                           </span>
                         </div>
-                        <p className="text-[10px] text-text-secondary">{item.location} • Reviewed on {item.date}</p>
+                        <p className="text-[10px] text-text-secondary"><T text={item.location} /> <T text={"• Reviewed on"} /> <T text={item.date} /></p>
                       </div>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
@@ -1146,17 +1154,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     </div>
 
                     <div className="space-y-1.5">
-                      <p className="text-sm md:text-base font-bold text-text-primary">{item.title}</p>
+                      <p className="text-sm md:text-base font-bold text-text-primary"><T text={item.title} /></p>
                       <p className="text-xs md:text-sm leading-relaxed text-text-secondary">
-                        "{item.content}"
+                        &quot;<T text={item.content} />&quot;
                       </p>
                     </div>
 
                     <div className="flex items-center gap-4 text-[10px] md:text-xs text-text-secondary border-t border-border-subtle pt-3">
-                      <span>Was this review helpful?</span>
+                      <span><T text={"Was this review helpful?"} /></span>
                       <button className="flex items-center gap-1 hover:text-text-primary transition-colors bg-surface-raised hover:bg-surface-raised px-2.5 py-1 rounded-full border border-border-subtle">
                         <ThumbsUp className="size-3" />
-                        <span>Helpful ({item.helpfulCount})</span>
+                        <span><T text={"Helpful ("} />{item.helpfulCount})</span>
                       </button>
                     </div>
                   </div>
@@ -1172,12 +1180,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <section className="py-16 px-4 border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}>CONFIDENCE IN MIND</span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"CONFIDENCE IN MIND"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Frequently Asked Questions
+              <T text={"Frequently Asked Questions"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              Answering your inquiries. We transparently address every detail of the weekly skin rituals.
+              <T text={"Answering your inquiries. We transparently address every detail of the weekly skin rituals."} />
             </p>
           </div>
 
@@ -1191,7 +1199,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   onClick={() => setOpenFAQIndex(prev => prev === idx ? null : idx)}
                   className="w-full flex items-center justify-between p-5 cursor-pointer text-text-primary font-semibold text-left text-sm md:text-base hover:bg-surface-subtle"
                 >
-                  <span>{q}</span>
+                  <span><T text={q} /></span>
                   <ChevronDown className={`size-4 transition-transform duration-300 shrink-0 ml-3 text-accent-gold ${
                     openFAQIndex === idx ? "rotate-180" : ""
                   }`} />
@@ -1202,7 +1210,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   }`}
                 >
                   <p className="p-5 text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    {a}
+                    <T text={a} />
                   </p>
                 </div>
               </div>
@@ -1218,19 +1226,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             
             {/* Guarantee Circular Gold Badge Graphic */}
             <div className="theme-on-image relative shrink-0 size-32 md:size-40 border-4 border-double border-accent-gold rounded-full flex flex-col items-center justify-center text-center p-3 rotate-[-5deg] select-none bg-black/60 shadow-2xl">
-              <span className="text-[9px] font-extrabold tracking-widest text-accent-gold uppercase">GLOW RITUAL</span>
-              <span className="text-lg md:text-xl font-black text-text-primary font-serif leading-none py-1">30-DAY</span>
-              <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase leading-none">RISK FREE</span>
-              <span className="text-[8px] text-text-primary/50 pt-1">GUARANTEE</span>
+              <span className="text-[9px] font-extrabold tracking-widest text-accent-gold uppercase"><T text={"GLOW RITUAL"} /></span>
+              <span className="text-lg md:text-xl font-black text-text-primary font-serif leading-none py-1"><T text={"30-DAY"} /></span>
+              <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase leading-none"><T text={"RISK FREE"} /></span>
+              <span className="text-[8px] text-text-primary/50 pt-1"><T text={"GUARANTEE"} /></span>
             </div>
 
             <div className="space-y-4 text-center md:text-left flex-1">
-              <span className="text-xs font-extrabold tracking-[0.25em]" style={{ color: "var(--accent-gold)" }}>ZERO HASSLE • ZERO ANXIETY</span>
+              <span className="text-xs font-extrabold tracking-[0.25em]" style={{ color: "var(--accent-gold)" }}><T text={"ZERO HASSLE • ZERO ANXIETY"} /></span>
               <h2 className="text-2xl md:text-3xl font-bold text-text-primary font-serif">
-                Try It Out Risk-Free For 30 Days
+                <T text={"Try It Out Risk-Free For 30 Days"} />
               </h2>
               <p className="text-xs md:text-sm leading-relaxed text-text-secondary">
-                We are so confident that you will fall in love with the skin smoothing and blemish-clearing results of your Lux Aura Care weekly ritual that we offer a full **30-Day Glow Guarantee**. If your skin is not visibly softer, smoother, or clearer, simply reach out to us and we will issue a full, prompt refund. No questions asked. Your skin renewal is our standard.
+                <T text={"We are so confident that you will fall in love with the skin smoothing and blemish-clearing results of your Lux Aura Care weekly ritual that we offer a full **30-Day Glow Guarantee**. If your skin is not visibly softer, smoother, or clearer, simply reach out to us and we will issue a full, prompt refund. No questions asked. Your skin renewal is our standard."} />
               </p>
             </div>
           </div>
@@ -1243,15 +1251,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] size-96 rounded-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
 
         <Container className="relative z-10 space-y-6">
-          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "var(--accent-gold)" }}>YOUR RADIANT COMPLEXION AWAITS</span>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "var(--accent-gold)" }}><T text={"YOUR RADIANT COMPLEXION AWAITS"} /></span>
           <h2
             className="text-3xl md:text-5xl font-semibold text-text-primary max-w-xl mx-auto"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            Ready to start your weekly glow ritual?
+            <T text={"Ready to start your weekly glow ritual?"} />
           </h2>
           <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: "var(--text-secondary)" }}>
-            Join 12,000+ happy women who elevated their skin care routine with clinic-quality results.
+            <T text={"Join 12,000+ happy women who elevated their skin care routine with clinic-quality results."} />
           </p>
           
           <div className="pt-4 max-w-sm mx-auto">
@@ -1262,10 +1270,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               className="block w-full py-4.5 rounded-xl text-base font-extrabold text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-[0_0_20px_rgba(201,169,110,0.2)]"
               style={{ background: "var(--accent-gold)" }}
             >
-              Kup Teraz — €{product.price.toFixed(2)}
+              <T text={"Kup Teraz — €"} />{product.price.toFixed(2)}
             </a>
             <p className="text-[10px] text-text-secondary mt-3">
-              🔒 256-Bit SSL Encrypted Checkout · 30-Day Money Back Guarantee
+              <T text={"🔒 256-Bit SSL Encrypted Checkout · 30-Day Money Back Guarantee"} />
             </p>
           </div>
         </Container>
@@ -1279,7 +1287,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Complete your weekly ritual
+              <T text={"Complete your weekly ritual"} />
             </h2>
             <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
               {related.map((rel) => {
@@ -1305,7 +1313,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                           <span className="text-[10px] line-through text-text-secondary">€{rel.compareAtPrice.toFixed(2)}</span>
                         </div>
                         <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-accent-gold/10 text-accent-gold border border-accent-gold/20">
-                          -{relDiscount}% Off
+                          -{relDiscount}<T text={"% Off"} />
                         </span>
                       </div>
                     </div>
@@ -1340,7 +1348,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-1 bg-red-950/40 text-red-400 border border-red-900/30 px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider animate-pulse">
               <Flame className="size-3 fill-red-400" />
-              <span>Only {stockLeft} left</span>
+              <span><T text={"Only"} /> {stockLeft} <T text={"left"} /></span>
             </div>
             
             <a
@@ -1350,7 +1358,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               className="py-2.5 px-6 rounded-lg text-xs md:text-sm font-extrabold text-black transition-all hover:opacity-90 active:scale-[0.98] shadow-lg flex items-center gap-1.5 uppercase tracking-wider"
               style={{ background: "var(--accent-gold)" }}
             >
-              <span>Kup Teraz</span>
+              <span><T text={"Kup Teraz"} /></span>
               <ChevronRight className="size-4" />
             </a>
           </div>
@@ -1368,13 +1376,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {product.name}
               </h3>
               <p className="text-[10px] md:text-xs text-accent-gold font-semibold tracking-wider uppercase mt-0.5">
-                Image {lightboxIndex + 1} of {galleryImages.length}
+                <T text={"Image"} /> {lightboxIndex + 1} <T text={"of"} /> {galleryImages.length}
               </p>
             </div>
             <button 
               onClick={() => setIsLightboxOpen(false)}
               className="p-2 rounded-full bg-surface-raised hover:bg-surface-hover text-text-primary/80 hover:text-text-primary transition-all border border-border-subtle flex items-center justify-center shadow-lg"
-              title="Close overlay (Esc)"
+              title={text("Close overlay (Esc)")}
             >
               <X className="size-5" />
             </button>
@@ -1417,7 +1425,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <button
                 onClick={() => setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
                 className="absolute left-2 md:left-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
-                title="Previous image (Left Arrow)"
+                title={text("Previous image (Left Arrow)")}
               >
                 <ChevronLeft className="size-5 md:size-6" />
               </button>
@@ -1446,7 +1454,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <button
                 onClick={() => setLightboxIndex(prev => (prev + 1) % galleryImages.length)}
                 className="absolute right-2 md:right-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
-                title="Next image (Right Arrow)"
+                title={text("Next image (Right Arrow)")}
               >
                 <ChevronRight className="size-5 md:size-6" />
               </button>
@@ -1455,7 +1463,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {/* Right Column: Educational Description */}
             <div className="col-span-1 lg:col-span-2 flex flex-col gap-4 text-center lg:text-left justify-center lg:h-full lg:max-h-[70vh] bg-surface-subtle border border-border-subtle rounded-2xl p-4 lg:p-5">
               <span className="text-[10px] md:text-xs font-extrabold uppercase tracking-wider text-accent-gold">
-                Highlight feature
+                <T text={"Highlight feature"} />
               </span>
               <h4 className="text-sm md:text-base font-bold text-text-primary leading-tight">
                 {galleryImages[lightboxIndex].label}
@@ -1470,7 +1478,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   rel="noopener noreferrer"
                   className="block w-full py-2.5 rounded-lg text-xs font-extrabold text-black bg-accent-gold text-center hover:opacity-90 active:scale-[0.98] transition-all"
                 >
-                  Kup Teraz — €{product.price.toFixed(2)}
+                  <T text={"Kup Teraz — €"} />{product.price.toFixed(2)}
                 </a>
               </div>
             </div>

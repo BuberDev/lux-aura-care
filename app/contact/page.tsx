@@ -3,14 +3,30 @@ import { Metadata } from "next";
 import { Mail, MessageSquare, Clock, Globe } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { siteMeta } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 
-export const metadata: Metadata = {
-  title: `Contact Us | ${siteMeta.name}`,
-  description: "Get in touch with the Lux Aura Care team for inquiries, partnerships, or support.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  return {
+    title: { absolute: `${translateText(locale, "Contact Us")} | ${siteMeta.name}` },
+    description: translateText(
+      locale,
+      "Get in touch with the Lux Aura Care team for inquiries, partnerships, or support."
+    ),
+    alternates: getLocalizedAlternates("/contact", locale),
+    openGraph: {
+      url: localizePathname("/contact", locale),
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+    },
+  };
+}
 
-export default function ContactPage() {
-  const contactFeatures = [
+export default async function ContactPage() {
+  const locale = await getRequestLocale();
+  const contactFeatures = localizeContent(locale, [
     {
       icon: <Mail className="text-accent-gold" size={24} />,
       title: "Direct Email",
@@ -32,18 +48,17 @@ export default function ContactPage() {
       title: "Support Area",
       description: "Based in Poland, supporting ritual seekers worldwide.",
     },
-  ];
+  ]);
 
   return (
     <main className="min-h-screen pt-24 pb-20">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
           <h1 className="mb-4 font-heading text-4xl font-bold text-text-primary md:text-5xl lg:text-6xl">
-            Get in Touch
+            <T text={"Get in Touch"} />
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-text-secondary">
-            Have a question about a ritual, a product recommendation, or just want to say hello? 
-            We're here to help you on your journey to a more polished life.
+            <T text={"Have a question about a ritual, a product recommendation, or just want to say hello? \n            We're here to help you on your journey to a more polished life."} />
           </p>
         </div>
 
@@ -58,16 +73,16 @@ export default function ContactPage() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-gold/10">
                     {feature.icon}
                   </div>
-                  <h3 className="mb-1 text-lg font-semibold text-text-primary">{feature.title}</h3>
+                  <h3 className="mb-1 text-lg font-semibold text-text-primary"><T text={feature.title} /></h3>
                   {feature.link ? (
                     <a 
                       href={feature.link} 
                       className="text-text-secondary transition-colors hover:text-accent-gold"
                     >
-                      {feature.description}
+                      <T text={feature.description} />
                     </a>
                   ) : (
-                    <p className="text-text-secondary">{feature.description}</p>
+                    <p className="text-text-secondary"><T text={feature.description} /></p>
                   )}
                 </div>
               ))}
@@ -77,8 +92,8 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <div className="rounded-3xl border border-border-subtle bg-surface-glass p-8 backdrop-blur-xl md:p-12">
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-text-primary">Send us a message</h2>
-                <p className="text-text-secondary">Fill out the form below and we'll get back to you shortly.</p>
+                <h2 className="text-2xl font-bold text-text-primary"><T text={"Send us a message"} /></h2>
+                <p className="text-text-secondary"><T text={"Fill out the form below and we'll get back to you shortly."} /></p>
               </div>
               <ContactForm />
             </div>

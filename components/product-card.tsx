@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import { Check, Star, TrendingUp } from "lucide-react";
 
 import { CTAButton } from "@/components/cta-button";
@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { getAffiliateRoute } from "@/lib/affiliate";
 import { generateCTALabel, selectCTAStrategy } from "@/lib/cta-generator";
 import { getProductProof, type Product, type TopPickBadge } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
 
 type ProductCardProps = {
   readonly product: Product;
@@ -49,7 +50,7 @@ export function ProductCard({
 
         <div className="space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <Badge>{featuredBadge ?? product.trustSignal}</Badge>
+            <Badge><T text={featuredBadge ?? product.trustSignal} /></Badge>
             <span className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.12em] text-text-secondary">
               <Star className="size-3.5 fill-accent-gold text-accent-gold" aria-hidden="true" />
               {proof.rating.toFixed(1)}
@@ -57,29 +58,29 @@ export function ProductCard({
           </div>
 
           <h3 className={compact ? "font-heading text-xl leading-tight" : "font-heading text-2xl leading-tight"}>
-            {product.name}
+            <T text={product.name} />
           </h3>
 
-          <p className="text-sm text-text-secondary">{product.benefit}</p>
+          <p className="text-sm text-text-secondary"><T text={product.benefit} /></p>
 
-          <ul className="space-y-2" aria-label="Product benefits">
+          <ul className="space-y-2">
             {highlights.map((highlight) => (
               <li key={highlight} className="flex items-start gap-2 text-sm leading-relaxed text-text-secondary">
                 <Check className="mt-0.5 size-4 shrink-0 text-accent-gold" aria-hidden="true" />
-                <span>{highlight}</span>
+                <span><T text={highlight} /></span>
               </li>
             ))}
           </ul>
 
           <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle pt-3">
-            <span className="text-xs uppercase tracking-[0.14em] text-text-secondary">{proof.reviews}</span>
+            <span className="text-xs uppercase tracking-[0.14em] text-text-secondary"><T text={proof.reviews} /></span>
             <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.14em] text-accent-gold">
               <TrendingUp className="size-3.5" aria-hidden="true" />
-              {urgencyOverride ?? proof.socialProof}
+              <T text={urgencyOverride ?? proof.socialProof} />
             </span>
           </div>
 
-          {!compact ? <p className="text-sm leading-relaxed text-text-secondary">{product.description}</p> : null}
+          {!compact ? <p className="text-sm leading-relaxed text-text-secondary"><T text={product.description} /></p> : null}
         </div>
 
         <CTAButton
@@ -91,12 +92,12 @@ export function ProductCard({
           placement="product-card"
         />
         {detailsHref ? (
-          <Link
+          <LocalizedLink
             href={detailsHref}
             className="inline-flex justify-center text-xs uppercase tracking-[0.14em] text-text-secondary transition-colors hover:text-accent-gold"
           >
-            {detailsLabel ?? "View details"}
-          </Link>
+            <T text={detailsLabel ?? "View details"} />
+          </LocalizedLink>
         ) : null}
       </div>
     </Card>

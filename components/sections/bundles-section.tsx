@@ -4,9 +4,12 @@ import { Heading } from "@/components/heading";
 import { Section } from "@/components/section";
 import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { getFeaturedBundles } from "@/lib/site-data";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent } from "@/lib/i18n/messages";
 
-export function BundlesSection() {
-  const bundles = getFeaturedBundles(4);
+export async function BundlesSection() {
+  const locale = await getRequestLocale();
+  const bundles = localizeContent(locale, getFeaturedBundles(4));
 
   return (
     <Section className="[content-visibility:auto] [contain-intrinsic-size:1px_900px]">

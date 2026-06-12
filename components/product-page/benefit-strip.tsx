@@ -12,7 +12,7 @@ export function BenefitStrip({ items }: BenefitStripProps) {
   return (
     <section className="border-b border-inverse-border bg-background-secondary py-7 md:py-9">
       <Container>
-        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label="Quick benefits">
+        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {items.map((item, index) => {
             const Icon = icons[index % icons.length];
 

@@ -16,12 +16,16 @@ export type AffiliateClickEvent = {
   category?: string;
 };
 
+type AnalyticsWindow = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
+
 export function trackAffiliateClick(event: AffiliateClickEvent) {
   if (typeof window === "undefined") {
     return;
   }
 
-  const gtag = (window as any).gtag;
+  const gtag = (window as AnalyticsWindow).gtag;
   if (!gtag) {
     console.warn("GA4 not initialized");
     return;
@@ -47,7 +51,7 @@ export function trackAffiliateConversion(
     return;
   }
 
-  const gtag = (window as any).gtag;
+  const gtag = (window as AnalyticsWindow).gtag;
   if (!gtag) {
     console.warn("GA4 not initialized");
     return;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 
 import { ArticleCard } from "@/components/article-card";
 import { Container } from "@/components/container";
@@ -19,30 +19,38 @@ import {
   siteMeta,
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { T } from "@/components/translated-text";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { getRequestLocale } from "@/lib/i18n/request";
 
-export const metadata: Metadata = {
-  title: "Lux Aura Journal | Luxury Self-Care & Ritual Guides",
-  description:
-    "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery. Curated guides for your Pinterest lifestyle.",
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
-    title: "Lux Aura Journal | Luxury Self-Care & Ritual Guides",
-    description:
-      "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
-    url: "/blog",
-    type: "website",
-    siteName: "Lux Aura Care",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Lux Aura Journal | Luxury Self-Care & Ritual Guides",
-    description:
-      "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery.",
-  },
-  keywords: ["ritual guides", "self-care journal", "skincare routines", ...siteMeta.keywords],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const title = translateText(locale, "Lux Aura Journal | Luxury Self-Care & Ritual Guides");
+  const description = translateText(
+    locale,
+    "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery. Curated guides for your Pinterest lifestyle."
+  );
+
+  return {
+    title,
+    description,
+    alternates: getLocalizedAlternates("/blog", locale),
+    openGraph: {
+      title,
+      description,
+      url: localizePathname("/blog", locale),
+      type: "website",
+      siteName: "Lux Aura Care",
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title, description },
+    keywords:
+      locale === "pl"
+        ? ["poradniki rytuałów", "self-care", "pielęgnacja", ...siteMeta.plKeywords]
+        : ["ritual guides", "self-care journal", "skincare routines", ...siteMeta.keywords],
+  };
+}
 
 type BlogPageProps = {
   searchParams: Promise<{ category?: string | string[] }>;
@@ -57,37 +65,50 @@ function getSelectedCategory(value?: string | string[]) {
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const locale = await getRequestLocale();
   const filters = await searchParams;
   const selectedCategoryId = getSelectedCategory(filters.category);
-  const selectedCategory =
+  const selectedCategorySource =
     selectedCategoryId && isCategoryId(selectedCategoryId)
       ? getCategoryById(selectedCategoryId)
       : undefined;
+  const selectedCategory = selectedCategorySource
+    ? localizeContent(locale, selectedCategorySource)
+    : undefined;
 
-  const visibleArticles = selectedCategory
-    ? articles.filter((article) => article.categoryId === selectedCategory.id)
-    : articles;
+  const visibleArticles = localizeContent(
+    locale,
+    selectedCategorySource
+      ? articles.filter((article) => article.categoryId === selectedCategorySource.id)
+      : articles
+  );
+  const localizedCategories = localizeContent(locale, categories);
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
-    { name: "Home", item: "/" },
-    { name: "Journal", item: "/blog" },
+    { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
+    { name: translateText(locale, "Journal"), item: localizePathname("/blog", locale) },
     ...(selectedCategory
-      ? [{ name: selectedCategory.name, item: `/blog?category=${selectedCategory.id}` }]
+      ? [{ name: selectedCategory.name, item: localizePathname(`/blog?category=${selectedCategory.id}`, locale) }]
       : []),
   ]);
 
-  const categoryPicks = selectedCategory ? getTopPicksByCategory(selectedCategory.id) : [];
+  const categoryPicks = selectedCategory
+    ? localizeContent(locale, getTopPicksByCategory(selectedCategory.id))
+    : [];
   const blogJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: selectedCategory ? `${selectedCategory.name} Articles` : "Lux Aura Journal",
-    url: toAbsoluteUrl(
-      selectedCategory ? `/blog?category=${selectedCategory.id}` : "/blog"
-    ),
+    name: selectedCategory
+      ? `${selectedCategory.name} ${translateText(locale, "Articles")}`
+      : "Lux Aura Journal",
+    url: toAbsoluteUrl(localizePathname(
+      selectedCategory ? `/blog?category=${selectedCategory.id}` : "/blog",
+      locale
+    )),
     hasPart: visibleArticles.map((article) => ({
       "@type": "BlogPosting",
       headline: article.title,
-      url: toAbsoluteUrl(`/blog/${article.slug}`),
+      url: toAbsoluteUrl(localizePathname(`/blog/${article.slug}`, locale)),
       datePublished: article.publishedAt,
       articleSection: article.categoryId,
       image: toAbsoluteUrl(article.heroImage),
@@ -103,7 +124,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     isPartOf: {
       "@type": "WebSite",
       name: "Lux Aura Care",
-      url: toAbsoluteUrl("/"),
+      url: toAbsoluteUrl(localizePathname("/", locale)),
     },
     about: selectedCategory
       ? {
@@ -118,6 +139,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(breadcrumbsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(blogJsonLd) }}
       />
       <Section className="border-b border-border-subtle pb-14 pt-16 md:pt-20">
@@ -129,7 +154,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           />
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
+            <LocalizedLink
               href="/blog"
               className={cn(
                 "rounded-full border px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors",
@@ -138,14 +163,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   : "border-border-default text-text-secondary hover:text-text-primary"
               )}
             >
-              All Articles
-            </Link>
+              <T text={"All Articles"} />
+            </LocalizedLink>
 
-            {categories.map((category) => {
+            {localizedCategories.map((category) => {
               const isActive = selectedCategory?.id === category.id;
 
               return (
-                <Link
+                <LocalizedLink
                   key={category.id}
                   href={`/blog?category=${category.id}`}
                   className={cn(
@@ -155,16 +180,16 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       : "border-border-default text-text-secondary hover:text-text-primary"
                   )}
                 >
-                  {category.name}
-                </Link>
+                  <T text={category.name} />
+                </LocalizedLink>
               );
             })}
           </div>
 
           {selectedCategory ? (
             <div className="mt-8 max-w-3xl rounded-3xl border border-border-subtle bg-surface-subtle p-6">
-              <Badge>{selectedCategory.name}</Badge>
-              <p className="mt-3 text-sm leading-relaxed text-text-secondary">{selectedCategory.description}</p>
+              <Badge><T text={selectedCategory.name} /></Badge>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary"><T text={selectedCategory.description} /></p>
             </div>
           ) : null}
 
@@ -186,10 +211,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <div className="mb-8 flex items-end justify-between border-b border-border-subtle pb-4">
                   <div>
                     <h2 className="font-heading text-3xl text-text-primary">
-                      Essential {selectedCategory.name} Favorites
+                      <T text={"Essential"} /> {selectedCategory.name} <T text={"Favorites"} />
                     </h2>
                     <p className="mt-2 text-text-secondary">
-                      Direct Amazon links to the highest-rated picks for this ritual.
+                      <T text={"Direct Amazon links to the highest-rated picks for this ritual."} />
                     </p>
                   </div>
                 </div>
@@ -213,10 +238,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         <Container>
           <div className="mb-10">
             <h2 className="font-heading text-3xl text-text-primary">
-              {selectedCategory ? `${selectedCategory.name} Ritual Guides` : "Latest Ritual Guides"}
+              {selectedCategory ? (
+                <><T text={selectedCategory.name} /> <T text={"Ritual Guides"} /></>
+              ) : (
+                <T text={"Latest Ritual Guides"} />
+              )}
             </h2>
             <p className="mt-2 text-text-secondary">
-              Step-by-step transformation instructions for your Pinterest lifestyle.
+              <T text={"Step-by-step transformation instructions for your Pinterest lifestyle."} />
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

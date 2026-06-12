@@ -1,6 +1,7 @@
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
+import { T } from "@/components/translated-text";
 
 type ProblemSolutionProps = {
   readonly headline: string;
@@ -26,7 +27,7 @@ export function ProblemSolution({
           <h2 className="font-heading text-3xl leading-tight md:text-4xl">{headline}</h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-secondary">{problemParagraph}</p>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-text-secondary">
-            <span className="text-text-primary">This product helps by...</span> {solutionParagraph}
+            <span className="text-text-primary"><T text={"This product helps by..."} /></span> {solutionParagraph}
           </p>
 
           <div className="mt-7">

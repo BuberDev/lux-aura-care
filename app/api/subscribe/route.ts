@@ -55,11 +55,12 @@ export async function POST(request: NextRequest) {
       console.error(`Failed to send welcome email to ${email}:`, error);
     }
 
-    if (body.segment && emailSent) {
+    const segment = body.segment;
+    if (segment && emailSent) {
       try {
         setTimeout(
           () => {
-            sendProductRecommendationEmail(email, body.segment as any).catch((error) =>
+            sendProductRecommendationEmail(email, segment).catch((error) =>
               console.error(`Failed to send recommendation email to ${email}:`, error)
             );
           },

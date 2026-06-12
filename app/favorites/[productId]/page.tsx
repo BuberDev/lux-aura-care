@@ -6,6 +6,9 @@ import { buildAmazonAffiliateUrl } from "@/lib/affiliate";
 import { getProductPageContent } from "@/lib/product-page-content";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { getProductById, getProductProof, products, siteMeta, type Product } from "@/lib/site-data";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 
 type ProductPageProps = {
   params: Promise<{ productId: string }>;
@@ -17,31 +20,38 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { productId } = await params;
-  const product = getProductById(productId);
+  const locale = await getRequestLocale();
+  const sourceProduct = getProductById(productId);
 
-  if (!product) {
+  if (!sourceProduct) {
     return {
-      title: "Product Not Found",
+      title: translateText(locale, "Product Not Found"),
     };
   }
+  const product = localizeContent(locale, sourceProduct);
+  const title = `${product.name} | ${translateText(locale, "Luxury Favorites")}`;
 
   return {
-    title: `${product.name} | Luxury Favorites`,
+    title,
     description: product.benefit,
-    alternates: {
-      canonical: `/favorites/${product.id}`,
-    },
-    keywords: [product.categoryId, product.name, "ritual favorite", ...siteMeta.keywords],
+    alternates: getLocalizedAlternates(`/favorites/${product.id}`, locale),
+    keywords: [
+      product.categoryId,
+      product.name,
+      translateText(locale, "ritual favorite"),
+      ...(locale === "pl" ? siteMeta.plKeywords : siteMeta.keywords),
+    ],
     openGraph: {
-      title: `${product.name} | Luxury Favorites`,
+      title,
       description: product.benefit,
-      url: `/favorites/${product.id}`,
+      url: localizePathname(`/favorites/${product.id}`, locale),
       images: [{ url: product.image, width: 1200, height: 630, alt: product.imageAlt }],
       type: "article",
+      locale: locale === "pl" ? "pl_PL" : "en_US",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} | Luxury Favorites`,
+      title,
       description: product.benefit,
       images: [product.image],
     },
@@ -66,20 +76,23 @@ function getRelatedProducts(currentProduct: Product) {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { productId } = await params;
-  const product = getProductById(productId);
+  const locale = await getRequestLocale();
+  const sourceProduct = getProductById(productId);
 
-  if (!product) {
+  if (!sourceProduct) {
     notFound();
   }
 
-  const proof = getProductProof(product.id);
-  const content = getProductPageContent(product, proof);
-  const relatedProducts = getRelatedProducts(product);
+  const sourceProof = getProductProof(sourceProduct.id);
+  const product = localizeContent(locale, sourceProduct);
+  const proof = localizeContent(locale, sourceProof);
+  const content = localizeContent(locale, getProductPageContent(sourceProduct, sourceProof));
+  const relatedProducts = localizeContent(locale, getRelatedProducts(sourceProduct));
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
-    { name: "Home", item: "/" },
-    { name: "Favorites", item: "/favorites" },
-    { name: product.name, item: `/favorites/${product.id}` },
+    { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
+    { name: translateText(locale, "Favorites"), item: localizePathname("/favorites", locale) },
+    { name: product.name, item: localizePathname(`/favorites/${product.id}`, locale) },
   ]);
 
   const productJsonLd = {
@@ -87,7 +100,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     "@graph": [
       {
         "@type": "Product",
-        "@id": toAbsoluteUrl(`/favorites/${product.id}#product`),
+        "@id": toAbsoluteUrl(`${localizePathname(`/favorites/${product.id}`, locale)}#product`),
         name: product.name,
         description: product.description,
         image: [toAbsoluteUrl(product.image)],
@@ -115,7 +128,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         isRelatedTo: relatedProducts.map((related) => ({
           "@type": "Product",
           name: related.name,
-          url: toAbsoluteUrl(`/favorites/${related.id}`),
+          url: toAbsoluteUrl(localizePathname(`/favorites/${related.id}`, locale)),
         })),
         offers: {
           "@type": "Offer",
@@ -125,7 +138,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             buildAmazonAffiliateUrl(product.id, {
               source: "website",
               campaign: "product-page",
-            })?.toString() ?? toAbsoluteUrl(`/favorites/${product.id}`),
+            })?.toString() ?? toAbsoluteUrl(localizePathname(`/favorites/${product.id}`, locale)),
           seller: {
             "@id": toAbsoluteUrl("/#organization"),
           },

@@ -5,6 +5,13 @@ import {
   TRACKING_COOKIE_MAX_AGE,
   sanitizeTrackingValue,
 } from "@/lib/tracking";
+import {
+  defaultLocale,
+  isLocale,
+  localeCookieName,
+  type Locale,
+} from "@/lib/i18n/config";
+import { getLocaleFromPathname, stripLocaleFromPathname } from "@/lib/i18n/path";
 
 const trackingCookieOptions = {
   httpOnly: false,
@@ -15,7 +22,36 @@ const trackingCookieOptions = {
 };
 
 export function proxy(request: NextRequest) {
-  const response = NextResponse.next();
+  const { pathname } = request.nextUrl;
+  const pathnameLocale = getLocaleFromPathname(pathname);
+  const isNonLocalizedRoute =
+    pathname.startsWith("/api/") ||
+    pathname.startsWith("/go/") ||
+    pathname.startsWith("/pin/");
+
+  if (!pathnameLocale && !isNonLocalizedRoute) {
+    const cookieLocale = request.cookies.get(localeCookieName)?.value;
+    const locale = isLocale(cookieLocale)
+      ? cookieLocale
+      : getPreferredLocale(request.headers.get("accept-language"));
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  const locale = pathnameLocale ?? defaultLocale;
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-lux-aura-locale", locale);
+
+  const rewriteUrl = request.nextUrl.clone();
+  if (pathnameLocale) {
+    rewriteUrl.pathname = stripLocaleFromPathname(pathname);
+  }
+
+  const response = pathnameLocale
+    ? NextResponse.rewrite(rewriteUrl, { request: { headers: requestHeaders } })
+    : NextResponse.next({ request: { headers: requestHeaders } });
 
   const source = sanitizeTrackingValue(
     request.nextUrl.searchParams.get("utm_source") ?? request.nextUrl.searchParams.get("source"),
@@ -44,6 +80,26 @@ export function proxy(request: NextRequest) {
   }
 
   return response;
+}
+
+function getPreferredLocale(acceptLanguage: string | null): Locale {
+  if (!acceptLanguage) {
+    return defaultLocale;
+  }
+
+  const requestedLanguages = acceptLanguage
+    .split(",")
+    .map((entry) => {
+      const [language, quality = "q=1"] = entry.trim().split(";");
+      return {
+        language: language.toLowerCase().split("-")[0],
+        quality: Number.parseFloat(quality.replace("q=", "")) || 0,
+      };
+    })
+    .sort((a, b) => b.quality - a.quality);
+
+  const match = requestedLanguages.find(({ language }) => isLocale(language));
+  return match && isLocale(match.language) ? match.language : defaultLocale;
 }
 
 export const config = {

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { getAffiliateRoute } from "@/lib/affiliate";
 import { getBundleProducts, getProductById, type ProductBundle } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
 
 type BundleCardProps = {
   readonly bundle: ProductBundle;
@@ -26,24 +27,24 @@ export function BundleCard({ bundle }: BundleCardProps) {
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Sparkles className="size-4 text-accent-gold" aria-hidden="true" />
-              <Badge>{bundle.productIds.length} items</Badge>
+              <Badge>{bundle.productIds.length} <T text={"items"} /></Badge>
             </div>
-            <h3 className="font-heading text-2xl leading-tight">{bundle.title}</h3>
+            <h3 className="font-heading text-2xl leading-tight"><T text={bundle.title} /></h3>
           </div>
           {bundle.discount && (
             <div className="shrink-0 rounded-lg bg-accent-gold/15 px-3 py-2 text-right">
-              <p className="text-xs font-semibold text-accent-gold">{bundle.discount.label}</p>
-              <p className="text-xs text-text-secondary">{bundle.discount.savings}</p>
+              <p className="text-xs font-semibold text-accent-gold"><T text={bundle.discount.label} /></p>
+              <p className="text-xs text-text-secondary"><T text={bundle.discount.savings} /></p>
             </div>
           )}
         </div>
 
-        <p className="text-base font-semibold leading-relaxed text-text-primary">{bundle.tagline}</p>
-        <p className="text-sm leading-relaxed text-text-secondary">{bundle.description}</p>
+        <p className="text-base font-semibold leading-relaxed text-text-primary"><T text={bundle.tagline} /></p>
+        <p className="text-sm leading-relaxed text-text-secondary"><T text={bundle.description} /></p>
 
         <div className="space-y-3 border-t border-border-subtle pt-4">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-text-secondary">
-            Includes:
+            <T text={"Includes:"} />
           </p>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
             {products.map((product) => (
@@ -60,7 +61,7 @@ export function BundleCard({ bundle }: BundleCardProps) {
                   />
                 </div>
                 <p className="text-xs font-medium leading-tight text-text-secondary line-clamp-2">
-                  {product.name}
+                  <T text={product.name} />
                 </p>
               </div>
             ))}

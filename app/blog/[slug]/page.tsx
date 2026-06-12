@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ExternalLink, Flame, Layers3, Star } from "lucide-react";
 
@@ -22,6 +22,11 @@ import {
   getRelatedArticles,
   siteMeta,
 } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
+import { LocalizedDate } from "@/components/localized-date";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { getRequestLocale } from "@/lib/i18n/request";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -33,29 +38,35 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const locale = await getRequestLocale();
+  const sourceArticle = getArticleBySlug(slug);
 
-  if (!article) {
+  if (!sourceArticle) {
     return {
-      title: "Article Not Found",
+      title: translateText(locale, "Article Not Found"),
     };
   }
+  const article = localizeContent(locale, sourceArticle);
 
   return {
-    title: `${article.title} | Ritual Guide`,
+    title: `${article.title} | ${translateText(locale, "Ritual Guide")}`,
     description: article.excerpt,
-    alternates: {
-      canonical: `/blog/${article.slug}`,
-    },
-    keywords: [article.categoryId, "routine guide", "lifestyle reset", ...siteMeta.keywords],
+    alternates: getLocalizedAlternates(`/blog/${article.slug}`, locale),
+    keywords: [
+      article.categoryId,
+      translateText(locale, "routine guide"),
+      translateText(locale, "lifestyle reset"),
+      ...(locale === "pl" ? siteMeta.plKeywords : siteMeta.keywords),
+    ],
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      url: `/blog/${article.slug}`,
+      url: localizePathname(`/blog/${article.slug}`, locale),
       images: [{ url: article.heroImage, width: 1200, height: 630, alt: article.heroAlt }],
       type: "article",
       publishedTime: article.publishedAt,
       authors: ["Lux Aura Editorial"],
+      locale: locale === "pl" ? "pl_PL" : "en_US",
     },
     twitter: {
       card: "summary_large_image",
@@ -90,25 +101,25 @@ function ArticleProductBlock({ productId }: { productId: string }) {
 
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge>{product.trustSignal}</Badge>
+            <Badge><T text={product.trustSignal} /></Badge>
             <span className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-text-secondary">
               <Star className="size-3.5 fill-accent-gold text-accent-gold" aria-hidden="true" />
-              {proof.rating.toFixed(1)} · {proof.reviews}
+              {proof.rating.toFixed(1)} · <T text={proof.reviews} />
             </span>
           </div>
 
-          <h3 className="font-heading text-2xl leading-tight">{product.name}</h3>
-          <p className="text-sm leading-relaxed text-text-secondary">{product.benefit}</p>
+          <h3 className="font-heading text-2xl leading-tight"><T text={product.name} /></h3>
+          <p className="text-sm leading-relaxed text-text-secondary"><T text={product.benefit} /></p>
 
           <ul className="space-y-2">
             {proof.highlights.slice(0, 3).map((highlight) => (
               <li key={highlight} className="text-sm text-text-secondary">
-                • {highlight}
+                • <T text={highlight} />
               </li>
             ))}
           </ul>
 
-          <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">{proof.socialProof}</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-accent-gold"><T text={proof.socialProof} /></p>
           <CTAButton href={getAffiliateRoute(product.id, "article-product-block")} label="Check on Amazon" />
         </div>
       </div>
@@ -118,26 +129,32 @@ function ArticleProductBlock({ productId }: { productId: string }) {
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const locale = await getRequestLocale();
+  const sourceArticle = getArticleBySlug(slug);
 
-  if (!article) {
+  if (!sourceArticle) {
     notFound();
   }
+  const article = localizeContent(locale, sourceArticle);
 
-  const category = getCategoryById(article.categoryId);
-  const relatedArticles = getRelatedArticles(article.slug, article.categoryId);
-  const stickyProducts = getProductsByIds([
+  const categorySource = getCategoryById(article.categoryId);
+  const category = categorySource ? localizeContent(locale, categorySource) : undefined;
+  const relatedArticles = localizeContent(
+    locale,
+    getRelatedArticles(article.slug, article.categoryId)
+  );
+  const stickyProducts = localizeContent(locale, getProductsByIds([
     "silk-sleep-mask",
     "retinol-serum",
     "body-oil",
     "bath-salts",
-  ]);
+  ]));
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
-    { name: "Home", item: "/" },
-    { name: "Journal", item: "/blog" },
-    ...(category ? [{ name: category.name, item: `/blog?category=${category.id}` }] : []),
-    { name: article.title, item: `/blog/${article.slug}` },
+    { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
+    { name: translateText(locale, "Journal"), item: localizePathname("/blog", locale) },
+    ...(category ? [{ name: category.name, item: localizePathname(`/blog?category=${category.id}`, locale) }] : []),
+    { name: article.title, item: localizePathname(`/blog/${article.slug}`, locale) },
   ]);
 
   const faqs = article.sections.map((section) => ({
@@ -166,7 +183,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     "@graph": [
       {
         "@type": "BlogPosting",
-        "@id": toAbsoluteUrl(`/blog/${article.slug}#article`),
+        "@id": toAbsoluteUrl(`${localizePathname(`/blog/${article.slug}`, locale)}#article`),
         headline: article.title,
         description: article.excerpt,
         datePublished: article.publishedAt,
@@ -174,11 +191,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           "@type": "Organization",
           "@id": toAbsoluteUrl("/#organization"),
           name: "Lux Aura Editorial",
-          url: toAbsoluteUrl("/"),
+          url: toAbsoluteUrl(localizePathname("/", locale)),
         },
         image: [toAbsoluteUrl(article.heroImage)],
-        mainEntityOfPage: toAbsoluteUrl(`/blog/${article.slug}`),
+        mainEntityOfPage: toAbsoluteUrl(localizePathname(`/blog/${article.slug}`, locale)),
         articleSection: category?.name ?? article.categoryId,
+        inLanguage: locale,
         publisher: {
           "@type": "Organization",
           "@id": toAbsoluteUrl("/#organization"),
@@ -233,12 +251,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
             <div className="mt-6 flex flex-wrap gap-4 text-xs uppercase tracking-[0.16em] text-text-secondary">
               <span>{article.readTime}</span>
-              <span>{article.publishedAt}</span>
+              <span><LocalizedDate value={article.publishedAt} /></span>
               <span>{article.pinHook}</span>
             </div>
 
             <div className="mt-7 rounded-2xl border border-border-default bg-surface-raised p-5">
-              <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">What you will get from this guide</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-accent-gold"><T text={"What you will get from this guide"} /></p>
               <ul className="mt-3 space-y-2 text-sm text-text-secondary md:text-base">
                 {hookPoints.map((point) => (
                   <li key={point}>• {point}</li>
@@ -266,7 +284,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <article className="max-w-4xl">
               {article.sections.map((section, index) => (
                 <div key={section.id} className="mb-8 scroll-mt-28 rounded-3xl border border-border-subtle bg-surface-subtle p-6 md:p-8" id={section.id}>
-                  <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">Step {index + 1}</p>
+                  <p className="text-xs uppercase tracking-[0.16em] text-accent-gold"><T text={"Step"} /> {index + 1}</p>
                   <h2 className="mt-2 font-heading text-3xl leading-tight">{section.title}</h2>
                   <p className="mt-4 text-base leading-relaxed text-text-secondary">{section.copy}</p>
 
@@ -296,26 +314,26 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <div className="space-y-5 rounded-3xl border border-border-subtle bg-surface-subtle p-6">
                 <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-accent-gold">
                   <Layers3 className="size-4" aria-hidden="true" />
-                  Quick Jump
+                  <T text={"Quick Jump"} />
                 </p>
 
-                <nav aria-label="Article sections" className="space-y-2">
+                <nav aria-label={translateText(locale, "Article sections")} className="space-y-2">
                   {article.sections.map((section) => (
-                    <Link
+                    <LocalizedLink
                       key={section.id}
                       href={`#${section.id}`}
                       className="group flex items-center justify-between rounded-xl border border-transparent px-3 py-2 text-sm text-text-secondary transition-colors hover:border-border-subtle hover:text-text-primary"
                     >
                       {section.title}
                       <ArrowRight className="size-4 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-                    </Link>
+                    </LocalizedLink>
                   ))}
                 </nav>
 
                 <div className="rounded-2xl border border-border-subtle bg-surface-raised p-4">
                   <p className="mb-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
                     <Flame className="size-4" aria-hidden="true" />
-                    Popular This Week
+                    <T text={"Popular This Week"} />
                   </p>
                   <ul className="space-y-3">
                     {stickyProducts.slice(0, 3).map((product) => {
@@ -353,8 +371,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <Container>
             <div className="mb-8 flex items-end justify-between gap-6">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-accent-gold">Read Next</p>
-                <h2 className="mt-3 font-heading text-3xl md:text-4xl">Related ritual guides</h2>
+                <p className="text-xs uppercase tracking-[0.2em] text-accent-gold"><T text={"Read Next"} /></p>
+                <h2 className="mt-3 font-heading text-3xl md:text-4xl"><T text={"Related ritual guides"} /></h2>
               </div>
               <CTAButton href="/blog" label="View All Articles" variant="secondary" />
             </div>

@@ -2,6 +2,10 @@ import crypto from "crypto";
 
 export type Variant = "control" | "test";
 
+type AnalyticsWindow = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
+
 type TestConfig = {
   id: string;
   variants: { control: unknown; test: unknown };
@@ -70,7 +74,7 @@ export function trackTestExposure(
 ) {
   if (typeof window === "undefined") return;
 
-  const gtag = (window as any).gtag;
+  const gtag = (window as AnalyticsWindow).gtag;
   if (!gtag) return;
 
   gtag("event", "ab_test_exposure", {
@@ -90,7 +94,7 @@ export function trackTestConversion(
 ) {
   if (typeof window === "undefined") return;
 
-  const gtag = (window as any).gtag;
+  const gtag = (window as AnalyticsWindow).gtag;
   if (!gtag) return;
 
   gtag("event", "ab_test_conversion", {

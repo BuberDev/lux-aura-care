@@ -5,6 +5,7 @@ import { Heading } from "@/components/heading";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { pinterestPins, resolvePinTargetHref } from "@/lib/pinterest-pins";
+import { T } from "@/components/translated-text";
 
 export const metadata: Metadata = {
   title: "Pinterest Link Map",
@@ -44,10 +45,10 @@ export default function PinMapPage() {
 
                 <h2 className="mt-3 font-heading text-2xl">{pin.title}</h2>
                 <p className="mt-2 text-sm text-text-secondary">
-                  Destination: <code>{destination}</code>
+                  <T text={"Destination:"} /> <code>{destination}</code>
                 </p>
                 <p className="mt-2 text-sm text-text-secondary">
-                  Pin URL: <code>{pinPath}</code>
+                  <T text={"Pin URL:"} /> <code>{pinPath}</code>
                 </p>
               </article>
             );

@@ -10,6 +10,10 @@ import "@fontsource/playfair-display/latin-700.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { I18nProvider } from "@/components/i18n-provider";
+import { getLocalizedAlternates } from "@/lib/i18n/path";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { generateOrganizationJsonLd, toJsonLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { products, siteMeta } from "@/lib/site-data";
@@ -43,62 +47,74 @@ export const viewport: Viewport = {
   themeColor: "#090807",
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Lux Aura Care | Luxury Self-Care & Ritual Guides",
-    template: "%s | Lux Aura Care",
-  },
-  description: siteMeta.description,
-  keywords: [...siteMeta.keywords, ...siteMeta.plKeywords],
-  authors: [{ name: "Lux Aura Editorial Team" }],
-  creator: "Lux Aura Care",
-  publisher: "Lux Aura Care",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    title: "Lux Aura Care | Professional High-Glow Rituals",
-    description: siteMeta.description,
-    url: SITE_URL,
-    siteName: "Lux Aura Care",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Lux Aura Care | Professional High-Glow Rituals",
-    description: siteMeta.description,
-    creator: "@luxauracare",
-    images: ["/og-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-    googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const description = translateText(locale, siteMeta.description);
+  const title = translateText(locale, "Lux Aura Care | Luxury Self-Care & Ritual Guides");
+  const socialTitle = translateText(locale, "Lux Aura Care | Professional High-Glow Rituals");
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: title,
+      template: "%s | Lux Aura Care",
+    },
+    description,
+    keywords: locale === "pl" ? siteMeta.plKeywords : siteMeta.keywords,
+    authors: [{ name: "Lux Aura Editorial Team" }],
+    creator: "Lux Aura Care",
+    publisher: "Lux Aura Care",
+    alternates: getLocalizedAlternates("/", locale),
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      title: socialTitle,
+      description,
+      url: getLocalizedAlternates("/", locale).canonical,
+      siteName: "Lux Aura Care",
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description,
+      creator: "@luxauracare",
+      images: ["/og-image.jpg"],
+    },
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const organizationJsonLd = generateOrganizationJsonLd();
-  const searchProducts = products.map((product) => ({ id: product.id, name: product.name }));
+  const locale = await getRequestLocale();
+  const searchProducts = localizeContent(locale, products).map((product) => ({
+    id: product.id,
+    name: product.name,
+  }));
 
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang={locale} data-theme="dark" suppressHydrationWarning>
       <head>
         <meta name="pinterest" content="nohover" />
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
@@ -108,11 +124,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background-primary text-text-primary antialiased">
-        <ThemeProvider>
-          <SiteHeader searchProducts={searchProducts} />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </ThemeProvider>
+        <I18nProvider locale={locale}>
+          <ThemeProvider>
+            <SiteHeader searchProducts={searchProducts} />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   );

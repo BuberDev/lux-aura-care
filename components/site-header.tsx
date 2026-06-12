@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
 import { Search } from "lucide-react";
 
@@ -10,7 +10,10 @@ import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { HeaderProductSearch } from "@/components/header-product-search";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { siteMeta } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
+import { useI18n } from "@/components/i18n-provider";
 
 type HeaderSearchProduct = {
   id: string;
@@ -29,6 +32,7 @@ const nav = [
 ];
 
 export function SiteHeader({ searchProducts }: SiteHeaderProps) {
+  const { text } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const mobileSearchInputRef = useRef<HTMLInputElement>(null);
@@ -50,33 +54,34 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
       <header className="sticky top-0 z-40 p-2 md:px-5 md:pt-3">
         <Container className="rounded-2xl border border-border-subtle bg-surface-glass px-3 shadow-theme-lg backdrop-blur-2xl sm:px-4 md:px-6">
           <div className="flex h-14 items-center justify-between gap-3 md:h-20 md:gap-6">
-            <Link href="/" className="inline-flex shrink-0 items-center gap-2 md:gap-3">
+            <LocalizedLink href="/" className="inline-flex shrink-0 items-center gap-2 md:gap-3">
               <Image src={Logo} className="w-8 rounded-full opacity-80 md:w-10" alt="logo" />
               <span className="font-heading text-sm tracking-[0.06em] text-text-primary sm:text-lg md:text-2xl">
                 {siteMeta.name}
               </span>
-            </Link>
+            </LocalizedLink>
 
             <HeaderProductSearch
               products={searchProducts}
               className="hidden w-full max-w-md md:block lg:max-w-xl"
-              placeholder="Search products..."
+              placeholder={text("Search products...")}
             />
 
-            <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex lg:gap-8">
+            <nav aria-label={text("Primary")} className="hidden items-center gap-6 lg:flex lg:gap-8">
               {nav.map((item) => (
-                <Link
+                <LocalizedLink
                   key={item.href}
                   href={item.href}
                   className="text-[11px] uppercase tracking-[0.14em] text-text-secondary transition-colors hover:text-accent-gold sm:text-xs"
                 >
-                  {item.label}
-                </Link>
+                  <T text={item.label} />
+                </LocalizedLink>
               ))}
             </nav>
 
             <div className="ml-auto flex items-center gap-2 sm:gap-4">
               <CTAButton href="/blog" label="Start Reading" variant="secondary" className="hidden xl:inline-flex" />
+              <LanguageSwitcher compact className="hidden md:inline-flex" />
               <ThemeToggle className="hidden md:inline-flex" />
 
               <button
@@ -85,7 +90,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
                   setIsSearchOpen((current) => !current);
                   setIsMenuOpen(false);
                 }}
-                aria-label="Toggle product search"
+                aria-label={text("Toggle product search")}
                 aria-expanded={isSearchOpen}
                 aria-controls="mobile-product-search"
                 type="button"
@@ -99,7 +104,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
                   setIsMenuOpen(true);
                   setIsSearchOpen(false);
                 }}
-                aria-label="Open menu"
+                aria-label={text("Open menu")}
                 type="button"
               >
                 <svg
@@ -128,7 +133,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
           >
             <HeaderProductSearch
               products={searchProducts}
-              placeholder="Search products..."
+              placeholder={text("Search products...")}
               inputClassName="h-10 text-[13px]"
               inputRef={mobileSearchInputRef}
             />
@@ -152,7 +157,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
           <button
             className="rounded-full bg-surface-raised p-2 text-text-secondary transition-colors hover:text-accent-gold focus:outline-none"
             onClick={() => setIsMenuOpen(false)}
-            aria-label="Close menu"
+            aria-label={text("Close menu")}
             type="button"
           >
             <svg
@@ -180,18 +185,19 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
           <ul className="mt-2 flex flex-col gap-6">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link
+                <LocalizedLink
                   href={item.href}
                   className="block text-sm uppercase tracking-[0.14em] text-text-secondary transition-colors hover:text-accent-gold"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
-                </Link>
+                  <T text={item.label} />
+                </LocalizedLink>
               </li>
             ))}
           </ul>
 
           <div className="mt-6 space-y-4 border-t border-border-subtle pt-6">
+            <LanguageSwitcher />
             <ThemeToggle showLabel className="w-full" />
             <CTAButton href="/blog" label="Start Reading" variant="secondary" className="w-full justify-center" />
           </div>

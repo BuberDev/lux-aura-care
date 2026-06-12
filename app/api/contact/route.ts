@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { sendContactEmail } from "@/lib/resend-client";
+import { defaultLocale, isLocale } from "@/lib/i18n/config";
+import { translateText } from "@/lib/i18n/messages";
 
 export const runtime = "nodejs";
 
@@ -11,18 +13,19 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { name, email, subject, message } = body;
+    const locale = isLocale(body.locale) ? body.locale : defaultLocale;
 
     // Validation
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
-        { error: "All fields are required" },
+        { error: translateText(locale, "All fields are required") },
         { status: 400 }
       );
     }
 
     if (!isValidEmail(email)) {
       return NextResponse.json(
-        { error: "Invalid email address" },
+        { error: translateText(locale, "Invalid email address") },
         { status: 400 }
       );
     }
@@ -36,7 +39,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Your message has been sent successfully!" },
+      { success: true, message: translateText(locale, "Your message has been sent successfully!") },
       { status: 200 }
     );
   } catch (error) {

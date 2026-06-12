@@ -9,50 +9,60 @@ import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { getCategoryById, getFavoritesCollections, siteMeta } from "@/lib/site-data";
+import { T } from "@/components/translated-text";
+import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 
-export const metadata: Metadata = {
-  title: "Shop the Feed | Pinterest Favorites & Seasonal Picks",
-  description:
-    "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed. High-glow skincare and sleep rituals.",
-  alternates: {
-    canonical: "/favorites",
-  },
-  openGraph: {
-    title: "Shop the Feed | Pinterest Favorites & Seasonal Picks",
-    description:
-      "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed.",
-    url: "/favorites",
-    type: "website",
-    siteName: "Lux Aura Care",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shop the Feed | Pinterest Favorites & Seasonal Picks",
-    description:
-      "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed.",
-  },
-  keywords: ["pinterest favorites", "amazon beauty finds", "ritual essentials", ...siteMeta.keywords],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const title = translateText(locale, "Shop the Feed | Pinterest Favorites & Seasonal Picks");
+  const description = translateText(
+    locale,
+    "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed. High-glow skincare and sleep rituals."
+  );
 
-export default function FavoritesPage() {
-  const collections = getFavoritesCollections();
+  return {
+    title,
+    description,
+    alternates: getLocalizedAlternates("/favorites", locale),
+    openGraph: {
+      title,
+      description,
+      url: localizePathname("/favorites", locale),
+      type: "website",
+      siteName: "Lux Aura Care",
+      locale: locale === "pl" ? "pl_PL" : "en_US",
+    },
+    twitter: { card: "summary_large_image", title, description },
+    keywords:
+      locale === "pl"
+        ? ["ulubieńcy z Pinterest", "produkty Amazon", "rytuały pielęgnacyjne", ...siteMeta.plKeywords]
+        : ["pinterest favorites", "amazon beauty finds", "ritual essentials", ...siteMeta.keywords],
+  };
+}
+
+export default async function FavoritesPage() {
+  const locale = await getRequestLocale();
+  const collections = localizeContent(locale, getFavoritesCollections());
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
-    { name: "Home", item: "/" },
-    { name: "Favorites", item: "/favorites" },
+    { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
+    { name: translateText(locale, "Favorites"), item: localizePathname("/favorites", locale) },
   ]);
 
   const collectionJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Shop the Pinterest Feed",
-    description: "Curated collections of high-glow essentials.",
-    url: toAbsoluteUrl("/favorites"),
+    name: translateText(locale, "Shop the Pinterest Feed"),
+    description: translateText(locale, "Curated collections of high-glow essentials."),
+    url: toAbsoluteUrl(localizePathname("/favorites", locale)),
+    inLanguage: locale,
     hasPart: collections.flatMap((col) =>
       col.products.map((p) => ({
         "@type": "Product",
         name: p.name,
-        url: toAbsoluteUrl(`/favorites/${p.id}`),
+        url: toAbsoluteUrl(localizePathname(`/favorites/${p.id}`, locale)),
         image: toAbsoluteUrl(p.image),
       }))
     ),
@@ -104,9 +114,9 @@ export default function FavoritesPage() {
           >
             <Container>
               <div className="mb-8 max-w-3xl space-y-4">
-                {category ? <Badge>{category.name}</Badge> : null}
-                <h2 className="font-heading text-3xl leading-tight md:text-4xl">{collection.title}</h2>
-                <p className="leading-relaxed text-text-secondary">{collection.description}</p>
+                {category ? <Badge><T text={category.name} /></Badge> : null}
+                <h2 className="font-heading text-3xl leading-tight md:text-4xl"><T text={collection.title} /></h2>
+                <p className="leading-relaxed text-text-secondary"><T text={collection.description} /></p>
               </div>
 
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
