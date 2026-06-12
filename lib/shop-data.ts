@@ -760,3 +760,21 @@ export const shopProducts: ShopProduct[] = [
 export function getShopProductById(id: string): ShopProduct | undefined {
   return shopProducts.find((p) => p.id === id);
 }
+
+export function getShopifyCheckoutRoute(productId: string) {
+  return `/api/shopify-checkout/${encodeURIComponent(productId)}`;
+}
+
+export function getShopifyVariant(product: ShopProduct) {
+  const url = new URL(product.shopifyUrl);
+  const match = url.pathname.match(/^\/cart\/(\d+):\d+$/);
+
+  if (url.hostname !== "k50k7g-j7.myshopify.com" || !match) {
+    return null;
+  }
+
+  return {
+    storeOrigin: url.origin,
+    variantId: match[1],
+  };
+}

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getShopProductById, shopProducts } from "@/lib/shop-data";
+import {
+  getShopifyCheckoutRoute,
+  getShopProductById,
+  shopProducts,
+} from "@/lib/shop-data";
 import { ShopProductSales } from "@/components/shop/shop-product-sales";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
@@ -42,7 +46,10 @@ export default async function ShopProductPage({ params }: Props) {
   const sourceProduct = getShopProductById(productId);
   if (!sourceProduct) notFound();
 
-  const product = localizeContent(locale, sourceProduct);
+  const product = {
+    ...localizeContent(locale, sourceProduct),
+    shopifyUrl: getShopifyCheckoutRoute(sourceProduct.id),
+  };
   const related = localizeContent(
     locale,
     shopProducts.filter((p) => p.id !== sourceProduct.id).slice(0, 2)
