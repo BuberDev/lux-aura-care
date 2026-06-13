@@ -381,7 +381,7 @@ export const shopProducts: ShopProduct[] = [
     price: 59.99,
     compareAtPrice: 99.99,
     currency: "EUR",
-    image: "/Vibro_Glow_Face_Massager.jpg",
+    image: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-main-product-photo.png",
     imageAlt: "Mini vibrating T-bar face massager for lymphatic drainage and glow",
     badge: "⚡ Viral Beauty Tool",
     rating: 4.9,
@@ -418,6 +418,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092710314317:1",
     category: "skincare",
     isBestSeller: true,
+    gallery: [
+      {
+        url: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-main-product-photo.png",
+        label: "Product Photo",
+        badge: "⚡ Viral Tool",
+        desc: "Pocket-sized T-bar vibrating massager delivering 6,000 micro-vibrations per minute",
+      },
+      {
+        url: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-luxury-skincare-flat-lay.png",
+        label: "Flat Lay",
+        badge: "Premium",
+        desc: "Luxury skincare flat lay — the perfect addition to your glow ritual",
+      },
+      {
+        url: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-premium-pedestal-angle-view.png",
+        label: "Angle View",
+        badge: "Design",
+        desc: "Premium pedestal angle view showcasing the elegant T-bar form factor",
+      },
+      {
+        url: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-lifestyle-cheek-use.png",
+        label: "In Use",
+        badge: "Lifestyle",
+        desc: "Gliding along the cheekbone for instant lymphatic drainage and sculpting",
+      },
+      {
+        url: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-under-eye-close-up.png",
+        label: "Under-Eye",
+        badge: "De-Puff",
+        desc: "Targeting the under-eye area to reduce morning puffiness in under 3 minutes",
+      },
+    ],
   },
 
   {
@@ -429,7 +461,7 @@ export const shopProducts: ShopProduct[] = [
     price: 24.99,
     compareAtPrice: 42.99,
     currency: "EUR",
-    image: "/Centella_Collagen_Sleep_Masks.jpg",
+    image: "/centella-collagen-sleep-masks-product-images/centella-collagen-sleep-masks-main-product-photo.png",
     imageAlt: "Centella Collagen Sleeping Face Masks in luxury packaging",
     badge: "🌿 Overnight Repair",
     rating: 4.9,
@@ -466,6 +498,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092716933453:1",
     category: "skincare",
     isNew: true,
+    gallery: [
+      {
+        url: "/centella-collagen-sleep-masks-product-images/centella-collagen-sleep-masks-main-product-photo.png",
+        label: "Product Photo",
+        badge: "🌿 Overnight Repair",
+        desc: "30 ultra-thin overnight sleeping masks infused with Centella Asiatica and marine collagen",
+      },
+      {
+        url: "/centella-collagen-sleep-masks-product-images/centella-collagen-sleep-masks-luxury-skincare-flat-lay.png",
+        label: "Flat Lay",
+        badge: "Luxury",
+        desc: "Elegant luxury skincare flat lay — 30 nights of visible skin renewal",
+      },
+      {
+        url: "/centella-collagen-sleep-masks-product-images/centella-collagen-sleep-masks-night-routine-lifestyle.png",
+        label: "Night Routine",
+        badge: "Lifestyle",
+        desc: "The perfect final step in your evening skincare routine — apply and sleep",
+      },
+      {
+        url: "/centella-collagen-sleep-masks-product-images/centella-collagen-sleep-masks-open-sachet-gel-texture.png",
+        label: "Gel Texture",
+        badge: "Formula",
+        desc: "Rich, silky gel texture packed with Centella Asiatica and hyaluronic acid",
+      },
+      {
+        url: "/centella-collagen-sleep-masks-product-images/centella-collagen-sleep-masks-single-sachet-close-up.png",
+        label: "Sachet Close-up",
+        badge: "30 Masks",
+        desc: "Individual single-use sachet — hygienic, travel-friendly, no waste",
+      },
+    ],
   },
 
   {
@@ -477,7 +541,7 @@ export const shopProducts: ShopProduct[] = [
     price: 27.99,
     compareAtPrice: 49.99,
     currency: "EUR",
-    image: "/Vitamin_C_Retinol_Serum_Duo.jpg",
+    image: "/vitamin-c-retinol-serum-duo-product-images/vitamin-c-retinol-serum-duo-main-product-photo.png",
     imageAlt: "Vitamin C brightening serum and retinol night serum skincare duo",
     badge: "☀️ AM + PM System",
     rating: 4.8,
@@ -514,6 +578,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092721455437:1",
     category: "skincare",
     isNew: true,
+    gallery: [
+      {
+        url: "/vitamin-c-retinol-serum-duo-product-images/vitamin-c-retinol-serum-duo-main-product-photo.png",
+        label: "Product Photo",
+        badge: "☀️ AM + PM",
+        desc: "Complete two-serum system — Vitamin C by day, Retinol by night",
+      },
+      {
+        url: "/vitamin-c-retinol-serum-duo-product-images/vitamin-c-retinol-serum-duo-am-pm-flat-lay.png",
+        label: "AM + PM",
+        badge: "Full Ritual",
+        desc: "Day and night flat lay — the complete anti-aging skincare ritual in one duo",
+      },
+      {
+        url: "/vitamin-c-retinol-serum-duo-product-images/vitamin-c-retinol-serum-duo-bathroom-vanity-lifestyle.png",
+        label: "Vanity",
+        badge: "Lifestyle",
+        desc: "A premium bathroom vanity essential — brightening by day, renewing by night",
+      },
+      {
+        url: "/vitamin-c-retinol-serum-duo-product-images/vitamin-c-retinol-serum-duo-dropper-texture-close-up.png",
+        label: "Formula",
+        badge: "Lightweight",
+        desc: "Lightweight, fast-absorbing dropper formula — no greasy residue, pure actives",
+      },
+      {
+        url: "/vitamin-c-retinol-serum-duo-product-images/vitamin-c-retinol-serum-duo-luxury-spa-pedestal.png",
+        label: "Luxury",
+        badge: "Premium",
+        desc: "Elegant pedestal presentation of the premium Vitamin C and Retinol duo",
+      },
+    ],
   },
 
   {
@@ -525,7 +621,7 @@ export const shopProducts: ShopProduct[] = [
     price: 22.99,
     compareAtPrice: 39.99,
     currency: "EUR",
-    image: "/Resin_Body_Gua_Sha_Tool.jpg",
+    image: "/body-gua-sha-lymph-tool-product-images/resin-body-gua-sha-lymph-tool-main-product-photo.png",
     imageAlt: "Large resin body gua sha scraping tool for lymphatic drainage and cellulite",
     badge: "💪 Body Sculpt",
     rating: 4.9,
@@ -562,6 +658,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092726501709:1",
     category: "body-glow",
     isNew: true,
+    gallery: [
+      {
+        url: "/body-gua-sha-lymph-tool-product-images/resin-body-gua-sha-lymph-tool-main-product-photo.png",
+        label: "Product Photo",
+        badge: "💪 Body Sculpt",
+        desc: "Large-format resin gua sha board designed for body lymphatic drainage",
+      },
+      {
+        url: "/body-gua-sha-lymph-tool-product-images/resin-body-gua-sha-lymph-tool-body-care-flat-lay.png",
+        label: "Flat Lay",
+        badge: "Body Care",
+        desc: "Complete body care flat lay — the ultimate cellulite and sculpting routine",
+      },
+      {
+        url: "/body-gua-sha-lymph-tool-product-images/resin-body-gua-sha-lymph-tool-body-massage-lifestyle.png",
+        label: "In Use",
+        badge: "Lifestyle",
+        desc: "Firm upward strokes along the thigh — targeting cellulite and lymphatic flow",
+      },
+      {
+        url: "/body-gua-sha-lymph-tool-product-images/resin-body-gua-sha-lymph-tool-ergonomic-hand-grip.png",
+        label: "Grip",
+        badge: "Ergonomic",
+        desc: "Ergonomic hand grip — secure hold even with body oil on hands",
+      },
+      {
+        url: "/body-gua-sha-lymph-tool-product-images/resin-body-gua-sha-lymph-tool-luxury-spa-pedestal.png",
+        label: "Pedestal",
+        badge: "Premium",
+        desc: "Luxury spa pedestal display — premium resin craftsmanship",
+      },
+    ],
   },
 
   {
@@ -573,7 +701,7 @@ export const shopProducts: ShopProduct[] = [
     price: 19.99,
     compareAtPrice: 34.99,
     currency: "EUR",
-    image: "/Natural_Bristle_Spa_Brush.jpg",
+    image: "/natural-bristle-spa-body-brush-product-images/natural-bristle-spa-body-brush-main-product-photo.png",
     imageAlt: "Natural bristle body spa brush with detachable long wooden handle",
     badge: "🌿 Dry Brush Favourite",
     rating: 4.9,
@@ -610,6 +738,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092769034573:1",
     category: "body-glow",
     isNew: true,
+    gallery: [
+      {
+        url: "/natural-bristle-spa-body-brush-product-images/natural-bristle-spa-body-brush-main-product-photo.png",
+        label: "Product Photo",
+        badge: "🌿 Dry Brush",
+        desc: "Professional-grade natural bristle back and body brush with detachable wooden handle",
+      },
+      {
+        url: "/natural-bristle-spa-body-brush-product-images/natural-bristle-spa-body-brush-body-care-flat-lay.png",
+        label: "Flat Lay",
+        badge: "Body Care",
+        desc: "Complete dry brushing ritual flat lay — the foundation of every body-glow routine",
+      },
+      {
+        url: "/natural-bristle-spa-body-brush-product-images/natural-bristle-spa-body-brush-back-massage-lifestyle.png",
+        label: "In Use",
+        badge: "Lifestyle",
+        desc: "Long handle reaches the entire back effortlessly for a full spa treatment at home",
+      },
+      {
+        url: "/natural-bristle-spa-body-brush-product-images/natural-bristle-spa-body-brush-bristle-close-up.png",
+        label: "Bristles",
+        badge: "Natural",
+        desc: "Natural stiff plant-fibre bristles — effective dry or wet exfoliation without scratching",
+      },
+      {
+        url: "/natural-bristle-spa-body-brush-product-images/natural-bristle-spa-body-brush-luxury-spa-pedestal.png",
+        label: "Pedestal",
+        badge: "Eco Premium",
+        desc: "Eco-friendly natural wood and plant-fibre construction on luxury pedestal display",
+      },
+    ],
   },
 
   {
@@ -621,7 +781,7 @@ export const shopProducts: ShopProduct[] = [
     price: 16.99,
     compareAtPrice: 29.99,
     currency: "EUR",
-    image: "/Exfoliating_Spa_Body_Brush.jpg",
+    image: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-main-product-photo.png",
     imageAlt: "Soft natural bristle exfoliating spa body brush for shower use",
     badge: "🚿 Daily Glow",
     rating: 4.9,
@@ -658,6 +818,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092780699981:1",
     category: "body-glow",
     isBestSeller: true,
+    gallery: [
+      {
+        url: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-main-product-photo.png",
+        label: "Product Photo",
+        badge: "🚿 Daily Glow",
+        desc: "Soft natural bristle exfoliating spa body brush — gentle enough for daily use",
+      },
+      {
+        url: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-body-care-flat-lay.png",
+        label: "Flat Lay",
+        badge: "Body Care",
+        desc: "Daily body care flat lay — the secret to glowing skin after every shower",
+      },
+      {
+        url: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-body-exfoliation-lifestyle.png",
+        label: "In Use",
+        badge: "Lifestyle",
+        desc: "Circular motions in the shower — visibly transforming skin texture in 2 weeks",
+      },
+      {
+        url: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-hand-strap-close-up.png",
+        label: "Wrist Strap",
+        badge: "Secure Grip",
+        desc: "Built-in wrist strap for a secure, comfortable grip during wet shower use",
+      },
+      {
+        url: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-luxury-spa-pedestal.png",
+        label: "Pedestal",
+        badge: "10K+ Sold",
+        desc: "The most loved body brush in the collection — over 10,000 sold",
+      },
+    ],
   },
 
   {
@@ -669,7 +861,7 @@ export const shopProducts: ShopProduct[] = [
     price: 18.99,
     compareAtPrice: 32.99,
     currency: "EUR",
-    image: "/Ice_Face_Roller_Gua_Sha_Set.jpg",
+    image: "/ice-face-roller-gua-sha-steel-set-product-images/ice-face-roller-gua-sha-steel-set-main-product-photo.png",
     imageAlt: "Stainless steel ice face roller and gua sha board set for de-puffing",
     badge: "❄️ Cool & Sculpt",
     rating: 4.6,
@@ -706,6 +898,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092785549645:1",
     category: "skincare",
     isNew: true,
+    gallery: [
+      {
+        url: "/ice-face-roller-gua-sha-steel-set-product-images/ice-face-roller-gua-sha-steel-set-main-product-photo.png",
+        label: "Product Photo",
+        badge: "❄️ Cool & Sculpt",
+        desc: "Premium stainless steel ice roller and gua sha board — the 60-second morning ritual",
+      },
+      {
+        url: "/ice-face-roller-gua-sha-steel-set-product-images/ice-face-roller-gua-sha-steel-set-flat-lay.png",
+        label: "Flat Lay",
+        badge: "Steel Set",
+        desc: "Matching stainless steel duo — chill overnight for maximum de-puffing power",
+      },
+      {
+        url: "/ice-face-roller-gua-sha-steel-set-product-images/ice-face-roller-gua-sha-steel-set-lifestyle-usage.png",
+        label: "In Use",
+        badge: "Lifestyle",
+        desc: "Rolling from neck to forehead — instant de-puffing and pore tightening in seconds",
+      },
+      {
+        url: "/ice-face-roller-gua-sha-steel-set-product-images/ice-face-roller-gua-sha-steel-set-luxury-spa-pedestal.png",
+        label: "Pedestal",
+        badge: "Premium",
+        desc: "Luxury spa pedestal display — premium stainless steel craftsmanship",
+      },
+      {
+        url: "/ice-face-roller-gua-sha-steel-set-product-images/ice-face-roller-gua-sha-steel-set-stainless-steel-close-up.png",
+        label: "Steel Detail",
+        badge: "Stays Cold 3×",
+        desc: "Stainless steel stays cold 3× longer than stone or plastic — superior cooling performance",
+      },
+    ],
   },
 
   {
@@ -717,7 +941,7 @@ export const shopProducts: ShopProduct[] = [
     price: 29.99,
     compareAtPrice: 52.99,
     currency: "EUR",
-    image: "/Seaweed_Collagen_Crystal_Mask.jpg",
+    image: "/seaweed-collagen-crystal-hydration-mask-product-images/seaweed-collagen-crystal-hydration-mask-main-product-photo.png",
     imageAlt: "Premium seaweed collagen crystal hydrogel face mask filling treatment",
     badge: "🌊 Glass Skin",
     rating: 4.8,
@@ -754,6 +978,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092790595917:1",
     category: "skincare",
     isNew: true,
+    gallery: [
+      {
+        url: "/seaweed-collagen-crystal-hydration-mask-product-images/seaweed-collagen-crystal-hydration-mask-main-product-photo.png",
+        label: "Product Photo",
+        badge: "🌊 Glass Skin",
+        desc: "5 premium crystal hydrogel masks infused with seaweed extract and marine collagen",
+      },
+      {
+        url: "/seaweed-collagen-crystal-hydration-mask-product-images/seaweed-collagen-crystal-hydration-mask-flat-lay.png",
+        label: "Flat Lay",
+        badge: "5 Treatments",
+        desc: "5 clinical-style treatments in one pack — glass skin effect in 20 minutes",
+      },
+      {
+        url: "/seaweed-collagen-crystal-hydration-mask-product-images/seaweed-collagen-crystal-hydration-mask-lifestyle-application.png",
+        label: "In Use",
+        badge: "Lifestyle",
+        desc: "Applying the crystal mask for an at-home clinical facial experience",
+      },
+      {
+        url: "/seaweed-collagen-crystal-hydration-mask-product-images/seaweed-collagen-crystal-hydration-mask-hydrogel-texture-close-up.png",
+        label: "Texture",
+        badge: "30ml Serum",
+        desc: "Crystal hydrogel texture — 30ml of intensive serum per mask, 10× a standard sheet mask",
+      },
+      {
+        url: "/seaweed-collagen-crystal-hydration-mask-product-images/seaweed-collagen-crystal-hydration-mask-luxury-spa-pedestal.png",
+        label: "Pedestal",
+        badge: "TikTok Viral",
+        desc: "TikTok viral formula — luxury spa pedestal display for the glass skin ritual",
+      },
+    ],
   },
 ];
 
