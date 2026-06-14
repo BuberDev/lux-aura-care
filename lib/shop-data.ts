@@ -18,6 +18,7 @@ export type ShopProduct = {
   category: "skincare" | "body-glow" | "bundle";
   isNew?: boolean;
   isBestSeller?: boolean;
+  flashSaleEndsAt?: string; // ISO date — real countdown, not looping
   gallery?: {
     url: string;
     label: string;
@@ -74,6 +75,7 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490689869:1",
     category: "skincare",
     isBestSeller: true,
+    flashSaleEndsAt: "2026-06-30T23:59:59Z",
   },
   {
     id: "clear-skin-patches",
@@ -418,6 +420,7 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092710314317:1",
     category: "skincare",
     isBestSeller: true,
+    flashSaleEndsAt: "2026-06-30T23:59:59Z",
     gallery: [
       {
         url: "/Vibro-Glow_Face_Massager-images/vibro-glow-face-massager-main-product-photo.png",
@@ -818,6 +821,7 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092780699981:1",
     category: "body-glow",
     isBestSeller: true,
+    flashSaleEndsAt: "2026-06-30T23:59:59Z",
     gallery: [
       {
         url: "/exfoliating-spa-body-brush-product-images/exfoliating-spa-body-brush-main-product-photo.png",

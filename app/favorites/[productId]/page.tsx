@@ -133,7 +133,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
+          price: product.price,
           priceCurrency: "USD",
+          priceValidUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
           url:
             buildAmazonAffiliateUrl(product.id, {
               source: "website",

@@ -1855,6 +1855,10 @@ export const translationCatalog = {
     "en": "Flash Sale Ending Soon:",
     "pl": "Wyprzedaż błyskawiczna wkrótce się zakończy:"
   },
+  "Free EU delivery": {
+    "en": "Free EU delivery",
+    "pl": "Darmowa dostawa w UE"
+  },
   "Flat lay of premium skincare products on white background": {
     "en": "Flat lay of premium skincare products on white background",
     "pl": "Płaski układ najwyższej jakości produktów do pielęgnacji skóry na białym tle"
@@ -2381,7 +2385,7 @@ export const translationCatalog = {
   },
   "items left in stock": {
     "en": "items left in stock",
-    "pl": "pozycje pozostawione w magazynie"
+    "pl": "pozycji pozostało w magazynie"
   },
   "Jak często wykonywać rytuał szczotkowania ciała?": {
     "en": "How often should you perform the body brushing ritual?",
@@ -3649,7 +3653,7 @@ export const translationCatalog = {
   },
   "Save": {
     "en": "Save",
-    "pl": "Ratować"
+    "pl": "Zaoszczędź"
   },
   "Save €14 vs. buying separately": {
     "en": "Save €14 vs. buying separately",

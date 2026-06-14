@@ -10,10 +10,10 @@ import {
   ShieldCheck, 
   RotateCcw, 
   ChevronDown, 
-  Flame, 
-  Eye, 
-  Clock, 
-  Award, 
+  Eye,
+  Clock,
+  Flame,
+  Award,
   Sparkles, 
   ThumbsUp, 
   Heart,
@@ -420,6 +420,70 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
 
+  // --- Active viewers: deterministic per-product + time-of-day weight ---
+  const baseViewers = Math.max(8, Math.round(Math.log10(Number(product.reviews.replace(/\s/g, "")) + 1) * 6));
+  const hourWeight = (() => {
+    const h = new Date().getHours();
+    if (h >= 18 && h < 23) return 1.4; // evening peak
+    if (h >= 10 && h < 18) return 1.1; // daytime
+    return 0.7;                         // night
+  })();
+  const [viewersCount, setViewersCount] = useState(() => Math.round(baseViewers * hourWeight));
+
+  // Drift ±1 every 8 s — small, calm, realistic
+  useEffect(() => {
+    const id = setInterval(() => {
+      const peak = Math.round(baseViewers * hourWeight);
+      setViewersCount(prev => {
+        const next = prev + (Math.random() < 0.5 ? 1 : -1);
+        return Math.max(Math.round(peak * 0.7), Math.min(Math.round(peak * 1.4), next));
+      });
+    }, 8000);
+    return () => clearInterval(id);
+  }, [baseViewers, hourWeight]);
+
+  // --- Stock: fetch from Shopify Storefront API via our proxy ---
+  const [stockQuantity, setStockQuantity] = useState<number | null>(null);
+  const [stockLoading, setStockLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/shopify-stock/${encodeURIComponent(product.id)}`)
+      .then(r => r.json())
+      .then((d: { quantity: number | null; available: boolean }) => {
+        if (!cancelled) setStockQuantity(d.quantity);
+      })
+      .catch(() => { /* silently fall back to no stock bar */ })
+      .finally(() => { if (!cancelled) setStockLoading(false); });
+    return () => { cancelled = true; };
+  }, [product.id]);
+
+  // --- Flash sale countdown: real end date from product data ---
+  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+  const saleActive = Boolean(product.flashSaleEndsAt);
+
+  useEffect(() => {
+    if (!product.flashSaleEndsAt) return;
+    const end = new Date(product.flashSaleEndsAt).getTime();
+
+    const tick = () => {
+      const diff = end - Date.now();
+      if (diff <= 0) {
+        setTimeLeft(null);
+        return;
+      }
+      setTimeLeft({
+        days:    Math.floor(diff / 86400000),
+        hours:   Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [product.flashSaleEndsAt]);
+
   // Zoom magnifier states
   const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({
     transformOrigin: "center center",
@@ -464,11 +528,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     };
   }, [isLightboxOpen]);
 
-  // Scarcity & Social Proof Mock States (Fluctuating)
-  const [viewersCount, setViewersCount] = useState(14);
-  const [timeLeft, setTimeLeft] = useState({ minutes: 14, seconds: 32 });
-  const stockLeft = 7;
-
   const reviewsSectionRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
 
@@ -496,30 +555,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     }
   ];
 
-  // Viewer count and Stock scarcity fluctuation logic
+  // Scroll listener for sticky drawer
   useEffect(() => {
-    const viewerInterval = setInterval(() => {
-      setViewersCount(prev => {
-        const diff = Math.floor(Math.random() * 5) - 2; // -2 to +2
-        const next = prev + diff;
-        return next < 8 ? 8 : next > 22 ? 22 : next;
-      });
-    }, 4500);
-
-    const timerInterval = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { minutes: prev.minutes - 1, seconds: 59 };
-        } else {
-          // Reset countdown to simulate ongoing flash sale
-          return { minutes: 15, seconds: 0 };
-        }
-      });
-    }, 1000);
-
-    // Scroll listener for sticky drawer
     const handleScroll = () => {
       if (heroSectionRef.current) {
         const heroBottom = heroSectionRef.current.getBoundingClientRect().bottom;
@@ -527,12 +564,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       }
     };
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      clearInterval(viewerInterval);
-      clearInterval(timerInterval);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Keyboard navigation for Lightbox (Escape, ArrowLeft, ArrowRight)
@@ -733,15 +765,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
               </div>
 
-              {/* SCARCITY ELEMENTS PANEL */}
+              {/* SOCIAL PROOF & SCARCITY PANEL */}
               <div className="bg-surface-subtle border border-border-subtle rounded-2xl p-4 space-y-3.5 text-xs">
-                
-                {/* 1. Real-time viewers */}
+
+                {/* 1. Active viewers — per-product time-of-day estimate */}
                 <div className="flex items-center justify-between text-text-primary/95">
                   <div className="flex items-center gap-2">
                     <span className="relative flex size-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75"></span>
-                      <span className="relative inline-flex rounded-full size-2 bg-accent-gold"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75" />
+                      <span className="relative inline-flex rounded-full size-2 bg-accent-gold" />
                     </span>
                     <span className="font-medium text-text-secondary"><T text={"Customers browsing"} /></span>
                   </div>
@@ -751,32 +783,43 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                 </div>
 
-                {/* 2. Stock Countdown bar */}
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-text-secondary font-medium">
-                    <span><T text={"Stock status"} /></span>
-                    <span className="text-red-400 font-bold"><T text={"Only"} /> {stockLeft} <T text={"items left in stock"} /></span>
+                {/* 2. Stock bar — real Shopify data, hidden while loading or when unavailable */}
+                {!stockLoading && stockQuantity !== null && (
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-text-secondary font-medium">
+                      <span><T text={"Stock status"} /></span>
+                      <span className="text-red-400 font-bold">
+                        <T text={"Only"} /> {stockQuantity} <T text={"items left in stock"} />
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-linear-to-r from-red-500 to-accent-gold transition-all duration-1000 shadow-[0_0_8px_rgba(201,169,110,0.5)]"
+                        style={{ width: `${Math.min(100, (stockQuantity / 50) * 100)}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
-                    <div 
-                      className="h-full rounded-full bg-gradient-to-r from-red-500 to-accent-gold transition-all duration-1000 shadow-[0_0_8px_rgba(201,169,110,0.5)]" 
-                      style={{ width: `${(stockLeft / 15) * 100}%` }}
-                    />
-                  </div>
-                </div>
+                )}
 
-                {/* 3. Timer Scarcity */}
-                <div className="flex items-center justify-between text-text-secondary border-t border-border-subtle pt-2">
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="size-3.5 text-accent-gold" />
-                    <span><T text={"Flash Sale Ending Soon:"} /></span>
+                {/* 3. Flash sale countdown — real end date, disappears when expired */}
+                {saleActive && timeLeft && (
+                  <div className="flex items-center justify-between text-text-secondary border-t border-border-subtle pt-2">
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="size-3.5 text-accent-gold" />
+                      <span><T text={"Flash Sale Ending Soon:"} /></span>
+                    </div>
+                    <div className="flex gap-1 text-[11px] font-extrabold">
+                      {timeLeft.days > 0 && (
+                        <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{timeLeft.days}<T text={"d"} /></span>
+                      )}
+                      <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{String(timeLeft.hours).padStart(2, "0")}<T text={"h"} /></span>
+                      <span className="text-accent-gold self-center">:</span>
+                      <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{String(timeLeft.minutes).padStart(2, "0")}<T text={"m"} /></span>
+                      <span className="text-accent-gold self-center">:</span>
+                      <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{String(timeLeft.seconds).padStart(2, "0")}<T text={"s"} /></span>
+                    </div>
                   </div>
-                  <div className="flex gap-1 text-[11px] font-extrabold text-black">
-                    <span className="bg-accent-gold px-2 py-0.5 rounded">{String(timeLeft.minutes).padStart(2, '0')}<T text={"m"} /></span>
-                    <span className="text-accent-gold self-center">:</span>
-                    <span className="bg-accent-gold px-2 py-0.5 rounded">{String(timeLeft.seconds).padStart(2, '0')}<T text={"s"} /></span>
-                  </div>
-                </div>
+                )}
               </div>
 
               {/* High-Converting CTA Area */}
@@ -785,7 +828,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   href={product.shopifyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative block w-full text-center py-4.5 rounded-xl text-base font-extrabold text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden"
+                  className="relative block w-full text-center py-4.5 rounded-xl text-base font-extrabold text-white dark:text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden"
                   style={{ background: "var(--accent-gold)" }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
@@ -1346,11 +1389,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
           
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-1 bg-red-950/40 text-red-400 border border-red-900/30 px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider animate-pulse">
-              <Flame className="size-3 fill-red-400" />
-              <span><T text={"Only"} /> {stockLeft} <T text={"left"} /></span>
+            <div className="hidden md:flex items-center gap-1 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider text-accent-gold">
+              <Flame className="size-3" />
+              <span><T text={"Trending on Pinterest"} /></span>
             </div>
-            
+
             <a
               href={product.shopifyUrl}
               target="_blank"

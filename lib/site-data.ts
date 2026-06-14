@@ -18,6 +18,7 @@ export type Product = {
   image: string;
   imageAlt: string;
   amazonUrl: string;
+  price: number; // indicative USD price for structured data
 };
 
 export type ProductProof = {
@@ -155,6 +156,7 @@ export const products: Product[] = [
       "/Mulberry_Silk_Sleep_Mask_img.png",
     imageAlt: "Champagne silk sleep mask on linen bedding",
     amazonUrl: "https://amzn.to/4cqWOsQ",
+    price: 17.99,
   },
   {
     id: "aroma-diffuser",
@@ -168,6 +170,7 @@ export const products: Product[] = [
       "/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
     imageAlt: "Minimal ceramic diffuser on a wooden side table",
     amazonUrl: "https://amzn.to/4ci1wsS",
+    price: 29.99,
   },
   {
     id: "gua-sha-set",
@@ -181,6 +184,7 @@ export const products: Product[] = [
       "/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
     imageAlt: "Rose quartz gua sha and roller next to facial oil",
     amazonUrl: "https://amzn.to/3OOjASh",
+    price: 14.99,
   },
   {
     id: "body-oil",
@@ -194,6 +198,7 @@ export const products: Product[] = [
       "/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png",
     imageAlt: "Elegant body oil bottle with golden reflection",
     amazonUrl: "https://amzn.to/4vKVOY6",
+    price: 24.99,
   },
   {
     id: "bath-salts",
@@ -207,6 +212,7 @@ export const products: Product[] = [
       "/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png",
     imageAlt: "Bath salts in a glass jar near a towel",
     amazonUrl: "https://amzn.to/4sTbNAP",
+    price: 34.99,
   },
   {
     id: "retinol-serum",
@@ -220,6 +226,7 @@ export const products: Product[] = [
       "/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png",
     imageAlt: "Dropper serum bottle on marble tray",
     amazonUrl: "https://amzn.to/4cE9qvj",
+    price: 26.99,
   },
   {
     id: "dry-brush",
@@ -233,6 +240,7 @@ export const products: Product[] = [
       "/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png",
     imageAlt: "Natural dry brush and folded towels",
     amazonUrl: "https://amzn.to/4e39ozA",
+    price: 12.99,
   },
   {
     id: "led-mask",
@@ -246,6 +254,7 @@ export const products: Product[] = [
       "/INIA_Red_Light_Therapy_Mask_for_Face.png",
     imageAlt: "Modern LED skincare mask on vanity",
     amazonUrl: "https://amzn.to/4u6HGqw",
+    price: 59.99,
   },
   {
     id: "weighted-blanket",
@@ -259,6 +268,7 @@ export const products: Product[] = [
       "/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png",
     imageAlt: "Soft weighted blanket folded on a bed",
     amazonUrl: "https://amzn.to/4tXLN88",
+    price: 59.99,
   },
   {
     id: "scalp-massager",
@@ -272,6 +282,7 @@ export const products: Product[] = [
       "/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png",
     imageAlt: "Handheld scalp massager on bathroom shelf",
     amazonUrl: "https://amzn.to/4dXdAAW",
+    price: 10.99,
   },
   {
     id: "sheet-mask-set",
@@ -285,6 +296,7 @@ export const products: Product[] = [
       "/Biodance_Bio_Collagen_Face_Mask.png",
     imageAlt: "Hydrogel sheet masks and a jade bowl",
     amazonUrl: "https://amzn.to/4sRB3ax",
+    price: 24.99,
   },
   {
     id: "candle-set",
@@ -298,6 +310,7 @@ export const products: Product[] = [
       "/Sandalwood_Candle.png",
     imageAlt: "Three elegant candles with warm glow",
     amazonUrl: "https://amzn.to/3OVuO7x",
+    price: 34.99,
   },
   {
     id: "niacinamide-toner",
@@ -310,6 +323,7 @@ export const products: Product[] = [
     image: "/Naturium_Niacinamide_Face_Serum_12.png",
     imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
     amazonUrl: "https://amzn.to/480WDBY",
+    price: 18.99,
   },
   {
     id: "coslus-cleansing-brush",
@@ -322,6 +336,7 @@ export const products: Product[] = [
     image: "/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
     imageAlt: "COSLUS 7-in-1 facial cleansing brush set with accessories",
     amazonUrl: "https://amzn.to/41WZCaT",
+    price: 19.99,
   },
   {
     id: "mixsoon-bean-essence",
@@ -334,6 +349,7 @@ export const products: Product[] = [
     image: "/mixsoon_Bean_Essence_Exfoliating.png",
     imageAlt: "mixsoon Bean Essence exfoliating skincare product image",
     amazonUrl: "https://amzn.to/4vogHrF",
+    price: 28.99,
   },
   {
     id: "cliganic-essential-oils",
@@ -346,6 +362,7 @@ export const products: Product[] = [
     image: "/Cliganic_Organic_Aromatherapy.png",
     imageAlt: "Cliganic organic aromatherapy essential oils set product image",
     amazonUrl: "https://amzn.to/4sFqWpd",
+    price: 22.99,
   },
   {
     id: "copper-water-bottle",
@@ -358,6 +375,7 @@ export const products: Product[] = [
     image: "/Copper_Water_Bottle.png",
     imageAlt: "Pure copper water bottle with matching cup",
     amazonUrl: "https://amzn.to/4c0ZSdu",
+    price: 24.99,
   },
   {
     id: "magnesium-supplement",
@@ -370,6 +388,7 @@ export const products: Product[] = [
     image: "/Pure_Encapsulations_Magnesium_Glycinate.png",
     imageAlt: "Pure Encapsulations Magnesium Glycinate supplement bottle",
     amazonUrl: "https://amzn.to/4bY0MZC",
+    price: 34.99,
   },
   {
     id: "pavilia-plush-robe",
@@ -382,6 +401,7 @@ export const products: Product[] = [
     image: "/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
     imageAlt: "PAVILIA premium women's plush soft robe product image",
     amazonUrl: "https://amzn.to/4cnPAnV",
+    price: 49.99,
   },
   {
     id: "aveeno-oil-mist",
@@ -394,6 +414,7 @@ export const products: Product[] = [
     image: "/cover_aveeno_oil.png",
     imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
     amazonUrl: "https://amzn.to/3ObFRt3",
+    price: 12.99,
   },
 ];
 
