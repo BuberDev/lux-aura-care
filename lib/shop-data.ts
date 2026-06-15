@@ -76,6 +76,38 @@ export const shopProducts: ShopProduct[] = [
     category: "skincare",
     isBestSeller: true,
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
+    gallery: [
+      {
+        url: "/glow-ritual-face-razor-kit-product-images/glow-ritual-face-razor-kit-main-product-photo.png",
+        label: "Product",
+        badge: "Best Seller",
+        desc: "6-piece dermaplaning kit — clinic-smooth results at home",
+      },
+      {
+        url: "/glow-ritual-face-razor-kit-product-images/glow-ritual-face-razor-kit-flat-lay.png",
+        label: "What's Inside",
+        badge: "6 Blades",
+        desc: "Everything included — 6 precision blades, one per week",
+      },
+      {
+        url: "/glow-ritual-face-razor-kit-product-images/glow-ritual-face-razor-kit-lifestyle-usage.png",
+        label: "In Use",
+        badge: "2 Min Ritual",
+        desc: "Gentle 45° strokes — peach fuzz gone, skin instantly glowing",
+      },
+      {
+        url: "/glow-ritual-face-razor-kit-product-images/glow-ritual-face-razor-kit-luxury-spa-pedestal.png",
+        label: "Spa-Grade",
+        badge: "Esthetician Pick",
+        desc: "Recommended by estheticians for women 40+ — no appointment needed",
+      },
+      {
+        url: "/glow-ritual-face-razor-kit-product-images/glow-ritual-face-razor-kit-blade-close-up.png",
+        label: "Blade Detail",
+        badge: "Precision Cut",
+        desc: "Micro-guard safety blades — dermatologist-tested for sensitive skin",
+      },
+    ],
   },
   {
     id: "clear-skin-patches",
@@ -123,6 +155,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490722637:1",
     category: "skincare",
     isNew: true,
+    gallery: [
+      {
+        url: "/clear-skin-hydrocolloid-patches-product-images/clear-skin-hydrocolloid-patches-main-product-photo.png",
+        label: "Product",
+        badge: "⭐ New Favourite",
+        desc: "24 ultra-thin hydrocolloid patches — overnight blemish control",
+      },
+      {
+        url: "/clear-skin-hydrocolloid-patches-product-images/clear-skin-hydrocolloid-patches-flat-lay.png",
+        label: "What's Inside",
+        badge: "24 Patches",
+        desc: "24 patches per pack — 2–3 weeks of clear skin",
+      },
+      {
+        url: "/clear-skin-hydrocolloid-patches-product-images/clear-skin-hydrocolloid-patches-lifestyle-application.png",
+        label: "How to Use",
+        badge: "6–8 Hours",
+        desc: "Apply directly on blemish, leave overnight — peel to reveal results",
+      },
+      {
+        url: "/clear-skin-hydrocolloid-patches-product-images/clear-skin-hydrocolloid-patches-bathroom-vanity-lifestyle.png",
+        label: "Routine",
+        badge: "Invisible Under Makeup",
+        desc: "Ultra-thin design — fits seamlessly into your nightly ritual",
+      },
+      {
+        url: "/clear-skin-hydrocolloid-patches-product-images/clear-skin-hydrocolloid-patches-patch-sheet-close-up.png",
+        label: "Patch Detail",
+        badge: "Vegan Formula",
+        desc: "Hydrocolloid technology draws out impurities without irritation",
+      },
+    ],
   },
   {
     id: "gold-eye-patches",
@@ -236,6 +300,38 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490820941:1",
     category: "bundle",
     isBestSeller: true,
+    gallery: [
+      {
+        url: "/skin-ritual-starter-kit-product-images/skin-ritual-starter-kit-main-product-photo.png",
+        label: "Bundle",
+        badge: "Best Value",
+        desc: "Complete 2-step glow ritual — dermaplaning razor + hydrocolloid patches",
+      },
+      {
+        url: "/skin-ritual-starter-kit-product-images/skin-ritual-starter-kit-flat-lay.png",
+        label: "What's Inside",
+        badge: "Save €14",
+        desc: "6 precision blades + 24 hydrocolloid patches — 6-week ritual in one kit",
+      },
+      {
+        url: "/skin-ritual-starter-kit-product-images/skin-ritual-starter-kit-lifestyle-dermaplaning.png",
+        label: "Step 1",
+        badge: "Sunday Ritual",
+        desc: "Dermaplane every Sunday — serums absorb 3× deeper right after",
+      },
+      {
+        url: "/skin-ritual-starter-kit-product-images/skin-ritual-starter-kit-lifestyle-patch-application.png",
+        label: "Step 2",
+        badge: "Overnight Fix",
+        desc: "Apply a patch on any blemish — wake up to visibly clearer skin",
+      },
+      {
+        url: "/skin-ritual-starter-kit-product-images/skin-ritual-starter-kit-bundle-close-up.png",
+        label: "Detail",
+        badge: "Gift-Ready",
+        desc: "Ships in elegant packaging — perfect self-care gift for any woman",
+      },
+    ],
   },
   {
     id: "gua-sha-jade-roller-set",
