@@ -32,6 +32,7 @@ type Review = {
   verified: boolean;
   avatar: string;
   helpfulCount: number;
+  images?: string[];
 };
 
 export function FavoritesProductSales({ product, proof, content, related }: FavoritesProductSalesProps) {
@@ -111,7 +112,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             comment: "Mam 46 lat i moja skóra stała się niezwykle sucha i szara w ostatnich miesiącach. Ten produkt to gamechanger. Po wdrożeniu go do mojego wieczornego rytuału, skóra rano wygląda na wypoczętą, promienną i ma cudowną teksturę szklanej cery. Moje kosmetyki w końcu wchłaniają się bez problemu, a makijaż wygląda bezbłędnie.",
             verified: true,
             avatar: "HM",
-            helpfulCount: 38
+            helpfulCount: 38,
+            images: [
+              "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=300&q=80",
+              "https://images.unsplash.com/photo-1570194065650-d99fb4b8ceb0?auto=format&fit=crop&w=300&q=80"
+            ]
           },
           {
             id: "rev-2",
@@ -122,7 +127,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             comment: "Próbowałam tylu różnych toników i esencji, ale ta rekomendacja przerosła moje oczekiwania. Skóra jest idealnie gładka, pory są widocznie zwężone, a naturalny blask jest niesamowity. Żadnego uczucia ściągnięcia, moja bariera hydrolipidowa w końcu odżyła.",
             verified: true,
             avatar: "ZK",
-            helpfulCount: 22
+            helpfulCount: 22,
+            images: [
+              "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=300&q=80"
+            ]
           },
           {
             id: "rev-3",
@@ -133,7 +141,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             comment: "Bardzo lekka, wręcz luksusowa konsystencja. Pięknie się rozprowadza i natychmiastowo przynosi ulgę przesuszonej cerze. Odejmuję jedną gwiazdkę za to, że na początku musiałam wyczuć odpowiednią ilość produktu (wystarczy dosłownie odrobina), ale poza tym to absolutny hit pielęgnacyjny.",
             verified: true,
             avatar: "MW",
-            helpfulCount: 14
+            helpfulCount: 14,
+            images: [
+              "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=300&q=80",
+              "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=300&q=80"
+            ]
           }
         ];
       case "self-care":
@@ -664,23 +676,52 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       {/* DETAILED SCIENCE BENEFITS DEEP-DIVE */}
       <section className="py-16 px-4 bg-surface-base">
         <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2"><T text={"Zalety Fizjologiczne"} /></p>
-            <h2 className="text-3xl font-semibold font-heading" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"Naukowo potwierdzone korzyści"} />
-            </h2>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
-            {content.detailedBenefits.map((benefit, idx) => (
-              <div key={benefit.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle hover:border-border-default transition-all duration-300 group">
-                <span className="text-3xl font-bold text-accent-gold/10 group-hover:text-accent-gold/30 transition-colors">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-lg font-semibold text-text-primary mt-2 mb-3"><T text={benefit.title} /></h3>
-                <p className="text-sm leading-relaxed text-text-secondary"><T text={benefit.description} /></p>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <p className="text-xs uppercase tracking-[0.2em] text-accent-gold mb-2"><T text={content.deepDivePretitle} /></p>
+              <h2 className="text-4xl font-semibold font-heading text-text-primary" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                <T text={content.deepDiveTitle} />
+              </h2>
+            </div>
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 relative">
+              {/* Left badges */}
+              <div className="flex flex-col gap-8 w-full lg:w-1/3 order-2 lg:order-1 relative z-10">
+                {content.detailedBenefits.slice(0, 2).map((benefit, idx) => (
+                  <div key={benefit.title} className="bg-surface-glass border border-border-subtle p-5 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="size-12 rounded-full bg-accent-gold/15 flex items-center justify-center mb-3">
+                        {idx === 0 ? <Sparkles className="size-5 text-accent-gold" /> : <ShieldCheck className="size-5 text-accent-gold" />}
+                      </div>
+                      <h4 className="font-bold text-text-primary mb-1"><T text={benefit.title} /></h4>
+                      <p className="text-xs text-text-secondary leading-relaxed"><T text={benefit.description} /></p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              {/* Center Image */}
+              <div className="w-full max-w-[300px] lg:w-1/3 order-1 lg:order-2 flex justify-center relative">
+                <div className="absolute inset-0 bg-accent-gold/5 rounded-full blur-3xl scale-150"></div>
+                <div className="relative aspect-square w-full rounded-full overflow-hidden border-8 border-surface-subtle shadow-2xl bg-surface-base">
+                  <Image src={product.image} alt={product.imageAlt} fill className="object-cover" />
+                </div>
+              </div>
+
+              {/* Right badges */}
+              <div className="flex flex-col gap-8 w-full lg:w-1/3 order-3 relative z-10">
+                {content.detailedBenefits.slice(2, 4).map((benefit, idx) => (
+                  <div key={benefit.title} className="bg-surface-glass border border-border-subtle p-5 rounded-2xl shadow-xl hover:scale-105 transition-transform">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="size-12 rounded-full bg-accent-gold/15 flex items-center justify-center mb-3">
+                        {idx === 0 ? <Flame className="size-5 text-accent-gold" /> : <Award className="size-5 text-accent-gold" />}
+                      </div>
+                      <h4 className="font-bold text-text-primary mb-1"><T text={benefit.title} /></h4>
+                      <p className="text-xs text-text-secondary leading-relaxed"><T text={benefit.description} /></p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -696,9 +737,43 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <p className="text-sm text-text-secondary mt-2"><T text={"Przeprowadź swój rytuał z pełną uwagą i wyciszeniem."} /></p>
           </div>
 
-          {product.id === "mixsoon-bean-essence" ? (
-            <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-center">
-              <div className="space-y-6">
+          {(() => {
+            const productVideos: Record<string, string> = {
+              "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
+              "gold-eye-patches": "/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4",
+              "centella-collagen-sleep-masks": "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
+              "vibro-glow-face-massager": "/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4",
+              "scalp-massager": "/scalp-massager/ugc-Scalp-Massager-Shampoo-Brush.mp4",
+            };
+            const videoUrl = productVideos[product.id];
+            
+            return videoUrl ? (
+              <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-center">
+                <div className="space-y-6">
+                  {content.ritualSteps.map((step, idx) => (
+                    <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
+                      <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
+                        {idx + 1}
+                      </span>
+                      <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
+                      <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
+                    </div>
+                  ))}
+                </div>
+                <div className="relative aspect-[9/16] w-full max-w-[360px] mx-auto rounded-[2rem] overflow-hidden border-[8px] border-surface-subtle shadow-2xl bg-black">
+                  <video 
+                    src={videoUrl}
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
                 {content.ritualSteps.map((step, idx) => (
                   <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
                     <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
@@ -710,31 +785,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   </div>
                 ))}
               </div>
-              <div className="relative aspect-[9/16] w-full max-w-[360px] mx-auto rounded-[2rem] overflow-hidden border-[8px] border-surface-subtle shadow-2xl bg-black">
-                <video 
-                  src="/mixoon-Bean-Essence/short-ugc-mixoon-Bean-Essence.mp4" 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
-              {content.ritualSteps.map((step, idx) => (
-                <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
-                  <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
-                    {idx + 1}
-                  </span>
-                  <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
-                  <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
-                </div>
-              ))}
-            </div>
-          )}
+            );
+          })()}
         </Container>
       </section>
 
@@ -743,10 +795,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
         <Container>
           <div className="max-w-4xl mx-auto">
             <h2 
-              className="text-2xl md:text-3xl font-semibold text-text-primary mb-8"
+              className="text-2xl md:text-4xl font-semibold text-text-primary mb-8"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              <T text={"Opinie i Oceny z Amazon"} />
+              <T text={"Kochają nas! (Opinie i Oceny z Amazon)"} />
             </h2>
 
             <div className="grid gap-8 lg:grid-cols-[1fr_2fr] items-start mb-12">
@@ -855,6 +907,17 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       </div>
                       <h4 className="text-sm font-semibold text-text-primary">{rev.title}</h4>
                       <p className="text-xs leading-relaxed text-text-secondary">{rev.comment}</p>
+                      
+                      {rev.images && rev.images.length > 0 && (
+                        <div className="flex gap-2 pt-2">
+                          {rev.images.map((img, idx) => (
+                            <div key={idx} className="relative size-16 sm:size-20 rounded-lg overflow-hidden border border-border-subtle cursor-pointer hover:opacity-90 transition-opacity">
+                              <Image src={img} alt={`Zdjęcie do opinii ${idx + 1}`} fill className="object-cover" />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                       <div className="flex items-center gap-4 pt-1 text-[10px] text-text-secondary">
                         <button className="flex items-center gap-1 hover:text-text-primary transition-colors border border-border-subtle px-2.5 py-1 rounded bg-surface-raised">
                           <T text={"Pomocne ("} />{rev.helpfulCount})

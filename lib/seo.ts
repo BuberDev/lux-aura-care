@@ -49,7 +49,7 @@ export function generateOrganizationJsonLd() {
     url: toAbsoluteUrl("/"),
     logo: {
       "@type": "ImageObject",
-      url: toAbsoluteUrl("/lux_aura_care_logo.png"),
+      url: toAbsoluteUrl("/brand/lux_aura_care_logo.png"),
       width: 600,
       height: 600,
     },

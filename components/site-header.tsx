@@ -5,7 +5,7 @@ import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
 import { Search } from "lucide-react";
 
-import Logo from "../public/lux_aura_care_logo.png";
+import Logo from "../public/brand/lux_aura_care_logo.png";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { HeaderProductSearch } from "@/components/header-product-search";

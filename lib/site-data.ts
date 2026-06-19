@@ -153,7 +153,7 @@ export const products: Product[] = [
       "A breathable silk mask that blocks ambient light and helps your bedtime routine feel intentional from the first minute.",
     trustSignal: "Top rated",
     image:
-      "/Mulberry_Silk_Sleep_Mask_img.png",
+      "/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png",
     imageAlt: "Champagne silk sleep mask on linen bedding",
     amazonUrl: "https://amzn.to/4cqWOsQ",
     price: 17.99,
@@ -167,7 +167,7 @@ export const products: Product[] = [
       "Quiet mist diffusion paired with warm light to transform your bedroom or bath into a calm ritual space.",
     trustSignal: "Popular",
     image:
-      "/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
+      "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
     imageAlt: "Minimal ceramic diffuser on a wooden side table",
     amazonUrl: "https://amzn.to/4ci1wsS",
     price: 29.99,
@@ -181,7 +181,7 @@ export const products: Product[] = [
       "A facial massage duo designed to support lymphatic flow and make serum application more effective.",
     trustSignal: "Editor favorite",
     image:
-      "/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
+      "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
     imageAlt: "Rose quartz gua sha and roller next to facial oil",
     amazonUrl: "https://amzn.to/3OOjASh",
     price: 14.99,
@@ -195,7 +195,7 @@ export const products: Product[] = [
       "Fast-absorbing botanical oil that seals in hydration and leaves a healthy satin finish.",
     trustSignal: "Top rated",
     image:
-      "/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png",
+      "/body-oil/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png",
     imageAlt: "Elegant body oil bottle with golden reflection",
     amazonUrl: "https://amzn.to/4vKVOY6",
     price: 24.99,
@@ -209,7 +209,7 @@ export const products: Product[] = [
       "Mineral-rich bath salts that help release body tension and support calm, heavy-limb rest.",
     trustSignal: "Popular",
     image:
-      "/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png",
+      "/bath-salts/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png",
     imageAlt: "Bath salts in a glass jar near a towel",
     amazonUrl: "https://amzn.to/4sTbNAP",
     price: 34.99,
@@ -223,7 +223,7 @@ export const products: Product[] = [
       "A beginner-friendly retinol blend buffered with squalane to reduce irritation while improving radiance.",
     trustSignal: "Top rated",
     image:
-      "/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png",
+      "/retinol-serum/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png",
     imageAlt: "Dropper serum bottle on marble tray",
     amazonUrl: "https://amzn.to/4cE9qvj",
     price: 26.99,
@@ -237,7 +237,7 @@ export const products: Product[] = [
       "Dry brushing before your shower supports exfoliation and leaves skin looking more refined.",
     trustSignal: "Editor favorite",
     image:
-      "/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png",
+      "/dry-brush/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png",
     imageAlt: "Natural dry brush and folded towels",
     amazonUrl: "https://amzn.to/4e39ozA",
     price: 12.99,
@@ -251,7 +251,7 @@ export const products: Product[] = [
       "Hands-free LED sessions that layer into your routine while you journal, read, or unwind.",
     trustSignal: "Popular",
     image:
-      "/INIA_Red_Light_Therapy_Mask_for_Face.png",
+      "/led-mask/INIA_Red_Light_Therapy_Mask_for_Face.png",
     imageAlt: "Modern LED skincare mask on vanity",
     amazonUrl: "https://amzn.to/4u6HGqw",
     price: 59.99,
@@ -265,7 +265,7 @@ export const products: Product[] = [
       "Balanced pressure and breathable texture help reduce bedtime restlessness without overheating.",
     trustSignal: "Top rated",
     image:
-      "/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png",
+      "/weighted-blanket/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png",
     imageAlt: "Soft weighted blanket folded on a bed",
     amazonUrl: "https://amzn.to/4tXLN88",
     price: 59.99,
@@ -279,7 +279,7 @@ export const products: Product[] = [
       "Flexible silicone bristles provide gentle stimulation for a cleaner scalp and a more relaxing shower.",
     trustSignal: "Popular",
     image:
-      "/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png",
+      "/scalp-massager/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png",
     imageAlt: "Handheld scalp massager on bathroom shelf",
     amazonUrl: "https://amzn.to/4dXdAAW",
     price: 10.99,
@@ -293,7 +293,7 @@ export const products: Product[] = [
       "Cooling hydrogel masks that visibly plump and prep skin before makeup or evening plans.",
     trustSignal: "Editor favorite",
     image:
-      "/Biodance_Bio_Collagen_Face_Mask.png",
+      "/sheet-mask-set/Biodance_Bio_Collagen_Face_Mask.png",
     imageAlt: "Hydrogel sheet masks and a jade bowl",
     amazonUrl: "https://amzn.to/4sRB3ax",
     price: 24.99,
@@ -307,7 +307,7 @@ export const products: Product[] = [
       "Layered woody fragrance with a clean burn profile for evening rituals and bath sessions.",
     trustSignal: "Top rated",
     image:
-      "/Sandalwood_Candle.png",
+      "/candle-set/Sandalwood_Candle.png",
     imageAlt: "Three elegant candles with warm glow",
     amazonUrl: "https://amzn.to/3OVuO7x",
     price: 34.99,
@@ -320,7 +320,7 @@ export const products: Product[] = [
     description:
       "A high-performance serum with 12% Niacinamide and 2% Zinc designed to target dullness and support a brighter, more even complexion.",
     trustSignal: "Top rated",
-    image: "/Naturium_Niacinamide_Face_Serum_12.png",
+    image: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
     imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
     amazonUrl: "https://amzn.to/480WDBY",
     price: 18.99,
@@ -333,7 +333,7 @@ export const products: Product[] = [
     description:
       "A multi-head facial brush set designed to remove buildup, improve cleansing consistency, and prep skin for actives.",
     trustSignal: "Popular",
-    image: "/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
+    image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
     imageAlt: "COSLUS 7-in-1 facial cleansing brush set with accessories",
     amazonUrl: "https://amzn.to/41WZCaT",
     price: 19.99,
@@ -346,7 +346,7 @@ export const products: Product[] = [
     description:
       "A gentle essence that helps smooth rough patches and improves product layering for a polished glass-skin finish.",
     trustSignal: "Editor favorite",
-    image: "/mixsoon_Bean_Essence_Exfoliating.png",
+    image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
     imageAlt: "mixsoon Bean Essence exfoliating skincare product image",
     amazonUrl: "https://amzn.to/4vogHrF",
     price: 28.99,
@@ -359,7 +359,7 @@ export const products: Product[] = [
     description:
       "A curated essential oil set for diffuser rituals, bath ambiance, and repeatable stress-reset routines at home.",
     trustSignal: "Top rated",
-    image: "/Cliganic_Organic_Aromatherapy.png",
+    image: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
     imageAlt: "Cliganic organic aromatherapy essential oils set product image",
     amazonUrl: "https://amzn.to/4sFqWpd",
     price: 22.99,
@@ -372,7 +372,7 @@ export const products: Product[] = [
     description:
       "A large uncoated copper bottle with cup designed for habit consistency, elevated desk aesthetics, and daily hydration momentum.",
     trustSignal: "Popular",
-    image: "/Copper_Water_Bottle.png",
+    image: "/copper-water-bottle/Copper_Water_Bottle.png",
     imageAlt: "Pure copper water bottle with matching cup",
     amazonUrl: "https://amzn.to/4c0ZSdu",
     price: 24.99,
@@ -385,7 +385,7 @@ export const products: Product[] = [
     description:
       "A highly absorbable form of magnesium designed to help muscles relax and support a peaceful transition into sleep.",
     trustSignal: "Editor favorite",
-    image: "/Pure_Encapsulations_Magnesium_Glycinate.png",
+    image: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
     imageAlt: "Pure Encapsulations Magnesium Glycinate supplement bottle",
     amazonUrl: "https://amzn.to/4bY0MZC",
     price: 34.99,
@@ -398,7 +398,7 @@ export const products: Product[] = [
     description:
       "A soft plush robe that turns ordinary evenings into a repeatable at-home spa cue and supports ritual consistency.",
     trustSignal: "Popular",
-    image: "/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+    image: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
     imageAlt: "PAVILIA premium women's plush soft robe product image",
     amazonUrl: "https://amzn.to/4cnPAnV",
     price: 49.99,
@@ -411,7 +411,7 @@ export const products: Product[] = [
     description:
       "A lightweight body oil spray formulated with oat and jojoba oil to lock in moisture and leave skin looking polished.",
     trustSignal: "Popular",
-    image: "/cover_aveeno_oil.png",
+    image: "/aveeno-oil-mist/cover_aveeno_oil.png",
     imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
     amazonUrl: "https://amzn.to/3ObFRt3",
     price: 12.99,
@@ -675,7 +675,7 @@ export const articles: Article[] = [
       "A focused routine guide to achieving that luminous, reflective skin finish using Pinterest's high-performing skincare stars.",
     intro:
       "Glass skin isn't about being perfect; it's about deep hydration and gentle resurfacing. This guide breaks down the two viral products that simplify the process and deliver visible results.",
-    heroImage: "/mixsoon_Bean_Essence_Exfoliating.png",
+    heroImage: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
     heroAlt: "Mixsoon Bean Essence and TIA'M toner on a marble vanity",
     categoryId: "skincare",
     readTime: "6 min read",
@@ -709,7 +709,7 @@ export const articles: Article[] = [
       "Lower your nervous system's alert level with this simple bedtime ritual designed for deep, restorative rest.",
     intro:
       "If you struggle to switch off, your environment is likely too 'noisy.' This reset focuses on physical cues that tell your brain it's safe to settle into deep rest mode.",
-    heroImage: "/Pure_Encapsulations_Magnesium_Glycinate.png",
+    heroImage: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
     heroAlt: "Magnesium supplement bottle and a soft plush robe",
     categoryId: "self-care",
     readTime: "5 min read",
@@ -743,7 +743,7 @@ export const articles: Article[] = [
       "Stop skipping body care. This 3-minute post-shower habit creates a polished, spa-level glow with zero residue.",
     intro:
       "Glossy, healthy body skin shouldn't be a separate project. These two tools turn your daily hydration into a premium ritual that looks and feels expensive.",
-    heroImage: "/Aveeno_Daily_Moisturizing_Body_Oil_Mist.png",
+    heroImage: "/aveeno-oil-mist/Aveeno_Daily_Moisturizing_Body_Oil_Mist.png",
     heroAlt: "Aveeno Body Oil Mist bottle in a golden hour light",
     categoryId: "body-glow",
     readTime: "4 min read",
@@ -964,7 +964,7 @@ export const articles: Article[] = [
       "A practical toner-first skincare flow that pairs gentle cleansing, smoothing essence, and hydration support for a clearer glow.",
     intro:
       "Most Pinterest skincare saves fail because routines are too complex. This one keeps four repeatable steps and product pairings that are easy to maintain even on low-energy evenings.",
-    heroImage: "/Good_Molecules_Niacinamide_Brightening_Toner.png",
+    heroImage: "/niacinamide-toner/Good_Molecules_Niacinamide_Brightening_Toner.png",
     heroAlt: "Niacinamide toner product visual used in a skincare routine guide",
     categoryId: "skincare",
     readTime: "7 min read",
@@ -1004,7 +1004,7 @@ export const articles: Article[] = [
       "A conversion-focused spa-at-home setup using comfort and atmosphere cues that readers genuinely keep.",
     intro:
       "The best-performing spa content combines emotional payoff and simple execution. This guide structures that with a scent anchor, comfort layer, and one wellness cue for habit continuity.",
-    heroImage: "/Cliganic_Organic_Aromatherapy.png",
+    heroImage: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
     heroAlt: "Organic essential oils set used as the hero for spa ritual content",
     categoryId: "spa-relax",
     readTime: "8 min read",
@@ -1044,7 +1044,7 @@ export const articles: Article[] = [
       "Stop skipping body care. This exhaustive guide breaks down the multi-step protocol for achieving a resilient, healthy satin glow that catches the light beautifully.",
     intro:
       "While face-first skincare dominated the last decade, the 'body-glow' movement is about treating the skin on your body with the same active-led precision. Luminous body skin isn't just about shine; it's about texture refinement, lymphatic support, and a disciplined moisture-locking window.",
-    heroImage: "/cover_aveeno_oil.png",
+    heroImage: "/aveeno-oil-mist/cover_aveeno_oil.png",
     heroAlt: "Polished body skin catching the golden hour light next to ritual tools",
     categoryId: "body-glow",
     readTime: "9 min read",
@@ -1084,7 +1084,7 @@ export const articles: Article[] = [
       "Struggling to switch off? This deep-dive guide explores the biological triggers for deep rest, focusing on nervous system regulation and visual cues.",
     intro:
       "Modern environments are 'noisy'—not just auditorily, but visually and biologically. If your heart rate is still elevated or your brain is detecting light leaks, you won't transition into restorative REM cycles. This reset protocol uses internal mineral support and external environmental anchors to tell your nervous system that the day is officially done.",
-    heroImage: "/Pure_Encapsulations_Magnesium_Glycinate.png",
+    heroImage: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
     heroAlt: "A calm, dark bedroom setup featuring a silk mask and weighted blanket",
     categoryId: "self-care",
     readTime: "10 min read",
@@ -1124,7 +1124,7 @@ export const articles: Article[] = [
       "Learn the art of atmospheric calibration. This guide shows you how to turn your basic bathroom into a high-performance sanctuary for stress recovery.",
     intro:
       "The 'Spa Sunday' trend is popular because it offers a clear bridge between a high-output week and a fresh start. But a true sanctuary isn't about aesthetics alone—it's about sensory layering. Scent, warmth, and texture must work together to create a repeatable environment for emotional and physical recovery.",
-    heroImage: "/Cliganic_Organic_Aromatherapy.png",
+    heroImage: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
     heroAlt: "Luxury spa setup with candles, diffuser, and soft robes",
     categoryId: "spa-relax",
     readTime: "8 min read",
@@ -1164,7 +1164,7 @@ export const articles: Article[] = [
       "Success is a habit, but so is energy. This exhaustive protocol focuses on internal hydration and physical awakening to keep you steady all day.",
     intro:
       "Afternoon burnout isn't inevitable; it's often the result of poor morning calibration. Starting your day with a focused protocol ensures your baseline is set for high output without the crash. This guide uses pure hydration, internal mineral support, and tactile awakening to give you a visible head start on your goals.",
-    heroImage: "/Copper_Water_Bottle.png",
+    heroImage: "/copper-water-bottle/Copper_Water_Bottle.png",
     heroAlt: "Copper water bottle and morning essentials on an aesthetic workspace",
     categoryId: "self-care",
     readTime: "7 min read",
@@ -1204,7 +1204,7 @@ export const articles: Article[] = [
       "Move beyond basics. Learn the exact layering protocol using Pinterest's high-performance actives for that reflective, luminous skin finish.",
     intro:
       "Glass skin is a result of consistent, low-friction texture refinement and high-saturation hydration. It requires understanding how to layer actives like Retinol and Niacinamide without overwhelming the skin barrier. This guide breaks down the viral Pinterest workflow into repeatable, science-backed steps.",
-    heroImage: "/mixsoon_Bean_Essence_Exfoliating.png",
+    heroImage: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
     heroAlt: "Polished skincare products on a vanity reflection",
     categoryId: "skincare",
     readTime: "11 min read",
@@ -1244,7 +1244,7 @@ export const articles: Article[] = [
       "Burnout isn't a moment; it's a slow accumulation. These tactile and sensory reset rituals help you lower cortisol and protect your peace.",
     intro:
       "When we feel overwhelmed, our sensory system is usually 'flooded.' A stress-reset isn't about doing more—it's about clearing the baseline. By using tactile grounding and atmospheric shifts, you can lower your body's alert level in minutes, preventing daily stress from turning into chronic burnout.",
-    heroImage: "/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+    heroImage: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
     heroAlt: "A comfortable, grounded setting for an evening reset ritual",
     categoryId: "self-care",
     readTime: "6 min read",

@@ -203,7 +203,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           name: "Lux Aura Care",
           logo: {
             "@type": "ImageObject",
-            url: toAbsoluteUrl("/lux_aura_care_logo.png"),
+            url: toAbsoluteUrl("/brand/lux_aura_care_logo.png"),
           },
         },
         isPartOf: {

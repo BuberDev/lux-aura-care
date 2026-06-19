@@ -83,7 +83,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: socialTitle,
       description,
       creator: "@luxauracare",
-      images: ["/og-image.jpg"],
+      images: ["/brand/og-image.jpg"],
     },
     robots: {
       index: true,

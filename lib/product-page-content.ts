@@ -17,6 +17,8 @@ type CategoryNarrative = {
   problemHeadline: string;
   problemParagraph: string;
   solutionParagraph: string;
+  deepDivePretitle: string;
+  deepDiveTitle: string;
   detailedBenefits: DetailedBenefit[];
   ritualTitle: string;
   ritualSteps: RitualStep[];
@@ -42,6 +44,8 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       "When your day ends on high alert, your evening routine can feel rushed and disconnected. That usually leads to lighter sleep and low-energy mornings.",
     solutionParagraph:
       "giving your body a clear signal to slow down, so your routine feels restorative instead of one more task.",
+    deepDivePretitle: "Key Benefits",
+    deepDiveTitle: "The Power of True Rest",
     detailedBenefits: [
       {
         title: "Faster wind-down",
@@ -54,6 +58,10 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       {
         title: "Consistent routine momentum",
         description: "Turns one small action into a repeatable nightly ritual that actually sticks.",
+      },
+      {
+        title: "Sensory relief",
+        description: "Reduces visual and auditory overwhelm to help your body sleep deeper.",
       },
     ],
     ritualTitle: "Your Evening Reset",
@@ -86,6 +94,8 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       "Stress, dry indoor air, and inconsistent routines can leave skin looking flat and depleted. Even good products underperform when routines feel complicated.",
     solutionParagraph:
       "supporting hydration, comfort, and visible radiance in a format that is easy to keep up nightly.",
+    deepDivePretitle: "Active Ingredients",
+    deepDiveTitle: "The Science of Glow",
     detailedBenefits: [
       {
         title: "Visible glow",
@@ -98,6 +108,10 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       {
         title: "Daily comfort",
         description: "Designed for repeat use so your skin gets steady support, not occasional fixes.",
+      },
+      {
+        title: "Barrier protection",
+        description: "Strengthens your skin's natural defenses against daily stressors and moisture loss.",
       },
     ],
     ritualTitle: "Your Night Routine",
@@ -130,6 +144,8 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       "Body care often gets skipped when evenings are busy, which can leave skin tight, uneven, and less radiant over time.",
     solutionParagraph:
       "pairing visible softness with a quick, sensory ritual that is easy to keep consistent.",
+    deepDivePretitle: "Body Care Benefits",
+    deepDiveTitle: "The Secret to Luminous Skin",
     detailedBenefits: [
       {
         title: "Refined finish",
@@ -142,6 +158,10 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       {
         title: "Low-effort luxury",
         description: "Adds a premium feel to routine body care without adding extra complexity.",
+      },
+      {
+        title: "Fast absorption",
+        description: "Nourishes deeply without leaving a greasy or sticky residue on your clothes.",
       },
     ],
     ritualTitle: "Your Post-Shower Ritual",
@@ -174,6 +194,8 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       "When your environment feels noisy or rushed, it is harder for your body to unwind. That makes self-care feel like another chore instead of relief.",
     solutionParagraph:
       "creating an immediate atmosphere cue that tells your body it is safe to slow down and recharge.",
+    deepDivePretitle: "Atmosphere Benefits",
+    deepDiveTitle: "The Power of Ambiance",
     detailedBenefits: [
       {
         title: "Instant mood shift",
@@ -186,6 +208,10 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
       {
         title: "Deeper recovery",
         description: "Supports better evenings by lowering overstimulation before bedtime.",
+      },
+      {
+        title: "Aesthetic design",
+        description: "Blends beautifully into your space, elevating both your mood and your decor.",
       },
     ],
     ritualTitle: "Your Calm-Down Ritual",

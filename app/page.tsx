@@ -100,7 +100,7 @@ export default async function HomePage() {
         url: toAbsoluteUrl(localizePathname("/", locale)),
         logo: {
           "@type": "ImageObject",
-          url: toAbsoluteUrl("/lux_aura_care_logo.png"),
+          url: toAbsoluteUrl("/brand/lux_aura_care_logo.png"),
           width: 600,
           height: 600,
         },
