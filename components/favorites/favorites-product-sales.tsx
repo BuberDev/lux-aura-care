@@ -696,18 +696,45 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <p className="text-sm text-text-secondary mt-2"><T text={"Przeprowadź swój rytuał z pełną uwagą i wyciszeniem."} /></p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
-            {content.ritualSteps.map((step, idx) => (
-              <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
-                <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
-                <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
-                  {idx + 1}
-                </span>
-                <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
-                <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
+          {product.id === "mixsoon-bean-essence" ? (
+            <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-center">
+              <div className="space-y-6">
+                {content.ritualSteps.map((step, idx) => (
+                  <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
+                    <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
+                      {idx + 1}
+                    </span>
+                    <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
+                    <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              <div className="relative aspect-[9/16] w-full max-w-[360px] mx-auto rounded-[2rem] overflow-hidden border-[8px] border-surface-subtle shadow-2xl bg-black">
+                <video 
+                  src="/mixoon-Bean-Essence/short-ugc-mixoon-Bean-Essence.mp4" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+              {content.ritualSteps.map((step, idx) => (
+                <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
+                  <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
+                    {idx + 1}
+                  </span>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
+                  <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
+                </div>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 
