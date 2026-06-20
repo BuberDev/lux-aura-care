@@ -27,11 +27,192 @@ import { useI18n } from "@/components/i18n-provider";
 import type { ShopProduct } from "@/lib/shop-data";
 import { localizeContent } from "@/lib/i18n/messages";
 import { T } from "@/components/translated-text";
+import { Badge } from "@/components/ui/badge";
 
 type ShopProductSalesProps = {
   readonly product: ShopProduct;
   readonly related: ShopProduct[];
 };
+
+type ProductUgcGalleryProps = {
+  readonly productName: string;
+  readonly poster: string;
+  readonly videos: string[];
+};
+
+function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryProps) {
+  const { text } = useI18n();
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLUListElement>(null);
+  const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.25 }
+    );
+
+    observer.observe(gallery);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+
+      if (isInView && !prefersReducedMotion && index === activeIndex) {
+        void video.play().catch(() => {
+          // Autoplay can be disabled by the browser; native controls remain available.
+        });
+      } else {
+        video.pause();
+      }
+    });
+  }, [activeIndex, isInView]);
+
+  const handleRailScroll = () => {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    const nextIndex = itemRefs.current.reduce((closestIndex, item, index) => {
+      if (!item) return closestIndex;
+
+      const currentItem = itemRefs.current[closestIndex];
+      if (!currentItem) return index;
+
+      const railLeft = rail.getBoundingClientRect().left;
+      const currentDistance = Math.abs(currentItem.getBoundingClientRect().left - railLeft);
+      const nextDistance = Math.abs(item.getBoundingClientRect().left - railLeft);
+      return nextDistance < currentDistance ? index : closestIndex;
+    }, 0);
+
+    setActiveIndex(nextIndex);
+  };
+
+  const scrollToVideo = (index: number) => {
+    const normalizedIndex = (index + videos.length) % videos.length;
+    const rail = railRef.current;
+    const item = itemRefs.current[normalizedIndex];
+    if (!rail || !item) return;
+
+    const targetLeft =
+      item.getBoundingClientRect().left - rail.getBoundingClientRect().left + rail.scrollLeft;
+
+    rail.scrollTo({
+      left: targetLeft,
+      behavior: "auto",
+    });
+    setActiveIndex(normalizedIndex);
+  };
+
+  return (
+    <div
+      id="product-ugc-gallery"
+      ref={galleryRef}
+      className="min-w-0"
+      role="region"
+      aria-roledescription={text("carousel")}
+      aria-label={`${text("Customer video gallery")}: ${productName}`}
+    >
+      <div className="mb-4">
+        <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-accent-gold">
+          <T text={"REAL ROUTINES"} />
+        </p>
+        <h3 className="mt-1 text-xl font-semibold text-text-primary font-serif">
+          <T text={"See the ritual in action"} />
+        </h3>
+      </div>
+
+      <div className="relative mx-auto max-w-[400px]">
+        <ul
+          id="product-ugc-carousel"
+          ref={railRef}
+          onScroll={handleRailScroll}
+          className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {videos.map((videoUrl, index) => (
+            <li
+              key={videoUrl}
+              ref={(element) => {
+                itemRefs.current[index] = element;
+              }}
+              className="w-full shrink-0 snap-center"
+            >
+              <div className="relative aspect-[9/16] overflow-hidden rounded-[2rem] border-[6px] border-border-subtle bg-black shadow-2xl">
+                <video
+                  ref={(element) => {
+                    videoRefs.current[index] = element;
+                  }}
+                  src={videoUrl}
+                  poster={poster}
+                  aria-label={`${productName}: ${text("customer demonstration")} ${index + 1} ${text("of")} ${videos.length}`}
+                  controls
+                  loop
+                  muted
+                  playsInline
+                  preload={index === 0 ? "metadata" : "none"}
+                  onPlay={() => setActiveIndex(index)}
+                  className="size-full object-cover"
+                >
+                  <T text={"Your browser does not support the video tag."} />
+                </video>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {videos.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => scrollToVideo(activeIndex - 1)}
+              aria-label={text("Previous video")}
+              aria-controls="product-ugc-carousel"
+              className="absolute left-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold"
+            >
+              <ChevronLeft className="size-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToVideo(activeIndex + 1)}
+              aria-label={text("Next video")}
+              aria-controls="product-ugc-carousel"
+              className="absolute right-3 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-lg backdrop-blur-md transition hover:scale-105 hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold"
+            >
+              <ChevronRight className="size-5" aria-hidden="true" />
+            </button>
+          </>
+        )}
+      </div>
+
+      {videos.length > 1 && (
+        <div className="mt-4 flex items-center justify-center gap-2" aria-label={text("Video navigation")}>
+          {videos.map((videoUrl, index) => (
+            <button
+              key={videoUrl}
+              type="button"
+              onClick={() => scrollToVideo(index)}
+              aria-label={`${text("Show video")} ${index + 1}`}
+              aria-controls="product-ugc-carousel"
+              aria-current={activeIndex === index ? "true" : undefined}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                activeIndex === index ? "w-7 bg-accent-gold" : "w-2 bg-border-strong hover:bg-text-secondary"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Sourced Authentic Reviews customized by Product ID
 const reviewsData: Record<string, {
@@ -399,6 +580,8 @@ const detailedScienceBenefits: Record<string, {
 
 export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const { locale, text } = useI18n();
+  const ugcVideos = product.ugcVideos ?? [];
+  const hasUgcVideos = ugcVideos.length > 0;
   const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
   const reviews = localizeContent(
     locale,
@@ -593,7 +776,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : reviews.items;
 
   return (
-    <div className="min-h-screen bg-background-primary font-sans selection:bg-accent-gold/20 selection:text-text-primary">
+    <div className="min-h-screen overflow-x-clip bg-background-primary font-sans selection:bg-accent-gold/20 selection:text-text-primary">
       
       {/* 1. URGENCY TOP ANNOUNCEMENT BANNER */}
       <div className="bg-accent-gold py-2 px-4 text-center select-none text-[11px] md:text-xs font-bold text-black uppercase tracking-[0.2em] relative overflow-hidden z-30">
@@ -653,12 +836,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {/* Image Overlay Educational Info Badges */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                 
-                <span
-                  className="absolute top-4 left-4 text-xs md:text-sm font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider pointer-events-none"
-                  style={{ background: "var(--accent-gold)", color: "#000" }}
+                <Badge
+                  variant="product"
+                  className="absolute top-4 left-4 px-4 py-1.5 text-xs font-bold pointer-events-none md:text-sm"
                 >
                   {galleryImages[activeGalleryIndex].badge}
-                </span>
+                </Badge>
 
                 {/* Amazon-style "Click to expand" floating indicator */}
                 <div className="theme-on-image absolute top-4 right-4 bg-black/60 backdrop-blur-md text-text-primary/95 rounded-full p-2.5 border border-border-subtle opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -898,7 +1081,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 4. VISUAL BEFORE & AFTER SECTION */}
-      <section className="py-16 px-4 border-b border-border-subtle relative">
+      <section className="py-16 px-4 border-b border-border-subtle relative overflow-hidden">
         <div className="absolute top-[20%] right-[-10%] size-80 rounded-full bg-accent-gold/3 blur-[100px] pointer-events-none" />
 
         <Container>
@@ -1052,34 +1235,44 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </p>
           </div>
 
-          <ol className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
-            {product.howToUse.map((step, i) => (
-              <li
-                key={step}
-                className="relative flex flex-col gap-4 p-6 md:p-8 rounded-2xl border border-border-subtle bg-surface-subtle hover:border-border-default transition-all duration-300"
-              >
-                <div 
-                  className="size-10 rounded-full flex items-center justify-center text-sm font-extrabold shrink-0 text-black shadow-lg"
-                  style={{ background: "var(--accent-gold)" }}
+          <div className={hasUgcVideos ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,420px)] lg:items-start max-w-6xl mx-auto" : "max-w-4xl mx-auto"}>
+            <ol className={`grid gap-6 ${hasUgcVideos ? "sm:grid-cols-2" : "md:grid-cols-3"}`}>
+              {product.howToUse.map((step, i) => (
+                <li
+                  key={step}
+                  className="relative flex flex-col gap-4 p-6 md:p-8 rounded-2xl border border-border-subtle bg-surface-subtle hover:border-border-default transition-all duration-300"
                 >
-                  {i + 1}
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-1.5">
-                    <T text={"Phase 0"} />{i + 1}
-                  </h4>
-                  <p className="text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    <T text={step} />
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+                  <div 
+                    className="size-10 rounded-full flex items-center justify-center text-sm font-extrabold shrink-0 text-black shadow-lg"
+                    style={{ background: "var(--accent-gold)" }}
+                  >
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-1.5">
+                      <T text={"Phase 0"} />{i + 1}
+                    </h4>
+                    <p className="text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                      <T text={step} />
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            {hasUgcVideos && (
+              <ProductUgcGallery
+                productName={product.name}
+                poster={product.image}
+                videos={ugcVideos}
+              />
+            )}
+          </div>
         </Container>
       </section>
 
       {/* 8. AMAZON-STYLE CUSTOMER REVIEWS BREAKDOWN & REVIEWS */}
-      <section ref={reviewsSectionRef} className="py-16 px-4 border-b border-border-subtle relative">
+      <section ref={reviewsSectionRef} className="py-16 px-4 border-b border-border-subtle relative overflow-hidden">
         <div className="absolute top-[20%] left-[-10%] size-80 rounded-full bg-accent-gold/4 blur-[100px] pointer-events-none" />
 
         <Container>
@@ -1485,12 +1678,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 />
                 
                 {/* Badge Overlay */}
-                <span
-                  className="absolute top-4 left-4 text-xs font-bold px-4 py-1.5 rounded-full border border-black/10 shadow-lg tracking-wider"
-                  style={{ background: "var(--accent-gold)", color: "#000" }}
+                <Badge
+                  variant="product"
+                  className="absolute top-4 left-4 px-4 py-1.5 text-xs font-bold"
                 >
                   {galleryImages[lightboxIndex].badge}
-                </span>
+                </Badge>
               </div>
 
               {/* Right Navigation Arrow */}

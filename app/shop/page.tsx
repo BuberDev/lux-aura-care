@@ -5,6 +5,7 @@ import { Star, Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { Container } from "@/components/container";
 import { shopProducts } from "@/lib/shop-data";
 import { T } from "@/components/translated-text";
+import { Badge } from "@/components/ui/badge";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
@@ -103,12 +104,9 @@ export default async function ShopPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <span
-                    className="absolute top-3 left-3 text-xs font-semibold px-3 py-1 rounded-full"
-                    style={{ background: "var(--accent-gold)", color: "#000" }}
-                  >
+                  <Badge variant="product" className="absolute top-3 left-3">
                     {product.badge}
-                  </span>
+                  </Badge>
                 </div>
 
                 {/* Content */}

@@ -21,6 +21,7 @@ import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { categories, getAmazonFavorites, getFeaturedArticles, products, siteMeta } from "@/lib/site-data";
 import { shopProducts } from "@/lib/shop-data";
 import { T } from "@/components/translated-text";
+import { Badge } from "@/components/ui/badge";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
@@ -204,12 +205,9 @@ export default async function HomePage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <span
-                    className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full"
-                    style={{ background: "var(--accent-gold)", color: "#000" }}
-                  >
+                  <Badge variant="product" className="absolute top-3 left-3 font-bold">
                     {product.badge}
-                  </span>
+                  </Badge>
                 </div>
                 <div className="p-5 space-y-3">
                   <h3 className="font-heading text-lg text-text-primary">{product.name}</h3>

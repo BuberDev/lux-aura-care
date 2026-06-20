@@ -77,6 +77,7 @@ function isTechnicalContentKey(key: string) {
     key === "src" ||
     key === "image" ||
     key === "heroImage" ||
+    key === "ugcVideos" ||
     key === "productIds" ||
     key.endsWith("Id") ||
     key.endsWith("Url") ||

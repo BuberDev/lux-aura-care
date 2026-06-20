@@ -5127,6 +5127,42 @@ export const translationCatalog = {
     "en": "Only",
     "pl": "Zostało tylko"
   },
+  "REAL ROUTINES": {
+    "en": "REAL ROUTINES",
+    "pl": "PRAWDZIWE RYTUAŁY"
+  },
+  "See the ritual in action": {
+    "en": "See the ritual in action",
+    "pl": "Zobacz rytuał w praktyce"
+  },
+  "carousel": {
+    "en": "carousel",
+    "pl": "karuzela"
+  },
+  "Customer video gallery": {
+    "en": "Customer video gallery",
+    "pl": "Galeria filmów klientek"
+  },
+  "customer demonstration": {
+    "en": "customer demonstration",
+    "pl": "prezentacja klientki"
+  },
+  "Video navigation": {
+    "en": "Video navigation",
+    "pl": "Nawigacja po filmach"
+  },
+  "Show video": {
+    "en": "Show video",
+    "pl": "Pokaż film"
+  },
+  "Previous video": {
+    "en": "Previous video",
+    "pl": "Poprzedni film"
+  },
+  "Next video": {
+    "en": "Next video",
+    "pl": "Następny film"
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"
