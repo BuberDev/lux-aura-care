@@ -744,6 +744,9 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               "centella-collagen-sleep-masks": "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
               "vibro-glow-face-massager": "/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4",
               "scalp-massager": "/scalp-massager/ugc-Scalp-Massager-Shampoo-Brush.mp4",
+              "niacinamide-toner": "/niacinamide-toner/ugc-short-Naturium_Niacinamide_Face_Serum.mp4",
+              "magnesium-supplement": "/magnesium-supplement/ugc-short-Pure_Encapsulations_Magnesium_Glycinate.mp4",
+              "aveeno-oil-mist": "/aveeno-oil-mist/ugc-short-aveeno-daily-body-oil.mp4",
             };
             const videoUrl = productVideos[product.id];
             
