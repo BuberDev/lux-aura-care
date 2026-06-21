@@ -17,6 +17,11 @@ export type Product = {
   trustSignal: "Top rated" | "Popular" | "Editor favorite";
   image: string;
   imageAlt: string;
+  gallery?: {
+    image: string;
+    imageAlt: string;
+    title: string;
+  }[];
   amazonUrl: string;
   price: number; // indicative USD price for structured data
 };
@@ -374,6 +379,18 @@ export const products: Product[] = [
     trustSignal: "Popular",
     image: "/copper-water-bottle/Copper_Water_Bottle.png",
     imageAlt: "Pure copper water bottle with matching cup",
+    gallery: [
+      {
+        image: "/copper-water-bottle/Copper_Water_Bottle.png",
+        imageAlt: "Pure copper water bottle with matching cup",
+        title: "Widok Główny",
+      },
+      {
+        image: "/copper-water-bottle/Copper_Water_Bottle_2_model.jpeg",
+        imageAlt: "Woman using a pure copper water bottle set",
+        title: "W codziennym rytuale",
+      },
+    ],
     amazonUrl: "https://amzn.to/4c0ZSdu",
     price: 24.99,
   },

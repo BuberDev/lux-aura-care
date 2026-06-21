@@ -4931,6 +4931,14 @@ export const translationCatalog = {
     "en": "Main View",
     "pl": "Widok Główny"
   },
+  "W codziennym rytuale": {
+    "en": "In the daily ritual",
+    "pl": "W codziennym rytuale"
+  },
+  "Woman using a pure copper water bottle set": {
+    "en": "Woman using a pure copper water bottle set",
+    "pl": "Kobieta korzystająca z zestawu butelki na wodę z czystej miedzi"
+  },
   "Większość ceramicznych dyfuzorów ultradźwiękowych oferuje czas ciągłej pracy wynoszący 4-6 godzin lub do 8 godzin w trybie przerywanym. Posiadają one inteligentny czujnik, który automatycznie wyłączy urządzenie, gdy skończy się woda.": {
     "en": "Most ceramic ultrasonic diffusers offer a continuous operating time of 4-6 hours or up to 8 hours in intermittent operation. They have an intelligent sensor that will automatically turn off the device when the water runs out.",
     "pl": "Większość ceramicznych dyfuzorów ultradźwiękowych oferuje czas ciągłej pracy wynoszący 4-6 godzin lub do 8 godzin w trybie przerywanym. Posiadają one inteligentny czujnik, który automatycznie wyłączy urządzenie, gdy skończy się woda."

@@ -371,16 +371,22 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
   const faqs = localizeContent(locale, getFaqData(product.categoryId));
 
   // Gallery tabs images
-  const galleryImages = [
-    product.image,
-    "https://images.unsplash.com/photo-1556227834-09f1de7a7d14?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80"
-  ];
-
-  const galleryTitles = localizeContent(locale, [
-    "Widok Główny",
-    "Strefa Pielęgnacji",
-    " Sensoryczny Rytuał"
+  const galleryImages = product.gallery ?? localizeContent(locale, [
+    {
+      image: product.image,
+      imageAlt: product.imageAlt,
+      title: "Widok Główny",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1556227834-09f1de7a7d14?auto=format&fit=crop&w=800&q=80",
+      imageAlt: product.imageAlt,
+      title: "Strefa Pielęgnacji",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80",
+      imageAlt: product.imageAlt,
+      title: "Sensoryczny Rytuał",
+    },
   ]);
 
   return (
@@ -414,8 +420,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <div className="space-y-4">
               <div className="relative aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle">
                 <Image
-                  src={galleryImages[activeTab]}
-                  alt={product.imageAlt}
+                  src={galleryImages[activeTab].image}
+                  alt={galleryImages[activeTab].imageAlt}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -454,10 +460,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       activeTab === i ? "border-accent-gold scale-[1.03] ring-1 ring-accent-gold/30" : "border-border-subtle opacity-60 hover:opacity-100"
                     }`}
                   >
-                    <Image src={img} alt={`Widok ${i+1}`} fill className="object-cover" />
+                    <Image src={img.image} alt={img.imageAlt} fill className="object-cover" />
                     <div className="absolute inset-0 bg-black/40 hover:bg-transparent transition-colors" />
                     <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-bold text-text-primary bg-black/80 px-1.5 py-0.5 rounded tracking-wide truncate w-[90%] text-center">
-                      <T text={galleryTitles[i]} />
+                      <T text={img.title} />
                     </span>
                   </button>
                 ))}
@@ -747,6 +753,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               "niacinamide-toner": "/niacinamide-toner/ugc-short-Naturium_Niacinamide_Face_Serum.mp4",
               "magnesium-supplement": "/magnesium-supplement/ugc-short-Pure_Encapsulations_Magnesium_Glycinate.mp4",
               "aveeno-oil-mist": "/aveeno-oil-mist/ugc-short-aveeno-daily-body-oil.mp4",
+              "copper-water-bottle": "/copper-water-bottle/ugc-short-Copper_Water_Bottle_model.mp4",
             };
             const videoUrl = productVideos[product.id];
             

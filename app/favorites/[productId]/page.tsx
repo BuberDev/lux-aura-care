@@ -103,7 +103,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         "@id": toAbsoluteUrl(`${localizePathname(`/favorites/${product.id}`, locale)}#product`),
         name: product.name,
         description: product.description,
-        image: [toAbsoluteUrl(product.image)],
+        image: (product.gallery ?? [{ image: product.image }]).map((item) =>
+          toAbsoluteUrl(item.image)
+        ),
         brand: {
           "@type": "Brand",
           "@id": toAbsoluteUrl("/#organization"),
