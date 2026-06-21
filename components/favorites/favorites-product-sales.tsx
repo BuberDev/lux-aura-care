@@ -753,6 +753,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               "niacinamide-toner": "/niacinamide-toner/ugc-short-Naturium_Niacinamide_Face_Serum.mp4",
               "magnesium-supplement": "/magnesium-supplement/ugc-short-Pure_Encapsulations_Magnesium_Glycinate.mp4",
               "aveeno-oil-mist": "/aveeno-oil-mist/ugc-short-aveeno-daily-body-oil.mp4",
+              "pavilia-plush-robe": "/pavilia-plush-robe/ugc-short-PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.mp4",
+              "cliganic-essential-oils": "/cliganic-essential-oils/ugc-short-cliganic-organic-aromath-oils-set.mp4",
               "copper-water-bottle": "/copper-water-bottle/ugc-short-Copper_Water_Bottle_model.mp4",
             };
             const videoUrl = productVideos[product.id];
