@@ -450,6 +450,9 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53955987276109:1",
     category: "skincare",
     isNew: true,
+    ugcVideos: [
+      "/bian-stone-gua-sha/UGC-short-Black_Bian_Stone_Gua_Sha_Stick.mp4",
+    ],
     gallery: [
       {
         url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png",
@@ -468,6 +471,12 @@ export const shopProducts: ShopProduct[] = [
         label: "Morning Ritual",
         badge: "5-Min Ritual",
         desc: "Sculpting and depuffing facial massage ritual designed for women 40+",
+      },
+      {
+        url: "/bian-stone-gua-sha/model_Black_Bian_Stone_Gua_Sha_Stick_lifestyle.jpeg",
+        label: "Daily Results",
+        badge: "Visible Glow",
+        desc: "Incorporate the Black Bian Stone Gua Sha into your daily skincare routine for visible lifting and glowing skin",
       },
     ],
   },
