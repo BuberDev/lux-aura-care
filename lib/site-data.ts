@@ -160,6 +160,53 @@ export const products: Product[] = [
     image:
       "/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png",
     imageAlt: "Champagne silk sleep mask on linen bedding",
+    gallery: [
+      {
+        image: "/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Main View",
+      },
+      {
+        image: "/silk-sleep-mask/details_1_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_2_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_3_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_4_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_5_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_6_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_7_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/silk-sleep-mask/details_8_Mulberry_Silk_Sleep_Mask_img.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      }
+    ],
     amazonUrl: "https://amzn.to/4cqWOsQ",
     price: 17.99,
   },
@@ -817,7 +864,7 @@ export const products: Product[] = [
         image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png",
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Main View",
-      }
+      },
       {
         image: "/rosemary-hair-oil/details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
@@ -915,7 +962,7 @@ export const products: Product[] = [
       },
     ],
     amazonUrl: "https://amzn.to/4eDMZr8",
-    price: 25.00,
+    price: 24.99,
   },
 ];
 

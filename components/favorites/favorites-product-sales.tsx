@@ -37,6 +37,7 @@ type Review = {
 };
 
 const PRODUCT_VIDEOS: Record<string, string> = {
+  "silk-sleep-mask": "/silk-sleep-mask/ugc-short-silk-mask.mp4",
   "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
   "gold-eye-patches": "/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4",
   "centella-collagen-sleep-masks": "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
