@@ -663,6 +663,46 @@ export const products: Product[] = [
     price: 49.99,
   },
   {
+    id: "derma-roller",
+    name: "Koi Beauty Professional Derma Roller",
+    categoryId: "skincare",
+    benefit: "At-home microneedling for smoother texture and better serum absorption.",
+    description:
+      "A titanium microneedle roller with 200 individual pins, designed for beginners. Helps refine texture on face, body, and scalp and primes skin for deeper serum penetration.",
+    trustSignal: "Editor favorite",
+    image: "/derma-roller/Koi_Beauty_Derma_Roller.png",
+    imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
+    gallery: [
+      {
+        image: "/derma-roller/Koi_Beauty_Derma_Roller.png",
+        imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
+        title: "Main View",
+      },
+      {
+        image: "/derma-roller/details_1_Koi_Beauty_Derma_Roller.jpg",
+        imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
+        title: "Product Details",
+      },
+      {
+        image: "/derma-roller/details_2_Koi_Beauty_Derma_Roller.jpg",
+        imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
+        title: "Texture",
+      },
+      {
+        image: "/derma-roller/details_3_Koi_Beauty_Derma_Roller.jpg",
+        imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
+        title: "Fit & Style",
+      },
+      {
+        image: "/derma-roller/details_4_Koi_Beauty_Derma_Roller.jpg",
+        imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
+        title: "Fit & Style",
+      }
+    ],
+    amazonUrl: "https://amzn.to/4oKipRl",
+    price: 22.99,
+  },
+  {
     id: "aveeno-oil-mist",
     name: "Aveeno Daily Moisturizing Body Oil Mist",
     categoryId: "body-glow",
@@ -711,6 +751,171 @@ export const products: Product[] = [
     ],
     amazonUrl: "https://amzn.to/3ObFRt3",
     price: 12.99,
+  },
+  {
+    id: "medicube-age-r-booster-pro",
+    name: "Medicube AGE-R Booster Pro – 6-in-1 Korean Skin Care Device",
+    categoryId: "skincare",
+    benefit: "Enhances product absorption, firmness, elasticity, and overall texture.",
+    description:
+      "Discover the Medicube AGE-R Booster Pro, the advanced 6-in-1 Korean beauty device designed to help improve skin radiance, firmness, elasticity, and overall texture. Featuring Booster Mode, MC Mode, Derma Shot Mode, Air Shot Mode, and LED technology, this at-home skincare tool helps enhance product absorption while supporting smoother, plumper, and healthier-looking skin. Perfect for reducing the appearance of pores, improving skin definition, and boosting your glow. Trusted by skincare enthusiasts worldwide and rated 4.4★ with over 11,000 reviews. Elevate your self-care routine with professional-level skin care technology from the comfort of your home.",
+    trustSignal: "Top rated",
+    image: "/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png",
+    imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+    gallery: [
+      {
+        image: "/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Main View",
+      },
+      {
+        image: "/medicube-age-r-booster-pro/details_1_Medicube_AGE_R_Booster_Pro.jpg",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Product Details",
+      },
+      {
+        image: "/medicube-age-r-booster-pro/details_2_Medicube_AGE_R_Booster_Pro.jpg",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Texture",
+      },
+      {
+        image: "/medicube-age-r-booster-pro/details_3_Medicube_AGE_R_Booster_Pro.jpg",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Fit & Style",
+      },
+      {
+        image: "/medicube-age-r-booster-pro/details_4_Medicube_AGE_R_Booster_Pro.jpg",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Fit & Style",
+      },
+      {
+        image: "/medicube-age-r-booster-pro/details_5_Medicube_AGE_R_Booster_Pro.jpg",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Fit & Style",
+      },
+      {
+        image: "/medicube-age-r-booster-pro/details_6_Medicube_AGE_R_Booster_Pro.jpg",
+        imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
+        title: "Fit & Style",
+      },
+    ],
+    amazonUrl: "https://amzn.to/4gA0A5m",
+    price: 299.00,
+  },
+  {
+    id: "rosemary-hair-oil",
+    name: "Botanic Hearth Rosemary Hair Oil for Growth",
+    categoryId: "self-care",
+    benefit: "Supports thicker, fuller-looking hair and nourishes the scalp.",
+    description:
+      "Support healthier, fuller-looking hair with Botanic Hearth Rosemary Hair Oil, a nourishing scalp treatment made with rosemary oil, biotin, castor oil, and jojoba oil. Designed for men and women, this lightweight, non-greasy hair oil helps strengthen strands, reduce dryness, support scalp hydration, and improve the look of thinning or damaged hair. Rated 4.4★ with 19,690+ reviews and loved by thousands.",
+    trustSignal: "Popular",
+    image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png",
+    imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+    gallery: [
+      {
+        image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Main View",
+      }
+      {
+        image: "/rosemary-hair-oil/details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Product Details",
+      },
+      {
+        image: "/rosemary-hair-oil/details_2_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Texture",
+      },
+      {
+        image: "/rosemary-hair-oil/details_3_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+      {
+        image: "/rosemary-hair-oil/details_4_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+      {
+        image: "/rosemary-hair-oil/details_5_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+      {
+        image: "/rosemary-hair-oil/details_6_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+      {
+        image: "/rosemary-hair-oil/details_7_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+      {
+        image: "/rosemary-hair-oil/details_8_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+      {
+        image: "/rosemary-hair-oil/details_9_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
+        title: "Fit & Style",
+      },
+    ],
+    amazonUrl: "https://amzn.to/3QAuUCk",
+    price: 14.99,
+  },
+  {
+    id: "orgain-collagen-peptides",
+    name: "Orgain Collagen Peptides Powder",
+    categoryId: "self-care",
+    benefit: "Grass-fed collagen for hair, skin, nails & joints.",
+    description:
+      "Support healthy aging and everyday wellness with Orgain Collagen Peptides Powder. Made from grass-fed, pasture-raised bovine collagen, this unflavored collagen supplement delivers 20g of collagen peptides per serving to help support healthy hair, glowing skin, strong nails, and joint health. Easy to mix into coffee, smoothies, protein shakes, oatmeal, and recipes, it dissolves quickly without affecting taste. Rated 4.5★ by over 10,000 customers.",
+    trustSignal: "Popular",
+    image: "/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png",
+    imageAlt: "Orgain Collagen Peptides Powder",
+    gallery: [
+      {
+        image: "/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Main View",
+      },
+      {
+        image: "/orgain-collagen-peptides/details_1_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Product Details",
+      },
+      {
+        image: "/orgain-collagen-peptides/details_2_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Texture",
+      },
+      {
+        image: "/orgain-collagen-peptides/details_3_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Fit & Style",
+      },
+      {
+        image: "/orgain-collagen-peptides/details_4_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Fit & Style",
+      },
+      {
+        image: "/orgain-collagen-peptides/details_5_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Fit & Style",
+      },
+      {
+        image: "/orgain-collagen-peptides/details_6_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        imageAlt: "Orgain Collagen Peptides Powder",
+        title: "Fit & Style",
+      },
+    ],
+    amazonUrl: "https://amzn.to/4eDMZr8",
+    price: 25.00,
   },
 ];
 
@@ -917,6 +1122,36 @@ export const productProofById: Record<string, ProductProof> = {
       "Delivers 24-hour hydration with a satin finish",
       "Absorbs in seconds for a mess-free routine",
       "Leaves skin looking polished and healthy",
+    ],
+  },
+  "derma-roller": {
+    rating: 4.6,
+    reviews: "2,000+ reviews",
+    socialProof: "Trending on social media",
+    highlights: [
+      "Refines texture on face, body and scalp at home",
+      "Beginner-friendly with a durable titanium build",
+      "Boosts how well serums absorb afterward",
+    ],
+  },
+  "medicube-age-r-booster-pro": {
+    rating: 4.4,
+    reviews: "11,000+ reviews",
+    socialProof: "Trending on social media",
+    highlights: [
+      "Features 6 advanced modes for total skin transformation",
+      "Boosts serum absorption for a deeper, more visible glow",
+      "Improves elasticity, refines pores, and smooths uneven texture",
+    ],
+  },
+  "orgain-collagen-peptides": {
+    rating: 4.5,
+    reviews: "10,000+ reviews",
+    socialProof: "Trending on social media",
+    highlights: [
+      "Delivers 20g of grass-fed collagen peptides per serving",
+      "Unflavored and dissolves quickly in hot or cold liquids",
+      "Supports healthy hair, glowing skin, strong nails, and joints",
     ],
   },
 };
@@ -1595,6 +1830,8 @@ export const amazonFavoriteProductIds = [
   "retinol-serum",
   "aroma-diffuser",
   "candle-set",
+  "medicube-age-r-booster-pro",
+  "orgain-collagen-peptides",
 ];
 
 export type ProductBundle = {
@@ -1719,7 +1956,7 @@ export const favoriteCollections = [
     title: "Glow Core Skincare",
     description: "High-impact skincare picks designed for texture, clarity, and hydration.",
     categoryId: "skincare" as const,
-    productIds: ["retinol-serum", "gua-sha-set", "led-mask", "sheet-mask-set"],
+    productIds: ["retinol-serum", "gua-sha-set", "led-mask", "sheet-mask-set", "derma-roller", "medicube-age-r-booster-pro"],
   },
   {
     id: "spa-bath",
