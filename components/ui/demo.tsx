@@ -10,12 +10,12 @@ import {
   Pin,
   Play,
   Sparkles,
-  Flower2,
 } from "lucide-react";
-
+import Logo from "../../public/brand/lux_aura_care_logo.png";
 import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
 import { siteMeta } from "@/lib/site-data";
 import { T } from "@/components/translated-text";
+import Image from "next/image";
 
 function HoverFooter() {
   const footerLinks = [
@@ -68,9 +68,7 @@ function HoverFooter() {
         <div className="grid grid-cols-1 gap-12 pb-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
           <div className="flex flex-col space-y-4">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-accent-gold/50 bg-accent-gold/10">
-                <Flower2 className="size-5 text-accent-gold" aria-hidden="true" />
-              </span>
+              <Image src={Logo} className="w-8 rounded-full opacity-80" alt="logo" />
               <span className="font-heading text-3xl text-text-primary"><T text={"Lux Aura Care"} /></span>
             </div>
             <p className="text-sm leading-relaxed text-text-secondary">
