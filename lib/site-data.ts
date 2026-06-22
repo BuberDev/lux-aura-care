@@ -327,6 +327,33 @@ export const products: Product[] = [
     trustSignal: "Top rated",
     image: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
     imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
+    gallery: [
+      {
+        image: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
+        imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
+        title: "Main View",
+      },
+      {
+        image: "/niacinamide-toner/details_1_Naturium_Niacinamide_Face_Serum.jpg",
+        imageAlt: "Naturium Niacinamide Face Serum details and formulation",
+        title: "Product Details",
+      },
+      {
+        image: "/niacinamide-toner/details_2_Naturium_Niacinamide_Face_Serum.jpg",
+        imageAlt: "Naturium Niacinamide Face Serum ingredients and benefits",
+        title: "Key Ingredients",
+      },
+      {
+        image: "/niacinamide-toner/details_3_Naturium_Niacinamide_Face_Serum.jpg",
+        imageAlt: "Naturium Niacinamide Face Serum application guide",
+        title: "How to Use",
+      },
+      {
+        image: "/niacinamide-toner/details_4_Naturium_Niacinamide_Face_Serum.jpg",
+        imageAlt: "Naturium Niacinamide Face Serum texture and finish",
+        title: "Texture",
+      },
+    ],
     amazonUrl: "https://amzn.to/480WDBY",
     price: 18.99,
   },
@@ -435,6 +462,53 @@ export const products: Product[] = [
     trustSignal: "Top rated",
     image: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
     imageAlt: "Cliganic organic aromatherapy essential oils set product image",
+    gallery: [
+      {
+        image: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
+        imageAlt: "Cliganic organic aromatherapy essential oils set product image",
+        title: "Main View",
+      },
+      {
+        image: "/cliganic-essential-oils/details_1_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils overview",
+        title: "Product Overview",
+      },
+      {
+        image: "/cliganic-essential-oils/details_2_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils scents",
+        title: "Scent Collection",
+      },
+      {
+        image: "/cliganic-essential-oils/details_3_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils benefits",
+        title: "Aromatherapy Benefits",
+      },
+      {
+        image: "/cliganic-essential-oils/details_4_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils usage",
+        title: "How to Use",
+      },
+      {
+        image: "/cliganic-essential-oils/details_5_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils purity",
+        title: "Quality & Purity",
+      },
+      {
+        image: "/cliganic-essential-oils/details_6_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils packaging",
+        title: "Packaging",
+      },
+      {
+        image: "/cliganic-essential-oils/details_7_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils sourcing",
+        title: "Sourcing",
+      },
+      {
+        image: "/cliganic-essential-oils/details_8_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        imageAlt: "Cliganic Essential Oils additional details",
+        title: "Additional Details",
+      },
+    ],
     amazonUrl: "https://amzn.to/4sFqWpd",
     price: 22.99,
   },
@@ -452,12 +526,52 @@ export const products: Product[] = [
       {
         image: "/copper-water-bottle/Copper_Water_Bottle.png",
         imageAlt: "Pure copper water bottle with matching cup",
-        title: "Widok Główny",
+        title: "Main View",
+      },
+      {
+        image: "/copper-water-bottle/details_1_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle details",
+        title: "Product Details",
+      },
+      {
+        image: "/copper-water-bottle/details_2_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle design",
+        title: "Design",
+      },
+      {
+        image: "/copper-water-bottle/details_3_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle material",
+        title: "Material",
+      },
+      {
+        image: "/copper-water-bottle/details_4_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle features",
+        title: "Features",
+      },
+      {
+        image: "/copper-water-bottle/details_5_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle benefits",
+        title: "Benefits",
+      },
+      {
+        image: "/copper-water-bottle/details_6_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle usage",
+        title: "How to Use",
+      },
+      {
+        image: "/copper-water-bottle/details_7_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle care",
+        title: "Care Instructions",
+      },
+      {
+        image: "/copper-water-bottle/details_8_Copper_Water_Bottle.jpg",
+        imageAlt: "Copper Water Bottle lifestyle",
+        title: "Lifestyle",
       },
       {
         image: "/copper-water-bottle/Copper_Water_Bottle_2_model.jpeg",
         imageAlt: "Woman using a pure copper water bottle set",
-        title: "W codziennym rytuale",
+        title: "In Daily Routine",
       },
     ],
     amazonUrl: "https://amzn.to/4c0ZSdu",
@@ -473,6 +587,43 @@ export const products: Product[] = [
     trustSignal: "Editor favorite",
     image: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
     imageAlt: "Pure Encapsulations Magnesium Glycinate supplement bottle",
+    gallery: [
+      {
+        image: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate supplement bottle",
+        title: "Main View",
+      },
+      {
+        image: "/magnesium-supplement/details_1_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate details",
+        title: "Product Details",
+      },
+      {
+        image: "/magnesium-supplement/details_2_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate ingredients",
+        title: "Ingredients",
+      },
+      {
+        image: "/magnesium-supplement/details_3_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate benefits",
+        title: "Key Benefits",
+      },
+      {
+        image: "/magnesium-supplement/details_4_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate usage",
+        title: "How to Use",
+      },
+      {
+        image: "/magnesium-supplement/details_5_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate formulation",
+        title: "Formulation",
+      },
+      {
+        image: "/magnesium-supplement/details_6_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        imageAlt: "Pure Encapsulations Magnesium Glycinate quality",
+        title: "Quality",
+      },
+    ],
     amazonUrl: "https://amzn.to/4bY0MZC",
     price: 34.99,
   },
@@ -486,6 +637,28 @@ export const products: Product[] = [
     trustSignal: "Popular",
     image: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
     imageAlt: "PAVILIA premium women's plush soft robe product image",
+    gallery: [
+      {
+        image: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+        imageAlt: "PAVILIA premium women's plush soft robe product image",
+        title: "Main View",
+      },
+      {
+        image: "/pavilia-plush-robe/details_1_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg",
+        imageAlt: "PAVILIA plush robe details",
+        title: "Product Details",
+      },
+      {
+        image: "/pavilia-plush-robe/details_2_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg",
+        imageAlt: "PAVILIA plush robe texture",
+        title: "Texture",
+      },
+      {
+        image: "/pavilia-plush-robe/details_3_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg",
+        imageAlt: "PAVILIA plush robe fit",
+        title: "Fit & Style",
+      },
+    ],
     amazonUrl: "https://amzn.to/4cnPAnV",
     price: 49.99,
   },
@@ -499,6 +672,43 @@ export const products: Product[] = [
     trustSignal: "Popular",
     image: "/aveeno-oil-mist/cover_aveeno_oil.png",
     imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
+    gallery: [
+      {
+        image: "/aveeno-oil-mist/cover_aveeno_oil.png",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
+        title: "Main View",
+      },
+      {
+        image: "/aveeno-oil-mist/details_1_aveeno-oil-mist.jpg",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist details",
+        title: "Product Details",
+      },
+      {
+        image: "/aveeno-oil-mist/details_2_aveeno-oil-mist.jpg",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist ingredients",
+        title: "Key Ingredients",
+      },
+      {
+        image: "/aveeno-oil-mist/details_3_aveeno-oil-mist.jpg",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist benefits",
+        title: "Benefits",
+      },
+      {
+        image: "/aveeno-oil-mist/details_4_aveeno-oil-mist.jpg",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist application",
+        title: "How to Use",
+      },
+      {
+        image: "/aveeno-oil-mist/details_5_aveeno-oil-mist.jpg",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist finish",
+        title: "Finish",
+      },
+      {
+        image: "/aveeno-oil-mist/details_6_aveeno-oil-mist.jpg",
+        imageAlt: "Aveeno Daily Moisturizing Body Oil Mist quality",
+        title: "Quality",
+      },
+    ],
     amazonUrl: "https://amzn.to/3ObFRt3",
     price: 12.99,
   },
