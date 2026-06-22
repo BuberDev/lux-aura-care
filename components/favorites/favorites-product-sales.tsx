@@ -425,7 +425,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-all duration-700 ease-in-out"
+                  className="object-contain transition-all duration-700 ease-in-out"
                 />
                 
                 {/* Floating scarcity badges */}
@@ -454,13 +454,22 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               <div className="grid grid-cols-3 gap-3">
                 {galleryImages.map((img, i) => (
                   <button
-                    key={i}
+                    key={img.image}
+                    type="button"
                     onClick={() => setActiveTab(i)}
+                    aria-label={img.title}
+                    aria-pressed={activeTab === i}
                     className={`theme-on-image relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
                       activeTab === i ? "border-accent-gold scale-[1.03] ring-1 ring-accent-gold/30" : "border-border-subtle opacity-60 hover:opacity-100"
                     }`}
                   >
-                    <Image src={img.image} alt={img.imageAlt} fill className="object-cover" />
+                    <Image
+                      src={img.image}
+                      alt={img.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 30vw, 12vw"
+                      className="object-contain"
+                    />
                     <div className="absolute inset-0 bg-black/40 hover:bg-transparent transition-colors" />
                     <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-bold text-text-primary bg-black/80 px-1.5 py-0.5 rounded tracking-wide truncate w-[90%] text-center">
                       <T text={img.title} />

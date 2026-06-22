@@ -5171,6 +5171,30 @@ export const translationCatalog = {
     "en": "Next video",
     "pl": "Następny film"
   },
+  "Glass Skin Results": {
+    "en": "Glass Skin Results",
+    "pl": "Efekt glass skin"
+  },
+  "Two Ways to Use": {
+    "en": "Two Ways to Use",
+    "pl": "Dwa sposoby użycia"
+  },
+  "Fermented Ingredients": {
+    "en": "Fermented Ingredients",
+    "pl": "Fermentowane składniki"
+  },
+  "Why Fermentation": {
+    "en": "Why Fermentation",
+    "pl": "Dlaczego fermentacja"
+  },
+  "Essence Layering": {
+    "en": "Essence Layering",
+    "pl": "Warstwowanie esencji"
+  },
+  "Bean Care Routine": {
+    "en": "Bean Care Routine",
+    "pl": "Rytuał Bean Care"
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"

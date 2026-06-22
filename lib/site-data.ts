@@ -353,6 +353,38 @@ export const products: Product[] = [
     trustSignal: "Editor favorite",
     image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
     imageAlt: "mixsoon Bean Essence exfoliating skincare product image",
+    gallery: [
+      {
+        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
+        imageAlt: "mixsoon Bean Essence glass-skin treatment and key skincare benefits",
+        title: "Glass Skin Results",
+      },
+      {
+        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_1.jpg",
+        imageAlt: "mixsoon Bean Essence guide for exfoliating and hydrating use",
+        title: "Two Ways to Use",
+      },
+      {
+        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_2.jpg",
+        imageAlt: "Four fermented ingredients in mixsoon Bean Essence",
+        title: "Fermented Ingredients",
+      },
+      {
+        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_3.jpg",
+        imageAlt: "How fermentation supports ingredient absorption in mixsoon Bean Essence",
+        title: "Why Fermentation",
+      },
+      {
+        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_4.jpg",
+        imageAlt: "mixsoon essence layering routine ordered from low to high viscosity",
+        title: "Essence Layering",
+      },
+      {
+        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_5.jpg",
+        imageAlt: "Three-step mixsoon Bean Care routine with toner pad, essence and serum",
+        title: "Bean Care Routine",
+      },
+    ],
     amazonUrl: "https://amzn.to/4vogHrF",
     price: 28.99,
   },
