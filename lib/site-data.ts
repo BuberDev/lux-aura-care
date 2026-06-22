@@ -221,6 +221,48 @@ export const products: Product[] = [
     image:
       "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
     imageAlt: "Minimal ceramic diffuser on a wooden side table",
+    gallery: [
+      {
+        image: "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Main View",
+      },
+      {
+        image: "/aroma-diffuser/details_1_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/aroma-diffuser/details_2_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/aroma-diffuser/details_3_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/aroma-diffuser/details_4_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/aroma-diffuser/details_5_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/aroma-diffuser/details_6_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/aroma-diffuser/details_7_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+    ],
     amazonUrl: "https://amzn.to/4ci1wsS",
     price: 29.99,
   },

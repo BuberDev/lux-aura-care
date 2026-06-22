@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { LocalizedLink } from "@/components/localized-link";
-import { 
+import {
   Check, Star, Truck, ShieldCheck, RotateCcw, ChevronDown,
   ChevronLeft, ChevronRight, Flame, Sparkles, ArrowRight,
   ShieldAlert, Award, Play, Share2, X
@@ -37,6 +37,7 @@ type Review = {
 };
 
 const PRODUCT_VIDEOS: Record<string, string> = {
+  "aroma-diffuser": "/aroma-diffuser/ugc-short-ceramic-ultrasonic-diffuser.mp4",
   "silk-sleep-mask": "/silk-sleep-mask/ugc-short-silk-mask.mp4",
   "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
   "gold-eye-patches": "/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4",
@@ -292,10 +293,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
   };
 
   const currentReviews = localizeContent(locale, getReviewsByCategory(product.categoryId));
-  
+
   // Calculate average dynamically
   const averageRating = proof.rating;
-  const filteredReviews = selectedRating 
+  const filteredReviews = selectedRating
     ? currentReviews.filter(r => r.rating === selectedRating)
     : currentReviews;
 
@@ -482,7 +483,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section className="py-10 md:py-16 px-4 bg-surface-base">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            
+
             {/* LEFT COLUMN: Premium Interactive Gallery Switcher */}
             <div
               className="mx-auto max-w-[520px]"
@@ -551,11 +552,10 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       aria-pressed={activeTab === i}
                       aria-controls="product-gallery-image"
                       title={img.title}
-                      className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-surface-subtle transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${
-                        activeTab === i
+                      className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-surface-subtle transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${activeTab === i
                           ? "border-accent-gold shadow-[0_0_0_1px_rgba(201,169,110,0.2)]"
                           : "border-border-subtle opacity-80 hover:border-border-strong hover:opacity-100"
-                      }`}
+                        }`}
                     >
                       <Image src={img.image} alt="" fill sizes="(max-width: 639px) 40px, 56px" className="object-contain" />
                     </button>
@@ -565,9 +565,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     <button
                       type="button"
                       onClick={() => openGalleryAt(VISIBLE_GALLERY_IMAGES)}
-                      className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${
-                        activeTab >= VISIBLE_GALLERY_IMAGES ? "border-accent-gold" : "border-border-subtle"
-                      }`}
+                      className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${activeTab >= VISIBLE_GALLERY_IMAGES ? "border-accent-gold" : "border-border-subtle"
+                        }`}
                       aria-label={`${hiddenGalleryCount} ${text("Additional images")}`}
                       aria-controls="product-gallery-image"
                     >
@@ -666,12 +665,12 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     <span className="text-red-400 font-bold"><T text={"Zostało tylko"} /> {100 - stockPercentage}<T text={"% zapasów"} /></span>
                   </div>
                   <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-gradient-to-r from-red-600 via-orange-500 to-accent-gold transition-all duration-1000"
                       style={{ width: `${100 - stockPercentage}%` }}
                     />
                   </div>
-                  
+
                   {/* Countdown Ticking */}
                   <p className="text-[11px] text-text-secondary text-right font-mono">
                     <T text={"Gwarancja ceny wygasa za:"} /> <span className="text-accent-gold font-bold">{formatTime(timeLeft)}</span>
@@ -794,7 +793,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 <T text={"Tanie Zamienniki Drogeryjne"} />
               </div>
             </div>
-            
+
             {[0, 1, 2, 3].map(idx => (
               <div key={idx} className="grid grid-cols-2 border-b border-border-subtle last:border-none">
                 <div className="p-4 text-xs md:text-sm text-text-primary/90 border-r border-border-subtle flex items-start gap-2">
@@ -876,37 +875,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
           </div>
 
           {videoUrl ? (
-              <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-center">
-                <div className="space-y-6">
-                  {content.ritualSteps.map((step, idx) => (
-                    <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
-                      <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
-                        {idx + 1}
-                      </span>
-                      <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
-                      <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
-                    </div>
-                  ))}
-                </div>
-                <div className="relative aspect-[9/16] w-full max-w-[360px] mx-auto rounded-[2rem] overflow-hidden border-[8px] border-surface-subtle shadow-2xl bg-black">
-                  <video 
-                    src={videoUrl}
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    controls
-                    controlsList="nodownload"
-                    poster={product.image}
-                    preload="metadata"
-                    aria-label={`${product.name}: ${text("customer demonstration")}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+            <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-center">
+              <div className="space-y-6">
                 {content.ritualSteps.map((step, idx) => (
                   <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
                     <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
@@ -918,7 +888,36 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   </div>
                 ))}
               </div>
-            )}
+              <div className="relative aspect-[9/16] w-full max-w-[360px] mx-auto rounded-[2rem] overflow-hidden border-[8px] border-surface-subtle shadow-2xl bg-black">
+                <video
+                  src={videoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  controlsList="nodownload"
+                  poster={product.image}
+                  preload="metadata"
+                  aria-label={`${product.name}: ${text("customer demonstration")}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+              {content.ritualSteps.map((step, idx) => (
+                <div key={step.title} className="p-6 rounded-2xl border border-border-subtle bg-surface-subtle relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 size-20 bg-gradient-to-bl from-accent-gold/5 to-transparent rounded-tr-2xl" />
+                  <span className="size-8 rounded-full bg-accent-gold text-black font-bold flex items-center justify-center text-sm mb-4">
+                    {idx + 1}
+                  </span>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2"><T text={step.title} /></h3>
+                  <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
+                </div>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 
@@ -926,7 +925,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section id="reviews" className="border-t border-border-subtle py-16 px-4 bg-surface-base">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <h2 
+            <h2
               className="text-2xl md:text-4xl font-semibold text-text-primary mb-8"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
@@ -974,13 +973,12 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     <button
                       key={stars}
                       onClick={() => setSelectedRating(selectedRating === stars ? null : stars)}
-                      className={`w-full flex items-center gap-3 text-xs transition-colors hover:text-text-primary ${
-                        selectedRating === stars ? "text-text-primary font-bold" : "text-text-secondary"
-                      }`}
+                      className={`w-full flex items-center gap-3 text-xs transition-colors hover:text-text-primary ${selectedRating === stars ? "text-text-primary font-bold" : "text-text-secondary"
+                        }`}
                     >
                       <span className="w-4 font-mono">{stars}★</span>
                       <div className="h-2 flex-1 bg-surface-hover rounded-full overflow-hidden">
-                        <div 
+                        <div
                           className="h-full bg-accent-gold rounded-full"
                           style={{ width: `${pct}%` }}
                         />
@@ -991,7 +989,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                 </div>
 
                 {selectedRating && (
-                  <button 
+                  <button
                     onClick={() => setSelectedRating(null)}
                     className="w-full text-center text-xs text-accent-gold hover:underline font-semibold pt-1"
                   >
@@ -1039,7 +1037,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       </div>
                       <h4 className="text-sm font-semibold text-text-primary">{rev.title}</h4>
                       <p className="text-xs leading-relaxed text-text-secondary">{rev.comment}</p>
-                      
+
                       {rev.images && rev.images.length > 0 && (
                         <div className="flex gap-2 pt-2">
                           {rev.images.map((img, idx) => (
@@ -1070,7 +1068,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       <section className="border-t border-border-subtle py-16 px-4 bg-background-primary">
         <Container>
           <div className="max-w-2xl mx-auto">
-            <h2 
+            <h2
               className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
@@ -1078,25 +1076,23 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             </h2>
             <div className="space-y-4">
               {faqs.map(({ q, a }, idx) => (
-                <div 
+                <div
                   key={q}
                   className="rounded-xl border border-border-subtle overflow-hidden bg-surface-subtle"
                 >
-                  <button 
+                  <button
                     onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
                     className="w-full flex items-center justify-between p-5 text-left text-text-primary font-medium text-sm transition-colors hover:bg-surface-subtle"
                   >
                     <span><T text={q} /></span>
-                    <ChevronDown 
-                      className={`size-4 text-accent-gold transition-transform duration-300 shrink-0 ml-3 ${
-                        expandedFaq === idx ? "rotate-180" : ""
-                      }`} 
+                    <ChevronDown
+                      className={`size-4 text-accent-gold transition-transform duration-300 shrink-0 ml-3 ${expandedFaq === idx ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
-                  <div 
-                    className={`transition-all duration-300 overflow-hidden ${
-                      expandedFaq === idx ? "max-h-48 border-t border-border-subtle" : "max-h-0"
-                    }`}
+                  <div
+                    className={`transition-all duration-300 overflow-hidden ${expandedFaq === idx ? "max-h-48 border-t border-border-subtle" : "max-h-0"
+                      }`}
                   >
                     <p className="p-5 text-xs leading-relaxed text-text-secondary"><T text={a} /></p>
                   </div>
@@ -1116,7 +1112,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
               <Award className="size-4" />
               <span><T text={"Gwarancja Satysfakcji Amazon 30 dni"} /></span>
             </div>
-            
+
             <h2
               className="text-3xl font-semibold text-text-primary leading-tight"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
@@ -1126,7 +1122,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <p className="text-sm leading-relaxed text-text-secondary">
               <T text={"Wybierz sprawdzony, najwyższej jakości produkt, zamów bezpośrednio na Amazon z szybką dostawą Prime i zacznij swoją przemianę już dziś."} />
             </p>
-            
+
             <div className="pt-2">
               <a
                 href={getAffiliateRoute(product.id, "product-final-cta-premium")}
@@ -1277,10 +1273,9 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       )}
 
       {/* FLOATING STICKY CHECKOUT DRAWER */}
-      <div 
-        className={`fixed bottom-0 left-0 right-0 bg-surface-glass backdrop-blur-md border-t border-border-subtle py-3.5 px-4 z-50 transition-all duration-500 transform ${
-          showSticky ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
-        }`}
+      <div
+        className={`fixed bottom-0 left-0 right-0 bg-surface-glass backdrop-blur-md border-t border-border-subtle py-3.5 px-4 z-50 transition-all duration-500 transform ${showSticky ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+          }`}
       >
         <Container>
           <div className="flex items-center justify-between gap-4">
