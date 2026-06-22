@@ -295,7 +295,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
     >
 
 
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center perspective-1000">
+      <div className="relative z-10 flex h-full w-full -translate-y-36 flex-col items-center justify-center perspective-1000 md:translate-y-0">
 
         {/* Intro Text */}
         <div className="absolute z-30 flex flex-col items-center justify-center text-center pointer-events-none top-1/2 -translate-y-1/2 px-4">
