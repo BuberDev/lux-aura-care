@@ -37,6 +37,7 @@ type Review = {
 };
 
 const PRODUCT_VIDEOS: Record<string, string> = {
+  "gua-sha-set": "/gua-sha-set/UGC-short-BAIMEI_IcyMe_Jade_Roller_GuaSha.mp4",
   "aroma-diffuser": "/aroma-diffuser/ugc-short-ceramic-ultrasonic-diffuser.mp4",
   "silk-sleep-mask": "/silk-sleep-mask/ugc-short-silk-mask.mp4",
   "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
@@ -553,8 +554,8 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                       aria-controls="product-gallery-image"
                       title={img.title}
                       className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-surface-subtle transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${activeTab === i
-                          ? "border-accent-gold shadow-[0_0_0_1px_rgba(201,169,110,0.2)]"
-                          : "border-border-subtle opacity-80 hover:border-border-strong hover:opacity-100"
+                        ? "border-accent-gold shadow-[0_0_0_1px_rgba(201,169,110,0.2)]"
+                        : "border-border-subtle opacity-80 hover:border-border-strong hover:opacity-100"
                         }`}
                     >
                       <Image src={img.image} alt="" fill sizes="(max-width: 639px) 40px, 56px" className="object-contain" />

@@ -277,6 +277,53 @@ export const products: Product[] = [
     image:
       "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
     imageAlt: "Rose quartz gua sha and roller next to facial oil",
+    gallery: [
+      {
+        image: "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Main View",
+      },
+      {
+        image: "/gua-sha-set/details_1_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_2_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_3_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_4_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_5_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_6_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_7_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+      {
+        image: "/gua-sha-set/details_8_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        imageAlt: "Champagne silk sleep mask on linen bedding",
+        title: "Product Details",
+      },
+    ],
     amazonUrl: "https://amzn.to/3OOjASh",
     price: 14.99,
   },
