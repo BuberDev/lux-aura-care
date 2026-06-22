@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { LocalizedLink } from "@/components/localized-link";
 import { 
-  Check, Star, Truck, ShieldCheck, RotateCcw, ChevronDown, 
-  Users, Flame, Sparkles, ArrowRight, ShieldAlert, Award
+  Check, Star, Truck, ShieldCheck, RotateCcw, ChevronDown,
+  ChevronLeft, ChevronRight, Flame, Sparkles, ArrowRight,
+  ShieldAlert, Award, Play, Share2, X
 } from "lucide-react";
 import { Container } from "@/components/container";
 import { getAffiliateRoute } from "@/lib/affiliate";
@@ -35,28 +36,36 @@ type Review = {
   images?: string[];
 };
 
+const PRODUCT_VIDEOS: Record<string, string> = {
+  "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
+  "gold-eye-patches": "/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4",
+  "centella-collagen-sleep-masks": "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
+  "vibro-glow-face-massager": "/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4",
+  "scalp-massager": "/scalp-massager/ugc-Scalp-Massager-Shampoo-Brush.mp4",
+  "niacinamide-toner": "/niacinamide-toner/ugc-short-Naturium_Niacinamide_Face_Serum.mp4",
+  "magnesium-supplement": "/magnesium-supplement/ugc-short-Pure_Encapsulations_Magnesium_Glycinate.mp4",
+  "aveeno-oil-mist": "/aveeno-oil-mist/ugc-short-aveeno-daily-body-oil.mp4",
+  "pavilia-plush-robe": "/pavilia-plush-robe/ugc-short-PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.mp4",
+  "cliganic-essential-oils": "/cliganic-essential-oils/ugc-short-cliganic-organic-aromath-oils-set.mp4",
+  "copper-water-bottle": "/copper-water-bottle/ugc-short-Copper_Water_Bottle_model.mp4",
+  "coslus-cleansing-brush": "/coslus-cleansing-brush/ugc-short-cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg.mp4",
+};
+
+const VISIBLE_GALLERY_IMAGES = 5;
+
 export function FavoritesProductSales({ product, proof, content, related }: FavoritesProductSalesProps) {
-  const { locale } = useI18n();
-  // Scarcity simulation states
-  const [viewers, setViewers] = useState(12);
+  const { locale, text } = useI18n();
+  const videoUrl = PRODUCT_VIDEOS[product.id];
   const [stockPercentage, setStockPercentage] = useState(82);
   const [timeLeft, setTimeLeft] = useState(14 * 60 + 35); // 14 mins 35 secs
   const [activeTab, setActiveTab] = useState(0);
+  const [galleryModalIndex, setGalleryModalIndex] = useState<number | null>(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [showSticky, setShowSticky] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-
-  // Live viewers fluctuation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setViewers(prev => {
-        const change = Math.floor(Math.random() * 5) - 2;
-        const next = prev + change;
-        return next < 8 ? 8 : next > 24 ? 24 : next;
-      });
-    }, 4500);
-    return () => clearInterval(interval);
-  }, []);
+  const isGalleryModalOpen = galleryModalIndex !== null;
 
   // Stock depletion simulation
   useEffect(() => {
@@ -65,6 +74,27 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
     }, 12000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const isModalOpen = isGalleryModalOpen || isVideoModalOpen;
+    if (!isModalOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setGalleryModalIndex(null);
+        setIsVideoModalOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isGalleryModalOpen, isVideoModalOpen]);
 
   // Countdown timer ticking
   useEffect(() => {
@@ -388,6 +418,42 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
       title: "Sensoryczny Rytuał",
     },
   ]);
+  const visibleGalleryImages = galleryImages.slice(0, VISIBLE_GALLERY_IMAGES);
+  const hiddenGalleryCount = Math.max(galleryImages.length - VISIBLE_GALLERY_IMAGES, 0);
+
+  const openGalleryAt = (index: number) => {
+    setActiveTab(index);
+    setGalleryModalIndex(index);
+  };
+
+  const shiftGalleryModal = (direction: -1 | 1) => {
+    setGalleryModalIndex((current) => {
+      if (current === null) return 0;
+      return (current + direction + galleryImages.length) % galleryImages.length;
+    });
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: product.name,
+      text: product.benefit,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareData.url);
+      setShareCopied(true);
+      window.setTimeout(() => setShareCopied(false), 2000);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setShareCopied(false);
+    }
+  };
 
   return (
     <div className="min-h-screen text-text-primary font-sans bg-background-primary">
@@ -417,65 +483,121 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
             
             {/* LEFT COLUMN: Premium Interactive Gallery Switcher */}
-            <div className="space-y-4">
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle">
-                <Image
-                  src={galleryImages[activeTab].image}
-                  alt={galleryImages[activeTab].imageAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain transition-all duration-700 ease-in-out"
-                />
-                
-                {/* Floating scarcity badges */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-accent-gold text-black tracking-wider uppercase shadow-lg">
-                    {proof.socialProof}
-                  </span>
-                  {proof.urgencySignal && (
-                    <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-red-600 text-overlay-primary tracking-widest uppercase animate-pulse shadow-lg self-start">
-                      🔥 {proof.urgencySignal.label}
-                    </span>
+            <div
+              className="mx-auto max-w-[520px]"
+              style={{ width: "min(520px, calc(100vw - 3.5rem))" }}
+            >
+              <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-2 sm:grid-cols-[3.75rem_minmax(0,1fr)] sm:gap-3">
+                <div className="col-start-2">
+                  <div
+                    id="product-gallery-image"
+                    className="relative aspect-square overflow-hidden rounded-xl border border-border-subtle bg-surface-subtle"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => openGalleryAt(activeTab)}
+                      className="absolute inset-0 z-0 cursor-zoom-in"
+                      aria-label={text("Click to see full view")}
+                    >
+                      <Image
+                        src={galleryImages[activeTab].image}
+                        alt={galleryImages[activeTab].imageAlt}
+                        fill
+                        priority
+                        sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 440px, 40vw"
+                        className="object-contain transition-all duration-500 ease-out"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleShare}
+                      className="absolute right-3 top-3 z-20 flex size-10 items-center justify-center rounded-full border border-border-subtle bg-surface-glass text-text-primary shadow-lg backdrop-blur-md transition hover:border-border-strong hover:text-accent-gold"
+                      aria-label={text("Share product")}
+                      title={text("Share product")}
+                    >
+                      <Share2 className="size-5" aria-hidden="true" />
+                    </button>
+
+                    {shareCopied && (
+                      <span className="absolute right-3 top-14 z-20 rounded-lg bg-black/85 px-3 py-1.5 text-xs text-white shadow-lg" role="status">
+                        {text("Link copied")}
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => openGalleryAt(activeTab)}
+                    className="mt-2 w-full text-center text-xs font-medium text-accent-gold transition hover:text-text-primary"
+                  >
+                    {text("Click to see full view")}
+                  </button>
+                </div>
+
+                {/* Amazon-style thumbnail rail */}
+                <div
+                  className="col-start-1 row-start-1 flex flex-col gap-1.5 sm:gap-2"
+                  aria-label={`${product.name}: ${text("Product gallery")}`}
+                >
+                  {visibleGalleryImages.map((img, i) => (
+                    <button
+                      key={img.image}
+                      type="button"
+                      onClick={() => setActiveTab(i)}
+                      onMouseEnter={() => setActiveTab(i)}
+                      aria-label={img.title}
+                      aria-pressed={activeTab === i}
+                      aria-controls="product-gallery-image"
+                      title={img.title}
+                      className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-surface-subtle transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${
+                        activeTab === i
+                          ? "border-accent-gold shadow-[0_0_0_1px_rgba(201,169,110,0.2)]"
+                          : "border-border-subtle opacity-80 hover:border-border-strong hover:opacity-100"
+                      }`}
+                    >
+                      <Image src={img.image} alt="" fill sizes="(max-width: 639px) 40px, 56px" className="object-contain" />
+                    </button>
+                  ))}
+
+                  {hiddenGalleryCount > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => openGalleryAt(VISIBLE_GALLERY_IMAGES)}
+                      className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${
+                        activeTab >= VISIBLE_GALLERY_IMAGES ? "border-accent-gold" : "border-border-subtle"
+                      }`}
+                      aria-label={`${hiddenGalleryCount} ${text("Additional images")}`}
+                      aria-controls="product-gallery-image"
+                    >
+                      <Image
+                        src={galleryImages[VISIBLE_GALLERY_IMAGES].image}
+                        alt=""
+                        fill
+                        sizes="(max-width: 639px) 40px, 56px"
+                        className="object-cover opacity-35"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center text-base font-bold text-white">
+                        +{hiddenGalleryCount}
+                      </span>
+                    </button>
+                  )}
+
+                  {videoUrl && (
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoModalOpen(true)}
+                      className="theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 border-border-subtle bg-black transition hover:border-accent-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg"
+                      aria-label={text("Play product video")}
+                    >
+                      <Image src={product.image} alt="" fill sizes="(max-width: 639px) 40px, 56px" className="object-cover opacity-30" />
+                      <Play className="absolute left-1/2 top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 fill-white text-white sm:size-6" aria-hidden="true" />
+                      <span className="absolute inset-x-0 bottom-0 bg-black/80 py-0.5 text-center text-[7px] font-bold uppercase tracking-wide text-white">
+                        {text("1 video")}
+                      </span>
+                    </button>
                   )}
                 </div>
-
-                {/* Simulated Viewer Count Panel */}
-                <div className="theme-on-image absolute bottom-4 left-4 bg-black/85 backdrop-blur border border-border-subtle px-3.5 py-1.5 rounded-xl flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-green-500 animate-ping" />
-                  <span className="text-xs font-medium text-text-primary flex items-center gap-1.5">
-                    <Users className="size-3.5 text-accent-gold" />
-                    {viewers} <T text={"klientów ogląda ten produkt"} />
-                  </span>
-                </div>
-              </div>
-
-              {/* Gallery Thumbnails Selector */}
-              <div className="grid grid-cols-3 gap-3">
-                {galleryImages.map((img, i) => (
-                  <button
-                    key={img.image}
-                    type="button"
-                    onClick={() => setActiveTab(i)}
-                    aria-label={img.title}
-                    aria-pressed={activeTab === i}
-                    className={`theme-on-image relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
-                      activeTab === i ? "border-accent-gold scale-[1.03] ring-1 ring-accent-gold/30" : "border-border-subtle opacity-60 hover:opacity-100"
-                    }`}
-                  >
-                    <Image
-                      src={img.image}
-                      alt={img.imageAlt}
-                      fill
-                      sizes="(max-width: 1024px) 30vw, 12vw"
-                      className="object-contain"
-                    />
-                    <div className="absolute inset-0 bg-black/40 hover:bg-transparent transition-colors" />
-                    <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] font-bold text-text-primary bg-black/80 px-1.5 py-0.5 rounded tracking-wide truncate w-[90%] text-center">
-                      <T text={img.title} />
-                    </span>
-                  </button>
-                ))}
               </div>
             </div>
 
@@ -752,23 +874,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             <p className="text-sm text-text-secondary mt-2"><T text={"Przeprowadź swój rytuał z pełną uwagą i wyciszeniem."} /></p>
           </div>
 
-          {(() => {
-            const productVideos: Record<string, string> = {
-              "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
-              "gold-eye-patches": "/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4",
-              "centella-collagen-sleep-masks": "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
-              "vibro-glow-face-massager": "/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4",
-              "scalp-massager": "/scalp-massager/ugc-Scalp-Massager-Shampoo-Brush.mp4",
-              "niacinamide-toner": "/niacinamide-toner/ugc-short-Naturium_Niacinamide_Face_Serum.mp4",
-              "magnesium-supplement": "/magnesium-supplement/ugc-short-Pure_Encapsulations_Magnesium_Glycinate.mp4",
-              "aveeno-oil-mist": "/aveeno-oil-mist/ugc-short-aveeno-daily-body-oil.mp4",
-              "pavilia-plush-robe": "/pavilia-plush-robe/ugc-short-PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.mp4",
-              "cliganic-essential-oils": "/cliganic-essential-oils/ugc-short-cliganic-organic-aromath-oils-set.mp4",
-              "copper-water-bottle": "/copper-water-bottle/ugc-short-Copper_Water_Bottle_model.mp4",
-            };
-            const videoUrl = productVideos[product.id];
-            
-            return videoUrl ? (
+          {videoUrl ? (
               <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto items-center">
                 <div className="space-y-6">
                   {content.ritualSteps.map((step, idx) => (
@@ -789,6 +895,11 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                     loop 
                     muted 
                     playsInline
+                    controls
+                    controlsList="nodownload"
+                    poster={product.image}
+                    preload="metadata"
+                    aria-label={`${product.name}: ${text("customer demonstration")}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -806,8 +917,7 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
                   </div>
                 ))}
               </div>
-            );
-          })()}
+            )}
         </Container>
       </section>
 
@@ -1064,6 +1174,105 @@ export function FavoritesProductSales({ product, proof, content, related }: Favo
             </div>
           </Container>
         </section>
+      )}
+
+      {galleryModalIndex !== null && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${product.name}: ${text("Product gallery")}`}
+        >
+          <button
+            type="button"
+            onClick={() => setGalleryModalIndex(null)}
+            className="absolute inset-0 cursor-default"
+            aria-label={text("Close gallery")}
+          />
+
+          <div className="relative z-10 w-full max-w-5xl">
+            <button
+              type="button"
+              onClick={() => setGalleryModalIndex(null)}
+              className="absolute right-0 top-0 z-20 flex size-11 -translate-y-12 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white transition hover:bg-black"
+              aria-label={text("Close gallery")}
+            >
+              <X className="size-5" aria-hidden="true" />
+            </button>
+
+            <div className="relative h-[min(78svh,800px)] overflow-hidden rounded-xl bg-white">
+              <Image
+                src={galleryImages[galleryModalIndex].image}
+                alt={galleryImages[galleryModalIndex].imageAlt}
+                fill
+                sizes="95vw"
+                className="object-contain"
+              />
+
+              {galleryImages.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => shiftGalleryModal(-1)}
+                    className="absolute left-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
+                    aria-label={text("Previous image")}
+                  >
+                    <ChevronLeft className="size-6" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => shiftGalleryModal(1)}
+                    className="absolute right-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
+                    aria-label={text("Next image")}
+                  >
+                    <ChevronRight className="size-6" aria-hidden="true" />
+                  </button>
+                </>
+              )}
+            </div>
+
+            <p className="mt-3 text-center text-sm text-white/80">
+              {galleryImages[galleryModalIndex].title} · {galleryModalIndex + 1}/{galleryImages.length}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {isVideoModalOpen && videoUrl && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${product.name}: ${text("Product video")}`}
+        >
+          <button
+            type="button"
+            onClick={() => setIsVideoModalOpen(false)}
+            className="absolute inset-0 cursor-default"
+            aria-label={text("Close video")}
+          />
+
+          <div className="relative z-10 w-full max-w-[420px]">
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(false)}
+              className="absolute right-0 top-0 z-20 flex size-11 -translate-y-12 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white transition hover:bg-black"
+              aria-label={text("Close video")}
+            >
+              <X className="size-5" aria-hidden="true" />
+            </button>
+
+            <video
+              src={videoUrl}
+              autoPlay
+              controls
+              playsInline
+              poster={product.image}
+              className="aspect-[9/16] max-h-[82svh] w-full rounded-2xl bg-black object-contain shadow-2xl"
+              aria-label={`${product.name}: ${text("customer demonstration")}`}
+            />
+          </div>
+        </div>
       )}
 
       {/* FLOATING STICKY CHECKOUT DRAWER */}

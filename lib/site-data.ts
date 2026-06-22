@@ -340,6 +340,43 @@ export const products: Product[] = [
     trustSignal: "Popular",
     image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
     imageAlt: "COSLUS 7-in-1 facial cleansing brush set with accessories",
+    gallery: [
+      {
+        image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
+        imageAlt: "COSLUS waterproof 7-in-1 facial cleansing brush set with interchangeable heads",
+        title: "7-in-1 Cleansing Set",
+      },
+      {
+        image: "/coslus-cleansing-brush/model_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg",
+        imageAlt: "Woman holding the COSLUS facial cleansing brush during her bathroom skincare routine",
+        title: "At-Home Cleansing",
+      },
+      {
+        image: "/coslus-cleansing-brush/details_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        imageAlt: "COSLUS facial cleansing brush benefits for oil, blackheads, pores and makeup removal",
+        title: "Deep-Cleansing Benefits",
+      },
+      {
+        image: "/coslus-cleansing-brush/details_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        imageAlt: "COSLUS interchangeable cleansing, exfoliating and massage brush heads",
+        title: "Seven Brush Heads",
+      },
+      {
+        image: "/coslus-cleansing-brush/details_3_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        imageAlt: "Close-up of the soft COSLUS silicone brush head for sensitive skin",
+        title: "Sensitive-Skin Head",
+      },
+      {
+        image: "/coslus-cleansing-brush/details_4_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        imageAlt: "COSLUS waterproof spin brush feature comparison",
+        title: "Why COSLUS",
+      },
+      {
+        image: "/coslus-cleansing-brush/model_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg",
+        imageAlt: "Woman rinsing her face beside the COSLUS cleansing brush and product box",
+        title: "Rinse and Refresh",
+      },
+    ],
     amazonUrl: "https://amzn.to/41WZCaT",
     price: 19.99,
   },

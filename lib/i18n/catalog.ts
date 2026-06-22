@@ -5195,6 +5195,86 @@ export const translationCatalog = {
     "en": "Bean Care Routine",
     "pl": "Rytuał Bean Care"
   },
+  "7-in-1 Cleansing Set": {
+    "en": "7-in-1 Cleansing Set",
+    "pl": "Zestaw oczyszczający 7 w 1"
+  },
+  "At-Home Cleansing": {
+    "en": "At-Home Cleansing",
+    "pl": "Oczyszczanie w domu"
+  },
+  "Deep-Cleansing Benefits": {
+    "en": "Deep-Cleansing Benefits",
+    "pl": "Efekty głębokiego oczyszczania"
+  },
+  "Seven Brush Heads": {
+    "en": "Seven Brush Heads",
+    "pl": "Siedem końcówek"
+  },
+  "Sensitive-Skin Head": {
+    "en": "Sensitive-Skin Head",
+    "pl": "Końcówka do skóry wrażliwej"
+  },
+  "Why COSLUS": {
+    "en": "Why COSLUS",
+    "pl": "Dlaczego COSLUS"
+  },
+  "Rinse and Refresh": {
+    "en": "Rinse and Refresh",
+    "pl": "Spłucz i odśwież"
+  },
+  "Fresh-Skin Routine": {
+    "en": "Fresh-Skin Routine",
+    "pl": "Rytuał świeżej skóry"
+  },
+  "Product gallery": {
+    "en": "Product gallery",
+    "pl": "Galeria produktu"
+  },
+  "Click to see full view": {
+    "en": "Click to see full view",
+    "pl": "Kliknij, aby zobaczyć pełny widok"
+  },
+  "Share product": {
+    "en": "Share product",
+    "pl": "Udostępnij produkt"
+  },
+  "Link copied": {
+    "en": "Link copied",
+    "pl": "Link skopiowany"
+  },
+  "Additional images": {
+    "en": "additional images",
+    "pl": "dodatkowe zdjęcia"
+  },
+  "Play product video": {
+    "en": "Play product video",
+    "pl": "Odtwórz film produktu"
+  },
+  "1 video": {
+    "en": "1 video",
+    "pl": "1 film"
+  },
+  "Close gallery": {
+    "en": "Close gallery",
+    "pl": "Zamknij galerię"
+  },
+  "Previous image": {
+    "en": "Previous image",
+    "pl": "Poprzednie zdjęcie"
+  },
+  "Next image": {
+    "en": "Next image",
+    "pl": "Następne zdjęcie"
+  },
+  "Product video": {
+    "en": "Product video",
+    "pl": "Film produktu"
+  },
+  "Close video": {
+    "en": "Close video",
+    "pl": "Zamknij film"
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"
