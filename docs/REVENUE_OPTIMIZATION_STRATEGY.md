@@ -1,11 +1,9 @@
 # 💰 Revenue Optimization Strategy - Lux Aura Care
 
-## Current State
-- **Monthly Readers**: 50K
-- **Affiliate Clickouts**: 12K (24% CTR)
-- **Estimated Conversion**: 2-3% → 240-360 sales
-- **Avg Commission**: $15-20
-- **Monthly Revenue**: $3,600-7,200
+## Measurement baseline
+
+Do not treat projections in this document as current results. Populate the baseline from
+verified GA4 and Amazon Associates reports before estimating uplift or revenue.
 
 ---
 
@@ -90,15 +88,14 @@
 **Implementation:**
 ```typescript
 // In ProductCard, use:
-const strategy = selectCTAStrategy(product); // auto-selects best CTA
-const label = generateCTALabel(product, strategy, compact);
+const label = generateCTALabel(product, compact);
 ```
 
-**CTA Variations by Performance:**
-- High Rating (4.8+): "⭐ 4.8/5 - Add to Cart"
-- Trending: "Trending on Pinterest - Buy Now"
-- Limited Time: "See Today's Limited Deal"
-- Default: "Check on Amazon - [Benefit]"
+**CTA policy:**
+- Lead with the product's editorial benefit.
+- Show ratings, popularity, stock, discounts, or deadlines only when they come from a
+  current, attributable data source.
+- Keep the Amazon destination and affiliate relationship clear before the click.
 
 ---
 
@@ -132,34 +129,11 @@ trackAffiliateClick({
 
 ---
 
-#### Task 2.3: Add Urgency Elements
-**Status**: SYSTEM CREATED (urgencySignal in ProductProof)
-**Impact**: +8-15% conversion
-**Time**: 1 hour
+#### Task 2.3: Keep commercial claims evidence-based
 
-**What to Add:**
-```typescript
-// In /lib/site-data.ts productProofById:
-
-"mixsoon-bean-essence": {
-  // ... existing data
-  urgencySignal: {
-    label: "Best Seller",
-    intensity: "high", // high | medium | low
-  },
-},
-```
-
-**Display Logic:**
-- High intensity: Show as badge + highlight
-- Medium: Show as secondary badge
-- Low: Show in metadata only
-
-**Psychological Triggers:**
-- "Best Seller" → Consensus
-- "Limited Time" → Scarcity
-- "Trending on Pinterest" → Social Proof
-- "Just Added" → Novelty
+Do not synthesize urgency, review counts, stock levels, discounts, or popularity labels.
+Only render those claims when an approved integration provides a current value and its
+source can be explained to the visitor.
 
 ---
 

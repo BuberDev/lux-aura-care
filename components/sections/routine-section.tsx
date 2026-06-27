@@ -7,28 +7,30 @@ import { Heading } from "@/components/heading";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { getAffiliateRoute } from "@/lib/affiliate";
-import { getGlowRoutineSteps, getProductProof } from "@/lib/site-data";
+import { getGlowRoutineSteps } from "@/lib/site-data";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent } from "@/lib/i18n/messages";
 import { T } from "@/components/translated-text";
+import { localizeProduct } from "@/lib/product-localization";
 
 export async function RoutineSection() {
   const locale = await getRequestLocale();
-  const steps = localizeContent(locale, getGlowRoutineSteps());
+  const steps = getGlowRoutineSteps().map((step) => ({
+    ...localizeContent(locale, step),
+    product: localizeProduct(locale, step.product),
+  }));
 
   return (
     <Section id="routine" className="atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
       <Container>
         <Heading
           eyebrow="Night Routine"
-          title="The 12-minute glow routine our readers repeat the most"
+          title="A practical 12-minute glow routine"
           description="Built for low-attention evenings: short steps, clear outcomes, and one product action at a time."
         />
 
         <ol className="mt-12 grid gap-6 lg:grid-cols-2">
           {steps.map((step) => {
-            const proof = localizeContent(locale, getProductProof(step.product.id));
-
             return (
               <li key={step.step} className="rounded-3xl border border-border-subtle bg-surface-subtle p-5 md:p-6">
                 <div className="grid gap-5 sm:grid-cols-[120px_minmax(0,1fr)] sm:items-center">
@@ -53,7 +55,9 @@ export async function RoutineSection() {
 
                     <h3 className="font-heading text-2xl leading-tight"><T text={step.title} /></h3>
                     <p className="text-sm leading-relaxed text-text-secondary"><T text={step.description} /></p>
-                    <p className="text-xs uppercase tracking-[0.14em] text-accent-gold"><T text={proof.socialProof} /></p>
+                    <p className="text-xs uppercase tracking-[0.14em] text-accent-gold">
+                      {locale === "pl" ? "Krok wybrany redakcyjnie" : "Editorially selected step"}
+                    </p>
 
                     <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border-subtle pt-3">
                       <p className="text-sm text-text-secondary"><T text={step.product.name} /></p>

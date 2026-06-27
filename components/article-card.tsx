@@ -32,7 +32,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <div className="space-y-5 p-6">
           <div className="flex flex-wrap items-center gap-2">
             {category ? <Badge><T text={category.name} /></Badge> : null}
-            <Badge variant="subtle"><T text={"Trending on Pinterest"} /></Badge>
+            <Badge variant="subtle"><T text={"Editorial guide"} /></Badge>
           </div>
 
           <h3 className="font-heading text-2xl leading-tight text-text-primary"><T text={article.title} /></h3>

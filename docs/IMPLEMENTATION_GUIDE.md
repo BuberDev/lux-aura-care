@@ -85,10 +85,8 @@ gtag('event', 'affiliate_click', {
 ## 📊 REVENUE MATH
 
 **Current State:**
-- ~50K monthly readers
-- ~12K Amazon clickouts (24% CTR)
-- ~2-3% conversion rate = ~240-360 sales/month
-- ~$15 avg commission = **$3,600-5,400/month**
+- Fill this section from verified GA4 and Amazon Associates reports.
+- Do not publish traffic, conversion, or commission figures inferred from placeholder data.
 
 **After Optimization:**
 - **+35% from missing links filled** = +5,400-7,200/month

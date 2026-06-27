@@ -13,6 +13,7 @@ import { T } from "@/components/translated-text";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { localizeProducts } from "@/lib/product-localization";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
@@ -44,7 +45,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function FavoritesPage() {
   const locale = await getRequestLocale();
-  const collections = localizeContent(locale, getFavoritesCollections());
+  const collections = getFavoritesCollections().map((collection) => ({
+    ...localizeContent(locale, collection),
+    products: localizeProducts(locale, collection.products),
+  }));
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
     { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
@@ -62,7 +66,7 @@ export default async function FavoritesPage() {
       col.products.map((p) => ({
         "@type": "Product",
         name: p.name,
-        url: toAbsoluteUrl(localizePathname(`/favorites/${p.id}`, locale)),
+        url: toAbsoluteUrl(localizePathname(`/favorites/${p.slug}`, locale)),
         image: toAbsoluteUrl(p.image),
       }))
     ),
@@ -126,7 +130,7 @@ export default async function FavoritesPage() {
                     product={product}
                     compact
                     ctaLabel="View on Amazon"
-                    detailsHref={`/favorites/${product.id}`}
+                    detailsHref={`/favorites/${product.slug}`}
                   />
                 ))}
               </div>

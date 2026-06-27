@@ -88,7 +88,7 @@
   - Send bundle promotion
 
 ### Week 4+: Scaling
-- **Goal**: 500+ subscribers, sustained revenue
+- **Goal**: Grow a measured, consent-based subscriber list
 - **Action**:
   - Automated nurture sequences
   - A/B test email subjects
@@ -109,7 +109,7 @@
     <p className="text-text-secondary mb-4">Get this guide + similar ones every Friday morning</p>
     <CTAButton 
       href="#newsletter"
-      label="Join 500+ Subscribers"
+      label="Join the Newsletter"
       variant="secondary"
     />
   </div>
@@ -126,7 +126,7 @@ luxaura.care/favorites
 
 ### Create Pinterest Pin
 
-"Join 500+ subscribers getting exclusive bundle deals + ritual guides"
+"Get editorial ritual guides and product updates"
 → Link to homepage with utm_source=pinterest_newsletter
 
 ---

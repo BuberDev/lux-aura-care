@@ -23,6 +23,8 @@ export const TextHoverEffect = ({
   useEffect(() => {
     if (svgRef.current) {
       const svgRect = svgRef.current.getBoundingClientRect();
+      if (svgRect.width === 0 || svgRect.height === 0) return;
+
       const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
       const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
 

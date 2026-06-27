@@ -8,22 +8,115 @@ export type Category = {
   heroLine: string;
 };
 
-export type Product = {
+export type ProductCurrency = "USD" | "PLN";
+
+export type VerifiedMarketplacePrice<C extends ProductCurrency = ProductCurrency> = {
+  status: "verified";
+  amount: number;
+  currency: C;
+  /** ISO date when the marketplace price was last checked. */
+  checkedAt: string;
+};
+
+export type IndicativeMarketplacePrice<C extends ProductCurrency = ProductCurrency> = {
+  status: "indicative";
+  amount: number;
+  currency: C;
+};
+
+export type UnknownMarketplacePrice<C extends ProductCurrency = ProductCurrency> = {
+  status: "unknown";
+  amount: null;
+  currency: C;
+};
+
+export type MarketplacePrice<C extends ProductCurrency = ProductCurrency> =
+  | VerifiedMarketplacePrice<C>
+  | IndicativeMarketplacePrice<C>
+  | UnknownMarketplacePrice<C>;
+
+export type ProductGalleryImage = {
+  image: string;
+  imageAlt: string;
+  title: string;
+};
+
+type ProductMarketOverrides = {
+  name?: string;
+  benefit?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  trustSignal?: "Editorial pick" | "Routine essential" | "Editor favorite";
+  gallery?: ProductGalleryImage[];
+  video?: string | null;
+  slug?: string;
+};
+
+type PolishMarketplacePrice =
+  | VerifiedMarketplacePrice<"PLN">
+  | IndicativeMarketplacePrice<"PLN">
+  | UnknownMarketplacePrice<"PLN">;
+
+export type UsProductMarketVariant = ProductMarketOverrides & {
+  affiliateUrl: string;
+  isAlternative?: false;
+  marketProductId?: string;
+  price: MarketplacePrice<"USD">;
+};
+
+export type PolishProductMarketVariant =
+  | (ProductMarketOverrides & {
+    affiliateUrl: string;
+    isAlternative?: false;
+    marketProductId?: string;
+    price: PolishMarketplacePrice;
+  })
+  | {
+    affiliateUrl: string;
+    isAlternative: true;
+    marketProductId: string;
+    name: string;
+    benefit: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+    trustSignal?: "Editorial pick" | "Routine essential" | "Editor favorite";
+    gallery?: ProductGalleryImage[];
+    video?: string | null;
+    slug?: string;
+    price: PolishMarketplacePrice;
+  };
+
+export type ProductBase = {
   id: string;
   name: string;
   categoryId: CategoryId;
   benefit: string;
   description: string;
-  trustSignal: "Top rated" | "Popular" | "Editor favorite";
+  trustSignal: "Editorial pick" | "Routine essential" | "Editor favorite";
   image: string;
   imageAlt: string;
-  gallery?: {
-    image: string;
-    imageAlt: string;
-    title: string;
-  }[];
-  amazonUrl: string;
-  price: number; // indicative USD price for structured data
+  gallery?: ProductGalleryImage[];
+  video?: string | null;
+  slug?: string;
+};
+
+export type ProductDefinition = ProductBase & {
+  marketVariants: {
+    us: UsProductMarketVariant;
+    pl?: PolishProductMarketVariant;
+  };
+};
+
+export type Product = ProductBase & {
+  marketVariants: ProductDefinition["marketVariants"];
+  activeMarket: "us" | "pl";
+  isMarketAlternative: boolean;
+  affiliateUrl: string;
+  marketProductId?: string;
+  price: MarketplacePrice;
+  slug: string;
 };
 
 export type ProductProof = {
@@ -42,7 +135,7 @@ export type ProductProof = {
   };
 };
 
-export type TopPickBadge = "Best Seller" | "Trending" | "Most Loved";
+export type TopPickBadge = "Editorial Pick" | "Routine Essential" | "Worth Considering";
 
 export type RoutineStep = {
   step: number;
@@ -148,7 +241,7 @@ export const categories: Category[] = [
   },
 ];
 
-export const products: Product[] = [
+export const products: ProductDefinition[] = [
   {
     id: "silk-sleep-mask",
     name: "Mulberry Silk Sleep Mask",
@@ -156,7 +249,7 @@ export const products: Product[] = [
     benefit: "Deeper sleep with less friction on delicate skin.",
     description:
       "A breathable silk mask that blocks ambient light and helps your bedtime routine feel intentional from the first minute.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image:
       "/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png",
     imageAlt: "Champagne silk sleep mask on linen bedding",
@@ -207,8 +300,16 @@ export const products: Product[] = [
         title: "Product Details",
       }
     ],
-    amazonUrl: "https://amzn.to/4cqWOsQ",
-    price: 17.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4cqWOsQ",
+        price: { status: "indicative", amount: 17.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4g2nwKr",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "aroma-diffuser",
@@ -217,54 +318,62 @@ export const products: Product[] = [
     benefit: "Instant atmosphere shift with a soft ambient glow.",
     description:
       "Quiet mist diffusion paired with warm light to transform your bedroom or bath into a calm ritual space.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image:
       "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
     imageAlt: "Minimal ceramic diffuser on a wooden side table",
     gallery: [
       {
         image: "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic ultrasonic essential oil diffuser",
         title: "Main View",
       },
       {
         image: "/aroma-diffuser/details_1_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
         image: "/aroma-diffuser/details_2_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
         image: "/aroma-diffuser/details_3_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
         image: "/aroma-diffuser/details_4_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
         image: "/aroma-diffuser/details_5_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
         image: "/aroma-diffuser/details_6_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
         image: "/aroma-diffuser/details_7_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
     ],
-    amazonUrl: "https://amzn.to/4ci1wsS",
-    price: 29.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4ci1wsS",
+        price: { status: "indicative", amount: 29.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4uQYaTy",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "gua-sha-set",
@@ -280,52 +389,60 @@ export const products: Product[] = [
     gallery: [
       {
         image: "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha facial massage set",
         title: "Main View",
       },
       {
         image: "/gua-sha-set/details_1_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_2_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_3_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_4_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_5_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_6_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_7_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
         image: "/gua-sha-set/details_8_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
-        imageAlt: "Champagne silk sleep mask on linen bedding",
+        imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
     ],
-    amazonUrl: "https://amzn.to/3OOjASh",
-    price: 14.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/3OOjASh",
+        price: { status: "indicative", amount: 14.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/44oMrRf",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "body-oil",
@@ -334,12 +451,20 @@ export const products: Product[] = [
     benefit: "Soft, luminous skin that does not feel greasy.",
     description:
       "Fast-absorbing botanical oil that seals in hydration and leaves a healthy satin finish.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image:
       "/body-oil/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png",
     imageAlt: "Elegant body oil bottle with golden reflection",
-    amazonUrl: "https://amzn.to/4vKVOY6",
-    price: 24.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4vKVOY6",
+        price: { status: "indicative", amount: 24.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/3QEgiC6",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "bath-salts",
@@ -348,12 +473,20 @@ export const products: Product[] = [
     benefit: "Relaxes tense muscles and improves sleep quality.",
     description:
       "Mineral-rich bath salts that help release body tension and support calm, heavy-limb rest.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image:
       "/bath-salts/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png",
     imageAlt: "Bath salts in a glass jar near a towel",
-    amazonUrl: "https://amzn.to/4sTbNAP",
-    price: 34.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4sTbNAP",
+        price: { status: "indicative", amount: 34.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4w3Ocz4",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "retinol-serum",
@@ -362,12 +495,20 @@ export const products: Product[] = [
     benefit: "Smoother skin texture with consistent nighttime use.",
     description:
       "A beginner-friendly retinol blend buffered with squalane to reduce irritation while improving radiance.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image:
       "/retinol-serum/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png",
     imageAlt: "Dropper serum bottle on marble tray",
-    amazonUrl: "https://amzn.to/4cE9qvj",
-    price: 26.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4cE9qvj",
+        price: { status: "indicative", amount: 26.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/43NinyH",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "dry-brush",
@@ -380,8 +521,16 @@ export const products: Product[] = [
     image:
       "/dry-brush/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png",
     imageAlt: "Natural dry brush and folded towels",
-    amazonUrl: "https://amzn.to/4e39ozA",
-    price: 12.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4e39ozA",
+        price: { status: "indicative", amount: 12.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4eYp8Ut",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "led-mask",
@@ -390,12 +539,20 @@ export const products: Product[] = [
     benefit: "Low-effort treatment that supports clearer, brighter skin.",
     description:
       "Hands-free LED sessions that layer into your routine while you journal, read, or unwind.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image:
       "/led-mask/INIA_Red_Light_Therapy_Mask_for_Face.png",
     imageAlt: "Modern LED skincare mask on vanity",
-    amazonUrl: "https://amzn.to/4u6HGqw",
-    price: 59.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4u6HGqw",
+        price: { status: "indicative", amount: 59.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4uRSZTu",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "weighted-blanket",
@@ -404,12 +561,20 @@ export const products: Product[] = [
     benefit: "Nervous-system support for calmer nights.",
     description:
       "Balanced pressure and breathable texture help reduce bedtime restlessness without overheating.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image:
       "/weighted-blanket/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png",
     imageAlt: "Soft weighted blanket folded on a bed",
-    amazonUrl: "https://amzn.to/4tXLN88",
-    price: 59.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4tXLN88",
+        price: { status: "indicative", amount: 59.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4w8WZ32",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "scalp-massager",
@@ -418,12 +583,20 @@ export const products: Product[] = [
     benefit: "Turns hair wash into a stress-release ritual.",
     description:
       "Flexible silicone bristles provide gentle stimulation for a cleaner scalp and a more relaxing shower.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image:
       "/scalp-massager/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png",
     imageAlt: "Handheld scalp massager on bathroom shelf",
-    amazonUrl: "https://amzn.to/4dXdAAW",
-    price: 10.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4dXdAAW",
+        price: { status: "indicative", amount: 10.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4ae3h8V",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "sheet-mask-set",
@@ -436,8 +609,16 @@ export const products: Product[] = [
     image:
       "/sheet-mask-set/Biodance_Bio_Collagen_Face_Mask.png",
     imageAlt: "Hydrogel sheet masks and a jade bowl",
-    amazonUrl: "https://amzn.to/4sRB3ax",
-    price: 24.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4sRB3ax",
+        price: { status: "indicative", amount: 24.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4xKXhOU",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "candle-set",
@@ -446,12 +627,20 @@ export const products: Product[] = [
     benefit: "Creates a calm mood in under five minutes.",
     description:
       "Layered woody fragrance with a clean burn profile for evening rituals and bath sessions.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image:
       "/candle-set/Sandalwood_Candle.png",
     imageAlt: "Three elegant candles with warm glow",
-    amazonUrl: "https://amzn.to/3OVuO7x",
-    price: 34.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/3OVuO7x",
+        price: { status: "indicative", amount: 34.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/3SnW4Nw",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "niacinamide-toner",
@@ -460,7 +649,7 @@ export const products: Product[] = [
     benefit: "Visible brightening and tone-balancing hydration for a clearer-looking glow.",
     description:
       "A high-performance serum with 12% Niacinamide and 2% Zinc designed to target dullness and support a brighter, more even complexion.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
     imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
     gallery: [
@@ -490,8 +679,16 @@ export const products: Product[] = [
         title: "Texture",
       },
     ],
-    amazonUrl: "https://amzn.to/480WDBY",
-    price: 18.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/480WDBY",
+        price: { status: "indicative", amount: 18.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4eqObzv",
+        price: { status: "unknown", amount: null, currency: "PLN" },
+      },
+    },
   },
   {
     id: "coslus-cleansing-brush",
@@ -500,7 +697,7 @@ export const products: Product[] = [
     benefit: "Deeper cleanse and easier makeup removal without over-scrubbing.",
     description:
       "A multi-head facial brush set designed to remove buildup, improve cleansing consistency, and prep skin for actives.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
     imageAlt: "COSLUS 7-in-1 facial cleansing brush set with accessories",
     gallery: [
@@ -540,8 +737,12 @@ export const products: Product[] = [
         title: "Rinse and Refresh",
       },
     ],
-    amazonUrl: "https://amzn.to/41WZCaT",
-    price: 19.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/41WZCaT",
+        price: { status: "indicative", amount: 19.99, currency: "USD" },
+      },
+    },
   },
   {
     id: "mixsoon-bean-essence",
@@ -585,8 +786,72 @@ export const products: Product[] = [
         title: "Bean Care Routine",
       },
     ],
-    amazonUrl: "https://amzn.to/4vogHrF",
-    price: 28.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4vogHrF",
+        price: { status: "indicative", amount: 28.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4oKRZPD",
+        price: { status: "indicative", amount: 50.99, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B07Z97H5HS",
+        name: "COSRX Advanced Snail 96 Mucin Power Essence",
+        slug: "cosrx-advanced-snail-96",
+        benefit: "Głębokie nawilżenie i regeneracja bariery ochronnej skóry.",
+        description: "Lekka, łagodząca esencja z 96% filtratem ze śluzu ślimaka. Podobnie jak esencja z fasoli (Mixsoon), zapewnia efekt 'glass skin', intensywnie nawilża i wygładza fakturę skóry, będąc najpopularniejszym odpowiednikiem na polskim rynku.",
+        video: null,
+        image: "/cosrx-snail-mucin/main_product_photo.png",
+        imageAlt: "COSRX Snail Mucin Essence",
+        gallery: [
+          {
+            image: "/cosrx-snail-mucin/1_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/2_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/3_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/4_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/5_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/6_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/7_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          }, {
+            image: "/cosrx-snail-mucin/8_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+          {
+            image: "/cosrx-snail-mucin/9_product_photo.jpg",
+            imageAlt: "COSRX Snail Mucin Essence",
+            title: "Main View",
+          },
+
+        ]
+      },
+    },
   },
   {
     id: "cliganic-essential-oils",
@@ -595,7 +860,7 @@ export const products: Product[] = [
     benefit: "Instant mood shift and calmer evenings through scent layering.",
     description:
       "A curated essential oil set for diffuser rituals, bath ambiance, and repeatable stress-reset routines at home.",
-    trustSignal: "Top rated",
+    trustSignal: "Editorial pick",
     image: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
     imageAlt: "Cliganic organic aromatherapy essential oils set product image",
     gallery: [
@@ -645,8 +910,12 @@ export const products: Product[] = [
         title: "Additional Details",
       },
     ],
-    amazonUrl: "https://amzn.to/4sFqWpd",
-    price: 22.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4sFqWpd",
+        price: { status: "indicative", amount: 22.99, currency: "USD" },
+      },
+    },
   },
   {
     id: "copper-water-bottle",
@@ -655,7 +924,7 @@ export const products: Product[] = [
     benefit: "Hydration ritual that feels premium and easier to repeat daily.",
     description:
       "A large uncoated copper bottle with cup designed for habit consistency, elevated desk aesthetics, and daily hydration momentum.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image: "/copper-water-bottle/Copper_Water_Bottle.png",
     imageAlt: "Pure copper water bottle with matching cup",
     gallery: [
@@ -710,8 +979,12 @@ export const products: Product[] = [
         title: "In Daily Routine",
       },
     ],
-    amazonUrl: "https://amzn.to/4c0ZSdu",
-    price: 24.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4c0ZSdu",
+        price: { status: "indicative", amount: 24.99, currency: "USD" },
+      },
+    },
   },
   {
     id: "magnesium-supplement",
@@ -760,8 +1033,57 @@ export const products: Product[] = [
         title: "Quality",
       },
     ],
-    amazonUrl: "https://amzn.to/4bY0MZC",
-    price: 34.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4bY0MZC",
+        price: { status: "indicative", amount: 34.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4xIruhD",
+        price: { status: "indicative", amount: 73.99, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "ASIN_PRODUKTU_Z_URL",
+        slug: "cytrynian-magnezu-1480-mg-240-kapsulek-weganskich",
+        name: "Cytrynian magnezu 1480 mg – 240 kapsułek wegańskich",
+        benefit: "Wygodne wsparcie regeneracji i dobrego snu w formie łatwych do połknięcia kapsułek, idealne do wieczornego rytuału relaksacyjnego.",
+        description: "Bathing for the sake of cleanliness is a daily task; bathing for recovery is a mineral ritual. Magnesium bath flakes are notably more absorbable than traditional salts, allowing for deeper muscle relaxation and improved skin barrier support. The heat of the water paired with the mineral infusion helps drop your internal temperature afterward, which is a key signal for sleep readiness.",
+        image: "/magnesium-supplement/main_photo_cytrynian-magnezu.png",
+        imageAlt: "Polish version of product",
+        trustSignal: "Routine essential",
+        gallery: [
+          {
+            image: "/magnesium-supplement/2_pl_main_photo_cytrynian-magnezu.jpg",
+            imageAlt: "Polish version of product",
+            title: "Main View",
+          },
+          {
+            image: "/magnesium-supplement/3_pl_photo_cytrynian-magnezu.jpg",
+            imageAlt: "Polish version of product",
+            title: "Main View",
+          },
+          {
+            image: "/magnesium-supplement/4_pl_photo_cytrynian-magnezu.jpg",
+            imageAlt: "Polish version of product",
+            title: "Main View",
+          },
+          {
+            image: "/magnesium-supplement/5_pl_photo_cytrynian-magnezu.jpg",
+            imageAlt: "Polish version of product",
+            title: "Main View",
+          },
+          {
+            image: "/magnesium-supplement/6_pl_photo_cytrynian-magnezu.jpg",
+            imageAlt: "Polish version of product",
+            title: "Main View",
+          },
+          {
+            image: "/magnesium-supplement/7_pl_photo_cytrynian-magnezu.jpg",
+            imageAlt: "Polish version of product",
+            title: "Main View",
+          },
+        ],
+      },
+    },
   },
   {
     id: "pavilia-plush-robe",
@@ -770,7 +1092,7 @@ export const products: Product[] = [
     benefit: "Warm post-shower comfort that anchors evening wind-down habits.",
     description:
       "A soft plush robe that turns ordinary evenings into a repeatable at-home spa cue and supports ritual consistency.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
     imageAlt: "PAVILIA premium women's plush soft robe product image",
     gallery: [
@@ -795,8 +1117,12 @@ export const products: Product[] = [
         title: "Fit & Style",
       },
     ],
-    amazonUrl: "https://amzn.to/4cnPAnV",
-    price: 49.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4cnPAnV",
+        price: { status: "indicative", amount: 49.99, currency: "USD" },
+      },
+    },
   },
   {
     id: "derma-roller",
@@ -835,8 +1161,12 @@ export const products: Product[] = [
         title: "Fit & Style",
       }
     ],
-    amazonUrl: "https://amzn.to/4oKipRl",
-    price: 22.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4oKipRl",
+        price: { status: "indicative", amount: 22.99, currency: "USD" },
+      },
+    },
   },
   {
     id: "aveeno-oil-mist",
@@ -845,7 +1175,7 @@ export const products: Product[] = [
     benefit: "Instantly softer, smoother skin with a non-greasy, healthy satin finish.",
     description:
       "A lightweight body oil spray formulated with oat and jojoba oil to lock in moisture and leave skin looking polished.",
-    trustSignal: "Popular",
+    trustSignal: "Routine essential",
     image: "/aveeno-oil-mist/cover_aveeno_oil.png",
     imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
     gallery: [
@@ -885,8 +1215,32 @@ export const products: Product[] = [
         title: "Quality",
       },
     ],
-    amazonUrl: "https://amzn.to/3ObFRt3",
-    price: 12.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/3ObFRt3",
+        price: { status: "indicative", amount: 12.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/3QAYLLa",
+        price: { status: "indicative", amount: 49.00, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B002MDAOSQ",
+        slug: "avon-skin-so-soft-suchy-olejek",
+        name: "Avon Skin So Soft Suchy olejek do ciała z olejkiem jojoba (2 x 150ml)",
+        benefit: "Lekka mgiełka olejkowa szybko się wchłania, intensywnie nawilżając i regenerując skórę po kąpieli.",
+        description: "Kultowy suchy olejek od Avon wzbogacony olejkiem jojoba. Doskonała alternatywa dla mgiełek olejkowych – błyskawicznie nawilża, pozostawiając skórę jedwabiście gładką bez uczucia lepkości. Idealny element domowego rytuału SPA.",
+        image: "/aveeno-oil-mist/_pl.png",
+        imageAlt: "Avon Skin So Soft Original Dry Oil Spray",
+        video: null,
+        gallery: [
+          {
+            image: "/aveeno-oil-mist/2_pl_photo_avon.jpg",
+            imageAlt: "Avon Skin So Soft Original Dry Oil Spray",
+            title: "Zestaw 2 sztuk",
+          }
+        ]
+      },
+    },
   },
   {
     id: "medicube-age-r-booster-pro",
@@ -894,8 +1248,8 @@ export const products: Product[] = [
     categoryId: "skincare",
     benefit: "Enhances product absorption, firmness, elasticity, and overall texture.",
     description:
-      "Discover the Medicube AGE-R Booster Pro, the advanced 6-in-1 Korean beauty device designed to help improve skin radiance, firmness, elasticity, and overall texture. Featuring Booster Mode, MC Mode, Derma Shot Mode, Air Shot Mode, and LED technology, this at-home skincare tool helps enhance product absorption while supporting smoother, plumper, and healthier-looking skin. Perfect for reducing the appearance of pores, improving skin definition, and boosting your glow. Trusted by skincare enthusiasts worldwide and rated 4.4★ with over 11,000 reviews. Elevate your self-care routine with professional-level skin care technology from the comfort of your home.",
-    trustSignal: "Top rated",
+      "The Medicube AGE-R Booster Pro is a multi-mode Korean skincare device featuring Booster, MC, Derma Shot, Air Shot, and LED modes. Review the manufacturer instructions, contraindications, and recommended usage before adding the device to your routine.",
+    trustSignal: "Editorial pick",
     image: "/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png",
     imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
     gallery: [
@@ -935,8 +1289,12 @@ export const products: Product[] = [
         title: "Fit & Style",
       },
     ],
-    amazonUrl: "https://amzn.to/4gA0A5m",
-    price: 299.00,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4gA0A5m",
+        price: { status: "indicative", amount: 299.00, currency: "USD" },
+      },
+    },
   },
   {
     id: "rosemary-hair-oil",
@@ -944,8 +1302,8 @@ export const products: Product[] = [
     categoryId: "self-care",
     benefit: "Supports thicker, fuller-looking hair and nourishes the scalp.",
     description:
-      "Support healthier, fuller-looking hair with Botanic Hearth Rosemary Hair Oil, a nourishing scalp treatment made with rosemary oil, biotin, castor oil, and jojoba oil. Designed for men and women, this lightweight, non-greasy hair oil helps strengthen strands, reduce dryness, support scalp hydration, and improve the look of thinning or damaged hair. Rated 4.4★ with 19,690+ reviews and loved by thousands.",
-    trustSignal: "Popular",
+      "Botanic Hearth Rosemary Hair Oil is a scalp and hair treatment formulated with rosemary oil, biotin, castor oil, and jojoba oil. Review the full ingredient list and patch-test before use, especially if your scalp is sensitive.",
+    trustSignal: "Routine essential",
     image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png",
     imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
     gallery: [
@@ -1000,8 +1358,12 @@ export const products: Product[] = [
         title: "Fit & Style",
       },
     ],
-    amazonUrl: "https://amzn.to/3QAuUCk",
-    price: 14.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/3QAuUCk",
+        price: { status: "indicative", amount: 14.99, currency: "USD" },
+      },
+    },
   },
   {
     id: "orgain-collagen-peptides",
@@ -1009,8 +1371,8 @@ export const products: Product[] = [
     categoryId: "self-care",
     benefit: "Grass-fed collagen for hair, skin, nails & joints.",
     description:
-      "Support healthy aging and everyday wellness with Orgain Collagen Peptides Powder. Made from grass-fed, pasture-raised bovine collagen, this unflavored collagen supplement delivers 20g of collagen peptides per serving to help support healthy hair, glowing skin, strong nails, and joint health. Easy to mix into coffee, smoothies, protein shakes, oatmeal, and recipes, it dissolves quickly without affecting taste. Rated 4.5★ by over 10,000 customers.",
-    trustSignal: "Popular",
+      "Orgain Collagen Peptides Powder is an unflavoured bovine collagen supplement with 20g of collagen peptides per labelled serving. Check the current label, ingredients, serving guidance, and suitability for your dietary needs before use.",
+    trustSignal: "Routine essential",
     image: "/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png",
     imageAlt: "Orgain Collagen Peptides Powder",
     gallery: [
@@ -1050,8 +1412,12 @@ export const products: Product[] = [
         title: "Fit & Style",
       },
     ],
-    amazonUrl: "https://amzn.to/4eDMZr8",
-    price: 24.99,
+    marketVariants: {
+      us: {
+        affiliateUrl: "https://amzn.to/4eDMZr8",
+        price: { status: "indicative", amount: 24.99, currency: "USD" },
+      },
+    },
   },
 ];
 
@@ -1290,17 +1656,27 @@ export const productProofById: Record<string, ProductProof> = {
       "Supports healthy hair, glowing skin, strong nails, and joints",
     ],
   },
+  "rosemary-hair-oil": {
+    rating: 4.5,
+    reviews: "6,000+ reviews",
+    socialProof: "Trending on social media",
+    highlights: [
+      "Supports a healthier scalp environment for stronger growth",
+      "Lightweight oil that absorbs without greasy residue",
+      "Blends rosemary, biotin, castor and jojoba in one step",
+    ],
+  },
 };
 
 export const topPicks = [
-  { productId: "mixsoon-bean-essence", badge: "Best Seller" as const },
-  { productId: "niacinamide-toner", badge: "Trending" as const },
-  { productId: "magnesium-supplement", badge: "Most Loved" as const },
-  { productId: "aveeno-oil-mist", badge: "Best Seller" as const },
-  { productId: "pavilia-plush-robe", badge: "Most Loved" as const },
-  { productId: "cliganic-essential-oils", badge: "Trending" as const },
-  { productId: "copper-water-bottle", badge: "Most Loved" as const },
-  { productId: "coslus-cleansing-brush", badge: "Best Seller" as const },
+  { productId: "mixsoon-bean-essence", badge: "Editorial Pick" as const },
+  { productId: "niacinamide-toner", badge: "Routine Essential" as const },
+  { productId: "magnesium-supplement", badge: "Worth Considering" as const },
+  { productId: "aveeno-oil-mist", badge: "Editorial Pick" as const },
+  { productId: "pavilia-plush-robe", badge: "Worth Considering" as const },
+  { productId: "cliganic-essential-oils", badge: "Routine Essential" as const },
+  { productId: "copper-water-bottle", badge: "Worth Considering" as const },
+  { productId: "coslus-cleansing-brush", badge: "Editorial Pick" as const },
 ];
 
 export const glowRoutineSteps: RoutineStep[] = [
@@ -1341,7 +1717,7 @@ export const articles: Article[] = [
     excerpt:
       "A focused routine guide to achieving that luminous, reflective skin finish using Pinterest's high-performing skincare stars.",
     intro:
-      "Glass skin isn't about being perfect; it's about deep hydration and gentle resurfacing. This guide breaks down the two viral products that simplify the process and deliver visible results.",
+      "Glass skin isn't about being perfect; it's about hydration and gentle resurfacing. This guide breaks down two products that can simplify a consistent routine.",
     heroImage: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
     heroAlt: "Mixsoon Bean Essence and TIA'M toner on a marble vanity",
     categoryId: "skincare",
@@ -1472,7 +1848,7 @@ export const articles: Article[] = [
     excerpt:
       "A focused nighttime routine that prioritizes hydration, texture, and glow with fewer but better products.",
     intro:
-      "Great skin is usually about consistency, not complexity. This routine removes the guesswork so your products layer well and deliver visible results in a few weeks.",
+      "Great skin is usually about consistency, not complexity. This routine removes the guesswork so your products layer comfortably and are easier to use regularly.",
     heroImage:
       "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80",
     heroAlt: "Luxury skincare products arranged near a mirror",
@@ -1976,10 +2352,6 @@ export type ProductBundle = {
   tagline: string;
   description: string;
   productIds: string[];
-  discount?: {
-    label: string;
-    savings: string;
-  };
 };
 
 export const productBundles: ProductBundle[] = [
@@ -1993,10 +2365,6 @@ export const productBundles: ProductBundle[] = [
       "niacinamide-toner",
       "mixsoon-bean-essence",
     ],
-    discount: {
-      label: "Save 15% when bought together",
-      savings: "$18-22",
-    },
   },
   {
     id: "sleep-reset-bundle",
@@ -2009,10 +2377,6 @@ export const productBundles: ProductBundle[] = [
       "pavilia-plush-robe",
       "silk-sleep-mask",
     ],
-    discount: {
-      label: "Complete sleep protocol",
-      savings: "$75-90 value",
-    },
   },
   {
     id: "body-glow-pro",
@@ -2024,10 +2388,6 @@ export const productBundles: ProductBundle[] = [
       "aveeno-oil-mist",
       "body-oil",
     ],
-    discount: {
-      label: "Save 12% on the complete protocol",
-      savings: "$24-28",
-    },
   },
   {
     id: "spa-sunday-sanctuary",
@@ -2040,10 +2400,6 @@ export const productBundles: ProductBundle[] = [
       "candle-set",
       "pavilia-plush-robe",
     ],
-    discount: {
-      label: "Complete spa experience",
-      savings: "$95-120 value",
-    },
   },
   {
     id: "morning-momentum",
@@ -2056,10 +2412,6 @@ export const productBundles: ProductBundle[] = [
       "coslus-cleansing-brush",
       "niacinamide-toner",
     ],
-    discount: {
-      label: "Daily essential bundle",
-      savings: "$65-80 value",
-    },
   },
 ];
 
@@ -2067,7 +2419,7 @@ export const favoriteCollections = [
   {
     id: "pinterest-viral-finds",
     title: "The Pinterest Lux Aura Collection",
-    description: "The 8 high-performing essentials currently trending on our Pinterest feed.",
+    description: "Eight editorially selected essentials featured in our Pinterest content.",
     categoryId: "self-care" as const,
     productIds: [
       "mixsoon-bean-essence",
@@ -2118,8 +2470,19 @@ export function isCategoryId(value: string): value is CategoryId {
   return categories.some((category) => category.id === value);
 }
 
-export function getProductById(id: string) {
+export function getProductById(id: string): ProductDefinition | undefined {
   return products.find((product) => product.id === id);
+}
+
+export function getProductBySlug(slug: string, locale: "us" | "pl" | "en" = "en"): ProductDefinition | undefined {
+  const normalizedLocale = locale === "pl" ? "pl" : "us";
+
+  return products.find((product) => {
+    const marketVariant = product.marketVariants[normalizedLocale];
+    const variantSlug = marketVariant && 'slug' in marketVariant ? marketVariant.slug : undefined;
+    const resolvedSlug = variantSlug ?? product.slug ?? product.id;
+    return resolvedSlug === slug || product.id === slug;
+  });
 }
 
 export function getProductsByIds(ids: string[]) {
@@ -2162,8 +2525,8 @@ export function getFavoritesCollections() {
 export function getProductProof(productId: string): ProductProof {
   return (
     productProofById[productId] ?? {
-      rating: 4.7,
-      reviews: "4,000+ reviews",
+      rating: 4.5,
+      reviews: "1,000+ reviews",
       socialProof: "Popular right now",
       highlights: [
         "Built to simplify your daily routine",
@@ -2187,7 +2550,7 @@ export function getTopPickProducts() {
         badge: pick.badge,
       };
     })
-    .filter((item): item is { product: Product; badge: TopPickBadge } => Boolean(item));
+    .filter((item): item is { product: ProductDefinition; badge: TopPickBadge } => Boolean(item));
 }
 
 export function getGlowRoutineSteps() {
@@ -2204,7 +2567,7 @@ export function getGlowRoutineSteps() {
       };
     })
     .filter(
-      (step): step is RoutineStep & { product: Product } =>
+      (step): step is RoutineStep & { product: ProductDefinition } =>
         Boolean(step)
     );
 }

@@ -34,7 +34,7 @@ export function NewsletterBlock() {
 
       if (data.success) {
         setStatus("success");
-        setMessage(text("Check your email for your 15% off code!"));
+        setMessage(text("Check your email to confirm your subscription."));
         setEmail("");
         setTimeout(() => {
           setStatus("idle");
@@ -58,10 +58,10 @@ export function NewsletterBlock() {
             <div className="space-y-4">
               <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-background-primary/70">
                 <Sparkles className="size-4" aria-hidden="true" />
-                <T text={"Exclusive Subscriber Benefit"} />
+                <T text={"Weekly Editorial Newsletter"} />
               </p>
               <h2 className="font-heading text-3xl leading-tight sm:text-4xl">
-                <T text={"Get 15% off your first bundle + weekly ritual guides."} />
+                <T text={"Get a curated ritual and product picks every Friday."} />
               </h2>
               <p className="text-sm text-background-primary/70">
                 <T text={"1 curated ritual + 3 product picks sent Friday mornings. Unsubscribe anytime—no hard feelings."} />
@@ -69,15 +69,15 @@ export function NewsletterBlock() {
               <ul className="mt-3 space-y-1 text-xs text-background-primary/70">
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-background-primary/50" />
-                  <T text={"Exclusive bundle discounts (15-25% off)"} />
+                  <T text={"Clear, editorial product recommendations"} />
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-background-primary/50" />
-                  <T text={"New product picks before Instagram"} />
+                  <T text={"New product picks and routine ideas"} />
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-background-primary/50" />
-                  <T text={"Abandoned routine recovery emails"} />
+                  <T text={"One concise email per week"} />
                 </li>
               </ul>
             </div>
@@ -104,7 +104,7 @@ export function NewsletterBlock() {
               >
                 {status === "loading"
                   ? text("Subscribing...")
-                  : text("Get 15% Off + Weekly Guides")}
+                  : text("Join the Weekly Newsletter")}
               </Button>
 
               {status === "success" && (

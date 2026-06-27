@@ -9,8 +9,6 @@ export type ShopProduct = {
   image: string;
   imageAlt: string;
   badge: string;
-  rating: number;
-  reviews: string;
   benefits: string[];
   howToUse: string[];
   faq: { q: string; a: string }[];
@@ -33,24 +31,22 @@ export const shopProducts: ShopProduct[] = [
   {
     id: "dermaplaning-razor-kit",
     name: "Glow Ritual Face Razor Kit",
-    tagline: "Clinic-smooth skin at home. No appointment needed.",
+    tagline: "A precise at-home tool for removing peach fuzz and surface buildup.",
     description:
-      "A 6-piece dermaplaning razor set that removes peach fuzz and dead skin cells, leaving your complexion instantly brighter, smoother, and ready to absorb serums up to 3x better. Recommended by estheticians for women 40+.",
+      "A 6-piece dermaplaning razor set for removing peach fuzz and surface buildup as part of a careful at-home routine.",
     price: 12.99,
     compareAtPrice: 24.99,
     currency: "EUR",
     image: "/dermaplaning-razor-kit/Glow_Ritual_Face_Razor_Kit.png",
     imageAlt: "Skincare beauty tools and face razor kit on display",
-    badge: "Best Seller",
-    rating: 4.8,
-    reviews: "2 847",
+    badge: "Featured",
     benefits: [
       "Removes peach fuzz & dead skin in 2 minutes",
       "Makeup glides on seamlessly after use",
-      "Serums absorb up to 3× deeper post-dermaplaning",
-      "Painless — no redness, no downtime",
+      "Skincare can spread more evenly over freshly exfoliated skin",
+      "Safety guards support controlled, light-pressure use",
       "6 precision blades — one per week for 6 weeks",
-      "Dermatologist-tested for sensitive skin",
+      "Patch-test first and stop use if irritation occurs",
     ],
     howToUse: [
       "Cleanse your face and pat dry",
@@ -81,8 +77,8 @@ export const shopProducts: ShopProduct[] = [
       {
         url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-main-product-photo.png",
         label: "Product",
-        badge: "Best Seller",
-        desc: "6-piece dermaplaning kit — clinic-smooth results at home",
+        badge: "Featured",
+        desc: "6-piece dermaplaning kit for a controlled at-home routine",
       },
       {
         url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-flat-lay.png",
@@ -106,7 +102,7 @@ export const shopProducts: ShopProduct[] = [
         url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-blade-close-up.png",
         label: "Blade Detail",
         badge: "Precision Cut",
-        desc: "Micro-guard safety blades — dermatologist-tested for sensitive skin",
+        desc: "Micro-guard blades designed for careful, controlled use",
       },
     ],
   },
@@ -122,15 +118,13 @@ export const shopProducts: ShopProduct[] = [
     image: "/clear-skin-patches/Clear_Skin_Hydrocolloid_Patches.png",
     imageAlt: "Close-up of woman receiving a professional facial skincare treatment",
     badge: "⭐ New Favourite",
-    rating: 4.7,
-    reviews: "1 624",
     benefits: [
       "24 patches — 2–3 weeks of clear skin",
-      "Visibly reduces blemishes overnight",
+      "Covers blemishes overnight and absorbs surface fluid",
       "Zero irritation on mature or sensitive skin",
       "Ultra-thin — invisible under makeup",
       "Stops the urge to pick (skin stays intact)",
-      "Dermatologist-tested, vegan formula",
+      "Vegan formula; review the ingredient list before use",
     ],
     howToUse: [
       "Cleanse face and pat skin completely dry",
@@ -150,7 +144,7 @@ export const shopProducts: ShopProduct[] = [
       },
       {
         q: "How long should I leave them on?",
-        a: "Minimum 6 hours for best absorption. Overnight use gives the most visible results.",
+        a: "Follow the wear time on the packaging and remove the patch if irritation occurs.",
       },
     ],
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490722637:1",
@@ -204,12 +198,10 @@ export const shopProducts: ShopProduct[] = [
     image: "/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png",
     imageAlt: "24K Gold Collagen Eye Patches skincare treatment",
     badge: "✨ Gold Formula",
-    rating: 4.7,
-    reviews: "1 203",
     benefits: [
-      "Reduces dark circles and under-eye bags overnight",
+      "Provides a cooling, hydrating under-eye treatment",
       "Firms fine lines around the eye area",
-      "24K gold boosts ingredient absorption",
+      "Gold-toned hydrogel creates a cooling self-care step",
       "Deep hydration with hyaluronic acid + marine collagen",
       "Depuffs in 20 minutes — perfect before events",
       "60 patches — 30 full treatments per pack",
@@ -228,7 +220,7 @@ export const shopProducts: ShopProduct[] = [
       },
       {
         q: "Are they suitable for sensitive skin?",
-        a: "Yes. Dermatologist-tested, free from parabens and alcohol. Always patch-test first.",
+        a: "Review the ingredient list and patch-test first, especially if your skin is sensitive.",
       },
       {
         q: "How many treatments are in one pack?",
@@ -264,15 +256,13 @@ export const shopProducts: ShopProduct[] = [
     name: "Skin Ritual Starter Kit",
     tagline: "The complete glow ritual — smooth, clear, radiant.",
     description:
-      "Everything you need for a 2-step weekly glow ritual: dermaplane on Sundays, patch on blemishes overnight. Designed for women 40+ who want visible results without a clinic visit. Save €14 vs. buying separately.",
+      "A two-step weekly set pairing a dermaplaning tool with hydrocolloid patches for a simple at-home routine.",
     price: 18.99,
     compareAtPrice: 32.99,
     currency: "EUR",
     image: "/skin-ritual-bundle/Skin_Ritual_Starter_Kit.png",
     imageAlt: "Flat lay of premium skincare products on white background",
     badge: "Best Value",
-    rating: 4.9,
-    reviews: "836",
     benefits: [
       "Glow Ritual Face Razor Kit (6 blades)",
       "Clear Skin Hydrocolloid Patches (24 patches)",
@@ -283,7 +273,7 @@ export const shopProducts: ShopProduct[] = [
     ],
     howToUse: [
       "Sunday: Dermaplane with the Glow Ritual Razor",
-      "Apply serum immediately after for 3× absorption",
+      "Apply a gentle serum afterward if your skin feels comfortable",
       "When a blemish appears: place a hydrocolloid patch overnight",
       "Repeat weekly — skin visibly transforms in 4–6 weeks",
     ],
@@ -298,7 +288,7 @@ export const shopProducts: ShopProduct[] = [
       },
       {
         q: "Is EU delivery free?",
-        a: "Yes — all orders ship free within the EU with 7–14 day delivery.",
+        a: "Available delivery methods, timing, and cost are shown during checkout before payment.",
       },
     ],
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490820941:1",
@@ -321,7 +311,7 @@ export const shopProducts: ShopProduct[] = [
         url: "/skin-ritual-bundle/skin-ritual-starter-kit-lifestyle-dermaplaning.png",
         label: "Step 1",
         badge: "Sunday Ritual",
-        desc: "Dermaplane every Sunday — serums absorb 3× deeper right after",
+        desc: "Use the dermaplaning tool only as directed, then apply a gentle routine",
       },
       {
         url: "/skin-ritual-bundle/skin-ritual-starter-kit-lifestyle-patch-application.png",
@@ -342,21 +332,19 @@ export const shopProducts: ShopProduct[] = [
     name: "Rose Quartz Gua Sha & Jade Roller Set",
     tagline: "Sculpt, de-puff, and glow. The ancient beauty ritual for youthful skin.",
     description:
-      "A premium 2-piece facial massage set handcrafted from 100% natural, authentic Rose Quartz. Designed to stimulate lymphatic drainage, reduce morning puffiness, promote blood circulation, and enhance the absorption of your favorite serums up to 3x.",
+      "A two-piece rose quartz facial massage set for a cooling, gentle massage ritual and more even application of facial oils.",
     price: 15.99,
     compareAtPrice: 29.99,
     currency: "EUR",
     image: "/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png",
     imageAlt: "Handcrafted natural Rose Quartz Gua Sha and Jade Roller set on a soft pastel background",
     badge: "✨ Self-Care Favorite",
-    rating: 4.8,
-    reviews: "2 147",
     benefits: [
-      "Handcrafted from 100% natural, authentic certified Rose Quartz",
-      "Reduces morning puffiness and boosts blood circulation instantly",
+      "Rose quartz construction with a roller and gua sha tool",
+      "Cooling massage may temporarily improve the appearance of puffiness",
       "Promotes lymphatic drainage for a sculpted, lifted jawline",
       "Improves skin elasticity and smooths fine lines over time",
-      "Enhances facial oil and serum absorption up to 300% deeper",
+      "Helps facial oil spread evenly during massage",
       "Double-sided roller with noiseless, squeak-free silicone inserts",
     ],
     howToUse: [
@@ -373,7 +361,7 @@ export const shopProducts: ShopProduct[] = [
       },
       {
         q: "Does the roller make squeaking noises during use?",
-        a: "No. We integrate special soft silicone inserts between the metal frames and roller stones to guarantee a completely noiseless, smooth roll.",
+        a: "Soft silicone inserts between the frame and stones are designed to support a smoother, quieter roll.",
       },
       {
         q: "How often should I perform this massage?",
@@ -409,21 +397,19 @@ export const shopProducts: ShopProduct[] = [
     name: "Black Bian Stone Gua Sha Stick",
     tagline: "Sculpt your jawline. Release tension. Reveal younger-looking skin.",
     description:
-      "Carved from authentic volcanic Bian Stone — one of the rarest healing stones in the world — this gua sha stick emits far-infrared rays and natural negative ions that boost circulation and collagen from within. Designed for women 40+ who want visible facial sculpting results without needles or clinic visits.",
+      "A Bian stone gua sha tool shaped for a slow facial massage routine. Use with facial oil and light pressure.",
     price: 34.99,
     compareAtPrice: 59.99,
     currency: "EUR",
     image: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png",
     imageAlt: "Black Bian Stone Gua Sha facial massage stick on dark marble surface",
-    badge: "🖤 Rarest Stone",
-    rating: 4.9,
-    reviews: "1 089",
+    badge: "Bian Stone",
     benefits: [
-      "Emits far-infrared rays — boosts circulation 3× more than regular jade tools",
-      "Natural negative ions reduce inflammation and accelerate skin renewal",
-      "Sculpts jawline, cheekbones & brow bone in one 5-minute ritual",
-      "Depuffs instantly — cool in fridge for maximum morning de-puff",
-      "Boosts serum absorption up to 300% deeper",
+      "Contoured Bian stone surface for facial massage",
+      "Smooth stone surface designed for facial massage",
+      "Contoured shape follows the jawline, cheeks, and brow bone",
+      "Can be chilled for a cooling morning massage",
+      "Helps facial oil spread evenly during massage",
       "Ultra-smooth volcanic stone — glides without pulling or dragging",
     ],
     howToUse: [
@@ -431,20 +417,20 @@ export const shopProducts: ShopProduct[] = [
       "Hold the stick flat against skin at a 15° angle",
       "Glide in firm upward strokes along jawline, cheeks and forehead",
       "Use the pointed end for brow bone and under-eye area",
-      "5–10 minutes daily — results visible from week 2",
+      "Use for 5–10 minutes with light pressure, as tolerated",
     ],
     faq: [
       {
         q: "What makes Bian Stone different from jade or rose quartz?",
-        a: "Bian Stone is a volcanic mineral that emits far-infrared rays and natural negative ions — properties not found in jade or quartz. This means it actively stimulates circulation and collagen, rather than just massaging the surface.",
+        a: "Bian stone is used here as a smooth massage material. We do not claim that the stone itself changes collagen or treats a medical condition.",
       },
       {
         q: "How often should I use it?",
-        a: "Daily use is safe and recommended. 5 minutes in the morning (after storing overnight in the fridge) gives the best de-puffing results. 3–4 evenings per week for sculpting.",
+        a: "Start with short sessions a few times per week. Use light pressure and reduce frequency if your skin becomes irritated.",
       },
       {
         q: "Is it suitable for sensitive skin?",
-        a: "Yes. The smooth polished stone surface is gentle and non-abrasive. Always use with a facial oil — never drag dry skin.",
+        a: "Use light pressure with facial oil, patch-test the oil first, and stop if irritation occurs.",
       },
     ],
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53955987276109:1",
@@ -463,8 +449,8 @@ export const shopProducts: ShopProduct[] = [
       {
         url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick_close.png",
         label: "Stone Texture",
-        badge: "Far-Infrared",
-        desc: "Natural mineral matrix emitting far-infrared rays and negative ions for deep skin renewal",
+        badge: "Polished Surface",
+        desc: "Smooth mineral surface shaped for a controlled facial massage",
       },
       {
         url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick_lifestyle.png",
@@ -476,7 +462,7 @@ export const shopProducts: ShopProduct[] = [
         url: "/bian-stone-gua-sha/model_Black_Bian_Stone_Gua_Sha_Stick_lifestyle.jpeg",
         label: "Daily Results",
         badge: "Visible Glow",
-        desc: "Incorporate the Black Bian Stone Gua Sha into your daily skincare routine for visible lifting and glowing skin",
+        desc: "Incorporate the Black Bian Stone Gua Sha into a gentle facial massage routine",
       },
     ],
   },
@@ -488,19 +474,17 @@ export const shopProducts: ShopProduct[] = [
     name: "Vibro-Glow Face Massager",
     tagline: "Salon-grade micro-vibration therapy — at home, in 5 minutes.",
     description:
-      "A pocket-sized T-bar vibrating massager that delivers 6,000 micro-vibrations per minute directly into facial muscles. Promotes lymphatic drainage, reduces puffiness, and boosts serum absorption up to 3× — the secret behind glass skin without a salon appointment.",
+      "A pocket-sized T-bar vibrating facial massager designed for a short, gentle massage over serum or facial oil.",
     price: 59.99,
     compareAtPrice: 99.99,
     currency: "EUR",
     image: "/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png",
     imageAlt: "Mini vibrating T-bar face massager for lymphatic drainage and glow",
-    badge: "⚡ Viral Beauty Tool",
-    rating: 4.9,
-    reviews: "5 200",
+    badge: "Featured",
     benefits: [
       "6,000 micro-vibrations/min for deep lymphatic stimulation",
-      "Reduces morning puffiness in under 3 minutes",
-      "Boosts serum and moisturiser absorption by 3×",
+      "Cooling massage may temporarily improve the appearance of puffiness",
+      "Helps serum and moisturiser spread evenly",
       "Promotes circulation for an instant healthy glow",
       "Lightweight T-bar shape — fits every contour of the face",
       "USB rechargeable — works without lotion or serum",
@@ -510,12 +494,12 @@ export const shopProducts: ShopProduct[] = [
       "Apply your favourite facial oil or serum to clean skin",
       "Glide the T-bar in upward strokes from neck to forehead",
       "Vibrate gently over brow bone and under-eye for de-puffing",
-      "5 minutes daily gives visible results within 2 weeks",
+      "Short sessions make the tool easy to add to a routine",
     ],
     faq: [
       {
         q: "Is it safe for sensitive skin?",
-        a: "Yes. The smooth metal head is dermatologist-safe. Always use with a serum or oil — never on completely dry skin.",
+        a: "Use with serum or oil rather than on dry skin, patch-test products first, and stop if irritation occurs.",
       },
       {
         q: "How long does one charge last?",
@@ -538,7 +522,7 @@ export const shopProducts: ShopProduct[] = [
       {
         url: "/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png",
         label: "Product Photo",
-        badge: "⚡ Viral Tool",
+        badge: "Featured",
         desc: "Pocket-sized T-bar vibrating massager delivering 6,000 micro-vibrations per minute",
       },
       {
@@ -580,15 +564,13 @@ export const shopProducts: ShopProduct[] = [
     image: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-main-product-photo.png",
     imageAlt: "Centella Collagen Sleeping Face Masks in luxury packaging",
     badge: "🌿 Overnight Repair",
-    rating: 4.9,
-    reviews: "5 100",
     benefits: [
       "30 overnight treatments — full month of skin renewal",
-      "Centella Asiatica reduces redness and repairs skin barrier",
+      "Centella asiatica is included in the soothing formula",
       "Marine collagen visibly firms and plumps fine lines overnight",
       "Hyaluronic acid locks in 8 hours of deep hydration",
       "No-rinse formula — apply and sleep",
-      "Fragrance-free, paraben-free, dermatologist-tested",
+      "Fragrance-free and paraben-free; review the full ingredient list before use",
     ],
     howToUse: [
       "Complete your full evening skincare routine (cleanse, tone, serum)",
@@ -660,15 +642,13 @@ export const shopProducts: ShopProduct[] = [
     image: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png",
     imageAlt: "Vitamin C brightening serum and retinol night serum skincare duo",
     badge: "☀️ AM + PM System",
-    rating: 4.8,
-    reviews: "512",
     benefits: [
       "Vitamin C serum fades dark spots and brightens complexion",
       "Retinol night serum renews skin cells and boosts collagen",
       "Complete AM + PM anti-aging ritual in one duo",
       "Lightweight, fast-absorbing formula — no greasy residue",
       "Fragrance-free — suitable for reactive and sensitive skin",
-      "Visible brightening results in 4 weeks of daily use",
+      "Designed for consistent morning and evening use as directed",
     ],
     howToUse: [
       "Morning: after cleansing, apply 3–4 drops of Vitamin C serum",
@@ -743,11 +723,9 @@ export const shopProducts: ShopProduct[] = [
     image: "/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png",
     imageAlt: "Large resin body gua sha scraping tool for lymphatic drainage and cellulite",
     badge: "💪 Body Sculpt",
-    rating: 4.9,
-    reviews: "3 000",
     benefits: [
       "Large surface area covers thighs, arms and abdomen in one stroke",
-      "Stimulates lymphatic drainage to reduce water retention",
+      "Supports a gentle body-massage ritual",
       "Breaks up fascial adhesions that contribute to cellulite",
       "Increases blood circulation for smoother, firmer skin texture",
       "Lightweight resin — easy grip even with body oil on hands",
@@ -826,14 +804,12 @@ export const shopProducts: ShopProduct[] = [
     image: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png",
     imageAlt: "Natural bristle body spa brush with detachable long wooden handle",
     badge: "🌿 Dry Brush Favourite",
-    rating: 4.9,
-    reviews: "1 050",
     benefits: [
       "Natural stiff bristles for effective dry or wet exfoliation",
       "Detachable long handle reaches the entire back effortlessly",
-      "Stimulates lymphatic drainage when used dry before showering",
+      "Adds a dry-brushing massage step before showering",
       "Unclogs pores and removes dead skin cells in one session",
-      "Leaves skin ready to absorb body lotion 3× more effectively",
+      "Exfoliated skin can help body lotion spread more evenly",
       "Eco-friendly natural wood and plant-fibre construction",
     ],
     howToUse: [
@@ -906,15 +882,13 @@ export const shopProducts: ShopProduct[] = [
     image: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png",
     imageAlt: "Soft natural bristle exfoliating spa body brush for shower use",
     badge: "🚿 Daily Glow",
-    rating: 4.9,
-    reviews: "10 000",
     benefits: [
       "Soft-medium natural bristles — gentle enough for daily use",
       "Deeply cleanses pores and removes dead skin cells",
-      "Stimulates circulation for a flushed, glowing complexion",
+      "Provides a cooling facial massage experience",
       "Wrist strap for secure grip during shower use",
       "Works with or without body wash or soap",
-      "10,000+ sold — the most loved body brush in the collection",
+      "Designed as a repeatable step in a body-care routine",
     ],
     howToUse: [
       "Wet brush and skin thoroughly in the shower",
@@ -969,8 +943,8 @@ export const shopProducts: ShopProduct[] = [
       {
         url: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-luxury-spa-pedestal.png",
         label: "Pedestal",
-        badge: "10K+ Sold",
-        desc: "The most loved body brush in the collection — over 10,000 sold",
+        badge: "Featured",
+        desc: "A featured body brush selected for a simple exfoliation routine",
       },
     ],
   },
@@ -987,15 +961,13 @@ export const shopProducts: ShopProduct[] = [
     image: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-main-product-photo.png",
     imageAlt: "Stainless steel ice face roller and gua sha board set for de-puffing",
     badge: "❄️ Cool & Sculpt",
-    rating: 4.6,
-    reviews: "4 000",
     benefits: [
-      "Stainless steel stays cold 3× longer than stone or plastic tools",
-      "Instant de-puffing — visible results after the first use",
+      "Stainless steel can be chilled for a longer cooling massage",
+      "Cooling may temporarily improve the appearance of puffiness",
       "Tightens pores by constricting surface capillaries with cold",
-      "Reduces redness and inflammation in minutes",
+      "Cooling can feel soothing on warm skin",
       "Gua sha board sculpts jawline and cheekbones",
-      "4,000+ sold — cult morning skincare tool",
+      "Compact tool designed for a simple morning skincare routine",
     ],
     howToUse: [
       "Store both tools in the freezer or refrigerator overnight",
@@ -1049,8 +1021,8 @@ export const shopProducts: ShopProduct[] = [
       {
         url: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-stainless-steel-close-up.png",
         label: "Steel Detail",
-        badge: "Stays Cold 3×",
-        desc: "Stainless steel stays cold 3× longer than stone or plastic — superior cooling performance",
+        badge: "Cooling Steel",
+        desc: "Stainless steel can be chilled before use for a cooling facial massage",
       },
     ],
   },
@@ -1058,24 +1030,22 @@ export const shopProducts: ShopProduct[] = [
   {
     id: "seaweed-collagen-crystal-mask",
     name: "Seaweed Collagen Crystal Hydration Mask",
-    tagline: "5 luxury treatments. Instant glass skin. No clinic needed.",
+    tagline: "Five hydrogel masks for a hydrating at-home ritual.",
     description:
-      "5 premium crystal hydrogel masks infused with seaweed extract and marine collagen — the same ingredient used in high-end clinical facials. Each mask delivers 30ml of intensive serum directly into the skin for 20–30 minutes. Instantly plumps, brightens, and firms. TikTok viral formula.",
+      "A set of five hydrogel masks with seaweed extract and marine collagen, designed for a 20–30 minute skincare step. Review the ingredient list and usage instructions before applying.",
     price: 29.99,
     compareAtPrice: 52.99,
     currency: "EUR",
     image: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-main-product-photo.png",
     imageAlt: "Premium seaweed collagen crystal hydrogel face mask filling treatment",
     badge: "🌊 Glass Skin",
-    rating: 4.8,
-    reviews: "1 100",
     benefits: [
-      "5 crystal hydrogel masks — 5 complete clinical-style treatments",
-      "30ml serum per mask — 10× more than standard sheet masks",
+      "Five individually packed crystal hydrogel masks",
+      "30 ml of serum per mask",
       "Seaweed extract repairs skin barrier and adds luminosity",
       "Marine collagen visibly fills fine lines after a single use",
       "Glass skin effect within 20 minutes — ideal before events",
-      "TikTok viral formula — 1,000+ sold this month",
+      "Hydrogel format designed for an occasional hydration-focused ritual",
     ],
     howToUse: [
       "Cleanse face thoroughly and pat completely dry",
@@ -1087,7 +1057,7 @@ export const shopProducts: ShopProduct[] = [
     faq: [
       {
         q: "How is a crystal hydrogel mask different from a sheet mask?",
-        a: "Crystal hydrogel masks contain 10× more serum per mask and adhere much more closely to facial contours, allowing deeper ingredient penetration.",
+        a: "Hydrogel conforms closely to facial contours and holds the serum against the skin during the recommended wear time.",
       },
       {
         q: "Can I use it every day?",
@@ -1112,25 +1082,25 @@ export const shopProducts: ShopProduct[] = [
         url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-flat-lay.png",
         label: "Flat Lay",
         badge: "5 Treatments",
-        desc: "5 clinical-style treatments in one pack — glass skin effect in 20 minutes",
+        desc: "Five hydrogel masks for a hydrating at-home ritual",
       },
       {
         url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-lifestyle-application.png",
         label: "In Use",
         badge: "Lifestyle",
-        desc: "Applying the crystal mask for an at-home clinical facial experience",
+        desc: "Applying the crystal hydrogel mask at home",
       },
       {
         url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-hydrogel-texture-close-up.png",
         label: "Texture",
         badge: "30ml Serum",
-        desc: "Crystal hydrogel texture — 30ml of intensive serum per mask, 10× a standard sheet mask",
+        desc: "Crystal hydrogel texture with 30 ml of serum per mask",
       },
       {
         url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-luxury-spa-pedestal.png",
         label: "Pedestal",
-        badge: "TikTok Viral",
-        desc: "TikTok viral formula — luxury spa pedestal display for the glass skin ritual",
+        badge: "Featured",
+        desc: "Hydrogel mask presentation for a hydration-focused skincare ritual",
       },
     ],
   },

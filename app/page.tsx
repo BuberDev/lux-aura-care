@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { LocalizedLink } from "@/components/localized-link";
-import { ShieldCheck, Sparkles, TrendingUp, Check } from "lucide-react";
+import { ShieldCheck, Sparkles, Globe2, Check } from "lucide-react";
 import ScrollMorphHero from "@/components/ui/scroll-morph-hero";
 import { Component as EtheralShadow } from "@/components/ui/etheral-shadow";
 
@@ -24,6 +24,7 @@ import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeProducts } from "@/lib/product-localization";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -57,27 +58,27 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const trustSignals = [
   {
-    label: "Monthly Readers",
-    value: "50K+",
+    label: "Marketplace Coverage",
+    value: "PL + US",
     icon: Sparkles,
   },
   {
-    label: "Average Product Rating",
-    value: "4.8/5",
+    label: "Price Policy",
+    value: "Market-specific",
     icon: ShieldCheck,
   },
   {
-    label: "Amazon Clickouts",
-    value: "12K+",
-    icon: TrendingUp,
+    label: "Affiliate Disclosure",
+    value: "Transparent",
+    icon: Globe2,
   },
 ];
 
 export default async function HomePage() {
   const locale = await getRequestLocale();
   const featuredArticles = localizeContent(locale, getFeaturedArticles());
-  const favorites = localizeContent(locale, getAmazonFavorites());
-  const localizedProducts = localizeContent(locale, products);
+  const favorites = localizeProducts(locale, getAmazonFavorites());
+  const localizedProducts = localizeProducts(locale, products);
   const localizedShopProducts = localizeContent(locale, shopProducts);
   const localizedCategories = localizeContent(locale, categories);
   const localizedTrustSignals = localizeContent(locale, trustSignals);
@@ -185,7 +186,7 @@ export default async function HomePage() {
               <T text={"Shop our ritual essentials"} />
             </h2>
             <p className="text-base max-w-lg mx-auto" style={{ color: "var(--text-secondary)" }}>
-              <T text={"Clinic-quality results at home. Designed for women 40+."} />
+              <T text={"Practical at-home skincare tools selected for mature skin routines."} />
             </p>
           </div>
 
@@ -293,13 +294,12 @@ export default async function HomePage() {
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {favorites.map((product, index) => (
+            {favorites.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
                 compact
-                urgencyOverride={index < 2 ? "Limited-time favorite" : undefined}
-                detailsHref={`/favorites/${product.id}`}
+                detailsHref={`/favorites/${product.slug}`}
               />
             ))}
           </div>

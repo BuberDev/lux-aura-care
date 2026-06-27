@@ -3,6 +3,302 @@ import type { Locale } from "@/lib/i18n/config";
 export type CatalogEntry = Record<Locale, string>;
 
 export const translationCatalog = {
+  "Glass skin isn't about being perfect; it's about hydration and gentle resurfacing. This guide breaks down two products that can simplify a consistent routine.": {
+    "en": "Glass skin isn't about being perfect; it's about hydration and gentle resurfacing. This guide breaks down two products that can simplify a consistent routine.",
+    "pl": "Efekt glass skin nie polega na perfekcji, lecz na nawilżaniu i delikatnym złuszczaniu. Ten przewodnik omawia dwa produkty, które mogą uprościć regularną pielęgnację."
+  },
+  "Great skin is usually about consistency, not complexity. This routine removes the guesswork so your products layer comfortably and are easier to use regularly.": {
+    "en": "Great skin is usually about consistency, not complexity. This routine removes the guesswork so your products layer comfortably and are easier to use regularly.",
+    "pl": "Dobra pielęgnacja zwykle opiera się na regularności, a nie złożoności. Ten rytuał ułatwia łączenie produktów i ich konsekwentne stosowanie."
+  },
+  "Dermaplaning razors, hydrocolloid patches, and practical skincare tools for at-home routines.": {
+    "en": "Dermaplaning razors, hydrocolloid patches, and practical skincare tools for at-home routines.",
+    "pl": "Maszynki do dermaplaningu, plastry hydrokoloidowe i praktyczne narzędzia do domowej pielęgnacji."
+  },
+  "Check your email to confirm your subscription.": {
+    "en": "Check your email to confirm your subscription.",
+    "pl": "Sprawdź wiadomość e-mail, aby potwierdzić subskrypcję."
+  },
+  "Weekly Editorial Newsletter": {
+    "en": "Weekly Editorial Newsletter",
+    "pl": "Cotygodniowy newsletter redakcyjny"
+  },
+  "Get a curated ritual and product picks every Friday.": {
+    "en": "Get a curated ritual and product picks every Friday.",
+    "pl": "W każdy piątek otrzymuj wybrany rytuał i rekomendacje produktów."
+  },
+  "Clear, editorial product recommendations": {
+    "en": "Clear, editorial product recommendations",
+    "pl": "Przejrzyste rekomendacje redakcyjne"
+  },
+  "New product picks and routine ideas": {
+    "en": "New product picks and routine ideas",
+    "pl": "Nowe propozycje produktów i pomysły na rytuały"
+  },
+  "One concise email per week": {
+    "en": "One concise email per week",
+    "pl": "Jedna zwięzła wiadomość tygodniowo"
+  },
+  "Join the Weekly Newsletter": {
+    "en": "Join the Weekly Newsletter",
+    "pl": "Zapisz się do cotygodniowego newslettera"
+  },
+  "Smooth stone surface designed for facial massage": {
+    "en": "Smooth stone surface designed for facial massage",
+    "pl": "Gładka powierzchnia kamienia przeznaczona do masażu twarzy"
+  },
+  "Contoured shape follows the jawline, cheeks, and brow bone": {
+    "en": "Contoured shape follows the jawline, cheeks, and brow bone",
+    "pl": "Wyprofilowany kształt dopasowuje się do linii żuchwy, policzków i łuku brwiowego"
+  },
+  "Can be chilled for a cooling morning massage": {
+    "en": "Can be chilled for a cooling morning massage",
+    "pl": "Można schłodzić przed porannym masażem"
+  },
+  "Use for 5–10 minutes with light pressure, as tolerated": {
+    "en": "Use for 5–10 minutes with light pressure, as tolerated",
+    "pl": "Używaj przez 5–10 minut z lekkim naciskiem, zależnie od tolerancji skóry"
+  },
+  "Start with short sessions a few times per week. Use light pressure and reduce frequency if your skin becomes irritated.": {
+    "en": "Start with short sessions a few times per week. Use light pressure and reduce frequency if your skin becomes irritated.",
+    "pl": "Zacznij od krótkich sesji kilka razy w tygodniu. Stosuj lekki nacisk i zmniejsz częstotliwość w razie podrażnienia."
+  },
+  "Use light pressure with facial oil, patch-test the oil first, and stop if irritation occurs.": {
+    "en": "Use light pressure with facial oil, patch-test the oil first, and stop if irritation occurs.",
+    "pl": "Używaj lekkiego nacisku i olejku; najpierw wykonaj próbę uczuleniową i przerwij w razie podrażnienia."
+  },
+  "Polished Surface": {
+    "en": "Polished Surface",
+    "pl": "Polerowana powierzchnia"
+  },
+  "Smooth mineral surface shaped for a controlled facial massage": {
+    "en": "Smooth mineral surface shaped for a controlled facial massage",
+    "pl": "Gładka powierzchnia minerału wyprofilowana do kontrolowanego masażu twarzy"
+  },
+  "Incorporate the Black Bian Stone Gua Sha into a gentle facial massage routine": {
+    "en": "Incorporate the Black Bian Stone Gua Sha into a gentle facial massage routine",
+    "pl": "Włącz czarne gua sha z kamienia Bian do delikatnego rytuału masażu twarzy"
+  },
+  "Practical at-home skincare tools selected for mature skin routines.": {
+    "en": "Practical at-home skincare tools selected for mature skin routines.",
+    "pl": "Praktyczne narzędzia do domowej pielęgnacji dobrane z myślą o cerze dojrzałej."
+  },
+  "Practical tools for a simple, repeatable at-home skincare ritual.": {
+    "en": "Practical tools for a simple, repeatable at-home skincare ritual.",
+    "pl": "Praktyczne narzędzia do prostego rytuału pielęgnacyjnego, który łatwo regularnie powtarzać."
+  },
+  "Fine safety guards help make the blade easier to control. Follow the instructions, use light pressure, and stop if irritation occurs.": {
+    "en": "Fine safety guards help make the blade easier to control. Follow the instructions, use light pressure, and stop if irritation occurs.",
+    "pl": "Drobne osłonki ułatwiają kontrolowanie ostrza. Stosuj się do instrukcji, używaj lekkiego nacisku i przerwij w razie podrażnienia."
+  },
+  "Removing surface buildup and peach fuzz can leave skin feeling smoother and help skincare spread more evenly.": {
+    "en": "Removing surface buildup and peach fuzz can leave skin feeling smoother and help skincare spread more evenly.",
+    "pl": "Usunięcie powierzchniowych zanieczyszczeń i meszku może wygładzić skórę i ułatwić równomierne rozprowadzanie kosmetyków."
+  },
+  "Hydrocolloid material covers the blemish and absorbs surface fluid while helping discourage touching and picking.": {
+    "en": "Hydrocolloid material covers the blemish and absorbs surface fluid while helping discourage touching and picking.",
+    "pl": "Materiał hydrokoloidowy osłania zmianę i pochłania płyn z jej powierzchni, jednocześnie ograniczając dotykanie skóry."
+  },
+  "Gentle massage can provide a cooling, soothing ritual and may temporarily improve the appearance of puffiness.": {
+    "en": "Gentle massage can provide a cooling, soothing ritual and may temporarily improve the appearance of puffiness.",
+    "pl": "Delikatny masaż daje chłodzący, kojący efekt i może tymczasowo zmniejszyć widoczność opuchnięcia."
+  },
+  "Checkout processed securely": {
+    "en": "Checkout processed securely",
+    "pl": "Bezpieczna obsługa płatności"
+  },
+  "A precise at-home tool for removing peach fuzz and surface buildup.": {
+    "en": "A precise at-home tool for removing peach fuzz and surface buildup.",
+    "pl": "Precyzyjne narzędzie do domowego usuwania meszku i powierzchniowych zanieczyszczeń."
+  },
+  "A 6-piece dermaplaning razor set for removing peach fuzz and surface buildup as part of a careful at-home routine.": {
+    "en": "A 6-piece dermaplaning razor set for removing peach fuzz and surface buildup as part of a careful at-home routine.",
+    "pl": "Sześcioczęściowy zestaw maszynek do dermaplaningu do usuwania meszku i powierzchniowych zanieczyszczeń w ramach ostrożnej domowej pielęgnacji."
+  },
+  "Skincare can spread more evenly over freshly exfoliated skin": {
+    "en": "Skincare can spread more evenly over freshly exfoliated skin",
+    "pl": "Kosmetyki mogą rozprowadzać się równomierniej na świeżo złuszczonej skórze"
+  },
+  "Safety guards support controlled, light-pressure use": {
+    "en": "Safety guards support controlled, light-pressure use",
+    "pl": "Osłonki ułatwiają kontrolowaną pracę z lekkim naciskiem"
+  },
+  "Patch-test first and stop use if irritation occurs": {
+    "en": "Patch-test first and stop use if irritation occurs",
+    "pl": "Najpierw wykonaj próbę uczuleniową i przerwij stosowanie w razie podrażnienia"
+  },
+  "6-piece dermaplaning kit for a controlled at-home routine": {
+    "en": "6-piece dermaplaning kit for a controlled at-home routine",
+    "pl": "Sześcioczęściowy zestaw do kontrolowanego dermaplaningu w domu"
+  },
+  "Micro-guard blades designed for careful, controlled use": {
+    "en": "Micro-guard blades designed for careful, controlled use",
+    "pl": "Ostrza z mikroosłonkami do ostrożnego, kontrolowanego stosowania"
+  },
+  "Covers blemishes overnight and absorbs surface fluid": {
+    "en": "Covers blemishes overnight and absorbs surface fluid",
+    "pl": "Osłania zmiany przez noc i pochłania płyn z ich powierzchni"
+  },
+  "Vegan formula; review the ingredient list before use": {
+    "en": "Vegan formula; review the ingredient list before use",
+    "pl": "Wegańska formuła; przed użyciem sprawdź pełny skład"
+  },
+  "Follow the wear time on the packaging and remove the patch if irritation occurs.": {
+    "en": "Follow the wear time on the packaging and remove the patch if irritation occurs.",
+    "pl": "Przestrzegaj czasu stosowania podanego na opakowaniu i zdejmij plaster w razie podrażnienia."
+  },
+  "Provides a cooling, hydrating under-eye treatment": {
+    "en": "Provides a cooling, hydrating under-eye treatment",
+    "pl": "Zapewnia chłodzący, nawilżający etap pielęgnacji okolicy oczu"
+  },
+  "Gold-toned hydrogel creates a cooling self-care step": {
+    "en": "Gold-toned hydrogel creates a cooling self-care step",
+    "pl": "Hydrożel w złotym odcieniu tworzy chłodzący etap rytuału self-care"
+  },
+  "Review the ingredient list and patch-test first, especially if your skin is sensitive.": {
+    "en": "Review the ingredient list and patch-test first, especially if your skin is sensitive.",
+    "pl": "Sprawdź skład i najpierw wykonaj próbę uczuleniową, szczególnie przy wrażliwej skórze."
+  },
+  "A two-step weekly set pairing a dermaplaning tool with hydrocolloid patches for a simple at-home routine.": {
+    "en": "A two-step weekly set pairing a dermaplaning tool with hydrocolloid patches for a simple at-home routine.",
+    "pl": "Dwuczęściowy zestaw łączący narzędzie do dermaplaningu z plastrami hydrokoloidowymi w prostym domowym rytuale."
+  },
+  "Apply a gentle serum afterward if your skin feels comfortable": {
+    "en": "Apply a gentle serum afterward if your skin feels comfortable",
+    "pl": "Jeśli skóra nie jest podrażniona, nałóż później łagodne serum"
+  },
+  "Use the dermaplaning tool only as directed, then apply a gentle routine": {
+    "en": "Use the dermaplaning tool only as directed, then apply a gentle routine",
+    "pl": "Używaj narzędzia do dermaplaningu zgodnie z instrukcją, a następnie zastosuj łagodną pielęgnację"
+  },
+  "A two-piece rose quartz facial massage set for a cooling, gentle massage ritual and more even application of facial oils.": {
+    "en": "A two-piece rose quartz facial massage set for a cooling, gentle massage ritual and more even application of facial oils.",
+    "pl": "Dwuczęściowy zestaw z różowego kwarcu do chłodzącego, delikatnego masażu i równomiernego rozprowadzania olejków."
+  },
+  "Rose quartz construction with a roller and gua sha tool": {
+    "en": "Rose quartz construction with a roller and gua sha tool",
+    "pl": "Roller i płytka gua sha wykonane z różowego kwarcu"
+  },
+  "Cooling massage may temporarily improve the appearance of puffiness": {
+    "en": "Cooling massage may temporarily improve the appearance of puffiness",
+    "pl": "Chłodzący masaż może tymczasowo zmniejszyć widoczność opuchnięcia"
+  },
+  "Helps facial oil spread evenly during massage": {
+    "en": "Helps facial oil spread evenly during massage",
+    "pl": "Pomaga równomiernie rozprowadzić olejek podczas masażu"
+  },
+  "Soft silicone inserts between the frame and stones are designed to support a smoother, quieter roll.": {
+    "en": "Soft silicone inserts between the frame and stones are designed to support a smoother, quieter roll.",
+    "pl": "Miękkie silikonowe wkładki między ramą a kamieniami zapewniają płynniejsze i cichsze obracanie rollera."
+  },
+  "A Bian stone gua sha tool shaped for a slow facial massage routine. Use with facial oil and light pressure.": {
+    "en": "A Bian stone gua sha tool shaped for a slow facial massage routine. Use with facial oil and light pressure.",
+    "pl": "Narzędzie gua sha z kamienia Bian wyprofilowane do spokojnego masażu twarzy. Używaj z olejkiem i lekkim naciskiem."
+  },
+  "Contoured Bian stone surface for facial massage": {
+    "en": "Contoured Bian stone surface for facial massage",
+    "pl": "Wyprofilowana powierzchnia kamienia Bian do masażu twarzy"
+  },
+  "Bian stone is used here as a smooth massage material. We do not claim that the stone itself changes collagen or treats a medical condition.": {
+    "en": "Bian stone is used here as a smooth massage material. We do not claim that the stone itself changes collagen or treats a medical condition.",
+    "pl": "Kamień Bian pełni tu funkcję gładkiego materiału do masażu. Nie twierdzimy, że sam kamień wpływa na kolagen ani leczy schorzenia."
+  },
+  "A pocket-sized T-bar vibrating facial massager designed for a short, gentle massage over serum or facial oil.": {
+    "en": "A pocket-sized T-bar vibrating facial massager designed for a short, gentle massage over serum or facial oil.",
+    "pl": "Kieszonkowy, wibrujący masażer do twarzy w kształcie litery T, przeznaczony do krótkiego, delikatnego masażu na serum lub olejku."
+  },
+  "Helps serum and moisturiser spread evenly": {
+    "en": "Helps serum and moisturiser spread evenly",
+    "pl": "Pomaga równomiernie rozprowadzić serum i krem"
+  },
+  "Short sessions make the tool easy to add to a routine": {
+    "en": "Short sessions make the tool easy to add to a routine",
+    "pl": "Krótkie sesje ułatwiają włączenie narzędzia do codziennego rytuału"
+  },
+  "Use with serum or oil rather than on dry skin, patch-test products first, and stop if irritation occurs.": {
+    "en": "Use with serum or oil rather than on dry skin, patch-test products first, and stop if irritation occurs.",
+    "pl": "Używaj z serum lub olejkiem, nie na suchej skórze; najpierw wykonaj próbę uczuleniową i przerwij w razie podrażnienia."
+  },
+  "Centella asiatica is included in the soothing formula": {
+    "en": "Centella asiatica is included in the soothing formula",
+    "pl": "Formuła kojąca zawiera wąkrotę azjatycką"
+  },
+  "Fragrance-free and paraben-free; review the full ingredient list before use": {
+    "en": "Fragrance-free and paraben-free; review the full ingredient list before use",
+    "pl": "Bez substancji zapachowych i parabenów; przed użyciem sprawdź pełny skład"
+  },
+  "Designed for consistent morning and evening use as directed": {
+    "en": "Designed for consistent morning and evening use as directed",
+    "pl": "Przeznaczony do regularnego stosowania rano i wieczorem zgodnie z instrukcją"
+  },
+  "Supports a gentle body-massage ritual": {
+    "en": "Supports a gentle body-massage ritual",
+    "pl": "Uzupełnia delikatny rytuał masażu ciała"
+  },
+  "Adds a dry-brushing massage step before showering": {
+    "en": "Adds a dry-brushing massage step before showering",
+    "pl": "Dodaje etap masażu szczotką na sucho przed prysznicem"
+  },
+  "Exfoliated skin can help body lotion spread more evenly": {
+    "en": "Exfoliated skin can help body lotion spread more evenly",
+    "pl": "Na złuszczonej skórze balsam może rozprowadzać się równomierniej"
+  },
+  "Provides a cooling facial massage experience": {
+    "en": "Provides a cooling facial massage experience",
+    "pl": "Zapewnia chłodzący masaż twarzy"
+  },
+  "Stainless steel can be chilled for a longer cooling massage": {
+    "en": "Stainless steel can be chilled for a longer cooling massage",
+    "pl": "Stal nierdzewną można schłodzić, aby wydłużyć efekt chłodzącego masażu"
+  },
+  "Cooling can feel soothing on warm skin": {
+    "en": "Cooling can feel soothing on warm skin",
+    "pl": "Chłodzenie może koić rozgrzaną skórę"
+  },
+  "Cooling Steel": {
+    "en": "Cooling Steel",
+    "pl": "Chłodząca stal"
+  },
+  "Stainless steel can be chilled before use for a cooling facial massage": {
+    "en": "Stainless steel can be chilled before use for a cooling facial massage",
+    "pl": "Stal nierdzewną można schłodzić przed użyciem, aby uzyskać chłodzący masaż twarzy"
+  },
+  "Five hydrogel masks for a hydrating at-home ritual.": {
+    "en": "Five hydrogel masks for a hydrating at-home ritual.",
+    "pl": "Pięć masek hydrożelowych do nawilżającego rytuału w domu."
+  },
+  "Five individually packed crystal hydrogel masks": {
+    "en": "Five individually packed crystal hydrogel masks",
+    "pl": "Pięć osobno pakowanych krystalicznych masek hydrożelowych"
+  },
+  "30 ml of serum per mask": {
+    "en": "30 ml of serum per mask",
+    "pl": "30 ml serum w każdej masce"
+  },
+  "Hydrogel conforms closely to facial contours and holds the serum against the skin during the recommended wear time.": {
+    "en": "Hydrogel conforms closely to facial contours and holds the serum against the skin during the recommended wear time.",
+    "pl": "Hydrożel dopasowuje się do konturów twarzy i utrzymuje serum przy skórze przez zalecany czas stosowania."
+  },
+  "Five hydrogel masks for a hydrating at-home ritual": {
+    "en": "Five hydrogel masks for a hydrating at-home ritual",
+    "pl": "Pięć masek hydrożelowych do nawilżającego rytuału w domu"
+  },
+  "Applying the crystal hydrogel mask at home": {
+    "en": "Applying the crystal hydrogel mask at home",
+    "pl": "Nakładanie krystalicznej maski hydrożelowej w domu"
+  },
+  "Crystal hydrogel texture with 30 ml of serum per mask": {
+    "en": "Crystal hydrogel texture with 30 ml of serum per mask",
+    "pl": "Krystaliczna konsystencja hydrożelu i 30 ml serum w każdej masce"
+  },
+  "Check on Amazon.com": {
+    "en": "Check on Amazon.com",
+    "pl": "Sprawdź na Amazon.com"
+  },
+  "international store": {
+    "en": "international store",
+    "pl": "sklep zagraniczny"
+  },
   "@id": {
     "en": "@id",
     "pl": "@id"

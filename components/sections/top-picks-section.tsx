@@ -7,6 +7,7 @@ import { getTopPickProducts } from "@/lib/site-data";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent } from "@/lib/i18n/messages";
 import { cn } from "@/lib/utils";
+import { localizeProduct } from "@/lib/product-localization";
 
 type TopPicksSectionProps = {
   className?: string;
@@ -14,7 +15,10 @@ type TopPicksSectionProps = {
 
 export async function TopPicksSection({ className }: TopPicksSectionProps) {
   const locale = await getRequestLocale();
-  const picks = localizeContent(locale, getTopPickProducts());
+  const picks = getTopPickProducts().map((item) => ({
+    ...localizeContent(locale, item),
+    product: localizeProduct(locale, item.product),
+  }));
 
   return (
     <Section id="top-picks" className={cn("[content-visibility:auto] [contain-intrinsic-size:1px_900px]", className)}>
@@ -22,7 +26,7 @@ export async function TopPicksSection({ className }: TopPicksSectionProps) {
         <Heading
           eyebrow="Top Picks"
           title="Most-clicked products this week"
-          description="A focused shortlist for Pinterest readers: high-trust favorites with strong ratings, social proof, and clear routine benefits."
+          description="A focused editorial shortlist with clear routine benefits and marketplace-aware product links."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { LocalizedLink } from "@/components/localized-link";
+import { AffiliateLink } from "@/components/affiliate-link";
 
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
@@ -49,14 +50,12 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
                   <Button asChild size="sm" variant="secondary" className="w-full">
                     <LocalizedLink href={`/favorites/${product.id}`}><T text={"View details"} /></LocalizedLink>
                   </Button>
-                  <a
+                  <AffiliateLink
                     href={getAffiliateRoute(product.id, "related-products")}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
                     className="inline-flex text-xs uppercase tracking-[0.14em] text-text-secondary transition-colors hover:text-accent-gold"
                   >
                     <T text={"Check on Amazon"} />
-                  </a>
+                  </AffiliateLink>
                 </div>
               </div>
             </li>

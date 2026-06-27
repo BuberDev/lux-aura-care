@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { LocalizedLink } from "@/components/localized-link";
 import { notFound } from "next/navigation";
-import { ArrowRight, ExternalLink, Flame, Layers3, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Flame, Layers3 } from "lucide-react";
 
 import { ArticleCard } from "@/components/article-card";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
+import { AffiliateLink } from "@/components/affiliate-link";
 import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +28,7 @@ import { LocalizedDate } from "@/components/localized-date";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeProduct, localizeProducts } from "@/lib/product-localization";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -77,13 +79,15 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   };
 }
 
-function ArticleProductBlock({ productId }: { productId: string }) {
-  const product = getProductById(productId);
+async function ArticleProductBlock({ productId }: { productId: string }) {
+  const locale = await getRequestLocale();
+  const sourceProduct = getProductById(productId);
 
-  if (!product) {
+  if (!sourceProduct) {
     return null;
   }
 
+  const product = localizeProduct(locale, sourceProduct);
   const proof = getProductProof(product.id);
 
   return (
@@ -102,10 +106,6 @@ function ArticleProductBlock({ productId }: { productId: string }) {
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <Badge><T text={product.trustSignal} /></Badge>
-            <span className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-text-secondary">
-              <Star className="size-3.5 fill-accent-gold text-accent-gold" aria-hidden="true" />
-              {proof.rating.toFixed(1)} · <T text={proof.reviews} />
-            </span>
           </div>
 
           <h3 className="font-heading text-2xl leading-tight"><T text={product.name} /></h3>
@@ -119,7 +119,9 @@ function ArticleProductBlock({ productId }: { productId: string }) {
             ))}
           </ul>
 
-          <p className="text-xs uppercase tracking-[0.16em] text-accent-gold"><T text={proof.socialProof} /></p>
+          <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">
+            {locale === "pl" ? "Rekomendacja redakcyjna" : "Editorial recommendation"}
+          </p>
           <CTAButton href={getAffiliateRoute(product.id, "article-product-block")} label="Check on Amazon" />
         </div>
       </div>
@@ -143,7 +145,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     locale,
     getRelatedArticles(article.slug, article.categoryId)
   );
-  const stickyProducts = localizeContent(locale, getProductsByIds([
+  const stickyProducts = localizeProducts(locale, getProductsByIds([
     "silk-sleep-mask",
     "retinol-serum",
     "body-oil",
@@ -337,22 +339,21 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   </p>
                   <ul className="space-y-3">
                     {stickyProducts.slice(0, 3).map((product) => {
-                      const proof = getProductProof(product.id);
-
                       return (
                         <li key={product.id}>
-                          <a
+                          <AffiliateLink
                             href={getAffiliateRoute(product.id, "article-sidebar")}
-                            target="_blank"
-                            rel="noopener noreferrer sponsored"
+                            fallbackLabel={false}
                             className="group block rounded-lg border border-transparent px-2 py-2 text-sm text-text-secondary transition-colors hover:border-border-subtle hover:text-text-primary"
                           >
                             <span className="flex items-center justify-between gap-2">
                               {product.name}
                               <ExternalLink className="size-3.5 opacity-70 transition-opacity group-hover:opacity-100" />
                             </span>
-                            <span className="mt-1 block text-xs uppercase tracking-[0.14em] text-accent-gold">{proof.reviews}</span>
-                          </a>
+                            <span className="mt-1 block text-xs uppercase tracking-[0.14em] text-accent-gold">
+                              {locale === "pl" ? "Zobacz rekomendację" : "View recommendation"}
+                            </span>
+                          </AffiliateLink>
                         </li>
                       );
                     })}

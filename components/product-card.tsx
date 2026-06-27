@@ -36,9 +36,9 @@ export function ProductCard({
   const dynamicCTALabel = generateCTALabel(product, strategy, compact);
 
   return (
-    <Card className="overflow-hidden border-border-subtle bg-surface-subtle transition-colors hover:border-accent-gold/45">
-      <div className={compact ? "grid gap-4 p-4" : "grid gap-5 p-5 md:p-6"}>
-        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+    <Card className="flex flex-col h-full overflow-hidden border-border-subtle bg-surface-subtle transition-colors hover:border-accent-gold/45">
+      <div className={compact ? "flex flex-col flex-1 gap-4 p-4" : "flex flex-col flex-1 gap-5 p-5 md:p-6"}>
+        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shrink-0">
           <Image
             src={product.image}
             alt={product.imageAlt}
@@ -48,8 +48,8 @@ export function ProductCard({
           />
         </div>
 
-        <div className="space-y-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="space-y-3 flex-1 flex flex-col">
+          <div className="flex flex-wrap items-center justify-between gap-2 shrink-0">
             <Badge><T text={featuredBadge ?? product.trustSignal} /></Badge>
             <span className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.12em] text-text-secondary">
               <Star className="size-3.5 fill-accent-gold text-accent-gold" aria-hidden="true" />
@@ -72,7 +72,7 @@ export function ProductCard({
             ))}
           </ul>
 
-          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle pt-3">
+          <div className="mt-auto pt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle shrink-0">
             <span className="text-xs uppercase tracking-[0.14em] text-text-secondary"><T text={proof.reviews} /></span>
             <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.14em] text-accent-gold">
               <TrendingUp className="size-3.5" aria-hidden="true" />

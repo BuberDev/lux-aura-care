@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 import { T } from "@/components/translated-text";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { localizeProduct } from "@/lib/product-localization";
 import { getRequestLocale } from "@/lib/i18n/request";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -93,7 +94,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   ]);
 
   const categoryPicks = selectedCategory
-    ? localizeContent(locale, getTopPicksByCategory(selectedCategory.id))
+    ? getTopPicksByCategory(selectedCategory.id).map((item) => ({
+        ...localizeContent(locale, item),
+        product: localizeProduct(locale, item.product),
+      }))
     : [];
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -149,8 +153,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         <Container>
           <Heading
             eyebrow="Lux Aura Journal"
-            title="Conversion-ready ritual guides crafted for Pinterest readers"
-            description="Fast-scannable articles with clear transformation hooks, trust signals, and soft product CTAs."
+            title="Practical ritual guides for thoughtful product choices"
+            description="Fast-scannable editorial articles with clear steps, useful context, and transparent product links."
           />
 
           <div className="mt-8 flex flex-wrap gap-3">

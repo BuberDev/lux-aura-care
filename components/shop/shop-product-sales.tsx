@@ -5,18 +5,12 @@ import Image from "next/image";
 import { 
   Check, 
   X, 
-  Star, 
   Truck, 
   ShieldCheck, 
   RotateCcw, 
   ChevronDown, 
-  Eye,
   Clock,
-  Flame,
-  Award,
-  Sparkles, 
-  ThumbsUp, 
-  Heart,
+  Sparkles,
   ChevronRight,
   ChevronLeft,
   ZoomIn
@@ -214,295 +208,6 @@ function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryPro
   );
 }
 
-// Sourced Authentic Reviews customized by Product ID
-const reviewsData: Record<string, {
-  rating: number;
-  reviewsCount: number;
-  breakdown: { stars: number; percentage: number }[];
-  items: {
-    author: string;
-    location: string;
-    rating: number;
-    title: string;
-    content: string;
-    date: string;
-    verified: boolean;
-    helpfulCount: number;
-  }[];
-}> = {
-  "dermaplaning-razor-kit": {
-    rating: 4.8,
-    reviewsCount: 2847,
-    breakdown: [
-      { stars: 5, percentage: 88 },
-      { stars: 4, percentage: 8 },
-      { stars: 3, percentage: 3 },
-      { stars: 2, percentage: 1 },
-      { stars: 1, percentage: 0 },
-    ],
-    items: [
-      {
-        author: "Sarah M.",
-        location: "Munich, Germany",
-        rating: 5,
-        title: "Absolute game-changer for women 40+",
-        content: "I was extremely nervous that my facial hair would grow back thicker, but that is a complete myth! My face is incredibly smooth, peach fuzz is gone, and my expensive anti-aging serums finally absorb into my skin instead of sitting on top. My makeup glides on like liquid silk. The precision guard is so safe, no cuts or irritation. 10/10!",
-        date: "May 12, 2026",
-        verified: true,
-        helpfulCount: 42,
-      },
-      {
-        author: "Helena K.",
-        location: "Vienna, Austria",
-        rating: 5,
-        title: "My skin has never felt this soft!",
-        content: "As someone in her late 40s, my skin started looking dull and rough. After my very first Sunday ritual using this razor, the amount of dead skin and peach fuzz that came off was mind-blowing. The Swedish steel is sharp but feels so gentle with the safety guard. Highly recommend following up immediately with Hyaluronic Acid - the glow is unreal.",
-        date: "April 29, 2026",
-        verified: true,
-        helpfulCount: 29,
-      },
-      {
-        author: "Emma L.",
-        location: "Paris, France",
-        rating: 4,
-        title: "Excellent quality, very safe",
-        content: "These are miles ahead of the cheap plastic razors you buy at the local pharmacy. The blade has a very solid weight and the micro-guards make it virtually impossible to cut yourself. The only reason I gave 4 stars instead of 5 is that I wish the handle was slightly longer, but overall, it's a stellar addition to my weekly self-care routine.",
-        date: "May 03, 2026",
-        verified: true,
-        helpfulCount: 18,
-      },
-      {
-        author: "Katarzyna W.",
-        location: "Warsaw, Poland",
-        rating: 5,
-        title: "Flawless foundation application!",
-        content: "I've struggled with my foundation looking cakey around my jawline and cheeks. Turns out, it was all due to fine peach fuzz. Using this razor once every two weeks has completely solved the issue. Foundation blends like a dream. Highly, highly recommend Lux Aura Care!",
-        date: "April 15, 2026",
-        verified: true,
-        helpfulCount: 35,
-      }
-    ]
-  },
-  "clear-skin-patches": {
-    rating: 4.7,
-    reviewsCount: 1624,
-    breakdown: [
-      { stars: 5, percentage: 84 },
-      { stars: 4, percentage: 11 },
-      { stars: 3, percentage: 3 },
-      { stars: 2, percentage: 2 },
-      { stars: 1, percentage: 0 },
-    ],
-    items: [
-      {
-        author: "Julia S.",
-        location: "Berlin, Germany",
-        rating: 5,
-        title: "Literally draws out all impurities overnight",
-        content: "These hydrocolloid patches are pure magic! I put one on a swelling whitehead before going to bed, and in the morning, the patch had turned white and the blemish was completely flat and calm. They are so thin and invisible that I actually forgot I had one on and wore it during a Zoom call - nobody noticed!",
-        date: "May 14, 2026",
-        verified: true,
-        helpfulCount: 51,
-      },
-      {
-        author: "Chloe D.",
-        location: "Lyon, France",
-        rating: 5,
-        title: "Saves my skin from picking!",
-        content: "My worst habit is picking at my skin when I get stressed. These patches are a lifesaver because they act as a physical shield. Underneath, the medical-grade hydrocolloid heals the spot twice as fast. They don't dry out mature skin like salicylic acid creams do. Brilliant product.",
-        date: "May 08, 2026",
-        verified: true,
-        helpfulCount: 37,
-      },
-      {
-        author: "Anna B.",
-        location: "Krakow, Poland",
-        rating: 4,
-        title: "Best blemish patches I've tried",
-        content: "Very high quality. They stick perfectly and don't peel off even if you toss and turn in your sleep. Sucks out gunk effectively. Great size options. 4 stars because I wish there were more than 24 patches in a pack, but the quality justifies the price.",
-        date: "April 20, 2026",
-        verified: true,
-        helpfulCount: 22,
-      }
-    ]
-  },
-  "skin-ritual-bundle": {
-    rating: 4.9,
-    reviewsCount: 836,
-    breakdown: [
-      { stars: 5, percentage: 91 },
-      { stars: 4, percentage: 7 },
-      { stars: 3, percentage: 2 },
-      { stars: 2, percentage: 0 },
-      { stars: 1, percentage: 0 },
-    ],
-    items: [
-      {
-        author: "Brigitte R.",
-        location: "Vienna, Austria",
-        rating: 5,
-        title: "Perfect Sunday evening ritual",
-        content: "Buying this bundle was the best decision! I use the razor every other Sunday to exfoliate and smooth my skin, and the patches are my secret weapon whenever a blemish pops up. Saving €14 compared to buying them separately is amazing. Elegant packaging too - feels like a high-end spa gift to myself.",
-        date: "May 10, 2026",
-        verified: true,
-        helpfulCount: 64,
-      },
-      {
-        author: "Marta S.",
-        location: "Wroclaw, Poland",
-        rating: 5,
-        title: "Visible difference in skin texture in 3 weeks",
-        content: "I've been using this weekly ritual for three weeks now and my husband actually commented on how glowing my skin looks. The combination of dermaplaning and overnight patch protection is perfect for women over 40. No redness, no downtime, just smooth, youthful skin. Will subscribe!",
-        date: "May 01, 2026",
-        verified: true,
-        helpfulCount: 48,
-      },
-      {
-        author: "Sophia G.",
-        location: "Milan, Italy",
-        rating: 5,
-        title: "Luxury self-care in a box",
-        content: "Beautifully presented, very effective. The razor blade quality is phenomenal and the patches work like absolute magnets for impurities. It's rare to find products that deliver exactly what they promise without irritating sensitive skin. Highly recommended!",
-        date: "April 18, 2026",
-        verified: true,
-        helpfulCount: 33,
-      }
-    ]
-  },
-  "gua-sha-jade-roller-set": {
-    rating: 4.8,
-    reviewsCount: 2147,
-    breakdown: [
-      { stars: 5, percentage: 89 },
-      { stars: 4, percentage: 8 },
-      { stars: 3, percentage: 2 },
-      { stars: 2, percentage: 1 },
-      { stars: 1, percentage: 0 },
-    ],
-    items: [
-      {
-        author: "Isabella M.",
-        location: "Vienna, Austria",
-        rating: 5,
-        title: "Exceptional spa-like quality!",
-        content: "This rose quartz set is absolutely gorgeous! The stone is heavy, cooling, and beautifully polished with zero rough edges. The roller is completely silent and smooth due to the noiseless silicone inserts. I use it every morning straight out of the fridge, and it instantly de-puffs my eyes and leaves my skin feeling sculpted and awake.",
-        date: "May 14, 2026",
-        verified: true,
-        helpfulCount: 84,
-      },
-      {
-        author: "Chloe D.",
-        location: "Paris, France",
-        rating: 5,
-        title: "Highly relaxing and effective",
-        content: "I've integrated this set into my nightly skincare routine and the results are incredible. It helps my face oils absorb beautifully and has visibly smoothed out fine tension lines around my forehead. Massaging my jawline with the Gua Sha is pure heaven after a long day of work. Beautifully packaged too!",
-        date: "May 08, 2026",
-        verified: true,
-        helpfulCount: 62,
-      },
-      {
-        author: "Karolina W.",
-        location: "Warsaw, Poland",
-        rating: 5,
-        title: "100% authentic natural stone",
-        content: "You can feel the premium quality immediately. It has a heavy, cold feel that synthetic stones just don't have, and the natural rose patterns are beautiful. It is an amazing value for a double set and has become my favorite self-care ritual. Highly recommended for mature skin!",
-        date: "April 29, 2026",
-        verified: true,
-        helpfulCount: 51,
-      }
-    ]
-  }
-};
-
-const compareMatrix = [
-  {
-    feature: "Blade Steel / Film Tech",
-    premium: "Premium Swedish Sandvik Stainless Steel / Grade-A Medical Hydrocolloid",
-    cheap: "Cheap carbon steel (rusts fast) / Low-grade industrial adhesive patches",
-    icon: Sparkles
-  },
-  {
-    feature: "Skin Safety Guards",
-    premium: "Ultra-fine precision micro-guards (100% cut protection for 40+ skin)",
-    cheap: "No guards or raw plastic edges (prone to micro-tears and scraping)",
-    icon: ShieldCheck
-  },
-  {
-    feature: "Skin Hydration & Softness",
-    premium: "Promotes natural lipid barrier repair & 3x deeper serum absorption",
-    cheap: "Dries skin out, leaves sticky residue or chemical skin irritation",
-    icon: Heart
-  },
-  {
-    feature: "Long-term Value",
-    premium: "6 weeks of clinic-quality glow rituals (reusable handle + premium items)",
-    cheap: "Dull after 1 use, single-use waste, frequent expensive repurchases",
-    icon: Award
-  }
-];
-
-const beforeAfterData: Record<string, {
-  before: string[];
-  after: string[];
-}> = {
-  "dermaplaning-razor-kit": {
-    before: [
-      "Fine peach fuzz acts like a wall, blocking serums.",
-      "Dead epidermal cells accumulate, causing a dull appearance.",
-      "Makeup settles into fine lines, appearing cakey and dry.",
-      "Skincare products absorb poorly, wasting up to 70% of product."
-    ],
-    after: [
-      "All peach fuzz is swept away instantly in 2 minutes.",
-      "Smooth, newly-exfoliated skin barrier reveals natural glow.",
-      "Foundation glides on seamlessly like liquid satin.",
-      "Expensive anti-aging serums absorb up to 3x deeper."
-    ]
-  },
-  "clear-skin-patches": {
-    before: [
-      "Blemish is red, inflamed, and painful.",
-      "Urge to pick causes tearing and dark spots.",
-      "Blemish takes 7-10 days to heal naturally.",
-      "Requires heavy makeup concealer that clogs pores further."
-    ],
-    after: [
-      "Impurity drawn out overnight without popping.",
-      "Physical barrier blocks fingernails and bacteria 100%.",
-      "Skin regenerates twice as fast in optimal moist environment.",
-      "Flat, calm surface that easily hides under light makeup."
-    ]
-  },
-  "skin-ritual-bundle": {
-    before: [
-      "Dull skin texture with visible facial peach fuzz.",
-      "Blemishes look angry and slow down renewal cycles.",
-      "Active cosmetic ingredients fail to absorb into skin.",
-      "Skincare steps feel like high-friction tasks without order."
-    ],
-    after: [
-      "Sunday dermaplaning delivers instant clinic-smooth skin.",
-      "Overnight hydrocolloid shield controls blemishes instantly.",
-      "A complete cohesive weekly ritual that is extremely relaxing.",
-      "Restored skin glow, seamless makeup, and zero irritation."
-    ]
-  },
-  "gua-sha-jade-roller-set": {
-    before: [
-      "Morning facial puffiness and fluid retention under the eyes.",
-      "Tension and tightness built up in jawline and brow muscles.",
-      "Poor blood micro-circulation leads to a pale, tired complexion.",
-      "Serums sit on the skin's surface without absorbing deeply."
-    ],
-    after: [
-      "Instant lymphatic drainage sweeps away morning puffiness.",
-      "Deeply relaxed facial muscles and a visibly sculpted jawline.",
-      "Boosted blood circulation reveals a healthy, rosy skin flush.",
-      "Massage motion pushes nourishing active ingredients 3x deeper."
-    ]
-  }
-};
-
 const detailedScienceBenefits: Record<string, {
   title: string;
   desc: string;
@@ -516,19 +221,19 @@ const detailedScienceBenefits: Record<string, {
     },
     {
       title: "Micro-Safety Guards",
-      desc: "Each blade is wrapped in ultra-fine, microscopic safety guards to protect the skin barrier. 100% painless, safe, and specifically optimized for mature and thin skin.",
+      desc: "Fine safety guards help make the blade easier to control. Follow the instructions, use light pressure, and stop if irritation occurs.",
       badge: "Derm Guard"
     },
     {
       title: "3x Serum Infusion",
-      desc: "By safely scraping away the dead stratum corneum and peach fuzz, you lift the 'skincare wall'. Serums and oils absorb up to 300% deeper into the skin layers.",
+      desc: "Removing surface buildup and peach fuzz can leave skin feeling smoother and help skincare spread more evenly.",
       badge: "Max Absorption"
     }
   ],
   "clear-skin-patches": [
     {
       title: "Osmotic Fluid Pull",
-      desc: "Medical-grade hydrocolloid acts like an osmotic pump, gently vacuuming out pus, sebum, and impurity fluids from deep inside the blemish without stripping.",
+      desc: "Hydrocolloid material covers the blemish and absorbs surface fluid while helping discourage touching and picking.",
       badge: "Impurity Vacuum"
     },
     {
@@ -562,7 +267,7 @@ const detailedScienceBenefits: Record<string, {
   "gua-sha-jade-roller-set": [
     {
       title: "Lymphatic Drainage",
-      desc: "The scraping motion of the Rose Quartz Gua Sha stimulates the movement of lymphatic fluid, effectively draining accumulated fluids and waste to reduce puffiness.",
+      desc: "Gentle massage can provide a cooling, soothing ritual and may temporarily improve the appearance of puffiness.",
       badge: "De-Puff Tech"
     },
     {
@@ -583,47 +288,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
   const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
-  const reviews = localizeContent(
-    locale,
-    reviewsData[product.id] || reviewsData["dermaplaning-razor-kit"]
-  );
-  const beforeAfter = localizeContent(
-    locale,
-    beforeAfterData[product.id] || beforeAfterData["dermaplaning-razor-kit"]
-  );
+
   const scienceBenefits = localizeContent(
     locale,
     detailedScienceBenefits[product.id] || detailedScienceBenefits["dermaplaning-razor-kit"]
   );
-  const localizedCompareMatrix = localizeContent(locale, compareMatrix);
 
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
-  const [selectedReviewStarFilter, setSelectedReviewStarFilter] = useState<number | null>(null);
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
-
-  // --- Active viewers: deterministic per-product + time-of-day weight ---
-  const baseViewers = Math.max(8, Math.round(Math.log10(Number(product.reviews.replace(/\s/g, "")) + 1) * 6));
-  const hourWeight = (() => {
-    const h = new Date().getHours();
-    if (h >= 18 && h < 23) return 1.4; // evening peak
-    if (h >= 10 && h < 18) return 1.1; // daytime
-    return 0.7;                         // night
-  })();
-  const [viewersCount, setViewersCount] = useState(() => Math.round(baseViewers * hourWeight));
-
-  // Drift ±1 every 8 s — small, calm, realistic
-  useEffect(() => {
-    const id = setInterval(() => {
-      const peak = Math.round(baseViewers * hourWeight);
-      setViewersCount(prev => {
-        const next = prev + (Math.random() < 0.5 ? 1 : -1);
-        return Math.max(Math.round(peak * 0.7), Math.min(Math.round(peak * 1.4), next));
-      });
-    }, 8000);
-    return () => clearInterval(id);
-  }, [baseViewers, hourWeight]);
 
   // --- Stock: fetch from Shopify Storefront API via our proxy ---
   const [stockQuantity, setStockQuantity] = useState<number | null>(null);
@@ -711,7 +385,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     };
   }, [isLightboxOpen]);
 
-  const reviewsSectionRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
 
   // Gallery Variations (uses real multi-images if defined, otherwise falls back to simulated filters)
@@ -767,25 +440,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isLightboxOpen, galleryImages.length]);
 
-  const scrollToReviews = () => {
-    reviewsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const filteredReviews = selectedReviewStarFilter 
-    ? reviews.items.filter(item => item.rating === selectedReviewStarFilter)
-    : reviews.items;
 
   return (
     <div className="min-h-screen overflow-x-clip bg-background-primary font-sans selection:bg-accent-gold/20 selection:text-text-primary">
       
-      {/* 1. URGENCY TOP ANNOUNCEMENT BANNER */}
+      {/* Store transparency banner */}
       <div className="bg-accent-gold py-2 px-4 text-center select-none text-[11px] md:text-xs font-bold text-black uppercase tracking-[0.2em] relative overflow-hidden z-30">
-        <div className="flex items-center justify-center gap-6 animate-pulse">
-          <span><T text={"✨ FREE EU SHIPPING ON ORDERS OVER €30"} /></span>
+        <div className="flex items-center justify-center gap-6">
+          <span><T text={"Product details and total shown before checkout"} /></span>
           <span className="hidden md:inline">•</span>
           <span className="hidden md:inline"><T text={"🔒 SECURE CHECKOUT"} /></span>
-          <span className="hidden md:inline">•</span>
-          <span><T text={"💎 30-DAY RISK-FREE GLOW GUARANTEE"} /></span>
         </div>
       </div>
 
@@ -886,13 +550,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {/* RIGHT: Conversion Buy Box */}
             <div className="lg:col-span-5 space-y-6 bg-surface-subtle border border-border-subtle rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative">
               <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-red-950/40 text-red-400 border border-red-900/30 px-3 py-1 rounded-full text-xs font-semibold animate-pulse">
-                <Flame className="size-3.5 fill-red-400" />
-                <span><T text={"Trending Pick"} /></span>
+                <Sparkles className="size-3.5" />
+                <span><T text={"Featured product"} /></span>
               </div>
 
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] mb-2 font-bold" style={{ color: "var(--accent-gold)" }}>
-                  {product.category === "bundle" ? "⭐ Best Value Bundle" : "✨ Skin Ritual Essential"}
+                  {product.category === "bundle" ? "Bundle" : "Skin ritual product"}
                 </p>
                 <h1
                   className="text-3xl md:text-4xl font-semibold text-text-primary mb-3"
@@ -905,27 +569,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </p>
               </div>
 
-              {/* Verified Rating click-to-scroll */}
-              <div 
-                onClick={scrollToReviews} 
-                className="flex items-center gap-3 cursor-pointer group bg-surface-subtle hover:bg-surface-raised p-2 rounded-xl transition-all duration-300 inline-flex"
-              >
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="size-4 group-hover:scale-110 transition-transform duration-300"
-                      style={{
-                        fill: i < Math.floor(product.rating) ? "var(--accent-gold)" : "transparent",
-                        color: "var(--accent-gold)",
-                      }}
-                    />
-                  ))}
-                </div>
-                <span className="text-sm font-semibold text-text-primary">{product.rating}</span>
-                <span className="text-xs border-b border-text-secondary group-hover:text-text-primary group-hover:border-border-strong transition-colors" style={{ color: "var(--text-secondary)" }}>
-                  ({reviews.reviewsCount} <T text={"verified reviews)"} />
-                </span>
+              <div className="inline-flex items-center gap-2 rounded-xl border border-border-subtle bg-surface-subtle p-3 text-xs text-text-secondary">
+                <ShieldCheck className="size-4 text-accent-gold" aria-hidden="true" />
+                <span><T text={"Product specifications are shown for this exact item"} /></span>
               </div>
 
               {/* Price Block & Save Indicator */}
@@ -948,25 +594,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
               </div>
 
-              {/* SOCIAL PROOF & SCARCITY PANEL */}
+              {/* Real availability panel */}
               <div className="bg-surface-subtle border border-border-subtle rounded-2xl p-4 space-y-3.5 text-xs">
 
-                {/* 1. Active viewers — per-product time-of-day estimate */}
-                <div className="flex items-center justify-between text-text-primary/95">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex size-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75" />
-                      <span className="relative inline-flex rounded-full size-2 bg-accent-gold" />
-                    </span>
-                    <span className="font-medium text-text-secondary"><T text={"Customers browsing"} /></span>
-                  </div>
-                  <div className="flex items-center gap-1 font-bold text-accent-gold">
-                    <Eye className="size-3.5" />
-                    <span>{viewersCount} <T text={"active viewers"} /></span>
-                  </div>
-                </div>
-
-                {/* 2. Stock bar — real Shopify data, hidden while loading or when unavailable */}
+                {/* Stock bar — real Shopify data, hidden while loading or when unavailable */}
                 {!stockLoading && stockQuantity !== null && (
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-text-secondary font-medium">
@@ -984,7 +615,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                 )}
 
-                {/* 3. Flash sale countdown — real end date, disappears when expired */}
+                {/* Flash sale countdown — real end date, disappears when expired */}
                 {saleActive && timeLeft && (
                   <div className="flex items-center justify-between text-text-secondary border-t border-border-subtle pt-2">
                     <div className="flex items-center gap-1.5">
@@ -1024,7 +655,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
                 {/* Secure payments strip */}
                 <div className="flex items-center justify-center gap-2 pt-1">
-                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-widest"><T text={"Guaranteed Safe Checkout"} /></span>
+                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-widest"><T text={"Checkout processed securely"} /></span>
                   <div className="h-px bg-surface-hover flex-1" />
                   <span className="text-[10px] text-text-primary/40 font-bold"><T text={"VISA • MC • AMEX • APPLE PAY"} /></span>
                 </div>
@@ -1040,12 +671,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 ))}
               </ul>
 
-              {/* Delivery and Guarantee Strip */}
+              {/* Checkout information */}
               <div className="grid grid-cols-3 gap-3 border-t border-border-subtle pt-4">
                 {[
-                  { icon: Truck, text: "Free EU Delivery", sub: "Orders €30+" },
-                  { icon: ShieldCheck, text: "30-Day Guarantee", sub: "100% Risk-Free" },
-                  { icon: RotateCcw, text: "Hassle-Free Returns", sub: "Easy refund support" },
+                  { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
+                  { icon: ShieldCheck, text: "Secure checkout", sub: "Processed by Shopify" },
+                  { icon: RotateCcw, text: "Return terms", sub: "Review before purchase" },
                 ].map(({ icon: Icon, text, sub }) => (
                   <div key={text} className="flex flex-col items-center gap-1 text-center rounded-xl border border-border-subtle bg-surface-subtle p-3">
                     <Icon className="size-4" style={{ color: "var(--accent-gold)" }} />
@@ -1061,128 +692,21 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </Container>
       </section>
 
-      {/* 3. SCIENCE & TRUST BADGE STRIP */}
+      {/* Product information strip */}
       <section className="border-t border-b border-border-subtle py-8 bg-surface-subtle">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { label: "ESTHETICIAN APPROVED", value: "Recommended for 40+" },
-              { label: "SURGICAL NORDIC STEEL", value: "Swedish Sandvik Blades" },
-              { label: "100% VEGAN & CLEAN", value: "Skin barrier sensitive" },
-              { label: "ZERO IRRITATION", value: "Micro-safety guards built" }
+              { label: "Exact item", value: "Product-specific gallery" },
+              { label: "Specifications", value: "Shown in the description" },
+              { label: "Usage", value: "Step-by-step guidance" },
+              { label: "Questions", value: "Contact support before ordering" }
             ].map(({ label, value }) => (
               <div key={label} className="space-y-1">
                 <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={label} /></p>
                 <p className="text-xs text-text-primary font-medium"><T text={value} /></p>
               </div>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 4. VISUAL BEFORE & AFTER SECTION */}
-      <section className="py-16 px-4 border-b border-border-subtle relative overflow-hidden">
-        <div className="absolute top-[20%] right-[-10%] size-80 rounded-full bg-accent-gold/3 blur-[100px] pointer-events-none" />
-
-        <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"VISUAL RESULTS PROVEN"} /></span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"See The Glow Transformation"} />
-            </h2>
-            <p className="text-sm md:text-base text-text-secondary">
-              <T text={"Here is how your weekly ritual actively targets dead cell barriers, hair meshe, and unexpected blemishes to reveal glass skin."} />
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            {/* Before Box */}
-            <div className="border border-red-950/20 bg-red-950/[0.03] rounded-2xl p-6 md:p-8 space-y-4">
-              <div className="flex items-center justify-between border-b border-red-900/10 pb-3">
-                <span className="text-sm font-bold uppercase tracking-wider text-red-400"><T text={"Standard / Before Ritual"} /></span>
-                <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest"><T text={"Dull State"} /></span>
-              </div>
-              <ul className="space-y-3.5">
-                {beforeAfter.before.map(step => (
-                  <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-text-primary/70">
-                    <X className="size-4 text-red-500 shrink-0 mt-0.5" />
-                    <span><T text={step} /></span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* After Box */}
-            <div className="border border-accent-gold/20 bg-accent-gold/[0.03] rounded-2xl p-6 md:p-8 space-y-4 shadow-[0_0_30px_rgba(201,169,110,0.05)] relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-accent-gold/10 text-accent-gold border-b border-l border-accent-gold/20 px-3 py-1 rounded-bl-xl text-[10px] font-bold tracking-widest flex items-center gap-1 uppercase">
-                <Sparkles className="size-3" />
-                <span><T text={"Glow Effect"} /></span>
-              </div>
-              
-              <div className="flex items-center justify-between border-b border-accent-gold/10 pb-3">
-                <span className="text-sm font-bold uppercase tracking-wider text-accent-gold"><T text={"With Lux Aura Care"} /></span>
-                <span className="bg-accent-gold/15 text-accent-gold border border-accent-gold/20 px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest"><T text={"Radiant Skin"} /></span>
-              </div>
-              <ul className="space-y-3.5">
-                {beforeAfter.after.map(step => (
-                  <li key={step} className="flex items-start gap-3 text-xs md:text-sm text-text-primary font-semibold">
-                    <Check className="size-4 text-accent-gold shrink-0 mt-0.5" />
-                    <span><T text={step} /></span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 5. LUX AURA CARE VS. TRADITIONAL BRANDS MATRIX */}
-      <section className="py-16 px-4 border-b border-border-subtle relative bg-surface-subtle">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"AWARENESS OF EXCELLENCE"} /></span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"How We Benchmark Against Generics"} />
-            </h2>
-            <p className="text-sm md:text-base text-text-secondary">
-              <T text={"Not all skincare tools are created equal. Do not compromise sensitive skin with cheap disposable pharmacy options."} />
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-border-subtle shadow-2xl">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-surface-subtle border-b border-border-subtle text-xs md:text-sm uppercase tracking-wider font-semibold text-text-primary">
-                    <th className="p-4 md:p-5"><T text={"Ritual Standard"} /></th>
-                    <th className="p-4 md:p-5 text-accent-gold bg-accent-gold/5 font-extrabold text-center"><T text={"Lux Aura Care"} /></th>
-                    <th className="p-4 md:p-5 text-text-secondary text-center"><T text={"Standard Brands"} /></th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border-subtle text-xs md:text-sm text-text-primary/80">
-                  {localizedCompareMatrix.map(({ feature, premium, cheap, icon: Icon }) => (
-                    <tr key={feature} className="hover:bg-surface-subtle transition-colors">
-                      <td className="p-4 md:p-5 font-semibold text-text-primary flex items-center gap-2">
-                        <Icon className="size-4 text-accent-gold shrink-0" />
-                        <span><T text={feature} /></span>
-                      </td>
-                      <td className="p-4 md:p-5 bg-accent-gold/[0.02] font-semibold border-l border-r border-border-subtle text-center">
-                        <div className="flex flex-col items-center gap-1 text-text-primary">
-                          <Check className="size-5 text-accent-gold" />
-                          <span className="text-[10px] md:text-xs text-accent-gold/90 font-medium leading-tight"><T text={premium} /></span>
-                        </div>
-                      </td>
-                      <td className="p-4 md:p-5 text-center text-text-secondary">
-                        <div className="flex flex-col items-center gap-1">
-                          <X className="size-4 text-text-primary/30" />
-                          <span className="text-[10px] md:text-xs leading-tight"><T text={cheap} /></span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
         </Container>
       </section>
@@ -1271,147 +795,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </Container>
       </section>
 
-      {/* 8. AMAZON-STYLE CUSTOMER REVIEWS BREAKDOWN & REVIEWS */}
-      <section ref={reviewsSectionRef} className="py-16 px-4 border-b border-border-subtle relative overflow-hidden">
-        <div className="absolute top-[20%] left-[-10%] size-80 rounded-full bg-accent-gold/4 blur-[100px] pointer-events-none" />
-
-        <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"AUTHENTIC PROOF"} /></span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"Real Customer Verified Experiences"} />
-            </h2>
-            <p className="text-sm md:text-base text-text-secondary">
-              <T text={"We source real reviews from global product bestsellers. Here is what women cross Europe are sharing."} />
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-12 items-start">
-            
-            {/* Scorecard (Left - 5 columns) */}
-            <div className="lg:col-span-4 bg-surface-subtle border border-border-subtle rounded-2xl p-6 space-y-4">
-              <div className="text-center space-y-1">
-                <p className="text-5xl font-extrabold text-text-primary">{reviews.rating}</p>
-                <div className="flex justify-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="size-5"
-                      style={{
-                        fill: i < Math.floor(reviews.rating) ? "var(--accent-gold)" : "transparent",
-                        color: "var(--accent-gold)",
-                      }}
-                    />
-                  ))}
-                </div>
-                <p className="text-xs text-text-secondary">{reviews.reviewsCount} <T text={"Global Verified Ratings"} /></p>
-              </div>
-
-              {/* Star Distribution Breakdown */}
-              <div className="space-y-2.5 pt-4 border-t border-border-subtle text-xs">
-                {reviews.breakdown.map(({ stars, percentage }) => (
-                  <button
-                    key={stars}
-                    onClick={() => {
-                      setSelectedReviewStarFilter(prev => prev === stars ? null : stars);
-                    }}
-                    className={`w-full flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors group text-left ${
-                      selectedReviewStarFilter === stars ? "text-text-primary font-bold" : ""
-                    }`}
-                  >
-                    <span className="w-10 text-right group-hover:underline">{stars} <T text={"star"} /></span>
-                    <div className="h-2.5 flex-1 bg-surface-hover rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-500 ${
-                          selectedReviewStarFilter === stars ? "bg-accent-gold" : "bg-accent-gold/60 group-hover:bg-accent-gold"
-                        }`}
-                        style={{ width: `${percentage}%` }}
-                      />
-                    </div>
-                    <span className="w-8 text-right">{percentage}%</span>
-                  </button>
-                ))}
-              </div>
-
-              {selectedReviewStarFilter && (
-                <button
-                  onClick={() => setSelectedReviewStarFilter(null)}
-                  className="w-full text-center text-xs text-accent-gold hover:underline font-bold mt-2"
-                >
-                  <T text={"Clear Star Filter"} />
-                </button>
-              )}
-            </div>
-
-            {/* Individual Reviews list (Right - 8 columns) */}
-            <div className="lg:col-span-8 space-y-5">
-              <div className="flex justify-between items-center text-xs text-text-secondary border-b border-border-subtle pb-3">
-                <span><T text={"Showing"} /> {filteredReviews.length} <T text={"of"} /> {reviews.items.length} <T text={"featured comments"} /></span>
-                <span className="flex items-center gap-1 font-bold text-accent-gold">
-                  <ShieldCheck className="size-3.5" /> <T text={"100% Authentic Verified Buyers"} />
-                </span>
-              </div>
-
-              {filteredReviews.length === 0 ? (
-                <div className="text-center py-8 border border-border-subtle rounded-2xl bg-surface-subtle">
-                  <p className="text-text-secondary text-sm"><T text={"No reviews found for this star selection."} /></p>
-                  <button 
-                    onClick={() => setSelectedReviewStarFilter(null)} 
-                    className="text-xs text-accent-gold hover:underline font-bold mt-2"
-                  >
-                    <T text={"View all reviews"} />
-                  </button>
-                </div>
-              ) : (
-                filteredReviews.map((item) => (
-                  <div key={item.author} className="border border-border-subtle bg-surface-subtle rounded-2xl p-5 md:p-6 space-y-3.5 hover:border-border-default transition-all duration-300">
-                    <div className="flex flex-wrap justify-between items-start gap-2">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-text-primary"><T text={item.author} /></span>
-                          <span className="text-[10px] text-accent-gold/90 font-extrabold uppercase bg-accent-gold/10 px-2 py-0.5 rounded border border-accent-gold/20 flex items-center gap-1">
-                            <ShieldCheck className="size-3" /> <T text={"Verified Buyer"} />
-                          </span>
-                        </div>
-                        <p className="text-[10px] text-text-secondary"><T text={item.location} /> <T text={"• Reviewed on"} /> <T text={item.date} /></p>
-                      </div>
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="size-3.5"
-                            style={{
-                              fill: i < item.rating ? "var(--accent-gold)" : "transparent",
-                              color: "var(--accent-gold)",
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <p className="text-sm md:text-base font-bold text-text-primary"><T text={item.title} /></p>
-                      <p className="text-xs md:text-sm leading-relaxed text-text-secondary">
-                        &quot;<T text={item.content} />&quot;
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4 text-[10px] md:text-xs text-text-secondary border-t border-border-subtle pt-3">
-                      <span><T text={"Was this review helpful?"} /></span>
-                      <button className="flex items-center gap-1 hover:text-text-primary transition-colors bg-surface-raised hover:bg-surface-raised px-2.5 py-1 rounded-full border border-border-subtle">
-                        <ThumbsUp className="size-3" />
-                        <span><T text={"Helpful ("} />{item.helpfulCount})</span>
-                      </button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-          </div>
-        </Container>
-      </section>
-
       {/* 9. FAQ ACCORDION SECTION */}
       <section className="py-16 px-4 border-b border-border-subtle">
         <Container>
@@ -1455,32 +838,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </Container>
       </section>
 
-      {/* 10. RISK-FREE "GLOW GUARANTEE" STAMP BANNER */}
-      <section className="py-16 px-4 bg-surface-subtle">
-        <Container>
-          <div className="max-w-4xl mx-auto rounded-3xl border border-accent-gold/20 bg-accent-gold/[0.02] p-8 md:p-12 shadow-[0_0_50px_rgba(201,169,110,0.05)] relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
-            
-            {/* Guarantee Circular Gold Badge Graphic */}
-            <div className="theme-on-image relative shrink-0 size-32 md:size-40 border-4 border-double border-accent-gold rounded-full flex flex-col items-center justify-center text-center p-3 rotate-[-5deg] select-none bg-black/60 shadow-2xl">
-              <span className="text-[9px] font-extrabold tracking-widest text-accent-gold uppercase"><T text={"GLOW RITUAL"} /></span>
-              <span className="text-lg md:text-xl font-black text-text-primary font-serif leading-none py-1"><T text={"30-DAY"} /></span>
-              <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase leading-none"><T text={"RISK FREE"} /></span>
-              <span className="text-[8px] text-text-primary/50 pt-1"><T text={"GUARANTEE"} /></span>
-            </div>
-
-            <div className="space-y-4 text-center md:text-left flex-1">
-              <span className="text-xs font-extrabold tracking-[0.25em]" style={{ color: "var(--accent-gold)" }}><T text={"ZERO HASSLE • ZERO ANXIETY"} /></span>
-              <h2 className="text-2xl md:text-3xl font-bold text-text-primary font-serif">
-                <T text={"Try It Out Risk-Free For 30 Days"} />
-              </h2>
-              <p className="text-xs md:text-sm leading-relaxed text-text-secondary">
-                <T text={"We are so confident that you will fall in love with the skin smoothing and blemish-clearing results of your Lux Aura Care weekly ritual that we offer a full **30-Day Glow Guarantee**. If your skin is not visibly softer, smoother, or clearer, simply reach out to us and we will issue a full, prompt refund. No questions asked. Your skin renewal is our standard."} />
-              </p>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* 11. FINAL HIGH IMPACT CTA */}
       <section className="py-20 px-4 text-center border-t border-border-subtle relative overflow-hidden">
         {/* Glow behind final CTA */}
@@ -1495,7 +852,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             <T text={"Ready to start your weekly glow ritual?"} />
           </h2>
           <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: "var(--text-secondary)" }}>
-            <T text={"Join 12,000+ happy women who elevated their skin care routine with clinic-quality results."} />
+            <T text={"Review the product details and confirm the final order total before checkout."} />
           </p>
           
           <div className="pt-4 max-w-sm mx-auto">
@@ -1509,7 +866,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <T text={"Kup Teraz — €"} />{product.price.toFixed(2)}
             </a>
             <p className="text-[10px] text-text-secondary mt-3">
-              <T text={"🔒 256-Bit SSL Encrypted Checkout · 30-Day Money Back Guarantee"} />
+              <T text={"Secure checkout · Delivery and return terms shown before purchase"} />
             </p>
           </div>
         </Container>
@@ -1525,18 +882,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             >
               <T text={"Complete your weekly ritual"} />
             </h2>
-            <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
+            <div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
               {related.map((rel) => {
                 const relDiscount = Math.round((1 - rel.price / rel.compareAtPrice) * 100);
                 return (
                   <a
                     key={rel.id}
                     href={`/shop/${rel.id}`}
-                    className="group flex gap-4 p-4 rounded-xl border border-border-subtle hover:border-accent-gold/40 hover:bg-surface-subtle hover:shadow-[0_0_15px_rgba(201,169,110,0.05)] transition-all duration-300"
+                    className="group flex min-w-0 gap-4 rounded-xl border border-border-subtle p-4 transition-all duration-300 hover:border-accent-gold/40 hover:bg-surface-subtle hover:shadow-[0_0_15px_rgba(201,169,110,0.05)]"
                     style={{ background: "var(--surface-subtle)" }}
                   >
                     <div className="relative size-20 rounded-lg overflow-hidden shrink-0 border border-border-subtle">
-                      <Image src={rel.image} alt={rel.imageAlt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <Image src={rel.image} alt={rel.imageAlt} fill sizes="80px" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="min-w-0 flex-1 flex flex-col justify-between">
                       <div>
@@ -1570,7 +927,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         <Container className="w-full flex items-center justify-between gap-4 max-w-4xl px-0">
           <div className="flex items-center gap-3">
             <div className="relative size-11 rounded-lg overflow-hidden shrink-0 border border-border-subtle hidden sm:block">
-              <Image src={product.image} alt={product.name} fill className="object-cover" />
+              <Image src={product.image} alt={product.name} fill sizes="44px" className="object-cover" />
             </div>
             <div className="min-w-0">
               <p className="text-xs md:text-sm font-bold text-text-primary truncate max-w-[150px] md:max-w-xs">{product.name}</p>
@@ -1583,8 +940,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-1 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider text-accent-gold">
-              <Flame className="size-3" />
-              <span><T text={"Trending on Pinterest"} /></span>
+              <Sparkles className="size-3" />
+              <span><T text={"Featured product"} /></span>
             </div>
 
             <a

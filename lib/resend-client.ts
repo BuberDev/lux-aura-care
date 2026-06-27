@@ -22,7 +22,7 @@ export async function sendWelcomeEmail(email: string) {
           <div style="background: #f9f9f9; border-left: 4px solid #d4af37; padding: 20px; margin-bottom: 24px;">
             <h2 style="margin: 0 0 8px 0; font-size: 18px; color: #1a1a1a;">You're Part of an Exclusive Community</h2>
             <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">
-              Join 500+ subscribers who receive carefully curated ritual guides and product recommendations every Friday morning.
+              Receive carefully curated ritual guides and product recommendations every Friday morning.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export async function sendWelcomeEmail(email: string) {
       `,
       text: `Welcome to Lux Aura Care
 
-You're now part of an exclusive community of 500+ subscribers who receive carefully curated ritual guides and product recommendations every Friday morning.
+You will now receive carefully curated ritual guides and product recommendations every Friday morning.
 
 What You'll Receive:
 - Weekly ritual guides (Friday mornings only)
@@ -124,7 +124,7 @@ export async function sendProductRecommendationEmail(
           <div style="background: #f9f9f9; border-left: 4px solid #d4af37; padding: 20px; margin: 24px 0; border-radius: 8px;">
             <h2 style="color: #d4af37; margin: 0 0 8px 0;">${rec.title}</h2>
             <p style="color: #666; margin: 0; font-size: 14px;">${rec.products}</p>
-            <p style="color: #999; margin: 12px 0 0 0; font-size: 13px;">Save 15-40% when bought together</p>
+            <p style="color: #999; margin: 12px 0 0 0; font-size: 13px;">Review each product and current price before purchasing.</p>
           </div>
 
           <div style="text-align: center;">

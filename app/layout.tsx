@@ -13,10 +13,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { I18nProvider } from "@/components/i18n-provider";
 import { getLocalizedAlternates } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
-import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { translateText } from "@/lib/i18n/messages";
 import { generateOrganizationJsonLd, toJsonLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { products, siteMeta } from "@/lib/site-data";
+import { localizeProducts } from "@/lib/product-localization";
 
 import "./globals.css";
 
@@ -108,7 +109,7 @@ export default async function RootLayout({
 }>) {
   const organizationJsonLd = generateOrganizationJsonLd();
   const locale = await getRequestLocale();
-  const searchProducts = localizeContent(locale, products).map((product) => ({
+  const searchProducts = localizeProducts(locale, products).map((product) => ({
     id: product.id,
     name: product.name,
   }));

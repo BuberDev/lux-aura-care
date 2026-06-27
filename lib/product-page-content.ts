@@ -1,4 +1,4 @@
-import type { CategoryId, Product, ProductProof } from "@/lib/site-data";
+import type { CategoryId, ProductBase } from "@/lib/site-data";
 
 type DetailedBenefit = {
   title: string;
@@ -79,7 +79,7 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
         description: "End with two quiet minutes so your nervous system can settle before bed.",
       },
     ],
-    socialProofLine: "Loved by routine-focused readers for making nights feel calmer in minutes.",
+    socialProofLine: "An editorial option for building a calmer, more repeatable evening routine.",
   },
   skincare: {
     emotionalHook: "A simple upgrade that transforms your nightly skincare ritual.",
@@ -129,7 +129,7 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
         description: "Give your skin a quiet minute before bed so your ritual closes with ease.",
       },
     ],
-    socialProofLine: "Loved by thousands for its instant glow effect and effortless nightly feel.",
+    socialProofLine: "An editorial option for a simple, glow-focused skincare routine.",
   },
   "body-glow": {
     emotionalHook: "An effortless body-care upgrade that leaves skin polished and luminous.",
@@ -179,7 +179,7 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
         description: "Take one minute to let the routine settle before changing or heading to bed.",
       },
     ],
-    socialProofLine: "A favorite among glow-focused creators who want elegant results without effort.",
+    socialProofLine: "An editorial option for a polished body-care routine with fewer steps.",
   },
   "spa-relax": {
     emotionalHook: "A calm atmosphere shift that makes your whole routine feel intentional.",
@@ -229,16 +229,16 @@ const categoryNarratives: Record<CategoryId, CategoryNarrative> = {
         description: "Close with quiet breathing to let your evening settle fully.",
       },
     ],
-    socialProofLine: "Widely saved by readers who want a spa-like evening without a complicated routine.",
+    socialProofLine: "An editorial option for creating a spa-like evening without a complicated routine.",
   },
 };
 
-export function getProductPageContent(product: Product, proof: ProductProof): ProductPageContent {
+export function getProductPageContent(product: ProductBase): ProductPageContent {
   const narrative = categoryNarratives[product.categoryId];
 
   return {
     ...narrative,
     socialHeadline: `Top rated ritual pick for ${product.name.toLowerCase()}`,
-    socialRatingLabel: `${proof.rating.toFixed(1)} average rating`,
+    socialRatingLabel: "Editorial product overview",
   };
 }

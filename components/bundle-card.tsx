@@ -5,6 +5,8 @@ import { CTAButton } from "@/components/cta-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { getAffiliateRoute } from "@/lib/affiliate";
+import { getRequestLocale } from "@/lib/i18n/request";
+import { localizeProducts } from "@/lib/product-localization";
 import { getBundleProducts, getProductById, type ProductBundle } from "@/lib/site-data";
 import { T } from "@/components/translated-text";
 
@@ -12,8 +14,9 @@ type BundleCardProps = {
   readonly bundle: ProductBundle;
 };
 
-export function BundleCard({ bundle }: BundleCardProps) {
-  const products = getBundleProducts(bundle.id);
+export async function BundleCard({ bundle }: BundleCardProps) {
+  const locale = await getRequestLocale();
+  const products = localizeProducts(locale, getBundleProducts(bundle.id));
   const firstProduct = getProductById(bundle.productIds[0]);
 
   if (!firstProduct) return null;
@@ -31,12 +34,6 @@ export function BundleCard({ bundle }: BundleCardProps) {
             </div>
             <h3 className="font-heading text-2xl leading-tight"><T text={bundle.title} /></h3>
           </div>
-          {bundle.discount && (
-            <div className="shrink-0 rounded-lg bg-accent-gold/15 px-3 py-2 text-right">
-              <p className="text-xs font-semibold text-accent-gold"><T text={bundle.discount.label} /></p>
-              <p className="text-xs text-text-secondary"><T text={bundle.discount.savings} /></p>
-            </div>
-          )}
         </div>
 
         <p className="text-base font-semibold leading-relaxed text-text-primary"><T text={bundle.tagline} /></p>

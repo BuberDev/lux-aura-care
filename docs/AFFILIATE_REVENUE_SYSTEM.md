@@ -1,6 +1,6 @@
 # 💰 Senior-Grade Affiliate Revenue System
 
-**Status**: Production-ready | **Revenue Impact**: 2.4x-5x baseline | **Implementation Time**: 1-2 hours for email setup
+**Status**: Implementation reference. Revenue impact must be measured from real analytics.
 
 ---
 
@@ -19,11 +19,10 @@ You now have an **enterprise-grade affiliate system** with:
 
 ## 📊 The Revenue Model
 
-### Current (Baseline)
-- Monthly Readers: 50K
-- Affiliate Clicks: 12K (24% CTR)
-- Conversion Rate: 2-3%
-- **Revenue: $3,600-5,400/month**
+### Current baseline
+
+Import verified traffic, click, conversion, and commission data before calculating this
+section. The repository does not contain a trustworthy production revenue baseline.
 
 ### After This System (Conservative)
 - **Fixed Missing Links**: +35% = +$1,260
@@ -117,14 +116,9 @@ git push origin main
 
 ### A. Dynamic CTA System
 
-CTA labels automatically change based on product data:
-
-```
-High Rating (4.8+):        "⭐ 4.8/5 - Add to Cart"
-Trending Product:          "Trending on Pinterest - Buy Now"
-Limited Time/High Urgency: "See Today's Limited Deal"
-Default:                   "Check on Amazon - [benefit]"
-```
+CTA labels use the editorial product benefit and identify Amazon as the destination.
+Ratings, popularity, scarcity, and deal language require a current source and must not be
+derived from static marketing copy.
 
 **You don't need to do anything** – it's automatic in `ProductCard`.
 
@@ -371,18 +365,18 @@ Check:
 ```
 Check:
 1. getAffiliateRoute returns proper /go/{productId}?
-2. product.amazonUrl is set (not placeholder)
+2. `product.marketVariants.us` or `.pl` has a valid `affiliateUrl`
 3. /go/[productId]/route.ts is deployed
 4. Affiliate tag in AMAZON_ASSOCIATE_TAG
 ```
 
 ---
 
-## 💡 Pro Tips for Max Revenue
+## Operational recommendations
 
-1. **Email is 60% of revenue** – Every 100 subscribers = +$200-500/month
-2. **Test relentlessly** – 15%+ CTR improvement = +$500/month  
-3. **Bundle together complementary products** – 40% AOV lift
+1. Measure email, content, and affiliate performance separately before allocating effort.
+2. Run controlled tests and report observed lift without projecting unsupported revenue.
+3. Group complementary products only when the bundle remains useful on each marketplace.
 4. **Use urgency strategically** – But don't overuse (diminishing returns)
 5. **Track everything** – Attribution data drives decisions
 6. **Segment your email list** – Different audiences need different offers

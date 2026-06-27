@@ -149,8 +149,10 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
       />
 
       <div
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
         className={`fixed right-0 top-0 z-[60] flex h-full w-[280px] transform flex-col border-l border-border-subtle bg-surface-base shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+          isMenuOpen ? "visible translate-x-0" : "hidden translate-x-full pointer-events-none"
         }`}
       >
         <div className="flex justify-end p-4">

@@ -1,4 +1,6 @@
 import { getProductById } from "@/lib/site-data";
+import type { Locale } from "@/lib/i18n/config";
+import { getProductMarketVariant } from "@/lib/product-market";
 import { sanitizeTrackingValue, type TrafficContext } from "@/lib/tracking";
 
 const AMAZON_HOST_PATTERN = /(^|\.)amazon\./i;
@@ -8,12 +10,20 @@ function isAmazonUrl(url: URL) {
 }
 
 export function getAffiliateRoute(productId: string, placement?: string) {
-  const destination = buildAmazonAffiliateUrl(productId, {
-    source: "website",
-    campaign: placement,
-  });
+  const searchParams = new URLSearchParams({ source: "website" });
+  const product = getProductById(productId);
+  if (placement) {
+    searchParams.set("campaign", placement);
+  }
+  if (product && !product.marketVariants.pl) {
+    searchParams.set("fallbackMarket", "us");
+  }
 
-  return destination ? destination.toString() : "/favorites";
+  return `/go/${encodeURIComponent(productId)}?${searchParams.toString()}`;
+}
+
+export function hasPolishAmazonOffer(productId: string) {
+  return Boolean(getProductById(productId)?.marketVariants.pl);
 }
 
 export function getTrafficContextFromSearchParams(searchParams: URLSearchParams): TrafficContext {
@@ -32,7 +42,8 @@ export function getTrafficContextFromSearchParams(searchParams: URLSearchParams)
 
 export function buildAmazonAffiliateUrl(
   productId: string,
-  context: TrafficContext
+  context: TrafficContext,
+  locale: Locale = "en"
 ) {
   const product = getProductById(productId);
   if (!product) {
@@ -41,7 +52,8 @@ export function buildAmazonAffiliateUrl(
 
   let destination: URL;
   try {
-    destination = new URL(product.amazonUrl);
+    const { variant } = getProductMarketVariant(product, locale);
+    destination = new URL(variant.affiliateUrl);
   } catch {
     return undefined;
   }
@@ -69,7 +81,8 @@ export function buildAmazonAffiliateUrl(
 
 export function buildBundleAffiliateUrl(
   bundleProductIds: string[],
-  context: TrafficContext & { bundleId?: string }
+  context: TrafficContext & { bundleId?: string },
+  locale: Locale = "en"
 ) {
   if (bundleProductIds.length === 0) {
     return undefined;
@@ -85,5 +98,5 @@ export function buildBundleAffiliateUrl(
     campaign: context.bundleId ? `bundle-${context.bundleId}` : context.campaign,
   };
 
-  return buildAmazonAffiliateUrl(bundleProductIds[0], bundleTrackingContext);
+  return buildAmazonAffiliateUrl(bundleProductIds[0], bundleTrackingContext, locale);
 }

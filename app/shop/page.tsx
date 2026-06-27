@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
-import { Star, Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
+import { Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { Container } from "@/components/container";
 import { shopProducts } from "@/lib/shop-data";
 import { T } from "@/components/translated-text";
@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = translateText(locale, "Shop Skin Rituals | Lux Aura Care");
   const description = translateText(
     locale,
-    "Dermaplaning razors and hydrocolloid patches for women 40+. Clinic-quality skincare rituals at home. Free EU delivery."
+    "Dermaplaning razors, hydrocolloid patches, and practical skincare tools for at-home routines."
   );
 
   return {
@@ -32,20 +32,20 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const guarantees = [
-  { icon: Truck, label: "Free EU Delivery", sub: "7–14 business days" },
-  { icon: ShieldCheck, label: "30-Day Guarantee", sub: "Full refund, no questions" },
-  { icon: RotateCcw, label: "Easy Returns", sub: "Hassle-free process" },
+const purchaseDetails = [
+  { icon: Truck, label: "Delivery Options", sub: "Calculated before checkout" },
+  { icon: ShieldCheck, label: "Secure Checkout", sub: "Processed by Shopify" },
+  { icon: RotateCcw, label: "Return Terms", sub: "Review before purchase" },
 ];
 
 export default async function ShopPage() {
   const locale = await getRequestLocale();
-  const localizedGuarantees = localizeContent(locale, guarantees);
+  const localizedPurchaseDetails = localizeContent(locale, purchaseDetails);
   const localizedProducts = localizeContent(locale, shopProducts);
   const trustStats = localizeContent(locale, [
-    { stat: "94%", label: "noticed smoother skin after first use" },
-    { stat: "4 weeks", label: "average time to visible glow results" },
-    { stat: "12K+", label: "happy customers across Europe" },
+    { stat: "Clear", label: "product-specific descriptions" },
+    { stat: "Live", label: "Shopify stock when available" },
+    { stat: "Direct", label: "checkout with final total shown" },
   ]);
 
   return (
@@ -64,16 +64,16 @@ export default async function ShopPage() {
             <T text={"Your Weekly Skin Ritual"} />
           </h1>
           <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: "var(--text-secondary)" }}>
-            <T text={"Two products. One ritual. Visible results in 4 weeks — without a clinic visit."} />
+            <T text={"Practical tools for a simple, repeatable at-home skincare ritual."} />
           </p>
         </Container>
       </section>
 
-      {/* Guarantees */}
+      {/* Purchase details */}
       <section className="border-b border-border-subtle py-6">
         <Container>
           <ul className="grid grid-cols-3 gap-4">
-            {localizedGuarantees.map(({ icon: Icon, label, sub }) => (
+            {localizedPurchaseDetails.map(({ icon: Icon, label, sub }) => (
               <li key={label} className="flex flex-col items-center text-center gap-1">
                 <Icon className="size-5 mb-1" style={{ color: "var(--accent-gold)" }} />
                 <span className="text-xs font-semibold text-text-primary">{label}</span>
@@ -88,7 +88,7 @@ export default async function ShopPage() {
       <section className="py-16 px-4">
         <Container>
           <div className="grid gap-8 md:grid-cols-3">
-            {localizedProducts.map((product) => (
+            {localizedProducts.map((product, index) => (
               <LocalizedLink
                 key={product.id}
                 href={`/shop/${product.id}`}
@@ -100,12 +100,13 @@ export default async function ShopPage() {
                     src={product.image}
                     alt={product.imageAlt}
                     fill
+                    priority={index === 0}
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <Badge variant="product" className="absolute top-3 left-3">
-                    {product.badge}
+                    <T text={"Featured product"} />
                   </Badge>
                 </div>
 
@@ -116,25 +117,6 @@ export default async function ShopPage() {
                       {product.name}
                     </h2>
                     <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{product.tagline}</p>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="size-3.5"
-                          style={{
-                            fill: i < Math.floor(product.rating) ? "var(--accent-gold)" : "transparent",
-                            color: "var(--accent-gold)",
-                          }}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-xs" style={{ color: "var(--text-secondary)" }}>
-                      {product.rating} ({product.reviews} <T text={"reviews)"} />
-                    </span>
                   </div>
 
                   {/* Benefits preview */}
@@ -180,7 +162,7 @@ export default async function ShopPage() {
             className="text-center text-lg font-medium mb-8"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "var(--text-primary)" }}
           >
-            <T text={"Why women 40+ love our rituals"} />
+            <T text={"How the Lux Aura shop works"} />
           </p>
           <div className="grid gap-6 md:grid-cols-3 text-center">
             {trustStats.map(({ stat, label }) => (

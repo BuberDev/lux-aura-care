@@ -1,21 +1,20 @@
 import Image from "next/image";
-import { Check, Star } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { Badge } from "@/components/ui/badge";
 import { getAffiliateRoute } from "@/lib/affiliate";
-import type { Product, ProductProof } from "@/lib/site-data";
+import type { Product } from "@/lib/site-data";
 import { T } from "@/components/translated-text";
 
 type ProductHeroProps = {
   readonly product: Product;
-  readonly proof: ProductProof;
   readonly emotionalHook: string;
   readonly keyBenefits: string[];
 };
 
-export function ProductHero({ product, proof, emotionalHook, keyBenefits }: ProductHeroProps) {
+export function ProductHero({ product, emotionalHook, keyBenefits }: ProductHeroProps) {
   return (
     <section className="border-b border-border-subtle pb-14 pt-14 md:pb-20 md:pt-20">
       <Container>
@@ -51,10 +50,6 @@ export function ProductHero({ product, proof, emotionalHook, keyBenefits }: Prod
               <Badge variant="subtle" className="border-border-strong bg-surface-raised text-text-primary">
                 <T text={"Popular choice"} />
               </Badge>
-              <span className="inline-flex items-center gap-1 rounded-full border border-border-default bg-surface-subtle px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-text-secondary">
-                <Star className="size-3.5 fill-accent-gold text-accent-gold" aria-hidden="true" />
-                {proof.rating.toFixed(1)} • <T text={proof.reviews} />
-              </span>
             </div>
 
             <CTAButton
