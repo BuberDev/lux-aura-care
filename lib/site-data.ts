@@ -1229,7 +1229,7 @@ export const products: ProductDefinition[] = [
         name: "Avon Skin So Soft Suchy olejek do ciała z olejkiem jojoba (2 x 150ml)",
         benefit: "Lekka mgiełka olejkowa szybko się wchłania, intensywnie nawilżając i regenerując skórę po kąpieli.",
         description: "Kultowy suchy olejek od Avon wzbogacony olejkiem jojoba. Doskonała alternatywa dla mgiełek olejkowych – błyskawicznie nawilża, pozostawiając skórę jedwabiście gładką bez uczucia lepkości. Idealny element domowego rytuału SPA.",
-        image: "/aveeno-oil-mist/_pl.png",
+        image: "/aveeno-oil-mist/pl_aveeno-oil-mist.png",
         imageAlt: "Avon Skin So Soft Original Dry Oil Spray",
         video: null,
         gallery: [
