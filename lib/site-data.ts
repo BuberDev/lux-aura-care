@@ -917,6 +917,56 @@ export const products: ProductDefinition[] = [
         affiliateUrl: "https://amzn.to/4sFqWpd",
         price: { status: "indicative", amount: 22.99, currency: "USD" },
       },
+      pl: {
+        affiliateUrl: "https://amzn.to/4vCzAqN",
+        price: { status: "indicative", amount: 33.99, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B0C7ZR2XQ4",
+        slug: "aeshory-zestaw-olejkow-eterycznych",
+        name: "AESHORY 100% Naturalny Zestaw Olejków Eterycznych (6 x 10ml)",
+        benefit: "Natychmiastowa zmiana nastroju i spokojniejsze wieczory dzięki certyfikowanym aromatom.",
+        description: "Kompletny zestaw czystych olejków eterycznych do dyfuzora i aromaterapii. Zawiera najchętniej wybierane zapachy (Lawenda, Mięta, Drzewo Herbaciane, Słodka Pomarańcza, Eukaliptus), które idealnie sprawdzają się do relaksu i domowego spa. Najpopularniejszy odpowiednik na polskim Amazonie.",
+        video: "/cliganic-essential-oils/PL_UGC_aeshory-zestaw-olejkow-eterycznych.mp4",
+        image: "/cliganic-essential-oils/PL_aeshory-zestaw-olejkow-eterycznych-amazon-pl-lux-aura-care.png",
+        imageAlt: "AESHORY Zestaw Olejków Eterycznych",
+        gallery: [
+          {
+            image: "/cliganic-essential-oils/details_1_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "AESHORY Olejki Eteryczne zestaw",
+            title: "Zestaw 6 zapachów",
+          },
+          {
+            image: "/cliganic-essential-oils/details_2_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "Zastosowanie olejków eterycznych AESHORY",
+            title: "Aromaterapia i dyfuzory",
+          },
+          {
+            image: "/cliganic-essential-oils/details_3_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "Zastosowanie olejków eterycznych AESHORY",
+            title: "Aromaterapia i dyfuzory",
+          },
+          {
+            image: "/cliganic-essential-oils/details_4_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "Zastosowanie olejków eterycznych AESHORY",
+            title: "Aromaterapia i dyfuzory",
+          },
+          {
+            image: "/cliganic-essential-oils/details_5_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "Zastosowanie olejków eterycznych AESHORY",
+            title: "Aromaterapia i dyfuzory",
+          },
+          {
+            image: "/cliganic-essential-oils/details_6_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "Zastosowanie olejków eterycznych AESHORY",
+            title: "Aromaterapia i dyfuzory",
+          },
+          {
+            image: "/cliganic-essential-oils/details_7_aeshory_zestaw_olejkow_eterycznych.jpg",
+            imageAlt: "Zastosowanie olejków eterycznych AESHORY",
+            title: "Aromaterapia i dyfuzory",
+          },
+        ]
+      },
     },
   },
   {
