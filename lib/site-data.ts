@@ -1,3 +1,5 @@
+import { Currency } from "lucide-react";
+
 export type CategoryId = "self-care" | "skincare" | "body-glow" | "spa-relax";
 
 export type Category = {
@@ -1121,6 +1123,45 @@ export const products: ProductDefinition[] = [
       us: {
         affiliateUrl: "https://amzn.to/4cnPAnV",
         price: { status: "indicative", amount: 49.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4uZcJ7u",
+        marketProductId: "B084PCS575",
+        video: "/pavilia-plush-robe/PL_pavilia_premium_womans_plush_soft_rober_ugc.mp4",
+        name: "PAVILIA Damski pluszowy miękki szlafrok premium",
+        benefit: "Ciepły, miękki komfort po kąpieli, który domyka wieczorny rytuał relaksu.",
+        description:
+          "Pluszowy szlafrok typu sherpa z miękkiego polaru, zaprojektowany jako przyjemna warstwa ciepła po prysznicu, kąpieli lub domowym spa.",
+        image: "/pavilia-plush-robe/pl_main_photo_product.png",
+        imageAlt: "PAVILIA damski pluszowy szlafrok premium w kolorze jasnoróżowym",
+        gallery: [
+          {
+            image: "/pavilia-plush-robe/pl_2_back_side_pavila_photo.jpg",
+            imageAlt: "Tył jasnoróżowego pluszowego szlafroka PAVILIA",
+            title: "Back View",
+          },
+          {
+            image: "/pavilia-plush-robe/pl_3_front_side_pavila_photo.jpg",
+            imageAlt: "Przód jasnoróżowego pluszowego szlafroka PAVILIA",
+            title: "Front View",
+          },
+          {
+            image: "/pavilia-plush-robe/pl_4_details_side_pavila_photo.jpg",
+            imageAlt: "Detal miękkiego polarowego materiału szlafroka PAVILIA",
+            title: "Product Details",
+          },
+          {
+            image: "/pavilia-plush-robe/pl_5_details_side_pavila_photo.jpg",
+            imageAlt: "Detal kaptura i pluszowej faktury szlafroka PAVILIA",
+            title: "Texture",
+          },
+          {
+            image: "/pavilia-plush-robe/pl_6_details_side_pavila_photo.jpg",
+            imageAlt: "Detal pasa i kieszeni pluszowego szlafroka PAVILIA",
+            title: "Fit & Style",
+          },
+        ],
+        price: { status: "indicative", amount: 245.99, currency: "PLN" },
       },
     },
   },
