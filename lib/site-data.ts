@@ -744,6 +744,47 @@ export const products: ProductDefinition[] = [
         affiliateUrl: "https://amzn.to/41WZCaT",
         price: { status: "indicative", amount: 19.99, currency: "USD" },
       },
+      pl: {
+        affiliateUrl: "https://amzn.to/4aZXvrL",
+        price: { status: "indicative", amount: 176.13, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B00NDNDN5A",
+        slug: "beurer-fc-95-szczoteczka-do-twarzy",
+        name: "Beurer FC 95 szczoteczka do oczyszczania twarzy",
+        benefit: "Dokladniejsze oczyszczanie twarzy i wygodne usuwanie makijazu bez mocnego pocierania skory.",
+        description:
+          "Elektryczna szczoteczka do oczyszczania twarzy z wymiennymi koncowkami, ktora pomaga utrzymac regularny rytual oczyszczania i przygotowuje skore na kolejne kroki pielegnacji.",
+        image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
+        imageAlt: "Beurer FC 95 szczoteczka do oczyszczania twarzy jako polski odpowiednik zestawu COSLUS",
+        trustSignal: "Routine essential",
+        gallery: [
+          {
+            image: "/coslus-cleansing-brush/pl_beurer-fc95-elektryczna-szczoteczka-do-twarzy-amazon-pl-lux-aura-care.png",
+            imageAlt: "Szczoteczka do oczyszczania twarzy z wymiennymi koncowkami",
+            title: "Main View",
+          },
+          {
+            image: "/coslus-cleansing-brush/details_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            imageAlt: "Wymienne koncowki szczoteczki do oczyszczania twarzy",
+            title: "Brush Heads",
+          },
+          {
+            image: "/coslus-cleansing-brush/details_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            imageAlt: "Miekka koncowka szczoteczki do twarzy",
+            title: "Sensitive-Skin Head",
+          },
+          {
+            image: "/coslus-cleansing-brush/details_3_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            imageAlt: "Miekka koncowka szczoteczki do twarzy",
+            title: "Sensitive-Skin Head",
+          },
+          {
+            image: "/coslus-cleansing-brush/details_4_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            imageAlt: "Miekka koncowka szczoteczki do twarzy",
+            title: "Sensitive-Skin Head",
+          },
+        ],
+      },
     },
   },
   {
@@ -1036,6 +1077,53 @@ export const products: ProductDefinition[] = [
         affiliateUrl: "https://amzn.to/4c0ZSdu",
         price: { status: "indicative", amount: 24.99, currency: "USD" },
       },
+      pl: {
+        affiliateUrl: "https://amzn.to/4eXDL9E",
+        price: { status: "indicative", amount: 149.06, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B077K7F3WD",
+        slug: "jmd-international-mlotkowana-butelka-z-czystej-miedzi-900-ml",
+        name: "JMD INTERNATIONAL młotkowana butelka z czystej miedzi 900 ml",
+        benefit: "Codzienny rytual nawodnienia w estetycznej, wielorazowej butelce z czystej miedzi.",
+        description:
+          "Mlotkowana butelka podrozna z czystej miedzi o pojemnosci 900 ml, wybrana jako polski odpowiednik premium butelki miedzianej dzieki mocniejszemu social proof, cenie Prime i dostawie przez Amazon.",
+        image: "/copper-water-bottle/PL_miedziana-butelka-na-wode-900ml-amazon-pl-lux-aura-care.png",
+        imageAlt: "JMD INTERNATIONAL młotkowana butelka z czystej miedzi jako polski odpowiednik Copper Water Bottle",
+        trustSignal: "Routine essential",
+        gallery: [
+
+          {
+            image: "/copper-water-bottle/PL_Copper_Water_Bottle.jpg",
+            imageAlt: "Mlotkowana butelka z czystej miedzi",
+            title: "Main View",
+          },
+          {
+            image: "/copper-water-bottle/PL_details_1_Copper_Water_Bottle.jpg",
+            imageAlt: "Detal wykonania butelki z czystej miedzi",
+            title: "Product Details",
+          },
+          {
+            image: "/copper-water-bottle/PL_details_2_Copper_Water_Bottle.jpg",
+            imageAlt: "Instrukcje pielegnacji butelki miedzianej",
+            title: "Care Instructions",
+          },
+          {
+            image: "/copper-water-bottle/PL_details_3_Copper_Water_Bottle.jpg",
+            imageAlt: "Detal wykonania butelki z czystej miedzi",
+            title: "Product Details",
+          },
+          {
+            image: "/copper-water-bottle/PL_details_4_Copper_Water_Bottle.jpg",
+            imageAlt: "Instrukcje pielegnacji butelki miedzianej",
+            title: "Care Instructions",
+          },
+          {
+            image: "/copper-water-bottle/PL_details_5_Copper_Water_Bottle.jpg",
+            imageAlt: "Instrukcje pielegnacji butelki miedzianej",
+            title: "Care Instructions",
+          },
+        ],
+      },
     },
   },
   {
@@ -1257,6 +1345,62 @@ export const products: ProductDefinition[] = [
         affiliateUrl: "https://amzn.to/4oKipRl",
         price: { status: "indicative", amount: 22.99, currency: "USD" },
       },
+      pl: {
+        affiliateUrl: "https://amzn.to/4eA71El",
+        price: { status: "indicative", amount: 75.00, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B08CXWMWFM",
+        slug: "angel-kiss-derma-roller-tytanowe-mikroigly",
+        name: "Angel Kiss Derma Roller z tytanowymi mikroiglami",
+        benefit: "Domowe wsparcie gladkiej tekstury skory i lepszego wchlaniania serum.",
+        description:
+          "Derma roller z tytanowymi mikroiglami, wybrany jako polski odpowiednik narzedzia do delikatnej pielęgnacji tekstury skory. Przed uzyciem sprawdz instrukcje producenta i nie stosuj na podrazniona skore.",
+        image: "/derma-roller/PL_angel-kiss-derma-roller-03mm-amazon-pl-lux-aura-care.png",
+        imageAlt: "Angel Kiss Derma Roller jako polski odpowiednik Koi Beauty Professional Derma Roller",
+        trustSignal: "Editor favorite",
+        gallery: [
+          {
+            image: "/derma-roller/PL_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Derma roller z tytanowymi mikroiglami",
+            title: "Main View",
+          },
+          {
+            image: "/derma-roller/PL_details_1_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Detal derma rollera i etui",
+            title: "Product Details",
+          },
+          {
+            image: "/derma-roller/PL_details_2_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Glowica derma rollera z mikroiglami",
+            title: "Microneedle Head",
+          },
+          {
+            image: "/derma-roller/PL_details_3_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Detal derma rollera i etui",
+            title: "Product Details",
+          },
+          {
+            image: "/derma-roller/PLdetails_4_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Glowica derma rollera z mikroiglami",
+            title: "Microneedle Head",
+          },
+          {
+            image: "/derma-roller/PL_details_5_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Detal derma rollera i etui",
+            title: "Product Details",
+          },
+          {
+            image: "/derma-roller/PL_details_6_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Glowica derma rollera z mikroiglami",
+            title: "Microneedle Head",
+          },
+          {
+            image: "/derma-roller/PL_details_7_Koi_Beauty_Derma_Roller.jpg",
+            imageAlt: "Glowica derma rollera z mikroiglami",
+            title: "Microneedle Head",
+          },
+        ],
+      },
     },
   },
   {
@@ -1385,6 +1529,57 @@ export const products: ProductDefinition[] = [
         affiliateUrl: "https://amzn.to/4gA0A5m",
         price: { status: "indicative", amount: 299.00, currency: "USD" },
       },
+      pl: {
+        affiliateUrl: "https://amzn.to/3QGlXaR",
+        price: { status: "indicative", amount: 373.86, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B0DQ4HSPMC",
+        slug: "medicube-booster-pro-mini-white",
+        name: "Medicube Booster Pro Mini White",
+        benefit: "Kompaktowe wsparcie domowej pielęgnacji i lepszego nakładania kosmetyków aktywnych.",
+        description:
+          "Kompaktowe urzadzenie Medicube do domowej pielęgnacji, wybrane jako przystepniejszy polski odpowiednik AGE-R Booster Pro. Przed uzyciem sprawdz instrukcje, przeciwwskazania i zalecana czestotliwosc zabiegow.",
+        image: "/medicube-age-r-booster-pro/PL_medicube-booster-pro-mini-white-glow-booster-amazon-pl-lux-aura-care.png",
+        imageAlt: "Medicube Booster Pro Mini White jako polski odpowiednik Medicube AGE-R Booster Pro",
+        trustSignal: "Editorial pick",
+        gallery: [
+          {
+            image: "/medicube-age-r-booster-pro/PL_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Urzadzenie Medicube do domowej pielęgnacji twarzy",
+            title: "Main View",
+          },
+          {
+            image: "/medicube-age-r-booster-pro/PL_details_1_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Funkcje urzadzenia Medicube do pielęgnacji twarzy",
+            title: "Product Details",
+          },
+          {
+            image: "/medicube-age-r-booster-pro/PL_details_2_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Urzadzenie Medicube podczas rutyny skincare",
+            title: "Routine Use",
+          },
+          {
+            image: "/medicube-age-r-booster-pro/PL_details_3_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Funkcje urzadzenia Medicube do pielęgnacji twarzy",
+            title: "Product Details",
+          },
+          {
+            image: "/medicube-age-r-booster-pro/PL_details_4_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Urzadzenie Medicube podczas rutyny skincare",
+            title: "Routine Use",
+          },
+          {
+            image: "/medicube-age-r-booster-pro/PL_details_5_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Funkcje urzadzenia Medicube do pielęgnacji twarzy",
+            title: "Product Details",
+          },
+          {
+            image: "/medicube-age-r-booster-pro/PL_details_6_Medicube_AGE_R_Booster_Pro.jpg",
+            imageAlt: "Urzadzenie Medicube podczas rutyny skincare",
+            title: "Routine Use",
+          },
+        ],
+      },
     },
   },
   {
@@ -1454,6 +1649,67 @@ export const products: ProductDefinition[] = [
         affiliateUrl: "https://amzn.to/3QAuUCk",
         price: { status: "indicative", amount: 14.99, currency: "USD" },
       },
+      pl: {
+        affiliateUrl: "https://amzn.to/4oUaxwN",
+        price: { status: "indicative", amount: 54.99, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B0F2TR72BP",
+        slug: "bionoble-organiczny-olejek-rozmarynowy-do-wlosow-50ml",
+        name: "BIONOBLE Organiczny Olejek Rozmarynowy do Włosów 50 ml",
+        benefit: "Rozmarynowy olejek do skory glowy, ktory wspiera rytual masazu skalpu i pielegnacje wlosow oslabionych.",
+        description:
+          "Organiczny olejek rozmarynowy do włosów z olejem rycynowym, arganowym i jojoba, wybrany jako polski odpowiednik kuracji Botanic Hearth dzięki widocznej cenie, dostępności oraz bardzo mocnemu social proof.",
+        image: "/rosemary-hair-oil/PL_bionoble-organiczny-olejek-rozmarynowy-do-wlosow-amazon-pl-lux-aura-care.png",
+        imageAlt: "BIONOBLE Organiczny Olejek Rozmarynowy jako polski odpowiednik rozmarynowego olejku do wlosow",
+        trustSignal: "Routine essential",
+        gallery: [
+          {
+            image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Rozmarynowy olejek do skory glowy i wlosow",
+            title: "Main View",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Informacje o rozmarynowym olejku do wlosow",
+            title: "Product Details",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_2_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Informacje o rozmarynowym olejku do wlosow",
+            title: "Product Details",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_3_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Aplikacja olejku na skore glowy",
+            title: "Scalp Ritual",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_4_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Informacje o rozmarynowym olejku do wlosow",
+            title: "Product Details",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_5_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Informacje o rozmarynowym olejku do wlosow",
+            title: "Product Details",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_6_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Aplikacja olejku na skore glowy",
+            title: "Scalp Ritual",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_7_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Informacje o rozmarynowym olejku do wlosow",
+            title: "Product Details",
+          },
+          {
+            image: "/rosemary-hair-oil/PL_details_8_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            imageAlt: "Aplikacja olejku na skore glowy",
+            title: "Scalp Ritual",
+          },
+        ],
+      },
     },
   },
   {
@@ -1507,6 +1763,58 @@ export const products: ProductDefinition[] = [
       us: {
         affiliateUrl: "https://amzn.to/4eDMZr8",
         price: { status: "indicative", amount: 24.99, currency: "USD" },
+      },
+      pl: {
+        affiliateUrl: "https://amzn.to/4gdqYC1",
+        price: { status: "indicative", amount: 127.54, currency: "PLN" },
+        isAlternative: true,
+        marketProductId: "B08LK4XV7Q",
+        slug: "pure-essential-hydrolizowane-peptydy-kolagenowe",
+        name: "Pure & Essential Hydrolizowane peptydy kolagenowe grass-fed",
+        benefit: "Neutralny kolagen w proszku do codziennego wsparcia wlosow, skory, paznokci i stawow.",
+        description:
+          "Hydrolizowane peptydy kolagenowe z bydla karmionego trawa, wybrane jako polski odpowiednik Orgain Collagen Peptides. Produkt pasuje do porannej kawy, smoothie albo prostego rytualu wellness.",
+        image: "/orgain-collagen-peptides/PL_pure-essential-hydrolizowane-peptydy-kolagenowe-amazon-pl-lux-aura-care.png",
+        imageAlt: "Pure & Essential peptydy kolagenowe jako polski odpowiednik Orgain Collagen Peptides",
+        trustSignal: "Routine essential",
+        gallery: [
+          {
+            image: "/orgain-collagen-peptides/PL_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Hydrolizowane peptydy kolagenowe w proszku",
+            title: "Main View",
+          },
+          {
+            image: "/orgain-collagen-peptides/PL_details_1_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Informacje o peptydach kolagenowych",
+            title: "Product Details",
+          },
+          {
+            image: "/orgain-collagen-peptides/PL_details_2_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Informacje o peptydach kolagenowych",
+            title: "Product Details",
+          },
+          {
+            image: "/orgain-collagen-peptides/PL_details_3_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Informacje o peptydach kolagenowych",
+            title: "Product Details",
+          },
+          {
+            image: "/orgain-collagen-peptides/PL_details_4_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Informacje o peptydach kolagenowych",
+            title: "Product Details",
+          },
+          {
+            image: "/orgain-collagen-peptides/PL_details_5_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Informacje o peptydach kolagenowych",
+            title: "Product Details",
+          },
+          {
+            image: "/orgain-collagen-peptides/PL_details_6_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            imageAlt: "Informacje o peptydach kolagenowych",
+            title: "Product Details",
+          },
+          
+        ],
       },
     },
   },
