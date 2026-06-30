@@ -754,33 +754,28 @@ export const products: ProductDefinition[] = [
         benefit: "Dokladniejsze oczyszczanie twarzy i wygodne usuwanie makijazu bez mocnego pocierania skory.",
         description:
           "Elektryczna szczoteczka do oczyszczania twarzy z wymiennymi koncowkami, ktora pomaga utrzymac regularny rytual oczyszczania i przygotowuje skore na kolejne kroki pielegnacji.",
-        image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
+        image: "/coslus-cleansing-brush/pl_beurer-fc95-elektryczna-szczoteczka-do-twarzy-amazon-pl-lux-aura-care.png",
         imageAlt: "Beurer FC 95 szczoteczka do oczyszczania twarzy jako polski odpowiednik zestawu COSLUS",
         trustSignal: "Routine essential",
         video: "/coslus-cleansing-brush/UGC_PL_BeurerFC95_elektryczna_szczoteczka_do_twarzy.mp4",
         gallery: [
           {
-            image: "/coslus-cleansing-brush/pl_beurer-fc95-elektryczna-szczoteczka-do-twarzy-amazon-pl-lux-aura-care.png",
-            imageAlt: "Szczoteczka do oczyszczania twarzy z wymiennymi koncowkami",
-            title: "Main View",
-          },
-          {
-            image: "/coslus-cleansing-brush/details_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: "/coslus-cleansing-brush/PL_details_1_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
             imageAlt: "Wymienne koncowki szczoteczki do oczyszczania twarzy",
             title: "Brush Heads",
           },
           {
-            image: "/coslus-cleansing-brush/details_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: "/coslus-cleansing-brush/PL_details_2_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
             imageAlt: "Miekka koncowka szczoteczki do twarzy",
             title: "Sensitive-Skin Head",
           },
           {
-            image: "/coslus-cleansing-brush/details_3_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: "/coslus-cleansing-brush/PL_details_3_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
             imageAlt: "Miekka koncowka szczoteczki do twarzy",
             title: "Sensitive-Skin Head",
           },
           {
-            image: "/coslus-cleansing-brush/details_4_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: "/coslus-cleansing-brush/PL_details_4_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
             imageAlt: "Miekka koncowka szczoteczki do twarzy",
             title: "Sensitive-Skin Head",
           },
