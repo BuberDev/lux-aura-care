@@ -757,6 +757,7 @@ export const products: ProductDefinition[] = [
         image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
         imageAlt: "Beurer FC 95 szczoteczka do oczyszczania twarzy jako polski odpowiednik zestawu COSLUS",
         trustSignal: "Routine essential",
+        video: "/coslus-cleansing-brush/UGC_PL_BeurerFC95_elektryczna_szczoteczka_do_twarzy.mp4",
         gallery: [
           {
             image: "/coslus-cleansing-brush/pl_beurer-fc95-elektryczna-szczoteczka-do-twarzy-amazon-pl-lux-aura-care.png",
