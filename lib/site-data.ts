@@ -1086,6 +1086,7 @@ export const products: ProductDefinition[] = [
         image: "/copper-water-bottle/PL_miedziana-butelka-na-wode-900ml-amazon-pl-lux-aura-care.png",
         imageAlt: "JMD INTERNATIONAL młotkowana butelka z czystej miedzi jako polski odpowiednik Copper Water Bottle",
         trustSignal: "Routine essential",
+        video: "/copper-water-bottle/ugc-miedziana-butelka-na-wode-polskie-wellness-ryt.mov",
         gallery: [
 
           {
