@@ -1774,6 +1774,7 @@ export const products: ProductDefinition[] = [
         image: "/orgain-collagen-peptides/PL_pure-essential-hydrolizowane-peptydy-kolagenowe-amazon-pl-lux-aura-care.png",
         imageAlt: "Pure & Essential peptydy kolagenowe jako polski odpowiednik Orgain Collagen Peptides",
         trustSignal: "Routine essential",
+        video:"/orgain-collagen-peptides/ugc-pure-essential-hydrolyzed-collagen-peptides-polskie-ugc-beauty-supplement.mp4",
         gallery: [
           {
             image: "/orgain-collagen-peptides/PL_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
