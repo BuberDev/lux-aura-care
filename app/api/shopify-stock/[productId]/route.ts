@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { getShopProductById, getShopifyVariant } from "@/lib/shop-data";
+import { getShopProductById, getShopifyVariant, getShopifyVariantFromUrl } from "@/lib/shop-data";
 
 const STORE_DOMAIN = "k50k7g-j7.myshopify.com";
 const STOREFRONT_API_VERSION = "2024-10";
@@ -21,12 +21,18 @@ type StockResponse = {
 };
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   context: { params: Promise<{ productId: string }> }
 ): Promise<NextResponse<StockResponse>> {
   const { productId } = await context.params;
   const product = getShopProductById(productId);
-  const variant = product ? getShopifyVariant(product) : null;
+  const selectedVariantId = request.nextUrl.searchParams.get("variantId");
+  const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
+  const variant = selectedVariant?.shopifyUrl
+    ? getShopifyVariantFromUrl(selectedVariant.shopifyUrl)
+    : product
+      ? getShopifyVariant(product)
+      : null;
 
   if (!variant) {
     return NextResponse.json({ quantity: null, available: true }, { status: 404 });

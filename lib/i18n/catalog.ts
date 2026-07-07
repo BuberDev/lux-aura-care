@@ -5907,6 +5907,38 @@ export const translationCatalog = {
     "en": "Order now",
     "pl": "Zamów teraz"
   },
+  "Quantity": {
+    "en": "Quantity",
+    "pl": "Ilość"
+  },
+  "Choose how many pieces to add to checkout": {
+    "en": "Choose how many pieces to add to checkout",
+    "pl": "Wybierz, ile sztuk dodać do checkoutu"
+  },
+  "piece": {
+    "en": "piece",
+    "pl": "sztuka"
+  },
+  "pieces": {
+    "en": "pieces",
+    "pl": "szt."
+  },
+  "Decrease quantity": {
+    "en": "Decrease quantity",
+    "pl": "Zmniejsz ilość"
+  },
+  "Increase quantity": {
+    "en": "Increase quantity",
+    "pl": "Zwiększ ilość"
+  },
+  "Checkout quantity": {
+    "en": "Checkout quantity",
+    "pl": "Ilość do checkoutu"
+  },
+  "Subtotal": {
+    "en": "Subtotal",
+    "pl": "Suma częściowa"
+  },
   "View image": {
     "en": "View image",
     "pl": "Zobacz zdjęcie"

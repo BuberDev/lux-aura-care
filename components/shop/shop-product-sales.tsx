@@ -10,6 +10,8 @@ import {
   RotateCcw, 
   ChevronDown, 
   Clock,
+  Minus,
+  Plus,
   Sparkles,
   ChevronRight,
   ChevronLeft,
@@ -35,6 +37,7 @@ type ProductUgcGalleryProps = {
 };
 
 const VISIBLE_SHOP_GALLERY_IMAGES = 5;
+const MAX_CHECKOUT_QUANTITY = 10;
 
 function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryProps) {
   const { text } = useI18n();
@@ -210,6 +213,45 @@ function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryPro
   );
 }
 
+function buildCheckoutUrl({
+  configuredUrl,
+  variantUrl,
+  selectedVariantId,
+  quantity,
+}: {
+  configuredUrl: string;
+  variantUrl?: string;
+  selectedVariantId?: string;
+  quantity: number;
+}) {
+  const safeQuantity = Math.max(1, Math.min(MAX_CHECKOUT_QUANTITY, Math.trunc(quantity)));
+
+  if (configuredUrl.startsWith("/api/shopify-checkout/")) {
+    const params = new URLSearchParams();
+    if (selectedVariantId) {
+      params.set("variantId", selectedVariantId);
+    }
+    params.set("quantity", String(safeQuantity));
+    return `${configuredUrl}?${params.toString()}`;
+  }
+
+  const directUrl = variantUrl || configuredUrl;
+
+  try {
+    const url = new URL(directUrl);
+    const match = url.pathname.match(/^\/cart\/(\d+):\d+$/);
+
+    if (match) {
+      url.pathname = `/cart/${match[1]}:${safeQuantity}`;
+      return url.toString();
+    }
+  } catch {
+    return directUrl;
+  }
+
+  return directUrl;
+}
+
 const detailedScienceBenefits: Record<string, {
   title: string;
   desc: string;
@@ -318,6 +360,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [selectedVariantId, setSelectedVariantId] = useState(productVariants[0]?.id ?? "");
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
@@ -328,7 +371,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   useEffect(() => {
     let cancelled = false;
-    fetch(`/api/shopify-stock/${encodeURIComponent(product.id)}`)
+    const params = new URLSearchParams();
+    if (selectedVariantId) {
+      params.set("variantId", selectedVariantId);
+    }
+    const stockUrl = `/api/shopify-stock/${encodeURIComponent(product.id)}${params.size ? `?${params.toString()}` : ""}`;
+
+    setStockLoading(true);
+    fetch(stockUrl)
       .then(r => r.json())
       .then((d: { quantity: number | null; available: boolean }) => {
         if (!cancelled) setStockQuantity(d.quantity);
@@ -336,7 +386,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       .catch(() => { /* silently fall back to no stock bar */ })
       .finally(() => { if (!cancelled) setStockLoading(false); });
     return () => { cancelled = true; };
-  }, [product.id]);
+  }, [product.id, selectedVariantId]);
 
   // --- Flash sale countdown: real end date from product data ---
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
@@ -411,13 +461,25 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     }
   ];
   const selectedVariant = productVariants.find((variant) => variant.id === selectedVariantId) ?? productVariants[0];
-  const checkoutUrl = selectedVariant && product.shopifyUrl.startsWith("/api/shopify-checkout/")
-    ? `${product.shopifyUrl}?variantId=${encodeURIComponent(selectedVariant.id)}`
-    : selectedVariant?.shopifyUrl || product.shopifyUrl;
+  const maxSelectableQuantity = Math.max(
+    1,
+    Math.min(MAX_CHECKOUT_QUANTITY, stockQuantity ?? MAX_CHECKOUT_QUANTITY)
+  );
+  const checkoutUrl = buildCheckoutUrl({
+    configuredUrl: product.shopifyUrl,
+    variantUrl: selectedVariant?.shopifyUrl,
+    selectedVariantId: selectedVariant?.id,
+    quantity: selectedQuantity,
+  });
   const checkoutLabel = hasColorVariants ? "Order selected color" : "Order now";
+  const selectedSubtotal = product.price * selectedQuantity;
   const stickyImage = selectedVariant?.image ?? product.image;
   const visibleGalleryImages = galleryImages.slice(0, VISIBLE_SHOP_GALLERY_IMAGES);
   const hiddenGalleryCount = Math.max(galleryImages.length - VISIBLE_SHOP_GALLERY_IMAGES, 0);
+
+  useEffect(() => {
+    setSelectedQuantity((current) => Math.min(current, maxSelectableQuantity));
+  }, [maxSelectableQuantity]);
 
   const handleVariantSelect = (variantId: string) => {
     const nextVariant = productVariants.find((variant) => variant.id === variantId);
@@ -429,6 +491,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     if (nextGalleryIndex >= 0) {
       setActiveGalleryIndex(nextGalleryIndex);
     }
+  };
+
+  const decreaseQuantity = () => {
+    setSelectedQuantity((current) => Math.max(1, current - 1));
+  };
+
+  const increaseQuantity = () => {
+    setSelectedQuantity((current) => Math.min(maxSelectableQuantity, current + 1));
   };
 
   const openGalleryAt = (index: number) => {
@@ -768,6 +838,57 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
               )}
 
+              <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                      <T text={"Quantity"} />
+                    </p>
+                    <p className="mt-1 text-[11px] font-medium text-text-secondary">
+                      <T text={"Choose how many pieces to add to checkout"} />
+                    </p>
+                  </div>
+                  <p className="shrink-0 rounded-full border border-accent-gold/25 bg-accent-gold/10 px-2.5 py-1 text-[10px] font-extrabold text-accent-gold">
+                    {selectedQuantity} <T text={selectedQuantity === 1 ? "piece" : "pieces"} />
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-[3rem_minmax(0,1fr)_3rem] items-center overflow-hidden rounded-xl border border-border-subtle bg-background-primary">
+                  <button
+                    type="button"
+                    onClick={decreaseQuantity}
+                    disabled={selectedQuantity <= 1}
+                    aria-label={text("Decrease quantity")}
+                    className="flex h-12 items-center justify-center text-text-primary transition hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    <Minus className="size-4" aria-hidden="true" />
+                  </button>
+                  <div className="flex h-12 items-center justify-center border-x border-border-subtle text-center">
+                    <span className="text-lg font-extrabold text-text-primary tabular-nums">{selectedQuantity}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={increaseQuantity}
+                    disabled={selectedQuantity >= maxSelectableQuantity}
+                    aria-label={text("Increase quantity")}
+                    className="flex h-12 items-center justify-center text-text-primary transition hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    <Plus className="size-4" aria-hidden="true" />
+                  </button>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-semibold text-text-secondary">
+                  <span>
+                    <T text={"Checkout quantity"} />:{" "}
+                    <span className="text-text-primary">{selectedQuantity}</span>
+                  </span>
+                  <span>
+                    <T text={"Subtotal"} />:{" "}
+                    <span className="text-accent-gold">€{selectedSubtotal.toFixed(2)}</span>
+                  </span>
+                </div>
+              </div>
+
               {/* High-Converting CTA Area */}
               <div className="space-y-3.5">
                 <a
@@ -996,7 +1117,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               style={{ background: "var(--accent-gold)" }}
             >
               <span><T text={checkoutLabel} /></span>
-              <span>€{product.price.toFixed(2)}</span>
+              <span>€{selectedSubtotal.toFixed(2)}</span>
             </a>
             <p className="text-[10px] text-text-secondary mt-3">
               <T text={"Secure checkout · Delivery and return terms shown before purchase"} />
@@ -1065,8 +1186,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             <div className="min-w-0">
               <p className="text-xs md:text-sm font-bold text-text-primary truncate max-w-[150px] md:max-w-xs">{product.name}</p>
               <div className="flex items-center gap-2">
-                <span className="text-xs md:text-sm font-extrabold text-accent-gold">€{product.price.toFixed(2)}</span>
-                <span className="text-[10px] line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
+                <span className="text-xs md:text-sm font-extrabold text-accent-gold">€{selectedSubtotal.toFixed(2)}</span>
+                <span className="text-[10px] line-through text-text-secondary">€{(product.compareAtPrice * selectedQuantity).toFixed(2)}</span>
+                <span className="text-[10px] font-bold text-text-secondary">x{selectedQuantity}</span>
               </div>
             </div>
           </div>
@@ -1205,7 +1327,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   className="flex min-h-10 w-full flex-wrap items-center justify-center gap-1 rounded-lg px-3 py-2 text-center text-xs font-extrabold leading-tight text-black bg-accent-gold hover:opacity-90 active:scale-[0.98] transition-all"
                 >
                   <span><T text={checkoutLabel} /></span>
-                  <span>€{product.price.toFixed(2)}</span>
+                  <span>€{selectedSubtotal.toFixed(2)}</span>
                 </a>
               </div>
             </div>

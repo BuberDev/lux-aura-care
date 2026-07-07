@@ -4,6 +4,7 @@ import { getShopifyVariantFromUrl, getShopProductById } from "@/lib/shop-data";
 
 const CHECKOUT_HOSTS = new Set(["shop.app", "checkout.shopify.com"]);
 const SHOPIFY_STORE_HOST = "k50k7g-j7.myshopify.com";
+const MAX_CHECKOUT_QUANTITY = 10;
 
 type CheckoutRouteContext = {
   params: Promise<{ productId: string }>;
@@ -16,6 +17,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
   const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
   const selectedShopifyUrl = selectedVariant?.shopifyUrl ?? product?.shopifyUrl;
   const shopifyVariant = selectedShopifyUrl ? parseShopifyVariant(selectedShopifyUrl) : null;
+  const checkoutQuantity = parseCheckoutQuantity(request.nextUrl.searchParams.get("quantity"));
 
   if (!product) {
     return redirectToProduct(request, productId);
@@ -34,7 +36,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       method: "POST",
       headers: requestHeaders,
       body: JSON.stringify({
-        items: [{ id: Number(shopifyVariant.variantId), quantity: 1 }],
+        items: [{ id: Number(shopifyVariant.variantId), quantity: checkoutQuantity }],
       }),
       cache: "no-store",
     });
@@ -97,7 +99,11 @@ function redirectToConfiguredShopifyUrl(
 ) {
   const selectedVariantId = request.nextUrl.searchParams.get("variantId");
   const selectedVariant = product.variants?.find((variant) => variant.id === selectedVariantId);
-  const configuredUrl = getAllowedConfiguredShopifyUrl(selectedVariant?.shopifyUrl ?? product.shopifyUrl);
+  const checkoutQuantity = parseCheckoutQuantity(request.nextUrl.searchParams.get("quantity"));
+  const configuredUrl = getAllowedConfiguredShopifyUrl(
+    selectedVariant?.shopifyUrl ?? product.shopifyUrl,
+    checkoutQuantity
+  );
 
   if (configuredUrl) {
     return noIndexRedirect(configuredUrl);
@@ -106,11 +112,15 @@ function redirectToConfiguredShopifyUrl(
   return redirectToProduct(request, productId);
 }
 
-function getAllowedConfiguredShopifyUrl(value: string) {
+function getAllowedConfiguredShopifyUrl(value: string, quantity: number) {
   try {
     const url = new URL(value);
 
     if (url.protocol === "https:" && url.hostname === SHOPIFY_STORE_HOST) {
+      const cartMatch = url.pathname.match(/^\/cart\/(\d+):\d+$/);
+      if (cartMatch) {
+        url.pathname = `/cart/${cartMatch[1]}:${quantity}`;
+      }
       return url;
     }
   } catch {
@@ -118,6 +128,16 @@ function getAllowedConfiguredShopifyUrl(value: string) {
   }
 
   return null;
+}
+
+function parseCheckoutQuantity(value: string | null) {
+  const parsed = Number(value);
+
+  if (!Number.isFinite(parsed)) {
+    return 1;
+  }
+
+  return Math.max(1, Math.min(MAX_CHECKOUT_QUANTITY, Math.trunc(parsed)));
 }
 
 function parseShopifyVariant(value: string) {
