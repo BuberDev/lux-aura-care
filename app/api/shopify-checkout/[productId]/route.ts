@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { getShopifyVariant, getShopProductById } from "@/lib/shop-data";
+import { getShopifyVariantFromUrl, getShopProductById } from "@/lib/shop-data";
 
 const CHECKOUT_HOSTS = new Set(["shop.app", "checkout.shopify.com"]);
+const SHOPIFY_STORE_HOST = "k50k7g-j7.myshopify.com";
 
 type CheckoutRouteContext = {
   params: Promise<{ productId: string }>;
@@ -11,10 +12,17 @@ type CheckoutRouteContext = {
 export async function GET(request: NextRequest, context: CheckoutRouteContext) {
   const { productId } = await context.params;
   const product = getShopProductById(productId);
-  const shopifyVariant = product ? getShopifyVariant(product) : null;
+  const selectedVariantId = request.nextUrl.searchParams.get("variantId");
+  const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
+  const selectedShopifyUrl = selectedVariant?.shopifyUrl ?? product?.shopifyUrl;
+  const shopifyVariant = selectedShopifyUrl ? parseShopifyVariant(selectedShopifyUrl) : null;
 
-  if (!product || !shopifyVariant) {
+  if (!product) {
     return redirectToProduct(request, productId);
+  }
+
+  if (!shopifyVariant) {
+    return redirectToConfiguredShopifyUrl(request, product, productId);
   }
 
   try {
@@ -32,7 +40,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
     });
 
     if (!cartResponse.ok) {
-      return redirectToProduct(request, productId);
+      return redirectToConfiguredShopifyUrl(request, product, productId);
     }
 
     const cookies = cartResponse.headers
@@ -41,7 +49,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       .join("; ");
 
     if (!cookies) {
-      return redirectToProduct(request, productId);
+      return redirectToConfiguredShopifyUrl(request, product, productId);
     }
 
     const checkoutResponse = await fetch(`${shopifyVariant.storeOrigin}/checkout`, {
@@ -55,12 +63,12 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
     const checkoutUrl = checkoutResponse.headers.get("location");
 
     if (!checkoutUrl || !isAllowedCheckoutUrl(checkoutUrl)) {
-      return redirectToProduct(request, productId);
+      return redirectToConfiguredShopifyUrl(request, product, productId);
     }
 
     return noIndexRedirect(checkoutUrl);
   } catch {
-    return redirectToProduct(request, productId);
+    return redirectToConfiguredShopifyUrl(request, product, productId);
   }
 }
 
@@ -80,6 +88,44 @@ function redirectToProduct(request: NextRequest, productId: string) {
   const fallbackUrl = new URL(`/shop/${encodeURIComponent(productId)}`, request.url);
   fallbackUrl.searchParams.set("checkoutError", "1");
   return noIndexRedirect(fallbackUrl);
+}
+
+function redirectToConfiguredShopifyUrl(
+  request: NextRequest,
+  product: NonNullable<ReturnType<typeof getShopProductById>>,
+  productId: string
+) {
+  const selectedVariantId = request.nextUrl.searchParams.get("variantId");
+  const selectedVariant = product.variants?.find((variant) => variant.id === selectedVariantId);
+  const configuredUrl = getAllowedConfiguredShopifyUrl(selectedVariant?.shopifyUrl ?? product.shopifyUrl);
+
+  if (configuredUrl) {
+    return noIndexRedirect(configuredUrl);
+  }
+
+  return redirectToProduct(request, productId);
+}
+
+function getAllowedConfiguredShopifyUrl(value: string) {
+  try {
+    const url = new URL(value);
+
+    if (url.protocol === "https:" && url.hostname === SHOPIFY_STORE_HOST) {
+      return url;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function parseShopifyVariant(value: string) {
+  try {
+    return getShopifyVariantFromUrl(value);
+  } catch {
+    return null;
+  }
 }
 
 function noIndexRedirect(destination: string | URL) {

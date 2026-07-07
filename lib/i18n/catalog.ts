@@ -3951,6 +3951,10 @@ export const translationCatalog = {
     "en": "Save",
     "pl": "Zaoszczędź"
   },
+  "You save": {
+    "en": "You save",
+    "pl": "Oszczędzasz"
+  },
   "Save €14 vs. buying separately": {
     "en": "Save €14 vs. buying separately",
     "pl": "Zaoszczędź 14 € w porównaniu z zakupem osobno"
@@ -5570,6 +5574,342 @@ export const translationCatalog = {
   "Close video": {
     "en": "Close video",
     "pl": "Zamknij film"
+  },
+  "Lux Aura Sculpt Gua Sha Duo": {
+    "en": "Lux Aura Sculpt Gua Sha Duo",
+    "pl": "Lux Aura Sculpt Gua Sha Duo"
+  },
+  "Signature branded facial massage tools in black gloss and pink marble.": {
+    "en": "Signature branded facial massage tools in black gloss and pink marble.",
+    "pl": "Sygnowane narzędzia do masażu twarzy w czarnym połysku i różowym marmurze."
+  },
+  "A signature two-piece Lux Aura Care gua sha duo with a discreet 15 mm x 15.8 mm logo mark, shaped for a slow facial massage ritual over serum or facial oil.": {
+    "en": "A signature two-piece Lux Aura Care gua sha duo with a discreet 15 mm x 15.8 mm logo mark, shaped for a slow facial massage ritual over serum or facial oil.",
+    "pl": "Sygnowany, dwuczęściowy duet gua sha Lux Aura Care z dyskretnym logo 15 mm x 15.8 mm, wyprofilowany do spokojnego masażu twarzy na serum lub olejku."
+  },
+  "Lux Aura Care branded black and pink gua sha facial massage duo": {
+    "en": "Lux Aura Care branded black and pink gua sha facial massage duo",
+    "pl": "Czarny i różowy duet gua sha do masażu twarzy z logo Lux Aura Care"
+  },
+  "Two branded tools: black gloss and pink marble finish": {
+    "en": "Two branded tools: black gloss and pink marble finish",
+    "pl": "Dwa narzędzia z logo: czarny połysk i różowy marmur"
+  },
+  "Discreet Lux Aura Care logo mark sized 15 mm x 15.8 mm": {
+    "en": "Discreet Lux Aura Care logo mark sized 15 mm x 15.8 mm",
+    "pl": "Dyskretne logo Lux Aura Care w rozmiarze 15 mm x 15.8 mm"
+  },
+  "Curved wing profile follows cheeks, jawline and brow bone": {
+    "en": "Curved wing profile follows cheeks, jawline and brow bone",
+    "pl": "Wygięty profil skrzydła dopasowuje się do policzków, linii żuchwy i łuku brwiowego"
+  },
+  "Smooth polished edges glide over facial oil without tugging": {
+    "en": "Smooth polished edges glide over facial oil without tugging",
+    "pl": "Gładko polerowane krawędzie suną po olejku bez szarpania skóry"
+  },
+  "Compact shape fits a 5-minute morning or evening routine": {
+    "en": "Compact shape fits a 5-minute morning or evening routine",
+    "pl": "Kompaktowy kształt pasuje do 5-minutowego porannego lub wieczornego rytuału"
+  },
+  "Use with light pressure; stop if skin becomes irritated": {
+    "en": "Use with light pressure; stop if skin becomes irritated",
+    "pl": "Stosuj z lekkim naciskiem i przerwij, jeśli skóra się podrażni"
+  },
+  "Cleanse skin and apply facial oil or serum for slip": {
+    "en": "Cleanse skin and apply facial oil or serum for slip",
+    "pl": "Oczyść skórę i nałóż olejek lub serum, aby zapewnić poślizg"
+  },
+  "Hold the tool nearly flat against the skin": {
+    "en": "Hold the tool nearly flat against the skin",
+    "pl": "Trzymaj narzędzie prawie płasko przy skórze"
+  },
+  "Glide outward from the centre of the face in slow strokes": {
+    "en": "Glide outward from the centre of the face in slow strokes",
+    "pl": "Prowadź je powoli od środka twarzy na zewnątrz"
+  },
+  "Use the curved notch along the jawline and cheekbone": {
+    "en": "Use the curved notch along the jawline and cheekbone",
+    "pl": "Użyj wygiętego wcięcia przy linii żuchwy i kości policzkowej"
+  },
+  "Wipe clean with a soft damp cloth after every ritual": {
+    "en": "Wipe clean with a soft damp cloth after every ritual",
+    "pl": "Po każdym rytuale przetrzyj miękką, wilgotną ściereczką"
+  },
+  "What is included in the duo?": {
+    "en": "What is included in the duo?",
+    "pl": "Co zawiera duet?"
+  },
+  "The set includes two Lux Aura Care branded gua sha tools: one black gloss finish and one soft pink marble finish.": {
+    "en": "The set includes two Lux Aura Care branded gua sha tools: one black gloss finish and one soft pink marble finish.",
+    "pl": "Zestaw zawiera dwa narzędzia gua sha z logo Lux Aura Care: jedno w czarnym połysku i jedno w delikatnym różowym marmurze."
+  },
+  "How large is the logo print?": {
+    "en": "How large is the logo print?",
+    "pl": "Jak duży jest nadruk logo?"
+  },
+  "The product mark is designed as a discreet premium detail at approximately 15 mm x 15.8 mm.": {
+    "en": "The product mark is designed as a discreet premium detail at approximately 15 mm x 15.8 mm.",
+    "pl": "Znak produktu jest zaprojektowany jako dyskretny detal premium o wymiarach około 15 mm x 15.8 mm."
+  },
+  "Can I use it on sensitive skin?": {
+    "en": "Can I use it on sensitive skin?",
+    "pl": "Czy mogę używać go przy skórze wrażliwej?"
+  },
+  "Use a facial oil or serum, keep pressure light, and stop if redness, discomfort, or irritation occurs.": {
+    "en": "Use a facial oil or serum, keep pressure light, and stop if redness, discomfort, or irritation occurs.",
+    "pl": "Użyj olejku lub serum, stosuj lekki nacisk i przerwij, jeśli pojawi się zaczerwienienie, dyskomfort lub podrażnienie."
+  },
+  "Signature Drop": {
+    "en": "Signature Drop",
+    "pl": "Signature Drop"
+  },
+  "Signature Duo": {
+    "en": "Signature Duo",
+    "pl": "Duet Signature"
+  },
+  "Two Lux Aura Care branded gua sha tools in black gloss and pink marble finishes": {
+    "en": "Two Lux Aura Care branded gua sha tools in black gloss and pink marble finishes",
+    "pl": "Dwa narzędzia gua sha z logo Lux Aura Care w czarnym połysku i różowym marmurze"
+  },
+  "Duo Product": {
+    "en": "Duo Product",
+    "pl": "Produkt duo"
+  },
+  "Black Gloss": {
+    "en": "Black Gloss",
+    "pl": "Czarny połysk"
+  },
+  "Polished Finish": {
+    "en": "Polished Finish",
+    "pl": "Polerowane wykończenie"
+  },
+  "Black gloss finish with discreet gold Lux Aura Care branding": {
+    "en": "Black gloss finish with discreet gold Lux Aura Care branding",
+    "pl": "Czarne połyskujące wykończenie z dyskretnym złotym logo Lux Aura Care"
+  },
+  "Pink Marble": {
+    "en": "Pink Marble",
+    "pl": "Różowy marmur"
+  },
+  "Soft Ritual": {
+    "en": "Soft Ritual",
+    "pl": "Delikatny rytuał"
+  },
+  "Pink marbled finish for a calm, elegant skincare ritual": {
+    "en": "Pink marbled finish for a calm, elegant skincare ritual",
+    "pl": "Różowe marmurkowe wykończenie do spokojnego, eleganckiego rytuału pielęgnacji"
+  },
+  "Rose Quartz": {
+    "en": "Rose Quartz",
+    "pl": "Różowy kwarc"
+  },
+  "Pink rose quartz-inspired gua sha with Lux Aura Care branding": {
+    "en": "Pink rose quartz-inspired gua sha with Lux Aura Care branding",
+    "pl": "Różowe gua sha inspirowane kwarcem z brandingiem Lux Aura Care"
+  },
+  "Black Lifestyle": {
+    "en": "Black Lifestyle",
+    "pl": "Czarny wariant lifestyle"
+  },
+  "In Use": {
+    "en": "In Use",
+    "pl": "W użyciu"
+  },
+  "Black gua sha styled in a premium facial massage lifestyle scene": {
+    "en": "Black gua sha styled in a premium facial massage lifestyle scene",
+    "pl": "Czarne gua sha w premium scenie lifestyle do masażu twarzy"
+  },
+  "Black Spa Flat Lay": {
+    "en": "Black Spa Flat Lay",
+    "pl": "Czarny spa flat lay"
+  },
+  "Black branded gua sha arranged for an elevated spa-style routine": {
+    "en": "Black branded gua sha arranged for an elevated spa-style routine",
+    "pl": "Czarne sygnowane gua sha w aranżacji pod elegancki rytuał spa"
+  },
+  "Pink Lifestyle": {
+    "en": "Pink Lifestyle",
+    "pl": "Różowy wariant lifestyle"
+  },
+  "Pink gua sha shown in a soft skincare massage lifestyle moment": {
+    "en": "Pink gua sha shown in a soft skincare massage lifestyle moment",
+    "pl": "Różowe gua sha pokazane w delikatnej scenie masażu i pielęgnacji"
+  },
+  "Pink Spa Flat Lay": {
+    "en": "Pink Spa Flat Lay",
+    "pl": "Różowy spa flat lay"
+  },
+  "Pink branded gua sha styled with a refined at-home spa aesthetic": {
+    "en": "Pink branded gua sha styled with a refined at-home spa aesthetic",
+    "pl": "Różowe sygnowane gua sha w dopracowanej estetyce domowego spa"
+  },
+  "Skincare Routine": {
+    "en": "Skincare Routine",
+    "pl": "Rytuał pielęgnacji"
+  },
+  "Ritual Set": {
+    "en": "Ritual Set",
+    "pl": "Zestaw rytuału"
+  },
+  "The full Lux Aura Care gua sha duo styled as part of a skincare routine": {
+    "en": "The full Lux Aura Care gua sha duo styled as part of a skincare routine",
+    "pl": "Pełny duet gua sha Lux Aura Care pokazany jako element rytuału pielęgnacji"
+  },
+  "Logo Detail": {
+    "en": "Logo Detail",
+    "pl": "Detal logo"
+  },
+  "Small-format Lux Aura Care logo mark scaled for a polished branded finish": {
+    "en": "Small-format Lux Aura Care logo mark scaled for a polished branded finish",
+    "pl": "Mały znak Lux Aura Care dopasowany skalą do eleganckiego, markowego wykończenia"
+  },
+  "Ritual Flat Lay": {
+    "en": "Ritual Flat Lay",
+    "pl": "Flat lay rytuału"
+  },
+  "Use with facial oil and light pressure for a slow face massage routine": {
+    "en": "Use with facial oil and light pressure for a slow face massage routine",
+    "pl": "Używaj z olejkiem do twarzy i lekkim naciskiem w spokojnym rytuale masażu"
+  },
+  "Signature Wing Contour": {
+    "en": "Signature Wing Contour",
+    "pl": "Sygnowany kontur skrzydła"
+  },
+  "The asymmetric wing profile gives you broad edges for cheeks plus a curved notch for jawline, cheekbone, and brow massage.": {
+    "en": "The asymmetric wing profile gives you broad edges for cheeks plus a curved notch for jawline, cheekbone, and brow massage.",
+    "pl": "Asymetryczny profil skrzydła daje szerokie krawędzie do policzków oraz wygięte wcięcie do masażu linii żuchwy, kości policzkowej i okolicy brwi."
+  },
+  "Face Sculpt": {
+    "en": "Face Sculpt",
+    "pl": "Face sculpt"
+  },
+  "Polished Glide Finish": {
+    "en": "Polished Glide Finish",
+    "pl": "Polerowany poślizg"
+  },
+  "Black gloss and pink marble finishes are designed to glide over facial oil or serum without pulling at delicate skin.": {
+    "en": "Black gloss and pink marble finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
+    "pl": "Wykończenia w czarnym połysku i różowym marmurze zostały zaprojektowane tak, aby sunąć po olejku lub serum bez ciągnięcia delikatnej skóry."
+  },
+  "Black gloss and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.": {
+    "en": "Black gloss and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
+    "pl": "Wykończenia w czarnym połysku i rose quartz zostały zaprojektowane tak, aby sunąć po olejku lub serum bez ciągnięcia delikatnej skóry."
+  },
+  "Smooth Glide": {
+    "en": "Smooth Glide",
+    "pl": "Gładki poślizg"
+  },
+  "Discreet Brand Mark": {
+    "en": "Discreet Brand Mark",
+    "pl": "Dyskretny znak marki"
+  },
+  "The Lux Aura Care logo is scaled to approximately 15 mm x 15.8 mm so the tool feels premium and branded without overwhelming the surface.": {
+    "en": "The Lux Aura Care logo is scaled to approximately 15 mm x 15.8 mm so the tool feels premium and branded without overwhelming the surface.",
+    "pl": "Logo Lux Aura Care ma około 15 mm x 15.8 mm, dzięki czemu narzędzie wygląda premium i markowo, ale nadruk nie dominuje powierzchni."
+  },
+  "Lux Aura Sculpt Gua Sha": {
+    "en": "Lux Aura Sculpt Gua Sha",
+    "pl": "Lux Aura Sculpt Gua Sha"
+  },
+  "Signature branded facial massage tool in your chosen finish.": {
+    "en": "Signature branded facial massage tool in your chosen finish.",
+    "pl": "Sygnowane narzędzie do masażu twarzy w wybranym wykończeniu."
+  },
+  "A signature Lux Aura Care gua sha available in black gloss or rose quartz finish, with a discreet 15 mm x 15.8 mm logo mark and a sculpted wing shape for a slow facial massage ritual over serum or facial oil.": {
+    "en": "A signature Lux Aura Care gua sha available in black gloss or rose quartz finish, with a discreet 15 mm x 15.8 mm logo mark and a sculpted wing shape for a slow facial massage ritual over serum or facial oil.",
+    "pl": "Sygnowane gua sha Lux Aura Care dostępne w czarnym połysku lub wykończeniu rose quartz, z dyskretnym logo 15 mm x 15.8 mm i wyprofilowanym kształtem skrzydła do spokojnego masażu twarzy na serum lub olejku."
+  },
+  "Lux Aura Care branded gua sha color options in black gloss and rose quartz": {
+    "en": "Lux Aura Care branded gua sha color options in black gloss and rose quartz",
+    "pl": "Warianty kolorystyczne gua sha Lux Aura Care: czarny połysk i rose quartz"
+  },
+  "Choose one branded tool in black gloss or rose quartz finish": {
+    "en": "Choose one branded tool in black gloss or rose quartz finish",
+    "pl": "Wybierz jedno narzędzie z logo w czarnym połysku lub wykończeniu rose quartz"
+  },
+  "What is included with my order?": {
+    "en": "What is included with my order?",
+    "pl": "Co zawiera moje zamówienie?"
+  },
+  "Your order includes one Lux Aura Care branded gua sha tool in the color you select before checkout.": {
+    "en": "Your order includes one Lux Aura Care branded gua sha tool in the color you select before checkout.",
+    "pl": "Zamówienie obejmuje jedno narzędzie gua sha z logo Lux Aura Care w kolorze wybranym przed przejściem do płatności."
+  },
+  "Lux Aura Care black gloss gua sha with gold logo": {
+    "en": "Lux Aura Care black gloss gua sha with gold logo",
+    "pl": "Czarne połyskujące gua sha Lux Aura Care ze złotym logo"
+  },
+  "Lux Aura Care rose quartz gua sha with gold logo": {
+    "en": "Lux Aura Care rose quartz gua sha with gold logo",
+    "pl": "Gua sha Lux Aura Care w kolorze rose quartz ze złotym logo"
+  },
+  "Black gloss": {
+    "en": "Black gloss",
+    "pl": "Czarny połysk"
+  },
+  "Rose quartz": {
+    "en": "Rose quartz",
+    "pl": "Różowy kwarc"
+  },
+  "Color Options": {
+    "en": "Color Options",
+    "pl": "Warianty kolorystyczne"
+  },
+  "Black gloss and rose quartz finishes shown together; choose one color before ordering": {
+    "en": "Black gloss and rose quartz finishes shown together; choose one color before ordering",
+    "pl": "Czarny połysk i rose quartz pokazane razem; przed zamówieniem wybierz jeden kolor"
+  },
+  "Rose Quartz Spa Flat Lay": {
+    "en": "Rose Quartz Spa Flat Lay",
+    "pl": "Rose quartz spa flat lay"
+  },
+  "Rose quartz gua sha styled with a refined at-home spa aesthetic": {
+    "en": "Rose quartz gua sha styled with a refined at-home spa aesthetic",
+    "pl": "Gua sha rose quartz w dopracowanej estetyce domowego spa"
+  },
+  "Black gua sha shown in a premium facial massage lifestyle moment": {
+    "en": "Black gua sha shown in a premium facial massage lifestyle moment",
+    "pl": "Czarne gua sha pokazane w premium scenie masażu twarzy"
+  },
+  "Rose Quartz Lifestyle": {
+    "en": "Rose Quartz Lifestyle",
+    "pl": "Rose quartz lifestyle"
+  },
+  "Rose quartz gua sha shown in a soft skincare massage lifestyle moment": {
+    "en": "Rose quartz gua sha shown in a soft skincare massage lifestyle moment",
+    "pl": "Gua sha rose quartz pokazane w delikatnej scenie masażu i pielęgnacji"
+  },
+  "Serum Detail": {
+    "en": "Serum Detail",
+    "pl": "Detal z serum"
+  },
+  "Ritual Detail": {
+    "en": "Ritual Detail",
+    "pl": "Detal rytuału"
+  },
+  "Both color options styled with serum to show the Lux Aura Care ritual finish": {
+    "en": "Both color options styled with serum to show the Lux Aura Care ritual finish",
+    "pl": "Oba warianty kolorystyczne pokazane z serum jako wykończenie rytuału Lux Aura Care"
+  },
+  "Choose color": {
+    "en": "Choose color",
+    "pl": "Wybierz kolor"
+  },
+  "Selected color": {
+    "en": "Selected color",
+    "pl": "Wybrany kolor"
+  },
+  "Order selected color": {
+    "en": "Order selected color",
+    "pl": "Zamów wybrany kolor"
+  },
+  "Order now": {
+    "en": "Order now",
+    "pl": "Zamów teraz"
+  },
+  "View image": {
+    "en": "View image",
+    "pl": "Zobacz zdjęcie"
   },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",

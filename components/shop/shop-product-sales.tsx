@@ -13,7 +13,7 @@ import {
   Sparkles,
   ChevronRight,
   ChevronLeft,
-  ZoomIn
+  Share2
 } from "lucide-react";
 import { Container } from "@/components/container";
 import { LocalizedLink } from "@/components/localized-link";
@@ -33,6 +33,8 @@ type ProductUgcGalleryProps = {
   readonly poster: string;
   readonly videos: string[];
 };
+
+const VISIBLE_SHOP_GALLERY_IMAGES = 5;
 
 function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryProps) {
   const { text } = useI18n();
@@ -280,6 +282,23 @@ const detailedScienceBenefits: Record<string, {
       desc: "Deep pressure massage along muscle fibers releases tightness and smooths the fascia. This helps melt away fine expression lines and tension in the brow and jaw.",
       badge: "Muscle Sculpt"
     }
+  ],
+  "lux-aura-sculpt-gua-sha": [
+    {
+      title: "Signature Wing Contour",
+      desc: "The asymmetric wing profile gives you broad edges for cheeks plus a curved notch for jawline, cheekbone, and brow massage.",
+      badge: "Face Sculpt"
+    },
+    {
+      title: "Polished Glide Finish",
+      desc: "Black gloss and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
+      badge: "Smooth Glide"
+    },
+    {
+      title: "Discreet Brand Mark",
+      desc: "The Lux Aura Care logo is scaled to approximately 15 mm x 15.8 mm so the tool feels premium and branded without overwhelming the surface.",
+      badge: "Logo Detail"
+    }
   ]
 };
 
@@ -288,6 +307,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
   const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
+  const productVariants = product.variants ?? [];
+  const hasColorVariants = productVariants.length > 0;
 
   const scienceBenefits = localizeContent(
     locale,
@@ -296,8 +317,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const [selectedVariantId, setSelectedVariantId] = useState(productVariants[0]?.id ?? "");
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
 
   // --- Stock: fetch from Shopify Storefront API via our proxy ---
   const [stockQuantity, setStockQuantity] = useState<number | null>(null);
@@ -340,29 +363,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, [product.flashSaleEndsAt]);
-
-  // Zoom magnifier states
-  const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({
-    transformOrigin: "center center",
-    transform: "scale(1)"
-  });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-    setZoomStyle({
-      transformOrigin: `${x}% ${y}%`,
-      transform: "scale(1.8)" // Elegant magnifier scale factor
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setZoomStyle({
-      transformOrigin: "center center",
-      transform: "scale(1)"
-    });
-  };
 
   // Amazon-style Lightbox Overlay states
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -410,6 +410,53 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       filter: "brightness-[0.9] sepia-[0.1]" 
     }
   ];
+  const selectedVariant = productVariants.find((variant) => variant.id === selectedVariantId) ?? productVariants[0];
+  const checkoutUrl = selectedVariant && product.shopifyUrl.startsWith("/api/shopify-checkout/")
+    ? `${product.shopifyUrl}?variantId=${encodeURIComponent(selectedVariant.id)}`
+    : selectedVariant?.shopifyUrl || product.shopifyUrl;
+  const checkoutLabel = hasColorVariants ? "Order selected color" : "Order now";
+  const stickyImage = selectedVariant?.image ?? product.image;
+  const visibleGalleryImages = galleryImages.slice(0, VISIBLE_SHOP_GALLERY_IMAGES);
+  const hiddenGalleryCount = Math.max(galleryImages.length - VISIBLE_SHOP_GALLERY_IMAGES, 0);
+
+  const handleVariantSelect = (variantId: string) => {
+    const nextVariant = productVariants.find((variant) => variant.id === variantId);
+    if (!nextVariant) return;
+
+    setSelectedVariantId(nextVariant.id);
+
+    const nextGalleryIndex = galleryImages.findIndex((image) => image.url === nextVariant.image);
+    if (nextGalleryIndex >= 0) {
+      setActiveGalleryIndex(nextGalleryIndex);
+    }
+  };
+
+  const openGalleryAt = (index: number) => {
+    setActiveGalleryIndex(index);
+    setIsLightboxOpen(true);
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: product.name,
+      text: product.description,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareData.url);
+      setShareCopied(true);
+      window.setTimeout(() => setShareCopied(false), 2000);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setShareCopied(false);
+    }
+  };
 
   // Scroll listener for sticky drawer
   useEffect(() => {
@@ -476,74 +523,114 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start relative z-10">
             
             {/* LEFT: Premium Image Gallery */}
-            <div className="lg:col-span-7 space-y-4">
-              <div 
-                className="relative aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle group shadow-2xl cursor-zoom-in"
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => setIsLightboxOpen(true)}
+            <div className="lg:col-span-7">
+              <div
+                className="mx-auto max-w-[620px]"
+                style={{ width: "min(620px, calc(100vw - 3.5rem))" }}
               >
-                <div 
-                  className="w-full h-full relative transition-transform duration-200 ease-out"
-                  style={zoomStyle}
-                >
-                  <Image
-                    src={galleryImages[activeGalleryIndex].url}
-                    alt={product.imageAlt}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                    className={`object-cover ${galleryImages[activeGalleryIndex].filter || ""}`}
-                  />
-                </div>
-                
-                {/* Image Overlay Educational Info Badges */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                
-                <Badge
-                  variant="product"
-                  className="absolute top-4 left-4 px-4 py-1.5 text-xs font-bold pointer-events-none md:text-sm"
-                >
-                  {galleryImages[activeGalleryIndex].badge}
-                </Badge>
+                <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-2 sm:grid-cols-[3.75rem_minmax(0,1fr)] sm:gap-3">
+                  <div className="col-start-2">
+                    <div
+                      id="shop-product-gallery-image"
+                      className="theme-on-image relative aspect-square overflow-hidden rounded-xl border border-border-subtle bg-surface-subtle"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => openGalleryAt(activeGalleryIndex)}
+                        className="absolute inset-0 z-0 cursor-zoom-in"
+                        aria-label={text("Click to see full view")}
+                      >
+                        <Image
+                          src={galleryImages[activeGalleryIndex].url}
+                          alt={product.imageAlt}
+                          fill
+                          priority
+                          sizes="(max-width: 640px) calc(100vw - 3.5rem), (max-width: 1024px) 560px, 48vw"
+                          className={`object-contain transition-all duration-500 ease-out ${galleryImages[activeGalleryIndex].filter || ""}`}
+                        />
+                      </button>
 
-                {/* Amazon-style "Click to expand" floating indicator */}
-                <div className="theme-on-image absolute top-4 right-4 bg-black/60 backdrop-blur-md text-text-primary/95 rounded-full p-2.5 border border-border-subtle opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <ZoomIn className="size-4 text-accent-gold" />
-                </div>
+                      <button
+                        type="button"
+                        onClick={handleShare}
+                        className="absolute right-3 top-3 z-20 flex size-10 items-center justify-center rounded-full border border-border-subtle bg-surface-glass text-text-primary shadow-lg backdrop-blur-md transition hover:border-border-strong hover:text-accent-gold"
+                        aria-label={text("Share product")}
+                        title={text("Share product")}
+                      >
+                        <Share2 className="size-5" aria-hidden="true" />
+                      </button>
 
-                <div className="theme-on-image absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-border-subtle pointer-events-none">
-                  <p className="text-xs text-text-primary/90 font-medium">
-                    {galleryImages[activeGalleryIndex].desc}
-                  </p>
-                </div>
-              </div>
-
-              {/* Gallery Thumbnails switcher */}
-              <div className="grid grid-cols-3 gap-3">
-                {galleryImages.map((img, i) => (
-                  <button
-                    key={img.label}
-                    onClick={() => setActiveGalleryIndex(i)}
-                    className={`theme-on-image relative aspect-square rounded-xl overflow-hidden border transition-all duration-300 ${
-                      activeGalleryIndex === i 
-                        ? "border-accent-gold scale-[1.03] ring-1 ring-accent-gold/30 shadow-[0_0_15px_rgba(201,169,110,0.15)]" 
-                        : "border-border-subtle hover:border-border-strong opacity-70 hover:opacity-95"
-                    }`}
-                  >
-                    <Image
-                      src={img.url}
-                      alt={img.label}
-                      fill
-                      sizes="15vw"
-                      className={`object-cover ${img.filter || ""}`}
-                    />
-                    <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
-                    <div className="absolute bottom-1 left-1 right-1 text-[8px] md:text-[9px] bg-black/80 text-text-primary/80 py-0.5 rounded text-center truncate">
-                      {img.label}
+                      {shareCopied && (
+                        <span className="absolute right-3 top-14 z-20 rounded-lg bg-black/85 px-3 py-1.5 text-xs text-white shadow-lg" role="status">
+                          {text("Link copied")}
+                        </span>
+                      )}
                     </div>
-                  </button>
-                ))}
+
+                    <button
+                      type="button"
+                      onClick={() => openGalleryAt(activeGalleryIndex)}
+                      className="mt-2 w-full text-center text-xs font-medium text-accent-gold transition hover:text-text-primary"
+                    >
+                      {text("Click to see full view")}
+                    </button>
+                  </div>
+
+                  {/* Amazon-style thumbnail rail */}
+                  <div
+                    className="col-start-1 row-start-1 flex flex-col gap-1.5 sm:gap-2"
+                    aria-label={`${product.name}: ${text("Product gallery")}`}
+                  >
+                    {visibleGalleryImages.map((img, i) => (
+                      <button
+                        key={`${img.url}-${i}`}
+                        type="button"
+                        onClick={() => setActiveGalleryIndex(i)}
+                        onMouseEnter={() => setActiveGalleryIndex(i)}
+                        aria-label={text(img.label)}
+                        aria-pressed={activeGalleryIndex === i}
+                        aria-controls="shop-product-gallery-image"
+                        title={text(img.label)}
+                        className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-surface-subtle transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${
+                          activeGalleryIndex === i
+                            ? "border-accent-gold shadow-[0_0_0_1px_rgba(201,169,110,0.2)]"
+                            : "border-border-subtle opacity-80 hover:border-border-strong hover:opacity-100"
+                        }`}
+                      >
+                        <Image
+                          src={img.url}
+                          alt=""
+                          fill
+                          sizes="(max-width: 639px) 40px, 56px"
+                          className={`object-contain ${img.filter || ""}`}
+                        />
+                      </button>
+                    ))}
+
+                    {hiddenGalleryCount > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => openGalleryAt(VISIBLE_SHOP_GALLERY_IMAGES)}
+                        className={`theme-on-image relative size-10 shrink-0 overflow-hidden rounded-md border-2 bg-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold sm:size-14 sm:rounded-lg ${
+                          activeGalleryIndex >= VISIBLE_SHOP_GALLERY_IMAGES ? "border-accent-gold" : "border-border-subtle"
+                        }`}
+                        aria-label={`${hiddenGalleryCount} ${text("Additional images")}`}
+                        aria-controls="shop-product-gallery-image"
+                      >
+                        <Image
+                          src={galleryImages[VISIBLE_SHOP_GALLERY_IMAGES].url}
+                          alt=""
+                          fill
+                          sizes="(max-width: 639px) 40px, 56px"
+                          className="object-cover opacity-35"
+                        />
+                        <span className="absolute inset-0 flex items-center justify-center text-base font-bold text-white">
+                          +{hiddenGalleryCount}
+                        </span>
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -585,10 +672,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
                 <div className="text-right">
                   <span
-                    className="text-xs md:text-sm font-extrabold px-3.5 py-1.5 rounded-full inline-block animate-bounce shadow-lg"
+                    className="inline-block rounded-full px-3.5 py-1.5 text-xs font-extrabold shadow-lg md:text-sm"
                     style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
                   >
-                    <T text={"Save"} /> {discount}<T text={"% Now"} />
+                    <T text={"You save"} /> {discount}%
                   </span>
                   <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">€{(product.compareAtPrice - product.price).toFixed(2)} <T text={"kept in your pocket"} /></p>
                 </div>
@@ -636,17 +723,62 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 )}
               </div>
 
+              {hasColorVariants && selectedVariant && (
+                <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                      <T text={"Choose color"} />
+                    </p>
+                    <p className="min-w-0 text-right text-[10px] font-semibold text-text-secondary">
+                      <T text={"Selected color"} />:{" "}
+                      <span className="text-text-primary"><T text={selectedVariant.label} /></span>
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label={text("Choose color")}>
+                    {productVariants.map((variant) => {
+                      const isSelected = selectedVariant.id === variant.id;
+
+                      return (
+                        <button
+                          key={variant.id}
+                          type="button"
+                          role="radio"
+                          aria-checked={isSelected}
+                          onClick={() => handleVariantSelect(variant.id)}
+                          className={`flex min-h-12 items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-bold transition-all duration-300 ${
+                            isSelected
+                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_14px_rgba(201,169,110,0.12)]"
+                              : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                          }`}
+                        >
+                          <span
+                            className="size-5 shrink-0 rounded-full border shadow-inner"
+                            style={{
+                              background: variant.swatchHex,
+                              borderColor: variant.swatchBorderHex ?? "var(--border-subtle)",
+                            }}
+                            aria-hidden="true"
+                          />
+                          <span className="min-w-0 leading-tight"><T text={variant.label} /></span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               {/* High-Converting CTA Area */}
               <div className="space-y-3.5">
                 <a
-                  href={product.shopifyUrl}
+                  href={checkoutUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative block w-full text-center py-4.5 rounded-xl text-base font-extrabold text-white dark:text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden"
+                  className="relative flex min-h-14 w-full items-center justify-center rounded-xl px-4 py-3 text-center text-sm font-extrabold leading-tight text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden dark:text-black sm:text-base"
                   style={{ background: "var(--accent-gold)" }}
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    <T text={"BUY NOW & START YOUR GLOW RITUAL"} />
+                  <span className="relative z-10 flex min-w-0 flex-wrap items-center justify-center gap-2">
+                    <span className="min-w-0"><T text={checkoutLabel} /></span>
                     <ChevronRight className="size-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   {/* Glowing hover light */}
@@ -857,13 +989,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           
           <div className="pt-4 max-w-sm mx-auto">
             <a
-              href={product.shopifyUrl}
+              href={checkoutUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full py-4.5 rounded-xl text-base font-extrabold text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-[0_0_20px_rgba(201,169,110,0.2)]"
+              className="flex min-h-14 w-full flex-wrap items-center justify-center gap-1 rounded-xl px-4 py-3 text-center text-sm font-extrabold leading-tight text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-[0_0_20px_rgba(201,169,110,0.2)] sm:text-base"
               style={{ background: "var(--accent-gold)" }}
             >
-              <T text={"Kup Teraz — €"} />{product.price.toFixed(2)}
+              <span><T text={checkoutLabel} /></span>
+              <span>€{product.price.toFixed(2)}</span>
             </a>
             <p className="text-[10px] text-text-secondary mt-3">
               <T text={"Secure checkout · Delivery and return terms shown before purchase"} />
@@ -927,7 +1060,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         <Container className="w-full flex items-center justify-between gap-4 max-w-4xl px-0">
           <div className="flex items-center gap-3">
             <div className="relative size-11 rounded-lg overflow-hidden shrink-0 border border-border-subtle hidden sm:block">
-              <Image src={product.image} alt={product.name} fill sizes="44px" className="object-cover" />
+              <Image src={stickyImage} alt={selectedVariant?.imageAlt ?? product.name} fill sizes="44px" className="object-cover" />
             </div>
             <div className="min-w-0">
               <p className="text-xs md:text-sm font-bold text-text-primary truncate max-w-[150px] md:max-w-xs">{product.name}</p>
@@ -945,13 +1078,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </div>
 
             <a
-              href={product.shopifyUrl}
+              href={checkoutUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2.5 px-6 rounded-lg text-xs md:text-sm font-extrabold text-black transition-all hover:opacity-90 active:scale-[0.98] shadow-lg flex items-center gap-1.5 uppercase tracking-wider"
+              className="flex min-h-10 max-w-[168px] items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-center text-xs font-extrabold leading-tight text-black transition-all hover:opacity-90 active:scale-[0.98] shadow-lg md:max-w-none md:text-sm"
               style={{ background: "var(--accent-gold)" }}
             >
-              <span><T text={"Kup Teraz"} /></span>
+              <span className="min-w-0"><T text={checkoutLabel} /></span>
               <ChevronRight className="size-4" />
             </a>
           </div>
@@ -1066,12 +1199,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </p>
               <div className="border-t border-border-subtle pt-4 mt-2 hidden lg:block">
                 <a
-                  href={product.shopifyUrl}
+                  href={checkoutUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full py-2.5 rounded-lg text-xs font-extrabold text-black bg-accent-gold text-center hover:opacity-90 active:scale-[0.98] transition-all"
+                  className="flex min-h-10 w-full flex-wrap items-center justify-center gap-1 rounded-lg px-3 py-2 text-center text-xs font-extrabold leading-tight text-black bg-accent-gold hover:opacity-90 active:scale-[0.98] transition-all"
                 >
-                  <T text={"Kup Teraz — €"} />{product.price.toFixed(2)}
+                  <span><T text={checkoutLabel} /></span>
+                  <span>€{product.price.toFixed(2)}</span>
                 </a>
               </div>
             </div>

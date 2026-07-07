@@ -1,3 +1,22 @@
+export type ShopProductGalleryItem = {
+  url: string;
+  label: string;
+  badge: string;
+  desc: string;
+  filter?: string;
+};
+
+export type ShopProductVariant = {
+  id: string;
+  label: string;
+  colorName: string;
+  swatchHex: string;
+  swatchBorderHex?: string;
+  image: string;
+  imageAlt: string;
+  shopifyUrl: string;
+};
+
 export type ShopProduct = {
   id: string;
   name: string;
@@ -18,13 +37,8 @@ export type ShopProduct = {
   isBestSeller?: boolean;
   flashSaleEndsAt?: string; // ISO date — real countdown, not looping
   ugcVideos?: string[];
-  gallery?: {
-    url: string;
-    label: string;
-    badge: string;
-    desc: string;
-    filter?: string;
-  }[];
+  gallery?: ShopProductGalleryItem[];
+  variants?: ShopProductVariant[];
 };
 
 export const shopProducts: ShopProduct[] = [
@@ -463,6 +477,126 @@ export const shopProducts: ShopProduct[] = [
         label: "Daily Results",
         badge: "Visible Glow",
         desc: "Incorporate the Black Bian Stone Gua Sha into a gentle facial massage routine",
+      },
+    ],
+  },
+  {
+    id: "lux-aura-sculpt-gua-sha",
+    name: "Lux Aura Sculpt Gua Sha",
+    tagline: "Signature branded facial massage tool in your chosen finish.",
+    description:
+      "A signature Lux Aura Care gua sha available in black gloss or rose quartz finish, with a discreet 15 mm x 15.8 mm logo mark and a sculpted wing shape for a slow facial massage ritual over serum or facial oil.",
+    price: 24.99,
+    compareAtPrice: 44.99,
+    currency: "EUR",
+    image:
+      "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp",
+    imageAlt: "Lux Aura Care black gloss gua sha with gold logo",
+    badge: "Signature Drop",
+    benefits: [
+      "Choose one branded tool in black gloss or rose quartz finish",
+      "Discreet Lux Aura Care logo mark sized 15 mm x 15.8 mm",
+      "Curved wing profile follows cheeks, jawline and brow bone",
+      "Smooth polished edges glide over facial oil without tugging",
+      "Compact shape fits a 5-minute morning or evening routine",
+      "Use with light pressure; stop if skin becomes irritated",
+    ],
+    howToUse: [
+      "Cleanse skin and apply facial oil or serum for slip",
+      "Hold the tool nearly flat against the skin",
+      "Glide outward from the centre of the face in slow strokes",
+      "Use the curved notch along the jawline and cheekbone",
+      "Wipe clean with a soft damp cloth after every ritual",
+    ],
+    faq: [
+      {
+        q: "What is included with my order?",
+        a: "Your order includes one Lux Aura Care branded gua sha tool in the color you select before checkout.",
+      },
+      {
+        q: "How large is the logo print?",
+        a: "The product mark is designed as a discreet premium detail at approximately 15 mm x 15.8 mm.",
+      },
+      {
+        q: "Can I use it on sensitive skin?",
+        a: "Use a facial oil or serum, keep pressure light, and stop if redness, discomfort, or irritation occurs.",
+      },
+    ],
+    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522172749:1",
+    category: "skincare",
+    isNew: true,
+    variants: [
+      {
+        id: "black-gloss",
+        label: "Black Gloss",
+        colorName: "Black gloss",
+        swatchHex: "#050505",
+        swatchBorderHex: "#d5c08d",
+        image:
+          "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp",
+        imageAlt: "Lux Aura Care black gloss gua sha with gold logo",
+        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522172749:1",
+      },
+      {
+        id: "rose-quartz",
+        label: "Rose Quartz",
+        colorName: "Rose quartz",
+        swatchHex: "#f4b8c4",
+        swatchBorderHex: "#f8d4dc",
+        image:
+          "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.webp",
+        imageAlt: "Lux Aura Care rose quartz gua sha with gold logo",
+        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522205517:1",
+      },
+    ],
+    gallery: [
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp",
+        label: "Black Gloss",
+        badge: "Polished Finish",
+        desc: "Black gloss finish with discreet gold Lux Aura Care branding",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.webp",
+        label: "Rose Quartz",
+        badge: "Rose Quartz",
+        desc: "Pink rose quartz-inspired gua sha with Lux Aura Care branding",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/01-lux-aura-care-gua-sha-set-black-and-rose-quartz-main.webp",
+        label: "Color Options",
+        badge: "Signature Drop",
+        desc: "Black gloss and rose quartz finishes shown together; choose one color before ordering",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/04-lux-aura-care-black-gua-sha-spa-arrangement.webp",
+        label: "Black Spa Flat Lay",
+        badge: "5-Min Ritual",
+        desc: "Black branded gua sha arranged for an elevated spa-style routine",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/05-lux-aura-care-rose-quartz-gua-sha-spa-arrangement.webp",
+        label: "Rose Quartz Spa Flat Lay",
+        badge: "Soft Ritual",
+        desc: "Rose quartz gua sha styled with a refined at-home spa aesthetic",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/06-lux-aura-care-black-gua-sha-model-usage.webp",
+        label: "Black Lifestyle",
+        badge: "In Use",
+        desc: "Black gua sha shown in a premium facial massage lifestyle moment",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/07-lux-aura-care-rose-quartz-gua-sha-model-usage.webp",
+        label: "Rose Quartz Lifestyle",
+        badge: "In Use",
+        desc: "Rose quartz gua sha shown in a soft skincare massage lifestyle moment",
+      },
+      {
+        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/08-lux-aura-care-gua-sha-detail-hand-serum-both-products.webp",
+        label: "Serum Detail",
+        badge: "Ritual Detail",
+        desc: "Both color options styled with serum to show the Lux Aura Care ritual finish",
       },
     ],
   },
@@ -1114,8 +1248,12 @@ export function getShopifyCheckoutRoute(productId: string) {
   return `/api/shopify-checkout/${encodeURIComponent(productId)}`;
 }
 
-export function getShopifyVariant(product: ShopProduct) {
-  const url = new URL(product.shopifyUrl);
+export function getShopifyVariant(product: Pick<ShopProduct, "shopifyUrl">) {
+  return getShopifyVariantFromUrl(product.shopifyUrl);
+}
+
+export function getShopifyVariantFromUrl(value: string) {
+  const url = new URL(value);
   const match = url.pathname.match(/^\/cart\/(\d+):\d+$/);
 
   if (url.hostname !== "k50k7g-j7.myshopify.com" || !match) {

@@ -1,0 +1,18 @@
+{
+  "product": "Lux Aura Care Gua Sha Set",
+  "image_count": 8,
+  "folders": {
+    "png-originals": "Full-resolution PNG files",
+    "webp-optimized": "Optimized WebP files for website use"
+  },
+  "images": [
+    {"order": 1, "filename": "01-lux-aura-care-gua-sha-set-black-and-rose-quartz-main.png", "role": "main_image"},
+    {"order": 2, "filename": "02-lux-aura-care-black-gua-sha-clean-product-shot.png", "role": "clean_black_product"},
+    {"order": 3, "filename": "03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.png", "role": "clean_pink_product"},
+    {"order": 4, "filename": "04-lux-aura-care-black-gua-sha-spa-arrangement.png", "role": "black_spa_arrangement"},
+    {"order": 5, "filename": "05-lux-aura-care-rose-quartz-gua-sha-spa-arrangement.png", "role": "pink_spa_arrangement"},
+    {"order": 6, "filename": "06-lux-aura-care-black-gua-sha-model-usage.png", "role": "black_model_usage"},
+    {"order": 7, "filename": "07-lux-aura-care-rose-quartz-gua-sha-model-usage.png", "role": "pink_model_usage"},
+    {"order": 8, "filename": "08-lux-aura-care-gua-sha-detail-hand-serum-both-products.png", "role": "detail_shot"}
+  ]
+}
