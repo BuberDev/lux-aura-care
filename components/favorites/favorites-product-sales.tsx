@@ -17,6 +17,7 @@ import { T } from "@/components/translated-text";
 import { useI18n } from "@/components/i18n-provider";
 import { localizeContent } from "@/lib/i18n/messages";
 import type { ProductDisplayPrice } from "@/lib/currency";
+import { UGC_VIDEOS } from "@/lib/media-data";
 
 type FavoritesProductSalesProps = {
   product: Product;
@@ -26,30 +27,12 @@ type FavoritesProductSalesProps = {
   displayPrice: ProductDisplayPrice | null;
 };
 
-const PRODUCT_VIDEOS: Record<string, string> = {
-  "gua-sha-set": "/gua-sha-set/UGC-short-BAIMEI_IcyMe_Jade_Roller_GuaSha.mp4",
-  "aroma-diffuser": "/aroma-diffuser/ugc-short-ceramic-ultrasonic-diffuser.mp4",
-  "silk-sleep-mask": "/silk-sleep-mask/ugc-short-silk-mask.mp4",
-  "mixsoon-bean-essence": "/mixsoon-bean-essence/short-ugc-mixoon-Bean-Essence.mp4",
-  "gold-eye-patches": "/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4",
-  "centella-collagen-sleep-masks": "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
-  "vibro-glow-face-massager": "/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4",
-  "scalp-massager": "/scalp-massager/ugc-Scalp-Massager-Shampoo-Brush.mp4",
-  "niacinamide-toner": "/niacinamide-toner/ugc-short-Naturium_Niacinamide_Face_Serum.mp4",
-  "magnesium-supplement": "/magnesium-supplement/ugc-short-Pure_Encapsulations_Magnesium_Glycinate.mp4",
-  "aveeno-oil-mist": "/aveeno-oil-mist/ugc-short-aveeno-daily-body-oil.mp4",
-  "pavilia-plush-robe": "/pavilia-plush-robe/ugc-short-PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.mp4",
-  "cliganic-essential-oils": "/cliganic-essential-oils/ugc-short-cliganic-organic-aromath-oils-set.mp4",
-  "copper-water-bottle": "/copper-water-bottle/ugc-short-Copper_Water_Bottle_model.mp4",
-  "coslus-cleansing-brush": "/coslus-cleansing-brush/ugc-short-cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg.mp4",
-};
-
 const VISIBLE_GALLERY_IMAGES = 5;
 
 export function FavoritesProductSales({ product, proof, content, related, displayPrice }: FavoritesProductSalesProps) {
   const { locale, text } = useI18n();
   const usesAmazonCom = locale === "pl" && product.activeMarket === "us";
-  const videoUrl = product.video !== undefined ? product.video : PRODUCT_VIDEOS[product.id];
+  const videoUrl = product.video !== undefined ? product.video : UGC_VIDEOS[product.id];
   const [activeTab, setActiveTab] = useState(0);
   const [galleryModalIndex, setGalleryModalIndex] = useState<number | null>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -550,6 +533,7 @@ export function FavoritesProductSales({ product, proof, content, related, displa
               <div className="relative aspect-[9/16] w-full max-w-[360px] mx-auto rounded-[2rem] overflow-hidden border-[8px] border-surface-subtle shadow-2xl bg-black">
                 <video
                   src={videoUrl}
+                  preload="none"
                   autoPlay
                   loop
                   muted
@@ -557,7 +541,6 @@ export function FavoritesProductSales({ product, proof, content, related, displa
                   controls
                   controlsList="nodownload"
                   poster={product.image}
-                  preload="metadata"
                   aria-label={`${product.name}: ${text("customer demonstration")}`}
                   className="w-full h-full object-cover"
                 />
@@ -744,6 +727,7 @@ export function FavoritesProductSales({ product, proof, content, related, displa
 
             <video
               src={videoUrl}
+              preload="none"
               autoPlay
               controls
               playsInline

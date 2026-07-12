@@ -64,7 +64,8 @@ function FlipCard({ product, index, target }: FlipCardProps) {
             fill
             sizes="120px"
             className="object-cover"
-            priority={index < 8}
+            priority={index < 3}
+            loading={index >= 3 ? "lazy" : undefined}
           />
         </div>
         {/* Back Face */}

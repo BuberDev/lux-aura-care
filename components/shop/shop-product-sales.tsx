@@ -157,7 +157,7 @@ function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryPro
                   loop
                   muted
                   playsInline
-                  preload={index === 0 ? "metadata" : "none"}
+                  preload="none"
                   onPlay={() => setActiveIndex(index)}
                   className="size-full object-cover"
                 >
