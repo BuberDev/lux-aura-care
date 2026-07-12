@@ -1,28 +1,16 @@
 /**
- * Centralised media-asset registry ("media database").
- *
- * WHY THIS FILE EXISTS
+ * SEED DATA ONLY
  * --------------------
- * Heavy assets (UGC videos, hero images) were previously hardcoded in
- * individual React components.  This module acts as a single source of
- * truth for all media URLs so that:
- *
- * 1. Swapping to an external CDN / Cloud Storage is a ONE-LINE change
- *    (update `MEDIA_BASE_URL`).
- * 2. Components stay free of data – they only render what this module
- *    provides.
- * 3. Preloading strategies, poster URLs, and future thumbnail generation
- *    can be managed centrally.
- *
- * MIGRATION PATH
+ * These assets are now stored in the Neon PostgreSQL database (MediaAsset table).
+ * This file remains solely to populate the database via `npx prisma db seed`.
+ * 
+ * MIGRATION PATH TO CDN
  * --------------
- * Today the URLs point at `/public` (local files served by Next.js).
  * When you set up Cloudinary / Vercel Blob / AWS S3:
  *   1. Upload the files from `public/` to the CDN bucket.
- *   2. Set `MEDIA_BASE_URL` to the CDN origin, e.g.
- *      "https://res.cloudinary.com/your-cloud/video/upload"
- *   3. Update each `url` below to the CDN path returned after upload.
- *   4. Delete the heavy files from `public/` to shrink your deploy.
+ *   2. Run a script or manually update the rows in the PostgreSQL DB
+ *      to point to the new CDN URLs.
+ *   3. Delete the heavy files from `public/`.
  */
 
 // ── Base URL ────────────────────────────────────────────────────────
@@ -53,14 +41,6 @@ export const UGC_VIDEOS: Record<string, string> = {
   "coslus-cleansing-brush": mediaUrl("/coslus-cleansing-brush/ugc-short-cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg.mp4"),
 };
 
-/**
- * Get the UGC video URL for a given product.
- * Returns `null` when no video is registered.
- */
-export function getUgcVideoUrl(productId: string): string | null {
-  return UGC_VIDEOS[productId] ?? null;
-}
-
 // ── Shop UGC Videos (products with multiple UGC clips) ──────────────
 export const SHOP_UGC_VIDEOS: Record<string, string[]> = {
   "clear-skin-patches": [
@@ -80,11 +60,3 @@ export const SHOP_UGC_VIDEOS: Record<string, string[]> = {
     mediaUrl("/body-gua-sha/ugc-short-body-gua-sha.mp4"),
   ],
 };
-
-/**
- * Get the shop UGC video URLs for a given shop product.
- * Returns an empty array when no videos are registered.
- */
-export function getShopUgcVideos(productId: string): string[] {
-  return SHOP_UGC_VIDEOS[productId] ?? [];
-}

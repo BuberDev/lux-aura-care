@@ -1,5 +1,3 @@
-import { SHOP_UGC_VIDEOS } from "@/lib/media-data";
-
 export type ShopProductGalleryItem = {
   url: string;
   label: string;
@@ -166,7 +164,6 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490722637:1",
     category: "skincare",
     isNew: true,
-    ugcVideos: SHOP_UGC_VIDEOS["clear-skin-patches"],
     gallery: [
       {
         url: "/clear-skin-patches/clear-skin-hydrocolloid-patches-main-product-photo.png",
@@ -450,7 +447,6 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53955987276109:1",
     category: "skincare",
     isNew: true,
-    ugcVideos: SHOP_UGC_VIDEOS["bian-stone-gua-sha"],
     gallery: [
       {
         url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png",
@@ -646,7 +642,6 @@ export const shopProducts: ShopProduct[] = [
     category: "skincare",
     isBestSeller: true,
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
-    ugcVideos: SHOP_UGC_VIDEOS["vibro-glow-face-massager"],
     gallery: [
       {
         url: "/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png",
@@ -803,7 +798,6 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092721455437:1",
     category: "skincare",
     isNew: true,
-    ugcVideos: SHOP_UGC_VIDEOS["vitamin-c-retinol-serum-duo"],
     gallery: [
       {
         url: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png",
@@ -882,7 +876,6 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092726501709:1",
     category: "body-glow",
     isNew: true,
-    ugcVideos: SHOP_UGC_VIDEOS["body-gua-sha"],
     gallery: [
       {
         url: "/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png",

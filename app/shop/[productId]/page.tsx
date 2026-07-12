@@ -9,6 +9,7 @@ import { ShopProductSales } from "@/components/shop/shop-product-sales";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { getShopUgcVideosFromDb } from "@/lib/db/media";
 
 type Props = { params: Promise<{ productId: string }> };
 
@@ -46,9 +47,12 @@ export default async function ShopProductPage({ params }: Props) {
   const sourceProduct = getShopProductById(productId);
   if (!sourceProduct) notFound();
 
+  const dbVideos = await getShopUgcVideosFromDb(sourceProduct.id);
+
   const product = {
     ...localizeContent(locale, sourceProduct),
     shopifyUrl: getShopifyCheckoutRoute(sourceProduct.id),
+    ugcVideos: dbVideos.length > 0 ? dbVideos : sourceProduct.ugcVideos,
   };
   const related = localizeContent(
     locale,

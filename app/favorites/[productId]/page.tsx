@@ -10,6 +10,7 @@ import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { resolveProductDisplayPrice } from "@/lib/currency";
 import { localizeProduct, localizeProducts } from "@/lib/product-localization";
+import { getUgcVideoUrlFromDb } from "@/lib/db/media";
 
 type ProductPageProps = {
   params: Promise<{ productId: string }>;
@@ -108,6 +109,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const content = localizeContent(locale, getProductPageContent(sourceProduct));
   const relatedProducts = localizeProducts(locale, getRelatedProducts(sourceProduct));
   const displayPrice = await resolveProductDisplayPrice(product, locale);
+  const ugcVideoUrl = await getUgcVideoUrlFromDb(sourceProduct.id);
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
     { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
@@ -151,6 +153,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         content={content}
         related={relatedProducts}
         displayPrice={displayPrice}
+        ugcVideoUrl={ugcVideoUrl}
       />
     </>
   );

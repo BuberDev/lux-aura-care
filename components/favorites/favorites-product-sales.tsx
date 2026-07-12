@@ -17,7 +17,6 @@ import { T } from "@/components/translated-text";
 import { useI18n } from "@/components/i18n-provider";
 import { localizeContent } from "@/lib/i18n/messages";
 import type { ProductDisplayPrice } from "@/lib/currency";
-import { UGC_VIDEOS } from "@/lib/media-data";
 
 type FavoritesProductSalesProps = {
   product: Product;
@@ -25,14 +24,15 @@ type FavoritesProductSalesProps = {
   content: ProductPageContent;
   related: Product[];
   displayPrice: ProductDisplayPrice | null;
+  ugcVideoUrl: string | null;
 };
 
 const VISIBLE_GALLERY_IMAGES = 5;
 
-export function FavoritesProductSales({ product, proof, content, related, displayPrice }: FavoritesProductSalesProps) {
+export function FavoritesProductSales({ product, proof, content, related, displayPrice, ugcVideoUrl }: FavoritesProductSalesProps) {
   const { locale, text } = useI18n();
   const usesAmazonCom = locale === "pl" && product.activeMarket === "us";
-  const videoUrl = product.video !== undefined ? product.video : UGC_VIDEOS[product.id];
+  const videoUrl = product.video !== undefined ? product.video : (ugcVideoUrl ?? undefined);
   const [activeTab, setActiveTab] = useState(0);
   const [galleryModalIndex, setGalleryModalIndex] = useState<number | null>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
