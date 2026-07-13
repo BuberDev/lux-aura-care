@@ -134,12 +134,16 @@ export default async function ShopPage() {
                     <span className="text-2xl font-bold text-text-primary">
                       €{product.price.toFixed(2)}
                     </span>
-                    <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>
-                      €{product.compareAtPrice.toFixed(2)}
-                    </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded" style={{ background: "rgb(201 169 110 / 0.15)", color: "var(--accent-gold)" }}>
-                      -{Math.round((1 - product.price / product.compareAtPrice) * 100)}%
-                    </span>
+                    {product.compareAtPrice > product.price && (
+                      <>
+                        <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>
+                          €{product.compareAtPrice.toFixed(2)}
+                        </span>
+                        <span className="text-xs font-semibold px-2 py-0.5 rounded" style={{ background: "rgb(201 169 110 / 0.15)", color: "var(--accent-gold)" }}>
+                          -{Math.round((1 - product.price / product.compareAtPrice) * 100)}%
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   <div

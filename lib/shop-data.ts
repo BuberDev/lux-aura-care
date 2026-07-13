@@ -50,7 +50,9 @@ export const shopProducts: ShopProduct[] = [
     tagline: "A precise at-home tool for removing peach fuzz and surface buildup.",
     description:
       "A 6-piece dermaplaning razor set for removing peach fuzz and surface buildup as part of a careful at-home routine.",
-    price: 12.99,
+    // Synced with live Shopify variant (charges 24.99). Intended promo was 12.99 —
+    // restore it here once the Shopify price is lowered to match.
+    price: 24.99,
     compareAtPrice: 24.99,
     currency: "EUR",
     image: "/dermaplaning-razor-kit/Glow_Ritual_Face_Razor_Kit.png",
@@ -128,7 +130,9 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Overnight blemish control. Peel, reveal, glow.",
     description:
       "24 ultra-thin hydrocolloid patches that draw out impurities while you sleep. Invisible on skin, no irritation, no picking. The secret weapon in every 40+ skincare routine.",
-    price: 8.99,
+    // Synced with live Shopify variant (charges 14.99). Intended promo was 8.99 —
+    // restore it here once the Shopify price is lowered to match.
+    price: 14.99,
     compareAtPrice: 16.99,
     currency: "EUR",
     image: "/clear-skin-patches/Clear_Skin_Hydrocolloid_Patches.png",
@@ -205,7 +209,9 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Wake up to brighter, firmer eyes — starting tonight.",
     description:
       "60 ultra-thin 24K gold collagen eye patches that target dark circles, puffiness and fine lines while you sleep. Marine collagen + hyaluronic acid + real gold particles — 30 full treatments per pack. The overnight eye ritual for women 40+.",
-    price: 16.99,
+    // Synced with live Shopify variant (charges 18.99). Intended promo was 16.99 —
+    // restore it here once the Shopify price is lowered to match.
+    price: 18.99,
     compareAtPrice: 29.99,
     currency: "EUR",
     image: "/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png",
@@ -270,8 +276,11 @@ export const shopProducts: ShopProduct[] = [
     tagline: "The complete glow ritual — smooth, clear, radiant.",
     description:
       "A two-step weekly set pairing a dermaplaning tool with hydrocolloid patches for a simple at-home routine.",
-    price: 18.99,
-    compareAtPrice: 32.99,
+    // Synced with live Shopify variant (charges 34.99). Intended promo was 18.99 —
+    // restore it here once the Shopify price is lowered to match.
+    // compareAt = razor 24.99 + patches 14.99 bought separately.
+    price: 34.99,
+    compareAtPrice: 39.98,
     currency: "EUR",
     image: "/skin-ritual-bundle/Skin_Ritual_Starter_Kit.png",
     imageAlt: "Flat lay of premium skincare products on white background",
@@ -279,7 +288,7 @@ export const shopProducts: ShopProduct[] = [
     benefits: [
       "Glow Ritual Face Razor Kit (6 blades)",
       "Clear Skin Hydrocolloid Patches (24 patches)",
-      "Save €14 vs. buying separately",
+      "Save €4.99 vs. buying separately",
       "6-week complete ritual in one package",
       "Gift-ready packaging",
       "Free delivery within EU",
@@ -346,7 +355,9 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Sculpt, de-puff, and glow. The ancient beauty ritual for youthful skin.",
     description:
       "A two-piece rose quartz facial massage set for a cooling, gentle massage ritual and more even application of facial oils.",
-    price: 15.99,
+    // Synced with live Shopify variant (charges 29.99). Intended promo was 15.99 —
+    // restore it here once the Shopify price is lowered to match.
+    price: 29.99,
     compareAtPrice: 29.99,
     currency: "EUR",
     image: "/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png",

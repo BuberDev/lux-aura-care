@@ -311,7 +311,7 @@ const detailedScienceBenefits: Record<string, {
     },
     {
       title: "Synergistic Glow Impact",
-      desc: "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, saving you €14 compared to separate purchases.",
+      desc: "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, saving you €4.99 compared to separate purchases.",
       badge: "Result: Radiance"
     }
   ],
@@ -526,6 +526,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
   const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
+  const hasDiscount = product.compareAtPrice > product.price;
   const productVariants = product.variants ?? [];
   const hasColorVariants = productVariants.length > 0;
 
@@ -584,7 +585,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   // --- Flash sale countdown: real end date from product data ---
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
-  const saleActive = Boolean(product.flashSaleEndsAt);
+  const saleActive = Boolean(product.flashSaleEndsAt) && hasDiscount;
 
   useEffect(() => {
     if (!product.flashSaleEndsAt) return;
@@ -1042,21 +1043,27 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {/* Price Block & Save Indicator */}
               <div className="border-t border-b border-border-subtle py-4 flex items-center justify-between gap-4">
                 <div className="space-y-1">
-                  <p className="text-[10px] text-text-secondary uppercase tracking-widest font-semibold"><T text={"Special Offer Price"} /></p>
+                  <p className="text-[10px] text-text-secondary uppercase tracking-widest font-semibold">
+                    <T text={hasDiscount ? "Special Offer Price" : "Price"} />
+                  </p>
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl font-extrabold text-text-primary">€{product.price.toFixed(2)}</span>
-                    <span className="text-base line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
+                    {hasDiscount && (
+                      <span className="text-base line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
+                    )}
                   </div>
                 </div>
-                <div className="text-right">
-                  <span
-                    className="inline-block rounded-full px-3.5 py-1.5 text-xs font-extrabold shadow-lg md:text-sm"
-                    style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
-                  >
-                    <T text={"You save"} /> {discount}%
-                  </span>
-                  <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">€{(product.compareAtPrice - product.price).toFixed(2)} <T text={"kept in your pocket"} /></p>
-                </div>
+                {hasDiscount && (
+                  <div className="text-right">
+                    <span
+                      className="inline-block rounded-full px-3.5 py-1.5 text-xs font-extrabold shadow-lg md:text-sm"
+                      style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
+                    >
+                      <T text={"You save"} /> {discount}%
+                    </span>
+                    <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">€{(product.compareAtPrice - product.price).toFixed(2)} <T text={"kept in your pocket"} /></p>
+                  </div>
+                )}
               </div>
 
               {/* Real availability panel */}
@@ -1465,11 +1472,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       <div className="flex items-center justify-between pt-1">
                         <div className="flex items-baseline gap-2">
                           <span className="text-sm font-extrabold text-accent-gold">€{rel.price.toFixed(2)}</span>
-                          <span className="text-[10px] line-through text-text-secondary">€{rel.compareAtPrice.toFixed(2)}</span>
+                          {rel.compareAtPrice > rel.price && (
+                            <span className="text-[10px] line-through text-text-secondary">€{rel.compareAtPrice.toFixed(2)}</span>
+                          )}
                         </div>
-                        <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-accent-gold/10 text-accent-gold border border-accent-gold/20">
-                          -{relDiscount}<T text={"% Off"} />
-                        </span>
+                        {relDiscount > 0 && (
+                          <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-accent-gold/10 text-accent-gold border border-accent-gold/20">
+                            -{relDiscount}<T text={"% Off"} />
+                          </span>
+                        )}
                       </div>
                     </div>
                   </LocalizedLink>
@@ -1495,7 +1506,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <p className="text-xs md:text-sm font-bold text-text-primary truncate max-w-[150px] md:max-w-xs">{product.name}</p>
               <div className="flex items-center gap-2">
                 <span className="text-xs md:text-sm font-extrabold text-accent-gold">€{selectedSubtotal.toFixed(2)}</span>
-                <span className="text-[10px] line-through text-text-secondary">€{(product.compareAtPrice * selectedQuantity).toFixed(2)}</span>
+                {hasDiscount && (
+                  <span className="text-[10px] line-through text-text-secondary">€{(product.compareAtPrice * selectedQuantity).toFixed(2)}</span>
+                )}
                 <span className="text-[10px] font-bold text-text-secondary">x{selectedQuantity}</span>
               </div>
             </div>
