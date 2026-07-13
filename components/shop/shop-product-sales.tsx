@@ -12,7 +12,9 @@ import {
   Clock,
   Minus,
   Plus,
+  Play,
   Sparkles,
+  Star,
   ChevronRight,
   ChevronLeft,
   Share2
@@ -24,6 +26,11 @@ import type { ShopProduct } from "@/lib/shop-data";
 import { localizeContent } from "@/lib/i18n/messages";
 import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
+import {
+  trackShopBeginCheckout,
+  trackShopViewItem,
+  type ShopCheckoutEvent,
+} from "@/lib/shop-analytics";
 
 type ShopProductSalesProps = {
   readonly product: ShopProduct;
@@ -341,6 +348,176 @@ const detailedScienceBenefits: Record<string, {
       desc: "The Lux Aura Care logo is scaled to approximately 15 mm x 15.8 mm so the tool feels premium and branded without overwhelming the surface.",
       badge: "Logo Detail"
     }
+  ],
+  "bian-stone-gua-sha": [
+    {
+      title: "Volcanic Bian Stone",
+      desc: "Hand-polished black Bian stone offers an ultra-smooth mineral surface that glides over facial oil without pulling or dragging delicate skin.",
+      badge: "Stone Craft"
+    },
+    {
+      title: "Contour-Mapped Shape",
+      desc: "The stick profile follows the jawline, cheeks, and brow bone, while the pointed end reaches the under-eye and brow area with precision.",
+      badge: "Face Fit"
+    },
+    {
+      title: "Chill-Ready Ritual",
+      desc: "Cool the stone in the fridge before use for a refreshing morning massage — 5–10 minutes with light pressure is all it takes.",
+      badge: "Cool Touch"
+    }
+  ],
+  "gold-eye-patches": [
+    {
+      title: "24K Gold Hydrogel",
+      desc: "Gold-toned hydrogel patches hug the under-eye curve and stay cool against the skin, turning a 20-minute treatment into a genuinely relaxing ritual.",
+      badge: "Gold Formula"
+    },
+    {
+      title: "Collagen + Hyaluronic Serum",
+      desc: "Each patch is soaked in marine collagen and hyaluronic acid serum that delivers deep hydration exactly where fine lines and dryness show first.",
+      badge: "Deep Hydration"
+    },
+    {
+      title: "30 Full Treatments",
+      desc: "60 patches per pack means a full month of under-eye care — use before events for a quick de-puff or overnight as part of your evening ritual.",
+      badge: "Month Supply"
+    }
+  ],
+  "vibro-glow-face-massager": [
+    {
+      title: "6,000 Micro-Vibrations",
+      desc: "Gentle high-frequency vibration stimulates the skin's surface and helps serum spread evenly, adding a salon-style step to a 5-minute home routine.",
+      badge: "Vibro Tech"
+    },
+    {
+      title: "T-Bar Ergonomics",
+      desc: "The lightweight T-bar shape follows the cheekbone, jawline, and brow bone, so every contour of the face gets consistent, comfortable contact.",
+      badge: "Full Contour"
+    },
+    {
+      title: "USB Rechargeable",
+      desc: "One full charge lasts roughly 18 five-minute sessions. No batteries, no cables during use — just pick it up and glide.",
+      badge: "Cordless"
+    }
+  ],
+  "centella-collagen-sleep-masks": [
+    {
+      title: "Centella Soothing Base",
+      desc: "Centella asiatica extract is included in the soothing, fragrance-free formula, making the mask a calm final step after serums and actives.",
+      badge: "Calm Formula"
+    },
+    {
+      title: "8-Hour Moisture Lock",
+      desc: "The no-rinse overnight layer seals your evening skincare in place while you sleep, so you wake up to visibly plumper, hydrated skin.",
+      badge: "Overnight Seal"
+    },
+    {
+      title: "30-Night Supply",
+      desc: "Thirty single-use sachets cover a full month of use — hygienic, travel-friendly, and easy to keep consistent.",
+      badge: "Month Ritual"
+    }
+  ],
+  "vitamin-c-retinol-serum-duo": [
+    {
+      title: "Vitamin C by Day",
+      desc: "The morning serum targets dullness and dark spots. Follow with SPF — the duo is designed as a complete, ordered routine, not a single product.",
+      badge: "AM Brighten"
+    },
+    {
+      title: "Retinol by Night",
+      desc: "The evening serum supports skin renewal while you sleep. Start 2–3 nights per week and build up gradually as your skin adjusts.",
+      badge: "PM Renew"
+    },
+    {
+      title: "Lightweight & Fragrance-Free",
+      desc: "Both serums absorb fast with no greasy residue and no added fragrance — formulated with mature and reactive skin in mind.",
+      badge: "Clean Feel"
+    }
+  ],
+  "resin-body-gua-sha-tool": [
+    {
+      title: "Large-Format Coverage",
+      desc: "The wide resin board covers thighs, arms, and abdomen in single long strokes, so a full-body session takes minutes instead of half an hour.",
+      badge: "Body Scale"
+    },
+    {
+      title: "Ergonomic Oil-Proof Grip",
+      desc: "Lightweight resin keeps a secure grip even with body oil on your hands — firm, controlled strokes without slipping.",
+      badge: "Sure Grip"
+    },
+    {
+      title: "Circulation Ritual",
+      desc: "Used with body oil in upward strokes, the board turns post-shower moisturising into a firm massage ritual that leaves skin feeling smoother.",
+      badge: "Massage Flow"
+    }
+  ],
+  "natural-bristle-spa-brush": [
+    {
+      title: "Natural Firm Bristles",
+      desc: "Plant-fibre bristles deliver effective dry or wet exfoliation, sweeping away dead skin cells so body lotion spreads more evenly.",
+      badge: "Deep Exfoliation"
+    },
+    {
+      title: "Detachable Long Handle",
+      desc: "The wooden handle detaches for close-up work and extends to reach the entire back — a full spa brush-down without help.",
+      badge: "Full Reach"
+    },
+    {
+      title: "Dry-Brush Ritual",
+      desc: "Five minutes of dry brushing before the shower, working upward from the feet, is the classic foundation of an at-home body-glow routine.",
+      badge: "Pre-Shower Step"
+    }
+  ],
+  "exfoliating-spa-body-brush": [
+    {
+      title: "Soft Daily Bristles",
+      desc: "Soft-medium natural bristles are gentle enough for daily shower use while still lifting away dead skin cells and unclogging pores.",
+      badge: "Daily Safe"
+    },
+    {
+      title: "Secure Wrist Strap",
+      desc: "The built-in strap keeps the brush firmly in hand under running water — no fumbling, no dropping mid-shower.",
+      badge: "Shower Grip"
+    },
+    {
+      title: "Texture in 2 Weeks",
+      desc: "Used consistently with circular motions on stomach and thighs, skin texture looks and feels visibly smoother within about two weeks.",
+      badge: "Visible Glow"
+    }
+  ],
+  "ice-face-roller-gua-sha-set": [
+    {
+      title: "Cold-Holding Steel",
+      desc: "Stainless steel keeps its chill for 20–30 minutes out of the freezer — far longer than stone — for a genuinely cooling morning massage.",
+      badge: "Cryo Steel"
+    },
+    {
+      title: "60-Second De-Puff",
+      desc: "Cold contact can temporarily improve the appearance of puffiness and refresh tired skin — roll from neck to forehead before makeup.",
+      badge: "Morning Reset"
+    },
+    {
+      title: "Roller + Board Duo",
+      desc: "The roller covers large areas fast while the matching gua sha board sculpts along the jawline and cheekbones — two tools, one ritual.",
+      badge: "2-Piece Set"
+    }
+  ],
+  "seaweed-collagen-crystal-mask": [
+    {
+      title: "Crystal Hydrogel Fit",
+      desc: "The hydrogel sheet conforms closely to facial contours and holds serum against the skin for the full 20–30 minute wear time.",
+      badge: "Second Skin"
+    },
+    {
+      title: "Seaweed + Marine Collagen",
+      desc: "Each mask carries 30 ml of serum with seaweed extract and marine collagen for an intensive hydration-focused treatment.",
+      badge: "30ml Serum"
+    },
+    {
+      title: "Event-Ready Glow",
+      desc: "A single 20-minute session leaves skin looking dewy and luminous — the go-to step before occasions when you want a glass-skin finish.",
+      badge: "Instant Lumen"
+    }
   ]
 };
 
@@ -354,7 +531,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   const scienceBenefits = localizeContent(
     locale,
-    detailedScienceBenefits[product.id] || detailedScienceBenefits["dermaplaning-razor-kit"]
+    detailedScienceBenefits[product.id] ?? []
   );
 
   // Interactive States
@@ -364,6 +541,23 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
+
+  // Surface a friendly message when the checkout API bounced the visitor back
+  const [checkoutFailed, setCheckoutFailed] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("checkoutError") !== "1") return;
+
+    setCheckoutFailed(true);
+    params.delete("checkoutError");
+    const query = params.toString();
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${query ? `?${query}` : ""}`
+    );
+  }, []);
 
   // --- Stock: fetch from Shopify Storefront API via our proxy ---
   const [stockQuantity, setStockQuantity] = useState<number | null>(null);
@@ -437,6 +631,38 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   const heroSectionRef = useRef<HTMLDivElement>(null);
 
+  // Funnel analytics: product view + checkout intent (GA4 / Meta / TikTok)
+  useEffect(() => {
+    trackShopViewItem({
+      productId: product.id,
+      productName: product.name,
+      price: product.price,
+      currency: product.currency,
+      category: product.category,
+    });
+  }, [product.id, product.name, product.price, product.currency, product.category]);
+
+  const handleCheckoutClick = (placement: ShopCheckoutEvent["placement"]) => {
+    trackShopBeginCheckout({
+      productId: product.id,
+      productName: product.name,
+      price: product.price,
+      quantity: selectedQuantity,
+      currency: product.currency,
+      variantId: selectedVariant?.id,
+      placement,
+    });
+  };
+
+  type HeroMediaItem = {
+    type: "image" | "video";
+    url: string;
+    label: string;
+    badge: string;
+    desc: string;
+    filter?: string;
+  };
+
   // Gallery Variations (uses real multi-images if defined, otherwise falls back to simulated filters)
   const galleryImages = product.gallery || [
     { 
@@ -460,6 +686,22 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       filter: "brightness-[0.9] sepia-[0.1]" 
     }
   ];
+  // Hero media rail: product images + the first UGC video as slide 2 so
+  // visitors arriving from TikTok/Instagram immediately recognise the product.
+  const heroMedia: HeroMediaItem[] = galleryImages.map((img) => ({
+    type: "image" as const,
+    ...img,
+  }));
+  if (ugcVideos[0]) {
+    heroMedia.splice(Math.min(1, heroMedia.length), 0, {
+      type: "video",
+      url: ugcVideos[0],
+      label: "Real Routine Video",
+      badge: "Real Routine",
+      desc: "A real customer routine with this exact product",
+    });
+  }
+
   const selectedVariant = productVariants.find((variant) => variant.id === selectedVariantId) ?? productVariants[0];
   const maxSelectableQuantity = Math.max(
     1,
@@ -472,10 +714,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     quantity: selectedQuantity,
   });
   const checkoutLabel = hasColorVariants ? "Order selected color" : "Order now";
+  const trustBadgeLabel = (() => {
+    if (product.isBestSeller) return "Bestseller";
+    if (product.isNew) return "New arrival";
+    return "Customer favourite";
+  })();
   const selectedSubtotal = product.price * selectedQuantity;
   const stickyImage = selectedVariant?.image ?? product.image;
-  const visibleGalleryImages = galleryImages.slice(0, VISIBLE_SHOP_GALLERY_IMAGES);
-  const hiddenGalleryCount = Math.max(galleryImages.length - VISIBLE_SHOP_GALLERY_IMAGES, 0);
+  const visibleGalleryImages = heroMedia.slice(0, VISIBLE_SHOP_GALLERY_IMAGES);
+  const hiddenGalleryCount = Math.max(heroMedia.length - VISIBLE_SHOP_GALLERY_IMAGES, 0);
+  const activeHeroItem = heroMedia[activeGalleryIndex] ?? heroMedia[0];
+  const lightboxItem = heroMedia[lightboxIndex] ?? heroMedia[0];
+  const heroThumbSrc = (item: HeroMediaItem) =>
+    item.type === "video" ? product.image : item.url;
 
   useEffect(() => {
     setSelectedQuantity((current) => Math.min(current, maxSelectableQuantity));
@@ -487,7 +738,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
     setSelectedVariantId(nextVariant.id);
 
-    const nextGalleryIndex = galleryImages.findIndex((image) => image.url === nextVariant.image);
+    const nextGalleryIndex = heroMedia.findIndex(
+      (item) => item.type === "image" && item.url === nextVariant.image
+    );
     if (nextGalleryIndex >= 0) {
       setActiveGalleryIndex(nextGalleryIndex);
     }
@@ -548,14 +801,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       if (e.key === "Escape") {
         setIsLightboxOpen(false);
       } else if (e.key === "ArrowRight") {
-        setLightboxIndex(prev => (prev + 1) % galleryImages.length);
+        setLightboxIndex(prev => (prev + 1) % heroMedia.length);
       } else if (e.key === "ArrowLeft") {
-        setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length);
+        setLightboxIndex(prev => (prev - 1 + heroMedia.length) % heroMedia.length);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isLightboxOpen, galleryImages.length]);
+  }, [isLightboxOpen, heroMedia.length]);
 
 
   return (
@@ -569,6 +822,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           <span className="hidden md:inline"><T text={"🔒 SECURE CHECKOUT"} /></span>
         </div>
       </div>
+
+      {/* Checkout failure notice — shown when the checkout API bounced back */}
+      {checkoutFailed && (
+        <div
+          className="border-b border-red-900/40 bg-red-950/60 px-4 py-3 text-center text-xs font-semibold text-red-200"
+          role="alert"
+        >
+          <T text={"We couldn't open the checkout just now. Please try again — your selection is still saved on this page."} />
+        </div>
+      )}
 
       {/* Breadcrumb Navigation */}
       <div className="border-b border-border-subtle py-3 px-4 relative z-10 bg-surface-glass backdrop-blur-md">
@@ -604,21 +867,39 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       id="shop-product-gallery-image"
                       className="theme-on-image relative aspect-square overflow-hidden rounded-xl border border-border-subtle bg-surface-subtle"
                     >
-                      <button
-                        type="button"
-                        onClick={() => openGalleryAt(activeGalleryIndex)}
-                        className="absolute inset-0 z-0 cursor-zoom-in"
-                        aria-label={text("Click to see full view")}
-                      >
-                        <Image
-                          src={galleryImages[activeGalleryIndex].url}
-                          alt={product.imageAlt}
-                          fill
-                          priority
-                          sizes="(max-width: 640px) calc(100vw - 3.5rem), (max-width: 1024px) 560px, 48vw"
-                          className={`object-contain transition-all duration-500 ease-out ${galleryImages[activeGalleryIndex].filter || ""}`}
-                        />
-                      </button>
+                      {activeHeroItem.type === "video" ? (
+                        <video
+                          key={activeHeroItem.url}
+                          src={activeHeroItem.url}
+                          poster={product.image}
+                          controls
+                          loop
+                          muted
+                          autoPlay
+                          playsInline
+                          preload="metadata"
+                          aria-label={`${product.name}: ${text("customer demonstration")}`}
+                          className="absolute inset-0 z-0 size-full bg-black object-contain"
+                        >
+                          <T text={"Your browser does not support the video tag."} />
+                        </video>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => openGalleryAt(activeGalleryIndex)}
+                          className="absolute inset-0 z-0 cursor-zoom-in"
+                          aria-label={text("Click to see full view")}
+                        >
+                          <Image
+                            src={activeHeroItem.url}
+                            alt={product.imageAlt}
+                            fill
+                            priority
+                            sizes="(max-width: 640px) calc(100vw - 3.5rem), (max-width: 1024px) 560px, 48vw"
+                            className={`object-contain transition-all duration-500 ease-out ${activeHeroItem.filter || ""}`}
+                          />
+                        </button>
+                      )}
 
                       <button
                         type="button"
@@ -637,13 +918,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       )}
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => openGalleryAt(activeGalleryIndex)}
-                      className="mt-2 w-full text-center text-xs font-medium text-accent-gold transition hover:text-text-primary"
-                    >
-                      {text("Click to see full view")}
-                    </button>
+                    {activeHeroItem.type === "image" && (
+                      <button
+                        type="button"
+                        onClick={() => openGalleryAt(activeGalleryIndex)}
+                        className="mt-2 w-full text-center text-xs font-medium text-accent-gold transition hover:text-text-primary"
+                      >
+                        {text("Click to see full view")}
+                      </button>
+                    )}
                   </div>
 
                   {/* Amazon-style thumbnail rail */}
@@ -668,12 +951,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                         }`}
                       >
                         <Image
-                          src={img.url}
+                          src={heroThumbSrc(img)}
                           alt=""
                           fill
                           sizes="(max-width: 639px) 40px, 56px"
                           className={`object-contain ${img.filter || ""}`}
                         />
+                        {img.type === "video" && (
+                          <span className="absolute inset-0 flex items-center justify-center bg-black/40">
+                            <Play className="size-4 fill-white text-white sm:size-5" aria-hidden="true" />
+                          </span>
+                        )}
                       </button>
                     ))}
 
@@ -688,7 +976,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                         aria-controls="shop-product-gallery-image"
                       >
                         <Image
-                          src={galleryImages[VISIBLE_SHOP_GALLERY_IMAGES].url}
+                          src={heroThumbSrc(heroMedia[VISIBLE_SHOP_GALLERY_IMAGES])}
                           alt=""
                           fill
                           sizes="(max-width: 639px) 40px, 56px"
@@ -706,9 +994,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
             {/* RIGHT: Conversion Buy Box */}
             <div className="lg:col-span-5 space-y-6 bg-surface-subtle border border-border-subtle rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative">
-              <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-red-950/40 text-red-400 border border-red-900/30 px-3 py-1 rounded-full text-xs font-semibold animate-pulse">
+              <div className={`absolute top-4 right-4 flex items-center gap-1.5 bg-accent-gold/10 text-accent-gold border border-accent-gold/30 px-3 py-1 rounded-full text-xs font-semibold ${product.isBestSeller ? "animate-pulse" : ""}`}>
                 <Sparkles className="size-3.5" />
-                <span><T text={"Featured product"} /></span>
+                <span><T text={trustBadgeLabel} /></span>
               </div>
 
               <div>
@@ -721,6 +1009,26 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 >
                   {product.name}
                 </h1>
+                {product.rating && product.rating.count > 0 && (
+                  <div className="mb-3 flex items-center gap-2">
+                    <div className="flex items-center gap-0.5" aria-hidden="true">
+                      {[1, 2, 3, 4, 5].map((starPosition) => (
+                        <Star
+                          key={starPosition}
+                          className={`size-4 ${
+                            starPosition <= Math.round(product.rating!.value)
+                              ? "fill-accent-gold text-accent-gold"
+                              : "fill-transparent text-border-strong"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-xs font-semibold text-text-secondary">
+                      {product.rating.value.toFixed(1)} · {product.rating.count}{" "}
+                      <T text={product.rating.count === 1 ? "review" : "reviews"} />
+                    </span>
+                  </div>
+                )}
                 <p className="text-sm md:text-base leading-relaxed text-text-secondary">
                   {product.description}
                 </p>
@@ -754,8 +1062,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {/* Real availability panel */}
               <div className="bg-surface-subtle border border-border-subtle rounded-2xl p-4 space-y-3.5 text-xs">
 
-                {/* Stock bar — real Shopify data, hidden while loading or when unavailable */}
-                {!stockLoading && stockQuantity !== null && (
+                {/* Stock bar — real Shopify data, shown only when genuinely low so urgency stays credible */}
+                {!stockLoading && stockQuantity !== null && stockQuantity > 0 && stockQuantity <= 15 && (
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-text-secondary font-medium">
                       <span><T text={"Stock status"} /></span>
@@ -893,8 +1201,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <div className="space-y-3.5">
                 <a
                   href={checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => handleCheckoutClick("buy-box")}
                   className="relative flex min-h-14 w-full items-center justify-center rounded-xl px-4 py-3 text-center text-sm font-extrabold leading-tight text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden dark:text-black sm:text-base"
                   style={{ background: "var(--accent-gold)" }}
                 >
@@ -929,7 +1236,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {[
                   { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
                   { icon: ShieldCheck, text: "Secure checkout", sub: "Processed by Shopify" },
-                  { icon: RotateCcw, text: "Return terms", sub: "Review before purchase" },
+                  { icon: RotateCcw, text: "14-day returns", sub: "EU right of withdrawal" },
                 ].map(({ icon: Icon, text, sub }) => (
                   <div key={text} className="flex flex-col items-center gap-1 text-center rounded-xl border border-border-subtle bg-surface-subtle p-3">
                     <Icon className="size-4" style={{ color: "var(--accent-gold)" }} />
@@ -965,6 +1272,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
+      {scienceBenefits.length > 0 && (
       <section className="py-16 px-4 border-b border-border-subtle">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -998,6 +1306,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </section>
+      )}
 
       {/* 7. "THE GLOW RITUAL" GUIDE (HOW TO USE) */}
       <section className="py-16 px-4 border-b border-border-subtle bg-surface-subtle">
@@ -1111,8 +1420,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           <div className="pt-4 max-w-sm mx-auto">
             <a
               href={checkoutUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => handleCheckoutClick("final-cta")}
               className="flex min-h-14 w-full flex-wrap items-center justify-center gap-1 rounded-xl px-4 py-3 text-center text-sm font-extrabold leading-tight text-black transition-all duration-300 hover:opacity-90 hover:scale-[1.02] shadow-[0_0_20px_rgba(201,169,110,0.2)] sm:text-base"
               style={{ background: "var(--accent-gold)" }}
             >
@@ -1140,7 +1448,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {related.map((rel) => {
                 const relDiscount = Math.round((1 - rel.price / rel.compareAtPrice) * 100);
                 return (
-                  <a
+                  <LocalizedLink
                     key={rel.id}
                     href={`/shop/${rel.id}`}
                     className="group flex min-w-0 gap-4 rounded-xl border border-border-subtle p-4 transition-all duration-300 hover:border-accent-gold/40 hover:bg-surface-subtle hover:shadow-[0_0_15px_rgba(201,169,110,0.05)]"
@@ -1164,7 +1472,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                         </span>
                       </div>
                     </div>
-                  </a>
+                  </LocalizedLink>
                 );
               })}
             </div>
@@ -1196,13 +1504,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-1 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider text-accent-gold">
               <Sparkles className="size-3" />
-              <span><T text={"Featured product"} /></span>
+              <span><T text={trustBadgeLabel} /></span>
             </div>
 
             <a
               href={checkoutUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => handleCheckoutClick("sticky-drawer")}
               className="flex min-h-10 max-w-[168px] items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-center text-xs font-extrabold leading-tight text-black transition-all hover:opacity-90 active:scale-[0.98] shadow-lg md:max-w-none md:text-sm"
               style={{ background: "var(--accent-gold)" }}
             >
@@ -1224,7 +1531,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 {product.name}
               </h3>
               <p className="text-[10px] md:text-xs text-accent-gold font-semibold tracking-wider uppercase mt-0.5">
-                <T text={"Image"} /> {lightboxIndex + 1} <T text={"of"} /> {galleryImages.length}
+                <T text={"Image"} /> {lightboxIndex + 1} <T text={"of"} /> {heroMedia.length}
               </p>
             </div>
             <button 
@@ -1241,7 +1548,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             
             {/* Left Column (Desktop): Vertical Thumbnails List */}
             <div className="hidden lg:flex lg:col-span-2 flex-col gap-3 justify-center max-h-[70vh] overflow-y-auto pr-2">
-              {galleryImages.map((img, idx) => (
+              {heroMedia.map((img, idx) => (
                 <button
                   key={`lightbox-thumb-${idx}`}
                   onClick={() => setLightboxIndex(idx)}
@@ -1251,13 +1558,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       : "border-border-subtle hover:border-border-strong opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <Image 
-                    src={img.url} 
-                    alt={img.label} 
-                    fill 
+                  <Image
+                    src={heroThumbSrc(img)}
+                    alt={img.label}
+                    fill
                     sizes="10vw"
-                    className={`object-cover ${img.filter || ""}`} 
+                    className={`object-cover ${img.filter || ""}`}
                   />
+                  {img.type === "video" && (
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/40">
+                      <Play className="size-5 fill-white text-white" aria-hidden="true" />
+                    </span>
+                  )}
                   <div className="absolute inset-0 bg-black/10 hover:bg-transparent" />
                   <div className="absolute bottom-1 left-1 right-1 text-[9px] bg-black/85 text-text-primary/90 py-0.5 rounded text-center truncate">
                     {img.label}
@@ -1271,7 +1583,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               
               {/* Left Navigation Arrow */}
               <button
-                onClick={() => setLightboxIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                onClick={() => setLightboxIndex(prev => (prev - 1 + heroMedia.length) % heroMedia.length)}
                 className="absolute left-2 md:left-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
                 title={text("Previous image (Left Arrow)")}
               >
@@ -1280,27 +1592,45 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
               {/* Main Rendered Image Container */}
               <div className="relative w-full h-full max-w-xl aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle">
-                <Image
-                  src={galleryImages[lightboxIndex].url}
-                  alt={galleryImages[lightboxIndex].label}
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 50vw"
-                  priority
-                  className={`object-contain transition-all duration-500 p-2 md:p-6 ${galleryImages[lightboxIndex].filter || ""}`}
-                />
-                
+                {lightboxItem.type === "video" ? (
+                  <video
+                    key={lightboxItem.url}
+                    src={lightboxItem.url}
+                    poster={product.image}
+                    controls
+                    loop
+                    muted
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    aria-label={`${product.name}: ${text("customer demonstration")}`}
+                    className="absolute inset-0 size-full bg-black object-contain"
+                  >
+                    <T text={"Your browser does not support the video tag."} />
+                  </video>
+                ) : (
+                  <Image
+                    src={lightboxItem.url}
+                    alt={lightboxItem.label}
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 50vw"
+                    priority
+                    className={`object-contain transition-all duration-500 p-2 md:p-6 ${lightboxItem.filter || ""}`}
+                  />
+                )}
+
                 {/* Badge Overlay */}
                 <Badge
                   variant="product"
                   className="absolute top-4 left-4 px-4 py-1.5 text-xs font-bold"
                 >
-                  {galleryImages[lightboxIndex].badge}
+                  {lightboxItem.badge}
                 </Badge>
               </div>
 
               {/* Right Navigation Arrow */}
               <button
-                onClick={() => setLightboxIndex(prev => (prev + 1) % galleryImages.length)}
+                onClick={() => setLightboxIndex(prev => (prev + 1) % heroMedia.length)}
                 className="absolute right-2 md:right-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
                 title={text("Next image (Right Arrow)")}
               >
@@ -1314,16 +1644,15 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 <T text={"Highlight feature"} />
               </span>
               <h4 className="text-sm md:text-base font-bold text-text-primary leading-tight">
-                {galleryImages[lightboxIndex].label}
+                {lightboxItem.label}
               </h4>
               <p className="text-xs text-text-primary/80 leading-relaxed">
-                {galleryImages[lightboxIndex].desc}
+                {lightboxItem.desc}
               </p>
               <div className="border-t border-border-subtle pt-4 mt-2 hidden lg:block">
                 <a
                   href={checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => handleCheckoutClick("lightbox")}
                   className="flex min-h-10 w-full flex-wrap items-center justify-center gap-1 rounded-lg px-3 py-2 text-center text-xs font-extrabold leading-tight text-black bg-accent-gold hover:opacity-90 active:scale-[0.98] transition-all"
                 >
                   <span><T text={checkoutLabel} /></span>
@@ -1336,7 +1665,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
           {/* Bottom Bar: Mobile indicators */}
           <div className="flex lg:hidden items-center justify-center gap-2 pb-2">
-            {galleryImages.map((_, idx) => (
+            {heroMedia.map((_, idx) => (
               <button
                 key={`lightbox-dot-${idx}`}
                 onClick={() => setLightboxIndex(idx)}

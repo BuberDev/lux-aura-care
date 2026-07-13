@@ -36,6 +36,8 @@ export type ShopProduct = {
   isNew?: boolean;
   isBestSeller?: boolean;
   flashSaleEndsAt?: string; // ISO date — real countdown, not looping
+  // Fill only with real review data (e.g. from Shopify) — stars render when set.
+  rating?: { value: number; count: number };
   ugcVideos?: string[];
   gallery?: ShopProductGalleryItem[];
   variants?: ShopProductVariant[];
@@ -409,8 +411,9 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Sculpt your jawline. Release tension. Reveal younger-looking skin.",
     description:
       "A Bian stone gua sha tool shaped for a slow facial massage routine. Use with facial oil and light pressure.",
-    price: 34.99,
-    compareAtPrice: 59.99,
+    // Synced with the live Shopify variant price — checkout must never charge more than shown.
+    price: 14.99,
+    compareAtPrice: 24.99,
     currency: "EUR",
     image: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png",
     imageAlt: "Black Bian Stone Gua Sha facial massage stick on dark marble surface",

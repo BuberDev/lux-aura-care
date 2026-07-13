@@ -10,6 +10,11 @@ import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { getShopUgcVideosFromDb } from "@/lib/db/media";
+import {
+  generateFaqJsonLd,
+  generateShopProductJsonLd,
+  toJsonLd,
+} from "@/lib/seo";
 
 type Props = { params: Promise<{ productId: string }> };
 
@@ -59,5 +64,32 @@ export default async function ShopProductPage({ params }: Props) {
     shopProducts.filter((p) => p.id !== sourceProduct.id).slice(0, 2)
   );
 
-  return <ShopProductSales product={product} related={related} />;
+  const productJsonLd = generateShopProductJsonLd({
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    images:
+      product.gallery && product.gallery.length > 0
+        ? product.gallery.map((item) => item.url).slice(0, 6)
+        : [product.image],
+    price: product.price,
+    currency: product.currency,
+  });
+  const faqJsonLd = generateFaqJsonLd(
+    product.faq.map(({ q, a }) => ({ question: q, answer: a }))
+  );
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(faqJsonLd) }}
+      />
+      <ShopProductSales product={product} related={related} />
+    </>
+  );
 }

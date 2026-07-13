@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const purchaseDetails = [
   { icon: Truck, label: "Delivery Options", sub: "Calculated before checkout" },
   { icon: ShieldCheck, label: "Secure Checkout", sub: "Processed by Shopify" },
-  { icon: RotateCcw, label: "Return Terms", sub: "Review before purchase" },
+  { icon: RotateCcw, label: "14-Day Returns", sub: "EU right of withdrawal" },
 ];
 
 export default async function ShopPage() {

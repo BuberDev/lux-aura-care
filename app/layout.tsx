@@ -7,6 +7,7 @@ import "@fontsource/playfair-display/latin-400.css";
 import "@fontsource/playfair-display/latin-600.css";
 import "@fontsource/playfair-display/latin-700.css";
 
+import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -125,6 +126,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background-primary text-text-primary antialiased">
+        <AnalyticsScripts />
         <I18nProvider locale={locale}>
           <ThemeProvider>
             <SiteHeader searchProducts={searchProducts} />

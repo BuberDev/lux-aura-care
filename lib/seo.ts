@@ -66,6 +66,36 @@ export function generateOrganizationJsonLd() {
   };
 }
 
+export function generateShopProductJsonLd(product: {
+  id: string;
+  name: string;
+  description: string;
+  images: string[];
+  price: number;
+  currency: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": toAbsoluteUrl(`/shop/${product.id}#product`),
+    name: product.name,
+    description: product.description,
+    image: product.images.map((image) => toAbsoluteUrl(image)),
+    brand: {
+      "@type": "Brand",
+      name: "Lux Aura Care",
+    },
+    offers: {
+      "@type": "Offer",
+      url: toAbsoluteUrl(`/shop/${product.id}`),
+      price: product.price.toFixed(2),
+      priceCurrency: product.currency,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
+}
+
 export function generateReviewJsonLd(product: {
   name: string;
   ratingValue: number;
