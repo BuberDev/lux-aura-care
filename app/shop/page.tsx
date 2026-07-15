@@ -3,6 +3,7 @@ import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
 import { Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { Container } from "@/components/container";
+import { NewsletterBlock } from "@/components/newsletter-block";
 import { shopProducts } from "@/lib/shop-data";
 import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
@@ -178,6 +179,8 @@ export default async function ShopPage() {
           </div>
         </Container>
       </section>
+
+      <NewsletterBlock />
     </div>
   );
 }

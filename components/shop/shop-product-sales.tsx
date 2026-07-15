@@ -26,6 +26,7 @@ import type { ShopProduct } from "@/lib/shop-data";
 import { localizeContent } from "@/lib/i18n/messages";
 import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
+import { NewsletterBlock } from "@/components/newsletter-block";
 import {
   trackShopBeginCheckout,
   trackShopViewItem,
@@ -1491,8 +1492,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </section>
       )}
 
+      {/* Not ready to buy yet? Capture the email — free channel, no ad spend required */}
+      <NewsletterBlock />
+
       {/* 12. RESPONSIVE FLOATING BOTTOM STICKY CHECKOUT DRAWER */}
-      <div 
+      <div
         className={`fixed bottom-0 left-0 right-0 z-40 bg-surface-glass border-t border-border-default py-3.5 px-4 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transform transition-transform duration-500 ease-out flex items-center justify-between ${
           showStickyDrawer ? "translate-y-0" : "translate-y-full"
         }`}
