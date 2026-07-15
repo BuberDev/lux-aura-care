@@ -1251,6 +1251,14 @@ export const translationCatalog = {
     "en": "Browse All Favorites",
     "pl": "Przeglądaj wszystkie ulubione"
   },
+  "From the Lux Aura Shop": {
+    "en": "From the Lux Aura Shop",
+    "pl": "Ze sklepu Lux Aura"
+  },
+  "Shop This Pick": {
+    "en": "Shop This Pick",
+    "pl": "Zobacz w sklepie"
+  },
   "Browse All Product Collections": {
     "en": "Browse All Product Collections",
     "pl": "Przeglądaj wszystkie kolekcje produktów"

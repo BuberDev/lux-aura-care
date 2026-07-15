@@ -13,6 +13,8 @@ import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { getAffiliateRoute } from "@/lib/affiliate";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
+import { articleShopCrossLink } from "@/lib/blog-shop-cross-links";
+import { getShopProductById } from "@/lib/shop-data";
 import {
   articles,
   getArticleBySlug,
@@ -151,6 +153,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     "body-oil",
     "bath-salts",
   ]));
+
+  const crossLinkShopProductId = articleShopCrossLink[sourceArticle.slug];
+  const sourceCrossLinkProduct = crossLinkShopProductId
+    ? getShopProductById(crossLinkShopProductId)
+    : undefined;
+  const crossLinkProduct = sourceCrossLinkProduct
+    ? localizeContent(locale, sourceCrossLinkProduct)
+    : undefined;
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
     { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
@@ -361,6 +371,42 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 </div>
 
                 <CTAButton href="/favorites" label="Browse All Favorites" className="w-full" />
+
+                {crossLinkProduct ? (
+                  <div className="rounded-2xl border border-accent-gold/30 bg-accent-gold/5 p-4">
+                    <p className="mb-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
+                      <T text={"From the Lux Aura Shop"} />
+                    </p>
+                    <LocalizedLink
+                      href={`/shop/${crossLinkProduct.id}`}
+                      className="group flex items-center gap-3"
+                    >
+                      <div className="relative size-14 shrink-0 overflow-hidden rounded-lg border border-border-subtle">
+                        <Image
+                          src={crossLinkProduct.image}
+                          alt={crossLinkProduct.imageAlt}
+                          fill
+                          sizes="56px"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-text-primary group-hover:text-accent-gold">
+                          {crossLinkProduct.name}
+                        </p>
+                        <p className="text-xs font-bold text-accent-gold">
+                          €{crossLinkProduct.price.toFixed(2)}
+                        </p>
+                      </div>
+                    </LocalizedLink>
+                    <CTAButton
+                      href={`/shop/${crossLinkProduct.id}`}
+                      label="Shop This Pick"
+                      variant="secondary"
+                      className="mt-3 w-full"
+                    />
+                  </div>
+                ) : null}
               </div>
             </aside>
           </div>
