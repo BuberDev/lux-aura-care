@@ -18,6 +18,7 @@ import { useI18n } from "@/components/i18n-provider";
 type HeaderSearchProduct = {
   id: string;
   name: string;
+  href: string;
 };
 
 type SiteHeaderProps = {

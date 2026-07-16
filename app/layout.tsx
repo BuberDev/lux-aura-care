@@ -14,10 +14,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { I18nProvider } from "@/components/i18n-provider";
 import { getLocalizedAlternates } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
-import { translateText } from "@/lib/i18n/messages";
+import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { generateOrganizationJsonLd, toJsonLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { products, siteMeta } from "@/lib/site-data";
+import { shopProducts } from "@/lib/shop-data";
 import { localizeProducts } from "@/lib/product-localization";
 
 import "./globals.css";
@@ -110,10 +111,18 @@ export default async function RootLayout({
 }>) {
   const organizationJsonLd = generateOrganizationJsonLd();
   const locale = await getRequestLocale();
-  const searchProducts = localizeProducts(locale, products).map((product) => ({
-    id: product.id,
-    name: product.name,
-  }));
+  const searchProducts = [
+    ...localizeProducts(locale, products).map((product) => ({
+      id: `favorite-${product.id}`,
+      name: product.name,
+      href: `/favorites/${product.id}`,
+    })),
+    ...localizeContent(locale, shopProducts).map((product) => ({
+      id: `shop-${product.id}`,
+      name: product.name,
+      href: `/shop/${product.id}`,
+    })),
+  ];
 
   return (
     <html lang={locale} data-theme="dark" suppressHydrationWarning>

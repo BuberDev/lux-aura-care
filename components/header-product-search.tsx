@@ -11,6 +11,7 @@ import { useI18n } from "@/components/i18n-provider";
 type HeaderSearchProduct = {
   id: string;
   name: string;
+  href: string;
 };
 
 type HeaderProductSearchProps = {
@@ -36,15 +37,21 @@ export function HeaderProductSearch({
   const inputId = useId();
   const listboxId = `${inputId}-listbox`;
 
-  const normalizedQuery = query.trim().toLowerCase();
+  const normalizedQuery = normalizeSearchValue(query.trim());
 
   const suggestions = useMemo(() => {
     if (!normalizedQuery) {
       return [];
     }
 
-    return products
-      .filter((product) => product.name.toLowerCase().includes(normalizedQuery))
+    return [...products]
+      .filter((product) => normalizeSearchValue(product.name).includes(normalizedQuery))
+      .sort((a, b) => {
+        const scoreDiff =
+          getSearchScore(a.name, normalizedQuery) - getSearchScore(b.name, normalizedQuery);
+
+        return scoreDiff || a.name.localeCompare(b.name);
+      })
       .slice(0, maxResults);
   }, [maxResults, normalizedQuery, products]);
 
@@ -105,7 +112,7 @@ export function HeaderProductSearch({
               {suggestions.map((product) => (
                 <li key={product.id}>
                   <LocalizedLink
-                    href={`/favorites/${product.id}`}
+                    href={product.href}
                     className="block px-4 py-2.5 text-sm text-text-primary transition-colors hover:bg-surface-raised hover:text-accent-gold"
                     onClick={() => {
                       setQuery("");
@@ -126,4 +133,29 @@ export function HeaderProductSearch({
       ) : null}
     </div>
   );
+}
+
+function normalizeSearchValue(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function getSearchScore(name: string, query: string) {
+  const normalizedName = normalizeSearchValue(name);
+
+  if (normalizedName === query) {
+    return 0;
+  }
+
+  if (normalizedName.startsWith(query)) {
+    return 1;
+  }
+
+  if (normalizedName.split(/\s+/).some((word) => word.startsWith(query))) {
+    return 2;
+  }
+
+  return 3 + normalizedName.indexOf(query);
 }
