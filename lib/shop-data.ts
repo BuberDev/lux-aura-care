@@ -979,6 +979,7 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092769034573:1",
     category: "body-glow",
     isNew: true,
+    ugcVideos: ["/natural-bristle-spa-brush/natural-bristle-spa-body-brush-polskie-ugc-body-care.mp4"],
     gallery: [
       {
         url: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png",
