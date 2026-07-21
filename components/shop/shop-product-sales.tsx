@@ -28,6 +28,7 @@ import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterBlock } from "@/components/newsletter-block";
 import {
+  trackShopAddToCart,
   trackShopBeginCheckout,
   trackShopViewItem,
   type ShopCheckoutEvent,
@@ -645,7 +646,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   }, [product.id, product.name, product.price, product.currency, product.category]);
 
   const handleCheckoutClick = (placement: ShopCheckoutEvent["placement"]) => {
-    trackShopBeginCheckout({
+    const checkoutEvent: ShopCheckoutEvent = {
       productId: product.id,
       productName: product.name,
       price: product.price,
@@ -653,7 +654,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       currency: product.currency,
       variantId: selectedVariant?.id,
       placement,
-    });
+    };
+    // The "buy" click both adds to Shopify's cart and starts checkout in one
+    // request (see /api/shopify-checkout/[productId]), so fire both events here.
+    trackShopAddToCart(checkoutEvent);
+    trackShopBeginCheckout(checkoutEvent);
   };
 
   type HeroMediaItem = {

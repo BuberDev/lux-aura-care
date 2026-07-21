@@ -61,6 +61,45 @@ export function trackShopViewItem(event: ShopViewItemEvent) {
   });
 }
 
+export function trackShopAddToCart(event: ShopCheckoutEvent) {
+  const w = getPixels();
+  if (!w) return;
+
+  const value = event.price * event.quantity;
+
+  w.gtag?.("event", "add_to_cart", {
+    currency: event.currency,
+    value,
+    items: [
+      {
+        item_id: event.productId,
+        item_name: event.productName,
+        item_variant: event.variantId,
+        price: event.price,
+        quantity: event.quantity,
+      },
+    ],
+  });
+
+  w.fbq?.("track", "AddToCart", {
+    content_ids: [event.productId],
+    content_name: event.productName,
+    content_type: "product",
+    currency: event.currency,
+    value,
+    num_items: event.quantity,
+  });
+
+  w.ttq?.track("AddToCart", {
+    content_id: event.productId,
+    content_name: event.productName,
+    content_type: "product",
+    currency: event.currency,
+    value,
+    quantity: event.quantity,
+  });
+}
+
 export function trackShopBeginCheckout(event: ShopCheckoutEvent) {
   const w = getPixels();
   if (!w) return;
