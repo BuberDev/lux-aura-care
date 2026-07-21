@@ -1,4 +1,5 @@
 import { Currency } from "lucide-react";
+import { mediaUrl } from "./media-url";
 
 export type CategoryId = "self-care" | "skincare" | "body-glow" | "spa-relax";
 
@@ -253,51 +254,51 @@ export const products: ProductDefinition[] = [
       "A breathable silk mask that blocks ambient light and helps your bedtime routine feel intentional from the first minute.",
     trustSignal: "Editorial pick",
     image:
-      "/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png",
+      mediaUrl("/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png"),
     imageAlt: "Champagne silk sleep mask on linen bedding",
     gallery: [
       {
-        image: "/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png",
+        image: mediaUrl("/silk-sleep-mask/Mulberry_Silk_Sleep_Mask_img.png"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Main View",
       },
       {
-        image: "/silk-sleep-mask/details_1_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_1_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_2_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_2_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_3_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_3_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_4_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_4_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_5_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_5_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_6_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_6_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_7_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_7_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       },
       {
-        image: "/silk-sleep-mask/details_8_Mulberry_Silk_Sleep_Mask_img.jpg",
+        image: mediaUrl("/silk-sleep-mask/details_8_Mulberry_Silk_Sleep_Mask_img.jpg"),
         imageAlt: "Champagne silk sleep mask on linen bedding",
         title: "Product Details",
       }
@@ -324,46 +325,46 @@ export const products: ProductDefinition[] = [
       "Quiet mist diffusion paired with warm light to transform your bedroom or bath into a calm ritual space.",
     trustSignal: "Routine essential",
     image:
-      "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png",
+      mediaUrl("/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.png"),
     imageAlt: "Minimal ceramic diffuser on a wooden side table",
     gallery: [
       {
-        image: "/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic ultrasonic essential oil diffuser",
         title: "Main View",
       },
       {
-        image: "/aroma-diffuser/details_1_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_1_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
-        image: "/aroma-diffuser/details_2_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_2_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
-        image: "/aroma-diffuser/details_3_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_3_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
-        image: "/aroma-diffuser/details_4_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_4_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
-        image: "/aroma-diffuser/details_5_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_5_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
-        image: "/aroma-diffuser/details_6_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_6_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
       {
-        image: "/aroma-diffuser/details_7_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg",
+        image: mediaUrl("/aroma-diffuser/details_7_URPOWER_120ML_Ceramic_Essential_Oil_Diffuser.jpg"),
         imageAlt: "Ceramic diffuser product detail",
         title: "Product Details",
       },
@@ -390,51 +391,51 @@ export const products: ProductDefinition[] = [
       "A facial massage duo designed to support lymphatic flow and make serum application more effective.",
     trustSignal: "Editor favorite",
     image:
-      "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
+      mediaUrl("/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.png"),
     imageAlt: "Rose quartz gua sha and roller next to facial oil",
     gallery: [
       {
-        image: "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha facial massage set",
         title: "Main View",
       },
       {
-        image: "/gua-sha-set/details_1_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_1_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_2_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_2_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_3_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_3_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_4_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_4_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_5_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_5_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_6_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_6_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_7_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_7_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
       {
-        image: "/gua-sha-set/details_8_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg",
+        image: mediaUrl("/gua-sha-set/details_8_BAIMEI_IcyMe_Jade_Roller_GuaSha.jpg"),
         imageAlt: "Jade roller and gua sha set product detail",
         title: "Product Details",
       },
@@ -461,7 +462,7 @@ export const products: ProductDefinition[] = [
       "Fast-absorbing botanical oil that seals in hydration and leaves a healthy satin finish.",
     trustSignal: "Editorial pick",
     image:
-      "/body-oil/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png",
+      mediaUrl("/body-oil/Firming_Body_Massage_Oil_with_Collagen_Stem_Cell.png"),
     imageAlt: "Elegant body oil bottle with golden reflection",
     marketVariants: {
       us: {
@@ -485,7 +486,7 @@ export const products: ProductDefinition[] = [
       "Mineral-rich bath salts that help release body tension and support calm, heavy-limb rest.",
     trustSignal: "Routine essential",
     image:
-      "/bath-salts/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png",
+      mediaUrl("/bath-salts/Ancient_Minerals_Magnesium_Bath_Flakes_of_Pure_Genuine_Zechstein_Chloride.png"),
     imageAlt: "Bath salts in a glass jar near a towel",
     marketVariants: {
       us: {
@@ -509,7 +510,7 @@ export const products: ProductDefinition[] = [
       "A beginner-friendly retinol blend buffered with squalane to reduce irritation while improving radiance.",
     trustSignal: "Editorial pick",
     image:
-      "/retinol-serum/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png",
+      mediaUrl("/retinol-serum/RoC_Retinol_Correxion_Anti-Aging_Wrinkle_Night_Serum.png"),
     imageAlt: "Dropper serum bottle on marble tray",
     marketVariants: {
       us: {
@@ -533,7 +534,7 @@ export const products: ProductDefinition[] = [
       "Dry brushing before your shower supports exfoliation and leaves skin looking more refined.",
     trustSignal: "Editor favorite",
     image:
-      "/dry-brush/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png",
+      mediaUrl("/dry-brush/EcoTools_Dry_Body_Brush_Cruelty_Free_Bristles_Exfoliate.png"),
     imageAlt: "Natural dry brush and folded towels",
     marketVariants: {
       us: {
@@ -557,7 +558,7 @@ export const products: ProductDefinition[] = [
       "Hands-free LED sessions that layer into your routine while you journal, read, or unwind.",
     trustSignal: "Routine essential",
     image:
-      "/led-mask/INIA_Red_Light_Therapy_Mask_for_Face.png",
+      mediaUrl("/led-mask/INIA_Red_Light_Therapy_Mask_for_Face.png"),
     imageAlt: "Modern LED skincare mask on vanity",
     marketVariants: {
       us: {
@@ -581,7 +582,7 @@ export const products: ProductDefinition[] = [
       "Balanced pressure and breathable texture help reduce bedtime restlessness without overheating.",
     trustSignal: "Editorial pick",
     image:
-      "/weighted-blanket/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png",
+      mediaUrl("/weighted-blanket/Weighted_Blanket_for_Adults–Cooling_Stress_Relief_Better_Sleep_Comfort.png"),
     imageAlt: "Soft weighted blanket folded on a bed",
     marketVariants: {
       us: {
@@ -605,7 +606,7 @@ export const products: ProductDefinition[] = [
       "Flexible silicone bristles provide gentle stimulation for a cleaner scalp and a more relaxing shower.",
     trustSignal: "Routine essential",
     image:
-      "/scalp-massager/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png",
+      mediaUrl("/scalp-massager/Scalp_Massager_Shampoo_Brush–Silicone_Scrubber.png"),
     imageAlt: "Handheld scalp massager on bathroom shelf",
     marketVariants: {
       us: {
@@ -629,7 +630,7 @@ export const products: ProductDefinition[] = [
       "Cooling hydrogel masks that visibly plump and prep skin before makeup or evening plans.",
     trustSignal: "Editor favorite",
     image:
-      "/sheet-mask-set/Biodance_Bio_Collagen_Face_Mask.png",
+      mediaUrl("/sheet-mask-set/Biodance_Bio_Collagen_Face_Mask.png"),
     imageAlt: "Hydrogel sheet masks and a jade bowl",
     marketVariants: {
       us: {
@@ -653,7 +654,7 @@ export const products: ProductDefinition[] = [
       "Layered woody fragrance with a clean burn profile for evening rituals and bath sessions.",
     trustSignal: "Editorial pick",
     image:
-      "/candle-set/Sandalwood_Candle.png",
+      mediaUrl("/candle-set/Sandalwood_Candle.png"),
     imageAlt: "Three elegant candles with warm glow",
     marketVariants: {
       us: {
@@ -676,31 +677,31 @@ export const products: ProductDefinition[] = [
     description:
       "A high-performance serum with 12% Niacinamide and 2% Zinc designed to target dullness and support a brighter, more even complexion.",
     trustSignal: "Editorial pick",
-    image: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
+    image: mediaUrl("/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png"),
     imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
     gallery: [
       {
-        image: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
+        image: mediaUrl("/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png"),
         imageAlt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
         title: "Main View",
       },
       {
-        image: "/niacinamide-toner/details_1_Naturium_Niacinamide_Face_Serum.jpg",
+        image: mediaUrl("/niacinamide-toner/details_1_Naturium_Niacinamide_Face_Serum.jpg"),
         imageAlt: "Naturium Niacinamide Face Serum details and formulation",
         title: "Product Details",
       },
       {
-        image: "/niacinamide-toner/details_2_Naturium_Niacinamide_Face_Serum.jpg",
+        image: mediaUrl("/niacinamide-toner/details_2_Naturium_Niacinamide_Face_Serum.jpg"),
         imageAlt: "Naturium Niacinamide Face Serum ingredients and benefits",
         title: "Key Ingredients",
       },
       {
-        image: "/niacinamide-toner/details_3_Naturium_Niacinamide_Face_Serum.jpg",
+        image: mediaUrl("/niacinamide-toner/details_3_Naturium_Niacinamide_Face_Serum.jpg"),
         imageAlt: "Naturium Niacinamide Face Serum application guide",
         title: "How to Use",
       },
       {
-        image: "/niacinamide-toner/details_4_Naturium_Niacinamide_Face_Serum.jpg",
+        image: mediaUrl("/niacinamide-toner/details_4_Naturium_Niacinamide_Face_Serum.jpg"),
         imageAlt: "Naturium Niacinamide Face Serum texture and finish",
         title: "Texture",
       },
@@ -726,41 +727,41 @@ export const products: ProductDefinition[] = [
     description:
       "A multi-head facial brush set designed to remove buildup, improve cleansing consistency, and prep skin for actives.",
     trustSignal: "Routine essential",
-    image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
+    image: mediaUrl("/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png"),
     imageAlt: "COSLUS 7-in-1 facial cleansing brush set with accessories",
     gallery: [
       {
-        image: "/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png",
+        image: mediaUrl("/coslus-cleansing-brush/Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.png"),
         imageAlt: "COSLUS waterproof 7-in-1 facial cleansing brush set with interchangeable heads",
         title: "7-in-1 Cleansing Set",
       },
       {
-        image: "/coslus-cleansing-brush/model_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg",
+        image: mediaUrl("/coslus-cleansing-brush/model_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg"),
         imageAlt: "Woman holding the COSLUS facial cleansing brush during her bathroom skincare routine",
         title: "At-Home Cleansing",
       },
       {
-        image: "/coslus-cleansing-brush/details_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        image: mediaUrl("/coslus-cleansing-brush/details_2_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
         imageAlt: "COSLUS facial cleansing brush benefits for oil, blackheads, pores and makeup removal",
         title: "Deep-Cleansing Benefits",
       },
       {
-        image: "/coslus-cleansing-brush/details_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        image: mediaUrl("/coslus-cleansing-brush/details_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
         imageAlt: "COSLUS interchangeable cleansing, exfoliating and massage brush heads",
         title: "Seven Brush Heads",
       },
       {
-        image: "/coslus-cleansing-brush/details_3_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        image: mediaUrl("/coslus-cleansing-brush/details_3_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
         imageAlt: "Close-up of the soft COSLUS silicone brush head for sensitive skin",
         title: "Sensitive-Skin Head",
       },
       {
-        image: "/coslus-cleansing-brush/details_4_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+        image: mediaUrl("/coslus-cleansing-brush/details_4_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
         imageAlt: "COSLUS waterproof spin brush feature comparison",
         title: "Why COSLUS",
       },
       {
-        image: "/coslus-cleansing-brush/model_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg",
+        image: mediaUrl("/coslus-cleansing-brush/model_1_Cover_COSLUS_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpeg"),
         imageAlt: "Woman rinsing her face beside the COSLUS cleansing brush and product box",
         title: "Rinse and Refresh",
       },
@@ -780,28 +781,28 @@ export const products: ProductDefinition[] = [
         benefit: "Dokladniejsze oczyszczanie twarzy i wygodne usuwanie makijazu bez mocnego pocierania skory.",
         description:
           "Elektryczna szczoteczka do oczyszczania twarzy z wymiennymi koncowkami, ktora pomaga utrzymac regularny rytual oczyszczania i przygotowuje skore na kolejne kroki pielegnacji.",
-        image: "/coslus-cleansing-brush/pl_beurer-fc95-elektryczna-szczoteczka-do-twarzy-amazon-pl-lux-aura-care.png",
+        image: mediaUrl("/coslus-cleansing-brush/pl_beurer-fc95-elektryczna-szczoteczka-do-twarzy-amazon-pl-lux-aura-care.png"),
         imageAlt: "Beurer FC 95 szczoteczka do oczyszczania twarzy jako polski odpowiednik zestawu COSLUS",
         trustSignal: "Routine essential",
-        video: "/coslus-cleansing-brush/UGC_PL_BeurerFC95_elektryczna_szczoteczka_do_twarzy.mp4",
+        video: mediaUrl("/coslus-cleansing-brush/UGC_PL_BeurerFC95_elektryczna_szczoteczka_do_twarzy.mp4"),
         gallery: [
           {
-            image: "/coslus-cleansing-brush/PL_details_1_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: mediaUrl("/coslus-cleansing-brush/PL_details_1_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
             imageAlt: "Wymienne koncowki szczoteczki do oczyszczania twarzy",
             title: "Brush Heads",
           },
           {
-            image: "/coslus-cleansing-brush/PL_details_2_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: mediaUrl("/coslus-cleansing-brush/PL_details_2_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
             imageAlt: "Miekka koncowka szczoteczki do twarzy",
             title: "Sensitive-Skin Head",
           },
           {
-            image: "/coslus-cleansing-brush/PL_details_3_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: mediaUrl("/coslus-cleansing-brush/PL_details_3_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
             imageAlt: "Miekka koncowka szczoteczki do twarzy",
             title: "Sensitive-Skin Head",
           },
           {
-            image: "/coslus-cleansing-brush/PL_details_4_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg",
+            image: mediaUrl("/coslus-cleansing-brush/PL_details_4_beurer-fc-95-szczoteczka-do-twarzy_Facial_Cleansing_Brush_Silicone_Face_Scrubber.jpg"),
             imageAlt: "Miekka koncowka szczoteczki do twarzy",
             title: "Sensitive-Skin Head",
           },
@@ -817,36 +818,36 @@ export const products: ProductDefinition[] = [
     description:
       "A gentle essence that helps smooth rough patches and improves product layering for a polished glass-skin finish.",
     trustSignal: "Editor favorite",
-    image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
+    image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png"),
     imageAlt: "mixsoon Bean Essence exfoliating skincare product image",
     gallery: [
       {
-        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
+        image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png"),
         imageAlt: "mixsoon Bean Essence glass-skin treatment and key skincare benefits",
         title: "Glass Skin Results",
       },
       {
-        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_1.jpg",
+        image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_1.jpg"),
         imageAlt: "mixsoon Bean Essence guide for exfoliating and hydrating use",
         title: "Two Ways to Use",
       },
       {
-        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_2.jpg",
+        image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_2.jpg"),
         imageAlt: "Four fermented ingredients in mixsoon Bean Essence",
         title: "Fermented Ingredients",
       },
       {
-        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_3.jpg",
+        image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_3.jpg"),
         imageAlt: "How fermentation supports ingredient absorption in mixsoon Bean Essence",
         title: "Why Fermentation",
       },
       {
-        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_4.jpg",
+        image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_4.jpg"),
         imageAlt: "mixsoon essence layering routine ordered from low to high viscosity",
         title: "Essence Layering",
       },
       {
-        image: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_5.jpg",
+        image: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating_details_5.jpg"),
         imageAlt: "Three-step mixsoon Bean Care routine with toner pad, essence and serum",
         title: "Bean Care Routine",
       },
@@ -866,50 +867,46 @@ export const products: ProductDefinition[] = [
         benefit: "Głębokie nawilżenie i regeneracja bariery ochronnej skóry.",
         description: "Lekka, łagodząca esencja z 96% filtratem ze śluzu ślimaka. Podobnie jak esencja z fasoli (Mixsoon), zapewnia efekt 'glass skin', intensywnie nawilża i wygładza fakturę skóry, będąc najpopularniejszym odpowiednikiem na polskim rynku.",
         video: null,
-        image: "/cosrx-snail-mucin/main_product_photo.png",
+        image: mediaUrl("/cosrx-snail-mucin/main_product_photo.png"),
         imageAlt: "COSRX Snail Mucin Essence",
         gallery: [
           {
-            image: "/cosrx-snail-mucin/1_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/1_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/2_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/2_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/3_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/3_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/4_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/4_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/5_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/5_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/6_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/6_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/7_product_photo.jpg",
-            imageAlt: "COSRX Snail Mucin Essence",
-            title: "Main View",
-          }, {
-            image: "/cosrx-snail-mucin/8_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/8_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
           {
-            image: "/cosrx-snail-mucin/9_product_photo.jpg",
+            image: mediaUrl("/cosrx-snail-mucin/9_product_photo.jpg"),
             imageAlt: "COSRX Snail Mucin Essence",
             title: "Main View",
           },
@@ -926,51 +923,51 @@ export const products: ProductDefinition[] = [
     description:
       "A curated essential oil set for diffuser rituals, bath ambiance, and repeatable stress-reset routines at home.",
     trustSignal: "Editorial pick",
-    image: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
+    image: mediaUrl("/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png"),
     imageAlt: "Cliganic organic aromatherapy essential oils set product image",
     gallery: [
       {
-        image: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
+        image: mediaUrl("/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png"),
         imageAlt: "Cliganic organic aromatherapy essential oils set product image",
         title: "Main View",
       },
       {
-        image: "/cliganic-essential-oils/details_1_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_1_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils overview",
         title: "Product Overview",
       },
       {
-        image: "/cliganic-essential-oils/details_2_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_2_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils scents",
         title: "Scent Collection",
       },
       {
-        image: "/cliganic-essential-oils/details_3_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_3_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils benefits",
         title: "Aromatherapy Benefits",
       },
       {
-        image: "/cliganic-essential-oils/details_4_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_4_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils usage",
         title: "How to Use",
       },
       {
-        image: "/cliganic-essential-oils/details_5_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_5_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils purity",
         title: "Quality & Purity",
       },
       {
-        image: "/cliganic-essential-oils/details_6_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_6_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils packaging",
         title: "Packaging",
       },
       {
-        image: "/cliganic-essential-oils/details_7_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_7_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils sourcing",
         title: "Sourcing",
       },
       {
-        image: "/cliganic-essential-oils/details_8_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg",
+        image: mediaUrl("/cliganic-essential-oils/details_8_Cliganic_Organic_Aromatherapy_Essential_Oils.jpg"),
         imageAlt: "Cliganic Essential Oils additional details",
         title: "Additional Details",
       },
@@ -989,42 +986,42 @@ export const products: ProductDefinition[] = [
         name: "AESHORY 100% Naturalny Zestaw Olejków Eterycznych (6 x 10ml)",
         benefit: "Natychmiastowa zmiana nastroju i spokojniejsze wieczory dzięki certyfikowanym aromatom.",
         description: "Kompletny zestaw czystych olejków eterycznych do dyfuzora i aromaterapii. Zawiera najchętniej wybierane zapachy (Lawenda, Mięta, Drzewo Herbaciane, Słodka Pomarańcza, Eukaliptus), które idealnie sprawdzają się do relaksu i domowego spa. Najpopularniejszy odpowiednik na polskim Amazonie.",
-        video: "/cliganic-essential-oils/PL_UGC_aeshory-zestaw-olejkow-eterycznych.mp4",
-        image: "/cliganic-essential-oils/PL_aeshory-zestaw-olejkow-eterycznych-amazon-pl-lux-aura-care.png",
+        video: mediaUrl("/cliganic-essential-oils/PL_UGC_aeshory-zestaw-olejkow-eterycznych.mp4"),
+        image: mediaUrl("/cliganic-essential-oils/PL_aeshory-zestaw-olejkow-eterycznych-amazon-pl-lux-aura-care.png"),
         imageAlt: "AESHORY Zestaw Olejków Eterycznych",
         gallery: [
           {
-            image: "/cliganic-essential-oils/details_1_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_1_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "AESHORY Olejki Eteryczne zestaw",
             title: "Zestaw 6 zapachów",
           },
           {
-            image: "/cliganic-essential-oils/details_2_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_2_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "Zastosowanie olejków eterycznych AESHORY",
             title: "Aromaterapia i dyfuzory",
           },
           {
-            image: "/cliganic-essential-oils/details_3_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_3_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "Zastosowanie olejków eterycznych AESHORY",
             title: "Aromaterapia i dyfuzory",
           },
           {
-            image: "/cliganic-essential-oils/details_4_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_4_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "Zastosowanie olejków eterycznych AESHORY",
             title: "Aromaterapia i dyfuzory",
           },
           {
-            image: "/cliganic-essential-oils/details_5_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_5_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "Zastosowanie olejków eterycznych AESHORY",
             title: "Aromaterapia i dyfuzory",
           },
           {
-            image: "/cliganic-essential-oils/details_6_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_6_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "Zastosowanie olejków eterycznych AESHORY",
             title: "Aromaterapia i dyfuzory",
           },
           {
-            image: "/cliganic-essential-oils/details_7_aeshory_zestaw_olejkow_eterycznych.jpg",
+            image: mediaUrl("/cliganic-essential-oils/details_7_aeshory_zestaw_olejkow_eterycznych.jpg"),
             imageAlt: "Zastosowanie olejków eterycznych AESHORY",
             title: "Aromaterapia i dyfuzory",
           },
@@ -1040,56 +1037,56 @@ export const products: ProductDefinition[] = [
     description:
       "A large uncoated copper bottle with cup designed for habit consistency, elevated desk aesthetics, and daily hydration momentum.",
     trustSignal: "Routine essential",
-    image: "/copper-water-bottle/Copper_Water_Bottle.png",
+    image: mediaUrl("/copper-water-bottle/Copper_Water_Bottle.png"),
     imageAlt: "Pure copper water bottle with matching cup",
     gallery: [
       {
-        image: "/copper-water-bottle/Copper_Water_Bottle.png",
+        image: mediaUrl("/copper-water-bottle/Copper_Water_Bottle.png"),
         imageAlt: "Pure copper water bottle with matching cup",
         title: "Main View",
       },
       {
-        image: "/copper-water-bottle/details_1_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_1_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle details",
         title: "Product Details",
       },
       {
-        image: "/copper-water-bottle/details_2_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_2_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle design",
         title: "Design",
       },
       {
-        image: "/copper-water-bottle/details_3_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_3_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle material",
         title: "Material",
       },
       {
-        image: "/copper-water-bottle/details_4_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_4_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle features",
         title: "Features",
       },
       {
-        image: "/copper-water-bottle/details_5_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_5_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle benefits",
         title: "Benefits",
       },
       {
-        image: "/copper-water-bottle/details_6_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_6_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle usage",
         title: "How to Use",
       },
       {
-        image: "/copper-water-bottle/details_7_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_7_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle care",
         title: "Care Instructions",
       },
       {
-        image: "/copper-water-bottle/details_8_Copper_Water_Bottle.jpg",
+        image: mediaUrl("/copper-water-bottle/details_8_Copper_Water_Bottle.jpg"),
         imageAlt: "Copper Water Bottle lifestyle",
         title: "Lifestyle",
       },
       {
-        image: "/copper-water-bottle/Copper_Water_Bottle_2_model.jpeg",
+        image: mediaUrl("/copper-water-bottle/Copper_Water_Bottle_2_model.jpeg"),
         imageAlt: "Woman using a pure copper water bottle set",
         title: "In Daily Routine",
       },
@@ -1109,39 +1106,39 @@ export const products: ProductDefinition[] = [
         benefit: "Codzienny rytual nawodnienia w estetycznej, wielorazowej butelce z czystej miedzi.",
         description:
           "Mlotkowana butelka podrozna z czystej miedzi o pojemnosci 900 ml, wybrana jako polski odpowiednik premium butelki miedzianej dzieki mocniejszemu social proof, cenie Prime i dostawie przez Amazon.",
-        image: "/copper-water-bottle/PL_miedziana-butelka-na-wode-900ml-amazon-pl-lux-aura-care.png",
+        image: mediaUrl("/copper-water-bottle/PL_miedziana-butelka-na-wode-900ml-amazon-pl-lux-aura-care.png"),
         imageAlt: "JMD INTERNATIONAL młotkowana butelka z czystej miedzi jako polski odpowiednik Copper Water Bottle",
         trustSignal: "Routine essential",
-        video: "/copper-water-bottle/ugc-miedziana-butelka-na-wode-polskie-wellness-ryt.mov",
+        video: mediaUrl("/copper-water-bottle/ugc-miedziana-butelka-na-wode-polskie-wellness-ryt.mp4"),
         gallery: [
 
           {
-            image: "/copper-water-bottle/PL_Copper_Water_Bottle.jpg",
+            image: mediaUrl("/copper-water-bottle/PL_Copper_Water_Bottle.jpg"),
             imageAlt: "Mlotkowana butelka z czystej miedzi",
             title: "Main View",
           },
           {
-            image: "/copper-water-bottle/PL_details_1_Copper_Water_Bottle.jpg",
+            image: mediaUrl("/copper-water-bottle/PL_details_1_Copper_Water_Bottle.jpg"),
             imageAlt: "Detal wykonania butelki z czystej miedzi",
             title: "Product Details",
           },
           {
-            image: "/copper-water-bottle/PL_details_2_Copper_Water_Bottle.jpg",
+            image: mediaUrl("/copper-water-bottle/details_2_Copper_Water_Bottle.jpg"),
             imageAlt: "Instrukcje pielegnacji butelki miedzianej",
             title: "Care Instructions",
           },
           {
-            image: "/copper-water-bottle/PL_details_3_Copper_Water_Bottle.jpg",
+            image: mediaUrl("/copper-water-bottle/PL_details_3_Copper_Water_Bottle.jpg"),
             imageAlt: "Detal wykonania butelki z czystej miedzi",
             title: "Product Details",
           },
           {
-            image: "/copper-water-bottle/PL_details_4_Copper_Water_Bottle.jpg",
+            image: mediaUrl("/copper-water-bottle/PL_details_4_Copper_Water_Bottle.jpg"),
             imageAlt: "Instrukcje pielegnacji butelki miedzianej",
             title: "Care Instructions",
           },
           {
-            image: "/copper-water-bottle/PL_details_5_Copper_Water_Bottle.jpg",
+            image: mediaUrl("/copper-water-bottle/details_5_Copper_Water_Bottle.jpg"),
             imageAlt: "Instrukcje pielegnacji butelki miedzianej",
             title: "Care Instructions",
           },
@@ -1157,41 +1154,41 @@ export const products: ProductDefinition[] = [
     description:
       "A highly absorbable form of magnesium designed to help muscles relax and support a peaceful transition into sleep.",
     trustSignal: "Editor favorite",
-    image: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
+    image: mediaUrl("/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png"),
     imageAlt: "Pure Encapsulations Magnesium Glycinate supplement bottle",
     gallery: [
       {
-        image: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
+        image: mediaUrl("/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate supplement bottle",
         title: "Main View",
       },
       {
-        image: "/magnesium-supplement/details_1_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        image: mediaUrl("/magnesium-supplement/details_1_Pure_Encapsulations_Magnesium_Glycinate.jpg"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate details",
         title: "Product Details",
       },
       {
-        image: "/magnesium-supplement/details_2_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        image: mediaUrl("/magnesium-supplement/details_2_Pure_Encapsulations_Magnesium_Glycinate.jpg"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate ingredients",
         title: "Ingredients",
       },
       {
-        image: "/magnesium-supplement/details_3_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        image: mediaUrl("/magnesium-supplement/details_3_Pure_Encapsulations_Magnesium_Glycinate.jpg"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate benefits",
         title: "Key Benefits",
       },
       {
-        image: "/magnesium-supplement/details_4_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        image: mediaUrl("/magnesium-supplement/details_4_Pure_Encapsulations_Magnesium_Glycinate.jpg"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate usage",
         title: "How to Use",
       },
       {
-        image: "/magnesium-supplement/details_5_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        image: mediaUrl("/magnesium-supplement/details_5_Pure_Encapsulations_Magnesium_Glycinate.jpg"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate formulation",
         title: "Formulation",
       },
       {
-        image: "/magnesium-supplement/details_6_Pure_Encapsulations_Magnesium_Glycinate.jpg",
+        image: mediaUrl("/magnesium-supplement/details_6_Pure_Encapsulations_Magnesium_Glycinate.jpg"),
         imageAlt: "Pure Encapsulations Magnesium Glycinate quality",
         title: "Quality",
       },
@@ -1210,37 +1207,37 @@ export const products: ProductDefinition[] = [
         name: "Cytrynian magnezu 1480 mg – 240 kapsułek wegańskich",
         benefit: "Wygodne wsparcie regeneracji i dobrego snu w formie łatwych do połknięcia kapsułek, idealne do wieczornego rytuału relaksacyjnego.",
         description: "Bathing for the sake of cleanliness is a daily task; bathing for recovery is a mineral ritual. Magnesium bath flakes are notably more absorbable than traditional salts, allowing for deeper muscle relaxation and improved skin barrier support. The heat of the water paired with the mineral infusion helps drop your internal temperature afterward, which is a key signal for sleep readiness.",
-        image: "/magnesium-supplement/main_photo_cytrynian-magnezu.png",
+        image: mediaUrl("/magnesium-supplement/main_photo_cytrynian-magnezu.png"),
         imageAlt: "Polish version of product",
         trustSignal: "Routine essential",
         gallery: [
           {
-            image: "/magnesium-supplement/2_pl_main_photo_cytrynian-magnezu.jpg",
+            image: mediaUrl("/magnesium-supplement/2_pl_main_photo_cytrynian-magnezu.jpg"),
             imageAlt: "Polish version of product",
             title: "Main View",
           },
           {
-            image: "/magnesium-supplement/3_pl_photo_cytrynian-magnezu.jpg",
+            image: mediaUrl("/magnesium-supplement/3_pl_photo_cytrynian-magnezu.jpg"),
             imageAlt: "Polish version of product",
             title: "Main View",
           },
           {
-            image: "/magnesium-supplement/4_pl_photo_cytrynian-magnezu.jpg",
+            image: mediaUrl("/magnesium-supplement/4_pl_photo_cytrynian-magnezu.jpg"),
             imageAlt: "Polish version of product",
             title: "Main View",
           },
           {
-            image: "/magnesium-supplement/5_pl_photo_cytrynian-magnezu.jpg",
+            image: mediaUrl("/magnesium-supplement/5_pl_photo_cytrynian-magnezu.jpg"),
             imageAlt: "Polish version of product",
             title: "Main View",
           },
           {
-            image: "/magnesium-supplement/6_pl_photo_cytrynian-magnezu.jpg",
+            image: mediaUrl("/magnesium-supplement/6_pl_photo_cytrynian-magnezu.jpg"),
             imageAlt: "Polish version of product",
             title: "Main View",
           },
           {
-            image: "/magnesium-supplement/7_pl_photo_cytrynian-magnezu.jpg",
+            image: mediaUrl("/magnesium-supplement/7_pl_photo_cytrynian-magnezu.jpg"),
             imageAlt: "Polish version of product",
             title: "Main View",
           },
@@ -1256,26 +1253,26 @@ export const products: ProductDefinition[] = [
     description:
       "A soft plush robe that turns ordinary evenings into a repeatable at-home spa cue and supports ritual consistency.",
     trustSignal: "Routine essential",
-    image: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+    image: mediaUrl("/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png"),
     imageAlt: "PAVILIA premium women's plush soft robe product image",
     gallery: [
       {
-        image: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+        image: mediaUrl("/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png"),
         imageAlt: "PAVILIA premium women's plush soft robe product image",
         title: "Main View",
       },
       {
-        image: "/pavilia-plush-robe/details_1_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg",
+        image: mediaUrl("/pavilia-plush-robe/details_1_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg"),
         imageAlt: "PAVILIA plush robe details",
         title: "Product Details",
       },
       {
-        image: "/pavilia-plush-robe/details_2_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg",
+        image: mediaUrl("/pavilia-plush-robe/details_2_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg"),
         imageAlt: "PAVILIA plush robe texture",
         title: "Texture",
       },
       {
-        image: "/pavilia-plush-robe/details_3_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg",
+        image: mediaUrl("/pavilia-plush-robe/details_3_PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.jpg"),
         imageAlt: "PAVILIA plush robe fit",
         title: "Fit & Style",
       },
@@ -1288,36 +1285,36 @@ export const products: ProductDefinition[] = [
       pl: {
         affiliateUrl: "https://amzn.to/4uZcJ7u",
         marketProductId: "B084PCS575",
-        video: "/pavilia-plush-robe/PL_pavilia_premium_womans_plush_soft_rober_ugc.mp4",
+        video: mediaUrl("/pavilia-plush-robe/PL_pavilia_premium_womans_plush_soft_rober_ugc.mp4"),
         name: "PAVILIA Damski pluszowy miękki szlafrok premium",
         benefit: "Ciepły, miękki komfort po kąpieli, który domyka wieczorny rytuał relaksu.",
         description:
           "Pluszowy szlafrok typu sherpa z miękkiego polaru, zaprojektowany jako przyjemna warstwa ciepła po prysznicu, kąpieli lub domowym spa.",
-        image: "/pavilia-plush-robe/pl_main_photo_product.png",
+        image: mediaUrl("/pavilia-plush-robe/pl_main_photo_product.png"),
         imageAlt: "PAVILIA damski pluszowy szlafrok premium w kolorze jasnoróżowym",
         gallery: [
           {
-            image: "/pavilia-plush-robe/pl_2_back_side_pavila_photo.jpg",
+            image: mediaUrl("/pavilia-plush-robe/pl_2_back_side_pavila_photo.jpg"),
             imageAlt: "Tył jasnoróżowego pluszowego szlafroka PAVILIA",
             title: "Back View",
           },
           {
-            image: "/pavilia-plush-robe/pl_3_front_side_pavila_photo.jpg",
+            image: mediaUrl("/pavilia-plush-robe/pl_3_front_side_pavila_photo.jpg"),
             imageAlt: "Przód jasnoróżowego pluszowego szlafroka PAVILIA",
             title: "Front View",
           },
           {
-            image: "/pavilia-plush-robe/pl_4_details_side_pavila_photo.jpg",
+            image: mediaUrl("/pavilia-plush-robe/pl_4_details_side_pavila_photo.jpg"),
             imageAlt: "Detal miękkiego polarowego materiału szlafroka PAVILIA",
             title: "Product Details",
           },
           {
-            image: "/pavilia-plush-robe/pl_5_details_side_pavila_photo.jpg",
+            image: mediaUrl("/pavilia-plush-robe/pl_5_details_side_pavila_photo.jpg"),
             imageAlt: "Detal kaptura i pluszowej faktury szlafroka PAVILIA",
             title: "Texture",
           },
           {
-            image: "/pavilia-plush-robe/pl_6_details_side_pavila_photo.jpg",
+            image: mediaUrl("/pavilia-plush-robe/pl_6_details_side_pavila_photo.jpg"),
             imageAlt: "Detal pasa i kieszeni pluszowego szlafroka PAVILIA",
             title: "Fit & Style",
           },
@@ -1334,31 +1331,31 @@ export const products: ProductDefinition[] = [
     description:
       "A titanium microneedle roller with 200 individual pins, designed for beginners. Helps refine texture on face, body, and scalp and primes skin for deeper serum penetration.",
     trustSignal: "Editor favorite",
-    image: "/derma-roller/Koi_Beauty_Derma_Roller.png",
+    image: mediaUrl("/derma-roller/Koi_Beauty_Derma_Roller.png"),
     imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
     gallery: [
       {
-        image: "/derma-roller/Koi_Beauty_Derma_Roller.png",
+        image: mediaUrl("/derma-roller/Koi_Beauty_Derma_Roller.png"),
         imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
         title: "Main View",
       },
       {
-        image: "/derma-roller/details_1_Koi_Beauty_Derma_Roller.jpg",
+        image: mediaUrl("/derma-roller/details_1_Koi_Beauty_Derma_Roller.jpg"),
         imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
         title: "Product Details",
       },
       {
-        image: "/derma-roller/details_2_Koi_Beauty_Derma_Roller.jpg",
+        image: mediaUrl("/derma-roller/details_2_Koi_Beauty_Derma_Roller.jpg"),
         imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
         title: "Texture",
       },
       {
-        image: "/derma-roller/details_3_Koi_Beauty_Derma_Roller.jpg",
+        image: mediaUrl("/derma-roller/details_3_Koi_Beauty_Derma_Roller.jpg"),
         imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
         title: "Fit & Style",
       },
       {
-        image: "/derma-roller/details_4_Koi_Beauty_Derma_Roller.jpg",
+        image: mediaUrl("/derma-roller/details_4_Koi_Beauty_Derma_Roller.jpg"),
         imageAlt: "Koi Beauty titanium microneedle derma roller with storage case",
         title: "Fit & Style",
       }
@@ -1378,47 +1375,47 @@ export const products: ProductDefinition[] = [
         benefit: "Domowe wsparcie gladkiej tekstury skory i lepszego wchlaniania serum.",
         description:
           "Derma roller z tytanowymi mikroiglami, wybrany jako polski odpowiednik narzedzia do delikatnej pielęgnacji tekstury skory. Przed uzyciem sprawdz instrukcje producenta i nie stosuj na podrazniona skore.",
-        image: "/derma-roller/PL_angel-kiss-derma-roller-03mm-amazon-pl-lux-aura-care.png",
+        image: mediaUrl("/derma-roller/PL_angel-kiss-derma-roller-03mm-amazon-pl-lux-aura-care.png"),
         imageAlt: "Angel Kiss Derma Roller jako polski odpowiednik Koi Beauty Professional Derma Roller",
         trustSignal: "Editor favorite",
         gallery: [
           {
-            image: "/derma-roller/PL_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Derma roller z tytanowymi mikroiglami",
             title: "Main View",
           },
           {
-            image: "/derma-roller/PL_details_1_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_1_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Detal derma rollera i etui",
             title: "Product Details",
           },
           {
-            image: "/derma-roller/PL_details_2_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_2_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Glowica derma rollera z mikroiglami",
             title: "Microneedle Head",
           },
           {
-            image: "/derma-roller/PL_details_3_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_3_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Detal derma rollera i etui",
             title: "Product Details",
           },
           {
-            image: "/derma-roller/PLdetails_4_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_4_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Glowica derma rollera z mikroiglami",
             title: "Microneedle Head",
           },
           {
-            image: "/derma-roller/PL_details_5_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_5_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Detal derma rollera i etui",
             title: "Product Details",
           },
           {
-            image: "/derma-roller/PL_details_6_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_6_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Glowica derma rollera z mikroiglami",
             title: "Microneedle Head",
           },
           {
-            image: "/derma-roller/PL_details_7_Koi_Beauty_Derma_Roller.jpg",
+            image: mediaUrl("/derma-roller/PL_details_7_Koi_Beauty_Derma_Roller.jpg"),
             imageAlt: "Glowica derma rollera z mikroiglami",
             title: "Microneedle Head",
           },
@@ -1434,41 +1431,41 @@ export const products: ProductDefinition[] = [
     description:
       "A lightweight body oil spray formulated with oat and jojoba oil to lock in moisture and leave skin looking polished.",
     trustSignal: "Routine essential",
-    image: "/aveeno-oil-mist/cover_aveeno_oil.png",
+    image: mediaUrl("/aveeno-oil-mist/cover_aveeno_oil.png"),
     imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
     gallery: [
       {
-        image: "/aveeno-oil-mist/cover_aveeno_oil.png",
+        image: mediaUrl("/aveeno-oil-mist/cover_aveeno_oil.png"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
         title: "Main View",
       },
       {
-        image: "/aveeno-oil-mist/details_1_aveeno-oil-mist.jpg",
+        image: mediaUrl("/aveeno-oil-mist/details_1_aveeno-oil-mist.jpg"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist details",
         title: "Product Details",
       },
       {
-        image: "/aveeno-oil-mist/details_2_aveeno-oil-mist.jpg",
+        image: mediaUrl("/aveeno-oil-mist/details_2_aveeno-oil-mist.jpg"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist ingredients",
         title: "Key Ingredients",
       },
       {
-        image: "/aveeno-oil-mist/details_3_aveeno-oil-mist.jpg",
+        image: mediaUrl("/aveeno-oil-mist/details_3_aveeno-oil-mist.jpg"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist benefits",
         title: "Benefits",
       },
       {
-        image: "/aveeno-oil-mist/details_4_aveeno-oil-mist.jpg",
+        image: mediaUrl("/aveeno-oil-mist/details_4_aveeno-oil-mist.jpg"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist application",
         title: "How to Use",
       },
       {
-        image: "/aveeno-oil-mist/details_5_aveeno-oil-mist.jpg",
+        image: mediaUrl("/aveeno-oil-mist/details_5_aveeno-oil-mist.jpg"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist finish",
         title: "Finish",
       },
       {
-        image: "/aveeno-oil-mist/details_6_aveeno-oil-mist.jpg",
+        image: mediaUrl("/aveeno-oil-mist/details_6_aveeno-oil-mist.jpg"),
         imageAlt: "Aveeno Daily Moisturizing Body Oil Mist quality",
         title: "Quality",
       },
@@ -1487,12 +1484,12 @@ export const products: ProductDefinition[] = [
         name: "Avon Skin So Soft Suchy olejek do ciała z olejkiem jojoba (2 x 150ml)",
         benefit: "Lekka mgiełka olejkowa szybko się wchłania, intensywnie nawilżając i regenerując skórę po kąpieli.",
         description: "Kultowy suchy olejek od Avon wzbogacony olejkiem jojoba. Doskonała alternatywa dla mgiełek olejkowych – błyskawicznie nawilża, pozostawiając skórę jedwabiście gładką bez uczucia lepkości. Idealny element domowego rytuału SPA.",
-        image: "/aveeno-oil-mist/pl_aveeno-oil-mist.png",
+        image: mediaUrl("/aveeno-oil-mist/pl_aveeno-oil-mist.png"),
         imageAlt: "Avon Skin So Soft Original Dry Oil Spray",
         video: null,
         gallery: [
           {
-            image: "/aveeno-oil-mist/2_pl_photo_avon.jpg",
+            image: mediaUrl("/aveeno-oil-mist/2_pl_photo_avon.jpg"),
             imageAlt: "Avon Skin So Soft Original Dry Oil Spray",
             title: "Zestaw 2 sztuk",
           }
@@ -1508,41 +1505,41 @@ export const products: ProductDefinition[] = [
     description:
       "The Medicube AGE-R Booster Pro is a multi-mode Korean skincare device featuring Booster, MC, Derma Shot, Air Shot, and LED modes. Review the manufacturer instructions, contraindications, and recommended usage before adding the device to your routine.",
     trustSignal: "Editorial pick",
-    image: "/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png",
+    image: mediaUrl("/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png"),
     imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
     gallery: [
       {
-        image: "/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png",
+        image: mediaUrl("/medicube-age-r-booster-pro/Medicube_AGE_R_Booster_Pro.png"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Main View",
       },
       {
-        image: "/medicube-age-r-booster-pro/details_1_Medicube_AGE_R_Booster_Pro.jpg",
+        image: mediaUrl("/medicube-age-r-booster-pro/details_1_Medicube_AGE_R_Booster_Pro.jpg"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Product Details",
       },
       {
-        image: "/medicube-age-r-booster-pro/details_2_Medicube_AGE_R_Booster_Pro.jpg",
+        image: mediaUrl("/medicube-age-r-booster-pro/details_2_Medicube_AGE_R_Booster_Pro.jpg"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Texture",
       },
       {
-        image: "/medicube-age-r-booster-pro/details_3_Medicube_AGE_R_Booster_Pro.jpg",
+        image: mediaUrl("/medicube-age-r-booster-pro/details_3_Medicube_AGE_R_Booster_Pro.jpg"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Fit & Style",
       },
       {
-        image: "/medicube-age-r-booster-pro/details_4_Medicube_AGE_R_Booster_Pro.jpg",
+        image: mediaUrl("/medicube-age-r-booster-pro/details_4_Medicube_AGE_R_Booster_Pro.jpg"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Fit & Style",
       },
       {
-        image: "/medicube-age-r-booster-pro/details_5_Medicube_AGE_R_Booster_Pro.jpg",
+        image: mediaUrl("/medicube-age-r-booster-pro/details_5_Medicube_AGE_R_Booster_Pro.jpg"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Fit & Style",
       },
       {
-        image: "/medicube-age-r-booster-pro/details_6_Medicube_AGE_R_Booster_Pro.jpg",
+        image: mediaUrl("/medicube-age-r-booster-pro/details_6_Medicube_AGE_R_Booster_Pro.jpg"),
         imageAlt: "Medicube AGE-R Booster Pro 6-in-1 Korean Skin Care Device",
         title: "Fit & Style",
       },
@@ -1562,42 +1559,42 @@ export const products: ProductDefinition[] = [
         benefit: "Kompaktowe wsparcie domowej pielęgnacji i lepszego nakładania kosmetyków aktywnych.",
         description:
           "Kompaktowe urzadzenie Medicube do domowej pielęgnacji, wybrane jako przystepniejszy polski odpowiednik AGE-R Booster Pro. Przed uzyciem sprawdz instrukcje, przeciwwskazania i zalecana czestotliwosc zabiegow.",
-        image: "/medicube-age-r-booster-pro/PL_medicube-booster-pro-mini-white-glow-booster-amazon-pl-lux-aura-care.png",
+        image: mediaUrl("/medicube-age-r-booster-pro/PL_medicube-booster-pro-mini-white-glow-booster-amazon-pl-lux-aura-care.png"),
         imageAlt: "Medicube Booster Pro Mini White jako polski odpowiednik Medicube AGE-R Booster Pro",
         trustSignal: "Editorial pick",
         gallery: [
           {
-            image: "/medicube-age-r-booster-pro/PL_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Urzadzenie Medicube do domowej pielęgnacji twarzy",
             title: "Main View",
           },
           {
-            image: "/medicube-age-r-booster-pro/PL_details_1_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_details_1_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Funkcje urzadzenia Medicube do pielęgnacji twarzy",
             title: "Product Details",
           },
           {
-            image: "/medicube-age-r-booster-pro/PL_details_2_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_details_2_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Urzadzenie Medicube podczas rutyny skincare",
             title: "Routine Use",
           },
           {
-            image: "/medicube-age-r-booster-pro/PL_details_3_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_details_3_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Funkcje urzadzenia Medicube do pielęgnacji twarzy",
             title: "Product Details",
           },
           {
-            image: "/medicube-age-r-booster-pro/PL_details_4_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_details_4_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Urzadzenie Medicube podczas rutyny skincare",
             title: "Routine Use",
           },
           {
-            image: "/medicube-age-r-booster-pro/PL_details_5_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_details_5_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Funkcje urzadzenia Medicube do pielęgnacji twarzy",
             title: "Product Details",
           },
           {
-            image: "/medicube-age-r-booster-pro/PL_details_6_Medicube_AGE_R_Booster_Pro.jpg",
+            image: mediaUrl("/medicube-age-r-booster-pro/PL_details_6_Medicube_AGE_R_Booster_Pro.jpg"),
             imageAlt: "Urzadzenie Medicube podczas rutyny skincare",
             title: "Routine Use",
           },
@@ -1613,56 +1610,56 @@ export const products: ProductDefinition[] = [
     description:
       "Botanic Hearth Rosemary Hair Oil is a scalp and hair treatment formulated with rosemary oil, biotin, castor oil, and jojoba oil. Review the full ingredient list and patch-test before use, especially if your scalp is sensitive.",
     trustSignal: "Routine essential",
-    image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png",
+    image: mediaUrl("/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png"),
     imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
     gallery: [
       {
-        image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png",
+        image: mediaUrl("/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.png"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Main View",
       },
       {
-        image: "/rosemary-hair-oil/details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Product Details",
       },
       {
-        image: "/rosemary-hair-oil/details_2_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_2_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Texture",
       },
       {
-        image: "/rosemary-hair-oil/details_3_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_3_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
       {
-        image: "/rosemary-hair-oil/details_4_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_4_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
       {
-        image: "/rosemary-hair-oil/details_5_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_5_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
       {
-        image: "/rosemary-hair-oil/details_6_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_6_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
       {
-        image: "/rosemary-hair-oil/details_7_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_7_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
       {
-        image: "/rosemary-hair-oil/details_8_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_8_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
       {
-        image: "/rosemary-hair-oil/details_9_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+        image: mediaUrl("/rosemary-hair-oil/details_9_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
         imageAlt: "Botanic Hearth Rosemary Hair Oil for Growth",
         title: "Fit & Style",
       },
@@ -1682,52 +1679,52 @@ export const products: ProductDefinition[] = [
         benefit: "Rozmarynowy olejek do skory glowy, ktory wspiera rytual masazu skalpu i pielegnacje wlosow oslabionych.",
         description:
           "Organiczny olejek rozmarynowy do włosów z olejem rycynowym, arganowym i jojoba, wybrany jako polski odpowiednik kuracji Botanic Hearth dzięki widocznej cenie, dostępności oraz bardzo mocnemu social proof.",
-        image: "/rosemary-hair-oil/PL_bionoble-organiczny-olejek-rozmarynowy-do-wlosow-amazon-pl-lux-aura-care.png",
+        image: mediaUrl("/rosemary-hair-oil/PL_bionoble-organiczny-olejek-rozmarynowy-do-wlosow-amazon-pl-lux-aura-care.png"),
         imageAlt: "BIONOBLE Organiczny Olejek Rozmarynowy jako polski odpowiednik rozmarynowego olejku do wlosow",
         trustSignal: "Routine essential",
         gallery: [
           {
-            image: "/rosemary-hair-oil/botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Rozmarynowy olejek do skory glowy i wlosow",
             title: "Main View",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_1_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Informacje o rozmarynowym olejku do wlosow",
             title: "Product Details",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_2_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_2_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Informacje o rozmarynowym olejku do wlosow",
             title: "Product Details",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_3_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_3_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Aplikacja olejku na skore glowy",
             title: "Scalp Ritual",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_4_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_4_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Informacje o rozmarynowym olejku do wlosow",
             title: "Product Details",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_5_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_5_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Informacje o rozmarynowym olejku do wlosow",
             title: "Product Details",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_6_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_6_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Aplikacja olejku na skore glowy",
             title: "Scalp Ritual",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_7_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_7_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Informacje o rozmarynowym olejku do wlosow",
             title: "Product Details",
           },
           {
-            image: "/rosemary-hair-oil/PL_details_8_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg",
+            image: mediaUrl("/rosemary-hair-oil/PL_details_8_botanic-hearth-rosemary-hair-oil-biotin-castor-jojoba-scalp-treatment.jpg"),
             imageAlt: "Aplikacja olejku na skore glowy",
             title: "Scalp Ritual",
           },
@@ -1743,41 +1740,41 @@ export const products: ProductDefinition[] = [
     description:
       "Orgain Collagen Peptides Powder is an unflavoured bovine collagen supplement with 20g of collagen peptides per labelled serving. Check the current label, ingredients, serving guidance, and suitability for your dietary needs before use.",
     trustSignal: "Routine essential",
-    image: "/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png",
+    image: mediaUrl("/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png"),
     imageAlt: "Orgain Collagen Peptides Powder",
     gallery: [
       {
-        image: "/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png",
+        image: mediaUrl("/orgain-collagen-peptides/orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.png"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Main View",
       },
       {
-        image: "/orgain-collagen-peptides/details_1_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        image: mediaUrl("/orgain-collagen-peptides/details_1_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Product Details",
       },
       {
-        image: "/orgain-collagen-peptides/details_2_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        image: mediaUrl("/orgain-collagen-peptides/details_2_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Texture",
       },
       {
-        image: "/orgain-collagen-peptides/details_3_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        image: mediaUrl("/orgain-collagen-peptides/details_3_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Fit & Style",
       },
       {
-        image: "/orgain-collagen-peptides/details_4_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        image: mediaUrl("/orgain-collagen-peptides/details_4_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Fit & Style",
       },
       {
-        image: "/orgain-collagen-peptides/details_5_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        image: mediaUrl("/orgain-collagen-peptides/details_5_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Fit & Style",
       },
       {
-        image: "/orgain-collagen-peptides/details_6_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+        image: mediaUrl("/orgain-collagen-peptides/details_6_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
         imageAlt: "Orgain Collagen Peptides Powder",
         title: "Fit & Style",
       },
@@ -1797,43 +1794,43 @@ export const products: ProductDefinition[] = [
         benefit: "Neutralny kolagen w proszku do codziennego wsparcia wlosow, skory, paznokci i stawow.",
         description:
           "Hydrolizowane peptydy kolagenowe z bydla karmionego trawa, wybrane jako polski odpowiednik Orgain Collagen Peptides. Produkt pasuje do porannej kawy, smoothie albo prostego rytualu wellness.",
-        image: "/orgain-collagen-peptides/PL_pure-essential-hydrolizowane-peptydy-kolagenowe-amazon-pl-lux-aura-care.png",
+        image: mediaUrl("/orgain-collagen-peptides/PL_pure-essential-hydrolizowane-peptydy-kolagenowe-amazon-pl-lux-aura-care.png"),
         imageAlt: "Pure & Essential peptydy kolagenowe jako polski odpowiednik Orgain Collagen Peptides",
         trustSignal: "Routine essential",
-        video:"/orgain-collagen-peptides/ugc-pure-essential-hydrolyzed-collagen-peptides-polskie-ugc-beauty-supplement.mp4",
+        video:mediaUrl("/orgain-collagen-peptides/ugc-pure-essential-hydrolyzed-collagen-peptides-polskie-ugc-beauty-supplement.mp4"),
         gallery: [
           {
-            image: "/orgain-collagen-peptides/PL_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Hydrolizowane peptydy kolagenowe w proszku",
             title: "Main View",
           },
           {
-            image: "/orgain-collagen-peptides/PL_details_1_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_details_1_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Informacje o peptydach kolagenowych",
             title: "Product Details",
           },
           {
-            image: "/orgain-collagen-peptides/PL_details_2_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_details_2_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Informacje o peptydach kolagenowych",
             title: "Product Details",
           },
           {
-            image: "/orgain-collagen-peptides/PL_details_3_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_details_3_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Informacje o peptydach kolagenowych",
             title: "Product Details",
           },
           {
-            image: "/orgain-collagen-peptides/PL_details_4_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_details_4_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Informacje o peptydach kolagenowych",
             title: "Product Details",
           },
           {
-            image: "/orgain-collagen-peptides/PL_details_5_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_details_5_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Informacje o peptydach kolagenowych",
             title: "Product Details",
           },
           {
-            image: "/orgain-collagen-peptides/PL_details_6_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg",
+            image: mediaUrl("/orgain-collagen-peptides/PL_details_6_orgain-collagen-peptides-powder-grass-fed-hair-skin-nails-joints-support.jpg"),
             imageAlt: "Informacje o peptydach kolagenowych",
             title: "Product Details",
           },
@@ -2141,7 +2138,7 @@ export const articles: Article[] = [
       "A focused routine guide to achieving that luminous, reflective skin finish using Pinterest's high-performing skincare stars.",
     intro:
       "Glass skin isn't about being perfect; it's about hydration and gentle resurfacing. This guide breaks down two products that can simplify a consistent routine.",
-    heroImage: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
+    heroImage: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png"),
     heroAlt: "Mixsoon Bean Essence and TIA'M toner on a marble vanity",
     categoryId: "skincare",
     readTime: "6 min read",
@@ -2175,7 +2172,7 @@ export const articles: Article[] = [
       "Lower your nervous system's alert level with this simple bedtime ritual designed for deep, restorative rest.",
     intro:
       "If you struggle to switch off, your environment is likely too 'noisy.' This reset focuses on physical cues that tell your brain it's safe to settle into deep rest mode.",
-    heroImage: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
+    heroImage: mediaUrl("/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png"),
     heroAlt: "Magnesium supplement bottle and a soft plush robe",
     categoryId: "self-care",
     readTime: "5 min read",
@@ -2209,7 +2206,7 @@ export const articles: Article[] = [
       "Stop skipping body care. This 3-minute post-shower habit creates a polished, spa-level glow with zero residue.",
     intro:
       "Glossy, healthy body skin shouldn't be a separate project. These two tools turn your daily hydration into a premium ritual that looks and feels expensive.",
-    heroImage: "/aveeno-oil-mist/Aveeno_Daily_Moisturizing_Body_Oil_Mist.png",
+    heroImage: mediaUrl("/aveeno-oil-mist/Aveeno_Daily_Moisturizing_Body_Oil_Mist.png"),
     heroAlt: "Aveeno Body Oil Mist bottle in a golden hour light",
     categoryId: "body-glow",
     readTime: "4 min read",
@@ -2430,7 +2427,7 @@ export const articles: Article[] = [
       "A practical toner-first skincare flow that pairs gentle cleansing, smoothing essence, and hydration support for a clearer glow.",
     intro:
       "Most Pinterest skincare saves fail because routines are too complex. This one keeps four repeatable steps and product pairings that are easy to maintain even on low-energy evenings.",
-    heroImage: "/niacinamide-toner/Good_Molecules_Niacinamide_Brightening_Toner.png",
+    heroImage: mediaUrl("/niacinamide-toner/Good_Molecules_Niacinamide_Brightening_Toner.png"),
     heroAlt: "Niacinamide toner product visual used in a skincare routine guide",
     categoryId: "skincare",
     readTime: "7 min read",
@@ -2470,7 +2467,7 @@ export const articles: Article[] = [
       "A conversion-focused spa-at-home setup using comfort and atmosphere cues that readers genuinely keep.",
     intro:
       "The best-performing spa content combines emotional payoff and simple execution. This guide structures that with a scent anchor, comfort layer, and one wellness cue for habit continuity.",
-    heroImage: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
+    heroImage: mediaUrl("/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png"),
     heroAlt: "Organic essential oils set used as the hero for spa ritual content",
     categoryId: "spa-relax",
     readTime: "8 min read",
@@ -2510,7 +2507,7 @@ export const articles: Article[] = [
       "Stop skipping body care. This exhaustive guide breaks down the multi-step protocol for achieving a resilient, healthy satin glow that catches the light beautifully.",
     intro:
       "While face-first skincare dominated the last decade, the 'body-glow' movement is about treating the skin on your body with the same active-led precision. Luminous body skin isn't just about shine; it's about texture refinement, lymphatic support, and a disciplined moisture-locking window.",
-    heroImage: "/aveeno-oil-mist/cover_aveeno_oil.png",
+    heroImage: mediaUrl("/aveeno-oil-mist/cover_aveeno_oil.png"),
     heroAlt: "Polished body skin catching the golden hour light next to ritual tools",
     categoryId: "body-glow",
     readTime: "9 min read",
@@ -2550,7 +2547,7 @@ export const articles: Article[] = [
       "Struggling to switch off? This deep-dive guide explores the biological triggers for deep rest, focusing on nervous system regulation and visual cues.",
     intro:
       "Modern environments are 'noisy'—not just auditorily, but visually and biologically. If your heart rate is still elevated or your brain is detecting light leaks, you won't transition into restorative REM cycles. This reset protocol uses internal mineral support and external environmental anchors to tell your nervous system that the day is officially done.",
-    heroImage: "/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png",
+    heroImage: mediaUrl("/magnesium-supplement/Pure_Encapsulations_Magnesium_Glycinate.png"),
     heroAlt: "A calm, dark bedroom setup featuring a silk mask and weighted blanket",
     categoryId: "self-care",
     readTime: "10 min read",
@@ -2590,7 +2587,7 @@ export const articles: Article[] = [
       "Learn the art of atmospheric calibration. This guide shows you how to turn your basic bathroom into a high-performance sanctuary for stress recovery.",
     intro:
       "The 'Spa Sunday' trend is popular because it offers a clear bridge between a high-output week and a fresh start. But a true sanctuary isn't about aesthetics alone—it's about sensory layering. Scent, warmth, and texture must work together to create a repeatable environment for emotional and physical recovery.",
-    heroImage: "/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png",
+    heroImage: mediaUrl("/cliganic-essential-oils/Cliganic_Organic_Aromatherapy.png"),
     heroAlt: "Luxury spa setup with candles, diffuser, and soft robes",
     categoryId: "spa-relax",
     readTime: "8 min read",
@@ -2630,7 +2627,7 @@ export const articles: Article[] = [
       "Success is a habit, but so is energy. This exhaustive protocol focuses on internal hydration and physical awakening to keep you steady all day.",
     intro:
       "Afternoon burnout isn't inevitable; it's often the result of poor morning calibration. Starting your day with a focused protocol ensures your baseline is set for high output without the crash. This guide uses pure hydration, internal mineral support, and tactile awakening to give you a visible head start on your goals.",
-    heroImage: "/copper-water-bottle/Copper_Water_Bottle.png",
+    heroImage: mediaUrl("/copper-water-bottle/Copper_Water_Bottle.png"),
     heroAlt: "Copper water bottle and morning essentials on an aesthetic workspace",
     categoryId: "self-care",
     readTime: "7 min read",
@@ -2670,7 +2667,7 @@ export const articles: Article[] = [
       "Move beyond basics. Learn the exact layering protocol using Pinterest's high-performance actives for that reflective, luminous skin finish.",
     intro:
       "Glass skin is a result of consistent, low-friction texture refinement and high-saturation hydration. It requires understanding how to layer actives like Retinol and Niacinamide without overwhelming the skin barrier. This guide breaks down the viral Pinterest workflow into repeatable, science-backed steps.",
-    heroImage: "/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png",
+    heroImage: mediaUrl("/mixsoon-bean-essence/mixsoon_Bean_Essence_Exfoliating.png"),
     heroAlt: "Polished skincare products on a vanity reflection",
     categoryId: "skincare",
     readTime: "11 min read",
@@ -2710,7 +2707,7 @@ export const articles: Article[] = [
       "Burnout isn't a moment; it's a slow accumulation. These tactile and sensory reset rituals help you lower cortisol and protect your peace.",
     intro:
       "When we feel overwhelmed, our sensory system is usually 'flooded.' A stress-reset isn't about doing more—it's about clearing the baseline. By using tactile grounding and atmospheric shifts, you can lower your body's alert level in minutes, preventing daily stress from turning into chronic burnout.",
-    heroImage: "/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png",
+    heroImage: mediaUrl("/pavilia-plush-robe/PAVILIA_Premium_Womens_Plush_Soft_Robe_Fluffy.png"),
     heroAlt: "A comfortable, grounded setting for an evening reset ritual",
     categoryId: "self-care",
     readTime: "6 min read",
@@ -2762,7 +2759,6 @@ export const amazonFavoriteProductIds = [
   "pavilia-plush-robe",
   "copper-water-bottle",
   "silk-sleep-mask",
-  "retinol-serum",
   "aroma-diffuser",
   "candle-set",
   "medicube-age-r-booster-pro",

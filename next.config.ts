@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "0zj5m4eriyydro8n.public.blob.vercel-storage.com",
+      },
     ],
   },
   turbopack: {

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
+import { mediaUrl } from "@/lib/media-url";
 import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { T } from "@/components/translated-text";
 
@@ -101,17 +102,17 @@ const MAX_SCROLL = 3000;
 
 const FALLBACK_PRODUCTS: HeroProduct[] = [
   {
-    src: "/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png",
+    src: mediaUrl("/niacinamide-toner/Naturium_Niacinamide_Face_Serum_12.png"),
     alt: "Naturium Niacinamide Face Serum 12% Plus Zinc 2% product image",
     name: "Naturium Niacinamide Face Serum 12% Plus Zinc 2%",
   },
   {
-    src: "/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.png",
+    src: mediaUrl("/gua-sha-set/BAIMEI_IcyMe_Jade_Roller_GuaSha.png"),
     alt: "Rose quartz gua sha and roller set product image",
     name: "Rose Quartz Gua Sha Set",
   },
   {
-    src: "/aveeno-oil-mist/cover_aveeno_oil.png",
+    src: mediaUrl("/aveeno-oil-mist/cover_aveeno_oil.png"),
     alt: "Aveeno Daily Moisturizing Body Oil Mist spray bottle",
     name: "Aveeno Daily Moisturizing Body Oil Mist",
   },

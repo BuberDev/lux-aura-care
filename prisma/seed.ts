@@ -10,6 +10,10 @@ const prisma = new PrismaClient({ adapter });
 async function main() {
   console.log("Seeding database with media assets...");
 
+  // The table is fully derived from lib/media-data.ts — wipe it first so rows
+  // pointing at renamed or relocated files don't linger.
+  await prisma.mediaAsset.deleteMany({});
+
   // 1. Favorites UGC Videos
   for (const [productId, url] of Object.entries(UGC_VIDEOS)) {
     await prisma.mediaAsset.upsert({

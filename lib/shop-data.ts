@@ -1,3 +1,5 @@
+import { mediaUrl } from "./media-url";
+
 export type ShopProductGalleryItem = {
   url: string;
   label: string;
@@ -55,7 +57,7 @@ export const shopProducts: ShopProduct[] = [
     price: 24.99,
     compareAtPrice: 24.99,
     currency: "EUR",
-    image: "/dermaplaning-razor-kit/Glow_Ritual_Face_Razor_Kit.png",
+    image: mediaUrl("/dermaplaning-razor-kit/Glow_Ritual_Face_Razor_Kit.png"),
     imageAlt: "Skincare beauty tools and face razor kit on display",
     badge: "Featured",
     benefits: [
@@ -93,31 +95,31 @@ export const shopProducts: ShopProduct[] = [
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
     gallery: [
       {
-        url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-main-product-photo.png",
+        url: mediaUrl("/dermaplaning-razor-kit/glow-ritual-face-razor-kit-main-product-photo.png"),
         label: "Product",
         badge: "Featured",
         desc: "6-piece dermaplaning kit for a controlled at-home routine",
       },
       {
-        url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-flat-lay.png",
+        url: mediaUrl("/dermaplaning-razor-kit/glow-ritual-face-razor-kit-flat-lay.png"),
         label: "What's Inside",
         badge: "6 Blades",
         desc: "Everything included — 6 precision blades, one per week",
       },
       {
-        url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-lifestyle-usage.png",
+        url: mediaUrl("/dermaplaning-razor-kit/glow-ritual-face-razor-kit-lifestyle-usage.png"),
         label: "In Use",
         badge: "2 Min Ritual",
         desc: "Gentle 45° strokes — peach fuzz gone, skin instantly glowing",
       },
       {
-        url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-luxury-spa-pedestal.png",
+        url: mediaUrl("/dermaplaning-razor-kit/glow-ritual-face-razor-kit-luxury-spa-pedestal.png"),
         label: "Spa-Grade",
         badge: "Esthetician Pick",
         desc: "Recommended by estheticians for women 40+ — no appointment needed",
       },
       {
-        url: "/dermaplaning-razor-kit/glow-ritual-face-razor-kit-blade-close-up.png",
+        url: mediaUrl("/dermaplaning-razor-kit/glow-ritual-face-razor-kit-blade-close-up.png"),
         label: "Blade Detail",
         badge: "Precision Cut",
         desc: "Micro-guard blades designed for careful, controlled use",
@@ -130,12 +132,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Overnight blemish control. Peel, reveal, glow.",
     description:
       "24 ultra-thin hydrocolloid patches that draw out impurities while you sleep. Invisible on skin, no irritation, no picking. The secret weapon in every 40+ skincare routine.",
-    // Synced with live Shopify variant (charges 14.99). Intended promo was 8.99 —
-    // restore it here once the Shopify price is lowered to match.
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 14.99,
-    compareAtPrice: 16.99,
+    compareAtPrice: 14.99,
     currency: "EUR",
-    image: "/clear-skin-patches/Clear_Skin_Hydrocolloid_Patches.png",
+    image: mediaUrl("/clear-skin-patches/Clear_Skin_Hydrocolloid_Patches.png"),
     imageAlt: "Close-up of woman receiving a professional facial skincare treatment",
     badge: "⭐ New Favourite",
     benefits: [
@@ -170,34 +173,34 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490722637:1",
     category: "skincare",
     isNew: true,
-    ugcVideos: ["/clear-skin-patches/ugc-short-Clear_Skin_Hydrocolloid_Patches.mp4"],
+    ugcVideos: [mediaUrl("/clear-skin-patches/ugc-short-Clear_Skin_Hydrocolloid_Patches.mp4")],
     gallery: [
       {
-        url: "/clear-skin-patches/clear-skin-hydrocolloid-patches-main-product-photo.png",
+        url: mediaUrl("/clear-skin-patches/clear-skin-hydrocolloid-patches-main-product-photo.png"),
         label: "Product",
         badge: "⭐ New Favourite",
         desc: "24 ultra-thin hydrocolloid patches — overnight blemish control",
       },
       {
-        url: "/clear-skin-patches/clear-skin-hydrocolloid-patches-flat-lay.png",
+        url: mediaUrl("/clear-skin-patches/clear-skin-hydrocolloid-patches-flat-lay.png"),
         label: "What's Inside",
         badge: "24 Patches",
         desc: "24 patches per pack — 2–3 weeks of clear skin",
       },
       {
-        url: "/clear-skin-patches/clear-skin-hydrocolloid-patches-lifestyle-application.png",
+        url: mediaUrl("/clear-skin-patches/clear-skin-hydrocolloid-patches-lifestyle-application.png"),
         label: "How to Use",
         badge: "6–8 Hours",
         desc: "Apply directly on blemish, leave overnight — peel to reveal results",
       },
       {
-        url: "/clear-skin-patches/clear-skin-hydrocolloid-patches-bathroom-vanity-lifestyle.png",
+        url: mediaUrl("/clear-skin-patches/clear-skin-hydrocolloid-patches-bathroom-vanity-lifestyle.png"),
         label: "Routine",
         badge: "Invisible Under Makeup",
         desc: "Ultra-thin design — fits seamlessly into your nightly ritual",
       },
       {
-        url: "/clear-skin-patches/clear-skin-hydrocolloid-patches-patch-sheet-close-up.png",
+        url: mediaUrl("/clear-skin-patches/clear-skin-hydrocolloid-patches-patch-sheet-close-up.png"),
         label: "Patch Detail",
         badge: "Vegan Formula",
         desc: "Hydrocolloid technology draws out impurities without irritation",
@@ -210,12 +213,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Wake up to brighter, firmer eyes — starting tonight.",
     description:
       "60 ultra-thin 24K gold collagen eye patches that target dark circles, puffiness and fine lines while you sleep. Marine collagen + hyaluronic acid + real gold particles — 30 full treatments per pack. The overnight eye ritual for women 40+.",
-    // Synced with live Shopify variant (charges 18.99). Intended promo was 16.99 —
-    // restore it here once the Shopify price is lowered to match.
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 18.99,
-    compareAtPrice: 29.99,
+    compareAtPrice: 18.99,
     currency: "EUR",
-    image: "/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png",
+    image: mediaUrl("/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png"),
     imageAlt: "24K Gold Collagen Eye Patches skincare treatment",
     badge: "✨ Gold Formula",
     benefits: [
@@ -250,22 +254,22 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53954300772685:1",
     category: "skincare",
     isNew: true,
-    ugcVideos: ["/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4"],
+    ugcVideos: [mediaUrl("/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4")],
     gallery: [
       {
-        url: "/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png",
+        url: mediaUrl("/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png"),
         label: "Luxe Patches",
         badge: "24K Gold",
         desc: "Luxurious 24K gold hydrogel eye patches with marine collagen",
       },
       {
-        url: "/gold-eye-patches/24K_Gold_Collagen_Eye_Patches_close.png",
+        url: mediaUrl("/gold-eye-patches/24K_Gold_Collagen_Eye_Patches_close.png"),
         label: "Formula Close-up",
         badge: "Active Gold",
         desc: "Hydrogel texture glistening with premium marine collagen and hyaluronic acid serum",
       },
       {
-        url: "/gold-eye-patches/24K_Gold_Collagen_Eye_Patches_lifestyle.png",
+        url: mediaUrl("/gold-eye-patches/24K_Gold_Collagen_Eye_Patches_lifestyle.png"),
         label: "Evening Ritual",
         badge: "Spa Care",
         desc: "Premium self-care wellness routine for bright, depuffed under-eyes",
@@ -284,7 +288,7 @@ export const shopProducts: ShopProduct[] = [
     price: 34.99,
     compareAtPrice: 39.98,
     currency: "EUR",
-    image: "/skin-ritual-bundle/Skin_Ritual_Starter_Kit.png",
+    image: mediaUrl("/skin-ritual-bundle/Skin_Ritual_Starter_Kit.png"),
     imageAlt: "Flat lay of premium skincare products on white background",
     badge: "Best Value",
     benefits: [
@@ -320,31 +324,31 @@ export const shopProducts: ShopProduct[] = [
     isBestSeller: true,
     gallery: [
       {
-        url: "/skin-ritual-bundle/skin-ritual-starter-kit-main-product-photo.png",
+        url: mediaUrl("/skin-ritual-bundle/skin-ritual-starter-kit-main-product-photo.png"),
         label: "Bundle",
         badge: "Best Value",
         desc: "Complete 2-step glow ritual — dermaplaning razor + hydrocolloid patches",
       },
       {
-        url: "/skin-ritual-bundle/skin-ritual-starter-kit-flat-lay.png",
+        url: mediaUrl("/skin-ritual-bundle/skin-ritual-starter-kit-flat-lay.png"),
         label: "What's Inside",
         badge: "Save €14",
         desc: "6 precision blades + 24 hydrocolloid patches — 6-week ritual in one kit",
       },
       {
-        url: "/skin-ritual-bundle/skin-ritual-starter-kit-lifestyle-dermaplaning.png",
+        url: mediaUrl("/skin-ritual-bundle/skin-ritual-starter-kit-lifestyle-dermaplaning.png"),
         label: "Step 1",
         badge: "Sunday Ritual",
         desc: "Use the dermaplaning tool only as directed, then apply a gentle routine",
       },
       {
-        url: "/skin-ritual-bundle/skin-ritual-starter-kit-lifestyle-patch-application.png",
+        url: mediaUrl("/skin-ritual-bundle/skin-ritual-starter-kit-lifestyle-patch-application.png"),
         label: "Step 2",
         badge: "Overnight Fix",
         desc: "Apply a patch on any blemish — wake up to visibly clearer skin",
       },
       {
-        url: "/skin-ritual-bundle/skin-ritual-starter-kit-bundle-close-up.png",
+        url: mediaUrl("/skin-ritual-bundle/skin-ritual-starter-kit-bundle-close-up.png"),
         label: "Detail",
         badge: "Gift-Ready",
         desc: "Ships in elegant packaging — perfect self-care gift for any woman",
@@ -362,7 +366,7 @@ export const shopProducts: ShopProduct[] = [
     price: 29.99,
     compareAtPrice: 29.99,
     currency: "EUR",
-    image: "/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png",
+    image: mediaUrl("/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png"),
     imageAlt: "Handcrafted natural Rose Quartz Gua Sha and Jade Roller set on a soft pastel background",
     badge: "✨ Self-Care Favorite",
     benefits: [
@@ -399,19 +403,19 @@ export const shopProducts: ShopProduct[] = [
     isNew: true,
     gallery: [
       {
-        url: "/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png",
+        url: mediaUrl("/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png"),
         label: "Luxe Set",
         badge: "Organic Quartz",
         desc: "Handcrafted natural Rose Quartz Gua Sha and double-sided Jade Roller",
       },
       {
-        url: "/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_close.png",
+        url: mediaUrl("/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_close.png"),
         label: "Stone Texture",
         badge: "Premium Polish",
         desc: "Seamless rose gold frame details and ultra-smooth polished stone edges",
       },
       {
-        url: "/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_lifestyle.png",
+        url: mediaUrl("/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_lifestyle.png"),
         label: "Daily Ritual",
         badge: "Spa Routine",
         desc: "Relaxing lymphatic drainage massage for a sculpted, radiant complexion",
@@ -428,7 +432,7 @@ export const shopProducts: ShopProduct[] = [
     price: 14.99,
     compareAtPrice: 24.99,
     currency: "EUR",
-    image: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png",
+    image: mediaUrl("/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png"),
     imageAlt: "Black Bian Stone Gua Sha facial massage stick on dark marble surface",
     badge: "Bian Stone",
     benefits: [
@@ -465,25 +469,25 @@ export const shopProducts: ShopProduct[] = [
     isNew: true,
     gallery: [
       {
-        url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png",
+        url: mediaUrl("/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png"),
         label: "Volcanic Stone",
         badge: "Bian Stone",
         desc: "Authentic black volcanic Bian Stone gua sha stick — hand-polished to a flawless finish",
       },
       {
-        url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick_close.png",
+        url: mediaUrl("/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick_close.png"),
         label: "Stone Texture",
         badge: "Polished Surface",
         desc: "Smooth mineral surface shaped for a controlled facial massage",
       },
       {
-        url: "/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick_lifestyle.png",
+        url: mediaUrl("/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick_lifestyle.png"),
         label: "Morning Ritual",
         badge: "5-Min Ritual",
         desc: "Sculpting and depuffing facial massage ritual designed for women 40+",
       },
       {
-        url: "/bian-stone-gua-sha/model_Black_Bian_Stone_Gua_Sha_Stick_lifestyle.jpeg",
+        url: mediaUrl("/bian-stone-gua-sha/model_Black_Bian_Stone_Gua_Sha_Stick_lifestyle.jpeg"),
         label: "Daily Results",
         badge: "Visible Glow",
         desc: "Incorporate the Black Bian Stone Gua Sha into a gentle facial massage routine",
@@ -500,7 +504,7 @@ export const shopProducts: ShopProduct[] = [
     compareAtPrice: 44.99,
     currency: "EUR",
     image:
-      "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp",
+      mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp"),
     imageAlt: "Lux Aura Care black gloss gua sha with gold logo",
     badge: "Signature Drop",
     benefits: [
@@ -543,7 +547,7 @@ export const shopProducts: ShopProduct[] = [
         swatchHex: "#050505",
         swatchBorderHex: "#d5c08d",
         image:
-          "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp",
+          mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp"),
         imageAlt: "Lux Aura Care black gloss gua sha with gold logo",
         shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522172749:1",
       },
@@ -554,56 +558,56 @@ export const shopProducts: ShopProduct[] = [
         swatchHex: "#f4b8c4",
         swatchBorderHex: "#f8d4dc",
         image:
-          "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.webp",
+          mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.webp"),
         imageAlt: "Lux Aura Care rose quartz gua sha with gold logo",
         shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522205517:1",
       },
     ],
     gallery: [
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/02-lux-aura-care-black-gua-sha-clean-product-shot.webp"),
         label: "Black Gloss",
         badge: "Polished Finish",
         desc: "Black gloss finish with discreet gold Lux Aura Care branding",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/03-lux-aura-care-rose-quartz-gua-sha-clean-product-shot.webp"),
         label: "Rose Quartz",
         badge: "Rose Quartz",
         desc: "Pink rose quartz-inspired gua sha with Lux Aura Care branding",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/01-lux-aura-care-gua-sha-set-black-and-rose-quartz-main.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/01-lux-aura-care-gua-sha-set-black-and-rose-quartz-main.webp"),
         label: "Color Options",
         badge: "Signature Drop",
         desc: "Black gloss and rose quartz finishes shown together; choose one color before ordering",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/04-lux-aura-care-black-gua-sha-spa-arrangement.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/04-lux-aura-care-black-gua-sha-spa-arrangement.webp"),
         label: "Black Spa Flat Lay",
         badge: "5-Min Ritual",
         desc: "Black branded gua sha arranged for an elevated spa-style routine",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/05-lux-aura-care-rose-quartz-gua-sha-spa-arrangement.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/05-lux-aura-care-rose-quartz-gua-sha-spa-arrangement.webp"),
         label: "Rose Quartz Spa Flat Lay",
         badge: "Soft Ritual",
         desc: "Rose quartz gua sha styled with a refined at-home spa aesthetic",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/06-lux-aura-care-black-gua-sha-model-usage.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/06-lux-aura-care-black-gua-sha-model-usage.webp"),
         label: "Black Lifestyle",
         badge: "In Use",
         desc: "Black gua sha shown in a premium facial massage lifestyle moment",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/07-lux-aura-care-rose-quartz-gua-sha-model-usage.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/07-lux-aura-care-rose-quartz-gua-sha-model-usage.webp"),
         label: "Rose Quartz Lifestyle",
         badge: "In Use",
         desc: "Rose quartz gua sha shown in a soft skincare massage lifestyle moment",
       },
       {
-        url: "/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/08-lux-aura-care-gua-sha-detail-hand-serum-both-products.webp",
+        url: mediaUrl("/lux-aura-gua-sha-duo/lux-aura-care-gua-sha-set-8/webp-optimized/08-lux-aura-care-gua-sha-detail-hand-serum-both-products.webp"),
         label: "Serum Detail",
         badge: "Ritual Detail",
         desc: "Both color options styled with serum to show the Lux Aura Care ritual finish",
@@ -619,10 +623,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Salon-grade micro-vibration therapy — at home, in 5 minutes.",
     description:
       "A pocket-sized T-bar vibrating facial massager designed for a short, gentle massage over serum or facial oil.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 59.99,
-    compareAtPrice: 99.99,
+    compareAtPrice: 59.99,
     currency: "EUR",
-    image: "/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png",
+    image: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png"),
     imageAlt: "Mini vibrating T-bar face massager for lymphatic drainage and glow",
     badge: "Featured",
     benefits: [
@@ -659,36 +666,36 @@ export const shopProducts: ShopProduct[] = [
     isBestSeller: true,
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
     ugcVideos: [
-      "/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4",
-      "/vibro-glow-face-massager/ugc-2-Vibro-Glow_Face_Massager.mp4",
+      mediaUrl("/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4"),
+      mediaUrl("/vibro-glow-face-massager/ugc-2-Vibro-Glow_Face_Massager.mp4"),
     ],
     gallery: [
       {
-        url: "/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png",
+        url: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png"),
         label: "Product Photo",
         badge: "Featured",
         desc: "Pocket-sized T-bar vibrating massager delivering 6,000 micro-vibrations per minute",
       },
       {
-        url: "/vibro-glow-face-massager/vibro-glow-face-massager-luxury-skincare-flat-lay.png",
+        url: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-luxury-skincare-flat-lay.png"),
         label: "Flat Lay",
         badge: "Premium",
         desc: "Luxury skincare flat lay — the perfect addition to your glow ritual",
       },
       {
-        url: "/vibro-glow-face-massager/vibro-glow-face-massager-premium-pedestal-angle-view.png",
+        url: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-premium-pedestal-angle-view.png"),
         label: "Angle View",
         badge: "Design",
         desc: "Premium pedestal angle view showcasing the elegant T-bar form factor",
       },
       {
-        url: "/vibro-glow-face-massager/vibro-glow-face-massager-lifestyle-cheek-use.png",
+        url: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-lifestyle-cheek-use.png"),
         label: "In Use",
         badge: "Lifestyle",
         desc: "Gliding along the cheekbone for instant lymphatic drainage and sculpting",
       },
       {
-        url: "/vibro-glow-face-massager/vibro-glow-face-massager-under-eye-close-up.png",
+        url: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-under-eye-close-up.png"),
         label: "Under-Eye",
         badge: "De-Puff",
         desc: "Targeting the under-eye area to reduce morning puffiness in under 3 minutes",
@@ -702,10 +709,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Wake up to visibly firmer, plumper skin — every single morning.",
     description:
       "30 ultra-thin overnight sleeping masks infused with Centella Asiatica extract, marine collagen, and hyaluronic acid. Apply as the last step in your evening routine — no rinsing needed. While you sleep, the bio-cellulose sheet locks moisture in for 8 hours, visibly reducing fine lines by morning.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 24.99,
-    compareAtPrice: 42.99,
+    compareAtPrice: 24.99,
     currency: "EUR",
-    image: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-main-product-photo.png",
+    image: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-main-product-photo.png"),
     imageAlt: "Centella Collagen Sleeping Face Masks in luxury packaging",
     badge: "🌿 Overnight Repair",
     benefits: [
@@ -741,36 +751,36 @@ export const shopProducts: ShopProduct[] = [
     category: "skincare",
     isNew: true,
     ugcVideos: [
-      "/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4",
-      "/centella-collagen-sleep-masks/ugc-short-centella-collagen-sleep-masks.mp4",
+      mediaUrl("/centella-collagen-sleep-masks/ugc-Centella-Collagen-Sleep-Mask.mp4"),
+      mediaUrl("/centella-collagen-sleep-masks/ugc-short-centella-collagen-sleep-masks.mp4"),
     ],
     gallery: [
       {
-        url: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-main-product-photo.png",
+        url: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-main-product-photo.png"),
         label: "Product Photo",
         badge: "🌿 Overnight Repair",
         desc: "30 ultra-thin overnight sleeping masks infused with Centella Asiatica and marine collagen",
       },
       {
-        url: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-luxury-skincare-flat-lay.png",
+        url: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-luxury-skincare-flat-lay.png"),
         label: "Flat Lay",
         badge: "Luxury",
         desc: "Elegant luxury skincare flat lay — 30 nights of visible skin renewal",
       },
       {
-        url: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-night-routine-lifestyle.png",
+        url: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-night-routine-lifestyle.png"),
         label: "Night Routine",
         badge: "Lifestyle",
         desc: "The perfect final step in your evening skincare routine — apply and sleep",
       },
       {
-        url: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-open-sachet-gel-texture.png",
+        url: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-open-sachet-gel-texture.png"),
         label: "Gel Texture",
         badge: "Formula",
         desc: "Rich, silky gel texture packed with Centella Asiatica and hyaluronic acid",
       },
       {
-        url: "/centella-collagen-sleep-masks/centella-collagen-sleep-masks-single-sachet-close-up.png",
+        url: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-single-sachet-close-up.png"),
         label: "Sachet Close-up",
         badge: "30 Masks",
         desc: "Individual single-use sachet — hygienic, travel-friendly, no waste",
@@ -784,10 +794,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Brightening by day. Renewing by night. The complete anti-aging ritual.",
     description:
       "A complete two-serum system: the Vitamin C Brightening Serum tackles dark spots and dullness during the day, while the Retinol Night Serum accelerates cell renewal and collagen production as you sleep. Formulated for mature skin — lightweight, fast-absorbing, and fragrance-free.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 27.99,
-    compareAtPrice: 49.99,
+    compareAtPrice: 27.99,
     currency: "EUR",
-    image: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png",
+    image: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png"),
     imageAlt: "Vitamin C brightening serum and retinol night serum skincare duo",
     badge: "☀️ AM + PM System",
     benefits: [
@@ -824,31 +837,31 @@ export const shopProducts: ShopProduct[] = [
     isNew: true,
     gallery: [
       {
-        url: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png",
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png"),
         label: "Product Photo",
         badge: "☀️ AM + PM",
         desc: "Complete two-serum system — Vitamin C by day, Retinol by night",
       },
       {
-        url: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-am-pm-flat-lay.png",
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-am-pm-flat-lay.png"),
         label: "AM + PM",
         badge: "Full Ritual",
         desc: "Day and night flat lay — the complete anti-aging skincare ritual in one duo",
       },
       {
-        url: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-bathroom-vanity-lifestyle.png",
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-bathroom-vanity-lifestyle.png"),
         label: "Vanity",
         badge: "Lifestyle",
         desc: "A premium bathroom vanity essential — brightening by day, renewing by night",
       },
       {
-        url: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-dropper-texture-close-up.png",
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-dropper-texture-close-up.png"),
         label: "Formula",
         badge: "Lightweight",
         desc: "Lightweight, fast-absorbing dropper formula — no greasy residue, pure actives",
       },
       {
-        url: "/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-luxury-spa-pedestal.png",
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-luxury-spa-pedestal.png"),
         label: "Luxury",
         badge: "Premium",
         desc: "Elegant pedestal presentation of the premium Vitamin C and Retinol duo",
@@ -859,20 +872,23 @@ export const shopProducts: ShopProduct[] = [
   {
     id: "resin-body-gua-sha-tool",
     name: "Resin Body Gua Sha Lymph Tool",
-    tagline: "Sculpt your body. Drain lymph. Beat cellulite. At home.",
+    tagline: "Sculpt your body. Support lymphatic drainage. At home.",
     description:
-      "A large-format resin gua sha board designed specifically for the body — inner thighs, arms, stomach, and calves. The curved ergonomic shape reaches every contour to stimulate lymphatic drainage, break up fascial adhesions, and visibly reduce the appearance of cellulite with consistent use.",
+      "A large-format resin gua sha board designed specifically for the body — inner thighs, arms, stomach, and calves. The curved ergonomic shape reaches every contour for a firm massage ritual that supports lymphatic drainage and leaves skin feeling smoother.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 22.99,
-    compareAtPrice: 39.99,
+    compareAtPrice: 22.99,
     currency: "EUR",
-    image: "/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png",
+    image: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png"),
     imageAlt: "Large resin body gua sha scraping tool for lymphatic drainage and cellulite",
     badge: "💪 Body Sculpt",
     benefits: [
       "Large surface area covers thighs, arms and abdomen in one stroke",
       "Supports a gentle body-massage ritual",
-      "Breaks up fascial adhesions that contribute to cellulite",
-      "Increases blood circulation for smoother, firmer skin texture",
+      "Firm strokes are designed to support lymphatic flow",
+      "A massage ritual some find supports circulation and skin texture",
       "Lightweight resin — easy grip even with body oil on hands",
       "Use with body oil for a spa-quality treatment at home",
     ],
@@ -889,8 +905,8 @@ export const shopProducts: ShopProduct[] = [
         a: "Mild redness (sha) is normal and indicates circulation is being stimulated. It should feel like a firm massage — not painful. Reduce pressure if it hurts.",
       },
       {
-        q: "How long until cellulite improves?",
-        a: "With consistent use 3–4 times per week, most users notice softer, smoother skin texture within 3–4 weeks.",
+        q: "Will this get rid of cellulite?",
+        a: "No — we don't claim this tool removes or treats cellulite. It's a massage ritual some find leaves skin feeling smoother with consistent use; results vary and it isn't a medical treatment.",
       },
       {
         q: "Can I use it on my face?",
@@ -900,34 +916,34 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092726501709:1",
     category: "body-glow",
     isNew: true,
-    ugcVideos: ["/body-gua-sha/ugc-short-body-gua-sha.mp4"],
+    ugcVideos: [mediaUrl("/body-gua-sha/ugc-short-body-gua-sha.mp4")],
     gallery: [
       {
-        url: "/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png",
+        url: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png"),
         label: "Product Photo",
         badge: "💪 Body Sculpt",
         desc: "Large-format resin gua sha board designed for body lymphatic drainage",
       },
       {
-        url: "/body-gua-sha/resin-body-gua-sha-lymph-tool-body-care-flat-lay.png",
+        url: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-body-care-flat-lay.png"),
         label: "Flat Lay",
         badge: "Body Care",
-        desc: "Complete body care flat lay — the ultimate cellulite and sculpting routine",
+        desc: "Complete body care flat lay — a firm massage ritual for the whole body",
       },
       {
-        url: "/body-gua-sha/resin-body-gua-sha-lymph-tool-body-massage-lifestyle.png",
+        url: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-body-massage-lifestyle.png"),
         label: "In Use",
         badge: "Lifestyle",
-        desc: "Firm upward strokes along the thigh — targeting cellulite and lymphatic flow",
+        desc: "Firm upward strokes along the thigh — supporting lymphatic flow",
       },
       {
-        url: "/body-gua-sha/resin-body-gua-sha-lymph-tool-ergonomic-hand-grip.png",
+        url: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-ergonomic-hand-grip.png"),
         label: "Grip",
         badge: "Ergonomic",
         desc: "Ergonomic hand grip — secure hold even with body oil on hands",
       },
       {
-        url: "/body-gua-sha/resin-body-gua-sha-lymph-tool-luxury-spa-pedestal.png",
+        url: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-luxury-spa-pedestal.png"),
         label: "Pedestal",
         badge: "Premium",
         desc: "Luxury spa pedestal display — premium resin craftsmanship",
@@ -941,10 +957,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Detachable long handle. Deep-clean exfoliation. Spa at home.",
     description:
       "A professional-grade natural bristle back and body brush with a detachable long wooden handle. Designed for dry brushing (lymphatic stimulation) or wet use in the shower. Removes dead skin cells, unclogs pores, and leaves skin silky-smooth — the foundation of every effective body-glow routine.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 19.99,
-    compareAtPrice: 34.99,
+    compareAtPrice: 19.99,
     currency: "EUR",
-    image: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png",
+    image: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png"),
     imageAlt: "Natural bristle body spa brush with detachable long wooden handle",
     badge: "🌿 Dry Brush Favourite",
     benefits: [
@@ -979,34 +998,34 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092769034573:1",
     category: "body-glow",
     isNew: true,
-    ugcVideos: ["/natural-bristle-spa-brush/natural-bristle-spa-body-brush-polskie-ugc-body-care.mp4"],
+    ugcVideos: [mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-polskie-ugc-body-care.mp4")],
     gallery: [
       {
-        url: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png",
+        url: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png"),
         label: "Product Photo",
         badge: "🌿 Dry Brush",
         desc: "Professional-grade natural bristle back and body brush with detachable wooden handle",
       },
       {
-        url: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-body-care-flat-lay.png",
+        url: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-body-care-flat-lay.png"),
         label: "Flat Lay",
         badge: "Body Care",
         desc: "Complete dry brushing ritual flat lay — the foundation of every body-glow routine",
       },
       {
-        url: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-back-massage-lifestyle.png",
+        url: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-back-massage-lifestyle.png"),
         label: "In Use",
         badge: "Lifestyle",
         desc: "Long handle reaches the entire back effortlessly for a full spa treatment at home",
       },
       {
-        url: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-bristle-close-up.png",
+        url: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-bristle-close-up.png"),
         label: "Bristles",
         badge: "Natural",
         desc: "Natural stiff plant-fibre bristles — effective dry or wet exfoliation without scratching",
       },
       {
-        url: "/natural-bristle-spa-brush/natural-bristle-spa-body-brush-luxury-spa-pedestal.png",
+        url: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-luxury-spa-pedestal.png"),
         label: "Pedestal",
         badge: "Eco Premium",
         desc: "Eco-friendly natural wood and plant-fibre construction on luxury pedestal display",
@@ -1020,10 +1039,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Soft, deep-clean bristles for glowing skin after every shower.",
     description:
       "A wet-use natural body spa brush with soft plant-fibre bristles designed for daily shower exfoliation. Gentle enough for daily use but effective enough to visibly transform skin texture in 2 weeks. Comes with a wrist strap for easy grip — perfect for shower use.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 16.99,
-    compareAtPrice: 29.99,
+    compareAtPrice: 16.99,
     currency: "EUR",
-    image: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png",
+    image: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png"),
     imageAlt: "Soft natural bristle exfoliating spa body brush for shower use",
     badge: "🚿 Daily Glow",
     benefits: [
@@ -1061,31 +1083,31 @@ export const shopProducts: ShopProduct[] = [
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
     gallery: [
       {
-        url: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png",
+        url: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png"),
         label: "Product Photo",
         badge: "🚿 Daily Glow",
         desc: "Soft natural bristle exfoliating spa body brush — gentle enough for daily use",
       },
       {
-        url: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-body-care-flat-lay.png",
+        url: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-body-care-flat-lay.png"),
         label: "Flat Lay",
         badge: "Body Care",
         desc: "Daily body care flat lay — the secret to glowing skin after every shower",
       },
       {
-        url: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-body-exfoliation-lifestyle.png",
+        url: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-body-exfoliation-lifestyle.png"),
         label: "In Use",
         badge: "Lifestyle",
         desc: "Circular motions in the shower — visibly transforming skin texture in 2 weeks",
       },
       {
-        url: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-hand-strap-close-up.png",
+        url: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-hand-strap-close-up.png"),
         label: "Wrist Strap",
         badge: "Secure Grip",
         desc: "Built-in wrist strap for a secure, comfortable grip during wet shower use",
       },
       {
-        url: "/exfoliating-spa-body-brush/exfoliating-spa-body-brush-luxury-spa-pedestal.png",
+        url: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-luxury-spa-pedestal.png"),
         label: "Pedestal",
         badge: "Featured",
         desc: "A featured body brush selected for a simple exfoliation routine",
@@ -1099,10 +1121,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Chill. Sculpt. Glow. The 60-second morning de-puff ritual.",
     description:
       "A premium 2-piece set combining a stainless steel ice face roller and a matching gua sha board. Chill in the freezer overnight and use in the morning to instantly de-puff eyes, reduce redness, tighten pores, and sculpt facial contours — all in under 60 seconds.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 18.99,
-    compareAtPrice: 32.99,
+    compareAtPrice: 18.99,
     currency: "EUR",
-    image: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-main-product-photo.png",
+    image: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-main-product-photo.png"),
     imageAlt: "Stainless steel ice face roller and gua sha board set for de-puffing",
     badge: "❄️ Cool & Sculpt",
     benefits: [
@@ -1139,31 +1164,31 @@ export const shopProducts: ShopProduct[] = [
     isNew: true,
     gallery: [
       {
-        url: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-main-product-photo.png",
+        url: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-main-product-photo.png"),
         label: "Product Photo",
         badge: "❄️ Cool & Sculpt",
         desc: "Premium stainless steel ice roller and gua sha board — the 60-second morning ritual",
       },
       {
-        url: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-flat-lay.png",
+        url: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-flat-lay.png"),
         label: "Flat Lay",
         badge: "Steel Set",
         desc: "Matching stainless steel duo — chill overnight for maximum de-puffing power",
       },
       {
-        url: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-lifestyle-usage.png",
+        url: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-lifestyle-usage.png"),
         label: "In Use",
         badge: "Lifestyle",
         desc: "Rolling from neck to forehead — instant de-puffing and pore tightening in seconds",
       },
       {
-        url: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-luxury-spa-pedestal.png",
+        url: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-luxury-spa-pedestal.png"),
         label: "Pedestal",
         badge: "Premium",
         desc: "Luxury spa pedestal display — premium stainless steel craftsmanship",
       },
       {
-        url: "/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-stainless-steel-close-up.png",
+        url: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-stainless-steel-close-up.png"),
         label: "Steel Detail",
         badge: "Cooling Steel",
         desc: "Stainless steel can be chilled before use for a cooling facial massage",
@@ -1177,10 +1202,13 @@ export const shopProducts: ShopProduct[] = [
     tagline: "Five hydrogel masks for a hydrating at-home ritual.",
     description:
       "A set of five hydrogel masks with seaweed extract and marine collagen, designed for a 20–30 minute skincare step. Review the ingredient list and usage instructions before applying.",
+    // Shopify has no compareAtPrice on this variant (verified via Admin API 21.07.2026) —
+    // showing a crossed-out price here would be an unsubstantiated reference price
+    // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 29.99,
-    compareAtPrice: 52.99,
+    compareAtPrice: 29.99,
     currency: "EUR",
-    image: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-main-product-photo.png",
+    image: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-main-product-photo.png"),
     imageAlt: "Premium seaweed collagen crystal hydrogel face mask filling treatment",
     badge: "🌊 Glass Skin",
     benefits: [
@@ -1217,31 +1245,31 @@ export const shopProducts: ShopProduct[] = [
     isNew: true,
     gallery: [
       {
-        url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-main-product-photo.png",
+        url: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-main-product-photo.png"),
         label: "Product Photo",
         badge: "🌊 Glass Skin",
         desc: "5 premium crystal hydrogel masks infused with seaweed extract and marine collagen",
       },
       {
-        url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-flat-lay.png",
+        url: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-flat-lay.png"),
         label: "Flat Lay",
         badge: "5 Treatments",
         desc: "Five hydrogel masks for a hydrating at-home ritual",
       },
       {
-        url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-lifestyle-application.png",
+        url: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-lifestyle-application.png"),
         label: "In Use",
         badge: "Lifestyle",
         desc: "Applying the crystal hydrogel mask at home",
       },
       {
-        url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-hydrogel-texture-close-up.png",
+        url: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-hydrogel-texture-close-up.png"),
         label: "Texture",
         badge: "30ml Serum",
         desc: "Crystal hydrogel texture with 30 ml of serum per mask",
       },
       {
-        url: "/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-luxury-spa-pedestal.png",
+        url: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-luxury-spa-pedestal.png"),
         label: "Pedestal",
         badge: "Featured",
         desc: "Hydrogel mask presentation for a hydration-focused skincare ritual",
