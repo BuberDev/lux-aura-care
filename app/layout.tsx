@@ -127,7 +127,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-theme="dark" suppressHydrationWarning>
       <head>
-        <meta name="pinterest" content="nohover" />
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
         <script
           type="application/ld+json"
