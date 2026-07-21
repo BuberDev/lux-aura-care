@@ -18,6 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/favorites", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/shop", changeFrequency: "weekly" as const, priority: 0.85 },
     { path: "/contact", changeFrequency: "monthly" as const, priority: 0.5 },
+    { path: "/privacy", changeFrequency: "monthly" as const, priority: 0.3 },
+    { path: "/terms", changeFrequency: "monthly" as const, priority: 0.3 },
+    { path: "/returns", changeFrequency: "monthly" as const, priority: 0.3 },
     ...articles.map((article) => ({
       path: `/blog/${article.slug}`,
       changeFrequency: "monthly" as const,

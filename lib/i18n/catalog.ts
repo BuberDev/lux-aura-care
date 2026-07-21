@@ -3,6 +3,18 @@ import type { Locale } from "@/lib/i18n/config";
 export type CatalogEntry = Record<Locale, string>;
 
 export const translationCatalog = {
+  "Privacy Policy": {
+    "en": "Privacy Policy",
+    "pl": "Polityka prywatności"
+  },
+  "Terms of Service": {
+    "en": "Terms of Service",
+    "pl": "Regulamin"
+  },
+  "Shipping & Returns": {
+    "en": "Shipping & Returns",
+    "pl": "Zwroty i dostawa"
+  },
   "Glass skin isn't about being perfect; it's about hydration and gentle resurfacing. This guide breaks down two products that can simplify a consistent routine.": {
     "en": "Glass skin isn't about being perfect; it's about hydration and gentle resurfacing. This guide breaks down two products that can simplify a consistent routine.",
     "pl": "Efekt glass skin nie polega na perfekcji, lecz na nawilżaniu i delikatnym złuszczaniu. Ten przewodnik omawia dwa produkty, które mogą uprościć regularną pielęgnację."

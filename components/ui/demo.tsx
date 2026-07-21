@@ -133,6 +133,18 @@ function HoverFooter() {
             ))}
           </div>
 
+          <div className="flex items-center gap-4 text-text-secondary">
+            <LocalizedLink href="/privacy" className="transition-colors hover:text-accent-gold">
+              <T text={"Privacy Policy"} />
+            </LocalizedLink>
+            <LocalizedLink href="/terms" className="transition-colors hover:text-accent-gold">
+              <T text={"Terms of Service"} />
+            </LocalizedLink>
+            <LocalizedLink href="/returns" className="transition-colors hover:text-accent-gold">
+              <T text={"Shipping & Returns"} />
+            </LocalizedLink>
+          </div>
+
           <p className="text-center text-text-secondary md:text-left">
             © {new Date().getFullYear()} <T text={"Lux Aura Care. All rights reserved."} />
           </p>
