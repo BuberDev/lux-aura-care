@@ -4,7 +4,9 @@ const GA4_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 
-export function AnalyticsScripts() {
+export function AnalyticsScripts({ consentGranted }: { readonly consentGranted: boolean }) {
+  if (!consentGranted) return null;
+
   return (
     <>
       {GA4_ID && (

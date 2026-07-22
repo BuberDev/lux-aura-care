@@ -7,7 +7,10 @@ import "@fontsource/playfair-display/latin-400.css";
 import "@fontsource/playfair-display/latin-600.css";
 import "@fontsource/playfair-display/latin-700.css";
 
+import { cookies } from "next/headers";
+
 import { AnalyticsScripts } from "@/components/analytics-scripts";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -111,6 +114,8 @@ export default async function RootLayout({
 }>) {
   const organizationJsonLd = generateOrganizationJsonLd();
   const locale = await getRequestLocale();
+  const cookieStore = await cookies();
+  const consentGranted = cookieStore.get("lux_consent")?.value === "granted";
   const searchProducts = [
     ...localizeProducts(locale, products).map((product) => ({
       id: `favorite-${product.id}`,
@@ -134,12 +139,13 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background-primary text-text-primary antialiased">
-        <AnalyticsScripts />
+        <AnalyticsScripts consentGranted={consentGranted} />
         <I18nProvider locale={locale}>
           <ThemeProvider>
             <SiteHeader searchProducts={searchProducts} />
             <main className="flex-1">{children}</main>
             <SiteFooter />
+            <CookieConsentBanner />
           </ThemeProvider>
         </I18nProvider>
       </body>
