@@ -4775,9 +4775,9 @@ export const translationCatalog = {
     "en": "The 8 high-performing essentials currently trending on our Pinterest feed.",
     "pl": "8 niezbędnych produktów o wysokiej wydajności, które są obecnie popularne na naszym kanale Pinterest."
   },
-  "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, saving you €14 compared to separate purchases.": {
-    "en": "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, saving you €14 compared to separate purchases.",
-    "pl": "Absolutnie najlepsza wartość. Łącznie te dwa kroki pozwolą uzyskać gładką, przejrzystą i pełną blasku cerę, oszczędzając 14 EUR w porównaniu z oddzielnymi zakupami."
+  "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, with a better bundle price than buying separately.": {
+    "en": "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, with a better bundle price than buying separately.",
+    "pl": "Absolutnie najlepsza wartość. Łącznie te dwa kroki pomagają zbudować gładką, czystą i pełną blasku cerę, w lepszej cenie zestawu niż przy zakupie osobno."
   },
   "The at-home spa stack your audience saves and buys in one session.": {
     "en": "The at-home spa stack your audience saves and buys in one session.",
@@ -5962,6 +5962,190 @@ export const translationCatalog = {
   "View image": {
     "en": "View image",
     "pl": "Zobacz zdjęcie"
+  },
+  "Choose your signature sculpting tool: black gloss or rose quartz.": {
+    "en": "Choose your signature sculpting tool: black gloss or rose quartz.",
+    "pl": "Wybierz swoje sygnowane narzędzie do sculptingu: czarny połysk lub rose quartz."
+  },
+  "A signature Lux Aura Care facial gua sha in black gloss or rose quartz finish, shaped for a slow, serum-led massage ritual. Polished edges, a sculpted wing profile, and a discreet 15 mm x 15.8 mm logo detail make it feel like a premium vanity piece, not just another skincare tool.": {
+    "en": "A signature Lux Aura Care facial gua sha in black gloss or rose quartz finish, shaped for a slow, serum-led massage ritual. Polished edges, a sculpted wing profile, and a discreet 15 mm x 15.8 mm logo detail make it feel like a premium vanity piece, not just another skincare tool.",
+    "pl": "Sygnowane gua sha do twarzy Lux Aura Care w wykończeniu czarny połysk lub rose quartz, wyprofilowane do spokojnego masażu na serum. Polerowane krawędzie, sculptingowy profil skrzydła i dyskretne logo 15 mm x 15.8 mm sprawiają, że wygląda jak element premium na toaletce, nie jak kolejne zwykłe narzędzie do pielęgnacji."
+  },
+  "Choose your finish: black gloss or rose quartz": {
+    "en": "Choose your finish: black gloss or rose quartz",
+    "pl": "Wybierz wykończenie: czarny połysk lub rose quartz"
+  },
+  "Premium vanity-piece look with discreet Lux Aura Care branding": {
+    "en": "Premium vanity-piece look with discreet Lux Aura Care branding",
+    "pl": "Wygląd premium na toaletkę z dyskretnym brandingiem Lux Aura Care"
+  },
+  "Black gloss and rose quartz finishes shown together; choose your preferred color before checkout": {
+    "en": "Black gloss and rose quartz finishes shown together; choose your preferred color before checkout",
+    "pl": "Czarny połysk i rose quartz pokazane razem; wybierz preferowany kolor przed checkoutem"
+  },
+  "Lux Aura Face Roller & Gua Sha Set": {
+    "en": "Lux Aura Face Roller & Gua Sha Set",
+    "pl": "Lux Aura Face Roller & Gua Sha Set"
+  },
+  "A branded 2-piece sculpting ritual in black stone or rose quartz.": {
+    "en": "A branded 2-piece sculpting ritual in black stone or rose quartz.",
+    "pl": "Markowy, dwuczęściowy rytuał sculptingu w wykończeniu black stone lub rose quartz."
+  },
+  "A signature Lux Aura Care face roller and gua sha set for a slow, serum-led massage ritual. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.": {
+    "en": "A signature Lux Aura Care face roller and gua sha set for a slow, serum-led massage ritual. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
+    "pl": "Sygnowany zestaw Lux Aura Care z rollerem do twarzy i gua sha do spokojnego masażu na serum. Wybierz black stone ze złotymi detalami albo rose quartz z detalami rose gold; oba wykończenia mają polerowane krawędzie, dwustronny roller i markowe detale, które elegancko wyglądają na toaletce."
+  },
+  "Lux Aura Care face roller and gua sha sets in black stone and rose quartz": {
+    "en": "Lux Aura Care face roller and gua sha sets in black stone and rose quartz",
+    "pl": "Zestawy Lux Aura Care z rollerem do twarzy i gua sha w wersji black stone oraz rose quartz"
+  },
+  "2-piece set: double-ended face roller plus sculpted gua sha": {
+    "en": "2-piece set: double-ended face roller plus sculpted gua sha",
+    "pl": "Dwuczęściowy zestaw: dwustronny roller do twarzy i wyprofilowane gua sha"
+  },
+  "Choose black stone with gold hardware or rose quartz with rose-gold hardware": {
+    "en": "Choose black stone with gold hardware or rose quartz with rose-gold hardware",
+    "pl": "Wybierz black stone ze złotymi detalami albo rose quartz z wykończeniem rose gold"
+  },
+  "Roller helps create a cooling, calming prep step before skincare": {
+    "en": "Roller helps create a cooling, calming prep step before skincare",
+    "pl": "Roller tworzy chłodzący, kojący etap przygotowania skóry przed pielęgnacją"
+  },
+  "Gua sha profile follows cheeks, jawline and brow bone": {
+    "en": "Gua sha profile follows cheeks, jawline and brow bone",
+    "pl": "Profil gua sha dopasowuje się do policzków, linii żuchwy i łuku brwiowego"
+  },
+  "Polished surfaces glide over facial oil or serum without tugging": {
+    "en": "Polished surfaces glide over facial oil or serum without tugging",
+    "pl": "Polerowane powierzchnie suną po olejku lub serum bez ciągnięcia skóry"
+  },
+  "Roll from the centre of the face outward using gentle upward strokes": {
+    "en": "Roll from the centre of the face outward using gentle upward strokes",
+    "pl": "Roluj od środka twarzy na zewnątrz delikatnymi ruchami ku górze"
+  },
+  "Use the smaller roller around the under-eye and brow area": {
+    "en": "Use the smaller roller around the under-eye and brow area",
+    "pl": "Mniejszego rollera używaj w okolicy pod oczami i przy brwiach"
+  },
+  "Hold the gua sha nearly flat and glide along jawline and cheekbones": {
+    "en": "Hold the gua sha nearly flat and glide along jawline and cheekbones",
+    "pl": "Trzymaj gua sha prawie płasko i prowadź wzdłuż linii żuchwy oraz kości policzkowych"
+  },
+  "Wipe both tools clean with a soft damp cloth after every ritual": {
+    "en": "Wipe both tools clean with a soft damp cloth after every ritual",
+    "pl": "Po każdym rytuale przetrzyj oba narzędzia miękką, wilgotną ściereczką"
+  },
+  "Your order includes one Lux Aura Care face roller and one matching gua sha tool in the finish you select before checkout.": {
+    "en": "Your order includes one Lux Aura Care face roller and one matching gua sha tool in the finish you select before checkout.",
+    "pl": "Zamówienie obejmuje jeden roller do twarzy Lux Aura Care i jedno dopasowane gua sha w wykończeniu wybranym przed checkoutem."
+  },
+  "Which finish should I choose?": {
+    "en": "Which finish should I choose?",
+    "pl": "Które wykończenie wybrać?"
+  },
+  "Choose black stone for a bold, polished vanity look or rose quartz for a softer spa aesthetic. Both are designed for the same gentle facial massage ritual.": {
+    "en": "Choose black stone for a bold, polished vanity look or rose quartz for a softer spa aesthetic. Both are designed for the same gentle facial massage ritual.",
+    "pl": "Wybierz black stone, jeśli chcesz mocniejszy, elegancki wygląd na toaletce, albo rose quartz dla delikatniejszej estetyki spa. Oba warianty są przeznaczone do tego samego łagodnego rytuału masażu twarzy."
+  },
+  "Black Stone": {
+    "en": "Black Stone",
+    "pl": "Black Stone"
+  },
+  "Lux Aura Care black stone face roller and gua sha set with gold hardware": {
+    "en": "Lux Aura Care black stone face roller and gua sha set with gold hardware",
+    "pl": "Zestaw Lux Aura Care black stone z rollerem do twarzy i gua sha ze złotymi detalami"
+  },
+  "Lux Aura Care rose quartz face roller and gua sha set with rose-gold hardware": {
+    "en": "Lux Aura Care rose quartz face roller and gua sha set with rose-gold hardware",
+    "pl": "Zestaw Lux Aura Care rose quartz z rollerem do twarzy i gua sha z detalami rose gold"
+  },
+  "Black stone and rose quartz roller + gua sha sets shown together with branded packaging": {
+    "en": "Black stone and rose quartz roller + gua sha sets shown together with branded packaging",
+    "pl": "Zestawy roller + gua sha w wersji black stone i rose quartz pokazane razem z markowym opakowaniem"
+  },
+  "Packaging": {
+    "en": "Packaging",
+    "pl": "Opakowanie"
+  },
+  "Gift-Ready": {
+    "en": "Gift-Ready",
+    "pl": "Gotowe na prezent"
+  },
+  "Lux Aura Care branded packaging designed for a polished self-care gift": {
+    "en": "Lux Aura Care branded packaging designed for a polished self-care gift",
+    "pl": "Markowe opakowanie Lux Aura Care zaprojektowane jako elegancki prezent self-care"
+  },
+  "Black stone roller and gua sha set with gold hardware and Lux Aura Care branding": {
+    "en": "Black stone roller and gua sha set with gold hardware and Lux Aura Care branding",
+    "pl": "Zestaw black stone z rollerem i gua sha, złotymi detalami oraz brandingiem Lux Aura Care"
+  },
+  "Rose quartz roller and gua sha set with rose-gold hardware and soft spa styling": {
+    "en": "Rose quartz roller and gua sha set with rose-gold hardware and soft spa styling",
+    "pl": "Zestaw rose quartz z rollerem i gua sha, detalami rose gold oraz delikatną stylistyką spa"
+  },
+  "Black Ritual": {
+    "en": "Black Ritual",
+    "pl": "Czarny rytuał"
+  },
+  "Vanity Moment": {
+    "en": "Vanity Moment",
+    "pl": "Moment na toaletce"
+  },
+  "Black stone set styled for an elevated skincare ritual": {
+    "en": "Black stone set styled for an elevated skincare ritual",
+    "pl": "Zestaw black stone wystylizowany pod elegancki rytuał pielęgnacji"
+  },
+  "Rose Ritual": {
+    "en": "Rose Ritual",
+    "pl": "Różowy rytuał"
+  },
+  "Rose quartz set styled with a soft, spa-inspired routine aesthetic": {
+    "en": "Rose quartz set styled with a soft, spa-inspired routine aesthetic",
+    "pl": "Zestaw rose quartz w delikatnej estetyce rutyny inspirowanej spa"
+  },
+  "Gua Sha In Use": {
+    "en": "Gua Sha In Use",
+    "pl": "Gua sha w użyciu"
+  },
+  "Black gua sha shown during a gentle cheek and jawline massage": {
+    "en": "Black gua sha shown during a gentle cheek and jawline massage",
+    "pl": "Czarne gua sha pokazane podczas delikatnego masażu policzka i linii żuchwy"
+  },
+  "Roller In Use": {
+    "en": "Roller In Use",
+    "pl": "Roller w użyciu"
+  },
+  "Rose quartz roller shown in a gentle facial massage routine": {
+    "en": "Rose quartz roller shown in a gentle facial massage routine",
+    "pl": "Roller rose quartz pokazany w delikatnym rytuale masażu twarzy"
+  },
+  "Roll + Sculpt Ritual": {
+    "en": "Roll + Sculpt Ritual",
+    "pl": "Rytuał roll + sculpt"
+  },
+  "Use the roller first for a cooling prep step, then follow with gua sha strokes along the jawline, cheekbones, and brow area.": {
+    "en": "Use the roller first for a cooling prep step, then follow with gua sha strokes along the jawline, cheekbones, and brow area.",
+    "pl": "Najpierw użyj rollera jako chłodzącego etapu przygotowania, a następnie wykonaj ruchy gua sha wzdłuż linii żuchwy, kości policzkowych i okolicy brwi."
+  },
+  "2-Step Ritual": {
+    "en": "2-Step Ritual",
+    "pl": "Rytuał 2-etapowy"
+  },
+  "Black stone and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.": {
+    "en": "Black stone and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
+    "pl": "Wykończenia black stone i rose quartz zostały zaprojektowane tak, aby sunąć po olejku lub serum bez ciągnięcia delikatnej skóry."
+  },
+  "Vanity-Ready Branding": {
+    "en": "Vanity-Ready Branding",
+    "pl": "Branding gotowy na toaletkę"
+  },
+  "Gold Lux Aura Care details on the tools and packaging turn a practical skincare step into a polished ritual piece.": {
+    "en": "Gold Lux Aura Care details on the tools and packaging turn a practical skincare step into a polished ritual piece.",
+    "pl": "Złote detale Lux Aura Care na narzędziach i opakowaniu zamieniają praktyczny etap pielęgnacji w dopracowany element rytuału."
+  },
+  "Signature Look": {
+    "en": "Signature Look",
+    "pl": "Signature look"
   },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",

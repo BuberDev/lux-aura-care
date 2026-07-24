@@ -10,7 +10,7 @@ export const articleShopCrossLink: Record<string, string> = {
   "glass-skin-without-12-steps": "gold-eye-patches",
   "body-care-that-looks-expensive": "natural-bristle-spa-brush",
   "at-home-spa-sunday-guide": "gua-sha-jade-roller-set",
-  "pin-worthy-vanity-upgrades": "lux-aura-sculpt-gua-sha",
+  "pin-worthy-vanity-upgrades": "lux-aura-face-roller-gua-sha-set",
   "niacinamide-routine-for-dull-skin": "vitamin-c-retinol-serum-duo",
   "pinterest-spa-products-that-actually-get-clicks": "vibro-glow-face-massager",
   "ultimate-body-glow-protocol": "exfoliating-spa-body-brush",

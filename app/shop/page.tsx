@@ -39,6 +39,15 @@ const purchaseDetails = [
   { icon: RotateCcw, label: "14-Day Returns", sub: "EU right of withdrawal" },
 ];
 
+function formatShopPrice(amount: number, currency: string, locale: string) {
+  return new Intl.NumberFormat(locale === "pl" ? "pl-PL" : "en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
+
 export default async function ShopPage() {
   const locale = await getRequestLocale();
   const localizedPurchaseDetails = localizeContent(locale, purchaseDetails);
@@ -133,12 +142,12 @@ export default async function ShopPage() {
                   {/* Price */}
                   <div className="flex items-baseline gap-3 pt-1">
                     <span className="text-2xl font-bold text-text-primary">
-                      €{product.price.toFixed(2)}
+                      {formatShopPrice(product.price, product.currency, locale)}
                     </span>
                     {product.compareAtPrice > product.price && (
                       <>
                         <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>
-                          €{product.compareAtPrice.toFixed(2)}
+                          {formatShopPrice(product.compareAtPrice, product.currency, locale)}
                         </span>
                         <span className="text-xs font-semibold px-2 py-0.5 rounded" style={{ background: "rgb(201 169 110 / 0.15)", color: "var(--accent-gold)" }}>
                           -{Math.round((1 - product.price / product.compareAtPrice) * 100)}%

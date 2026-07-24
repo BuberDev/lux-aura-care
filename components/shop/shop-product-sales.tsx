@@ -48,6 +48,15 @@ type ProductUgcGalleryProps = {
 const VISIBLE_SHOP_GALLERY_IMAGES = 5;
 const MAX_CHECKOUT_QUANTITY = 10;
 
+function formatShopPrice(amount: number, currency: string, locale: string) {
+  return new Intl.NumberFormat(locale === "pl" ? "pl-PL" : "en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
+
 function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryProps) {
   const { text } = useI18n();
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -227,11 +236,13 @@ function buildCheckoutUrl({
   variantUrl,
   selectedVariantId,
   quantity,
+  locale,
 }: {
   configuredUrl: string;
   variantUrl?: string;
   selectedVariantId?: string;
   quantity: number;
+  locale: string;
 }) {
   const safeQuantity = Math.max(1, Math.min(MAX_CHECKOUT_QUANTITY, Math.trunc(quantity)));
 
@@ -240,6 +251,7 @@ function buildCheckoutUrl({
     if (selectedVariantId) {
       params.set("variantId", selectedVariantId);
     }
+    params.set("locale", locale);
     params.set("quantity", String(safeQuantity));
     return `${configuredUrl}?${params.toString()}`;
   }
@@ -313,7 +325,7 @@ const detailedScienceBenefits: Record<string, {
     },
     {
       title: "Synergistic Glow Impact",
-      desc: "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, saving you €4.99 compared to separate purchases.",
+      desc: "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, with a better bundle price than buying separately.",
       badge: "Result: Radiance"
     }
   ],
@@ -334,21 +346,21 @@ const detailedScienceBenefits: Record<string, {
       badge: "Muscle Sculpt"
     }
   ],
-  "lux-aura-sculpt-gua-sha": [
+  "lux-aura-face-roller-gua-sha-set": [
     {
-      title: "Signature Wing Contour",
-      desc: "The asymmetric wing profile gives you broad edges for cheeks plus a curved notch for jawline, cheekbone, and brow massage.",
-      badge: "Face Sculpt"
+      title: "Roll + Sculpt Ritual",
+      desc: "Use the roller first for a cooling prep step, then follow with gua sha strokes along the jawline, cheekbones, and brow area.",
+      badge: "2-Step Ritual"
     },
     {
       title: "Polished Glide Finish",
-      desc: "Black gloss and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
+      desc: "Black stone and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
       badge: "Smooth Glide"
     },
     {
-      title: "Discreet Brand Mark",
-      desc: "The Lux Aura Care logo is scaled to approximately 15 mm x 15.8 mm so the tool feels premium and branded without overwhelming the surface.",
-      badge: "Logo Detail"
+      title: "Vanity-Ready Branding",
+      desc: "Gold Lux Aura Care details on the tools and packaging turn a practical skincare step into a polished ritual piece.",
+      badge: "Signature Look"
     }
   ],
   "bian-stone-gua-sha": [
@@ -719,6 +731,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     variantUrl: selectedVariant?.shopifyUrl,
     selectedVariantId: selectedVariant?.id,
     quantity: selectedQuantity,
+    locale,
   });
   const checkoutLabel = hasColorVariants ? "Order selected color" : "Order now";
   const trustBadgeLabel = (() => {
@@ -727,6 +740,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     return "Customer favourite";
   })();
   const selectedSubtotal = product.price * selectedQuantity;
+  const productPrice = formatShopPrice(product.price, product.currency, locale);
+  const productCompareAtPrice = formatShopPrice(product.compareAtPrice, product.currency, locale);
+  const selectedSubtotalPrice = formatShopPrice(selectedSubtotal, product.currency, locale);
+  const selectedCompareAtSubtotalPrice = formatShopPrice(
+    product.compareAtPrice * selectedQuantity,
+    product.currency,
+    locale
+  );
+  const savingsPrice = formatShopPrice(
+    product.compareAtPrice - product.price,
+    product.currency,
+    locale
+  );
   const stickyImage = selectedVariant?.image ?? product.image;
   const visibleGalleryImages = heroMedia.slice(0, VISIBLE_SHOP_GALLERY_IMAGES);
   const hiddenGalleryCount = Math.max(heroMedia.length - VISIBLE_SHOP_GALLERY_IMAGES, 0);
@@ -1053,9 +1079,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     <T text={hasDiscount ? "Special Offer Price" : "Price"} />
                   </p>
                   <div className="flex items-baseline gap-3">
-                    <span className="text-4xl font-extrabold text-text-primary">€{product.price.toFixed(2)}</span>
+                    <span className="text-4xl font-extrabold text-text-primary">{productPrice}</span>
                     {hasDiscount && (
-                      <span className="text-base line-through text-text-secondary">€{product.compareAtPrice.toFixed(2)}</span>
+                      <span className="text-base line-through text-text-secondary">{productCompareAtPrice}</span>
                     )}
                   </div>
                 </div>
@@ -1067,7 +1093,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     >
                       <T text={"You save"} /> {discount}%
                     </span>
-                    <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">€{(product.compareAtPrice - product.price).toFixed(2)} <T text={"kept in your pocket"} /></p>
+                    <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">{savingsPrice} <T text={"kept in your pocket"} /></p>
                   </div>
                 )}
               </div>
@@ -1205,7 +1231,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </span>
                   <span>
                     <T text={"Subtotal"} />:{" "}
-                    <span className="text-accent-gold">€{selectedSubtotal.toFixed(2)}</span>
+                    <span className="text-accent-gold">{selectedSubtotalPrice}</span>
                   </span>
                 </div>
               </div>
@@ -1438,7 +1464,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               style={{ background: "var(--accent-gold)" }}
             >
               <span><T text={checkoutLabel} /></span>
-              <span>€{selectedSubtotal.toFixed(2)}</span>
+              <span>{selectedSubtotalPrice}</span>
             </a>
             <p className="text-[10px] text-text-secondary mt-3">
               <T text={"Secure checkout · Delivery and return terms shown before purchase"} />
@@ -1477,9 +1503,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       </div>
                       <div className="flex items-center justify-between pt-1">
                         <div className="flex items-baseline gap-2">
-                          <span className="text-sm font-extrabold text-accent-gold">€{rel.price.toFixed(2)}</span>
+                          <span className="text-sm font-extrabold text-accent-gold">
+                            {formatShopPrice(rel.price, rel.currency, locale)}
+                          </span>
                           {rel.compareAtPrice > rel.price && (
-                            <span className="text-[10px] line-through text-text-secondary">€{rel.compareAtPrice.toFixed(2)}</span>
+                            <span className="text-[10px] line-through text-text-secondary">
+                              {formatShopPrice(rel.compareAtPrice, rel.currency, locale)}
+                            </span>
                           )}
                         </div>
                         {relDiscount > 0 && (
@@ -1514,9 +1544,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             <div className="min-w-0">
               <p className="text-xs md:text-sm font-bold text-text-primary truncate max-w-[150px] md:max-w-xs">{product.name}</p>
               <div className="flex items-center gap-2">
-                <span className="text-xs md:text-sm font-extrabold text-accent-gold">€{selectedSubtotal.toFixed(2)}</span>
+                <span className="text-xs md:text-sm font-extrabold text-accent-gold">{selectedSubtotalPrice}</span>
                 {hasDiscount && (
-                  <span className="text-[10px] line-through text-text-secondary">€{(product.compareAtPrice * selectedQuantity).toFixed(2)}</span>
+                  <span className="text-[10px] line-through text-text-secondary">{selectedCompareAtSubtotalPrice}</span>
                 )}
                 <span className="text-[10px] font-bold text-text-secondary">x{selectedQuantity}</span>
               </div>
@@ -1678,7 +1708,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   className="flex min-h-10 w-full flex-wrap items-center justify-center gap-1 rounded-lg px-3 py-2 text-center text-xs font-extrabold leading-tight text-black bg-accent-gold hover:opacity-90 active:scale-[0.98] transition-all"
                 >
                   <span><T text={checkoutLabel} /></span>
-                  <span>€{selectedSubtotal.toFixed(2)}</span>
+                  <span>{selectedSubtotalPrice}</span>
                 </a>
               </div>
             </div>
