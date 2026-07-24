@@ -20,9 +20,13 @@ export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!hasStoredConsent()) {
-      setVisible(true);
-    }
+    const consentCheck = window.setTimeout(() => {
+      if (!hasStoredConsent()) {
+        setVisible(true);
+      }
+    }, 0);
+
+    return () => window.clearTimeout(consentCheck);
   }, []);
 
   if (!visible) return null;
