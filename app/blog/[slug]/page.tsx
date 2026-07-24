@@ -36,6 +36,15 @@ type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
 
+function formatShopPrice(amount: number, currency: string, locale: string) {
+  return new Intl.NumberFormat(locale === "pl" ? "pl-PL" : "en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
+
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
 }
@@ -395,7 +404,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                           {crossLinkProduct.name}
                         </p>
                         <p className="text-xs font-bold text-accent-gold">
-                          €{crossLinkProduct.price.toFixed(2)}
+                          {formatShopPrice(crossLinkProduct.price, crossLinkProduct.currency, locale)}
                         </p>
                       </div>
                     </LocalizedLink>

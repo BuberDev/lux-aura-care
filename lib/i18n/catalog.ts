@@ -1135,6 +1135,10 @@ export const translationCatalog = {
     "en": "Best Value",
     "pl": "Najlepsza wartość"
   },
+  "Better value than buying separately": {
+    "en": "Better value than buying separately",
+    "pl": "Lepsza cena niż przy zakupie osobno"
+  },
   "Best-seller": {
     "en": "Best-seller",
     "pl": "Bestseller"
@@ -1310,6 +1314,10 @@ export const translationCatalog = {
   "Bundles are designed for commitment and results. Each collection creates habit momentum faster than individual products.": {
     "en": "Bundles are designed for commitment and results. Each collection creates habit momentum faster than individual products.",
     "pl": "Pakiety zostały zaprojektowane z myślą o zaangażowaniu i wynikach. Każda kolekcja buduje nawyk szybciej niż pojedyncze produkty."
+  },
+  "Bundle Value": {
+    "en": "Bundle Value",
+    "pl": "Wartość zestawu"
   },
   "Burnout isn't a moment; it's a slow accumulation. These tactile and sensory reset rituals help you lower cortisol and protect your peace.": {
     "en": "Burnout isn't a moment; it's a slow accumulation. These tactile and sensory reset rituals help you lower cortisol and protect your peace.",

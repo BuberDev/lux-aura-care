@@ -74,6 +74,15 @@ const trustSignals = [
   },
 ];
 
+function formatShopPrice(amount: number, currency: string, locale: string) {
+  return new Intl.NumberFormat(locale === "pl" ? "pl-PL" : "en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
+
 export default async function HomePage() {
   const locale = await getRequestLocale();
   const featuredArticles = localizeContent(locale, getFeaturedArticles());
@@ -221,8 +230,14 @@ export default async function HomePage() {
                     ))}
                   </ul>
                   <div className="flex items-baseline gap-2 pt-1">
-                    <span className="text-xl font-bold text-text-primary">€{product.price.toFixed(2)}</span>
-                    <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>€{product.compareAtPrice.toFixed(2)}</span>
+                    <span className="text-xl font-bold text-text-primary">
+                      {formatShopPrice(product.price, product.currency, locale)}
+                    </span>
+                    {product.compareAtPrice > product.price && (
+                      <span className="text-sm line-through" style={{ color: "var(--text-secondary)" }}>
+                        {formatShopPrice(product.compareAtPrice, product.currency, locale)}
+                      </span>
+                    )}
                   </div>
                 </div>
               </LocalizedLink>

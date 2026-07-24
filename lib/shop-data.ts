@@ -56,7 +56,7 @@ export const shopProducts: ShopProduct[] = [
     // restore it here once the Shopify price is lowered to match.
     price: 24.99,
     compareAtPrice: 24.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/dermaplaning-razor-kit/Glow_Ritual_Face_Razor_Kit.png"),
     imageAlt: "Skincare beauty tools and face razor kit on display",
     badge: "Featured",
@@ -137,7 +137,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 14.99,
     compareAtPrice: 14.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/clear-skin-patches/Clear_Skin_Hydrocolloid_Patches.png"),
     imageAlt: "Close-up of woman receiving a professional facial skincare treatment",
     badge: "⭐ New Favourite",
@@ -218,7 +218,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 18.99,
     compareAtPrice: 18.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/gold-eye-patches/24K_Gold_Collagen_Eye_Patches.png"),
     imageAlt: "24K Gold Collagen Eye Patches skincare treatment",
     badge: "✨ Gold Formula",
@@ -287,14 +287,14 @@ export const shopProducts: ShopProduct[] = [
     // compareAt = razor 24.99 + patches 14.99 bought separately.
     price: 34.99,
     compareAtPrice: 39.98,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/skin-ritual-bundle/Skin_Ritual_Starter_Kit.png"),
     imageAlt: "Flat lay of premium skincare products on white background",
     badge: "Best Value",
     benefits: [
       "Glow Ritual Face Razor Kit (6 blades)",
       "Clear Skin Hydrocolloid Patches (24 patches)",
-      "Save €4.99 vs. buying separately",
+      "Better value than buying separately",
       "6-week complete ritual in one package",
       "Gift-ready packaging",
       "Free delivery within EU",
@@ -332,7 +332,7 @@ export const shopProducts: ShopProduct[] = [
       {
         url: mediaUrl("/skin-ritual-bundle/skin-ritual-starter-kit-flat-lay.png"),
         label: "What's Inside",
-        badge: "Save €14",
+        badge: "Bundle Value",
         desc: "6 precision blades + 24 hydrocolloid patches — 6-week ritual in one kit",
       },
       {
@@ -365,7 +365,7 @@ export const shopProducts: ShopProduct[] = [
     // restore it here once the Shopify price is lowered to match.
     price: 29.99,
     compareAtPrice: 29.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/gua-sha-jade-roller-set/Rose_Quartz_Gua_Sha_Jade_Roller_Set.png"),
     imageAlt: "Handcrafted natural Rose Quartz Gua Sha and Jade Roller set on a soft pastel background",
     badge: "✨ Self-Care Favorite",
@@ -431,7 +431,7 @@ export const shopProducts: ShopProduct[] = [
     // Synced with the live Shopify variant price — checkout must never charge more than shown.
     price: 14.99,
     compareAtPrice: 24.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/bian-stone-gua-sha/Black_Bian_Stone_Gua_Sha_Stick.png"),
     imageAlt: "Black Bian Stone Gua Sha facial massage stick on dark marble surface",
     badge: "Bian Stone",
@@ -627,7 +627,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 59.99,
     compareAtPrice: 59.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/vibro-glow-face-massager/vibro-glow-face-massager-main-product-photo.png"),
     imageAlt: "Mini vibrating T-bar face massager for lymphatic drainage and glow",
     badge: "Featured",
@@ -713,7 +713,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 24.99,
     compareAtPrice: 24.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/centella-collagen-sleep-masks/centella-collagen-sleep-masks-main-product-photo.png"),
     imageAlt: "Centella Collagen Sleeping Face Masks in luxury packaging",
     badge: "🌿 Overnight Repair",
@@ -798,7 +798,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 27.99,
     compareAtPrice: 27.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png"),
     imageAlt: "Vitamin C brightening serum and retinol night serum skincare duo",
     badge: "☀️ AM + PM System",
@@ -879,7 +879,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 22.99,
     compareAtPrice: 22.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/body-gua-sha/resin-body-gua-sha-lymph-tool-main-product-photo.png"),
     imageAlt: "Large resin body gua sha scraping tool for lymphatic drainage and cellulite",
     badge: "💪 Body Sculpt",
@@ -961,7 +961,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 19.99,
     compareAtPrice: 19.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-main-product-photo.png"),
     imageAlt: "Natural bristle body spa brush with detachable long wooden handle",
     badge: "🌿 Dry Brush Favourite",
@@ -1043,7 +1043,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 16.99,
     compareAtPrice: 16.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png"),
     imageAlt: "Soft natural bristle exfoliating spa body brush for shower use",
     badge: "🚿 Daily Glow",
@@ -1125,7 +1125,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 18.99,
     compareAtPrice: 18.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/ice-face-roller-gua-sha-set/ice-face-roller-gua-sha-steel-set-main-product-photo.png"),
     imageAlt: "Stainless steel ice face roller and gua sha board set for de-puffing",
     badge: "❄️ Cool & Sculpt",
@@ -1206,7 +1206,7 @@ export const shopProducts: ShopProduct[] = [
     // under the EU Omnibus Directive. Restore a real compareAtPrice once Shopify's is set.
     price: 29.99,
     compareAtPrice: 29.99,
-    currency: "EUR",
+    currency: "USD",
     image: mediaUrl("/seaweed-collagen-crystal-mask/seaweed-collagen-crystal-hydration-mask-main-product-photo.png"),
     imageAlt: "Premium seaweed collagen crystal hydrogel face mask filling treatment",
     badge: "🌊 Glass Skin",
