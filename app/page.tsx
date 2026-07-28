@@ -26,6 +26,7 @@ import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeProducts } from "@/lib/product-localization";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { resolveShopProductsForLocale } from "@/lib/shop-currency";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
@@ -88,7 +89,8 @@ export default async function HomePage() {
   const featuredArticles = localizeContent(locale, getFeaturedArticles());
   const favorites = localizeProducts(locale, getAmazonFavorites());
   const localizedProducts = localizeProducts(locale, products);
-  const localizedShopProducts = localizeContent(locale, shopProducts);
+  const marketShopProducts = await resolveShopProductsForLocale(shopProducts, locale);
+  const localizedShopProducts = localizeContent(locale, marketShopProducts);
   const localizedCategories = localizeContent(locale, categories);
   const localizedTrustSignals = localizeContent(locale, trustSignals);
   const heroProducts = localizedProducts.map((product) => ({

@@ -43,7 +43,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
   }
 
   if (!shopifyVariant) {
-    return redirectToConfiguredShopifyUrl(request, product, productId);
+    return redirectToConfiguredShopifyUrl(request, product, productId, buyerCountryCode);
   }
 
   const storefrontCheckoutUrl = await createStorefrontCheckoutUrl({
@@ -54,6 +54,10 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
 
   if (storefrontCheckoutUrl) {
     return noIndexRedirect(storefrontCheckoutUrl);
+  }
+
+  if (buyerCountryCode) {
+    return redirectToConfiguredShopifyUrl(request, product, productId, buyerCountryCode);
   }
 
   try {
@@ -71,7 +75,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
     });
 
     if (!cartResponse.ok) {
-      return redirectToConfiguredShopifyUrl(request, product, productId);
+      return redirectToConfiguredShopifyUrl(request, product, productId, buyerCountryCode);
     }
 
     const cookies = cartResponse.headers
@@ -80,7 +84,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       .join("; ");
 
     if (!cookies) {
-      return redirectToConfiguredShopifyUrl(request, product, productId);
+      return redirectToConfiguredShopifyUrl(request, product, productId, buyerCountryCode);
     }
 
     const checkoutResponse = await fetch(`${shopifyVariant.storeOrigin}/checkout`, {
@@ -94,12 +98,12 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
     const checkoutUrl = checkoutResponse.headers.get("location");
 
     if (!checkoutUrl || !isAllowedCheckoutUrl(checkoutUrl)) {
-      return redirectToConfiguredShopifyUrl(request, product, productId);
+      return redirectToConfiguredShopifyUrl(request, product, productId, buyerCountryCode);
     }
 
     return noIndexRedirect(checkoutUrl);
   } catch {
-    return redirectToConfiguredShopifyUrl(request, product, productId);
+    return redirectToConfiguredShopifyUrl(request, product, productId, buyerCountryCode);
   }
 }
 
@@ -124,14 +128,16 @@ function redirectToProduct(request: NextRequest, productId: string) {
 function redirectToConfiguredShopifyUrl(
   request: NextRequest,
   product: NonNullable<ReturnType<typeof getShopProductById>>,
-  productId: string
+  productId: string,
+  buyerCountryCode: "PL" | null = null
 ) {
   const selectedVariantId = request.nextUrl.searchParams.get("variantId");
   const selectedVariant = product.variants?.find((variant) => variant.id === selectedVariantId);
   const checkoutQuantity = parseCheckoutQuantity(request.nextUrl.searchParams.get("quantity"));
   const configuredUrl = getAllowedConfiguredShopifyUrl(
     selectedVariant?.shopifyUrl ?? product.shopifyUrl,
-    checkoutQuantity
+    checkoutQuantity,
+    buyerCountryCode
   );
 
   if (configuredUrl) {
@@ -141,7 +147,11 @@ function redirectToConfiguredShopifyUrl(
   return redirectToProduct(request, productId);
 }
 
-function getAllowedConfiguredShopifyUrl(value: string, quantity: number) {
+function getAllowedConfiguredShopifyUrl(
+  value: string,
+  quantity: number,
+  buyerCountryCode: "PL" | null
+) {
   try {
     const url = new URL(value);
 
@@ -149,6 +159,10 @@ function getAllowedConfiguredShopifyUrl(value: string, quantity: number) {
       const cartMatch = url.pathname.match(/^\/cart\/(\d+):\d+$/);
       if (cartMatch) {
         url.pathname = `/cart/${cartMatch[1]}:${quantity}`;
+      }
+      if (buyerCountryCode === "PL") {
+        url.searchParams.set("country", "PL");
+        url.searchParams.set("locale", "pl");
       }
       return url;
     }

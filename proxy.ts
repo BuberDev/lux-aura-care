@@ -24,12 +24,14 @@ const trackingCookieOptions = {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const pathnameLocale = getLocaleFromPathname(pathname);
+  const headerLocale = request.headers.get("x-lux-aura-locale");
+  const internalLocale = isLocale(headerLocale) ? headerLocale : null;
   const isNonLocalizedRoute =
     pathname.startsWith("/api/") ||
     pathname.startsWith("/go/") ||
     pathname.startsWith("/pin/");
 
-  if (!pathnameLocale && !isNonLocalizedRoute) {
+  if (!pathnameLocale && !isNonLocalizedRoute && !internalLocale) {
     const cookieLocale = request.cookies.get(localeCookieName)?.value;
     const locale = isLocale(cookieLocale)
       ? cookieLocale
@@ -40,7 +42,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  const locale = pathnameLocale ?? defaultLocale;
+  const locale = pathnameLocale ?? internalLocale ?? defaultLocale;
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-lux-aura-locale", locale);
 

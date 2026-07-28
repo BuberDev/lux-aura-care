@@ -15,6 +15,7 @@ import { getAffiliateRoute } from "@/lib/affiliate";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { articleShopCrossLink } from "@/lib/blog-shop-cross-links";
 import { getShopProductById } from "@/lib/shop-data";
+import { resolveShopProductForLocale } from "@/lib/shop-currency";
 import {
   articles,
   getArticleBySlug,
@@ -167,8 +168,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const sourceCrossLinkProduct = crossLinkShopProductId
     ? getShopProductById(crossLinkShopProductId)
     : undefined;
+  const marketCrossLinkProduct = sourceCrossLinkProduct
+    ? await resolveShopProductForLocale(sourceCrossLinkProduct, locale)
+    : undefined;
   const crossLinkProduct = sourceCrossLinkProduct
-    ? localizeContent(locale, sourceCrossLinkProduct)
+    ? localizeContent(locale, marketCrossLinkProduct)
     : undefined;
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([

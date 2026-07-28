@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
+import { resolveShopProductsForLocale } from "@/lib/shop-currency";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
@@ -51,7 +52,8 @@ function formatShopPrice(amount: number, currency: string, locale: string) {
 export default async function ShopPage() {
   const locale = await getRequestLocale();
   const localizedPurchaseDetails = localizeContent(locale, purchaseDetails);
-  const localizedProducts = localizeContent(locale, shopProducts);
+  const marketProducts = await resolveShopProductsForLocale(shopProducts, locale);
+  const localizedProducts = localizeContent(locale, marketProducts);
   const trustStats = localizeContent(locale, [
     { stat: "Clear", label: "product-specific descriptions" },
     { stat: "Live", label: "Shopify stock when available" },

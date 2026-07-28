@@ -10,6 +10,7 @@ import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { getShopUgcVideosFromDb } from "@/lib/db/media";
+import { resolveShopProductsForLocale } from "@/lib/shop-currency";
 import {
   generateFaqJsonLd,
   generateShopProductJsonLd,
@@ -53,16 +54,20 @@ export default async function ShopProductPage({ params }: Props) {
   if (!sourceProduct) notFound();
 
   const dbVideos = await getShopUgcVideosFromDb(sourceProduct.id);
+  const sourceRelatedProducts = shopProducts
+    .filter((p) => p.id !== sourceProduct.id)
+    .slice(0, 2);
+  const [marketProduct, ...marketRelatedProducts] = await resolveShopProductsForLocale(
+    [sourceProduct, ...sourceRelatedProducts],
+    locale
+  );
 
   const product = {
-    ...localizeContent(locale, sourceProduct),
+    ...localizeContent(locale, marketProduct),
     shopifyUrl: getShopifyCheckoutRoute(sourceProduct.id),
     ugcVideos: dbVideos.length > 0 ? dbVideos : sourceProduct.ugcVideos,
   };
-  const related = localizeContent(
-    locale,
-    shopProducts.filter((p) => p.id !== sourceProduct.id).slice(0, 2)
-  );
+  const related = localizeContent(locale, marketRelatedProducts);
 
   const productJsonLd = generateShopProductJsonLd({
     id: product.id,
