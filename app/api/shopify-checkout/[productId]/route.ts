@@ -57,11 +57,17 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
   }
 
   try {
+    const acceptLanguage = getCheckoutAcceptLanguage(request);
     const requestHeaders = {
-      "Accept-Language": request.headers.get("accept-language") ?? "en",
+      "Accept-Language": acceptLanguage,
       "Content-Type": "application/json",
     };
-    const cartResponse = await fetch(`${shopifyVariant.storeOrigin}/cart/add.js`, {
+    const cartAddUrl = new URL("/cart/add.js", shopifyVariant.storeOrigin);
+    if (buyerCountryCode === "PL") {
+      cartAddUrl.searchParams.set("currency", "PLN");
+    }
+
+    const cartResponse = await fetch(cartAddUrl, {
       method: "POST",
       headers: requestHeaders,
       body: JSON.stringify({
@@ -138,6 +144,14 @@ function getBuyerCountryCode(request: NextRequest) {
   }
 
   return request.nextUrl.searchParams.get("locale") === "pl" ? "PL" : null;
+}
+
+function getCheckoutAcceptLanguage(request: NextRequest) {
+  if (request.nextUrl.searchParams.get("locale") === "pl") {
+    return "pl-PL,pl;q=0.9";
+  }
+
+  return request.headers.get("accept-language") ?? "en";
 }
 
 async function createStorefrontCheckoutUrl({
