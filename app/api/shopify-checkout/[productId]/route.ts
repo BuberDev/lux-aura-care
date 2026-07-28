@@ -62,12 +62,8 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       "Accept-Language": acceptLanguage,
       "Content-Type": "application/json",
     };
-    const cartAddUrl = new URL("/cart/add.js", shopifyVariant.storeOrigin);
-    if (buyerCountryCode === "PL") {
-      cartAddUrl.searchParams.set("currency", "PLN");
-    }
 
-    const cartResponse = await fetch(cartAddUrl, {
+    const cartResponse = await fetch(`${shopifyVariant.storeOrigin}/cart/add.js`, {
       method: "POST",
       headers: requestHeaders,
       body: JSON.stringify({
