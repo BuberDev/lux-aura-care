@@ -52,7 +52,7 @@ export function NewsletterBlock() {
 
   return (
     <Section id="newsletter" className="[content-visibility:auto] [contain-intrinsic-size:1px_520px]">
-      <Container>
+      <Container className="px-2 sm:px-5 md:px-10 lg:px-16">
         <div className="rounded-[2rem] border border-accent-gold/40 bg-background-secondary px-6 py-12 text-background-primary md:px-10 md:py-14">
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1.3fr_1fr] md:items-center">
             <div className="space-y-4">
