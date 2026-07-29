@@ -55,6 +55,7 @@ type HeroUgcVideoCardProps = {
 
 const VISIBLE_SHOP_GALLERY_IMAGES = 5;
 const MAX_CHECKOUT_QUANTITY = 10;
+const PRODUCT_PAGE_CONTAINER_CLASS = "px-2 sm:px-5 md:px-10 lg:px-16";
 
 function formatShopPrice(amount: number, currency: string, locale: string) {
   return new Intl.NumberFormat(locale === "pl" ? "pl-PL" : "en-US", {
@@ -964,9 +965,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       )}
 
       {/* Breadcrumb Navigation */}
-      <div className="border-b border-border-subtle py-3 px-4 relative z-10 bg-surface-glass backdrop-blur-md">
-        <Container>
-          <nav className="text-xs flex gap-2" style={{ color: "var(--text-secondary)" }}>
+      <div className="border-b border-border-subtle py-3 relative z-10 bg-surface-glass backdrop-blur-md">
+        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
+          <nav className="flex gap-2 text-xs" style={{ color: "var(--text-secondary)" }}>
             <LocalizedLink href="/" className="hover:text-text-primary transition-colors"><T text={"Home"} /></LocalizedLink>
             <span>/</span>
             <LocalizedLink href="/shop" className="hover:text-text-primary transition-colors"><T text={"Shop"} /></LocalizedLink>
@@ -977,8 +978,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </div>
 
       {/* 2. HIGH-CONVERTING HERO & BUY BOX SECTION */}
-      <section ref={heroSectionRef} className="py-8 md:py-16 px-4 relative overflow-hidden">
-        <Container>
+      <section ref={heroSectionRef} className="relative overflow-hidden py-6 md:py-16">
+        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch relative z-10">
             
             {/* LEFT: Premium Image Gallery */}
@@ -1018,7 +1019,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                             alt={product.imageAlt}
                             fill
                             priority
-                            sizes="(max-width: 640px) calc(100vw - 3.5rem), (max-width: 1024px) 560px, 48vw"
+                            sizes="(max-width: 640px) calc(100vw - 1rem), (max-width: 1024px) 560px, 48vw"
                             className={`object-contain transition-all duration-500 ease-out ${activeHeroItem.filter || ""}`}
                           />
                         </button>
@@ -1231,13 +1232,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </div>
 
             {/* RIGHT: Conversion Buy Box */}
-            <div className="lg:col-span-5 space-y-6 bg-surface-subtle border border-border-subtle rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-2xl relative">
+            <div className="space-y-5 rounded-2xl border border-border-subtle bg-surface-subtle p-4 shadow-2xl backdrop-blur-md sm:space-y-6 sm:rounded-3xl sm:p-6 md:p-8 lg:col-span-5">
               <div>
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <p className="min-w-0 text-xs uppercase tracking-[0.2em] font-bold" style={{ color: "var(--accent-gold)" }}>
                     <T text={product.category === "bundle" ? "Bundle" : "Skincare tool"} />
                   </p>
-                  <div className={`inline-flex shrink-0 items-center gap-1.5 bg-accent-gold/10 text-accent-gold border border-accent-gold/30 px-3 py-1 rounded-full text-xs font-semibold ${product.isBestSeller ? "animate-pulse" : ""}`}>
+                  <div className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border border-accent-gold/30 bg-accent-gold/10 px-2.5 py-1 text-[11px] font-semibold text-accent-gold sm:px-3 sm:text-xs ${product.isBestSeller ? "animate-pulse" : ""}`}>
                     <Sparkles className="size-3.5" aria-hidden="true" />
                     <span><T text={trustBadgeLabel} /></span>
                   </div>
@@ -1479,13 +1480,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </ul>
 
               {/* Checkout information */}
-              <div className="grid grid-cols-3 gap-3 border-t border-border-subtle pt-4">
+              <div className="grid grid-cols-3 gap-2 border-t border-border-subtle pt-4 sm:gap-3">
                 {[
                   { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
                   { icon: ShieldCheck, text: "Secure checkout", sub: "Processed by Shopify" },
                   { icon: RotateCcw, text: "14-day returns", sub: "EU right of withdrawal" },
                 ].map(({ icon: Icon, text, sub }) => (
-                  <div key={text} className="flex flex-col items-center gap-1 text-center rounded-xl border border-border-subtle bg-surface-subtle p-3">
+                  <div key={text} className="flex flex-col items-center gap-1 rounded-xl border border-border-subtle bg-surface-subtle p-2.5 text-center sm:p-3">
                     <Icon className="size-4" style={{ color: "var(--accent-gold)" }} />
                     <span className="text-[10px] font-bold text-text-primary leading-tight"><T text={text} /></span>
                     <span className="text-[9px]" style={{ color: "var(--text-secondary)" }}><T text={sub} /></span>
@@ -1501,7 +1502,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* Product information strip */}
       <section className="border-t border-b border-border-subtle py-8 bg-surface-subtle">
-        <Container>
+        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { label: "Exact item", value: "Product-specific gallery" },
@@ -1520,8 +1521,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
       {scienceBenefits.length > 0 && (
-      <section className="py-16 px-4 border-b border-border-subtle">
-        <Container>
+      <section className="border-b border-border-subtle py-12 sm:py-16">
+        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"ENGINEERED BEAUTY"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
@@ -1536,7 +1537,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {scienceBenefits.map((science, idx) => (
               <div 
                 key={science.title} 
-                className="border border-border-subtle bg-surface-subtle rounded-2xl p-6 md:p-8 space-y-4 hover:border-accent-gold/30 hover:bg-surface-subtle hover:shadow-[0_10px_30px_rgba(201,169,110,0.05)] transition-all duration-500"
+                className="space-y-4 rounded-2xl border border-border-subtle bg-surface-subtle p-5 transition-all duration-500 hover:border-accent-gold/30 hover:bg-surface-subtle hover:shadow-[0_10px_30px_rgba(201,169,110,0.05)] sm:p-6 md:p-8"
               >
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase bg-accent-gold/10 px-3 py-1 rounded-full border border-accent-gold/20">
@@ -1555,9 +1556,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
       )}
 
-      {/* 7. "THE GLOW RITUAL" GUIDE (HOW TO USE) */}
-      <section className="py-16 px-4 border-b border-border-subtle bg-surface-subtle">
-        <Container>
+      {/* 7. Step-by-step usage guide */}
+      <section className="border-b border-border-subtle bg-surface-subtle py-12 sm:py-16">
+        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"FACIAL MASSAGE STEP BY STEP"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
@@ -1573,7 +1574,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {product.howToUse.map((step, i) => (
                 <li
                   key={step}
-                  className="relative flex flex-col gap-4 p-6 md:p-8 rounded-2xl border border-border-subtle bg-surface-subtle hover:border-border-default transition-all duration-300"
+                  className="relative flex flex-col gap-4 rounded-2xl border border-border-subtle bg-surface-subtle p-5 transition-all duration-300 hover:border-border-default sm:p-6 md:p-8"
                 >
                   <div 
                     className="size-10 rounded-full flex items-center justify-center text-sm font-extrabold shrink-0 text-black shadow-lg"
@@ -1605,8 +1606,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 9. FAQ ACCORDION SECTION */}
-      <section className="py-16 px-4 border-b border-border-subtle">
-        <Container>
+      <section className="border-b border-border-subtle py-12 sm:py-16">
+        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"CONFIDENCE IN MIND"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
@@ -1648,8 +1649,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </section>
 
       {/* 11. FINAL HIGH IMPACT CTA */}
-      <section className="py-20 px-4 text-center border-t border-border-subtle relative overflow-hidden">
-        <Container className="relative z-10 space-y-6">
+      <section className="relative overflow-hidden border-t border-border-subtle py-16 text-center sm:py-20">
+        <Container className={`${PRODUCT_PAGE_CONTAINER_CLASS} relative z-10 space-y-6`}>
           <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "var(--accent-gold)" }}><T text={"YOUR RADIANT COMPLEXION AWAITS"} /></span>
           <h2
             className="text-3xl md:text-5xl font-semibold text-text-primary max-w-xl mx-auto"
@@ -1680,8 +1681,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* RELATED PRODUCTS */}
       {related.length > 0 && (
-        <section className="border-t border-border-subtle py-16 px-4">
-          <Container>
+        <section className="border-t border-border-subtle py-12 sm:py-16">
+          <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
             <h2
               className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
@@ -1737,7 +1738,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
       {/* 12. RESPONSIVE FLOATING BOTTOM STICKY CHECKOUT DRAWER */}
       <div
-        className={`fixed bottom-0 left-0 right-0 z-40 bg-surface-glass border-t border-border-default py-3.5 px-4 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transform transition-transform duration-500 ease-out flex items-center justify-between ${
+        className={`fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between border-t border-border-default bg-surface-glass px-2 py-3.5 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transition-transform duration-500 ease-out sm:px-4 ${
           showStickyDrawer ? "translate-y-0" : "translate-y-full"
         }`}
       >
