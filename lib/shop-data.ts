@@ -19,6 +19,16 @@ export type ShopProductVariant = {
   shopifyUrl: string;
 };
 
+export type ShopProductSalesStory = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  highlights: {
+    title: string;
+    desc: string;
+  }[];
+};
+
 export type ShopProduct = {
   id: string;
   name: string;
@@ -43,6 +53,7 @@ export type ShopProduct = {
   ugcVideos?: string[];
   gallery?: ShopProductGalleryItem[];
   variants?: ShopProductVariant[];
+  salesStory?: ShopProductSalesStory;
 };
 
 export const shopProducts: ShopProduct[] = [
@@ -540,6 +551,30 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522172749:1",
     category: "skincare",
     isNew: true,
+    ugcVideos: [
+      "/lux-aura-face-roller-gua-sha-set/lux-aura-face-roller-gua-sha-podcast-ugc-pl.mp4",
+      "/lux-aura-face-roller-gua-sha-set/ugc_pl_set_pink_roller_pink_guasha.mp4",
+    ],
+    salesStory: {
+      eyebrow: "Your vanity ritual, simplified",
+      title: "Two tools, one polished face-sculpting routine",
+      description:
+        "Start with the roller when your face feels puffy or tired, then use gua sha to make the serum-led massage feel more deliberate around the jawline, cheeks, and brow. The set gives a clearer routine than buying a single loose tool: prep, glide, sculpt, wipe clean.",
+      highlights: [
+        {
+          title: "Morning de-puff",
+          desc: "Use the large roller across cheeks and forehead, then the smaller end under the eyes with very light pressure.",
+        },
+        {
+          title: "Evening serum glide",
+          desc: "Add facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.",
+        },
+        {
+          title: "Gift-ready finish",
+          desc: "Matching branded tools and packaging make the set feel complete on the vanity or as a self-care gift.",
+        },
+      ],
+    },
     variants: [
       {
         id: "black-stone",

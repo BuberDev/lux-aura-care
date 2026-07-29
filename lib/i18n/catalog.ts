@@ -6155,6 +6155,174 @@ export const translationCatalog = {
     "en": "Signature Look",
     "pl": "Signature look"
   },
+  "Bestseller": {
+    "en": "Bestseller",
+    "pl": "Bestseller"
+  },
+  "New arrival": {
+    "en": "New arrival",
+    "pl": "Nowość"
+  },
+  "Customer favourite": {
+    "en": "Customer favourite",
+    "pl": "Ulubiony wybór klientek"
+  },
+  "Bundle": {
+    "en": "Bundle",
+    "pl": "Zestaw"
+  },
+  "Skin ritual product": {
+    "en": "Skin ritual product",
+    "pl": "Produkt do rytuału pielęgnacji"
+  },
+  "Product details and total shown before checkout": {
+    "en": "Product details and total shown before checkout",
+    "pl": "Szczegóły produktu i pełna kwota przed płatnością"
+  },
+  "Product specifications are shown for this exact item": {
+    "en": "Product specifications are shown for this exact item",
+    "pl": "Specyfikacja dotyczy dokładnie tego produktu"
+  },
+  "Price": {
+    "en": "Price",
+    "pl": "Cena"
+  },
+  "Delivery options": {
+    "en": "Delivery options",
+    "pl": "Opcje dostawy"
+  },
+  "Shown at checkout": {
+    "en": "Shown at checkout",
+    "pl": "Pokazane przy płatności"
+  },
+  "Secure checkout": {
+    "en": "Secure checkout",
+    "pl": "Bezpieczna płatność"
+  },
+  "Processed by Shopify": {
+    "en": "Processed by Shopify",
+    "pl": "Obsługiwane przez Shopify"
+  },
+  "14-day returns": {
+    "en": "14-day returns",
+    "pl": "14 dni na zwrot"
+  },
+  "EU right of withdrawal": {
+    "en": "EU right of withdrawal",
+    "pl": "Prawo odstąpienia w UE"
+  },
+  "Exact item": {
+    "en": "Exact item",
+    "pl": "Konkretny produkt"
+  },
+  "Product-specific gallery": {
+    "en": "Product-specific gallery",
+    "pl": "Galeria tego produktu"
+  },
+  "Specifications": {
+    "en": "Specifications",
+    "pl": "Specyfikacja"
+  },
+  "Shown in the description": {
+    "en": "Shown in the description",
+    "pl": "Pokazana w opisie"
+  },
+  "Usage": {
+    "en": "Usage",
+    "pl": "Użycie"
+  },
+  "Step-by-step guidance": {
+    "en": "Step-by-step guidance",
+    "pl": "Instrukcja krok po kroku"
+  },
+  "Questions": {
+    "en": "Questions",
+    "pl": "Pytania"
+  },
+  "Contact support before ordering": {
+    "en": "Contact support before ordering",
+    "pl": "Kontakt przed zamówieniem"
+  },
+  "Review the product details and confirm the final order total before checkout.": {
+    "en": "Review the product details and confirm the final order total before checkout.",
+    "pl": "Sprawdź szczegóły produktu i potwierdź końcową kwotę zamówienia przed płatnością."
+  },
+  "Secure checkout · Delivery and return terms shown before purchase": {
+    "en": "Secure checkout · Delivery and return terms shown before purchase",
+    "pl": "Bezpieczna płatność · Dostawa i warunki zwrotu pokazane przed zakupem"
+  },
+  "We couldn't open the checkout just now. Please try again — your selection is still saved on this page.": {
+    "en": "We couldn't open the checkout just now. Please try again — your selection is still saved on this page.",
+    "pl": "Nie udało się teraz otworzyć płatności. Spróbuj ponownie — Twój wybór nadal jest zapisany na tej stronie."
+  },
+  "Your browser does not support the video tag.": {
+    "en": "Your browser does not support the video tag.",
+    "pl": "Twoja przeglądarka nie obsługuje odtwarzania wideo."
+  },
+  "d": {
+    "en": "d",
+    "pl": "d"
+  },
+  "h": {
+    "en": "h",
+    "pl": "g"
+  },
+  "m": {
+    "en": "m",
+    "pl": "m"
+  },
+  "s": {
+    "en": "s",
+    "pl": "s"
+  },
+  "Real Routine Video": {
+    "en": "Real Routine Video",
+    "pl": "Film z prawdziwego rytuału"
+  },
+  "Real Routine": {
+    "en": "Real Routine",
+    "pl": "Prawdziwy rytuał"
+  },
+  "A real customer routine with this exact product": {
+    "en": "A real customer routine with this exact product",
+    "pl": "Prawdziwy rytuał klientki z tym konkretnym produktem"
+  },
+  "Your vanity ritual, simplified": {
+    "en": "Your vanity ritual, simplified",
+    "pl": "Twój rytuał przy toaletce, prościej"
+  },
+  "Two tools, one polished face-sculpting routine": {
+    "en": "Two tools, one polished face-sculpting routine",
+    "pl": "Dwa narzędzia, jeden dopracowany rytuał sculptingu twarzy"
+  },
+  "Start with the roller when your face feels puffy or tired, then use gua sha to make the serum-led massage feel more deliberate around the jawline, cheeks, and brow. The set gives a clearer routine than buying a single loose tool: prep, glide, sculpt, wipe clean.": {
+    "en": "Start with the roller when your face feels puffy or tired, then use gua sha to make the serum-led massage feel more deliberate around the jawline, cheeks, and brow. The set gives a clearer routine than buying a single loose tool: prep, glide, sculpt, wipe clean.",
+    "pl": "Zacznij od rollera, gdy twarz wygląda na opuchniętą lub zmęczoną, a potem użyj gua sha, żeby masaż na serum był bardziej świadomy przy linii żuchwy, policzkach i okolicy brwi. Zestaw daje czytelniejszy rytuał niż pojedyncze narzędzie: przygotuj, zapewnij poślizg, wymodeluj, przetrzyj."
+  },
+  "Morning de-puff": {
+    "en": "Morning de-puff",
+    "pl": "Poranne de-puff"
+  },
+  "Use the large roller across cheeks and forehead, then the smaller end under the eyes with very light pressure.": {
+    "en": "Use the large roller across cheeks and forehead, then the smaller end under the eyes with very light pressure.",
+    "pl": "Użyj większego rollera na policzkach i czole, a mniejszej końcówki pod oczami, zawsze z bardzo lekkim naciskiem."
+  },
+  "Evening serum glide": {
+    "en": "Evening serum glide",
+    "pl": "Wieczorny poślizg na serum"
+  },
+  "Add facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.": {
+    "en": "Add facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.",
+    "pl": "Najpierw dodaj olejek lub serum do twarzy, aby gua sha mogło płynnie sunąć wzdłuż linii żuchwy i kości policzkowych bez ciągnięcia skóry."
+  },
+  "Gift-ready finish": {
+    "en": "Gift-ready finish",
+    "pl": "Wykończenie gotowe na prezent"
+  },
+  "Matching branded tools and packaging make the set feel complete on the vanity or as a self-care gift.": {
+    "en": "Matching branded tools and packaging make the set feel complete on the vanity or as a self-care gift.",
+    "pl": "Dopasowane markowe narzędzia i opakowanie sprawiają, że zestaw wygląda kompletnie na toaletce albo jako prezent self-care."
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"

@@ -548,6 +548,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     locale,
     detailedScienceBenefits[product.id] ?? []
   );
+  const salesStory = product.salesStory;
 
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
@@ -1023,6 +1024,42 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                 </div>
               </div>
+
+              {salesStory && (
+                <div className="mx-auto mt-6 hidden max-w-[620px] border-y border-border-subtle py-5 lg:block">
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-accent-gold">
+                    <T text={salesStory.eyebrow} />
+                  </p>
+                  <h2
+                    className="mt-2 text-2xl font-semibold leading-tight text-text-primary"
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  >
+                    <T text={salesStory.title} />
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                    <T text={salesStory.description} />
+                  </p>
+
+                  <div className="mt-5 grid gap-3 xl:grid-cols-3">
+                    {salesStory.highlights.map((highlight) => (
+                      <div
+                        key={highlight.title}
+                        className="rounded-lg border border-border-subtle bg-surface-subtle p-4"
+                      >
+                        <div className="mb-2 flex items-center gap-2">
+                          <Check className="size-4 shrink-0 text-accent-gold" aria-hidden="true" />
+                          <h3 className="text-xs font-extrabold uppercase tracking-[0.12em] text-text-primary">
+                            <T text={highlight.title} />
+                          </h3>
+                        </div>
+                        <p className="text-xs leading-relaxed text-text-secondary">
+                          <T text={highlight.desc} />
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* RIGHT: Conversion Buy Box */}
@@ -1034,7 +1071,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] mb-2 font-bold" style={{ color: "var(--accent-gold)" }}>
-                  {product.category === "bundle" ? "Bundle" : "Skin ritual product"}
+                  <T text={product.category === "bundle" ? "Bundle" : "Skin ritual product"} />
                 </p>
                 <h1
                   className="text-3xl md:text-4xl font-semibold text-text-primary mb-3"
