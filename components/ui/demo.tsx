@@ -8,7 +8,6 @@ import {
   MapPin,
   Camera,
   Pin,
-  Play,
   Sparkles,
 } from "lucide-react";
 import Logo from "../../public/brand/lux_aura_care_logo.png";
@@ -22,7 +21,7 @@ function HoverFooter() {
     {
       title: "Discover",
       links: [
-        { label: "Self-Care Rituals", href: "/blog?category=self-care" },
+        { label: "Skincare Tools", href: "/shop" },
         { label: "Skincare Guides", href: "/blog?category=skincare" },
         { label: "Body & Glow", href: "/blog?category=body-glow" },
         { label: "Spa & Relax", href: "/blog?category=spa-relax" },
@@ -31,10 +30,10 @@ function HoverFooter() {
     {
       title: "Shop & Support",
       links: [
+        { label: "Shop Lux Aura Care", href: "/shop" },
         { label: "Amazon Favorites", href: "/favorites" },
-        { label: "Latest Articles", href: "/blog" },
         { label: "Contact Us", href: "/contact" },
-        { label: "Newsletter", href: "#newsletter", pulse: true },
+        { label: "Shipping & Returns", href: "/returns", pulse: true },
       ],
     },
   ];
@@ -57,9 +56,8 @@ function HoverFooter() {
   ];
 
   const socialLinks = [
-    { icon: <Pin size={20} />, label: "Pinterest", href: "#" },
-    { icon: <Camera size={20} />, label: "Instagram", href: "#" },
-    { icon: <Play size={20} />, label: "YouTube", href: "#" },
+    { icon: <Pin size={20} />, label: "Pinterest", href: "https://pinterest.com/luxauracare" },
+    { icon: <Camera size={20} />, label: "Instagram", href: "https://instagram.com/luxauracare" },
   ];
 
   return (
@@ -68,15 +66,15 @@ function HoverFooter() {
         <div className="grid grid-cols-1 gap-12 pb-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
           <div className="flex flex-col space-y-4">
             <div className="flex items-center gap-3">
-              <Image src={Logo} className="w-8 rounded-full opacity-80" alt="logo" />
+              <Image src={Logo} className="w-8 rounded-full opacity-80" alt="Lux Aura Care" />
               <span className="font-heading text-3xl text-text-primary"><T text={"Lux Aura Care"} /></span>
             </div>
             <p className="text-sm leading-relaxed text-text-secondary">
-              <T text={"Editorial self-care platform curated to help Pinterest readers move from inspiration to confident product choices."} />
+              <T text={"Premium skincare tools and editorial guides curated to help shoppers move from inspiration to confident product choices."} />
             </p>
             <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
               <Sparkles className="size-4" aria-hidden="true" />
-              <T text={"Calm luxury. Better routines."} />
+              <T text={"Premium tools. Clear guidance."} />
             </p>
           </div>
 
@@ -126,6 +124,8 @@ function HoverFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
+                target="_blank"
+                rel="noreferrer"
                 className="transition-colors hover:text-accent-gold"
               >
                 {icon}

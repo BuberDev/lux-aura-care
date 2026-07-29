@@ -6,6 +6,7 @@ type HeadingProps = {
   title: string;
   description?: string;
   align?: "left" | "center";
+  level?: "h1" | "h2";
   className?: string;
 };
 
@@ -14,8 +15,11 @@ export function Heading({
   title,
   description,
   align = "left",
+  level = "h2",
   className,
 }: HeadingProps) {
+  const HeadingTag = level;
+
   return (
     <div className={cn(align === "center" && "text-center", className)}>
       {eyebrow ? (
@@ -23,9 +27,9 @@ export function Heading({
           <T text={eyebrow} />
         </p>
       ) : null}
-      <h2 className="max-w-4xl font-heading text-3xl leading-[1.15] text-text-primary sm:text-4xl md:text-5xl">
+      <HeadingTag className="max-w-4xl font-heading text-3xl leading-[1.15] text-text-primary sm:text-4xl md:text-5xl">
         <T text={title} />
-      </h2>
+      </HeadingTag>
       {description ? (
         <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">
           <T text={description} />

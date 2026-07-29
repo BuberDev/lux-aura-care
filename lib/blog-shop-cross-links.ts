@@ -5,6 +5,7 @@
 export const articleShopCrossLink: Record<string, string> = {
   "the-viral-glass-skin-guide": "seaweed-collagen-crystal-mask",
   "biological-sleep-reset": "centella-collagen-sleep-masks",
+  "biological-sleep-protocol": "centella-collagen-sleep-masks",
   "body-glow-habit-guide": "resin-body-gua-sha-tool",
   "evening-reset-ritual": "clear-skin-patches",
   "glass-skin-without-12-steps": "gold-eye-patches",

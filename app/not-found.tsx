@@ -11,9 +11,9 @@ export default function NotFound() {
       <Container>
         <div className="mx-auto max-w-3xl rounded-[2rem] border border-border-subtle bg-surface-subtle p-10 text-center">
           <p className="text-xs uppercase tracking-[0.2em] text-accent-gold">404</p>
-          <h1 className="mt-3 font-heading text-5xl"><T text={"The ritual you are looking for is unavailable"} /></h1>
+          <h1 className="mt-3 font-heading text-5xl"><T text={"The page you are looking for is unavailable"} /></h1>
           <p className="mt-4 text-text-secondary">
-            <T text={"Explore the latest guides and favorites to keep building your self-care routine."} />
+            <T text={"Explore the latest guides and product picks to keep shopping with context."} />
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/blog" label="Go to Blog" />

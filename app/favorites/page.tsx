@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = translateText(locale, "Shop the Feed | Pinterest Favorites & Seasonal Picks");
   const description = translateText(
     locale,
-    "Explore the viral Lux Aura Care favorites. Direct Amazon links to the 8 essentials currently trending on our Pinterest feed. High-glow skincare and sleep rituals."
+    "Explore curated Lux Aura Care favorites with direct Amazon links, clear product benefits, and easy comparison."
   );
 
   return {
@@ -38,8 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: { card: "summary_large_image", title, description },
     keywords:
       locale === "pl"
-        ? ["ulubieńcy z Pinterest", "produkty Amazon", "rytuały pielęgnacyjne", ...siteMeta.plKeywords]
-        : ["pinterest favorites", "amazon beauty finds", "ritual essentials", ...siteMeta.keywords],
+        ? ["ulubieńcy z Pinterest", "produkty Amazon", "narzędzia do pielęgnacji", ...siteMeta.plKeywords]
+        : ["pinterest favorites", "amazon beauty finds", "skincare tools", ...siteMeta.keywords],
   };
 }
 
@@ -85,23 +85,24 @@ export default async function FavoritesPage() {
       <Section className="border-b border-border-subtle pb-12 pt-16 md:pt-20">
         <Container>
           <Heading
+            level="h1"
             eyebrow="Shop the Feed"
             title="The Lux Aura Pinterest Collection"
-            description="The 8 high-performing essentials currently driving our daily rituals. Directly linked for easy, confident discovery."
+            description="Curated products highlighted from the Lux Aura feed, with direct links for fast comparison and confident discovery."
           />
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <CTAButton href="/blog" label="Explore Routine Guides" variant="secondary" />
+            <CTAButton href="/blog" label="Explore product guides" variant="secondary" />
             <CTAButton href="/" label="Back to Home" variant="ghost" />
           </div>
 
           <InlineCtaPanel
             className="mt-10"
             eyebrow="Pinterest Favorites"
-            title="Pick one routine, shop the essentials, and start your reset tonight"
-            description="We focus on quality over quantity. Start with the collection that matches your immediate goal—whether it is 'Glass Skin' or 'Biological Sleep.'"
+            title="Pick one goal, compare the essentials, and choose with context"
+            description="We focus on quality over quantity. Start with the collection that matches your immediate need, then open the product details before you buy."
             primaryHref="/blog"
-            primaryLabel="See Routine Manuals"
+            primaryLabel="See product guides"
             secondaryHref="/"
             secondaryLabel="See Featured Categories"
           />

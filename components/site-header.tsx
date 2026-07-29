@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
-import { Search } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 
 import Logo from "../public/brand/lux_aura_care_logo.png";
 import { Container } from "@/components/container";
@@ -56,7 +56,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
         <Container className="rounded-2xl border border-border-subtle bg-surface-glass px-3 shadow-theme-lg backdrop-blur-2xl sm:px-4 md:px-6">
           <div className="flex h-14 items-center justify-between gap-3 md:h-20 md:gap-6">
             <LocalizedLink href="/" className="inline-flex shrink-0 items-center gap-2 md:gap-3">
-              <Image src={Logo} className="w-8 rounded-full opacity-80 md:w-10" alt="logo" />
+              <Image src={Logo} className="w-8 rounded-full opacity-80 md:w-10" alt="Lux Aura Care" />
               <span className="font-heading text-sm tracking-[0.06em] text-text-primary sm:text-lg md:text-2xl">
                 {siteMeta.name}
               </span>
@@ -81,7 +81,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
             </nav>
 
             <div className="ml-auto flex items-center gap-2 sm:gap-4">
-              <CTAButton href="/blog" label="Start Reading" variant="secondary" className="hidden xl:inline-flex" />
+              <CTAButton href="/shop" label="Shop the edit" variant="secondary" className="hidden xl:inline-flex" />
               <LanguageSwitcher compact className="hidden md:inline-flex" />
               <ThemeToggle className="hidden md:inline-flex" />
 
@@ -108,20 +108,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
                 aria-label={text("Open menu")}
                 type="button"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
+                <Menu className="size-6" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -163,25 +150,13 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
             aria-label={text("Close menu")}
             type="button"
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+              <X className="size-5" aria-hidden="true" />
           </button>
         </div>
 
         <nav className="flex flex-col gap-6 overflow-y-auto px-6 pb-6">
           <div className="flex items-center gap-3 border-b border-border-subtle pb-6">
-            <Image src={Logo} className="w-8 rounded-full opacity-80" alt="logo" />
+            <Image src={Logo} className="w-8 rounded-full opacity-80" alt="Lux Aura Care" />
             <span className="font-heading text-lg tracking-[0.06em] text-text-primary">{siteMeta.name}</span>
           </div>
 
@@ -202,7 +177,7 @@ export function SiteHeader({ searchProducts }: SiteHeaderProps) {
           <div className="mt-6 space-y-4 border-t border-border-subtle pt-6">
             <LanguageSwitcher />
             <ThemeToggle showLabel className="w-full" />
-            <CTAButton href="/blog" label="Start Reading" variant="secondary" className="w-full justify-center" />
+            <CTAButton href="/shop" label="Shop the edit" variant="secondary" className="w-full justify-center" />
           </div>
         </nav>
       </div>

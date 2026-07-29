@@ -40,10 +40,10 @@ export function CookieConsentBanner() {
   return (
     <section
       aria-label={isPl ? "Zgoda na pliki cookie" : "Cookie consent"}
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-border-subtle bg-surface-glass p-4 backdrop-blur-xl md:p-5"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-border-subtle bg-surface-glass p-3 backdrop-blur-xl md:p-5"
     >
       <div className="mx-auto flex max-w-5xl flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
-        <p className="text-sm leading-relaxed text-text-secondary">
+        <p className="text-xs leading-relaxed text-text-secondary sm:text-sm">
           {isPl ? (
             <>
               Używamy plików cookie do analityki i pomiaru skuteczności reklam (Google Analytics, Meta,
@@ -64,7 +64,7 @@ export function CookieConsentBanner() {
             </>
           )}
         </p>
-        <div className="flex shrink-0 gap-2">
+        <div className="flex shrink-0 self-end gap-2 md:self-auto">
           <button
             type="button"
             onClick={() => decide("denied")}

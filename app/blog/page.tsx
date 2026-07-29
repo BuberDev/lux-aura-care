@@ -27,10 +27,10 @@ import { getRequestLocale } from "@/lib/i18n/request";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
-  const title = translateText(locale, "Lux Aura Journal | Luxury Self-Care & Ritual Guides");
+  const title = translateText(locale, "Lux Aura Journal | Skincare & Product Guides");
   const description = translateText(
     locale,
-    "Explore self-care, skincare, body glow, and spa rituals designed for fast reading and thoughtful product discovery. Curated guides for your Pinterest lifestyle."
+    "Explore skincare, body-care, and self-care product guides designed for fast reading, clear comparison, and confident shopping."
   );
 
   return {
@@ -48,8 +48,8 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: { card: "summary_large_image", title, description },
     keywords:
       locale === "pl"
-        ? ["poradniki rytuałów", "self-care", "pielęgnacja", ...siteMeta.plKeywords]
-        : ["ritual guides", "self-care journal", "skincare routines", ...siteMeta.keywords],
+        ? ["poradniki produktowe", "self-care", "pielęgnacja", ...siteMeta.plKeywords]
+        : ["product guides", "self-care journal", "skincare tools", ...siteMeta.keywords],
   };
 }
 
@@ -122,7 +122,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       name: "Lux Aura Care",
       logo: {
         "@type": "ImageObject",
-        url: toAbsoluteUrl("/logo.png"), // Assuming logo existence or fallback
+        url: toAbsoluteUrl("/brand/lux_aura_care_logo.png"),
       },
     },
     isPartOf: {
@@ -152,8 +152,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <Section className="border-b border-border-subtle pb-14 pt-16 md:pt-20">
         <Container>
           <Heading
+            level="h1"
             eyebrow="Lux Aura Journal"
-            title="Practical ritual guides for thoughtful product choices"
+            title="Practical product guides for thoughtful choices"
             description="Fast-scannable editorial articles with clear steps, useful context, and transparent product links."
           />
 
@@ -218,7 +219,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       <T text={"Essential"} /> {selectedCategory.name} <T text={"Favorites"} />
                     </h2>
                     <p className="mt-2 text-text-secondary">
-                      <T text={"Direct Amazon links to the highest-rated picks for this ritual."} />
+                      <T text={"Direct Amazon links to high-signal picks for this category."} />
                     </p>
                   </div>
                 </div>
@@ -243,13 +244,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <div className="mb-10">
             <h2 className="font-heading text-3xl text-text-primary">
               {selectedCategory ? (
-                <><T text={selectedCategory.name} /> <T text={"Ritual Guides"} /></>
+                <><T text={selectedCategory.name} /> <T text={"Product Guides"} /></>
               ) : (
-                <T text={"Latest Ritual Guides"} />
+                <T text={"Latest Product Guides"} />
               )}
             </h2>
             <p className="mt-2 text-text-secondary">
-              <T text={"Step-by-step transformation instructions for your Pinterest lifestyle."} />
+              <T text={"Practical product guidance for choosing, comparing, and using each pick well."} />
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

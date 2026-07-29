@@ -1,4 +1,3 @@
-import { Currency } from "lucide-react";
 import { mediaUrl } from "./media-url";
 
 export type CategoryId = "self-care" | "skincare" | "body-glow" | "spa-relax";
@@ -171,29 +170,29 @@ export type Article = {
 
 export const siteMeta = {
   name: "Lux Aura Care",
-  tagline: "Professional routine guides for the Pinterest listener.",
+  tagline: "Premium skincare tools and clear product guidance.",
   description:
-    "We curate the viral essentials for skincare, sleep, and body glow, providing direct Amazon links for a seamless transition from inspiration to reality.",
+    "Lux Aura Care curates premium skincare tools, body-care essentials, and practical guides that help shoppers choose confidently.",
   contactEmail: "info@luxauracare.com",
   keywords: [
-    "self-care rituals",
+    "self-care tools",
     "skincare guides",
-    "body glow routines",
-    "sleep reset rituals",
+    "body glow tools",
+    "sleep support products",
     "pinterest aesthetic skincare",
     "viral amazon beauty favorites",
     "luxury wellness editorial",
     "glass skin routine",
     "at-home spa experience",
     "evening wind-down habits",
-    "beauty ritual guides",
+    "beauty product guides",
     "holistic self-care",
     "minimalist skincare",
     "clean beauty essentials",
     "wellness lifestyle",
   ],
   plKeywords: [
-    "rytuały self-care",
+    "narzędzia self-care",
     "przewodnik po pielęgnacji",
     "metody na body glow",
     "higiena snu",
@@ -202,7 +201,7 @@ export const siteMeta = {
     "luksusowa pielęgnacja",
     "efekt glass skin",
     "domowe spa",
-    "wieczorne rytuały",
+    "wieczorna pielęgnacja",
     "nawyki przed snem",
     "pielęgnacja ciała i twarzy",
     "wellness polska",
@@ -2166,7 +2165,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "biological-sleep-reset",
+    slug: "biological-sleep-protocol",
     title: "The Biological Sleep Reset: Why Magnesium and Plush Comfort are the Ultimate Pairing",
     excerpt:
       "Lower your nervous system's alert level with this simple bedtime ritual designed for deep, restorative rest.",
@@ -2745,7 +2744,7 @@ export const articles: Article[] = [
 export const featuredArticleSlugs = [
   "ultimate-body-glow-protocol",
   "advanced-skincare-layering-glass-skin",
-  "biological-sleep-reset",
+  "biological-sleep-protocol",
   "at-home-spa-sanctuary",
 ];
 

@@ -46,7 +46,7 @@ export default async function ContactPage() {
     {
       icon: <Globe className="text-accent-gold" size={24} />,
       title: "Support Area",
-      description: "Based in Poland, supporting ritual seekers worldwide.",
+      description: "Based in Poland, supporting Lux Aura Care customers and readers worldwide.",
     },
   ]);
 
@@ -58,7 +58,7 @@ export default async function ContactPage() {
             <T text={"Get in Touch"} />
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-text-secondary">
-            <T text={"Have a question about a ritual, a product recommendation, or just want to say hello? \n            We're here to help you on your journey to a more polished life."} />
+            <T text={"Have a question about a product, an order, a recommendation, or a collaboration? We're here to help with clear, practical support."} />
           </p>
         </div>
 
@@ -99,12 +99,6 @@ export default async function ContactPage() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Decorative elements */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-20 h-96 w-96 rounded-full bg-accent-gold/10 blur-[120px]" />
-        <div className="absolute bottom-1/4 -left-20 h-96 w-96 rounded-full bg-accent-gold/5 blur-[120px]" />
       </div>
     </main>
   );

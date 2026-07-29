@@ -26,7 +26,7 @@ export async function TopPicksSection({ className }: TopPicksSectionProps) {
         <Heading
           eyebrow="Top Picks"
           title="Most-clicked products this week"
-          description="A focused editorial shortlist with clear routine benefits and marketplace-aware product links."
+          description="A focused shortlist with clear product benefits, shopper signals, and marketplace-aware links."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -43,7 +43,7 @@ export async function TopPicksSection({ className }: TopPicksSectionProps) {
         </div>
 
         <div className="mt-8 flex justify-center">
-          <CTAButton href="/favorites" label="Browse All Amazon Favorites" variant="secondary" />
+          <CTAButton href="/favorites" label="Browse all Amazon favorites" variant="secondary" />
         </div>
       </Container>
     </Section>

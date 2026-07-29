@@ -56,8 +56,8 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
   const description = translateText(locale, siteMeta.description);
-  const title = translateText(locale, "Lux Aura Care | Luxury Self-Care & Ritual Guides");
-  const socialTitle = translateText(locale, "Lux Aura Care | Professional High-Glow Rituals");
+  const title = translateText(locale, "Lux Aura Care | Premium Skincare Tools");
+  const socialTitle = translateText(locale, "Lux Aura Care | Skincare Tools & Product Guides");
 
   return {
     metadataBase: new URL(SITE_URL),

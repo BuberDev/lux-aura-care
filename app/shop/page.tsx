@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LocalizedLink } from "@/components/localized-link";
 import Image from "next/image";
-import { Check, Truck, ShieldCheck, RotateCcw } from "lucide-react";
+import { Check, ChevronRight, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { Container } from "@/components/container";
 import { NewsletterBlock } from "@/components/newsletter-block";
 import { shopProducts } from "@/lib/shop-data";
@@ -14,10 +14,10 @@ import { resolveShopProductsForLocale } from "@/lib/shop-currency";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
-  const title = translateText(locale, "Shop Skin Rituals | Lux Aura Care");
+  const title = translateText(locale, "Shop Skincare Tools | Lux Aura Care");
   const description = translateText(
     locale,
-    "Dermaplaning razors, hydrocolloid patches, and practical skincare tools for at-home routines."
+    "Shop face rollers, gua sha tools, dermaplaning razors, patches, and practical skincare tools for at-home care."
   );
 
   return {
@@ -55,29 +55,31 @@ export default async function ShopPage() {
   const marketProducts = await resolveShopProductsForLocale(shopProducts, locale);
   const localizedProducts = localizeContent(locale, marketProducts);
   const trustStats = localizeContent(locale, [
-    { stat: "Clear", label: "product-specific descriptions" },
-    { stat: "Live", label: "Shopify stock when available" },
-    { stat: "Direct", label: "checkout with final total shown" },
+    { stat: "15", label: "curated skincare products" },
+    { stat: "Clear", label: "product-specific photos and descriptions" },
+    { stat: "Direct", label: "checkout with final total shown before payment" },
   ]);
 
   return (
     <div className="min-h-screen bg-background-primary">
 
       {/* Hero */}
-      <section className="border-b border-border-subtle py-20 text-center px-4">
+      <section className="border-b border-border-subtle py-16 md:py-20 px-4">
         <Container>
-          <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent-gold)" }}>
-            <T text={"Glow Rituals · Women 40+"} />
-          </p>
-          <h1
-            className="text-4xl md:text-6xl font-semibold text-text-primary mb-6"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            <T text={"Your Weekly Skin Ritual"} />
-          </h1>
-          <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: "var(--text-secondary)" }}>
-            <T text={"Practical tools for a simple, repeatable at-home skincare ritual."} />
-          </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent-gold)" }}>
+              <T text={"Shop skincare tools"} />
+            </p>
+            <h1
+              className="text-4xl md:text-6xl font-semibold text-text-primary mb-6"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              <T text={"Tools for calmer, clearer at-home skincare"} />
+            </h1>
+            <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: "var(--text-secondary)" }}>
+              <T text={"Face rollers, gua sha tools, dermaplaning razors, patches, and body-care essentials with clear product details before checkout."} />
+            </p>
+          </div>
         </Container>
       </section>
 
@@ -99,12 +101,12 @@ export default async function ShopPage() {
       {/* Products */}
       <section className="py-16 px-4">
         <Container>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {localizedProducts.map((product, index) => (
               <LocalizedLink
                 key={product.id}
                 href={`/shop/${product.id}`}
-                className="group block overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle transition-all duration-300 hover:border-border-strong"
+                className="group flex h-full flex-col overflow-hidden rounded-xl border border-border-subtle bg-surface-subtle transition-all duration-300 hover:border-accent-gold/45 hover:shadow-[0_16px_40px_rgba(0,0,0,0.22)]"
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -114,16 +116,16 @@ export default async function ShopPage() {
                     fill
                     priority={index === 0}
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <Badge variant="product" className="absolute top-3 left-3">
-                    <T text={"Featured product"} />
+                    <T text={product.isBestSeller ? "Bestseller" : product.isNew ? "New arrival" : product.badge} />
                   </Badge>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-4">
+                <div className="flex flex-1 flex-col p-5 md:p-6 space-y-4">
                   <div>
                     <h2 className="text-xl font-semibold text-text-primary mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                       {product.name}
@@ -142,7 +144,7 @@ export default async function ShopPage() {
                   </ul>
 
                   {/* Price */}
-                  <div className="flex items-baseline gap-3 pt-1">
+                  <div className="mt-auto flex items-baseline gap-3 pt-1">
                     <span className="text-2xl font-bold text-text-primary">
                       {formatShopPrice(product.price, product.currency, locale)}
                     </span>
@@ -159,10 +161,11 @@ export default async function ShopPage() {
                   </div>
 
                   <div
-                    className="w-full text-center py-3 rounded-xl text-sm font-semibold text-black transition-opacity group-hover:opacity-90"
+                    className="flex min-h-12 w-full items-center justify-center gap-1 rounded-xl px-4 py-3 text-center text-sm font-semibold text-black transition-opacity group-hover:opacity-90"
                     style={{ background: "var(--accent-gold)" }}
                   >
-                    <T text={"View Product →"} />
+                    <T text={"View product"} />
+                    <ChevronRight className="size-4" aria-hidden="true" />
                   </div>
                 </div>
               </LocalizedLink>

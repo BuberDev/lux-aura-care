@@ -15,9 +15,9 @@ export async function BundlesSection() {
     <Section className="[content-visibility:auto] [contain-intrinsic-size:1px_900px]">
       <Container>
         <Heading
-          eyebrow="Complete Rituals"
-          title="Curated bundles for maximum impact and savings"
-          description="Skip the guesswork. These collections pair complementary products for proven results—plus you save when you bundle."
+          eyebrow="Value sets"
+          title="Curated product pairings for focused results"
+          description="Skip the guesswork. These collections pair complementary products so it is easier to build a focused cart."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -28,13 +28,13 @@ export async function BundlesSection() {
 
         <InlineCtaPanel
           className="mt-12"
-          eyebrow="Ready to commit"
-          title="Start with one complete ritual, then add as your routine evolves"
-          description="Bundles are designed for commitment and results. Each collection creates habit momentum faster than individual products."
+          eyebrow="Ready to choose"
+          title="Start with one focused set, then add only what you need"
+          description="Bundles keep the decision simple by grouping products that naturally work toward the same beauty or self-care goal."
           primaryHref="/favorites"
-          primaryLabel="Browse All Ritual Bundles"
+          primaryLabel="Browse curated sets"
           secondaryHref="/blog"
-          secondaryLabel="Read More Guides"
+          secondaryLabel="Read more guides"
         />
       </Container>
     </Section>

@@ -61,10 +61,10 @@ export function NewsletterBlock() {
                 <T text={"Weekly Editorial Newsletter"} />
               </p>
               <h2 className="font-heading text-3xl leading-tight sm:text-4xl">
-                <T text={"Get a curated ritual and product picks every Friday."} />
+                <T text={"Get one clear product edit every Friday."} />
               </h2>
               <p className="text-sm text-background-primary/70">
-                <T text={"1 curated ritual + 3 product picks sent Friday mornings. Unsubscribe anytime—no hard feelings."} />
+                <T text={"1 concise product note + 3 selected picks sent Friday mornings. Unsubscribe anytime."} />
               </p>
               <ul className="mt-3 space-y-1 text-xs text-background-primary/70">
                 <li className="flex items-center gap-2">

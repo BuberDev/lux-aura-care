@@ -30,10 +30,10 @@ import { resolveShopProductsForLocale } from "@/lib/shop-currency";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
-  const title = translateText(locale, "Luxury Self-Care Rituals | High-Glow Habits");
+  const title = translateText(locale, "Lux Aura Care | Premium Skincare Tools & Product Guides");
   const description = translateText(
     locale,
-    "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle. Rituals for sleep, skin, and body glow."
+    "Shop premium skincare tools, compare curated beauty picks, and read practical product guides before you buy."
   );
 
   return {
@@ -59,18 +59,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const trustSignals = [
   {
-    label: "Marketplace Coverage",
-    value: "PL + US",
+    label: "Direct shop",
+    value: "Own products",
     icon: Sparkles,
   },
   {
-    label: "Price Policy",
-    value: "Market-specific",
+    label: "Clear checkout",
+    value: "Total before pay",
     icon: ShieldCheck,
   },
   {
-    label: "Affiliate Disclosure",
-    value: "Transparent",
+    label: "Curated guides",
+    value: "Product-first",
     icon: Globe2,
   },
 ];
@@ -98,6 +98,7 @@ export default async function HomePage() {
     alt: product.imageAlt,
     name: product.name,
   }));
+  const mobileHeroProduct = localizedShopProducts[0];
 
   const breadcrumbsJsonLd = generateBreadcrumbsJsonLd([
     { name: translateText(locale, "Home"), item: localizePathname("/", locale) },
@@ -134,7 +135,7 @@ export default async function HomePage() {
       {
         "@type": "ItemList",
         name: translateText(locale, "Featured Articles"),
-        description: translateText(locale, "Latest ritual guides for a polished lifestyle."),
+        description: translateText(locale, "Latest product guides for confident beauty shopping."),
         itemListElement: featuredArticles.map((article, index) => ({
           "@type": "ListItem",
           position: index + 1,
@@ -164,12 +165,71 @@ export default async function HomePage() {
         />
       </div>
 
-      <section className="relative isolate h-[calc(100svh-4.5rem)] md:h-[calc(100svh-6.25rem)] min-h-[650px] border-b border-border-subtle overflow-hidden">
-        <div className="absolute inset-0 z-0 pointer-events-none">
+      <section className="relative isolate min-h-[640px] border-b border-border-subtle overflow-hidden md:h-[calc(100svh-6.25rem)] md:min-h-[650px]">
+        <div className="absolute inset-0 z-0 hidden pointer-events-none md:block">
           <ScrollMorphHero products={heroProducts} />
         </div>
 
-        <div className="absolute bottom-6 md:bottom-8 left-0 right-0 z-20 pointer-events-none">
+        <Container className="relative z-20 flex min-h-[640px] flex-col justify-center gap-6 py-10 md:hidden">
+          <div className="max-w-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-gold">
+              <T text={"Premium skincare tools"} />
+            </p>
+            <h1 className="mt-3 font-heading text-4xl leading-tight text-text-primary">
+              <T text={"Skincare tools that are easy to choose"} />
+            </h1>
+            <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+              <T text={"Compare details, usage notes, and final checkout information before you buy."} />
+            </p>
+            <div className="mt-6">
+              <CTAButton href="/shop" label="Shop now" />
+            </div>
+          </div>
+
+          {mobileHeroProduct ? (
+            <LocalizedLink
+              href={`/shop/${mobileHeroProduct.id}`}
+              className="group block overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-background-primary">
+                <Image
+                  src={mobileHeroProduct.image}
+                  alt={mobileHeroProduct.imageAlt}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-2 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-gold">
+                  <T text={"Featured shop product"} />
+                </p>
+                <h2 className="font-heading text-2xl leading-tight text-text-primary">
+                  {mobileHeroProduct.name}
+                </h2>
+                <p className="text-sm text-text-secondary">{mobileHeroProduct.tagline}</p>
+                <p className="text-lg font-bold text-accent-gold">
+                  {formatShopPrice(mobileHeroProduct.price, mobileHeroProduct.currency, locale)}
+                </p>
+              </div>
+            </LocalizedLink>
+          ) : null}
+
+          <ul className="grid gap-2" aria-label={translateText(locale, "Trust signals")}>
+            {localizedTrustSignals.map((item) => (
+              <li key={item.label} className="flex items-center justify-between rounded-xl border border-border-subtle bg-surface-subtle px-4 py-3">
+                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-accent-gold">
+                  <item.icon className="size-4" aria-hidden="true" />
+                  {item.label}
+                </span>
+                <span className="text-sm font-semibold text-text-primary">{item.value}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+
+        <div className="absolute bottom-6 md:bottom-8 left-0 right-0 z-20 hidden pointer-events-none md:block">
           <Container className="pointer-events-auto">
             <ul className="grid gap-3 md:grid-cols-3" aria-label={translateText(locale, "Trust signals")}>
               {localizedTrustSignals.map((item) => (
@@ -191,13 +251,13 @@ export default async function HomePage() {
         <Container>
           <div className="text-center mb-10">
             <p className="text-xs uppercase tracking-[0.2em] mb-3" style={{ color: "var(--accent-gold)" }}>
-              <T text={"New · Skin Rituals"} />
+              <T text={"Now in the shop"} />
             </p>
             <h2 className="font-heading text-3xl md:text-4xl text-text-primary mb-4">
-              <T text={"Shop our ritual essentials"} />
+              <T text={"Shop Lux Aura Care skincare tools"} />
             </h2>
             <p className="text-base max-w-lg mx-auto" style={{ color: "var(--text-secondary)" }}>
-              <T text={"Practical at-home skincare tools selected for mature skin routines."} />
+              <T text={"Face rollers, gua sha tools, dermaplaning razors, patches, and masks with clear product details before checkout."} />
             </p>
           </div>
 
@@ -247,7 +307,7 @@ export default async function HomePage() {
           </div>
 
           <div className="text-center">
-            <CTAButton href="/shop" label="View All Products" />
+            <CTAButton href="/shop" label="Shop all products" />
           </div>
         </Container>
       </Section>
@@ -260,9 +320,9 @@ export default async function HomePage() {
       <Section id="categories" className="[content-visibility:auto] [contain-intrinsic-size:1px_900px]">
         <Container>
           <Heading
-            eyebrow="Featured Categories"
-            title="Choose the ritual category that matches your mood"
-            description="Each category is curated for fast scanning and clear next actions so it is easy to move from inspiration to results."
+            eyebrow="Shop by goal"
+            title="Choose the skincare goal you want to solve first"
+            description="Each category keeps the choice focused, with products and guides organized around one clear need."
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -274,12 +334,12 @@ export default async function HomePage() {
           <InlineCtaPanel
             className="mt-12"
             eyebrow="Need a quick start?"
-            title="Start with one routine, then add products as confidence grows"
-            description="Readers convert better when they choose one clear ritual first. Browse high-performing guides and open products only when needed."
-            primaryHref="/blog"
-            primaryLabel="See Beginner-Friendly Guides"
-            secondaryHref="/favorites"
-            secondaryLabel="View Curated Favorites"
+            title="Start with one product goal, then compare the best match"
+            description="Choose the result you want, read one focused guide, and move to the product page with enough context to decide calmly."
+            primaryHref="/shop"
+            primaryLabel="Shop skincare tools"
+            secondaryHref="/blog"
+            secondaryLabel="Read product guides"
           />
         </Container>
       </Section>
@@ -287,9 +347,9 @@ export default async function HomePage() {
       <Section id="featured-articles" className="atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
         <Container>
           <Heading
-            eyebrow="Featured Articles"
-            title="High-performing routines your audience will actually save and use"
-            description="Benefit-led editorial pieces structured for clarity, trust, and action."
+            eyebrow="Product Guides"
+            title="Helpful guides for choosing without second-guessing"
+            description="Benefit-led editorial pages that explain what each product is for, when it makes sense, and how to use it safely."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -305,9 +365,9 @@ export default async function HomePage() {
       <Section id="amazon-favorites" className="[content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
         <Container>
           <Heading
-            eyebrow="Amazon Favorites"
-            title="Curated product picks with strong trust signals"
-            description="Elegant, practical upgrades chosen for repeat use and lifestyle fit."
+            eyebrow="Amazon Finds"
+            title="Curated product picks with clear trust signals"
+            description="Practical beauty and self-care products selected for repeat use, strong shopper signals, and easy comparison."
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
@@ -323,13 +383,13 @@ export default async function HomePage() {
 
           <InlineCtaPanel
             className="mt-12"
-            eyebrow="Ready to shop"
-            title="Keep your routine momentum while products are fresh in mind"
-            description="Open your favorites now, compare in one tab, and build a focused cart around one routine goal."
+            eyebrow="Ready to compare"
+            title="Open the strongest picks while the product details are fresh"
+            description="Compare the curated favorites in one flow and keep your cart focused around the result you actually want."
             primaryHref="/favorites"
-            primaryLabel="Browse All Product Collections"
+            primaryLabel="Compare curated favorites"
             secondaryHref="/blog"
-            secondaryLabel="Read More Guides"
+            secondaryLabel="Read more guides"
           />
         </Container>
       </Section>

@@ -23,9 +23,9 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
       <Container>
         <div className="mb-10 max-w-3xl">
           <p className="text-xs uppercase tracking-[0.2em] text-accent-gold"><T text={"You May Also Like"} /></p>
-          <h2 className="mt-3 font-heading text-3xl leading-tight sm:text-4xl"><T text={"Keep building your ritual shelf"} /></h2>
+          <h2 className="mt-3 font-heading text-3xl leading-tight sm:text-4xl"><T text={"Keep building your skincare shelf"} /></h2>
           <p className="mt-3 text-base leading-relaxed text-text-secondary">
-            <T text={"Curated alternatives designed to increase routine consistency and help you find your perfect fit."} />
+            <T text={"Curated alternatives chosen for clear benefits, repeat use, and a better product fit."} />
           </p>
         </div>
 

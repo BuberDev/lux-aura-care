@@ -316,7 +316,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               className="mt-0 max-w-[min(820px,92vw)] rounded-[1.75rem] px-5 py-3.5 md:px-8 md:py-5"
               contentClassName="font-heading text-3xl font-semibold tracking-tight text-text-primary md:text-6xl"
             >
-              <T text={"Elevate your evening ritual."} />
+              <T text={"Skincare tools worth a closer look."} />
             </LiquidGlassText>
           </motion.h1>
           <motion.p
@@ -353,7 +353,7 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               textShadow: "0 2px 24px rgba(0,0,0,0.95), 0 0 42px rgba(201,169,110,0.16)",
             }}
           >
-            <T text={"Your Luxury Self-Care Ritual"} />
+            <T text={"Premium skincare tools, clearly explained"} />
           </h2>
           <div
             className="flex max-w-lg flex-col items-center text-sm leading-relaxed md:text-base"
@@ -362,9 +362,9 @@ export default function ScrollMorphHero({ products }: ScrollMorphHeroProps) {
               textShadow: "0 1px 20px rgba(0,0,0,0.95)",
             }}
           >
-            <span><T text={"Curated rituals for sleep, skin, and body glow."} /></span>
+            <span><T text={"Curated picks for skin, sleep, and body care."} /></span>
             <LiquidGlassText>
-              <T text={"Discover products designed for a calm, polished lifestyle."} />
+              <T text={"Shop with product details, usage guidance, and honest next steps."} />
             </LiquidGlassText>
           </div>
         </motion.div>

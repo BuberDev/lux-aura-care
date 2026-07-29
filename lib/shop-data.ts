@@ -508,9 +508,9 @@ export const shopProducts: ShopProduct[] = [
   {
     id: "lux-aura-face-roller-gua-sha-set",
     name: "Lux Aura Face Roller & Gua Sha Set",
-    tagline: "A branded 2-piece sculpting ritual in black stone or rose quartz.",
+    tagline: "A branded 2-piece face massage set in black stone or rose quartz.",
     description:
-      "A signature Lux Aura Care face roller and gua sha set for a slow, serum-led massage ritual. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
+      "A signature Lux Aura Care face roller and gua sha set for a simple face massage over serum or facial oil. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
     price: 24.99,
     // Shopify compareAtPrice is intentionally empty for both variants; keep
     // this equal to price so the site and checkout do not imply a false promo.
@@ -532,7 +532,7 @@ export const shopProducts: ShopProduct[] = [
       "Roll from the centre of the face outward using gentle upward strokes",
       "Use the smaller roller around the under-eye and brow area",
       "Hold the gua sha nearly flat and glide along jawline and cheekbones",
-      "Wipe both tools clean with a soft damp cloth after every ritual",
+      "Wipe both tools clean with a soft damp cloth after each use",
     ],
     faq: [
       {
@@ -541,7 +541,7 @@ export const shopProducts: ShopProduct[] = [
       },
       {
         q: "Which finish should I choose?",
-        a: "Choose black stone for a bold, polished vanity look or rose quartz for a softer spa aesthetic. Both are designed for the same gentle facial massage ritual.",
+        a: "Choose black stone for a bold, polished vanity look or rose quartz for a softer spa aesthetic. Both are designed for the same gentle facial massage.",
       },
       {
         q: "Can I use it on sensitive skin?",
@@ -556,22 +556,22 @@ export const shopProducts: ShopProduct[] = [
       "/lux-aura-face-roller-gua-sha-set/ugc_pl_set_pink_roller_pink_guasha.mp4",
     ],
     salesStory: {
-      eyebrow: "Your vanity ritual, simplified",
-      title: "Two tools, one polished face-sculpting routine",
+      eyebrow: "Quick face massage guide",
+      title: "Roller + gua sha in one easy set",
       description:
-        "Start with the roller when your face feels puffy or tired, then use gua sha to make the serum-led massage feel more deliberate around the jawline, cheeks, and brow. The set gives a clearer routine than buying a single loose tool: prep, glide, sculpt, wipe clean.",
+        "Use the roller first when your face feels puffy or tired, then reach for gua sha around the jawline, cheeks, and brow. Both tools are designed to glide over serum or oil, so the set feels practical, complete, and easy to repeat.",
       highlights: [
         {
-          title: "Morning de-puff",
+          title: "Fresh morning look",
           desc: "Use the large roller across cheeks and forehead, then the smaller end under the eyes with very light pressure.",
         },
         {
-          title: "Evening serum glide",
-          desc: "Add facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.",
+          title: "Smoother serum glide",
+          desc: "Apply facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.",
         },
         {
-          title: "Gift-ready finish",
-          desc: "Matching branded tools and packaging make the set feel complete on the vanity or as a self-care gift.",
+          title: "Two finishes",
+          desc: "Choose polished black stone with gold hardware or soft rose quartz with rose-gold hardware.",
         },
       ],
     },
@@ -624,15 +624,15 @@ export const shopProducts: ShopProduct[] = [
       },
       {
         url: "/lux-aura-face-roller-gua-sha-set/black-stone/black-roller-gua-sha-lifestyle.webp",
-        label: "Black Ritual",
+        label: "Black Stone Lifestyle",
         badge: "Vanity Moment",
-        desc: "Black stone set styled for an elevated skincare ritual",
+        desc: "Black stone set styled for polished at-home skincare",
       },
       {
         url: "/lux-aura-face-roller-gua-sha-set/rose-quartz/rose-quartz-roller-gua-sha-lifestyle.webp",
-        label: "Rose Ritual",
-        badge: "Soft Ritual",
-        desc: "Rose quartz set styled with a soft, spa-inspired routine aesthetic",
+        label: "Rose Quartz Lifestyle",
+        badge: "Soft Spa Look",
+        desc: "Rose quartz set styled with a soft, spa-inspired skincare aesthetic",
       },
       {
         url: "/lux-aura-face-roller-gua-sha-set/black-stone/black-gua-sha-in-use.webp",
@@ -644,7 +644,7 @@ export const shopProducts: ShopProduct[] = [
         url: "/lux-aura-face-roller-gua-sha-set/rose-quartz/rose-quartz-face-roller-in-use.webp",
         label: "Roller In Use",
         badge: "In Use",
-        desc: "Rose quartz roller shown in a gentle facial massage routine",
+        desc: "Rose quartz roller shown during a gentle facial massage",
       },
     ],
   },

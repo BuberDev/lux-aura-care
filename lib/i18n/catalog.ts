@@ -6323,6 +6323,614 @@ export const translationCatalog = {
     "en": "Matching branded tools and packaging make the set feel complete on the vanity or as a self-care gift.",
     "pl": "Dopasowane markowe narzędzia i opakowanie sprawiają, że zestaw wygląda kompletnie na toaletce albo jako prezent self-care."
   },
+  "CUSTOMER VIDEOS": {
+    "en": "CUSTOMER VIDEOS",
+    "pl": "WIDEO Z UŻYCIA"
+  },
+  "See it in real use": {
+    "en": "See it in real use",
+    "pl": "Zobacz produkt w użyciu"
+  },
+  "UGC": {
+    "en": "UGC",
+    "pl": "UGC"
+  },
+  "What you get": {
+    "en": "What you get",
+    "pl": "Co dostajesz"
+  },
+  "Double-ended face roller": {
+    "en": "Double-ended face roller",
+    "pl": "Dwustronny roller do twarzy"
+  },
+  "Matching gua sha tool": {
+    "en": "Matching gua sha tool",
+    "pl": "Dopasowane narzędzie gua sha"
+  },
+  "Branded gift-ready packaging": {
+    "en": "Branded gift-ready packaging",
+    "pl": "Markowe opakowanie gotowe na prezent"
+  },
+  "Best used with": {
+    "en": "Best used with",
+    "pl": "Najlepiej z"
+  },
+  "Facial oil or serum for slip": {
+    "en": "Facial oil or serum for slip",
+    "pl": "Olejkiem lub serum dla poślizgu"
+  },
+  "Light pressure, never dragging": {
+    "en": "Light pressure, never dragging",
+    "pl": "Lekkiego nacisku, bez szarpania skóry"
+  },
+  "A short 5-minute massage": {
+    "en": "A short 5-minute massage",
+    "pl": "Krótkiego, 5-minutowego masażu"
+  },
+  "Skincare tool": {
+    "en": "Skincare tool",
+    "pl": "Narzędzie do pielęgnacji"
+  },
+  "Roller + Gua Sha Duo": {
+    "en": "Roller + Gua Sha Duo",
+    "pl": "Duet roller + gua sha"
+  },
+  "2-Step Massage": {
+    "en": "2-Step Massage",
+    "pl": "Masaż w 2 krokach"
+  },
+  "Looks Good on the Vanity": {
+    "en": "Looks Good on the Vanity",
+    "pl": "Dobrze wygląda na toaletce"
+  },
+  "Gold Lux Aura Care details on the tools and packaging make the set feel polished, practical, and gift-ready.": {
+    "en": "Gold Lux Aura Care details on the tools and packaging make the set feel polished, practical, and gift-ready.",
+    "pl": "Złote detale Lux Aura Care na narzędziach i opakowaniu sprawiają, że zestaw wygląda elegancko, praktycznie i prezentowo."
+  },
+  "FACIAL MASSAGE STEP BY STEP": {
+    "en": "FACIAL MASSAGE STEP BY STEP",
+    "pl": "MASAŻ TWARZY KROK PO KROKU"
+  },
+  "How to Use It Without Guesswork": {
+    "en": "How to Use It Without Guesswork",
+    "pl": "Jak używać bez zgadywania"
+  },
+  "Clear answers before you order.": {
+    "en": "Clear answers before you order.",
+    "pl": "Konkretne odpowiedzi przed zamówieniem."
+  },
+  "Ready to add it to your skincare routine?": {
+    "en": "Ready to add it to your skincare routine?",
+    "pl": "Gotowa dodać zestaw do swojej pielęgnacji?"
+  },
+  "Pair it with your skincare": {
+    "en": "Pair it with your skincare",
+    "pl": "Dobierz coś do pielęgnacji"
+  },
+  "A branded 2-piece face massage set in black stone or rose quartz.": {
+    "en": "A branded 2-piece face massage set in black stone or rose quartz.",
+    "pl": "Markowy, dwuczęściowy zestaw do masażu twarzy w wersji black stone lub rose quartz."
+  },
+  "A signature Lux Aura Care face roller and gua sha set for a simple face massage over serum or facial oil. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.": {
+    "en": "A signature Lux Aura Care face roller and gua sha set for a simple face massage over serum or facial oil. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
+    "pl": "Sygnowany zestaw Lux Aura Care z rollerem do twarzy i gua sha do prostego masażu na serum lub olejku. Wybierz black stone ze złotymi detalami albo rose quartz z detalami rose gold; oba wykończenia mają polerowane krawędzie, dwustronny roller i markowe detale, które elegancko wyglądają na toaletce."
+  },
+  "Wipe both tools clean with a soft damp cloth after each use": {
+    "en": "Wipe both tools clean with a soft damp cloth after each use",
+    "pl": "Po każdym użyciu przetrzyj oba narzędzia miękką, wilgotną ściereczką"
+  },
+  "Choose black stone for a bold, polished vanity look or rose quartz for a softer spa aesthetic. Both are designed for the same gentle facial massage.": {
+    "en": "Choose black stone for a bold, polished vanity look or rose quartz for a softer spa aesthetic. Both are designed for the same gentle facial massage.",
+    "pl": "Wybierz black stone, jeśli chcesz mocniejszy, elegancki wygląd na toaletce, albo rose quartz dla delikatniejszej estetyki spa. Oba warianty są przeznaczone do tego samego łagodnego masażu twarzy."
+  },
+  "Quick face massage guide": {
+    "en": "Quick face massage guide",
+    "pl": "Prosty przewodnik po masażu twarzy"
+  },
+  "Roller + gua sha in one easy set": {
+    "en": "Roller + gua sha in one easy set",
+    "pl": "Roller + gua sha w jednym wygodnym zestawie"
+  },
+  "Use the roller first when your face feels puffy or tired, then reach for gua sha around the jawline, cheeks, and brow. Both tools are designed to glide over serum or oil, so the set feels practical, complete, and easy to repeat.": {
+    "en": "Use the roller first when your face feels puffy or tired, then reach for gua sha around the jawline, cheeks, and brow. Both tools are designed to glide over serum or oil, so the set feels practical, complete, and easy to repeat.",
+    "pl": "Najpierw użyj rollera, gdy twarz wygląda na opuchniętą lub zmęczoną, a potem sięgnij po gua sha przy linii żuchwy, policzkach i okolicy brwi. Oba narzędzia są zaprojektowane do poślizgu na serum lub olejku, więc zestaw jest praktyczny, kompletny i łatwy do regularnego używania."
+  },
+  "Fresh morning look": {
+    "en": "Fresh morning look",
+    "pl": "Świeższy wygląd rano"
+  },
+  "Smoother serum glide": {
+    "en": "Smoother serum glide",
+    "pl": "Gładszy poślizg na serum"
+  },
+  "Apply facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.": {
+    "en": "Apply facial oil or serum first so the gua sha can move smoothly along jawline and cheekbones without dragging.",
+    "pl": "Najpierw nałóż olejek lub serum do twarzy, aby gua sha mogło płynnie sunąć wzdłuż linii żuchwy i kości policzkowych bez ciągnięcia skóry."
+  },
+  "Two finishes": {
+    "en": "Two finishes",
+    "pl": "Dwa wykończenia"
+  },
+  "Choose polished black stone with gold hardware or soft rose quartz with rose-gold hardware.": {
+    "en": "Choose polished black stone with gold hardware or soft rose quartz with rose-gold hardware.",
+    "pl": "Wybierz elegancki black stone ze złotymi detalami albo delikatny rose quartz z wykończeniem rose gold."
+  },
+  "Black Stone Lifestyle": {
+    "en": "Black Stone Lifestyle",
+    "pl": "Black stone lifestyle"
+  },
+  "Black stone set styled for polished at-home skincare": {
+    "en": "Black stone set styled for polished at-home skincare",
+    "pl": "Zestaw black stone pokazany w dopracowanej domowej pielęgnacji"
+  },
+  "Soft Spa Look": {
+    "en": "Soft Spa Look",
+    "pl": "Delikatny efekt spa"
+  },
+  "Rose quartz set styled with a soft, spa-inspired skincare aesthetic": {
+    "en": "Rose quartz set styled with a soft, spa-inspired skincare aesthetic",
+    "pl": "Zestaw rose quartz w delikatnej estetyce pielęgnacji inspirowanej spa"
+  },
+  "Rose quartz roller shown during a gentle facial massage": {
+    "en": "Rose quartz roller shown during a gentle facial massage",
+    "pl": "Roller rose quartz pokazany podczas delikatnego masażu twarzy"
+  },
+  "Watch video": {
+    "en": "Watch video",
+    "pl": "Zobacz wideo"
+  },
+  "Set walkthrough video": {
+    "en": "Set walkthrough video",
+    "pl": "Wideo z omówieniem zestawu"
+  },
+  "Roller in use video": {
+    "en": "Roller in use video",
+    "pl": "Wideo z użyciem rollera"
+  },
+  "Product video embedded near the image gallery": {
+    "en": "Product video embedded near the image gallery",
+    "pl": "Wideo produktu osadzone blisko galerii zdjęć"
+  },
+  "Set walkthrough": {
+    "en": "Set walkthrough",
+    "pl": "Omówienie zestawu"
+  },
+  "Rose quartz roller in use": {
+    "en": "Rose quartz roller in use",
+    "pl": "Roller rose quartz w użyciu"
+  },
+  "A short creator video that shows the set and explains how it fits into skincare.": {
+    "en": "A short creator video that shows the set and explains how it fits into skincare.",
+    "pl": "Krótkie wideo twórczyni pokazujące zestaw i to, jak pasuje do pielęgnacji."
+  },
+  "A close real-use clip showing the roller, pace, and light pressure on the face.": {
+    "en": "A close real-use clip showing the roller, pace, and light pressure on the face.",
+    "pl": "Zbliżenie z użycia: roller, tempo ruchu i lekki nacisk na twarzy."
+  },
+  "41 sec": {
+    "en": "41 sec",
+    "pl": "41 s"
+  },
+  "24 sec": {
+    "en": "24 sec",
+    "pl": "24 s"
+  },
+  "Product videos": {
+    "en": "Product videos",
+    "pl": "WIDEO PRODUKTU"
+  },
+  "Watch the set before you choose": {
+    "en": "Watch the set before you choose",
+    "pl": "Zobacz zestaw przed wyborem"
+  },
+  "Shop the edit": {
+    "en": "Shop the edit",
+    "pl": "Zobacz sklep"
+  },
+  "Shop Skincare Tools | Lux Aura Care": {
+    "en": "Shop Skincare Tools | Lux Aura Care",
+    "pl": "Sklep z narzędziami do pielęgnacji | Lux Aura Care"
+  },
+  "Shop face rollers, gua sha tools, dermaplaning razors, patches, and practical skincare tools for at-home care.": {
+    "en": "Shop face rollers, gua sha tools, dermaplaning razors, patches, and practical skincare tools for at-home care.",
+    "pl": "Kup rollery do twarzy, gua sha, maszynki do dermaplaningu, płatki i praktyczne narzędzia do domowej pielęgnacji."
+  },
+  "Shop skincare tools": {
+    "en": "Shop skincare tools",
+    "pl": "Sklep z narzędziami do pielęgnacji"
+  },
+  "Shop now": {
+    "en": "Shop now",
+    "pl": "Zobacz sklep"
+  },
+  "Tools for calmer, clearer at-home skincare": {
+    "en": "Tools for calmer, clearer at-home skincare",
+    "pl": "Narzędzia do spokojniejszej, prostszej pielęgnacji w domu"
+  },
+  "Face rollers, gua sha tools, dermaplaning razors, patches, and body-care essentials with clear product details before checkout.": {
+    "en": "Face rollers, gua sha tools, dermaplaning razors, patches, and body-care essentials with clear product details before checkout.",
+    "pl": "Rollery do twarzy, gua sha, maszynki do dermaplaningu, płatki i akcesoria do ciała z jasnymi szczegółami produktu przed płatnością."
+  },
+  "15": {
+    "en": "15",
+    "pl": "15"
+  },
+  "curated skincare products": {
+    "en": "curated skincare products",
+    "pl": "wybranych produktów do pielęgnacji"
+  },
+  "product-specific photos and descriptions": {
+    "en": "product-specific photos and descriptions",
+    "pl": "zdjęcia i opisy konkretnych produktów"
+  },
+  "checkout with final total shown before payment": {
+    "en": "checkout with final total shown before payment",
+    "pl": "checkout z końcową kwotą przed płatnością"
+  },
+  "View product": {
+    "en": "View product",
+    "pl": "Zobacz produkt"
+  },
+  "Skincare Tools": {
+    "en": "Skincare Tools",
+    "pl": "Narzędzia do pielęgnacji"
+  },
+  "Shop Lux Aura Care": {
+    "en": "Shop Lux Aura Care",
+    "pl": "Sklep Lux Aura Care"
+  },
+  "Premium skincare tools and editorial guides curated to help shoppers move from inspiration to confident product choices.": {
+    "en": "Premium skincare tools and editorial guides curated to help shoppers move from inspiration to confident product choices.",
+    "pl": "Narzędzia do pielęgnacji premium i redakcyjne przewodniki, które pomagają przejść od inspiracji do pewnego wyboru produktu."
+  },
+  "Premium tools. Clear guidance.": {
+    "en": "Premium tools. Clear guidance.",
+    "pl": "Narzędzia premium. Jasne wskazówki."
+  },
+  "Premium skincare tools and clear product guidance.": {
+    "en": "Premium skincare tools and clear product guidance.",
+    "pl": "Narzędzia do pielęgnacji premium i jasne wskazówki produktowe."
+  },
+  "Lux Aura Care curates premium skincare tools, body-care essentials, and practical guides that help shoppers choose confidently.": {
+    "en": "Lux Aura Care curates premium skincare tools, body-care essentials, and practical guides that help shoppers choose confidently.",
+    "pl": "Lux Aura Care wybiera narzędzia do pielęgnacji premium, akcesoria do ciała i praktyczne przewodniki, które pomagają kupować z większą pewnością."
+  },
+  "Lux Aura Care | Premium Skincare Tools": {
+    "en": "Lux Aura Care | Premium Skincare Tools",
+    "pl": "Lux Aura Care | Narzędzia do pielęgnacji premium"
+  },
+  "Lux Aura Care | Skincare Tools & Product Guides": {
+    "en": "Lux Aura Care | Skincare Tools & Product Guides",
+    "pl": "Lux Aura Care | Narzędzia do pielęgnacji i przewodniki produktowe"
+  },
+  "Lux Aura Journal | Skincare & Product Guides": {
+    "en": "Lux Aura Journal | Skincare & Product Guides",
+    "pl": "Lux Aura Journal | Pielęgnacja i przewodniki produktowe"
+  },
+  "Explore skincare, body-care, and self-care product guides designed for fast reading, clear comparison, and confident shopping.": {
+    "en": "Explore skincare, body-care, and self-care product guides designed for fast reading, clear comparison, and confident shopping.",
+    "pl": "Przeglądaj przewodniki po pielęgnacji twarzy, ciała i self-care stworzone z myślą o szybkim czytaniu, jasnym porównaniu i pewniejszym zakupie."
+  },
+  "Practical product guides for thoughtful choices": {
+    "en": "Practical product guides for thoughtful choices",
+    "pl": "Praktyczne przewodniki produktowe dla lepszych wyborów"
+  },
+  "Lux Aura Care | Premium Skincare Tools & Product Guides": {
+    "en": "Lux Aura Care | Premium Skincare Tools & Product Guides",
+    "pl": "Lux Aura Care | Narzędzia do pielęgnacji premium i przewodniki produktowe"
+  },
+  "Shop premium skincare tools, compare curated beauty picks, and read practical product guides before you buy.": {
+    "en": "Shop premium skincare tools, compare curated beauty picks, and read practical product guides before you buy.",
+    "pl": "Kupuj narzędzia do pielęgnacji premium, porównuj wybrane propozycje beauty i czytaj praktyczne przewodniki przed zakupem."
+  },
+  "Direct shop": {
+    "en": "Direct shop",
+    "pl": "Sklep własny"
+  },
+  "Own products": {
+    "en": "Own products",
+    "pl": "Produkty własne"
+  },
+  "Clear checkout": {
+    "en": "Clear checkout",
+    "pl": "Jasna płatność"
+  },
+  "Total before pay": {
+    "en": "Total before pay",
+    "pl": "Kwota przed płatnością"
+  },
+  "Curated guides": {
+    "en": "Curated guides",
+    "pl": "Wybrane poradniki"
+  },
+  "Product-first": {
+    "en": "Product-first",
+    "pl": "Najpierw produkt"
+  },
+  "Latest product guides for confident beauty shopping.": {
+    "en": "Latest product guides for confident beauty shopping.",
+    "pl": "Najnowsze przewodniki produktowe dla pewniejszych zakupów beauty."
+  },
+  "Now in the shop": {
+    "en": "Now in the shop",
+    "pl": "Teraz w sklepie"
+  },
+  "Shop Lux Aura Care skincare tools": {
+    "en": "Shop Lux Aura Care skincare tools",
+    "pl": "Kup narzędzia do pielęgnacji Lux Aura Care"
+  },
+  "Face rollers, gua sha tools, dermaplaning razors, patches, and masks with clear product details before checkout.": {
+    "en": "Face rollers, gua sha tools, dermaplaning razors, patches, and masks with clear product details before checkout.",
+    "pl": "Rollery do twarzy, gua sha, maszynki do dermaplaningu, płatki i maski z jasnymi szczegółami produktu przed płatnością."
+  },
+  "Shop all products": {
+    "en": "Shop all products",
+    "pl": "Zobacz wszystkie produkty"
+  },
+  "Shop by goal": {
+    "en": "Shop by goal",
+    "pl": "Wybierz według celu"
+  },
+  "Choose the skincare goal you want to solve first": {
+    "en": "Choose the skincare goal you want to solve first",
+    "pl": "Wybierz cel pielęgnacji, który chcesz rozwiązać jako pierwszy"
+  },
+  "Each category keeps the choice focused, with products and guides organized around one clear need.": {
+    "en": "Each category keeps the choice focused, with products and guides organized around one clear need.",
+    "pl": "Każda kategoria zawęża wybór, porządkując produkty i poradniki wokół jednej konkretnej potrzeby."
+  },
+  "Start with one product goal, then compare the best match": {
+    "en": "Start with one product goal, then compare the best match",
+    "pl": "Zacznij od jednego celu produktowego, potem porównaj najlepsze dopasowanie"
+  },
+  "Choose the result you want, read one focused guide, and move to the product page with enough context to decide calmly.": {
+    "en": "Choose the result you want, read one focused guide, and move to the product page with enough context to decide calmly.",
+    "pl": "Wybierz efekt, którego szukasz, przeczytaj jeden konkretny poradnik i przejdź na stronę produktu z wystarczającym kontekstem do spokojnej decyzji."
+  },
+  "Read product guides": {
+    "en": "Read product guides",
+    "pl": "Czytaj poradniki produktowe"
+  },
+  "Product Guides": {
+    "en": "Product Guides",
+    "pl": "Poradniki produktowe"
+  },
+  "Helpful guides for choosing without second-guessing": {
+    "en": "Helpful guides for choosing without second-guessing",
+    "pl": "Poradniki, które pomagają wybrać bez zgadywania"
+  },
+  "Benefit-led editorial pages that explain what each product is for, when it makes sense, and how to use it safely.": {
+    "en": "Benefit-led editorial pages that explain what each product is for, when it makes sense, and how to use it safely.",
+    "pl": "Redakcyjne poradniki oparte na korzyściach: wyjaśniają, do czego służy produkt, kiedy ma sens i jak używać go bezpiecznie."
+  },
+  "Amazon Finds": {
+    "en": "Amazon Finds",
+    "pl": "Znaleziska Amazon"
+  },
+  "Curated product picks with clear trust signals": {
+    "en": "Curated product picks with clear trust signals",
+    "pl": "Wybrane produkty z jasnymi sygnałami zaufania"
+  },
+  "Practical beauty and self-care products selected for repeat use, strong shopper signals, and easy comparison.": {
+    "en": "Practical beauty and self-care products selected for repeat use, strong shopper signals, and easy comparison.",
+    "pl": "Praktyczne produkty beauty i self-care wybrane pod regularne użycie, mocne sygnały zakupowe i łatwe porównanie."
+  },
+  "Ready to compare": {
+    "en": "Ready to compare",
+    "pl": "Gotowa do porównania"
+  },
+  "Open the strongest picks while the product details are fresh": {
+    "en": "Open the strongest picks while the product details are fresh",
+    "pl": "Otwórz najmocniejsze propozycje, gdy szczegóły produktu są jeszcze świeże"
+  },
+  "Compare the curated favorites in one flow and keep your cart focused around the result you actually want.": {
+    "en": "Compare the curated favorites in one flow and keep your cart focused around the result you actually want.",
+    "pl": "Porównaj wybrane produkty w jednym przepływie i utrzymaj koszyk wokół efektu, którego naprawdę szukasz."
+  },
+  "Compare curated favorites": {
+    "en": "Compare curated favorites",
+    "pl": "Porównaj wybrane produkty"
+  },
+  "Read more guides": {
+    "en": "Read more guides",
+    "pl": "Czytaj więcej poradników"
+  },
+  "Skincare tools worth a closer look.": {
+    "en": "Skincare tools worth a closer look.",
+    "pl": "Narzędzia do pielęgnacji, którym warto się przyjrzeć."
+  },
+  "Premium skincare tools, clearly explained": {
+    "en": "Premium skincare tools, clearly explained",
+    "pl": "Narzędzia premium do pielęgnacji, jasno wyjaśnione"
+  },
+  "Curated picks for skin, sleep, and body care.": {
+    "en": "Curated picks for skin, sleep, and body care.",
+    "pl": "Wybrane propozycje do skóry, snu i pielęgnacji ciała."
+  },
+  "Shop with product details, usage guidance, and honest next steps.": {
+    "en": "Shop with product details, usage guidance, and honest next steps.",
+    "pl": "Kupuj z opisem produktu, wskazówkami użycia i uczciwym kolejnym krokiem."
+  },
+  "A focused shortlist with clear product benefits, shopper signals, and marketplace-aware links.": {
+    "en": "A focused shortlist with clear product benefits, shopper signals, and marketplace-aware links.",
+    "pl": "Krótka, konkretna selekcja z jasnymi korzyściami produktu, sygnałami zakupowymi i linkami dopasowanymi do rynku."
+  },
+  "Browse all Amazon favorites": {
+    "en": "Browse all Amazon favorites",
+    "pl": "Zobacz wszystkie ulubione z Amazon"
+  },
+  "Evening skincare": {
+    "en": "Evening skincare",
+    "pl": "Wieczorna pielęgnacja"
+  },
+  "A practical 12-minute evening plan": {
+    "en": "A practical 12-minute evening plan",
+    "pl": "Praktyczny 12-minutowy plan wieczorny"
+  },
+  "Value sets": {
+    "en": "Value sets",
+    "pl": "Zestawy produktowe"
+  },
+  "Curated product pairings for focused results": {
+    "en": "Curated product pairings for focused results",
+    "pl": "Wybrane połączenia produktów pod konkretny efekt"
+  },
+  "Skip the guesswork. These collections pair complementary products so it is easier to build a focused cart.": {
+    "en": "Skip the guesswork. These collections pair complementary products so it is easier to build a focused cart.",
+    "pl": "Pomiń zgadywanie. Te kolekcje łączą uzupełniające się produkty, żeby łatwiej zbudować konkretny koszyk."
+  },
+  "Ready to choose": {
+    "en": "Ready to choose",
+    "pl": "Gotowa do wyboru"
+  },
+  "Start with one focused set, then add only what you need": {
+    "en": "Start with one focused set, then add only what you need",
+    "pl": "Zacznij od jednego konkretnego zestawu, potem dodaj tylko to, czego potrzebujesz"
+  },
+  "Bundles keep the decision simple by grouping products that naturally work toward the same beauty or self-care goal.": {
+    "en": "Bundles keep the decision simple by grouping products that naturally work toward the same beauty or self-care goal.",
+    "pl": "Zestawy upraszczają decyzję, grupując produkty, które naturalnie wspierają ten sam cel beauty lub self-care."
+  },
+  "Browse curated sets": {
+    "en": "Browse curated sets",
+    "pl": "Zobacz wybrane zestawy"
+  },
+  "Get one clear product edit every Friday.": {
+    "en": "Get one clear product edit every Friday.",
+    "pl": "W każdy piątek otrzymuj jedną konkretną selekcję produktów."
+  },
+  "1 concise product note + 3 selected picks sent Friday mornings. Unsubscribe anytime.": {
+    "en": "1 concise product note + 3 selected picks sent Friday mornings. Unsubscribe anytime.",
+    "pl": "1 krótka notatka produktowa + 3 wybrane propozycje wysyłane w piątkowe poranki. Zrezygnuj w dowolnym momencie."
+  },
+  "Explore curated Lux Aura Care favorites with direct Amazon links, clear product benefits, and easy comparison.": {
+    "en": "Explore curated Lux Aura Care favorites with direct Amazon links, clear product benefits, and easy comparison.",
+    "pl": "Przeglądaj wybrane ulubione produkty Lux Aura Care z bezpośrednimi linkami Amazon, jasnymi korzyściami i łatwym porównaniem."
+  },
+  "Curated products highlighted from the Lux Aura feed, with direct links for fast comparison and confident discovery.": {
+    "en": "Curated products highlighted from the Lux Aura feed, with direct links for fast comparison and confident discovery.",
+    "pl": "Wybrane produkty z feedu Lux Aura z bezpośrednimi linkami do szybkiego porównania i pewniejszego wyboru."
+  },
+  "Explore product guides": {
+    "en": "Explore product guides",
+    "pl": "Zobacz poradniki produktowe"
+  },
+  "Pick one goal, compare the essentials, and choose with context": {
+    "en": "Pick one goal, compare the essentials, and choose with context",
+    "pl": "Wybierz jeden cel, porównaj najważniejsze produkty i zdecyduj z kontekstem"
+  },
+  "We focus on quality over quantity. Start with the collection that matches your immediate need, then open the product details before you buy.": {
+    "en": "We focus on quality over quantity. Start with the collection that matches your immediate need, then open the product details before you buy.",
+    "pl": "Stawiamy na jakość, nie ilość. Zacznij od kolekcji dopasowanej do aktualnej potrzeby, a przed zakupem otwórz szczegóły produktu."
+  },
+  "See product guides": {
+    "en": "See product guides",
+    "pl": "Zobacz poradniki produktowe"
+  },
+  "Direct Amazon links to high-signal picks for this category.": {
+    "en": "Direct Amazon links to high-signal picks for this category.",
+    "pl": "Bezpośrednie linki Amazon do mocnych propozycji z tej kategorii."
+  },
+  "Latest Product Guides": {
+    "en": "Latest Product Guides",
+    "pl": "Najnowsze poradniki produktowe"
+  },
+  "Practical product guidance for choosing, comparing, and using each pick well.": {
+    "en": "Practical product guidance for choosing, comparing, and using each pick well.",
+    "pl": "Praktyczne wskazówki do wyboru, porównania i dobrego używania każdej propozycji."
+  },
+  "Based in Poland, supporting Lux Aura Care customers and readers worldwide.": {
+    "en": "Based in Poland, supporting Lux Aura Care customers and readers worldwide.",
+    "pl": "Działamy z Polski i wspieramy klientki oraz czytelniczki Lux Aura Care na całym świecie."
+  },
+  "Have a question about a product, an order, a recommendation, or a collaboration? We're here to help with clear, practical support.": {
+    "en": "Have a question about a product, an order, a recommendation, or a collaboration? We're here to help with clear, practical support.",
+    "pl": "Masz pytanie o produkt, zamówienie, rekomendację albo współpracę? Pomożemy konkretnie i praktycznie."
+  },
+  "The page you are looking for is unavailable": {
+    "en": "The page you are looking for is unavailable",
+    "pl": "Ta strona jest niedostępna"
+  },
+  "Explore the latest guides and product picks to keep shopping with context.": {
+    "en": "Explore the latest guides and product picks to keep shopping with context.",
+    "pl": "Zobacz najnowsze poradniki i propozycje produktów, żeby kupować z lepszym kontekstem."
+  },
+  "Keep building your skincare shelf": {
+    "en": "Keep building your skincare shelf",
+    "pl": "Buduj swoją półkę pielęgnacyjną"
+  },
+  "Curated alternatives chosen for clear benefits, repeat use, and a better product fit.": {
+    "en": "Curated alternatives chosen for clear benefits, repeat use, and a better product fit.",
+    "pl": "Wybrane alternatywy dobrane pod jasne korzyści, regularne użycie i lepsze dopasowanie produktu."
+  },
+  "Explore this product on Amazon and choose what fits your evening skincare best.": {
+    "en": "Explore this product on Amazon and choose what fits your evening skincare best.",
+    "pl": "Zobacz ten produkt na Amazon i wybierz to, co najlepiej pasuje do Twojej wieczornej pielęgnacji."
+  },
+  "See videos": {
+    "en": "See videos",
+    "pl": "Zobacz wideo"
+  },
+  "Fast-scannable editorial articles with clear steps, useful context, and transparent product links.": {
+    "en": "Fast-scannable editorial articles with clear steps, useful context, and transparent product links.",
+    "pl": "Szybkie do przejrzenia artykuły redakcyjne z jasnymi krokami, przydatnym kontekstem i transparentnymi linkami produktowymi."
+  },
+  "Editorial guide": {
+    "en": "Editorial guide",
+    "pl": "Poradnik redakcyjny"
+  },
+  "How the Lux Aura shop works": {
+    "en": "How the Lux Aura shop works",
+    "pl": "Jak działa sklep Lux Aura"
+  },
+  "Delivery Options": {
+    "en": "Delivery Options",
+    "pl": "Opcje dostawy"
+  },
+  "Details before payment": {
+    "en": "Details before payment",
+    "pl": "Szczegóły przed płatnością"
+  },
+  "Premium skincare tools": {
+    "en": "Premium skincare tools",
+    "pl": "Narzędzia do pielęgnacji premium"
+  },
+  "Skincare tools that are easy to choose": {
+    "en": "Skincare tools that are easy to choose",
+    "pl": "Narzędzia do pielęgnacji, które łatwo wybrać"
+  },
+  "Compare details, usage notes, and final checkout information before you buy.": {
+    "en": "Compare details, usage notes, and final checkout information before you buy.",
+    "pl": "Porównaj szczegóły, wskazówki użycia i informacje o płatności, zanim kupisz."
+  },
+  "Featured shop product": {
+    "en": "Featured shop product",
+    "pl": "Wyróżniony produkt ze sklepu"
+  },
+  "Calculated before checkout": {
+    "en": "Calculated before checkout",
+    "pl": "Wyliczane przed płatnością"
+  },
+  "Secure Checkout": {
+    "en": "Secure Checkout",
+    "pl": "Bezpieczna płatność"
+  },
+  "14-Day Returns": {
+    "en": "14-Day Returns",
+    "pl": "14 dni na zwrot"
+  },
+  "How Lux Aura Care collects, uses, and protects your personal data.": {
+    "en": "How Lux Aura Care collects, uses, and protects your personal data.",
+    "pl": "Jak Lux Aura Care zbiera, wykorzystuje i chroni Twoje dane osobowe."
+  },
+  "Our 14-day EU right of withdrawal, how to request a return, and shipping information for the Lux Aura Care shop.": {
+    "en": "Our 14-day EU right of withdrawal, how to request a return, and shipping information for the Lux Aura Care shop.",
+    "pl": "14-dniowe prawo odstąpienia w UE, sposób zgłoszenia zwrotu i informacje o dostawie w sklepie Lux Aura Care."
+  },
+  "The terms that govern your use of Lux Aura Care, including our Amazon affiliate program disclosure.": {
+    "en": "The terms that govern your use of Lux Aura Care, including our Amazon affiliate program disclosure.",
+    "pl": "Warunki korzystania z Lux Aura Care, w tym informacja o udziale w programie partnerskim Amazon."
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"

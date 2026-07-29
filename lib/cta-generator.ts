@@ -3,10 +3,13 @@ import { type Product, productProofById } from "@/lib/site-data";
 export type CTAStrategy = "high-urgency" | "trust-signal" | "benefit-led" | "scarcity" | "social-proof";
 
 export function generateCTALabel(
-  product: Product,
-  strategy: CTAStrategy = "benefit-led",
-  isCompact: boolean = false
+  _product: Product,
+  _strategy: CTAStrategy = "benefit-led",
+  _isCompact: boolean = false
 ): string {
+  void _strategy;
+  void _isCompact;
+
   // Always return the base label so it can be translated correctly via the catalog (e.g. "Sprawdź na Amazon").
   // Dynamic, untranslated strings like "Trending Now" were breaking the UI layout and UX.
   return "Check on Amazon";

@@ -24,8 +24,8 @@ export async function RoutineSection() {
     <Section id="routine" className="atmosphere-surface [content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
       <Container>
         <Heading
-          eyebrow="Night Routine"
-          title="A practical 12-minute glow routine"
+          eyebrow="Evening skincare"
+          title="A practical 12-minute evening plan"
           description="Built for low-attention evenings: short steps, clear outcomes, and one product action at a time."
         />
 
@@ -75,7 +75,7 @@ export async function RoutineSection() {
         </ol>
 
         <div className="mt-8 flex justify-center">
-          <CTAButton href="/blog" label="Read Full Routine Guides" variant="secondary" />
+          <CTAButton href="/blog" label="Read product guides" variant="secondary" />
         </div>
       </Container>
     </Section>
