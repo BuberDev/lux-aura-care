@@ -17,7 +17,8 @@ import {
   Star,
   ChevronRight,
   ChevronLeft,
-  Share2
+  Share2,
+  ThumbsUp
 } from "lucide-react";
 import { Container } from "@/components/container";
 import { LocalizedLink } from "@/components/localized-link";
@@ -27,6 +28,7 @@ import { localizeContent } from "@/lib/i18n/messages";
 import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterBlock } from "@/components/newsletter-block";
+import { LocalizedDate } from "@/components/localized-date";
 import {
   trackShopAddToCart,
   trackShopBeginCheckout,
@@ -862,6 +864,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const usageDescription = isFashion
     ? "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own."
     : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
+  const customerReviews = product.reviews ?? [];
   const finalEyebrow = isFashion ? "YOUR NEXT POLISHED LOOK" : "YOUR RADIANT COMPLEXION AWAITS";
   const finalTitle = isFashion ? "Found the color that feels like you?" : "Ready to add it to your skincare routine?";
   const relatedHeading = isFashion ? "Continue exploring Lux Aura Care" : "Pair it with your skincare";
@@ -1300,7 +1303,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   {product.name}
                 </h1>
                 {product.rating && product.rating.count > 0 && (
-                  <div className="mb-3 flex items-center gap-2">
+                  <a
+                    href={customerReviews.length > 0 ? "#customer-reviews" : undefined}
+                    className={`mb-3 flex w-fit items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold ${
+                      customerReviews.length > 0 ? "transition hover:text-accent-gold" : "pointer-events-none"
+                    }`}
+                    aria-label={
+                      customerReviews.length > 0
+                        ? `${product.rating.value.toFixed(1)} ${text("out of 5 stars")}, ${product.rating.count} ${text("supplier reviews")}. ${text("Go to customer reviews")}`
+                        : undefined
+                    }
+                  >
                     <div className="flex items-center gap-0.5" aria-hidden="true">
                       {[1, 2, 3, 4, 5].map((starPosition) => (
                         <Star
@@ -1315,9 +1328,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     </div>
                     <span className="text-xs font-semibold text-text-secondary">
                       {product.rating.value.toFixed(1)} · {product.rating.count}{" "}
-                      <T text={product.rating.count === 1 ? "review" : "reviews"} />
+                      <T text={customerReviews.length > 0 ? "supplier reviews" : product.rating.count === 1 ? "review" : "reviews"} />
                     </span>
-                  </div>
+                  </a>
                 )}
                 <p className="text-sm md:text-base leading-relaxed text-text-secondary">
                   {product.description}
@@ -1722,6 +1735,130 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </section>
+
+      {/* Supplier review excerpts supplied with this product listing */}
+      {customerReviews.length > 0 && product.rating && (
+        <section id="customer-reviews" className="scroll-mt-24 border-b border-border-subtle py-12 sm:py-16">
+          <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
+            <div className="mx-auto max-w-6xl">
+              <div className="grid gap-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start">
+                <aside className="rounded-2xl border border-border-subtle bg-surface-subtle p-6 lg:sticky lg:top-24">
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-accent-gold">
+                    <T text={"SUPPLIER CUSTOMER REVIEWS"} />
+                  </p>
+                  <div className="mt-4 flex items-end gap-2">
+                    <span className="font-serif text-5xl font-semibold leading-none text-text-primary">
+                      {product.rating.value.toFixed(1)}
+                    </span>
+                    <span className="pb-1 text-sm font-semibold text-text-secondary">/ 5</span>
+                  </div>
+                  <div
+                    className="mt-3 flex items-center gap-1"
+                    aria-label={`${product.rating.value.toFixed(1)} ${text("out of 5 stars")}`}
+                  >
+                    {[1, 2, 3, 4, 5].map((starPosition) => (
+                      <Star
+                        key={starPosition}
+                        className={`size-5 ${
+                          starPosition <= Math.round(product.rating!.value)
+                            ? "fill-accent-gold text-accent-gold"
+                            : "fill-transparent text-border-strong"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm font-semibold text-text-primary">
+                    <T text={"Based on"} /> {product.rating.count} <T text={"reviews on the supplier listing"} />
+                  </p>
+                  <p className="mt-4 border-t border-border-subtle pt-4 text-xs leading-relaxed text-text-secondary">
+                    <T text={"Selected reviews from the supplier's product listing. The wording is translated for readability, and color names reflect the original order variants. These are not purchases verified by Lux Aura Care."} />
+                  </p>
+                </aside>
+
+                <div>
+                  <div className="mb-6 max-w-2xl">
+                    <h2
+                      className="text-3xl font-semibold text-text-primary md:text-4xl"
+                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    >
+                      <T text={"What customers say about the dress"} />
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                      <T text={"Five selected comments from customers who ordered this style through the supplier listing."} />
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {customerReviews.map((review, index) => (
+                      <article
+                        key={review.id}
+                        className={`flex h-full flex-col rounded-2xl border border-border-subtle bg-surface-subtle p-5 sm:p-6 ${
+                          customerReviews.length % 2 === 1 && index === customerReviews.length - 1
+                            ? "md:col-span-2"
+                            : ""
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex min-w-0 items-center gap-3">
+                            <span
+                              className="flex size-10 shrink-0 items-center justify-center rounded-full border border-accent-gold/30 bg-accent-gold/10 text-sm font-extrabold text-accent-gold"
+                              aria-hidden="true"
+                            >
+                              {review.author.charAt(0).toUpperCase()}
+                            </span>
+                            <div className="min-w-0">
+                              <p className="truncate text-sm font-bold text-text-primary">{review.author}</p>
+                              <p className="text-[11px] text-text-secondary"><T text={review.source} /></p>
+                            </div>
+                          </div>
+                          <div
+                            className="flex shrink-0 items-center gap-0.5"
+                            aria-label={`${review.rating} ${text("out of 5 stars")}`}
+                          >
+                            {[1, 2, 3, 4, 5].map((starPosition) => (
+                              <Star
+                                key={starPosition}
+                                className={`size-4 ${
+                                  starPosition <= review.rating
+                                    ? "fill-accent-gold text-accent-gold"
+                                    : "fill-transparent text-border-strong"
+                                }`}
+                                aria-hidden="true"
+                              />
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          <span className="rounded-full border border-border-subtle bg-background-primary px-3 py-1 text-[11px] font-semibold text-text-secondary">
+                            <T text={"Color"} />: {review.color}
+                          </span>
+                          <span className="rounded-full border border-border-subtle bg-background-primary px-3 py-1 text-[11px] font-semibold text-text-secondary">
+                            <T text={"Size"} />: {review.size}
+                          </span>
+                        </div>
+
+                        <blockquote className="mt-4 flex-1 text-sm leading-7 text-text-primary">
+                          “{review.body}”
+                        </blockquote>
+
+                        <footer className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-border-subtle pt-4 text-[11px] text-text-secondary">
+                          <time dateTime={review.date}><LocalizedDate value={review.date} /></time>
+                          <span className="inline-flex items-center gap-1.5">
+                            <ThumbsUp className="size-3.5" aria-hidden="true" />
+                            <T text={"Helpful"} /> ({review.helpfulCount})
+                          </span>
+                        </footer>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* 9. FAQ ACCORDION SECTION */}
       <section className="border-b border-border-subtle py-12 sm:py-16">

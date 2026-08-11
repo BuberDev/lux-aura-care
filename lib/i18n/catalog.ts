@@ -7239,6 +7239,82 @@ export const translationCatalog = {
     "en": "Ivory floral skirt paired with a fitted black long-sleeve bodice",
     "pl": "Biały dół w kwiaty połączony z dopasowaną czarną górą z długim rękawem"
   },
+  "SUPPLIER CUSTOMER REVIEWS": {
+    "en": "SUPPLIER CUSTOMER REVIEWS",
+    "pl": "OPINIE KLIENTÓW DOSTAWCY"
+  },
+  "out of 5 stars": {
+    "en": "out of 5 stars",
+    "pl": "na 5 gwiazdek"
+  },
+  "supplier reviews": {
+    "en": "supplier reviews",
+    "pl": "opinii u dostawcy"
+  },
+  "Go to customer reviews": {
+    "en": "Go to customer reviews",
+    "pl": "Przejdź do opinii klientów"
+  },
+  "Based on": {
+    "en": "Based on",
+    "pl": "Na podstawie"
+  },
+  "reviews on the supplier listing": {
+    "en": "reviews on the supplier listing",
+    "pl": "opinii w ofercie dostawcy"
+  },
+  "Selected reviews from the supplier's product listing. The wording is translated for readability, and color names reflect the original order variants. These are not purchases verified by Lux Aura Care.": {
+    "en": "Selected reviews from the supplier's product listing. The wording is translated for readability, and color names reflect the original order variants. These are not purchases verified by Lux Aura Care.",
+    "pl": "Wybrane opinie pochodzą z oferty produktu u dostawcy. Treść została przetłumaczona dla czytelności, a nazwy kolorów odpowiadają wariantom z pierwotnych zamówień. Nie są to zakupy zweryfikowane przez Lux Aura Care."
+  },
+  "What customers say about the dress": {
+    "en": "What customers say about the dress",
+    "pl": "Co klientki mówią o tej sukience"
+  },
+  "Five selected comments from customers who ordered this style through the supplier listing.": {
+    "en": "Five selected comments from customers who ordered this style through the supplier listing.",
+    "pl": "Pięć wybranych komentarzy od klientek, które zamówiły ten fason w ofercie dostawcy."
+  },
+  "AliExpress customer": {
+    "en": "AliExpress customer",
+    "pl": "Klient AliExpress"
+  },
+  "Anonymous customer": {
+    "en": "Anonymous customer",
+    "pl": "Anonimowy klient"
+  },
+  "Helpful": {
+    "en": "Helpful",
+    "pl": "Przydatne"
+  },
+  "Color": {
+    "en": "Color",
+    "pl": "Kolor"
+  },
+  "Size": {
+    "en": "Size",
+    "pl": "Rozmiar"
+  },
+  "I ordered one size up, but I think my usual size would have been right because this one is a little small. Order your usual size. The fabric feels nice, the color is beautiful, and it is not see-through.": {
+    "en": "I ordered one size up, but I think my usual size would have been right because this one is a little small. Order your usual size. The fabric feels nice, the color is beautiful, and it is not see-through.",
+    "pl": "Zamówiłem rozmiar większy, ale myślę, że mój rozmiar byłby odpowiedni, ponieważ ten jest trochę mały. Zamawiaj swój rozmiar, a materiał jest fajny, ma bardzo ładny kolor i nie jest przezroczysty."
+  },
+  "I am very happy with this dress. The fabric can be washed, dries quickly and does not need ironing. Size XL is not tight across my 98 cm bust. I am thinking about buying another one in a different color.": {
+    "en": "I am very happy with this dress. The fabric can be washed, dries quickly and does not need ironing. Size XL is not tight across my 98 cm bust. I am thinking about buying another one in a different color.",
+    "pl": "Jestem bardzo zadowolona z tej sukienki. Ma tkaninę, którą można prać, szybko schnie i nie trzeba jej prasować. Rozmiar XL nie jest za ciasny na klatkę piersiową o obwodzie 98 cm. Zastanawiam się, czy kupić jeszcze jedną w innym kolorze."
+  },
+  "I liked it—a beautiful dress. The material is good and excellent for the price. I fully recommend it. The size fits me perfectly; if you prefer a closer fit, you can order a smaller size, but it is beautiful. I plan to order more.": {
+    "en": "I liked it—a beautiful dress. The material is good and excellent for the price. I fully recommend it. The size fits me perfectly; if you prefer a closer fit, you can order a smaller size, but it is beautiful. I plan to order more.",
+    "pl": "Podobała mi się, piękna sukienka. Materiał jest dobry, jest doskonały za tę cenę. Całkowicie go polecam. Rozmiar pasuje mi perfekcyjnie, a jeśli lubisz trochę bardziej dopasowany, możesz zamówić mniejszy rozmiar, ale jest piękna. Zamierzam zamówić więcej..."
+  },
+  "The dress is made from cool-feeling, stretchy material. It fits the body very well and looks lovely.": {
+    "en": "The dress is made from cool-feeling, stretchy material. It fits the body very well and looks lovely.",
+    "pl": "Sukienka jest wykonana z chłodnego materiału i dobrze się rozciąga; bardzo dobrze dopasowuje się do ciała i wygląda bardzo uroczo."
+  },
+  "Perfect and very beautiful. I highly recommend it. The material is very good—ten out of ten.": {
+    "en": "Perfect and very beautiful. I highly recommend it. The material is very good—ten out of ten.",
+    "pl": "Doskonałe, super piękne, gorąco polecam, materiał jest bardzo dobry, dziesięć na dziesięć."
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"

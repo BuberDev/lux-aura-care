@@ -36,6 +36,18 @@ export type ShopProductSalesStory = {
   }[];
 };
 
+export type ShopProductReview = {
+  id: string;
+  author: string;
+  rating: number;
+  body: string;
+  date: string;
+  source: string;
+  color: string;
+  size: string;
+  helpfulCount: number;
+};
+
 export type ShopProduct = {
   id: string;
   name: string;
@@ -58,6 +70,7 @@ export type ShopProduct = {
   flashSaleEndsAt?: string; // ISO date — real countdown, not looping
   // Fill only with real review data (e.g. from Shopify) — stars render when set.
   rating?: { value: number; count: number };
+  reviews?: ShopProductReview[];
   ugcVideos?: string[];
   gallery?: ShopProductGalleryItem[];
   variants?: ShopProductVariant[];
@@ -1361,6 +1374,69 @@ export const shopProducts: ShopProduct[] = [
     category: "fashion",
     isNew: true,
     purchaseStatus: "available",
+    rating: { value: 4.9, count: 155 },
+    reviews: [
+      {
+        id: "supplier-review-fangge-cx-xxl",
+        author: "L***o",
+        rating: 5,
+        body:
+          "I ordered one size up, but I think my usual size would have been right because this one is a little small. Order your usual size. The fabric feels nice, the color is beautiful, and it is not see-through.",
+        date: "2026-04-08",
+        source: "AliExpress customer",
+        color: "fangge-CX",
+        size: "XXL",
+        helpfulCount: 0,
+      },
+      {
+        id: "supplier-review-pink-xl",
+        author: "Anonymous customer",
+        rating: 5,
+        body:
+          "I am very happy with this dress. The fabric can be washed, dries quickly and does not need ironing. Size XL is not tight across my 98 cm bust. I am thinking about buying another one in a different color.",
+        date: "2026-05-17",
+        source: "AliExpress customer",
+        color: "Pink",
+        size: "XL",
+        helpfulCount: 0,
+      },
+      {
+        id: "supplier-review-black-s",
+        author: "Anonymous customer",
+        rating: 5,
+        body:
+          "I liked it—a beautiful dress. The material is good and excellent for the price. I fully recommend it. The size fits me perfectly; if you prefer a closer fit, you can order a smaller size, but it is beautiful. I plan to order more.",
+        date: "2025-10-18",
+        source: "AliExpress customer",
+        color: "black",
+        size: "S",
+        helpfulCount: 1,
+      },
+      {
+        id: "supplier-review-bodian-m",
+        author: "Anonymous customer",
+        rating: 5,
+        body:
+          "The dress is made from cool-feeling, stretchy material. It fits the body very well and looks lovely.",
+        date: "2025-10-02",
+        source: "AliExpress customer",
+        color: "bodian",
+        size: "M",
+        helpfulCount: 2,
+      },
+      {
+        id: "supplier-review-red-l",
+        author: "Anonymous customer",
+        rating: 5,
+        body:
+          "Perfect and very beautiful. I highly recommend it. The material is very good—ten out of ten.",
+        date: "2026-03-16",
+        source: "AliExpress customer",
+        color: "Red",
+        size: "L",
+        helpfulCount: 0,
+      },
+    ],
     shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1",
     variants: [
       {
