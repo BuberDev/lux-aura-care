@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getShopProductById, getShopifyVariant, getShopifyVariantFromUrl } from "@/lib/shop-data";
 
 const STORE_DOMAIN = "k50k7g-j7.myshopify.com";
-const STOREFRONT_API_VERSION = "2024-10";
+const STOREFRONT_API_VERSION = "2026-07";
 
 const STOCK_QUERY = `
   query GetVariantAvailability($id: ID!) {
@@ -28,8 +28,11 @@ export async function GET(
   const product = getShopProductById(productId);
   const selectedVariantId = request.nextUrl.searchParams.get("variantId");
   const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
-  const variant = selectedVariant?.shopifyUrl
-    ? getShopifyVariantFromUrl(selectedVariant.shopifyUrl)
+  const selectedSizeId = request.nextUrl.searchParams.get("sizeId");
+  const selectedSize = selectedVariant?.sizes?.find((size) => size.id === selectedSizeId);
+  const selectedShopifyUrl = selectedSize?.shopifyUrl ?? selectedVariant?.shopifyUrl;
+  const variant = selectedShopifyUrl
+    ? getShopifyVariantFromUrl(selectedShopifyUrl)
     : product
       ? getShopifyVariant(product)
       : null;

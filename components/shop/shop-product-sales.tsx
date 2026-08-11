@@ -312,12 +312,14 @@ function buildCheckoutUrl({
   configuredUrl,
   variantUrl,
   selectedVariantId,
+  selectedSizeId,
   quantity,
   locale,
 }: {
   configuredUrl: string;
   variantUrl?: string;
   selectedVariantId?: string;
+  selectedSizeId?: string;
   quantity: number;
   locale: string;
 }) {
@@ -327,6 +329,9 @@ function buildCheckoutUrl({
     const params = new URLSearchParams();
     if (selectedVariantId) {
       params.set("variantId", selectedVariantId);
+    }
+    if (selectedSizeId) {
+      params.set("sizeId", selectedSizeId);
     }
     params.set("locale", locale);
     params.set("quantity", String(safeQuantity));
@@ -616,10 +621,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const { locale, text } = useI18n();
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
-  const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
   const hasDiscount = product.compareAtPrice > product.price;
+  const discount = hasDiscount
+    ? Math.round((1 - product.price / product.compareAtPrice) * 100)
+    : 0;
   const productVariants = product.variants ?? [];
   const hasColorVariants = productVariants.length > 0;
+  const isFashion = product.category === "fashion";
+  const isPurchasable = product.purchaseStatus !== "coming-soon" && Boolean(product.shopifyUrl);
 
   const scienceBenefits = localizeContent(
     locale,
@@ -630,6 +639,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [selectedVariantId, setSelectedVariantId] = useState(productVariants[0]?.id ?? "");
+  const [selectedSizeId, setSelectedSizeId] = useState(productVariants[0]?.sizes?.[0]?.id ?? "");
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
@@ -654,13 +664,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   // --- Stock: fetch from Shopify Storefront API via our proxy ---
   const [stockQuantity, setStockQuantity] = useState<number | null>(null);
-  const [stockLoading, setStockLoading] = useState(true);
+  const [stockLoading, setStockLoading] = useState(isPurchasable);
 
   useEffect(() => {
+    if (!isPurchasable) return;
+
     let cancelled = false;
     const params = new URLSearchParams();
     if (selectedVariantId) {
       params.set("variantId", selectedVariantId);
+    }
+    if (selectedSizeId) {
+      params.set("sizeId", selectedSizeId);
     }
     const stockUrl = `/api/shopify-stock/${encodeURIComponent(product.id)}${params.size ? `?${params.toString()}` : ""}`;
 
@@ -673,7 +688,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       .catch(() => { /* silently fall back to no stock bar */ })
       .finally(() => { if (!cancelled) setStockLoading(false); });
     return () => { cancelled = true; };
-  }, [product.id, selectedVariantId]);
+  }, [isPurchasable, product.id, selectedSizeId, selectedVariantId]);
 
   // --- Flash sale countdown: real end date from product data ---
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
@@ -736,13 +751,17 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   }, [product.id, product.name, product.price, product.currency, product.category]);
 
   const handleCheckoutClick = (placement: ShopCheckoutEvent["placement"]) => {
+    if (!isPurchasable) return;
+
     const checkoutEvent: ShopCheckoutEvent = {
       productId: product.id,
       productName: product.name,
       price: product.price,
       quantity: selectedQuantity,
       currency: product.currency,
-      variantId: selectedVariant?.id,
+      variantId: selectedSize
+        ? `${selectedVariant?.id}/${selectedSize.id}`
+        : selectedVariant?.id,
       placement,
     };
     // The "buy" click both adds to Shopify's cart and starts checkout in one
@@ -807,25 +826,45 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   });
 
   const selectedVariant = productVariants.find((variant) => variant.id === selectedVariantId) ?? productVariants[0];
+  const sizeVariants = selectedVariant?.sizes ?? [];
+  const selectedSize = sizeVariants.find((size) => size.id === selectedSizeId) ?? sizeVariants[0];
+  const hasSizeVariants = sizeVariants.length > 0;
   const maxSelectableQuantity = Math.max(
     1,
     Math.min(MAX_CHECKOUT_QUANTITY, stockQuantity ?? MAX_CHECKOUT_QUANTITY)
   );
   const checkoutUrl = buildCheckoutUrl({
-    configuredUrl: product.shopifyUrl,
-    variantUrl: selectedVariant?.shopifyUrl,
+    configuredUrl: product.shopifyUrl ?? "",
+    variantUrl: selectedSize?.shopifyUrl ?? selectedVariant?.shopifyUrl,
     selectedVariantId: selectedVariant?.id,
+    selectedSizeId: selectedSize?.id,
     quantity: selectedQuantity,
     locale,
   });
-  const checkoutLabel = hasColorVariants ? "Order selected color" : "Order now";
+  const checkoutLabel = hasSizeVariants ? "Go to checkout" : hasColorVariants ? "Order selected color" : "Order now";
   const showLowStock = !stockLoading && stockQuantity !== null && stockQuantity > 0 && stockQuantity <= 15;
   const showSaleCountdown = Boolean(saleActive && timeLeft);
   const trustBadgeLabel = (() => {
+    if (!isPurchasable) return "Coming soon";
     if (product.isBestSeller) return "Bestseller";
     if (product.isNew) return "New arrival";
     return "Customer favourite";
   })();
+  const productCategoryLabel = isFashion
+    ? "Style edit"
+    : product.category === "bundle"
+      ? "Bundle"
+      : product.category === "body-glow"
+        ? "Body care"
+        : "Skincare tool";
+  const usageEyebrow = isFashion ? "FIT & STYLING" : "FACIAL MASSAGE STEP BY STEP";
+  const usageTitle = isFashion ? "Choose and Style It With Confidence" : "How to Use It Without Guesswork";
+  const usageDescription = isFashion
+    ? "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own."
+    : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
+  const finalEyebrow = isFashion ? "YOUR NEXT POLISHED LOOK" : "YOUR RADIANT COMPLEXION AWAITS";
+  const finalTitle = isFashion ? "Found the color that feels like you?" : "Ready to add it to your skincare routine?";
+  const relatedHeading = isFashion ? "Continue exploring Lux Aura Care" : "Pair it with your skincare";
   const selectedSubtotal = product.price * selectedQuantity;
   const productPrice = formatShopPrice(product.price, product.currency, locale);
   const productCompareAtPrice = formatShopPrice(product.compareAtPrice, product.currency, locale);
@@ -847,6 +886,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const lightboxItem = heroMedia[lightboxIndex] ?? heroMedia[0];
   const heroThumbSrc = (item: HeroMediaItem) =>
     item.type === "video" ? item.poster ?? product.image : item.url;
+  const heroMediaAlt = (item: HeroMediaItem) => {
+    if (item.type === "video") return `${product.name}: ${text("customer demonstration")}`;
+
+    return productVariants.find((variant) => variant.image === item.url)?.imageAlt
+      ?? `${product.name}: ${text(item.label)}`;
+  };
   const previewUgcVideos = ugcVideos.slice(0, 2).map((videoUrl, index) => ({
     videoUrl,
     poster: getUgcPoster(index),
@@ -867,6 +912,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     if (!nextVariant) return;
 
     setSelectedVariantId(nextVariant.id);
+    setSelectedSizeId((currentSizeId) =>
+      nextVariant.sizes?.some((size) => size.id === currentSizeId)
+        ? currentSizeId
+        : nextVariant.sizes?.[0]?.id ?? ""
+    );
 
     const nextGalleryIndex = heroMedia.findIndex(
       (item) => item.type === "image" && item.url === nextVariant.image
@@ -1016,7 +1066,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                         >
                           <Image
                             src={activeHeroItem.url}
-                            alt={product.imageAlt}
+                            alt={heroMediaAlt(activeHeroItem)}
                             fill
                             priority
                             sizes="(max-width: 640px) calc(100vw - 1rem), (max-width: 1024px) 560px, 48vw"
@@ -1236,7 +1286,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <div>
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <p className="min-w-0 text-xs uppercase tracking-[0.2em] font-bold" style={{ color: "var(--accent-gold)" }}>
-                    <T text={product.category === "bundle" ? "Bundle" : "Skincare tool"} />
+                    <T text={productCategoryLabel} />
                   </p>
                   <div className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border border-accent-gold/30 bg-accent-gold/10 px-2.5 py-1 text-[11px] font-semibold text-accent-gold sm:px-3 sm:text-xs ${product.isBestSeller ? "animate-pulse" : ""}`}>
                     <Sparkles className="size-3.5" aria-hidden="true" />
@@ -1280,30 +1330,38 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
 
               {/* Price Block & Save Indicator */}
-              <div className="border-t border-b border-border-subtle py-4 flex items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <p className="text-[10px] text-text-secondary uppercase tracking-widest font-semibold">
-                    <T text={hasDiscount ? "Special Offer Price" : "Price"} />
-                  </p>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-4xl font-extrabold text-text-primary">{productPrice}</span>
-                    {hasDiscount && (
-                      <span className="text-base line-through text-text-secondary">{productCompareAtPrice}</span>
-                    )}
+              {isPurchasable ? (
+                <div className="flex items-center justify-between gap-4 border-y border-border-subtle py-4">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-text-secondary">
+                      <T text={hasDiscount ? "Special Offer Price" : "Price"} />
+                    </p>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-4xl font-extrabold text-text-primary">{productPrice}</span>
+                      {hasDiscount && (
+                        <span className="text-base line-through text-text-secondary">{productCompareAtPrice}</span>
+                      )}
+                    </div>
                   </div>
+                  {hasDiscount && (
+                    <div className="text-right">
+                      <span
+                        className="inline-block rounded-full px-3.5 py-1.5 text-xs font-extrabold shadow-lg md:text-sm"
+                        style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
+                      >
+                        <T text={"You save"} /> {discount}%
+                      </span>
+                      <p className="mt-1.5 text-[10px] font-bold text-accent-gold/80">{savingsPrice} <T text={"kept in your pocket"} /></p>
+                    </div>
+                  )}
                 </div>
-                {hasDiscount && (
-                  <div className="text-right">
-                    <span
-                      className="inline-block rounded-full px-3.5 py-1.5 text-xs font-extrabold shadow-lg md:text-sm"
-                      style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
-                    >
-                      <T text={"You save"} /> {discount}%
-                    </span>
-                    <p className="text-[10px] text-accent-gold/80 mt-1.5 font-bold">{savingsPrice} <T text={"kept in your pocket"} /></p>
-                  </div>
-                )}
-              </div>
+              ) : (
+                <div className="border-y border-border-subtle py-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-accent-gold"><T text={"Coming soon"} /></p>
+                  <p className="mt-2 text-sm font-semibold text-text-primary"><T text={"Price and size details are being confirmed"} /></p>
+                  <p className="mt-1 text-xs leading-relaxed text-text-secondary"><T text={"You can already compare every color; ordering will open only after the correct variants are connected."} /></p>
+                </div>
+              )}
 
               {/* Real availability panel */}
               {(showLowStock || showSaleCountdown) && (
@@ -1394,6 +1452,48 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
               )}
 
+              {hasSizeVariants && selectedSize && (
+                <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                      <T text={"Choose size"} />
+                    </p>
+                    <p className="min-w-0 text-right text-[10px] font-semibold text-text-secondary">
+                      <T text={"Selected size"} />:{" "}
+                      <span className="text-text-primary">{selectedSize.label}</span>
+                    </p>
+                  </div>
+
+                  <div
+                    className="grid grid-cols-3 gap-2 sm:grid-cols-6"
+                    role="radiogroup"
+                    aria-label={text("Choose size")}
+                  >
+                    {sizeVariants.map((size) => {
+                      const isSelected = selectedSize.id === size.id;
+
+                      return (
+                        <button
+                          key={size.id}
+                          type="button"
+                          role="radio"
+                          aria-checked={isSelected}
+                          onClick={() => setSelectedSizeId(size.id)}
+                          className={`flex min-h-11 items-center justify-center rounded-xl border px-2 py-2 text-xs font-extrabold transition-all duration-300 ${
+                            isSelected
+                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_14px_rgba(201,169,110,0.12)]"
+                              : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                          }`}
+                        >
+                          {size.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {isPurchasable && (
               <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -1444,8 +1544,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </span>
                 </div>
               </div>
+              )}
 
               {/* High-Converting CTA Area */}
+              {isPurchasable ? (
               <div className="space-y-3.5">
                 <a
                   href={checkoutUrl}
@@ -1468,6 +1570,20 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <span className="text-[10px] text-text-primary/40 font-bold"><T text={"VISA • MC • AMEX • APPLE PAY"} /></span>
                 </div>
               </div>
+              ) : (
+                <div id="availability" className="rounded-2xl border border-accent-gold/30 bg-accent-gold/10 p-5">
+                  <div className="flex items-start gap-3">
+                    <Sparkles className="mt-0.5 size-5 shrink-0 text-accent-gold" aria-hidden="true" />
+                    <div>
+                      <p className="font-bold text-text-primary"><T text={"Color preview is ready"} /></p>
+                      <p className="mt-1 text-xs leading-relaxed text-text-secondary"><T text={"Select a color above to see its full-length image. We will enable ordering after price, sizes and checkout variants are verified."} /></p>
+                      <LocalizedLink href="/contact" className="mt-3 inline-flex text-xs font-bold uppercase tracking-[0.12em] text-accent-gold transition hover:text-text-primary">
+                        <T text={"Ask about availability"} />
+                      </LocalizedLink>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Benefit Bullet points list */}
               <ul className="space-y-3 pt-2 text-xs md:text-sm">
@@ -1480,6 +1596,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </ul>
 
               {/* Checkout information */}
+              {isPurchasable && (
               <div className="grid grid-cols-3 gap-2 border-t border-border-subtle pt-4 sm:gap-3">
                 {[
                   { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
@@ -1493,6 +1610,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                 ))}
               </div>
+              )}
 
             </div>
 
@@ -1560,12 +1678,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <section className="border-b border-border-subtle bg-surface-subtle py-12 sm:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"FACIAL MASSAGE STEP BY STEP"} /></span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={usageEyebrow} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"How to Use It Without Guesswork"} />
+              <T text={usageTitle} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              <T text={"Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes."} />
+              <T text={usageDescription} />
             </p>
           </div>
 
@@ -1584,7 +1702,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-1.5">
-                      <T text={"Phase 0"} />{i + 1}
+                      <T text={isFashion ? "Tip 0" : "Phase 0"} />{i + 1}
                     </h4>
                     <p className="text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                       <T text={step} />
@@ -1651,17 +1769,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       {/* 11. FINAL HIGH IMPACT CTA */}
       <section className="relative overflow-hidden border-t border-border-subtle py-16 text-center sm:py-20">
         <Container className={`${PRODUCT_PAGE_CONTAINER_CLASS} relative z-10 space-y-6`}>
-          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "var(--accent-gold)" }}><T text={"YOUR RADIANT COMPLEXION AWAITS"} /></span>
+          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "var(--accent-gold)" }}><T text={finalEyebrow} /></span>
           <h2
             className="text-3xl md:text-5xl font-semibold text-text-primary max-w-xl mx-auto"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            <T text={"Ready to add it to your skincare routine?"} />
+            <T text={finalTitle} />
           </h2>
           <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: "var(--text-secondary)" }}>
-            <T text={"Review the product details and confirm the final order total before checkout."} />
+            <T text={isPurchasable ? "Review the product details and confirm the final order total before checkout." : "Compare every color now; final price, sizes and ordering will appear here after verification."} />
           </p>
           
+          {isPurchasable ? (
           <div className="pt-4 max-w-sm mx-auto">
             <a
               href={checkoutUrl}
@@ -1676,6 +1795,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <T text={"Secure checkout · Delivery and return terms shown before purchase"} />
             </p>
           </div>
+          ) : (
+            <div className="mx-auto max-w-sm pt-4">
+              <LocalizedLink
+                href="/contact"
+                className="flex min-h-14 w-full items-center justify-center rounded-xl border border-accent-gold bg-accent-gold/10 px-4 py-3 text-center text-sm font-extrabold text-accent-gold transition hover:bg-accent-gold hover:text-black"
+              >
+                <T text={"Ask about availability"} />
+              </LocalizedLink>
+              <p className="mt-3 text-[10px] text-text-secondary">
+                <T text={"Ordering remains closed until every size and color is mapped to the correct checkout variant."} />
+              </p>
+            </div>
+          )}
         </Container>
       </section>
 
@@ -1687,11 +1819,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               className="text-2xl md:text-3xl font-semibold text-text-primary text-center mb-10"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              <T text={"Pair it with your skincare"} />
+              <T text={relatedHeading} />
             </h2>
             <div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
               {related.map((rel) => {
-                const relDiscount = Math.round((1 - rel.price / rel.compareAtPrice) * 100);
+                const relDiscount = rel.compareAtPrice > rel.price
+                  ? Math.round((1 - rel.price / rel.compareAtPrice) * 100)
+                  : 0;
                 return (
                   <LocalizedLink
                     key={rel.id}
@@ -1737,6 +1871,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <NewsletterBlock />
 
       {/* 12. RESPONSIVE FLOATING BOTTOM STICKY CHECKOUT DRAWER */}
+      {isPurchasable && (
       <div
         className={`fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between border-t border-border-default bg-surface-glass px-2 py-3.5 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transition-transform duration-500 ease-out sm:px-4 ${
           showStickyDrawer ? "translate-y-0" : "translate-y-full"
@@ -1777,6 +1912,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </div>
+      )}
 
       {/* AMAZON-STYLE HIGH-END PORTAL/LIGHTBOX OVERLAY */}
       {isLightboxOpen && (
@@ -1869,7 +2005,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 ) : (
                   <Image
                     src={lightboxItem.url}
-                    alt={lightboxItem.label}
+                    alt={heroMediaAlt(lightboxItem)}
                     fill
                     sizes="(max-width: 1024px) 90vw, 50vw"
                     priority

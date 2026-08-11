@@ -5927,6 +5927,14 @@ export const translationCatalog = {
     "en": "Selected color",
     "pl": "Wybrany kolor"
   },
+  "Choose size": {
+    "en": "Choose size",
+    "pl": "Wybierz rozmiar"
+  },
+  "Selected size": {
+    "en": "Selected size",
+    "pl": "Wybrany rozmiar"
+  },
   "Order selected color": {
     "en": "Order selected color",
     "pl": "Zamów wybrany kolor"
@@ -5934,6 +5942,10 @@ export const translationCatalog = {
   "Order now": {
     "en": "Order now",
     "pl": "Zamów teraz"
+  },
+  "Go to checkout": {
+    "en": "Go to checkout",
+    "pl": "Przejdź do kasy"
   },
   "Quantity": {
     "en": "Quantity",
@@ -6930,6 +6942,302 @@ export const translationCatalog = {
   "The terms that govern your use of Lux Aura Care, including our Amazon affiliate program disclosure.": {
     "en": "The terms that govern your use of Lux Aura Care, including our Amazon affiliate program disclosure.",
     "pl": "Warunki korzystania z Lux Aura Care, w tym informacja o udziale w programie partnerskim Amazon."
+  },
+  "Shop Beauty, Self-Care & Style | Lux Aura Care": {
+    "en": "Shop Beauty, Self-Care & Style | Lux Aura Care",
+    "pl": "Sklep beauty, self-care i styl | Lux Aura Care"
+  },
+  "Discover thoughtfully selected skincare tools, body-care essentials and polished style pieces from Lux Aura Care.": {
+    "en": "Discover thoughtfully selected skincare tools, body-care essentials and polished style pieces from Lux Aura Care.",
+    "pl": "Poznaj starannie wybrane akcesoria do pielęgnacji twarzy i ciała oraz stylowe propozycje Lux Aura Care."
+  },
+  "Beauty, self-care and style": {
+    "en": "Beauty, self-care and style",
+    "pl": "Beauty, self-care i styl"
+  },
+  "Thoughtful essentials for your routine and wardrobe": {
+    "en": "Thoughtful essentials for your routine and wardrobe",
+    "pl": "Przemyślane dodatki do pielęgnacji i garderoby"
+  },
+  "Explore skincare tools, body-care essentials and a polished style edit, with clear product details before checkout.": {
+    "en": "Explore skincare tools, body-care essentials and a polished style edit, with clear product details before checkout.",
+    "pl": "Poznaj akcesoria do pielęgnacji twarzy i ciała oraz dopracowaną selekcję modową — z jasnymi informacjami o produkcie przed zakupem."
+  },
+  "Care collection": {
+    "en": "Care collection",
+    "pl": "Kolekcja pielęgnacyjna"
+  },
+  "Skincare and body-care essentials": {
+    "en": "Skincare and body-care essentials",
+    "pl": "Akcesoria do pielęgnacji twarzy i ciała"
+  },
+  "The style edit": {
+    "en": "The style edit",
+    "pl": "Selekcja modowa"
+  },
+  "Polished pieces, clearly presented": {
+    "en": "Polished pieces, clearly presented",
+    "pl": "Dopracowane fasony pokazane bez niedomówień"
+  },
+  "One product page per design, with every color shown as a true variant—not as a duplicate listing.": {
+    "en": "One product page per design, with every color shown as a true variant—not as a duplicate listing.",
+    "pl": "Jeden fason ma jedną kartę produktu, a każdy kolor jest jej prawdziwym wariantem — nie osobną, powieloną ofertą."
+  },
+  "curated care and style products": {
+    "en": "curated care and style products",
+    "pl": "wyselekcjonowanych produktów do pielęgnacji i stylizacji"
+  },
+  "Preview the colorways": {
+    "en": "Preview the colorways",
+    "pl": "Porównaj warianty kolorystyczne"
+  },
+  "View colors": {
+    "en": "View colors",
+    "pl": "Zobacz kolory"
+  },
+  "Coming soon": {
+    "en": "Coming soon",
+    "pl": "Dostępna wkrótce"
+  },
+  "Style edit": {
+    "en": "Style edit",
+    "pl": "Selekcja modowa"
+  },
+  "Body care": {
+    "en": "Body care",
+    "pl": "Pielęgnacja ciała"
+  },
+  "Price and size details are being confirmed": {
+    "en": "Price and size details are being confirmed",
+    "pl": "Potwierdzamy cenę i pełną rozmiarówkę"
+  },
+  "You can already compare every color; ordering will open only after the correct variants are connected.": {
+    "en": "You can already compare every color; ordering will open only after the correct variants are connected.",
+    "pl": "Już teraz możesz porównać wszystkie kolory. Zamówienia uruchomimy dopiero po podpięciu właściwych wariantów."
+  },
+  "Color preview is ready": {
+    "en": "Color preview is ready",
+    "pl": "Warianty kolorystyczne są gotowe do porównania"
+  },
+  "Select a color above to see its full-length image. We will enable ordering after price, sizes and checkout variants are verified.": {
+    "en": "Select a color above to see its full-length image. We will enable ordering after price, sizes and checkout variants are verified.",
+    "pl": "Wybierz kolor powyżej, aby zobaczyć sukienkę w pełnej długości. Zakup uruchomimy po potwierdzeniu ceny, rozmiarów i wariantów w checkoutcie."
+  },
+  "Ask about availability": {
+    "en": "Ask about availability",
+    "pl": "Zapytaj o dostępność"
+  },
+  "FIT & STYLING": {
+    "en": "FIT & STYLING",
+    "pl": "FASON I STYLIZACJA"
+  },
+  "Choose and Style It With Confidence": {
+    "en": "Choose and Style It With Confidence",
+    "pl": "Wybierz kolor i noś go po swojemu"
+  },
+  "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own.": {
+    "en": "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own.",
+    "pl": "Porównaj kolory, wybierz rozmiar i dobierz kilka przemyślanych dodatków, aby dopasować fason do swojego stylu."
+  },
+  "Tip 0": {
+    "en": "Tip 0",
+    "pl": "Wskazówka 0"
+  },
+  "YOUR NEXT POLISHED LOOK": {
+    "en": "YOUR NEXT POLISHED LOOK",
+    "pl": "TWÓJ KOLEJNY DOPRACOWANY LOOK"
+  },
+  "Found the color that feels like you?": {
+    "en": "Found the color that feels like you?",
+    "pl": "Masz już swój kolor?"
+  },
+  "Compare every color now; final price, sizes and ordering will appear here after verification.": {
+    "en": "Compare every color now; final price, sizes and ordering will appear here after verification.",
+    "pl": "Porównaj wszystkie kolory już teraz. Finalna cena, rozmiary i możliwość zamówienia pojawią się po weryfikacji."
+  },
+  "Ordering remains closed until every size and color is mapped to the correct checkout variant.": {
+    "en": "Ordering remains closed until every size and color is mapped to the correct checkout variant.",
+    "pl": "Zakup pozostaje wyłączony, dopóki każdy rozmiar i kolor nie zostanie przypisany do właściwego wariantu w checkoutcie."
+  },
+  "Continue exploring Lux Aura Care": {
+    "en": "Continue exploring Lux Aura Care",
+    "pl": "Odkryj więcej w Lux Aura Care"
+  },
+  "Floral Grace Maxi Dress": {
+    "en": "Floral Grace Maxi Dress",
+    "pl": "Sukienka maxi Floral Grace"
+  },
+  "A defined waist and sweeping floral skirt in four distinctive colorways.": {
+    "en": "A defined waist and sweeping floral skirt in four distinctive colorways.",
+    "pl": "Podkreślona talia i rozkloszowany, kwiatowy dół w czterech wyrazistych wersjach kolorystycznych."
+  },
+  "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Compare Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet on the same product page before choosing your color.": {
+    "en": "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Compare Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet on the same product page before choosing your color.",
+    "pl": "Sukienka maxi do kostek z prostym dekoltem, podkreśloną wysoką talią i miękko układającym się dołem w kształcie litery A. Na jednej karcie porównasz kolory Black Rose, Emerald Bloom, Blush Garden i Ivory Bouquet."
+  },
+  "Blush pink floral maxi dress with short sleeves and a flowing A-line skirt": {
+    "en": "Blush pink floral maxi dress with short sleeves and a flowing A-line skirt",
+    "pl": "Pudroworóżowa sukienka maxi w kwiaty, z krótkim rękawem i rozkloszowanym dołem"
+  },
+  "Style Preview": {
+    "en": "Style Preview",
+    "pl": "Zapowiedź kolekcji"
+  },
+  "Four floral colorways presented as variants of one dress": {
+    "en": "Four floral colorways presented as variants of one dress",
+    "pl": "Cztery kwiatowe kolory jako warianty jednej sukienki"
+  },
+  "Clean neckline and fitted upper line keep the silhouette polished": {
+    "en": "Clean neckline and fitted upper line keep the silhouette polished",
+    "pl": "Prosty dekolt i dopasowana góra tworzą elegancką linię sylwetki"
+  },
+  "Wide high waistband visually defines the waist": {
+    "en": "Wide high waistband visually defines the waist",
+    "pl": "Szeroki pas z wysokim stanem podkreśla talię"
+  },
+  "Flowing ankle-length A-line skirt adds movement without a bulky silhouette": {
+    "en": "Flowing ankle-length A-line skirt adds movement without a bulky silhouette",
+    "pl": "Rozkloszowany dół do kostek miękko pracuje w ruchu i nie przytłacza sylwetki"
+  },
+  "Dedicated full-length image for every available color": {
+    "en": "Dedicated full-length image for every available color",
+    "pl": "Osobne zdjęcie całej sylwetki dla każdego koloru"
+  },
+  "Available in sizes S–XXXL across every colorway": {
+    "en": "Available in sizes S–XXXL across every colorway",
+    "pl": "Rozmiary od S do XXXL dostępne w każdym wariancie kolorystycznym"
+  },
+  "Final garment measurements and care details will be confirmed before launch": {
+    "en": "Final garment measurements and care details will be confirmed before launch",
+    "pl": "Wymiary produktu i sposób pielęgnacji potwierdzimy przed premierą"
+  },
+  "Compare all four full-length color photos before making your choice": {
+    "en": "Compare all four full-length color photos before making your choice",
+    "pl": "Przed wyborem porównaj zdjęcia całej sylwetki we wszystkich czterech kolorach"
+  },
+  "Choose your usual size and review the product details before checkout": {
+    "en": "Choose your usual size and review the product details before checkout",
+    "pl": "Wybierz swój standardowy rozmiar i sprawdź szczegóły produktu przed przejściem do kasy"
+  },
+  "Check the final garment measurements against a dress you already own": {
+    "en": "Check the final garment measurements against a dress you already own",
+    "pl": "Porównaj finalne wymiary z sukienką, która dobrze na Tobie leży"
+  },
+  "Keep accessories simple and let the floral skirt lead the look": {
+    "en": "Keep accessories simple and let the floral skirt lead the look",
+    "pl": "Postaw na proste dodatki i pozwól, by kwiatowy dół grał główną rolę"
+  },
+  "Follow the sewn-in care label before washing or ironing": {
+    "en": "Follow the sewn-in care label before washing or ironing",
+    "pl": "Przed praniem lub prasowaniem sprawdź zalecenia na wszytej metce"
+  },
+  "Which colors are available?": {
+    "en": "Which colors are available?",
+    "pl": "Jakie kolory są dostępne?"
+  },
+  "Choose from Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet. Each option has its own full-length product image.": {
+    "en": "Choose from Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet. Each option has its own full-length product image.",
+    "pl": "Wybierz spośród wariantów: Czarny w róże, Szmaragdowy w kwiaty, Pudrowy róż w kwiaty i Biały w kwiaty. Każdy ma osobne zdjęcie całej sylwetki."
+  },
+  "Which sizes are available?": {
+    "en": "Which sizes are available?",
+    "pl": "Jakie rozmiary są dostępne?"
+  },
+  "The dress is available in sizes S, M, L, XL, XXL and XXXL in every colorway.": {
+    "en": "The dress is available in sizes S, M, L, XL, XXL and XXXL in every colorway.",
+    "pl": "Sukienka jest dostępna w rozmiarach S, M, L, XL, XXL i XXXL w każdym wariancie kolorystycznym."
+  },
+  "The final size range and garment measurements are still being verified. They will appear here before ordering is enabled.": {
+    "en": "The final size range and garment measurements are still being verified. They will appear here before ordering is enabled.",
+    "pl": "Pełna rozmiarówka i wymiary produktu są jeszcze weryfikowane. Opublikujemy je przed uruchomieniem zamówień."
+  },
+  "How should I care for the dress?": {
+    "en": "How should I care for the dress?",
+    "pl": "Jak pielęgnować sukienkę?"
+  },
+  "Always follow the sewn-in care label and check its washing and ironing symbols before the first wash.": {
+    "en": "Always follow the sewn-in care label and check its washing and ironing symbols before the first wash.",
+    "pl": "Zawsze kieruj się wszytą metką i przed pierwszym praniem sprawdź symbole dotyczące prania oraz prasowania."
+  },
+  "Black Rose": {
+    "en": "Black Rose",
+    "pl": "Czarny w róże"
+  },
+  "Emerald Bloom": {
+    "en": "Emerald Bloom",
+    "pl": "Szmaragdowy w kwiaty"
+  },
+  "Blush Garden": {
+    "en": "Blush Garden",
+    "pl": "Pudrowy róż w kwiaty"
+  },
+  "Ivory Bouquet": {
+    "en": "Ivory Bouquet",
+    "pl": "Biały w kwiaty"
+  },
+  "Black floral": {
+    "en": "Black floral",
+    "pl": "Czarny w kwiaty"
+  },
+  "Emerald floral": {
+    "en": "Emerald floral",
+    "pl": "Szmaragdowy w kwiaty"
+  },
+  "Blush pink floral": {
+    "en": "Blush pink floral",
+    "pl": "Pudrowy róż w kwiaty"
+  },
+  "Ivory floral": {
+    "en": "Ivory floral",
+    "pl": "Biały w kwiaty"
+  },
+  "Black floral maxi dress with pink roses and short black sleeves": {
+    "en": "Black floral maxi dress with pink roses and short black sleeves",
+    "pl": "Czarna sukienka maxi w różowe róże, z krótkim czarnym rękawem"
+  },
+  "Emerald green floral maxi dress with red flowers and short black sleeves": {
+    "en": "Emerald green floral maxi dress with red flowers and short black sleeves",
+    "pl": "Szmaragdowa sukienka maxi w czerwone kwiaty, z krótkim czarnym rękawem"
+  },
+  "Blush pink floral maxi dress with burgundy flowers and short sleeves": {
+    "en": "Blush pink floral maxi dress with burgundy flowers and short sleeves",
+    "pl": "Pudroworóżowa sukienka maxi w bordowe kwiaty, z krótkim rękawem"
+  },
+  "Ivory white floral maxi dress with red flowers and long black sleeves": {
+    "en": "Ivory white floral maxi dress with red flowers and long black sleeves",
+    "pl": "Biała sukienka maxi w czerwone kwiaty, z długim czarnym rękawem"
+  },
+  "Soft Rose": {
+    "en": "Soft Rose",
+    "pl": "Pudrowy róż"
+  },
+  "Blush pink bodice and skirt with burgundy florals and teal leaves": {
+    "en": "Blush pink bodice and skirt with burgundy florals and teal leaves",
+    "pl": "Pudroworóżowa góra i dół z bordowymi kwiatami oraz turkusowymi liśćmi"
+  },
+  "Evening Floral": {
+    "en": "Evening Floral",
+    "pl": "Wieczorowy kwiatowy wzór"
+  },
+  "Black base with pink rose print for the deepest, most dramatic colorway": {
+    "en": "Black base with pink rose print for the deepest, most dramatic colorway",
+    "pl": "Czarna baza z różowym nadrukiem róż — najbardziej wyrazisty z czterech wariantów"
+  },
+  "Statement Color": {
+    "en": "Statement Color",
+    "pl": "Wyrazisty kolor"
+  },
+  "Emerald floral skirt paired with a clean black short-sleeve bodice": {
+    "en": "Emerald floral skirt paired with a clean black short-sleeve bodice",
+    "pl": "Szmaragdowy dół w kwiaty połączony z prostą czarną górą z krótkim rękawem"
+  },
+  "Light Contrast": {
+    "en": "Light Contrast",
+    "pl": "Jasny kontrast"
+  },
+  "Ivory floral skirt paired with a fitted black long-sleeve bodice": {
+    "en": "Ivory floral skirt paired with a fitted black long-sleeve bodice",
+    "pl": "Biały dół w kwiaty połączony z dopasowaną czarną górą z długim rękawem"
   },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",

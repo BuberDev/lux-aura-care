@@ -4,7 +4,7 @@ import { getShopifyVariantFromUrl, getShopProductById } from "@/lib/shop-data";
 
 const CHECKOUT_HOSTS = new Set(["shop.app", "checkout.shopify.com"]);
 const SHOPIFY_STORE_HOST = "k50k7g-j7.myshopify.com";
-const STOREFRONT_API_VERSION = "2024-10";
+const STOREFRONT_API_VERSION = "2026-07";
 const MAX_CHECKOUT_QUANTITY = 10;
 
 const CART_CREATE_MUTATION = `
@@ -33,7 +33,9 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
   const product = getShopProductById(productId);
   const selectedVariantId = request.nextUrl.searchParams.get("variantId");
   const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
-  const selectedShopifyUrl = selectedVariant?.shopifyUrl ?? product?.shopifyUrl;
+  const selectedSizeId = request.nextUrl.searchParams.get("sizeId");
+  const selectedSize = selectedVariant?.sizes?.find((size) => size.id === selectedSizeId);
+  const selectedShopifyUrl = selectedSize?.shopifyUrl ?? selectedVariant?.shopifyUrl ?? product?.shopifyUrl;
   const shopifyVariant = selectedShopifyUrl ? parseShopifyVariant(selectedShopifyUrl) : null;
   const checkoutQuantity = parseCheckoutQuantity(request.nextUrl.searchParams.get("quantity"));
   const buyerCountryCode = getBuyerCountryCode(request);

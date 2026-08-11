@@ -40,21 +40,35 @@ export async function GET(request: NextRequest, context: CartLineRouteContext) {
   if (productMatch.variantId) {
     checkoutUrl.searchParams.set("variantId", productMatch.variantId);
   }
+  if (productMatch.sizeId) {
+    checkoutUrl.searchParams.set("sizeId", productMatch.sizeId);
+  }
 
   return noIndexRedirect(checkoutUrl);
 }
 
 function findProductByShopifyVariantId(shopifyVariantId: string) {
   for (const product of shopProducts) {
-    const productVariant = getShopifyVariantFromUrl(product.shopifyUrl);
+    const productVariant = product.shopifyUrl
+      ? getShopifyVariantFromUrl(product.shopifyUrl)
+      : null;
     if (productVariant?.variantId === shopifyVariantId) {
-      return { product, variantId: null };
+      return { product, variantId: null, sizeId: null };
     }
 
     for (const variant of product.variants ?? []) {
-      const variantMatch = getShopifyVariantFromUrl(variant.shopifyUrl);
+      const variantMatch = variant.shopifyUrl
+        ? getShopifyVariantFromUrl(variant.shopifyUrl)
+        : null;
       if (variantMatch?.variantId === shopifyVariantId) {
-        return { product, variantId: variant.id };
+        return { product, variantId: variant.id, sizeId: null };
+      }
+
+      for (const size of variant.sizes ?? []) {
+        const sizeMatch = getShopifyVariantFromUrl(size.shopifyUrl);
+        if (sizeMatch?.variantId === shopifyVariantId) {
+          return { product, variantId: variant.id, sizeId: size.id };
+        }
       }
     }
   }

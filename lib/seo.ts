@@ -73,7 +73,21 @@ export function generateShopProductJsonLd(product: {
   images: string[];
   price: number;
   currency: string;
+  availableForPurchase?: boolean;
 }) {
+  const offer = product.availableForPurchase === false
+    ? {}
+    : {
+        offers: {
+          "@type": "Offer",
+          url: toAbsoluteUrl(`/shop/${product.id}`),
+          price: product.price.toFixed(2),
+          priceCurrency: product.currency,
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition",
+        },
+      };
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -85,14 +99,7 @@ export function generateShopProductJsonLd(product: {
       "@type": "Brand",
       name: "Lux Aura Care",
     },
-    offers: {
-      "@type": "Offer",
-      url: toAbsoluteUrl(`/shop/${product.id}`),
-      price: product.price.toFixed(2),
-      priceCurrency: product.currency,
-      availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-    },
+    ...offer,
   };
 }
 

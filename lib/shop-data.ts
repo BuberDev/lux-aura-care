@@ -16,6 +16,13 @@ export type ShopProductVariant = {
   swatchBorderHex?: string;
   image: string;
   imageAlt: string;
+  shopifyUrl?: string;
+  sizes?: ShopProductSizeVariant[];
+};
+
+export type ShopProductSizeVariant = {
+  id: string;
+  label: string;
   shopifyUrl: string;
 };
 
@@ -43,8 +50,9 @@ export type ShopProduct = {
   benefits: string[];
   howToUse: string[];
   faq: { q: string; a: string }[];
-  shopifyUrl: string; // Replace with your Shopify product URL
-  category: "skincare" | "body-glow" | "bundle";
+  shopifyUrl?: string;
+  category: "skincare" | "body-glow" | "fashion" | "bundle";
+  purchaseStatus?: "available" | "coming-soon";
   isNew?: boolean;
   isBestSeller?: boolean;
   flashSaleEndsAt?: string; // ISO date — real countdown, not looping
@@ -1310,6 +1318,151 @@ export const shopProducts: ShopProduct[] = [
       },
     ],
   },
+  {
+    id: "floral-grace-maxi-dress",
+    name: "Floral Grace Maxi Dress",
+    tagline: "A defined waist and sweeping floral skirt in four distinctive colorways.",
+    description:
+      "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Compare Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet on the same product page before choosing your color.",
+    price: 24.99,
+    compareAtPrice: 24.99,
+    currency: "USD",
+    image: "/dress/dress_red.jpeg",
+    imageAlt: "Blush pink floral maxi dress with short sleeves and a flowing A-line skirt",
+    badge: "New",
+    benefits: [
+      "Four floral colorways presented as variants of one dress",
+      "Clean neckline and fitted upper line keep the silhouette polished",
+      "Wide high waistband visually defines the waist",
+      "Flowing ankle-length A-line skirt adds movement without a bulky silhouette",
+      "Dedicated full-length image for every available color",
+      "Available in sizes S–XXXL across every colorway",
+    ],
+    howToUse: [
+      "Compare all four full-length color photos before making your choice",
+      "Choose your usual size and review the product details before checkout",
+      "Keep accessories simple and let the floral skirt lead the look",
+      "Follow the sewn-in care label before washing or ironing",
+    ],
+    faq: [
+      {
+        q: "Which colors are available?",
+        a: "Choose from Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet. Each option has its own full-length product image.",
+      },
+      {
+        q: "Which sizes are available?",
+        a: "The dress is available in sizes S, M, L, XL, XXL and XXXL in every colorway.",
+      },
+      {
+        q: "How should I care for the dress?",
+        a: "Always follow the sewn-in care label and check its washing and ironing symbols before the first wash.",
+      },
+    ],
+    category: "fashion",
+    isNew: true,
+    purchaseStatus: "available",
+    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1",
+    variants: [
+      {
+        id: "blush-garden",
+        label: "Blush Garden",
+        colorName: "Blush pink floral",
+        swatchHex: "#e7a9b4",
+        swatchBorderHex: "#f3ccd2",
+        image: "/dress/dress_red.jpeg",
+        imageAlt: "Blush pink floral maxi dress with burgundy flowers and short sleeves",
+        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1",
+        sizes: [
+          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1" },
+          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210846029:1" },
+          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210878797:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210911565:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210944333:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210977101:1" },
+        ],
+      },
+      {
+        id: "black-rose",
+        label: "Black Rose",
+        colorName: "Black floral",
+        swatchHex: "#111114",
+        swatchBorderHex: "#d9c5a7",
+        image: "/dress/dress_black.jpeg",
+        imageAlt: "Black floral maxi dress with pink roses and short black sleeves",
+        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211009869:1",
+        sizes: [
+          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211009869:1" },
+          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211042637:1" },
+          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211075405:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211108173:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211140941:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211173709:1" },
+        ],
+      },
+      {
+        id: "emerald-bloom",
+        label: "Emerald Bloom",
+        colorName: "Emerald floral",
+        swatchHex: "#12a881",
+        swatchBorderHex: "#74d8be",
+        image: "/dress/dress_green.jpeg",
+        imageAlt: "Emerald green floral maxi dress with red flowers and short black sleeves",
+        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211206477:1",
+        sizes: [
+          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211206477:1" },
+          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211239245:1" },
+          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211272013:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211304781:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211337549:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211370317:1" },
+        ],
+      },
+      {
+        id: "ivory-bouquet",
+        label: "Ivory Bouquet",
+        colorName: "Ivory floral",
+        swatchHex: "#f4f0e7",
+        swatchBorderHex: "#b8b1a3",
+        image: "/dress/dress_white.jpeg",
+        imageAlt: "Ivory white floral maxi dress with red flowers and long black sleeves",
+        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211403085:1",
+        sizes: [
+          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211403085:1" },
+          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211435853:1" },
+          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211468621:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211501389:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211534157:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211566925:1" },
+        ],
+      },
+    ],
+    gallery: [
+      {
+        url: "/dress/dress_red.jpeg",
+        label: "Blush Garden",
+        badge: "Soft Rose",
+        desc: "Blush pink bodice and skirt with burgundy florals and teal leaves",
+      },
+      {
+        url: "/dress/dress_black.jpeg",
+        label: "Black Rose",
+        badge: "Evening Floral",
+        desc: "Black base with pink rose print for the deepest, most dramatic colorway",
+      },
+      {
+        url: "/dress/dress_green.jpeg",
+        label: "Emerald Bloom",
+        badge: "Statement Color",
+        desc: "Emerald floral skirt paired with a clean black short-sleeve bodice",
+      },
+      {
+        url: "/dress/dress_white.jpeg",
+        label: "Ivory Bouquet",
+        badge: "Light Contrast",
+        desc: "Ivory floral skirt paired with a fitted black long-sleeve bodice",
+      },
+    ],
+  },
 ];
 
 export function getShopProductById(id: string): ShopProduct | undefined {
@@ -1321,6 +1474,7 @@ export function getShopifyCheckoutRoute(productId: string) {
 }
 
 export function getShopifyVariant(product: Pick<ShopProduct, "shopifyUrl">) {
+  if (!product.shopifyUrl) return null;
   return getShopifyVariantFromUrl(product.shopifyUrl);
 }
 

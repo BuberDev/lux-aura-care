@@ -8,7 +8,7 @@ import {
 } from "@/lib/shop-data";
 
 const SHOPIFY_STORE_HOST = "k50k7g-j7.myshopify.com";
-const STOREFRONT_API_VERSION = "2024-10";
+const STOREFRONT_API_VERSION = "2026-07";
 const SHOPIFY_PRICE_REVALIDATE_SECONDS = 300;
 
 const SHOP_VARIANT_PL_PRICING_QUERY = `

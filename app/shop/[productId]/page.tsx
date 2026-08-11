@@ -64,7 +64,10 @@ export default async function ShopProductPage({ params }: Props) {
 
   const product = {
     ...localizeContent(locale, marketProduct),
-    shopifyUrl: getShopifyCheckoutRoute(sourceProduct.id),
+    shopifyUrl:
+      sourceProduct.purchaseStatus === "coming-soon"
+        ? undefined
+        : getShopifyCheckoutRoute(sourceProduct.id),
     ugcVideos: dbVideos.length > 0 ? dbVideos : sourceProduct.ugcVideos,
   };
   const related = localizeContent(locale, marketRelatedProducts);
@@ -79,6 +82,7 @@ export default async function ShopProductPage({ params }: Props) {
         : [product.image],
     price: product.price,
     currency: product.currency,
+    availableForPurchase: product.purchaseStatus !== "coming-soon",
   });
   const faqJsonLd = generateFaqJsonLd(
     product.faq.map(({ q, a }) => ({ question: q, answer: a }))
