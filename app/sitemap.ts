@@ -3,8 +3,9 @@ import type { MetadataRoute } from "next";
 import { articles, products } from "@/lib/site-data";
 import { shopProducts } from "@/lib/shop-data";
 import { SITE_URL } from "@/lib/site";
-import { locales, type Locale } from "@/lib/i18n/config";
+import { defaultLocale, locales, type Locale } from "@/lib/i18n/config";
 import { localizePathname } from "@/lib/i18n/path";
+import { localizeProduct } from "@/lib/product-localization";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routeDefinitions: Array<{
@@ -27,11 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
       lastModified: new Date(article.publishedAt),
     })),
-    ...products.map((product) => ({
-      path: `/favorites/${product.id}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.72,
-    })),
     ...shopProducts.map((product) => ({
       path: `/shop/${product.id}`,
       changeFrequency: "weekly" as const,
@@ -39,22 +35,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return routeDefinitions.flatMap((route) =>
+  const routeEntries: MetadataRoute.Sitemap = routeDefinitions.flatMap((route) =>
     locales.map((locale) => ({
       url: absoluteLocalizedUrl(route.path, locale),
       lastModified: route.lastModified ?? new Date(),
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((alternateLocale) => [
+        languages: Object.fromEntries([
+          ...locales.map((alternateLocale) => [
             alternateLocale,
             absoluteLocalizedUrl(route.path, alternateLocale),
-          ])
-        ),
+          ]),
+          ["x-default", absoluteLocalizedUrl(route.path, defaultLocale)],
+        ]),
       },
     }))
   );
+
+  const productEntries: MetadataRoute.Sitemap = products.flatMap((product) => {
+    const languages = Object.fromEntries(
+      locales.map((locale) => {
+        const localizedProduct = localizeProduct(locale, product);
+        return [
+          locale,
+          absoluteLocalizedUrl(`/favorites/${localizedProduct.slug}`, locale),
+        ];
+      })
+    ) as Record<Locale, string>;
+
+    return locales.map((locale) => ({
+      url: languages[locale],
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.72,
+      alternates: {
+        languages: {
+          ...languages,
+          "x-default": languages[defaultLocale],
+        },
+      },
+    }));
+  });
+
+  return [...routeEntries, ...productEntries];
 }
 
 function absoluteLocalizedUrl(pathname: string, locale: Locale) {

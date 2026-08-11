@@ -5,11 +5,15 @@ import { FavoritesProductSales } from "@/components/favorites/favorites-product-
 import { getProductPageContent } from "@/lib/product-page-content";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { getProductBySlug, getProductProof, products, siteMeta, type ProductDefinition } from "@/lib/site-data";
-import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
+import { localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { resolveProductDisplayPrice } from "@/lib/currency";
-import { localizeProduct, localizeProducts } from "@/lib/product-localization";
+import {
+  getLocalizedProductAlternates,
+  localizeProduct,
+  localizeProducts,
+} from "@/lib/product-localization";
 import { getUgcVideoUrlFromDb } from "@/lib/db/media";
 
 type ProductPageProps = {
@@ -47,7 +51,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title,
     description: product.benefit,
-    alternates: getLocalizedAlternates(`/favorites/${product.slug}`, locale),
+    alternates: getLocalizedProductAlternates(sourceProduct, locale),
     keywords: [
       product.categoryId,
       product.name,
