@@ -37,7 +37,7 @@ export async function TopPicksSection({ className }: TopPicksSectionProps) {
               compact
               featuredBadge={item.badge}
               ctaLabel="View on Amazon"
-              detailsHref={`/favorites/${item.product.id}`}
+              detailsHref={`/favorites/${item.product.slug}`}
             />
           ))}
         </div>

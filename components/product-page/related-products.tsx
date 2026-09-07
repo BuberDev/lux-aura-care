@@ -48,7 +48,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
 
                 <div className="space-y-2">
                   <Button asChild size="sm" variant="secondary" className="w-full">
-                    <LocalizedLink href={`/favorites/${product.id}`}><T text={"View details"} /></LocalizedLink>
+                    <LocalizedLink href={`/favorites/${product.slug}`}><T text={"View details"} /></LocalizedLink>
                   </Button>
                   <AffiliateLink
                     href={getAffiliateRoute(product.id, "related-products")}

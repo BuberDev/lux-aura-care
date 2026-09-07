@@ -12,6 +12,7 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import { getLocaleFromPathname, stripLocaleFromPathname } from "@/lib/i18n/path";
+import { getArticleBySlug, getProductBySlug } from "@/lib/site-data";
 
 const trackingCookieOptions = {
   httpOnly: false,
@@ -20,6 +21,25 @@ const trackingCookieOptions = {
   maxAge: TRACKING_COOKIE_MAX_AGE,
   path: "/",
 };
+
+// /favorites/[productId] and /blog/[slug] have a loading.tsx, which makes
+// Next.js stream the response and commit a 200 status before notFound()
+// can run inside the page. Reject unknown slugs here instead, before any
+// rendering starts, so genuinely missing content gets a real 404.
+function isMissingContentPath(pathname: string): boolean {
+  const favoritesSlug = pathname.match(/^\/favorites\/([^/]+)$/)?.[1];
+  if (favoritesSlug) {
+    const slug = decodeURIComponent(favoritesSlug);
+    return !getProductBySlug(slug, "en") && !getProductBySlug(slug, "pl");
+  }
+
+  const blogSlug = pathname.match(/^\/blog\/([^/]+)$/)?.[1];
+  if (blogSlug) {
+    return !getArticleBySlug(decodeURIComponent(blogSlug));
+  }
+
+  return false;
+}
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -49,6 +69,12 @@ export function proxy(request: NextRequest) {
   const rewriteUrl = request.nextUrl.clone();
   if (pathnameLocale) {
     rewriteUrl.pathname = stripLocaleFromPathname(pathname);
+  }
+
+  if (isMissingContentPath(rewriteUrl.pathname)) {
+    const notFoundUrl = request.nextUrl.clone();
+    notFoundUrl.pathname = "/__not-found__";
+    return NextResponse.rewrite(notFoundUrl, { request: { headers: requestHeaders } });
   }
 
   const response = pathnameLocale

@@ -120,7 +120,7 @@ export default async function RootLayout({
     ...localizeProducts(locale, products).map((product) => ({
       id: `favorite-${product.id}`,
       name: product.name,
-      href: `/favorites/${product.id}`,
+      href: `/favorites/${product.slug}`,
     })),
     ...localizeContent(locale, shopProducts).map((product) => ({
       id: `shop-${product.id}`,
