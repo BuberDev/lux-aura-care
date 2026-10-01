@@ -7,7 +7,6 @@ import {
   type ShopProduct,
 } from "@/lib/shop-data";
 
-const SHOPIFY_STORE_HOST = "k50k7g-j7.myshopify.com";
 const STOREFRONT_API_VERSION = "2026-07";
 const SHOPIFY_PRICE_REVALIDATE_SECONDS = 300;
 
@@ -84,7 +83,10 @@ async function getShopifyPlVariantPrices(products: readonly ShopProduct[]) {
 
   const variantEntries = products.flatMap((product) => {
     const variantId = getPrimaryVariantGlobalId(product);
-    return variantId ? [{ productId: product.id, variantId }] : [];
+    const variant = getShopifyVariant(product);
+    return variantId && variant
+      ? [{ productId: product.id, variantId, storeOrigin: variant.storeOrigin }]
+      : [];
   });
   if (variantEntries.length === 0) return new Map<string, ResolvedShopPrice>();
 
@@ -94,7 +96,7 @@ async function getShopifyPlVariantPrices(products: readonly ShopProduct[]) {
 
   try {
     const response = await fetch(
-      `https://${SHOPIFY_STORE_HOST}/api/${STOREFRONT_API_VERSION}/graphql.json`,
+      `${variantEntries[0].storeOrigin}/api/${STOREFRONT_API_VERSION}/graphql.json`,
       {
         method: "POST",
         headers: {

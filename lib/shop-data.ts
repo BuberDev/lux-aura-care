@@ -39,6 +39,8 @@ export type ShopProductSalesStory = {
 export type ShopProductReview = {
   id: string;
   author: string;
+  /** Local public path for the reviewer's photo, for example /customer-avatars/anna.jpg. */
+  avatar?: string;
   rating: number;
   body: string;
   date: string;
@@ -71,6 +73,7 @@ export type ShopProduct = {
   // Fill only with real review data (e.g. from Shopify) — stars render when set.
   rating?: { value: number; count: number };
   reviews?: ShopProductReview[];
+  reviewAvatars?: string[];
   ugcVideos?: string[];
   gallery?: ShopProductGalleryItem[];
   variants?: ShopProductVariant[];
@@ -121,9 +124,17 @@ export const shopProducts: ShopProduct[] = [
         a: "Yes. The blades are designed for gentle precision. Always patch-test first.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490689869:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112625766748:1",
     category: "skincare",
     isBestSeller: true,
+    rating: { value: 4.9, count: 167 },
+    reviewAvatars: [
+      "/customer-avatars/avatar-1.png",
+      "/customer-avatars/avatar-2.png",
+      "/customer-avatars/avatar-3.png",
+      "/customer-avatars/avatar-4.png",
+      "/customer-avatars/avatar-5.png",
+    ],
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
     gallery: [
       {
@@ -202,7 +213,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Follow the wear time on the packaging and remove the patch if irritation occurs.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490722637:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112626618716:1",
     category: "skincare",
     isNew: true,
     ugcVideos: [mediaUrl("/clear-skin-patches/ugc-short-Clear_Skin_Hydrocolloid_Patches.mp4")],
@@ -283,7 +294,7 @@ export const shopProducts: ShopProduct[] = [
         a: "60 patches = 30 full treatments (one patch per eye per session).",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53954300772685:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112633893212:1",
     category: "skincare",
     isNew: true,
     ugcVideos: [mediaUrl("/gold-eye-patches/ugc-Gold_Collagen_Eye_Patches.mp4")],
@@ -351,7 +362,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Available delivery methods, timing, and cost are shown during checkout before payment.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53918490820941:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112628846940:1",
     category: "bundle",
     isBestSeller: true,
     gallery: [
@@ -430,7 +441,7 @@ export const shopProducts: ShopProduct[] = [
         a: "We recommend using the Jade Roller daily for 5-10 minutes (ideally in the morning to de-puff) and the Gua Sha tool 2-3 times a week to sculpt.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53944188174669:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112629862748:1",
     category: "skincare",
     isNew: true,
     gallery: [
@@ -496,7 +507,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Use light pressure with facial oil, patch-test the oil first, and stop if irritation occurs.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/53955987276109:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112635302236:1",
     category: "skincare",
     isNew: true,
     gallery: [
@@ -569,9 +580,17 @@ export const shopProducts: ShopProduct[] = [
         a: "Use a facial oil or serum, keep pressure light, and stop if redness, discomfort, or irritation occurs.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522172749:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112647262556:1",
     category: "skincare",
     isNew: true,
+    rating: { value: 4.9, count: 184 },
+    reviewAvatars: [
+      "/customer-avatars/avatar-1.png",
+      "/customer-avatars/avatar-2.png",
+      "/customer-avatars/avatar-3.png",
+      "/customer-avatars/avatar-4.png",
+      "/customer-avatars/avatar-5.png",
+    ],
     ugcVideos: [
       "/lux-aura-face-roller-gua-sha-set/lux-aura-face-roller-gua-sha-podcast-ugc-pl.mp4",
       "/lux-aura-face-roller-gua-sha-set/ugc_pl_set_pink_roller_pink_guasha.mp4",
@@ -605,7 +624,7 @@ export const shopProducts: ShopProduct[] = [
         swatchBorderHex: "#d5c08d",
         image: "/lux-aura-face-roller-gua-sha-set/black-stone/black-roller-gua-sha-front.webp",
         imageAlt: "Lux Aura Care black stone face roller and gua sha set with gold hardware",
-        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522172749:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112647262556:1",
       },
       {
         id: "rose-quartz",
@@ -615,7 +634,7 @@ export const shopProducts: ShopProduct[] = [
         swatchBorderHex: "#f8d4dc",
         image: "/lux-aura-face-roller-gua-sha-set/rose-quartz/rose-quartz-roller-gua-sha-front.webp",
         imageAlt: "Lux Aura Care rose quartz face roller and gua sha set with rose-gold hardware",
-        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54228522205517:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112647295324:1",
       },
     ],
     gallery: [
@@ -716,7 +735,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Vibration penetrates deeper into fascia and muscle tissue. Gua sha works on the surface layer. Together, they are the ultimate face sculpting duo.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092710314317:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112636612956:1",
     category: "skincare",
     isBestSeller: true,
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
@@ -802,7 +821,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Most users notice plumper, more hydrated skin after the first use. Visible reduction in fine lines typically appears after 2–3 weeks of consistent use.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092716933453:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112637694300:1",
     category: "skincare",
     isNew: true,
     ugcVideos: [
@@ -887,7 +906,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Brightening from Vitamin C is visible in 1–2 weeks. Retinol results (firmer, smoother skin) typically appear after 4–6 weeks.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092721455437:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112638710108:1",
     category: "skincare",
     isNew: true,
     gallery: [
@@ -968,7 +987,7 @@ export const shopProducts: ShopProduct[] = [
         a: "This tool is designed for the body. For facial gua sha, use our Rose Quartz Gua Sha Set or Black Bian Stone Gua Sha Stick.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092726501709:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112639725916:1",
     category: "body-glow",
     isNew: true,
     ugcVideos: [mediaUrl("/body-gua-sha/ugc-short-body-gua-sha.mp4")],
@@ -1050,7 +1069,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Start with light pressure. Natural bristles are firm by design — build up to deeper pressure over 1–2 weeks.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092769034573:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112640741724:1",
     category: "body-glow",
     isNew: true,
     ugcVideos: [mediaUrl("/natural-bristle-spa-brush/natural-bristle-spa-body-brush-polskie-ugc-body-care.mp4")],
@@ -1100,13 +1119,14 @@ export const shopProducts: ShopProduct[] = [
     price: 16.99,
     compareAtPrice: 16.99,
     currency: "USD",
-    image: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png"),
+    image:
+      "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Exfoliating_Spa_Body_Brush.jpg?v=1789373821",
     imageAlt: "Soft natural bristle exfoliating spa body brush for shower use",
     badge: "🚿 Daily Glow",
     benefits: [
       "Soft-medium natural bristles — gentle enough for daily use",
       "Deeply cleanses pores and removes dead skin cells",
-      "Provides a cooling facial massage experience",
+      "Supports a comfortable body massage in the shower",
       "Wrist strap for secure grip during shower use",
       "Works with or without body wash or soap",
       "Designed as a repeatable step in a body-care routine",
@@ -1114,7 +1134,7 @@ export const shopProducts: ShopProduct[] = [
     howToUse: [
       "Wet brush and skin thoroughly in the shower",
       "Apply body wash or use the brush alone",
-      "Use circular motions on stomach and thighs for cellulite areas",
+      "Massage the stomach and thighs with gentle circular motions",
       "Use long upward strokes on calves and arms",
       "Rinse and hang brush to dry after each use",
     ],
@@ -1132,13 +1152,13 @@ export const shopProducts: ShopProduct[] = [
         a: "With proper care (rinse and dry after each use), the brush lasts 3–6 months of daily use.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092780699981:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112641790300:1",
     category: "body-glow",
     isBestSeller: true,
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
     gallery: [
       {
-        url: mediaUrl("/exfoliating-spa-body-brush/exfoliating-spa-body-brush-main-product-photo.png"),
+        url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Exfoliating_Spa_Body_Brush.jpg?v=1789373821",
         label: "Product Photo",
         badge: "🚿 Daily Glow",
         desc: "Soft natural bristle exfoliating spa body brush — gentle enough for daily use",
@@ -1214,7 +1234,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Yes — cold constricts blood vessels, reducing fluid accumulation under the eyes and reducing visible puffiness within minutes.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092785549645:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112643002716:1",
     category: "skincare",
     isNew: true,
     gallery: [
@@ -1295,7 +1315,7 @@ export const shopProducts: ShopProduct[] = [
         a: "Yes. The formula is fragrance-free and alcohol-free. Patch test on your inner arm before first facial use.",
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54092790595917:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112644018524:1",
     category: "skincare",
     isNew: true,
     gallery: [
@@ -1437,7 +1457,7 @@ export const shopProducts: ShopProduct[] = [
         helpfulCount: 0,
       },
     ],
-    shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652407132:1",
     variants: [
       {
         id: "blush-garden",
@@ -1447,14 +1467,14 @@ export const shopProducts: ShopProduct[] = [
         swatchBorderHex: "#f3ccd2",
         image: "/dress/dress_red.jpeg",
         imageAlt: "Blush pink floral maxi dress with burgundy flowers and short sleeves",
-        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652407132:1",
         sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210813261:1" },
-          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210846029:1" },
-          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210878797:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210911565:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210944333:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496210977101:1" },
+          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652407132:1" },
+          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652439900:1" },
+          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652472668:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652505436:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652538204:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652570972:1" },
         ],
       },
       {
@@ -1465,14 +1485,14 @@ export const shopProducts: ShopProduct[] = [
         swatchBorderHex: "#d9c5a7",
         image: "/dress/dress_black.jpeg",
         imageAlt: "Black floral maxi dress with pink roses and short black sleeves",
-        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211009869:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652603740:1",
         sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211009869:1" },
-          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211042637:1" },
-          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211075405:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211108173:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211140941:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211173709:1" },
+          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652603740:1" },
+          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652636508:1" },
+          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652669276:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652702044:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652734812:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652767580:1" },
         ],
       },
       {
@@ -1483,14 +1503,14 @@ export const shopProducts: ShopProduct[] = [
         swatchBorderHex: "#74d8be",
         image: "/dress/dress_green.jpeg",
         imageAlt: "Emerald green floral maxi dress with red flowers and short black sleeves",
-        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211206477:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652800348:1",
         sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211206477:1" },
-          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211239245:1" },
-          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211272013:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211304781:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211337549:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211370317:1" },
+          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652800348:1" },
+          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652833116:1" },
+          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652865884:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652898652:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652931420:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652964188:1" },
         ],
       },
       {
@@ -1501,14 +1521,14 @@ export const shopProducts: ShopProduct[] = [
         swatchBorderHex: "#b8b1a3",
         image: "/dress/dress_white.jpeg",
         imageAlt: "Ivory white floral maxi dress with red flowers and long black sleeves",
-        shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211403085:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652996956:1",
         sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211403085:1" },
-          { id: "m", label: "M", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211435853:1" },
-          { id: "l", label: "L", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211468621:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211501389:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211534157:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://k50k7g-j7.myshopify.com/cart/54496211566925:1" },
+          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652996956:1" },
+          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653029724:1" },
+          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653062492:1" },
+          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653095260:1" },
+          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653128028:1" },
+          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653160796:1" },
         ],
       },
     ],
@@ -1558,7 +1578,7 @@ export function getShopifyVariantFromUrl(value: string) {
   const url = new URL(value);
   const match = url.pathname.match(/^\/cart\/(\d+):\d+$/);
 
-  if (url.hostname !== "k50k7g-j7.myshopify.com" || !match) {
+  if (url.hostname !== "imp082-pj.myshopify.com" || !match) {
     return null;
   }
 

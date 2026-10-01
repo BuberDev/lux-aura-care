@@ -3,7 +3,6 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getShopifyVariantFromUrl, getShopProductById } from "@/lib/shop-data";
 
 const CHECKOUT_HOSTS = new Set(["shop.app", "checkout.shopify.com"]);
-const SHOPIFY_STORE_HOST = "k50k7g-j7.myshopify.com";
 const STOREFRONT_API_VERSION = "2026-07";
 const MAX_CHECKOUT_QUANTITY = 10;
 
@@ -44,11 +43,12 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
     return redirectToProduct(request, productId);
   }
 
-  if (!shopifyVariant) {
+  if (!shopifyVariant || product.purchaseStatus === "coming-soon") {
     return redirectToProduct(request, productId);
   }
 
   const storefrontCheckoutUrl = await createStorefrontCheckoutUrl({
+    storeOrigin: shopifyVariant.storeOrigin,
     shopifyVariantId: shopifyVariant.variantId,
     quantity: checkoutQuantity,
     buyerCountryCode,
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       "Content-Type": "application/json",
     };
 
-    const cartResponse = await fetch(`${shopifyVariant.storeOrigin}/cart/add.js`, {
+    const cartResponse = await fetch(`${shopifyVariant.storeOrigin}/cart/add.js?_fd=0`, {
       method: "POST",
       headers: requestHeaders,
       body: JSON.stringify({
@@ -87,7 +87,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       return redirectToProduct(request, productId);
     }
 
-    const checkoutResponse = await fetch(`${shopifyVariant.storeOrigin}/checkout`, {
+    const checkoutResponse = await fetch(`${shopifyVariant.storeOrigin}/checkout?_fd=0`, {
       headers: {
         "Accept-Language": requestHeaders["Accept-Language"],
         Cookie: cookies,
@@ -120,7 +120,8 @@ function isAllowedCheckoutUrl(value: string) {
 }
 
 function redirectToProduct(request: NextRequest, productId: string) {
-  const fallbackUrl = new URL(`/shop/${encodeURIComponent(productId)}`, request.url);
+  const locale = request.nextUrl.searchParams.get("locale") === "pl" ? "pl" : "en";
+  const fallbackUrl = new URL(`/${locale}/shop/${encodeURIComponent(productId)}`, request.url);
   fallbackUrl.searchParams.set("checkoutError", "1");
   return noIndexRedirect(fallbackUrl);
 }
@@ -153,22 +154,24 @@ function getCheckoutAcceptLanguage(request: NextRequest) {
 }
 
 async function createStorefrontCheckoutUrl({
+  storeOrigin,
   shopifyVariantId,
   quantity,
   buyerCountryCode,
 }: {
+  storeOrigin: string;
   shopifyVariantId: string;
   quantity: number;
   buyerCountryCode: "PL" | null;
 }) {
-  const token = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+  const token = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN?.trim();
   if (!token || !buyerCountryCode) {
     return null;
   }
 
   try {
     const response = await fetch(
-      `https://${SHOPIFY_STORE_HOST}/api/${STOREFRONT_API_VERSION}/graphql.json`,
+      `${storeOrigin}/api/${STOREFRONT_API_VERSION}/graphql.json`,
       {
         method: "POST",
         headers: {

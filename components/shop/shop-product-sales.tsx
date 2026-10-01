@@ -29,6 +29,8 @@ import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterBlock } from "@/components/newsletter-block";
 import { LocalizedDate } from "@/components/localized-date";
+import { CustomerRatingSummary } from "@/components/shop/customer-rating-summary";
+import { PaymentMethods } from "@/components/shop/payment-methods";
 import {
   trackShopAddToCart,
   trackShopBeginCheckout,
@@ -54,6 +56,8 @@ type HeroUgcVideoCardProps = {
   readonly videoUrl: string;
   readonly poster: string;
 };
+
+type StockStatus = "available" | "sold-out" | "store-unavailable" | "unknown";
 
 const VISIBLE_SHOP_GALLERY_IMAGES = 5;
 const MAX_CHECKOUT_QUANTITY = 10;
@@ -91,8 +95,8 @@ function HeroUgcVideoCard({
   };
 
   return (
-    <article className="mx-auto w-full max-w-[176px] overflow-hidden rounded-lg border border-border-subtle bg-background-primary shadow-[0_12px_34px_rgba(0,0,0,0.22)]">
-      <div className="relative aspect-[9/13] overflow-hidden bg-black">
+    <article className="group relative w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle shadow-xl transition-all duration-300 hover:border-accent-gold/40 hover:shadow-2xl">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-black">
         <video
           ref={videoRef}
           src={videoUrl}
@@ -101,7 +105,7 @@ function HeroUgcVideoCard({
           playsInline
           preload="metadata"
           onPlay={() => setHasStarted(true)}
-          className="size-full object-cover"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
         >
           <T text={"Your browser does not support the video tag."} />
         </video>
@@ -111,24 +115,24 @@ function HeroUgcVideoCard({
             type="button"
             onClick={handlePlay}
             aria-label={`${text("Watch video")}: ${text(title)}`}
-            className="absolute inset-0 flex items-center justify-center bg-black/12 text-white transition hover:bg-black/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-gold"
+            className="absolute inset-0 flex items-center justify-center bg-black/25 text-white transition duration-300 hover:bg-black/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-gold"
           >
-            <span className="flex size-12 items-center justify-center rounded-full border border-white/30 bg-black/55 shadow-lg backdrop-blur-md transition">
-              <Play className="ml-0.5 size-5 fill-current" aria-hidden="true" />
+            <span className="flex size-14 items-center justify-center rounded-full border border-accent-gold/40 bg-black/60 text-accent-gold shadow-2xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
+              <Play className="ml-1 size-6 fill-current" aria-hidden="true" />
             </span>
           </button>
         )}
 
-        <span className="absolute right-3 top-3 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-white backdrop-blur-md">
+        <span className="absolute right-3.5 top-3.5 rounded-full border border-white/20 bg-black/65 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md">
           <T text={duration} />
         </span>
       </div>
 
-      <div className="min-h-[116px] p-4">
-        <h3 className="text-sm font-bold leading-snug text-text-primary">
+      <div className="p-5 sm:p-6">
+        <h3 className="text-base font-bold leading-snug text-text-primary">
           <T text={title} />
         </h3>
-        <p className="mt-2 text-xs leading-relaxed text-text-secondary">
+        <p className="mt-2 text-xs leading-relaxed text-text-secondary sm:text-sm">
           <T text={description} />
         </p>
       </div>
@@ -568,19 +572,19 @@ const detailedScienceBenefits: Record<string, {
   ],
   "exfoliating-spa-body-brush": [
     {
-      title: "Soft Daily Bristles",
-      desc: "Soft-medium natural bristles are gentle enough for daily shower use while still lifting away dead skin cells and unclogging pores.",
-      badge: "Daily Safe"
+      title: "Soft Bristles",
+      desc: "Soft plant-fibre bristles help lift dead skin during a gentle shower massage without requiring strong pressure.",
+      badge: "Gentle Daily Care"
     },
     {
       title: "Secure Wrist Strap",
-      desc: "The built-in strap keeps the brush firmly in hand under running water — no fumbling, no dropping mid-shower.",
+      desc: "The built-in strap helps keep the wet brush steady and comfortable in your hand throughout the shower.",
       badge: "Shower Grip"
     },
     {
-      title: "Texture in 2 Weeks",
-      desc: "Used consistently with circular motions on stomach and thighs, skin texture looks and feels visibly smoother within about two weeks.",
-      badge: "Visible Glow"
+      title: "Consistent Exfoliation",
+      desc: "Regular use with gentle circular motions can leave body skin feeling smoother and ready for lotion.",
+      badge: "Smoother Feel"
     }
   ],
   "ice-face-roller-gua-sha-set": [
@@ -630,6 +634,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const productVariants = product.variants ?? [];
   const hasColorVariants = productVariants.length > 0;
   const isFashion = product.category === "fashion";
+  const isBodyCare = product.category === "body-glow";
   const isPurchasable = product.purchaseStatus !== "coming-soon" && Boolean(product.shopifyUrl);
 
   const scienceBenefits = localizeContent(
@@ -666,6 +671,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   // --- Stock: fetch from Shopify Storefront API via our proxy ---
   const [stockQuantity, setStockQuantity] = useState<number | null>(null);
+  const [stockAvailable, setStockAvailable] = useState<boolean | null>(null);
+  const [stockStatus, setStockStatus] = useState<StockStatus>("unknown");
   const [stockLoading, setStockLoading] = useState(isPurchasable);
 
   useEffect(() => {
@@ -682,12 +689,24 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     const stockUrl = `/api/shopify-stock/${encodeURIComponent(product.id)}${params.size ? `?${params.toString()}` : ""}`;
 
     setStockLoading(true);
+    setStockAvailable(null);
+    setStockStatus("unknown");
     fetch(stockUrl)
       .then(r => r.json())
-      .then((d: { quantity: number | null; available: boolean }) => {
-        if (!cancelled) setStockQuantity(d.quantity);
+      .then((d: { quantity: number | null; available: boolean; status?: StockStatus }) => {
+        if (!cancelled) {
+          setStockQuantity(d.quantity);
+          setStockAvailable(d.available);
+          setStockStatus(d.status ?? "unknown");
+        }
       })
-      .catch(() => { /* silently fall back to no stock bar */ })
+      .catch(() => {
+        if (!cancelled) {
+          setStockQuantity(null);
+          setStockAvailable(null);
+          setStockStatus("unknown");
+        }
+      })
       .finally(() => { if (!cancelled) setStockLoading(false); });
     return () => { cancelled = true; };
   }, [isPurchasable, product.id, selectedSizeId, selectedVariantId]);
@@ -753,7 +772,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   }, [product.id, product.name, product.price, product.currency, product.category]);
 
   const handleCheckoutClick = (placement: ShopCheckoutEvent["placement"]) => {
-    if (!isPurchasable) return;
+    if (!canCheckout) return;
 
     const checkoutEvent: ShopCheckoutEvent = {
       productId: product.id,
@@ -831,6 +850,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const sizeVariants = selectedVariant?.sizes ?? [];
   const selectedSize = sizeVariants.find((size) => size.id === selectedSizeId) ?? sizeVariants[0];
   const hasSizeVariants = sizeVariants.length > 0;
+  const checkoutPending = isPurchasable && stockLoading;
+  const stockUnavailable = isPurchasable && !stockLoading && stockAvailable === false;
+  const canCheckout = isPurchasable && !stockLoading && stockAvailable !== false;
   const maxSelectableQuantity = Math.max(
     1,
     Math.min(MAX_CHECKOUT_QUANTITY, stockQuantity ?? MAX_CHECKOUT_QUANTITY)
@@ -848,9 +870,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const showSaleCountdown = Boolean(saleActive && timeLeft);
   const trustBadgeLabel = (() => {
     if (!isPurchasable) return "Coming soon";
-    if (product.isBestSeller) return "Bestseller";
-    if (product.isNew) return "New arrival";
-    return "Customer favourite";
+    if (checkoutPending) return "Checking availability";
+    if (stockUnavailable) return stockStatus === "sold-out" ? "Out of stock" : "Unavailable";
+    return null;
   })();
   const productCategoryLabel = isFashion
     ? "Style edit"
@@ -859,15 +881,37 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       : product.category === "body-glow"
         ? "Body care"
         : "Skincare tool";
-  const usageEyebrow = isFashion ? "FIT & STYLING" : "FACIAL MASSAGE STEP BY STEP";
-  const usageTitle = isFashion ? "Choose and Style It With Confidence" : "How to Use It Without Guesswork";
+  const usageEyebrow = isFashion
+    ? "FIT & STYLING"
+    : isBodyCare
+      ? "BODY CARE STEP BY STEP"
+      : "FACIAL MASSAGE STEP BY STEP";
+  const usageTitle = isFashion
+    ? "Choose and Style It With Confidence"
+    : isBodyCare
+      ? "How to Use the Body Brush"
+      : "How to Use It Without Guesswork";
   const usageDescription = isFashion
     ? "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own."
-    : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
+    : isBodyCare
+      ? "Use the brush on wet skin with gentle pressure, then rinse it well and leave it to dry completely."
+      : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
   const customerReviews = product.reviews ?? [];
-  const finalEyebrow = isFashion ? "YOUR NEXT POLISHED LOOK" : "YOUR RADIANT COMPLEXION AWAITS";
-  const finalTitle = isFashion ? "Found the color that feels like you?" : "Ready to add it to your skincare routine?";
-  const relatedHeading = isFashion ? "Continue exploring Lux Aura Care" : "Pair it with your skincare";
+  const finalEyebrow = isFashion
+    ? "YOUR NEXT POLISHED LOOK"
+    : isBodyCare
+      ? "YOUR BODY-CARE ROUTINE"
+      : "YOUR RADIANT COMPLEXION AWAITS";
+  const finalTitle = isFashion
+    ? "Found the color that feels like you?"
+    : isBodyCare
+      ? "Ready to add it to your shower routine?"
+      : "Ready to add it to your skincare routine?";
+  const relatedHeading = isFashion
+    ? "Continue exploring Lux Aura Care"
+    : isBodyCare
+      ? "Pair it with body care"
+      : "Pair it with your skincare";
   const selectedSubtotal = product.price * selectedQuantity;
   const productPrice = formatShopPrice(product.price, product.currency, locale);
   const productCompareAtPrice = formatShopPrice(product.compareAtPrice, product.currency, locale);
@@ -1031,12 +1075,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </div>
 
       {/* 2. HIGH-CONVERTING HERO & BUY BOX SECTION */}
-      <section ref={heroSectionRef} className="relative overflow-hidden py-6 md:py-16">
+      <section ref={heroSectionRef} className="relative py-6 md:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch relative z-10">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start relative z-10">
             
             {/* LEFT: Premium Image Gallery */}
-            <div className="lg:col-span-7 lg:flex lg:flex-col">
+            <div className="lg:col-span-7 lg:flex lg:flex-col lg:sticky lg:top-24 lg:self-start">
               <div className="mx-auto w-full max-w-[620px]">
                 <div className="grid items-start gap-2 sm:grid-cols-[3.75rem_minmax(0,1fr)] sm:gap-3">
                   <div className="sm:col-start-2">
@@ -1167,121 +1211,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                 </div>
               </div>
-
-              {salesStory && (
-                <div className="mx-auto mt-8 hidden max-w-[620px] flex-col gap-5 lg:flex">
-                  <div className="border-y border-border-subtle py-5">
-                    <div className="flex items-start justify-between gap-5">
-                      <div className="min-w-0">
-                        <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-accent-gold">
-                          <T text={salesStory.eyebrow} />
-                        </p>
-                        <h2
-                          className="mt-2 text-2xl font-semibold leading-tight text-text-primary"
-                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                        >
-                          <T text={salesStory.title} />
-                        </h2>
-                        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-text-secondary">
-                          <T text={salesStory.description} />
-                        </p>
-                      </div>
-
-                      {hasUgcVideos && (
-                        <a
-                          href="#product-ugc-gallery"
-                          className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border-subtle bg-surface-subtle px-3 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-accent-gold transition hover:border-accent-gold/50 hover:text-text-primary"
-                        >
-                          <Play className="size-3.5 fill-current" aria-hidden="true" />
-                          <T text={"See videos"} />
-                        </a>
-                      )}
-                    </div>
-
-                    <div className="mt-5 grid gap-3 xl:grid-cols-3">
-                      {salesStory.highlights.map((highlight) => (
-                        <div
-                          key={highlight.title}
-                          className="rounded-lg border border-border-subtle bg-surface-subtle p-4"
-                        >
-                          <div className="mb-2 flex items-center gap-2">
-                            <Check className="size-4 shrink-0 text-accent-gold" aria-hidden="true" />
-                            <h3 className="text-xs font-extrabold uppercase tracking-[0.12em] text-text-primary">
-                              <T text={highlight.title} />
-                            </h3>
-                          </div>
-                          <p className="text-xs leading-relaxed text-text-secondary">
-                            <T text={highlight.desc} />
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {previewUgcVideos.length > 0 && (
-                    <div className="border-t border-border-subtle pt-4">
-                      <div className="mb-4">
-                        <div>
-                          <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent-gold">
-                            <T text={"Product videos"} />
-                          </p>
-                          <h3 className="mt-1 text-base font-semibold text-text-primary">
-                            <T text={"Watch the set before you choose"} />
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="grid justify-center gap-3 sm:grid-cols-2">
-                        {previewUgcVideos.map((video) => (
-                          <HeroUgcVideoCard
-                            key={video.videoUrl}
-                            title={video.title}
-                            description={video.description}
-                            duration={video.duration}
-                            videoUrl={video.videoUrl}
-                            poster={video.poster}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {[
-                      {
-                        title: "What you get",
-                        items: [
-                          "Double-ended face roller",
-                          "Matching gua sha tool",
-                          "Branded gift-ready packaging",
-                        ],
-                      },
-                      {
-                        title: "Best used with",
-                        items: [
-                          "Facial oil or serum for slip",
-                          "Light pressure, never dragging",
-                          "A short 5-minute massage",
-                        ],
-                      },
-                    ].map((group) => (
-                      <div key={group.title} className="rounded-lg border border-border-subtle bg-surface-subtle p-4">
-                        <p className="mb-3 text-[10px] font-extrabold uppercase tracking-[0.16em] text-accent-gold">
-                          <T text={group.title} />
-                        </p>
-                        <ul className="space-y-2">
-                          {group.items.map((item) => (
-                            <li key={item} className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary">
-                              <Check className="mt-0.5 size-3.5 shrink-0 text-accent-gold" aria-hidden="true" />
-                              <span><T text={item} /></span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* RIGHT: Conversion Buy Box */}
@@ -1291,10 +1220,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <p className="min-w-0 text-xs uppercase tracking-[0.2em] font-bold" style={{ color: "var(--accent-gold)" }}>
                     <T text={productCategoryLabel} />
                   </p>
-                  <div className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border border-accent-gold/30 bg-accent-gold/10 px-2.5 py-1 text-[11px] font-semibold text-accent-gold sm:px-3 sm:text-xs ${product.isBestSeller ? "animate-pulse" : ""}`}>
-                    <Sparkles className="size-3.5" aria-hidden="true" />
-                    <span><T text={trustBadgeLabel} /></span>
-                  </div>
+                  {trustBadgeLabel && (
+                    <div className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border-subtle bg-background-primary/45 px-2.5 py-1 text-[11px] font-medium text-text-secondary sm:px-3 sm:text-xs">
+                      <ShieldCheck className="size-3.5 text-accent-gold" aria-hidden="true" />
+                      <span><T text={trustBadgeLabel} /></span>
+                    </div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <CustomerRatingSummary
+                    rating={product.rating}
+                    reviews={customerReviews}
+                    avatars={product.reviewAvatars}
+                  />
                 </div>
                 <h1
                   className="break-words text-2xl font-semibold text-text-primary mb-3 sm:text-3xl md:text-4xl"
@@ -1302,44 +1240,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 >
                   {product.name}
                 </h1>
-                {product.rating && product.rating.count > 0 && (
-                  <a
-                    href={customerReviews.length > 0 ? "#customer-reviews" : undefined}
-                    className={`mb-3 flex w-fit items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold ${
-                      customerReviews.length > 0 ? "transition hover:text-accent-gold" : "pointer-events-none"
-                    }`}
-                    aria-label={
-                      customerReviews.length > 0
-                        ? `${product.rating.value.toFixed(1)} ${text("out of 5 stars")}, ${product.rating.count} ${text("supplier reviews")}. ${text("Go to customer reviews")}`
-                        : undefined
-                    }
-                  >
-                    <div className="flex items-center gap-0.5" aria-hidden="true">
-                      {[1, 2, 3, 4, 5].map((starPosition) => (
-                        <Star
-                          key={starPosition}
-                          className={`size-4 ${
-                            starPosition <= Math.round(product.rating!.value)
-                              ? "fill-accent-gold text-accent-gold"
-                              : "fill-transparent text-border-strong"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-xs font-semibold text-text-secondary">
-                      {product.rating.value.toFixed(1)} · {product.rating.count}{" "}
-                      <T text={customerReviews.length > 0 ? "supplier reviews" : product.rating.count === 1 ? "review" : "reviews"} />
-                    </span>
-                  </a>
-                )}
                 <p className="text-sm md:text-base leading-relaxed text-text-secondary">
                   {product.description}
                 </p>
-              </div>
-
-              <div className="inline-flex items-center gap-2 rounded-xl border border-border-subtle bg-surface-subtle p-3 text-xs text-text-secondary">
-                <ShieldCheck className="size-4 text-accent-gold" aria-hidden="true" />
-                <span><T text={"Product specifications are shown for this exact item"} /></span>
               </div>
 
               {/* Price Block & Save Indicator */}
@@ -1506,7 +1409,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 </div>
               )}
 
-              {isPurchasable && (
+              {canCheckout && (
               <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -1560,7 +1463,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               )}
 
               {/* High-Converting CTA Area */}
-              {isPurchasable ? (
+              {canCheckout ? (
               <div className="space-y-3.5">
                 <a
                   href={checkoutUrl}
@@ -1576,27 +1479,43 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
                 </a>
 
-                {/* Secure payments strip */}
-                <div className="flex items-center justify-center gap-2 pt-1">
-                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-widest"><T text={"Checkout processed securely"} /></span>
-                  <div className="h-px bg-surface-hover flex-1" />
-                  <span className="text-[10px] text-text-primary/40 font-bold"><T text={"VISA • MC • AMEX • APPLE PAY"} /></span>
-                </div>
               </div>
+              ) : checkoutPending ? (
+                <div
+                  className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-surface-subtle px-4 py-3 text-center text-sm font-bold text-text-secondary"
+                  role="status"
+                >
+                  <span className="size-4 animate-spin rounded-full border-2 border-border-strong border-t-accent-gold" aria-hidden="true" />
+                  <T text={"Checking availability"} />
+                </div>
               ) : (
                 <div id="availability" className="rounded-2xl border border-accent-gold/30 bg-accent-gold/10 p-5">
                   <div className="flex items-start gap-3">
                     <Sparkles className="mt-0.5 size-5 shrink-0 text-accent-gold" aria-hidden="true" />
                     <div>
-                      <p className="font-bold text-text-primary"><T text={"Color preview is ready"} /></p>
-                      <p className="mt-1 text-xs leading-relaxed text-text-secondary"><T text={"Select a color above to see its full-length image. We will enable ordering after price, sizes and checkout variants are verified."} /></p>
+                      <p className="font-bold text-text-primary">
+                        <T text={stockUnavailable ? (stockStatus === "sold-out" ? "Out of stock" : "Ordering temporarily unavailable") : "Color preview is ready"} />
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                        <T
+                          text={
+                            stockUnavailable
+                              ? stockStatus === "sold-out"
+                                ? "This item is currently out of stock. Choose another product or contact us about availability."
+                                : "Checkout is temporarily unavailable. Please contact us before ordering or try again later."
+                              : "Select a color above to see its full-length image. We will enable ordering after price, sizes and checkout variants are verified."
+                          }
+                        />
+                      </p>
                       <LocalizedLink href="/contact" className="mt-3 inline-flex text-xs font-bold uppercase tracking-[0.12em] text-accent-gold transition hover:text-text-primary">
-                        <T text={"Ask about availability"} />
+                        <T text={stockUnavailable ? "Contact support before ordering" : "Ask about availability"} />
                       </LocalizedLink>
                     </div>
                   </div>
                 </div>
               )}
+
+              {isPurchasable && <PaymentMethods />}
 
               {/* Benefit Bullet points list */}
               <ul className="space-y-3 pt-2 text-xs md:text-sm">
@@ -1609,7 +1528,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </ul>
 
               {/* Checkout information */}
-              {isPurchasable && (
+              {canCheckout && (
               <div className="grid grid-cols-3 gap-2 border-t border-border-subtle pt-4 sm:gap-3">
                 {[
                   { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
@@ -1650,17 +1569,150 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </Container>
       </section>
 
+      {/* DEDICATED RITUAL STORY, DEMONSTRATION & CONTENTS SECTION */}
+      {salesStory && (
+        <section className="border-b border-border-subtle py-14 sm:py-20 bg-surface-subtle/30">
+          <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
+            {/* Header */}
+            <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
+              <span
+                className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent-gold"
+              >
+                <T text={salesStory.eyebrow} />
+              </span>
+              <h2
+                className="mt-3 text-2xl font-semibold leading-tight text-text-primary sm:text-4xl md:text-5xl"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                <T text={salesStory.title} />
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-text-secondary sm:text-base max-w-2xl mx-auto">
+                <T text={salesStory.description} />
+              </p>
+            </div>
+
+            {/* 3 Highlights Cards */}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+              {salesStory.highlights.map((highlight, idx) => (
+                <div
+                  key={highlight.title}
+                  className="group relative rounded-2xl border border-border-subtle bg-surface-subtle p-6 transition-all duration-300 hover:border-accent-gold/40 hover:shadow-lg sm:p-7"
+                >
+                  <div className="mb-4 flex items-center justify-between">
+                    <div
+                      className="flex size-10 items-center justify-center rounded-xl border border-accent-gold/25 bg-accent-gold/10 text-accent-gold"
+                    >
+                      <Check className="size-5" strokeWidth={2} aria-hidden="true" />
+                    </div>
+                    <span className="text-2xl font-serif font-bold text-text-primary/15">
+                      0{idx + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-text-primary">
+                    <T text={highlight.title} />
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-text-secondary sm:text-sm">
+                    <T text={highlight.desc} />
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* What you get + Best used with Dual Box */}
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
+              {[
+                {
+                  title: "What you get",
+                  badge: "Included in box",
+                  items: [
+                    "Double-ended face roller",
+                    "Matching gua sha tool",
+                    "Branded gift-ready packaging",
+                  ],
+                },
+                {
+                  title: "Best used with",
+                  badge: "Expert recommendation",
+                  items: [
+                    "Facial oil or serum for slip",
+                    "Light pressure, never dragging",
+                    "A short 5-minute massage",
+                  ],
+                },
+              ].map((group) => (
+                <div
+                  key={group.title}
+                  className="rounded-2xl border border-border-subtle bg-surface-subtle p-6 sm:p-8 shadow-sm"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-accent-gold">
+                      <T text={group.title} />
+                    </p>
+                    <span className="rounded-full border border-border-subtle bg-background-primary/60 px-2.5 py-0.5 text-[10px] font-medium text-text-secondary">
+                      <T text={group.badge} />
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed text-text-secondary"
+                      >
+                        <Check className="mt-0.5 size-4 shrink-0 text-accent-gold" aria-hidden="true" />
+                        <span><T text={item} /></span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Video Demonstration Cards */}
+            {previewUgcVideos.length > 0 && (
+              <div className="mt-14 max-w-5xl mx-auto border-t border-border-subtle pt-12">
+                <div className="rounded-3xl border border-border-subtle bg-surface-subtle/80 p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
+                  <div className="text-center mb-8 sm:mb-10">
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-accent-gold">
+                      <T text={"Product videos"} />
+                    </span>
+                    <h3
+                      className="mt-2 text-2xl font-semibold text-text-primary sm:text-3xl md:text-4xl"
+                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    >
+                      <T text={"Watch the set before you choose"} />
+                    </h3>
+                  </div>
+
+                  <div className="grid gap-6 sm:grid-cols-2 lg:gap-8 max-w-4xl mx-auto">
+                    {previewUgcVideos.map((video) => (
+                      <HeroUgcVideoCard
+                        key={video.videoUrl}
+                        title={video.title}
+                        description={video.description}
+                        duration={video.duration}
+                        videoUrl={video.videoUrl}
+                        poster={video.poster}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </Container>
+        </section>
+      )}
+
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
       {scienceBenefits.length > 0 && (
       <section className="border-b border-border-subtle py-12 sm:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"ENGINEERED BEAUTY"} /></span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"CONSIDERED DESIGN"} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"The Science Behind The Glow"} />
+              <T text={"What Makes This Product Practical"} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              <T text={"Every detail is engineered with absolute dermatological rigor to deliver instant, visible improvements without compromises."} />
+              <T text={"Review the materials, shape and practical details before deciding whether this product fits your routine."} />
             </p>
           </div>
 
@@ -1715,7 +1767,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-1.5">
-                      <T text={isFashion ? "Tip 0" : "Phase 0"} />{i + 1}
+                      <T text={isFashion ? "Tip" : "Step"} /> {String(i + 1).padStart(2, "0")}
                     </h4>
                     <p className="text-xs md:text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                       <T text={step} />
@@ -1914,10 +1966,20 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             <T text={finalTitle} />
           </h2>
           <p className="text-sm md:text-base max-w-md mx-auto" style={{ color: "var(--text-secondary)" }}>
-            <T text={isPurchasable ? "Review the product details and confirm the final order total before checkout." : "Compare every color now; final price, sizes and ordering will appear here after verification."} />
+            <T
+              text={
+                canCheckout
+                  ? "Review the product details and confirm the final order total before checkout."
+                  : checkoutPending
+                    ? "Checking availability"
+                  : stockUnavailable
+                    ? "Checkout is temporarily unavailable. Please contact us before ordering or try again later."
+                    : "Compare every color now; final price, sizes and ordering will appear here after verification."
+              }
+            />
           </p>
           
-          {isPurchasable ? (
+          {canCheckout ? (
           <div className="pt-4 max-w-sm mx-auto">
             <a
               href={checkoutUrl}
@@ -1932,16 +1994,27 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <T text={"Secure checkout · Delivery and return terms shown before purchase"} />
             </p>
           </div>
+          ) : checkoutPending ? (
+            <div className="mx-auto flex min-h-14 max-w-sm items-center justify-center gap-2 rounded-xl border border-border-subtle bg-surface-subtle px-4 py-3 text-sm font-bold text-text-secondary" role="status">
+              <span className="size-4 animate-spin rounded-full border-2 border-border-strong border-t-accent-gold" aria-hidden="true" />
+              <T text={"Checking availability"} />
+            </div>
           ) : (
             <div className="mx-auto max-w-sm pt-4">
               <LocalizedLink
                 href="/contact"
                 className="flex min-h-14 w-full items-center justify-center rounded-xl border border-accent-gold bg-accent-gold/10 px-4 py-3 text-center text-sm font-extrabold text-accent-gold transition hover:bg-accent-gold hover:text-black"
               >
-                <T text={"Ask about availability"} />
+                <T text={stockUnavailable ? "Contact support before ordering" : "Ask about availability"} />
               </LocalizedLink>
               <p className="mt-3 text-[10px] text-text-secondary">
-                <T text={"Ordering remains closed until every size and color is mapped to the correct checkout variant."} />
+                <T
+                  text={
+                    stockUnavailable
+                      ? "Ordering will reopen as soon as checkout is available again."
+                      : "Ordering remains closed until every size and color is mapped to the correct checkout variant."
+                  }
+                />
               </p>
             </div>
           )}
@@ -2008,7 +2081,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       <NewsletterBlock />
 
       {/* 12. RESPONSIVE FLOATING BOTTOM STICKY CHECKOUT DRAWER */}
-      {isPurchasable && (
+      {canCheckout && (
       <div
         className={`fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between border-t border-border-default bg-surface-glass px-2 py-3.5 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transition-transform duration-500 ease-out sm:px-4 ${
           showStickyDrawer ? "translate-y-0" : "translate-y-full"
@@ -2032,10 +2105,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
           
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-1 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider text-accent-gold">
-              <Sparkles className="size-3" />
-              <span><T text={trustBadgeLabel} /></span>
-            </div>
+            {trustBadgeLabel && (
+              <div className="hidden md:flex items-center gap-1 bg-surface-subtle border border-border-subtle px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider text-accent-gold">
+                <ShieldCheck className="size-3" />
+                <span><T text={trustBadgeLabel} /></span>
+              </div>
+            )}
 
             <a
               href={checkoutUrl}
@@ -2180,7 +2255,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               <p className="text-xs text-text-primary/80 leading-relaxed">
                 {lightboxItem.desc}
               </p>
-              <div className="border-t border-border-subtle pt-4 mt-2 hidden lg:block">
+              {canCheckout && <div className="border-t border-border-subtle pt-4 mt-2 hidden lg:block">
                 <a
                   href={checkoutUrl}
                   onClick={() => handleCheckoutClick("lightbox")}
@@ -2189,7 +2264,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <span><T text={checkoutLabel} /></span>
                   <span>{selectedSubtotalPrice}</span>
                 </a>
-              </div>
+              </div>}
             </div>
 
           </div>

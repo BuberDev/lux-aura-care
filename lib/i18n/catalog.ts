@@ -1,8 +1,17 @@
 import type { Locale } from "@/lib/i18n/config";
+import { shopProductPolishCopy } from "@/lib/i18n/shop-product-pl";
 
 export type CatalogEntry = Record<Locale, string>;
 
+const shopProductTranslationCatalog = Object.fromEntries(
+  Object.entries(shopProductPolishCopy).map(([source, polish]) => [
+    source,
+    { en: source, pl: polish },
+  ])
+) as Record<string, CatalogEntry>;
+
 export const translationCatalog = {
+  ...shopProductTranslationCatalog,
   "Privacy Policy": {
     "en": "Privacy Policy",
     "pl": "Polityka prywatności"
@@ -165,7 +174,7 @@ export const translationCatalog = {
   },
   "Gold-toned hydrogel creates a cooling self-care step": {
     "en": "Gold-toned hydrogel creates a cooling self-care step",
-    "pl": "Hydrożel w złotym odcieniu tworzy chłodzący etap rytuału self-care"
+    "pl": "Hydrożel w złotym odcieniu tworzy chłodzący etap pielęgnacji"
   },
   "Review the ingredient list and patch-test first, especially if your skin is sensitive.": {
     "en": "Review the ingredient list and patch-test first, especially if your skin is sensitive.",
@@ -373,7 +382,7 @@ export const translationCatalog = {
   },
   "🔒 SECURE CHECKOUT": {
     "en": "🔒 SECURE CHECKOUT",
-    "pl": "🔒 BEZPIECZNA KASA"
+    "pl": "🔒 BEZPIECZNA PŁATNOŚĆ"
   },
   "🖤 Rarest Stone": {
     "en": "🖤 Rarest Stone",
@@ -1413,7 +1422,7 @@ export const translationCatalog = {
   },
   "Clear Skin Hydrocolloid Patches (24 patches)": {
     "en": "Clear Skin Hydrocolloid Patches (24 patches)",
-    "pl": "Plastry hydrokoloidowe Clear Skin (24 plastry)"
+    "pl": "Plastry hydrokoloidowe na niedoskonałości (24 szt.)"
   },
   "Clear Star Filter": {
     "en": "Clear Star Filter",
@@ -1501,7 +1510,7 @@ export const translationCatalog = {
   },
   "CONFIDENCE IN MIND": {
     "en": "CONFIDENCE IN MIND",
-    "pl": "PEWNOŚĆ W UMYŚLE"
+    "pl": "PEWNY WYBÓR"
   },
   "Consistent routine momentum": {
     "en": "Consistent routine momentum",
@@ -1801,7 +1810,7 @@ export const translationCatalog = {
   },
   "Discover": {
     "en": "Discover",
-    "pl": "Odkryć"
+    "pl": "Odkrywaj"
   },
   "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.": {
     "en": "Discover elevated self-care routines and curated Amazon favorites designed for a calm, polished lifestyle.",
@@ -2345,11 +2354,11 @@ export const translationCatalog = {
   },
   "Glow Ritual Face Razor Kit": {
     "en": "Glow Ritual Face Razor Kit",
-    "pl": "Zestaw maszynek do golenia do twarzy Glow Ritual"
+    "pl": "Zestaw maszynek do dermaplaningu twarzy"
   },
   "Glow Ritual Face Razor Kit (6 blades)": {
     "en": "Glow Ritual Face Razor Kit (6 blades)",
-    "pl": "Zestaw maszynek do golenia do twarzy Glow Ritual (6 ostrzy)"
+    "pl": "Zestaw maszynek do dermaplaningu twarzy (6 ostrzy)"
   },
   "Glow Rituals · Women 40+": {
     "en": "Glow Rituals · Women 40+",
@@ -5947,13 +5956,41 @@ export const translationCatalog = {
     "en": "Go to checkout",
     "pl": "Przejdź do kasy"
   },
+  "Out of stock": {
+    "en": "Out of stock",
+    "pl": "Chwilowo brak w magazynie"
+  },
+  "Unavailable": {
+    "en": "Unavailable",
+    "pl": "Niedostępne"
+  },
+  "Ordering temporarily unavailable": {
+    "en": "Ordering temporarily unavailable",
+    "pl": "Zamówienia są chwilowo niedostępne"
+  },
+  "Checking availability": {
+    "en": "Checking availability",
+    "pl": "Sprawdzamy dostępność"
+  },
+  "This item is currently out of stock. Choose another product or contact us about availability.": {
+    "en": "This item is currently out of stock. Choose another product or contact us about availability.",
+    "pl": "Tego produktu chwilowo nie ma w magazynie. Wybierz inny produkt lub zapytaj nas o dostępność."
+  },
+  "Checkout is temporarily unavailable. Please contact us before ordering or try again later.": {
+    "en": "Checkout is temporarily unavailable. Please contact us before ordering or try again later.",
+    "pl": "Płatność jest chwilowo niedostępna. Skontaktuj się z nami przed zamówieniem lub spróbuj ponownie później."
+  },
+  "Ordering will reopen as soon as checkout is available again.": {
+    "en": "Ordering will reopen as soon as checkout is available again.",
+    "pl": "Zamówienia uruchomimy ponownie, gdy tylko płatność będzie dostępna."
+  },
   "Quantity": {
     "en": "Quantity",
     "pl": "Ilość"
   },
   "Choose how many pieces to add to checkout": {
     "en": "Choose how many pieces to add to checkout",
-    "pl": "Wybierz, ile sztuk dodać do checkoutu"
+    "pl": "Wybierz, ile sztuk dodać do zamówienia"
   },
   "piece": {
     "en": "piece",
@@ -5973,7 +6010,7 @@ export const translationCatalog = {
   },
   "Checkout quantity": {
     "en": "Checkout quantity",
-    "pl": "Ilość do checkoutu"
+    "pl": "Liczba sztuk w zamówieniu"
   },
   "Subtotal": {
     "en": "Subtotal",
@@ -6005,11 +6042,11 @@ export const translationCatalog = {
   },
   "Lux Aura Face Roller & Gua Sha Set": {
     "en": "Lux Aura Face Roller & Gua Sha Set",
-    "pl": "Lux Aura Face Roller & Gua Sha Set"
+    "pl": "Zestaw rollera do twarzy i gua sha Lux Aura"
   },
   "A branded 2-piece sculpting ritual in black stone or rose quartz.": {
     "en": "A branded 2-piece sculpting ritual in black stone or rose quartz.",
-    "pl": "Markowy, dwuczęściowy rytuał sculptingu w wykończeniu black stone lub rose quartz."
+    "pl": "Markowy, dwuczęściowy zestaw do masażu w wersji z czarnego kamienia lub różowego kwarcu."
   },
   "A signature Lux Aura Care face roller and gua sha set for a slow, serum-led massage ritual. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.": {
     "en": "A signature Lux Aura Care face roller and gua sha set for a slow, serum-led massage ritual. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
@@ -6025,7 +6062,7 @@ export const translationCatalog = {
   },
   "Choose black stone with gold hardware or rose quartz with rose-gold hardware": {
     "en": "Choose black stone with gold hardware or rose quartz with rose-gold hardware",
-    "pl": "Wybierz black stone ze złotymi detalami albo rose quartz z wykończeniem rose gold"
+    "pl": "Wybierz czarny kamień ze złotymi detalami albo różowy kwarc z wykończeniem w kolorze różowego złota"
   },
   "Roller helps create a cooling, calming prep step before skincare": {
     "en": "Roller helps create a cooling, calming prep step before skincare",
@@ -6169,7 +6206,7 @@ export const translationCatalog = {
   },
   "Bestseller": {
     "en": "Bestseller",
-    "pl": "Bestseller"
+    "pl": "Najczęściej wybierany"
   },
   "New arrival": {
     "en": "New arrival",
@@ -6421,7 +6458,7 @@ export const translationCatalog = {
   },
   "A branded 2-piece face massage set in black stone or rose quartz.": {
     "en": "A branded 2-piece face massage set in black stone or rose quartz.",
-    "pl": "Markowy, dwuczęściowy zestaw do masażu twarzy w wersji black stone lub rose quartz."
+    "pl": "Markowy, dwuczęściowy zestaw do masażu twarzy z czarnego kamienia lub różowego kwarcu."
   },
   "A signature Lux Aura Care face roller and gua sha set for a simple face massage over serum or facial oil. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.": {
     "en": "A signature Lux Aura Care face roller and gua sha set for a simple face massage over serum or facial oil. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
@@ -6577,7 +6614,7 @@ export const translationCatalog = {
   },
   "checkout with final total shown before payment": {
     "en": "checkout with final total shown before payment",
-    "pl": "checkout z końcową kwotą przed płatnością"
+    "pl": "przejście do płatności z końcową kwotą zamówienia"
   },
   "View product": {
     "en": "View product",
@@ -6945,7 +6982,7 @@ export const translationCatalog = {
   },
   "Shop Beauty, Self-Care & Style | Lux Aura Care": {
     "en": "Shop Beauty, Self-Care & Style | Lux Aura Care",
-    "pl": "Sklep beauty, self-care i styl | Lux Aura Care"
+    "pl": "Sklep z pielęgnacją, urodą i stylem | Lux Aura Care"
   },
   "Discover thoughtfully selected skincare tools, body-care essentials and polished style pieces from Lux Aura Care.": {
     "en": "Discover thoughtfully selected skincare tools, body-care essentials and polished style pieces from Lux Aura Care.",
@@ -6953,7 +6990,7 @@ export const translationCatalog = {
   },
   "Beauty, self-care and style": {
     "en": "Beauty, self-care and style",
-    "pl": "Beauty, self-care i styl"
+    "pl": "Uroda, pielęgnacja i styl"
   },
   "Thoughtful essentials for your routine and wardrobe": {
     "en": "Thoughtful essentials for your routine and wardrobe",

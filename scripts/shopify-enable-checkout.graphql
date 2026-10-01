@@ -1,0 +1,114 @@
+mutation EnableCheckoutForDsersProducts {
+  inventory01: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816994128220", variants: [{ id: "gid://shopify/ProductVariant/59112625766748", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish01: publishablePublish(id: "gid://shopify/Product/15816994128220", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory02: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816994357596", variants: [{ id: "gid://shopify/ProductVariant/59112626618716", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish02: publishablePublish(id: "gid://shopify/Product/15816994357596", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory03: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816994750812", variants: [{ id: "gid://shopify/ProductVariant/59112628846940", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish03: publishablePublish(id: "gid://shopify/Product/15816994750812", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory04: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816994947420", variants: [{ id: "gid://shopify/ProductVariant/59112629862748", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish04: publishablePublish(id: "gid://shopify/Product/15816994947420", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory05: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816995176796", variants: [{ id: "gid://shopify/ProductVariant/59112633893212", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish05: publishablePublish(id: "gid://shopify/Product/15816995176796", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory06: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816995406172", variants: [{ id: "gid://shopify/ProductVariant/59112635302236", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish06: publishablePublish(id: "gid://shopify/Product/15816995406172", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory07: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816995635548", variants: [{ id: "gid://shopify/ProductVariant/59112636612956", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish07: publishablePublish(id: "gid://shopify/Product/15816995635548", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory08: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816995799388", variants: [{ id: "gid://shopify/ProductVariant/59112637694300", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish08: publishablePublish(id: "gid://shopify/Product/15816995799388", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory09: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816995995996", variants: [{ id: "gid://shopify/ProductVariant/59112638710108", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish09: publishablePublish(id: "gid://shopify/Product/15816995995996", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory10: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816996192604", variants: [{ id: "gid://shopify/ProductVariant/59112639725916", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish10: publishablePublish(id: "gid://shopify/Product/15816996192604", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory11: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816996389212", variants: [{ id: "gid://shopify/ProductVariant/59112640741724", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish11: publishablePublish(id: "gid://shopify/Product/15816996389212", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory12: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816996618588", variants: [{ id: "gid://shopify/ProductVariant/59112641790300", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish12: publishablePublish(id: "gid://shopify/Product/15816996618588", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory13: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816996847964", variants: [{ id: "gid://shopify/ProductVariant/59112643002716", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish13: publishablePublish(id: "gid://shopify/Product/15816996847964", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory14: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816997044572", variants: [{ id: "gid://shopify/ProductVariant/59112644018524", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish14: publishablePublish(id: "gid://shopify/Product/15816997044572", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory15: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816997568860", variants: [{ id: "gid://shopify/ProductVariant/59112647262556", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112647295324", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish15: publishablePublish(id: "gid://shopify/Product/15816997568860", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+  inventory16: productVariantsBulkUpdate(productId: "gid://shopify/Product/15816998715740", variants: [{ id: "gid://shopify/ProductVariant/59112652407132", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652439900", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652472668", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652505436", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652538204", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652570972", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652603740", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652636508", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652669276", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652702044", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652734812", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652767580", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652800348", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652833116", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652865884", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652898652", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652931420", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652964188", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112652996956", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112653029724", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112653062492", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112653095260", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112653128028", inventoryPolicy: CONTINUE }, { id: "gid://shopify/ProductVariant/59112653160796", inventoryPolicy: CONTINUE }]) {
+    productVariants { id inventoryPolicy }
+    userErrors { field message }
+  }
+  publish16: publishablePublish(id: "gid://shopify/Product/15816998715740", input: [{ publicationId: "gid://shopify/Publication/370309202268" }]) {
+    userErrors { field message }
+  }
+}
