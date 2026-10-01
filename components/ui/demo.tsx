@@ -88,7 +88,7 @@ function HoverFooter() {
                       <T text={link.label} />
                     </LocalizedLink>
                     {link.pulse ? (
-                      <span className="absolute right-[-10px] top-0 h-2 w-2 animate-pulse rounded-full bg-accent-gold" />
+                      <span className="absolute right-[-10px] top-0 h-2 w-2 rounded-full bg-accent-gold" />
                     ) : null}
                   </li>
                 ))}

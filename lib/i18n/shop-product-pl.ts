@@ -1,4 +1,11 @@
 export const shopProductPolishCopy: Record<string, string> = {
+  "Free Shipping": "Darmowa dostawa",
+  "Free Express Shipping": "Darmowa dostawa ekspresem",
+  "Free delivery on all orders · Dispatched within 24-48h":
+    "Darmowa dostawa dla wszystkich zamówień · Wysyłka w 24-48h",
+  "Dispatched in 24-48 hours": "Wysyłka w 24–48 godzin",
+  "Active": "Darmowa",
+
   "Lux Aura Face Roller & Gua Sha Set": "Zestaw rollera do twarzy i gua sha Lux Aura",
   "Featured": "Polecany",
 

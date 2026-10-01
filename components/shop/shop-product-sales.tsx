@@ -31,6 +31,7 @@ import { NewsletterBlock } from "@/components/newsletter-block";
 import { LocalizedDate } from "@/components/localized-date";
 import { CustomerRatingSummary } from "@/components/shop/customer-rating-summary";
 import { PaymentMethods } from "@/components/shop/payment-methods";
+import { FreeShippingBadge } from "@/components/shop/free-shipping-badge";
 import {
   trackShopAddToCart,
   trackShopBeginCheckout,
@@ -1081,7 +1082,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             
             {/* LEFT: Premium Image Gallery */}
             <div className="lg:col-span-7 lg:flex lg:flex-col lg:sticky lg:top-24 lg:self-start">
-              <div className="mx-auto w-full max-w-[620px]">
+              <div className="w-full">
                 <div className="grid items-start gap-2 sm:grid-cols-[3.75rem_minmax(0,1fr)] sm:gap-3">
                   <div className="sm:col-start-2">
                     <div
@@ -1214,20 +1215,20 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             </div>
 
             {/* RIGHT: Conversion Buy Box */}
-            <div className="space-y-5 rounded-2xl border border-border-subtle bg-surface-subtle p-4 shadow-2xl backdrop-blur-md sm:space-y-6 sm:rounded-3xl sm:p-6 md:p-8 lg:col-span-5">
+            <div className="space-y-3.5 rounded-2xl border border-border-subtle bg-surface-subtle p-3.5 shadow-xl backdrop-blur-md sm:space-y-4 sm:rounded-2xl sm:p-5 md:p-6 lg:col-span-5">
               <div>
-                <div className="mb-3 flex items-start justify-between gap-3">
+                <div className="mb-2 flex items-start justify-between gap-3">
                   <p className="min-w-0 text-xs uppercase tracking-[0.2em] font-bold" style={{ color: "var(--accent-gold)" }}>
                     <T text={productCategoryLabel} />
                   </p>
                   {trustBadgeLabel && (
-                    <div className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border-subtle bg-background-primary/45 px-2.5 py-1 text-[11px] font-medium text-text-secondary sm:px-3 sm:text-xs">
+                    <div className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border-subtle bg-background-primary/45 px-2.5 py-0.5 text-[11px] font-medium text-text-secondary">
                       <ShieldCheck className="size-3.5 text-accent-gold" aria-hidden="true" />
                       <span><T text={trustBadgeLabel} /></span>
                     </div>
                   )}
                 </div>
-                <div className="mb-3">
+                <div className="mb-2">
                   <CustomerRatingSummary
                     rating={product.rating}
                     reviews={customerReviews}
@@ -1235,53 +1236,56 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   />
                 </div>
                 <h1
-                  className="break-words text-2xl font-semibold text-text-primary mb-3 sm:text-3xl md:text-4xl"
+                  className="break-words text-xl font-semibold text-text-primary mb-2 sm:text-2xl md:text-3xl"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                 >
                   {product.name}
                 </h1>
-                <p className="text-sm md:text-base leading-relaxed text-text-secondary">
+                <p className="text-xs sm:text-sm leading-relaxed text-text-secondary">
                   {product.description}
                 </p>
               </div>
 
               {/* Price Block & Save Indicator */}
               {isPurchasable ? (
-                <div className="flex items-center justify-between gap-4 border-y border-border-subtle py-4">
-                  <div className="space-y-1">
+                <div className="flex items-center justify-between gap-4 border-y border-border-subtle py-3">
+                  <div className="space-y-0.5">
                     <p className="text-[10px] font-semibold uppercase tracking-widest text-text-secondary">
                       <T text={hasDiscount ? "Special Offer Price" : "Price"} />
                     </p>
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-4xl font-extrabold text-text-primary">{productPrice}</span>
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">{productPrice}</span>
                       {hasDiscount && (
-                        <span className="text-base line-through text-text-secondary">{productCompareAtPrice}</span>
+                        <span className="text-xs sm:text-sm line-through text-text-secondary">{productCompareAtPrice}</span>
                       )}
                     </div>
                   </div>
                   {hasDiscount && (
                     <div className="text-right">
                       <span
-                        className="inline-block rounded-full px-3.5 py-1.5 text-xs font-extrabold shadow-lg md:text-sm"
+                        className="inline-block rounded-full px-2.5 py-1 text-xs font-extrabold shadow-sm"
                         style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
                       >
                         <T text={"You save"} /> {discount}%
                       </span>
-                      <p className="mt-1.5 text-[10px] font-bold text-accent-gold/80">{savingsPrice} <T text={"kept in your pocket"} /></p>
+                      <p className="mt-1 text-[10px] font-bold text-accent-gold/80">{savingsPrice} <T text={"kept in your pocket"} /></p>
                     </div>
                   )}
                 </div>
               ) : (
-                <div className="border-y border-border-subtle py-4">
+                <div className="border-y border-border-subtle py-3">
                   <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-accent-gold"><T text={"Coming soon"} /></p>
-                  <p className="mt-2 text-sm font-semibold text-text-primary"><T text={"Price and size details are being confirmed"} /></p>
+                  <p className="mt-1.5 text-xs sm:text-sm font-semibold text-text-primary"><T text={"Price and size details are being confirmed"} /></p>
                   <p className="mt-1 text-xs leading-relaxed text-text-secondary"><T text={"You can already compare every color; ordering will open only after the correct variants are connected."} /></p>
                 </div>
               )}
 
+              {/* Free Shipping Badge */}
+              <FreeShippingBadge variant="banner" />
+
               {/* Real availability panel */}
               {(showLowStock || showSaleCountdown) && (
-              <div className="bg-surface-subtle border border-border-subtle rounded-2xl p-4 space-y-3.5 text-xs">
+              <div className="bg-surface-subtle border border-border-subtle rounded-xl p-3 space-y-2.5 text-xs">
 
                 {/* Stock bar — real Shopify data, shown only when genuinely low so urgency stays credible */}
                 {showLowStock && (
@@ -1292,7 +1296,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                         <T text={"Only"} /> {stockQuantity} <T text={"items left in stock"} />
                       </span>
                     </div>
-                    <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-surface-hover rounded-full overflow-hidden">
                       <div
                         className="h-full rounded-full bg-linear-to-r from-red-500 to-accent-gold transition-all duration-1000 shadow-[0_0_8px_rgba(201,169,110,0.5)]"
                         style={{ width: `${Math.min(100, (stockQuantity / 50) * 100)}%` }}
@@ -1310,13 +1314,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     </div>
                     <div className="flex gap-1 text-[11px] font-extrabold">
                       {timeLeft.days > 0 && (
-                        <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{timeLeft.days}<T text={"d"} /></span>
+                        <span className="bg-accent-gold text-black px-1.5 py-0.5 rounded">{timeLeft.days}<T text={"d"} /></span>
                       )}
-                      <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{String(timeLeft.hours).padStart(2, "0")}<T text={"h"} /></span>
+                      <span className="bg-accent-gold text-black px-1.5 py-0.5 rounded">{String(timeLeft.hours).padStart(2, "0")}<T text={"h"} /></span>
                       <span className="text-accent-gold self-center">:</span>
-                      <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{String(timeLeft.minutes).padStart(2, "0")}<T text={"m"} /></span>
+                      <span className="bg-accent-gold text-black px-1.5 py-0.5 rounded">{String(timeLeft.minutes).padStart(2, "0")}<T text={"m"} /></span>
                       <span className="text-accent-gold self-center">:</span>
-                      <span className="bg-accent-gold text-black px-2 py-0.5 rounded">{String(timeLeft.seconds).padStart(2, "0")}<T text={"s"} /></span>
+                      <span className="bg-accent-gold text-black px-1.5 py-0.5 rounded">{String(timeLeft.seconds).padStart(2, "0")}<T text={"s"} /></span>
                     </div>
                   </div>
                 )}
@@ -1324,7 +1328,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               )}
 
               {hasColorVariants && selectedVariant && (
-                <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
+                <div className="space-y-2 rounded-xl border border-border-subtle bg-surface-subtle p-3">
                   <div className="flex items-start justify-between gap-3">
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
                       <T text={"Choose color"} />
@@ -1335,7 +1339,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label={text("Choose color")}>
+                  <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label={text("Choose color")}>
                     {productVariants.map((variant) => {
                       const isSelected = selectedVariant.id === variant.id;
 
@@ -1346,21 +1350,21 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                           role="radio"
                           aria-checked={isSelected}
                           onClick={() => handleVariantSelect(variant.id)}
-                          className={`flex min-h-12 items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-bold transition-all duration-300 ${
+                          className={`flex min-h-9 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-left text-xs font-bold transition-all duration-200 ${
                             isSelected
-                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_14px_rgba(201,169,110,0.12)]"
+                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
                               : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
                           }`}
                         >
                           <span
-                            className="size-5 shrink-0 rounded-full border shadow-inner"
+                            className="size-4 shrink-0 rounded-full border shadow-inner"
                             style={{
                               background: variant.swatchHex,
                               borderColor: variant.swatchBorderHex ?? "var(--border-subtle)",
                             }}
                             aria-hidden="true"
                           />
-                          <span className="min-w-0 leading-tight"><T text={variant.label} /></span>
+                          <span className="min-w-0 leading-tight text-[11px]"><T text={variant.label} /></span>
                         </button>
                       );
                     })}
@@ -1369,7 +1373,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               )}
 
               {hasSizeVariants && selectedSize && (
-                <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
+                <div className="space-y-2 rounded-xl border border-border-subtle bg-surface-subtle p-3">
                   <div className="flex items-start justify-between gap-3">
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
                       <T text={"Choose size"} />
@@ -1381,7 +1385,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
 
                   <div
-                    className="grid grid-cols-3 gap-2 sm:grid-cols-6"
+                    className="grid grid-cols-3 gap-1.5 sm:grid-cols-6"
                     role="radiogroup"
                     aria-label={text("Choose size")}
                   >
@@ -1395,9 +1399,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                           role="radio"
                           aria-checked={isSelected}
                           onClick={() => setSelectedSizeId(size.id)}
-                          className={`flex min-h-11 items-center justify-center rounded-xl border px-2 py-2 text-xs font-extrabold transition-all duration-300 ${
+                          className={`flex min-h-9 items-center justify-center rounded-lg border px-2 py-1.5 text-xs font-extrabold transition-all duration-200 ${
                             isSelected
-                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_14px_rgba(201,169,110,0.12)]"
+                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
                               : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
                           }`}
                         >
@@ -1410,42 +1414,39 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               )}
 
               {canCheckout && (
-              <div className="space-y-3 rounded-2xl border border-border-subtle bg-surface-subtle p-4">
+              <div className="space-y-2 rounded-xl border border-border-subtle bg-surface-subtle p-3">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
                       <T text={"Quantity"} />
                     </p>
-                    <p className="mt-1 text-[11px] font-medium text-text-secondary">
-                      <T text={"Choose how many pieces to add to checkout"} />
-                    </p>
                   </div>
-                  <p className="shrink-0 rounded-full border border-accent-gold/25 bg-accent-gold/10 px-2.5 py-1 text-[10px] font-extrabold text-accent-gold">
+                  <p className="shrink-0 rounded-full border border-accent-gold/25 bg-accent-gold/10 px-2 py-0.5 text-[10px] font-extrabold text-accent-gold">
                     {selectedQuantity} <T text={selectedQuantity === 1 ? "piece" : "pieces"} />
                   </p>
                 </div>
 
-                <div className="grid grid-cols-[3rem_minmax(0,1fr)_3rem] items-center overflow-hidden rounded-xl border border-border-subtle bg-background-primary">
+                <div className="grid grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center overflow-hidden rounded-lg border border-border-subtle bg-background-primary">
                   <button
                     type="button"
                     onClick={decreaseQuantity}
                     disabled={selectedQuantity <= 1}
                     aria-label={text("Decrease quantity")}
-                    className="flex h-12 items-center justify-center text-text-primary transition hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-35"
+                    className="flex h-9.5 items-center justify-center text-text-primary transition hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-35"
                   >
-                    <Minus className="size-4" aria-hidden="true" />
+                    <Minus className="size-3.5" aria-hidden="true" />
                   </button>
-                  <div className="flex h-12 items-center justify-center border-x border-border-subtle text-center">
-                    <span className="text-lg font-extrabold text-text-primary tabular-nums">{selectedQuantity}</span>
+                  <div className="flex h-9.5 items-center justify-center border-x border-border-subtle text-center">
+                    <span className="text-base font-extrabold text-text-primary tabular-nums">{selectedQuantity}</span>
                   </div>
                   <button
                     type="button"
                     onClick={increaseQuantity}
                     disabled={selectedQuantity >= maxSelectableQuantity}
                     aria-label={text("Increase quantity")}
-                    className="flex h-12 items-center justify-center text-text-primary transition hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-35"
+                    className="flex h-9.5 items-center justify-center text-text-primary transition hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-35"
                   >
-                    <Plus className="size-4" aria-hidden="true" />
+                    <Plus className="size-3.5" aria-hidden="true" />
                   </button>
                 </div>
 
@@ -1464,16 +1465,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
               {/* High-Converting CTA Area */}
               {canCheckout ? (
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 <a
                   href={checkoutUrl}
                   onClick={() => handleCheckoutClick("buy-box")}
-                  className="relative flex min-h-14 w-full items-center justify-center rounded-xl px-4 py-3 text-center text-sm font-extrabold leading-tight text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_25px_rgba(201,169,110,0.25)] hover:shadow-[0_0_35px_rgba(201,169,110,0.4)] group overflow-hidden dark:text-black sm:text-base"
+                  className="relative flex min-h-12 w-full items-center justify-center rounded-xl px-4 py-2.5 text-center text-sm font-extrabold leading-tight text-white transition-all duration-300 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] shadow-[0_0_20px_rgba(201,169,110,0.2)] hover:shadow-[0_0_30px_rgba(201,169,110,0.35)] group overflow-hidden dark:text-black"
                   style={{ background: "var(--accent-gold)" }}
                 >
                   <span className="relative z-10 flex min-w-0 flex-wrap items-center justify-center gap-2">
                     <span className="min-w-0"><T text={checkoutLabel} /></span>
-                    <ChevronRight className="size-5 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="size-4.5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   {/* Glowing hover light */}
                   <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
@@ -1482,18 +1483,18 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
               ) : checkoutPending ? (
                 <div
-                  className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-surface-subtle px-4 py-3 text-center text-sm font-bold text-text-secondary"
+                  className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-surface-subtle px-4 py-2.5 text-center text-sm font-bold text-text-secondary"
                   role="status"
                 >
                   <span className="size-4 animate-spin rounded-full border-2 border-border-strong border-t-accent-gold" aria-hidden="true" />
                   <T text={"Checking availability"} />
                 </div>
               ) : (
-                <div id="availability" className="rounded-2xl border border-accent-gold/30 bg-accent-gold/10 p-5">
+                <div id="availability" className="rounded-xl border border-accent-gold/30 bg-accent-gold/10 p-4">
                   <div className="flex items-start gap-3">
-                    <Sparkles className="mt-0.5 size-5 shrink-0 text-accent-gold" aria-hidden="true" />
+                    <Sparkles className="mt-0.5 size-4 shrink-0 text-accent-gold" aria-hidden="true" />
                     <div>
-                      <p className="font-bold text-text-primary">
+                      <p className="font-bold text-text-primary text-xs sm:text-sm">
                         <T text={stockUnavailable ? (stockStatus === "sold-out" ? "Out of stock" : "Ordering temporarily unavailable") : "Color preview is ready"} />
                       </p>
                       <p className="mt-1 text-xs leading-relaxed text-text-secondary">
@@ -1507,7 +1508,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                           }
                         />
                       </p>
-                      <LocalizedLink href="/contact" className="mt-3 inline-flex text-xs font-bold uppercase tracking-[0.12em] text-accent-gold transition hover:text-text-primary">
+                      <LocalizedLink href="/contact" className="mt-2 inline-flex text-xs font-bold uppercase tracking-[0.12em] text-accent-gold transition hover:text-text-primary">
                         <T text={stockUnavailable ? "Contact support before ordering" : "Ask about availability"} />
                       </LocalizedLink>
                     </div>
@@ -1518,10 +1519,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {isPurchasable && <PaymentMethods />}
 
               {/* Benefit Bullet points list */}
-              <ul className="space-y-3 pt-2 text-xs md:text-sm">
+              <ul className="space-y-2 pt-1 text-xs">
                 {product.benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start gap-3" style={{ color: "var(--text-secondary)" }}>
-                    <Check className="size-4.5 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
+                  <li key={benefit} className="flex items-start gap-2.5" style={{ color: "var(--text-secondary)" }}>
+                    <Check className="size-4 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
                     <span><T text={benefit} /></span>
                   </li>
                 ))}
@@ -1529,14 +1530,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
               {/* Checkout information */}
               {canCheckout && (
-              <div className="grid grid-cols-3 gap-2 border-t border-border-subtle pt-4 sm:gap-3">
+              <div className="grid grid-cols-3 gap-1.5 border-t border-border-subtle pt-3 sm:gap-2">
                 {[
                   { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
                   { icon: ShieldCheck, text: "Secure checkout", sub: "Processed by Shopify" },
                   { icon: RotateCcw, text: "14-day returns", sub: "EU right of withdrawal" },
                 ].map(({ icon: Icon, text, sub }) => (
-                  <div key={text} className="flex flex-col items-center gap-1 rounded-xl border border-border-subtle bg-surface-subtle p-2.5 text-center sm:p-3">
-                    <Icon className="size-4" style={{ color: "var(--accent-gold)" }} />
+                  <div key={text} className="flex flex-col items-center gap-1 rounded-lg border border-border-subtle bg-surface-subtle p-2 text-center sm:p-2.5">
+                    <Icon className="size-3.5" style={{ color: "var(--accent-gold)" }} />
                     <span className="text-[10px] font-bold text-text-primary leading-tight"><T text={text} /></span>
                     <span className="text-[9px]" style={{ color: "var(--text-secondary)" }}><T text={sub} /></span>
                   </div>

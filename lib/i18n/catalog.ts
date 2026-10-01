@@ -6240,6 +6240,14 @@ export const translationCatalog = {
     "en": "Delivery options",
     "pl": "Opcje dostawy"
   },
+  "Fast dispatch": {
+    "en": "Fast dispatch",
+    "pl": "Szybka wysyłka"
+  },
+  "For all orders · Dispatched within 24-48h": {
+    "en": "For all orders · Dispatched within 24-48h",
+    "pl": "Dla wszystkich zamówień · Wysyłka w 24-48h"
+  },
   "Shown at checkout": {
     "en": "Shown at checkout",
     "pl": "Pokazane przy płatności"
