@@ -465,7 +465,7 @@ export const shopProducts: ShopProduct[] = [
       },
     ],
   },
-  {
+ /*  {
     id: "bian-stone-gua-sha",
     name: "Black Bian Stone Gua Sha Stick",
     tagline: "Sculpt your jawline. Release tension. Reveal younger-looking skin.",
@@ -536,7 +536,7 @@ export const shopProducts: ShopProduct[] = [
         desc: "Incorporate the Black Bian Stone Gua Sha into a gentle facial massage routine",
       },
     ],
-  },
+  }, */
   {
     id: "lux-aura-face-roller-gua-sha-set",
     name: "Lux Aura Face Roller & Gua Sha Set",
