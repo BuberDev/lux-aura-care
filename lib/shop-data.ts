@@ -81,7 +81,7 @@ export type ShopProduct = {
 };
 
 export const shopProducts: ShopProduct[] = [
-  {
+ /*  {
     id: "dermaplaning-razor-kit",
     name: "Glow Ritual Face Razor Kit",
     tagline: "A precise at-home tool for removing peach fuzz and surface buildup.",
@@ -168,7 +168,7 @@ export const shopProducts: ShopProduct[] = [
         desc: "Micro-guard blades designed for careful, controlled use",
       },
     ],
-  },
+  }, */
   {
     id: "clear-skin-patches",
     name: "Clear Skin Hydrocolloid Patches",
@@ -319,7 +319,7 @@ export const shopProducts: ShopProduct[] = [
       },
     ],
   },
-  {
+ /*  {
     id: "skin-ritual-bundle",
     name: "Skin Ritual Starter Kit",
     tagline: "The complete glow ritual — smooth, clear, radiant.",
@@ -397,7 +397,7 @@ export const shopProducts: ShopProduct[] = [
         desc: "Ships in elegant packaging — perfect self-care gift for any woman",
       },
     ],
-  },
+  }, */
   {
     id: "gua-sha-jade-roller-set",
     name: "Rose Quartz Gua Sha & Jade Roller Set",
