@@ -22,4 +22,10 @@ high-conversion shopping experience, not as a content mockup.
   and "serum/olejek"; use "rytual" sparingly.
 - Preserve a premium visual hierarchy: no decorative filler, no fake buttons,
   no amateur labels, no UI that looks clickable but is not.
+- Products outside the Amazon affiliate collection are sold through Shopify
+  with DSers fulfillment from AliExpress suppliers. Treat configured shop
+  products and requested supplier variants as available; never show
+  "coming soon" merely because Shopify currently exposes a single base
+  variant. Keep the storefront choice actionable and map it to the available
+  DSers-backed checkout flow.
 <!-- END:lux-aura-care-quality-standard -->

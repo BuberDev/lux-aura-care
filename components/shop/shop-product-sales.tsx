@@ -32,6 +32,7 @@ import { LocalizedDate } from "@/components/localized-date";
 import { CustomerRatingSummary } from "@/components/shop/customer-rating-summary";
 import { PaymentMethods } from "@/components/shop/payment-methods";
 import { FreeShippingBadge } from "@/components/shop/free-shipping-badge";
+import { BeforeAfterComparison } from "@/components/shop/before-after-comparison";
 import {
   trackShopAddToCart,
   trackShopBeginCheckout,
@@ -633,10 +634,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? Math.round((1 - product.price / product.compareAtPrice) * 100)
     : 0;
   const productVariants = product.variants ?? [];
+  const productSizes = product.sizes ?? [];
   const hasColorVariants = productVariants.length > 0;
+  const hasProductSizes = productSizes.length > 0;
   const isFashion = product.category === "fashion";
   const isBodyCare = product.category === "body-glow";
-  const isPurchasable = product.purchaseStatus !== "coming-soon" && Boolean(product.shopifyUrl);
+  const isSerumDuo = product.id === "vitamin-c-retinol-serum-duo";
+  const isPurchasable = Boolean(
+    product.shopifyUrl
+      || productSizes.some((size) => size.shopifyUrl)
+      || productVariants.some(
+        (variant) => variant.shopifyUrl || variant.sizes?.some((size) => size.shopifyUrl)
+      )
+  );
 
   const scienceBenefits = localizeContent(
     locale,
@@ -647,7 +657,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [selectedVariantId, setSelectedVariantId] = useState(productVariants[0]?.id ?? "");
-  const [selectedSizeId, setSelectedSizeId] = useState(productVariants[0]?.sizes?.[0]?.id ?? "");
+  const [selectedSizeId, setSelectedSizeId] = useState(
+    productSizes.find((size) => size.available !== false)?.id
+      ?? productSizes[0]?.id
+      ?? productVariants[0]?.sizes?.[0]?.id
+      ?? ""
+  );
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [showStickyDrawer, setShowStickyDrawer] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
@@ -778,8 +793,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     const checkoutEvent: ShopCheckoutEvent = {
       productId: product.id,
       productName: product.name,
-      price: product.price,
-      quantity: selectedQuantity,
+      price: selectedUnitPrice,
+      quantity: selectedQuantity * unitsPerSelection,
       currency: product.currency,
       variantId: selectedSize
         ? `${selectedVariant?.id}/${selectedSize.id}`
@@ -848,7 +863,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   });
 
   const selectedVariant = productVariants.find((variant) => variant.id === selectedVariantId) ?? productVariants[0];
-  const sizeVariants = selectedVariant?.sizes ?? [];
+  const sizeVariants = selectedVariant?.sizes ?? productSizes;
   const selectedSize = sizeVariants.find((size) => size.id === selectedSizeId) ?? sizeVariants[0];
   const hasSizeVariants = sizeVariants.length > 0;
   const checkoutPending = isPurchasable && stockLoading;
@@ -858,41 +873,50 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     1,
     Math.min(MAX_CHECKOUT_QUANTITY, stockQuantity ?? MAX_CHECKOUT_QUANTITY)
   );
+  const unitsPerSelection = selectedSize?.checkoutQuantity ?? 1;
   const checkoutUrl = buildCheckoutUrl({
     configuredUrl: product.shopifyUrl ?? "",
     variantUrl: selectedSize?.shopifyUrl ?? selectedVariant?.shopifyUrl,
     selectedVariantId: selectedVariant?.id,
     selectedSizeId: selectedSize?.id,
-    quantity: selectedQuantity,
+    quantity: selectedQuantity * unitsPerSelection,
     locale,
   });
-  const checkoutLabel = hasSizeVariants ? "Go to checkout" : hasColorVariants ? "Order selected color" : "Order now";
+  const checkoutLabel = hasSizeVariants ? "Order selected size" : hasColorVariants ? "Order selected color" : "Order now";
   const showLowStock = !stockLoading && stockQuantity !== null && stockQuantity > 0 && stockQuantity <= 15;
   const showSaleCountdown = Boolean(saleActive && timeLeft);
   const trustBadgeLabel = (() => {
-    if (!isPurchasable) return "Coming soon";
+    if (!isPurchasable) return null;
     if (checkoutPending) return "Checking availability";
     if (stockUnavailable) return stockStatus === "sold-out" ? "Out of stock" : "Unavailable";
     return null;
   })();
-  const productCategoryLabel = isFashion
+  const productCategoryLabel = isSerumDuo
+    ? "Face serum duo"
+    : isFashion
     ? "Style edit"
     : product.category === "bundle"
       ? "Bundle"
       : product.category === "body-glow"
         ? "Body care"
         : "Skincare tool";
-  const usageEyebrow = isFashion
+  const usageEyebrow = isSerumDuo
+    ? "DAY & NIGHT SKINCARE"
+    : isFashion
     ? "FIT & STYLING"
     : isBodyCare
       ? "BODY CARE STEP BY STEP"
       : "FACIAL MASSAGE STEP BY STEP";
-  const usageTitle = isFashion
+  const usageTitle = isSerumDuo
+    ? "How to Use Both Serums"
+    : isFashion
     ? "Choose and Style It With Confidence"
     : isBodyCare
       ? "How to Use the Body Brush"
       : "How to Use It Without Guesswork";
-  const usageDescription = isFashion
+  const usageDescription = isSerumDuo
+    ? "Introduce retinol gradually and finish every morning routine with SPF 30 or higher."
+    : isFashion
     ? "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own."
     : isBodyCare
       ? "Use the brush on wet skin with gentle pressure, then rinse it well and leave it to dry completely."
@@ -913,17 +937,26 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "Pair it with body care"
       : "Pair it with your skincare";
-  const selectedSubtotal = product.price * selectedQuantity;
-  const productPrice = formatShopPrice(product.price, product.currency, locale);
-  const productCompareAtPrice = formatShopPrice(product.compareAtPrice, product.currency, locale);
+  const scienceEyebrow = isSerumDuo ? "DAY + NIGHT FORMULAS" : "CONSIDERED DESIGN";
+  const scienceTitle = isSerumDuo
+    ? "Two Complementary Steps, One Clear Routine"
+    : "What Makes This Product Practical";
+  const scienceDescription = isSerumDuo
+    ? "See what each serum contributes and how to introduce the duo comfortably into morning and evening skincare."
+    : "Review the materials, shape and practical details before deciding whether this product fits your routine.";
+  const selectedUnitPrice = product.price * unitsPerSelection;
+  const selectedCompareAtUnitPrice = product.compareAtPrice * unitsPerSelection;
+  const selectedSubtotal = selectedUnitPrice * selectedQuantity;
+  const productPrice = formatShopPrice(selectedUnitPrice, product.currency, locale);
+  const productCompareAtPrice = formatShopPrice(selectedCompareAtUnitPrice, product.currency, locale);
   const selectedSubtotalPrice = formatShopPrice(selectedSubtotal, product.currency, locale);
   const selectedCompareAtSubtotalPrice = formatShopPrice(
-    product.compareAtPrice * selectedQuantity,
+    selectedCompareAtUnitPrice * selectedQuantity,
     product.currency,
     locale
   );
   const savingsPrice = formatShopPrice(
-    product.compareAtPrice - product.price,
+    selectedCompareAtUnitPrice - selectedUnitPrice,
     product.currency,
     locale
   );
@@ -1116,7 +1149,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                             src={activeHeroItem.url}
                             alt={heroMediaAlt(activeHeroItem)}
                             fill
-                            priority
+                            loading="eager"
+                            fetchPriority="high"
                             sizes="(max-width: 640px) calc(100vw - 1rem), (max-width: 1024px) 560px, 48vw"
                             className={`object-contain transition-all duration-500 ease-out ${activeHeroItem.filter || ""}`}
                           />
@@ -1247,38 +1281,30 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               </div>
 
               {/* Price Block & Save Indicator */}
-              {isPurchasable ? (
-                <div className="flex items-center justify-between gap-4 border-y border-border-subtle py-3">
-                  <div className="space-y-0.5">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-text-secondary">
-                      <T text={hasDiscount ? "Special Offer Price" : "Price"} />
-                    </p>
-                    <div className="flex items-baseline gap-2.5">
-                      <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">{productPrice}</span>
-                      {hasDiscount && (
-                        <span className="text-xs sm:text-sm line-through text-text-secondary">{productCompareAtPrice}</span>
-                      )}
-                    </div>
+              <div className="flex items-center justify-between gap-4 border-y border-border-subtle py-3">
+                <div className="space-y-0.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-text-secondary">
+                    <T text={hasDiscount ? "Special Offer Price" : "Price"} />
+                  </p>
+                  <div className="flex items-baseline gap-2.5">
+                    <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">{productPrice}</span>
+                    {hasDiscount && (
+                      <span className="text-xs sm:text-sm line-through text-text-secondary">{productCompareAtPrice}</span>
+                    )}
                   </div>
-                  {hasDiscount && (
-                    <div className="text-right">
-                      <span
-                        className="inline-block rounded-full px-2.5 py-1 text-xs font-extrabold shadow-sm"
-                        style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
-                      >
-                        <T text={"You save"} /> {discount}%
-                      </span>
-                      <p className="mt-1 text-[10px] font-bold text-accent-gold/80">{savingsPrice} <T text={"kept in your pocket"} /></p>
-                    </div>
-                  )}
                 </div>
-              ) : (
-                <div className="border-y border-border-subtle py-3">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-accent-gold"><T text={"Coming soon"} /></p>
-                  <p className="mt-1.5 text-xs sm:text-sm font-semibold text-text-primary"><T text={"Price and size details are being confirmed"} /></p>
-                  <p className="mt-1 text-xs leading-relaxed text-text-secondary"><T text={"You can already compare every color; ordering will open only after the correct variants are connected."} /></p>
-                </div>
-              )}
+                {hasDiscount && (
+                  <div className="text-right">
+                    <span
+                      className="inline-block rounded-full px-2.5 py-1 text-xs font-extrabold shadow-sm"
+                      style={{ background: "rgb(201 169 110 / 0.18)", color: "var(--accent-gold)", border: "1px solid rgb(201 169 110 / 0.3)" }}
+                    >
+                      <T text={"You save"} /> {discount}%
+                    </span>
+                    <p className="mt-1 text-[10px] font-bold text-accent-gold/80">{savingsPrice} <T text={"kept in your pocket"} /></p>
+                  </div>
+                )}
+              </div>
 
               {/* Free Shipping Badge */}
               <FreeShippingBadge variant="banner" />
@@ -1373,24 +1399,27 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               )}
 
               {hasSizeVariants && selectedSize && (
-                <div className="space-y-2 rounded-xl border border-border-subtle bg-surface-subtle p-3">
-                  <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1.5 rounded-xl border border-border-subtle bg-background-primary/35 p-2.5">
+                  <div className="flex items-center justify-between gap-3 px-0.5">
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
-                      <T text={"Choose size"} />
+                      <T text={hasProductSizes ? "Choose volume" : "Choose size"} />
                     </p>
-                    <p className="min-w-0 text-right text-[10px] font-semibold text-text-secondary">
-                      <T text={"Selected size"} />:{" "}
-                      <span className="text-text-primary">{selectedSize.label}</span>
-                    </p>
+                    <span className="text-[10px] font-bold text-accent-gold">{selectedSize.label}</span>
                   </div>
 
                   <div
-                    className="grid grid-cols-3 gap-1.5 sm:grid-cols-6"
+                    className={hasProductSizes ? "grid grid-cols-2 gap-2" : "grid grid-cols-3 gap-1.5 sm:grid-cols-6"}
                     role="radiogroup"
-                    aria-label={text("Choose size")}
+                    aria-label={text(hasProductSizes ? "Choose volume" : "Choose size")}
                   >
                     {sizeVariants.map((size) => {
                       const isSelected = selectedSize.id === size.id;
+                      const isAvailable = size.available !== false;
+                      const sizePrice = formatShopPrice(
+                        product.price * (size.checkoutQuantity ?? 1),
+                        product.currency,
+                        locale
+                      );
 
                       return (
                         <button
@@ -1398,14 +1427,22 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                           type="button"
                           role="radio"
                           aria-checked={isSelected}
+                          aria-disabled={!isAvailable}
+                          disabled={!isAvailable}
                           onClick={() => setSelectedSizeId(size.id)}
-                          className={`flex min-h-9 items-center justify-center rounded-lg border px-2 py-1.5 text-xs font-extrabold transition-all duration-200 ${
+                          className={`relative flex min-h-10 items-center justify-between gap-2 rounded-lg border px-3 py-1.5 text-xs font-extrabold transition-all duration-200 ${
                             isSelected
                               ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
-                              : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                              : isAvailable
+                                ? "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                                : "cursor-not-allowed border-border-subtle bg-background-primary/35 text-text-secondary opacity-60"
                           }`}
                         >
-                          {size.label}
+                          <span className="flex min-w-0 items-center gap-1.5">
+                            {isSelected && <Check className="size-3.5 shrink-0 text-accent-gold" aria-hidden="true" />}
+                            <span className="text-sm font-extrabold">{size.label}</span>
+                          </span>
+                          <span className="text-[10px] font-semibold text-text-secondary">{sizePrice}</span>
                         </button>
                       );
                     })}
@@ -1703,17 +1740,19 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </section>
       )}
 
+      {isSerumDuo && <BeforeAfterComparison />}
+
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
       {scienceBenefits.length > 0 && (
       <section className="border-b border-border-subtle py-12 sm:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"CONSIDERED DESIGN"} /></span>
+            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={scienceEyebrow} /></span>
             <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={"What Makes This Product Practical"} />
+              <T text={scienceTitle} />
             </h2>
             <p className="text-sm md:text-base text-text-secondary">
-              <T text={"Review the materials, shape and practical details before deciding whether this product fits your routine."} />
+              <T text={scienceDescription} />
             </p>
           </div>
 
@@ -2101,6 +2140,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <span className="text-[10px] line-through text-text-secondary">{selectedCompareAtSubtotalPrice}</span>
                 )}
                 <span className="text-[10px] font-bold text-text-secondary">x{selectedQuantity}</span>
+                {selectedSize && (
+                  <span className="hidden text-[10px] font-semibold text-text-secondary sm:inline">· {selectedSize.label}</span>
+                )}
               </div>
             </div>
           </div>

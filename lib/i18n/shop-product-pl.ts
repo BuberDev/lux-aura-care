@@ -37,6 +37,107 @@ export const shopProductPolishCopy: Record<string, string> = {
     "Serum z retinolem jest przeznaczone do stopniowego stosowania wieczorem",
   "Complete AM + PM anti-aging ritual in one duo":
     "Dwa sera tworzą prostą pielęgnację poranną i wieczorną",
+  "A complete two-serum system: the Vitamin C Brightening Serum tackles dark spots and dullness during the day, while the Retinol Night Serum accelerates cell renewal and collagen production as you sleep. Formulated for mature skin — lightweight, fast-absorbing, and fragrance-free.":
+    "Kompletny zestaw dwóch serum do pielęgnacji na dzień i na noc. Rano witamina C wspiera rozświetlenie i wyrównany wygląd cery, a wieczorem retinol uzupełnia pielęgnację ukierunkowaną na odnowę skóry. Obie lekkie, bezzapachowe formuły szybko się wchłaniają i zostały dobrane z myślą o cerze dojrzałej.",
+  "Vitamin C brightening serum and retinol night serum skincare duo":
+    "Duet do pielęgnacji twarzy: serum rozświetlające z witaminą C i serum na noc z retinolem",
+  "☀️ AM + PM System": "☀️ Pielęgnacja rano i wieczorem",
+  "Lightweight, fast-absorbing formula — no greasy residue":
+    "Lekkie formuły szybko się wchłaniają i nie pozostawiają tłustej warstwy",
+  "Fragrance-free — suitable for reactive and sensitive skin":
+    "Formuły bez dodatku substancji zapachowych, odpowiednie również dla skóry wrażliwej",
+  "Designed for consistent morning and evening use as directed":
+    "Przeznaczone do regularnego stosowania rano i wieczorem zgodnie z instrukcją",
+  "Morning: after cleansing, apply 3–4 drops of Vitamin C serum":
+    "Rano, po oczyszczeniu skóry, nałóż 3–4 krople serum z witaminą C",
+  "Follow with SPF moisturiser (always use SPF with Vitamin C)":
+    "Następnie nałóż krem nawilżający i zakończ pielęgnację filtrem SPF 30 lub wyższym",
+  "Evening: after cleansing, apply 3–4 drops of Retinol serum":
+    "Wieczorem, po oczyszczeniu skóry, nałóż 3–4 krople serum z retinolem",
+  "Allow 2–3 minutes to absorb before applying night cream":
+    "Odczekaj 2–3 minuty, a następnie nałóż krem na noc",
+  "Start with retinol 3 nights per week, gradually increase":
+    "Zacznij od retinolu 2–3 razy w tygodniu i stopniowo zwiększaj częstotliwość",
+  "Can I use retinol if I'm a beginner?": "Czy mogę używać retinolu, jeśli dopiero zaczynam?",
+  "Yes — start with 2–3 nights per week and gradually increase. Always follow with a rich moisturiser.":
+    "Tak. Zacznij od 2–3 wieczorów w tygodniu i zwiększaj częstotliwość dopiero wtedy, gdy skóra dobrze toleruje kosmetyk. Po serum nałóż krem nawilżający.",
+  "Do I need SPF with Vitamin C?": "Czy przy serum z witaminą C potrzebuję filtra SPF?",
+  "Always. Vitamin C increases sun sensitivity. Apply SPF 30+ every morning after the serum.":
+    "Tak. Codzienna ochrona przeciwsłoneczna wspiera pielęgnację ukierunkowaną na przebarwienia. Każdego ranka po serum nałóż SPF 30 lub wyższy.",
+  "How long until I see results?": "Kiedy mogę zauważyć pierwsze efekty?",
+  "Brightening from Vitamin C is visible in 1–2 weeks. Retinol results (firmer, smoother skin) typically appear after 4–6 weeks.":
+    "Tempo zmian zależy od skóry i regularności stosowania. Na bardziej rozświetlony wygląd zwykle trzeba poczekać kilka tygodni, a retinol wymaga stopniowego wprowadzania i systematyczności.",
+  "Complete two-serum system — Vitamin C by day, Retinol by night":
+    "Kompletny duet serum: witamina C na dzień i retinol na noc",
+  "☀️ AM + PM": "☀️ Rano + wieczór",
+  "AM + PM": "Rano + wieczór",
+  "Full Ritual": "Pełna pielęgnacja",
+  "Day and night flat lay — the complete anti-aging skincare ritual in one duo":
+    "Dwa uzupełniające się sera do uporządkowanej pielęgnacji porannej i wieczornej",
+  "Vanity": "Na toaletce",
+  "A premium bathroom vanity essential — brightening by day, renewing by night":
+    "Elegancki duet do łazienkowej toaletki: rozświetlająca pielęgnacja rano i retinol wieczorem",
+  "Formula": "Konsystencja",
+  "Lightweight": "Lekka formuła",
+  "Lightweight, fast-absorbing dropper formula — no greasy residue, pure actives":
+    "Lekka konsystencja łatwo rozprowadza się pipetą, szybko się wchłania i nie pozostawia tłustej warstwy",
+  "Luxury": "Elegancka prezentacja",
+  "Premium": "Starannie wybrane",
+  "Elegant pedestal presentation of the premium Vitamin C and Retinol duo":
+    "Duet serum z witaminą C i retinolem pokazany w eleganckiej aranżacji produktowej",
+  "Bottle Details": "Detale opakowań",
+  "60 ml each": "Po 60 ml",
+  "Front view of both 60 ml bottles with the Vitamin C and Retinol labels visible":
+    "Widok obu butelek o pojemności 60 ml z czytelnymi etykietami witaminy C i retinolu",
+  "Vitamin C by Day": "Witamina C na dzień",
+  "The morning serum targets dullness and dark spots. Follow with SPF — the duo is designed as a complete, ordered routine, not a single product.":
+    "Poranne serum wspiera rozświetlenie i bardziej wyrównany wygląd cery. Po aplikacji nałóż krem nawilżający i SPF — duet tworzy uporządkowaną pielęgnację, a nie pojedynczy krok.",
+  "AM Brighten": "Poranne rozświetlenie",
+  "Retinol by Night": "Retinol na noc",
+  "The evening serum supports skin renewal while you sleep. Start 2–3 nights per week and build up gradually as your skin adjusts.":
+    "Wieczorne serum uzupełnia pielęgnację ukierunkowaną na odnowę i gładszy wygląd skóry. Zacznij od 2–3 wieczorów w tygodniu i zwiększaj częstotliwość stopniowo.",
+  "PM Renew": "Wieczorna odnowa",
+  "Lightweight & Fragrance-Free": "Lekkie formuły bez dodatku zapachu",
+  "Both serums absorb fast with no greasy residue and no added fragrance — formulated with mature and reactive skin in mind.":
+    "Oba sera szybko się wchłaniają, nie pozostawiają tłustej warstwy i nie zawierają dodatku substancji zapachowych. To przemyślany wybór do pielęgnacji cery dojrzałej i wrażliwej.",
+  "Clean Feel": "Lekka konsystencja",
+  "Face serum duo": "Duet serum do twarzy",
+  "DAY & NIGHT SKINCARE": "PIELĘGNACJA NA DZIEŃ I NA NOC",
+  "How to Use Both Serums": "Jak stosować oba sera",
+  "Introduce retinol gradually and finish every morning routine with SPF 30 or higher.":
+    "Wprowadzaj retinol stopniowo, a poranną pielęgnację zawsze kończ filtrem SPF 30 lub wyższym.",
+  "DAY + NIGHT FORMULAS": "FORMUŁY NA DZIEŃ I NA NOC",
+  "Two Complementary Steps, One Clear Routine": "Dwa uzupełniające się kroki, jedna klarowna pielęgnacja",
+  "See what each serum contributes and how to introduce the duo comfortably into morning and evening skincare.":
+    "Sprawdź rolę każdego serum i zobacz, jak wygodnie włączyć duet do porannej i wieczornej pielęgnacji.",
+  "Choose volume": "Wybierz pojemność",
+  "Selected volume": "Wybrana pojemność",
+  "Order selected size": "Zamów wybraną pojemność",
+  "Standard size": "Standardowa pojemność",
+  "Double supply": "Podwójny zapas",
+  "CONSISTENCY YOU CAN SEE": "EFEKT, KTÓRY BUDUJE REGULARNOŚĆ",
+  "See what a steady routine can change": "Zobacz, co może zmienić regularna pielęgnacja",
+  "Compare the same mature complexion before and after consistent care. The change is intentionally subtle: more glow, smoother-looking texture and a rested finish, while real skin still looks like real skin.":
+    "Porównaj tę samą dojrzałą cerę przed rozpoczęciem regularnej pielęgnacji i po jej konsekwentnym stosowaniu. Różnica jest celowo naturalna: więcej blasku, gładszy wygląd i wypoczęte wykończenie, bez ukrywania prawdziwej struktury skóry.",
+  "Before regular use": "Przed regularnym stosowaniem",
+  "After regular use": "Po regularnym stosowaniu",
+  "Drag to compare": "Przesuń, aby porównać",
+  "Move the comparison slider": "Przesuń suwak porównania przed i po",
+  "Mature complexion before starting a consistent Vitamin C and retinol routine":
+    "Dojrzała cera przed rozpoczęciem regularnej pielęgnacji witaminą C i retinolem",
+  "Mature complexion after consistent Vitamin C and retinol care":
+    "Dojrzała cera po regularnej pielęgnacji witaminą C i retinolem",
+  "Before consistent care": "Przed regularną pielęgnacją",
+  "Skin may look dull, uneven and less rested when the routine changes from day to day.":
+    "Gdy pielęgnacja jest nieregularna, skóra może wyglądać na matową, mniej równą i zmęczoną.",
+  "After consistent care": "Po regularnej pielęgnacji",
+  "Regular care can support a brighter, smoother-looking and more hydrated complexion.":
+    "Systematyczna pielęgnacja może wspierać bardziej rozświetlony, gładszy i lepiej nawilżony wygląd cery.",
+  "What supports the change": "Co wspiera tę zmianę",
+  "Vitamin C in the morning, SPF every day and retinol introduced gradually at night.":
+    "Witamina C rano, codzienna ochrona SPF i retinol wprowadzany stopniowo wieczorem.",
+  "Illustrative comparison of a possible cosmetic effect. Individual results depend on skin condition, regular use and daily sun protection.":
+    "Porównanie ma charakter ilustracyjny i pokazuje możliwy efekt kosmetyczny. Rezultaty zależą od kondycji skóry, regularności stosowania i codziennej ochrony przeciwsłonecznej.",
 
   "Resin Body Gua Sha Lymph Tool": "Gua sha z żywicy do masażu ciała",
   "Sculpt your body. Support lymphatic drainage. At home.":

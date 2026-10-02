@@ -16,7 +16,9 @@ export async function GET(
   const selectedVariantId = request.nextUrl.searchParams.get("variantId");
   const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
   const selectedSizeId = request.nextUrl.searchParams.get("sizeId");
-  const selectedSize = selectedVariant?.sizes?.find((size) => size.id === selectedSizeId);
+  const selectedSize = (selectedVariant?.sizes ?? product?.sizes)?.find(
+    (size) => size.id === selectedSizeId
+  );
   const selectedShopifyUrl = selectedSize?.shopifyUrl ?? selectedVariant?.shopifyUrl;
   const variant = selectedShopifyUrl
     ? getShopifyVariantFromUrl(selectedShopifyUrl)

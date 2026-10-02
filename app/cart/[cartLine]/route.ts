@@ -65,10 +65,21 @@ function findProductByShopifyVariantId(shopifyVariantId: string) {
       }
 
       for (const size of variant.sizes ?? []) {
-        const sizeMatch = getShopifyVariantFromUrl(size.shopifyUrl);
+        const sizeMatch = size.shopifyUrl
+          ? getShopifyVariantFromUrl(size.shopifyUrl)
+          : null;
         if (sizeMatch?.variantId === shopifyVariantId) {
           return { product, variantId: variant.id, sizeId: size.id };
         }
+      }
+    }
+
+    for (const size of product.sizes ?? []) {
+      const sizeMatch = size.shopifyUrl
+        ? getShopifyVariantFromUrl(size.shopifyUrl)
+        : null;
+      if (sizeMatch?.variantId === shopifyVariantId) {
+        return { product, variantId: null, sizeId: size.id };
       }
     }
   }

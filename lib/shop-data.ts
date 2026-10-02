@@ -23,7 +23,12 @@ export type ShopProductVariant = {
 export type ShopProductSizeVariant = {
   id: string;
   label: string;
-  shopifyUrl: string;
+  shopifyUrl?: string;
+  available?: boolean;
+  /** Number of the base Shopify item added for one selected option. */
+  checkoutQuantity?: number;
+  supportingText?: string;
+  badge?: string;
 };
 
 export type ShopProductSalesStory = {
@@ -77,6 +82,7 @@ export type ShopProduct = {
   ugcVideos?: string[];
   gallery?: ShopProductGalleryItem[];
   variants?: ShopProductVariant[];
+  sizes?: ShopProductSizeVariant[];
   salesStory?: ShopProductSalesStory;
 };
 
@@ -874,7 +880,7 @@ export const shopProducts: ShopProduct[] = [
     price: 27.99,
     compareAtPrice: 27.99,
     currency: "USD",
-    image: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png"),
+    image: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-luxury-spa-pedestal.png"),
     imageAlt: "Vitamin C brightening serum and retinol night serum skincare duo",
     badge: "☀️ AM + PM System",
     benefits: [
@@ -907,11 +913,26 @@ export const shopProducts: ShopProduct[] = [
       },
     ],
     shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112638710108:1",
+    sizes: [
+      {
+        id: "30-ml",
+        label: "30 ml",
+        supportingText: "Standard size",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112638710108:1",
+      },
+      {
+        id: "60-ml",
+        label: "60 ml",
+        supportingText: "Double supply",
+        checkoutQuantity: 2,
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112638710108:1",
+      },
+    ],
     category: "skincare",
     isNew: true,
     gallery: [
       {
-        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png"),
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-luxury-spa-pedestal.png"),
         label: "Product Photo",
         badge: "☀️ AM + PM",
         desc: "Complete two-serum system — Vitamin C by day, Retinol by night",
@@ -935,10 +956,10 @@ export const shopProducts: ShopProduct[] = [
         desc: "Lightweight, fast-absorbing dropper formula — no greasy residue, pure actives",
       },
       {
-        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-luxury-spa-pedestal.png"),
-        label: "Luxury",
-        badge: "Premium",
-        desc: "Elegant pedestal presentation of the premium Vitamin C and Retinol duo",
+        url: mediaUrl("/vitamin-c-retinol-serum-duo/vitamin-c-retinol-serum-duo-main-product-photo.png"),
+        label: "Bottle Details",
+        badge: "60 ml each",
+        desc: "Front view of both 60 ml bottles with the Vitamin C and Retinol labels visible",
       },
     ],
   },
