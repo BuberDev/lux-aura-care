@@ -12,6 +12,8 @@ export type ShopProductVariant = {
   id: string;
   label: string;
   colorName: string;
+  styleFamily?: string;
+  sleeveLength?: "short" | "long";
   swatchHex: string;
   swatchBorderHex?: string;
   image: string;
@@ -82,9 +84,55 @@ export type ShopProduct = {
   ugcVideos?: string[];
   gallery?: ShopProductGalleryItem[];
   variants?: ShopProductVariant[];
+  variantPickerLabel?: string;
+  selectedVariantPickerLabel?: string;
   sizes?: ShopProductSizeVariant[];
   salesStory?: ShopProductSalesStory;
 };
+
+const FLORAL_GRACE_SIZE_LABELS = ["S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"] as const;
+
+function floralGraceSizes(variantIds: readonly string[]): ShopProductSizeVariant[] {
+  return FLORAL_GRACE_SIZE_LABELS.map((label, index) => ({
+    id: label.toLowerCase(),
+    label,
+    shopifyUrl: `https://imp082-pj.myshopify.com/cart/${variantIds[index]}:1`,
+  }));
+}
+
+function floralGraceVariant({
+  id,
+  label,
+  styleFamily,
+  sleeveLength,
+  swatchHex,
+  swatchBorderHex,
+  image,
+  variantIds,
+}: {
+  id: string;
+  label: string;
+  styleFamily: string;
+  sleeveLength: "short" | "long";
+  swatchHex: string;
+  swatchBorderHex?: string;
+  image: string;
+  variantIds: readonly string[];
+}): ShopProductVariant {
+  return {
+    id,
+    label,
+    colorName: label,
+    styleFamily,
+    sleeveLength,
+    swatchHex,
+    swatchBorderHex,
+    image,
+    imageAlt: label,
+    shopifyUrl: `https://imp082-pj.myshopify.com/cart/${variantIds[0]}:1`,
+    sizes: floralGraceSizes(variantIds),
+  };
+}
 
 export const shopProducts: ShopProduct[] = [
  /*  {
@@ -1375,37 +1423,37 @@ export const shopProducts: ShopProduct[] = [
   {
     id: "floral-grace-maxi-dress",
     name: "Floral Grace Maxi Dress",
-    tagline: "A defined waist and sweeping floral skirt in four distinctive colorways.",
+    tagline: "A defined waist, sweeping floral skirt and 14 supplier-confirmed style options.",
     description:
-      "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Compare Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet on the same product page before choosing your color.",
+      "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Choose from 14 print and sleeve combinations, then select your size from S to 5XL.",
     price: 24.99,
     compareAtPrice: 24.99,
     currency: "USD",
-    image: "/dress/dress_red.jpeg",
-    imageAlt: "Blush pink floral maxi dress with short sleeves and a flowing A-line skirt",
+    image: "/dress/variants/green-short.webp",
+    imageAlt: "Floral Grace maxi dress in the turquoise floral short-sleeve variant",
     badge: "New",
     benefits: [
-      "Four floral colorways presented as variants of one dress",
+      "Fourteen supplier-confirmed print and sleeve combinations",
       "Clean neckline and fitted upper line keep the silhouette polished",
       "Wide high waistband visually defines the waist",
       "Flowing ankle-length A-line skirt adds movement without a bulky silhouette",
-      "Dedicated full-length image for every available color",
-      "Available in sizes S–XXXL across every colorway",
+      "Short- and long-sleeve options for year-round styling",
+      "Available in sizes S–5XL across every style",
     ],
     howToUse: [
-      "Compare all four full-length color photos before making your choice",
+      "Choose the print and sleeve length that best suits the occasion",
       "Choose your usual size and review the product details before checkout",
       "Keep accessories simple and let the floral skirt lead the look",
       "Follow the sewn-in care label before washing or ironing",
     ],
     faq: [
       {
-        q: "Which colors are available?",
-        a: "Choose from Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet. Each option has its own full-length product image.",
+        q: "Which styles are available?",
+        a: "Choose from 14 supplier-confirmed combinations covering green, red, pink, white, black, polka-dot and multicolor prints with short or long sleeves.",
       },
       {
         q: "Which sizes are available?",
-        a: "The dress is available in sizes S, M, L, XL, XXL and XXXL in every colorway.",
+        a: "The dress is available in sizes S, M, L, XL, 2XL, 3XL, 4XL and 5XL in every style.",
       },
       {
         q: "How should I care for the dress?",
@@ -1415,6 +1463,8 @@ export const shopProducts: ShopProduct[] = [
     category: "fashion",
     isNew: true,
     purchaseStatus: "available",
+    variantPickerLabel: "Choose style",
+    selectedVariantPickerLabel: "Selected style",
     rating: { value: 4.9, count: 155 },
     reviews: [
       {
@@ -1425,7 +1475,7 @@ export const shopProducts: ShopProduct[] = [
           "I ordered one size up, but I think my usual size would have been right because this one is a little small. Order your usual size. The fabric feels nice, the color is beautiful, and it is not see-through.",
         date: "2026-04-08",
         source: "AliExpress customer",
-        color: "fangge-CX",
+        color: "Multicolor stripe",
         size: "XXL",
         helpfulCount: 0,
       },
@@ -1437,7 +1487,7 @@ export const shopProducts: ShopProduct[] = [
           "I am very happy with this dress. The fabric can be washed, dries quickly and does not need ironing. Size XL is not tight across my 98 cm bust. I am thinking about buying another one in a different color.",
         date: "2026-05-17",
         source: "AliExpress customer",
-        color: "Pink",
+        color: "Pink floral",
         size: "XL",
         helpfulCount: 0,
       },
@@ -1449,7 +1499,7 @@ export const shopProducts: ShopProduct[] = [
           "I liked it—a beautiful dress. The material is good and excellent for the price. I fully recommend it. The size fits me perfectly; if you prefer a closer fit, you can order a smaller size, but it is beautiful. I plan to order more.",
         date: "2025-10-18",
         source: "AliExpress customer",
-        color: "black",
+        color: "Tropical floral",
         size: "S",
         helpfulCount: 1,
       },
@@ -1461,7 +1511,7 @@ export const shopProducts: ShopProduct[] = [
           "The dress is made from cool-feeling, stretchy material. It fits the body very well and looks lovely.",
         date: "2025-10-02",
         source: "AliExpress customer",
-        color: "bodian",
+        color: "Polka dot",
         size: "M",
         helpfulCount: 2,
       },
@@ -1473,110 +1523,238 @@ export const shopProducts: ShopProduct[] = [
           "Perfect and very beautiful. I highly recommend it. The material is very good—ten out of ten.",
         date: "2026-03-16",
         source: "AliExpress customer",
-        color: "Red",
+        color: "Red floral",
         size: "L",
         helpfulCount: 0,
       },
     ],
-    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652407132:1",
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652800348:1",
     variants: [
-      {
-        id: "blush-garden",
-        label: "Blush Garden",
-        colorName: "Blush pink floral",
-        swatchHex: "#e7a9b4",
-        swatchBorderHex: "#f3ccd2",
-        image: "/dress/dress_red.jpeg",
-        imageAlt: "Blush pink floral maxi dress with burgundy flowers and short sleeves",
-        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652407132:1",
-        sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652407132:1" },
-          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652439900:1" },
-          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652472668:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652505436:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652538204:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652570972:1" },
-        ],
-      },
-      {
-        id: "black-rose",
-        label: "Black Rose",
-        colorName: "Black floral",
-        swatchHex: "#111114",
-        swatchBorderHex: "#d9c5a7",
-        image: "/dress/dress_black.jpeg",
-        imageAlt: "Black floral maxi dress with pink roses and short black sleeves",
-        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652603740:1",
-        sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652603740:1" },
-          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652636508:1" },
-          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652669276:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652702044:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652734812:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652767580:1" },
-        ],
-      },
-      {
-        id: "emerald-bloom",
-        label: "Emerald Bloom",
-        colorName: "Emerald floral",
-        swatchHex: "#12a881",
-        swatchBorderHex: "#74d8be",
-        image: "/dress/dress_green.jpeg",
-        imageAlt: "Emerald green floral maxi dress with red flowers and short black sleeves",
-        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652800348:1",
-        sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652800348:1" },
-          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652833116:1" },
-          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652865884:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652898652:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652931420:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652964188:1" },
-        ],
-      },
-      {
-        id: "ivory-bouquet",
-        label: "Ivory Bouquet",
-        colorName: "Ivory floral",
-        swatchHex: "#f4f0e7",
-        swatchBorderHex: "#b8b1a3",
-        image: "/dress/dress_white.jpeg",
-        imageAlt: "Ivory white floral maxi dress with red flowers and long black sleeves",
-        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652996956:1",
-        sizes: [
-          { id: "s", label: "S", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112652996956:1" },
-          { id: "m", label: "M", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653029724:1" },
-          { id: "l", label: "L", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653062492:1" },
-          { id: "xl", label: "XL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653095260:1" },
-          { id: "xxl", label: "XXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653128028:1" },
-          { id: "xxxl", label: "XXXL", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112653160796:1" },
-        ],
-      },
+      floralGraceVariant({
+        id: "green-short",
+        label: "Green short",
+        styleFamily: "Green floral",
+        sleeveLength: "short",
+        swatchHex: "#16977f",
+        swatchBorderHex: "#75d7c2",
+        image: "/dress/variants/green-short.webp",
+        variantIds: ["59112652800348", "59112652833116", "59112652865884", "59112652898652", "59112652931420", "59112652964188", "59338827006300", "59338827039068"],
+      }),
+      floralGraceVariant({
+        id: "red-long",
+        label: "Red long",
+        styleFamily: "Red floral",
+        sleeveLength: "long",
+        swatchHex: "#b51f35",
+        swatchBorderHex: "#e28b96",
+        image: "/dress/variants/red-long.webp",
+        variantIds: ["59338827071836", "59338827104604", "59338827137372", "59338827170140", "59338827202908", "59338827235676", "59338827268444", "59338827301212"],
+      }),
+      floralGraceVariant({
+        id: "red-short",
+        label: "Red short",
+        styleFamily: "Red floral",
+        sleeveLength: "short",
+        swatchHex: "#c3283f",
+        swatchBorderHex: "#ef9aa5",
+        image: "/dress/variants/red-short.webp",
+        variantIds: ["59338827333980", "59338827366748", "59338827399516", "59338827432284", "59338827465052", "59338827497820", "59338827530588", "59338827563356"],
+      }),
+      floralGraceVariant({
+        id: "bodian-short",
+        label: "Bodian short",
+        styleFamily: "Polka dot",
+        sleeveLength: "short",
+        swatchHex: "#171717",
+        swatchBorderHex: "#d5d1ca",
+        image: "/dress/variants/bodian-short.webp",
+        variantIds: ["59338827596124", "59338827628892", "59338827661660", "59338827694428", "59338827727196", "59338827759964", "59338827792732", "59338827825500"],
+      }),
+      floralGraceVariant({
+        id: "pink-short",
+        label: "Pink short",
+        styleFamily: "Pink floral",
+        sleeveLength: "short",
+        swatchHex: "#d899a7",
+        swatchBorderHex: "#efc5ce",
+        image: "/dress/variants/pink-short.webp",
+        variantIds: ["59112652407132", "59112652439900", "59112652472668", "59112652505436", "59112652538204", "59112652570972", "59338827858268", "59338827891036"],
+      }),
+      floralGraceVariant({
+        id: "white-long",
+        label: "White long",
+        styleFamily: "White floral",
+        sleeveLength: "long",
+        swatchHex: "#f3efe7",
+        swatchBorderHex: "#aaa399",
+        image: "/dress/variants/white-long.webp",
+        variantIds: ["59112652996956", "59112653029724", "59112653062492", "59112653095260", "59112653128028", "59112653160796", "59338827923804", "59338827956572"],
+      }),
+      floralGraceVariant({
+        id: "black-short",
+        label: "Black short",
+        styleFamily: "Tropical floral",
+        sleeveLength: "short",
+        swatchHex: "linear-gradient(135deg, #0d513f 0 45%, #d7333f 45% 75%, #e0ad31 75%)",
+        swatchBorderHex: "#5fa78f",
+        image: "/dress/variants/black-short.webp",
+        variantIds: ["59112652603740", "59112652636508", "59112652669276", "59112652702044", "59112652734812", "59112652767580", "59338827989340", "59338828022108"],
+      }),
+      floralGraceVariant({
+        id: "white-short",
+        label: "White short",
+        styleFamily: "White floral",
+        sleeveLength: "short",
+        swatchHex: "#fffaf1",
+        swatchBorderHex: "#b5aea3",
+        image: "/dress/variants/white-short.webp",
+        variantIds: ["59338828054876", "59338828087644", "59338828120412", "59338828153180", "59338828185948", "59338828218716", "59338828251484", "59338828284252"],
+      }),
+      floralGraceVariant({
+        id: "pink-long",
+        label: "Pink long",
+        styleFamily: "Pink floral",
+        sleeveLength: "long",
+        swatchHex: "#cf7f91",
+        swatchBorderHex: "#eab8c3",
+        image: "/dress/variants/pink-long.webp",
+        variantIds: ["59338828317020", "59338828349788", "59338828382556", "59338828415324", "59338828448092", "59338828480860", "59338828513628", "59338828546396"],
+      }),
+      floralGraceVariant({
+        id: "green-long",
+        label: "Green long",
+        styleFamily: "Green floral",
+        sleeveLength: "long",
+        swatchHex: "#0d826d",
+        swatchBorderHex: "#66c8b3",
+        image: "/dress/variants/green-long.webp",
+        variantIds: ["59338828579164", "59338828611932", "59338828644700", "59338828677468", "59338828710236", "59338828743004", "59338828775772", "59338828808540"],
+      }),
+      floralGraceVariant({
+        id: "bodian-long",
+        label: "Bodian long",
+        styleFamily: "Polka dot",
+        sleeveLength: "long",
+        swatchHex: "#26262a",
+        swatchBorderHex: "#dad6cf",
+        image: "/dress/variants/bodian-long.webp",
+        variantIds: ["59338828841308", "59338828874076", "59338828906844", "59338828939612", "59338828972380", "59338829005148", "59338829037916", "59338829070684"],
+      }),
+      floralGraceVariant({
+        id: "fangge-cx-long",
+        label: "Fangge-CX long",
+        styleFamily: "Multicolor stripe",
+        sleeveLength: "long",
+        swatchHex: "linear-gradient(135deg, #b52636 0 25%, #d7a941 25% 50%, #1b826f 50% 75%, #171719 75%)",
+        swatchBorderHex: "#c7aa6c",
+        image: "/dress/variants/fangge-cx-long.webp",
+        variantIds: ["59338829103452", "59338829136220", "59338829168988", "59338829201756", "59338829234524", "59338829267292", "59338829300060", "59338829332828"],
+      }),
+      floralGraceVariant({
+        id: "fangge-cx-short",
+        label: "Fangge-CX short",
+        styleFamily: "Multicolor stripe",
+        sleeveLength: "short",
+        swatchHex: "linear-gradient(135deg, #b52636 0 25%, #d7a941 25% 50%, #1b826f 50% 75%, #171719 75%)",
+        swatchBorderHex: "#d1b574",
+        image: "/dress/variants/fangge-cx-short.webp",
+        variantIds: ["59338829365596", "59338829398364", "59338829431132", "59338829463900", "59338829496668", "59338829529436", "59338829562204", "59338829594972"],
+      }),
+      floralGraceVariant({
+        id: "black-long",
+        label: "Black long",
+        styleFamily: "Tropical floral",
+        sleeveLength: "long",
+        swatchHex: "linear-gradient(135deg, #0d513f 0 45%, #d7333f 45% 75%, #e0ad31 75%)",
+        swatchBorderHex: "#5fa78f",
+        image: "/dress/variants/black-long.webp",
+        variantIds: ["59338829627740", "59338829660508", "59338829693276", "59338829726044", "59338829758812", "59338829791580", "59338829824348", "59338829857116"],
+      }),
     ],
     gallery: [
       {
-        url: "/dress/dress_red.jpeg",
-        label: "Blush Garden",
-        badge: "Soft Rose",
-        desc: "Blush pink bodice and skirt with burgundy florals and teal leaves",
+        url: "/dress/variants/green-short.webp",
+        label: "Green floral",
+        badge: "Short sleeve",
+        desc: "Green short",
       },
       {
-        url: "/dress/dress_black.jpeg",
-        label: "Black Rose",
-        badge: "Evening Floral",
-        desc: "Black base with pink rose print for the deepest, most dramatic colorway",
+        url: "/dress/variants/green-long.webp",
+        label: "Green floral",
+        badge: "Long sleeve",
+        desc: "Green long",
       },
       {
-        url: "/dress/dress_green.jpeg",
-        label: "Emerald Bloom",
-        badge: "Statement Color",
-        desc: "Emerald floral skirt paired with a clean black short-sleeve bodice",
+        url: "/dress/variants/red-short.webp",
+        label: "Red floral",
+        badge: "Short sleeve",
+        desc: "Red short",
       },
       {
-        url: "/dress/dress_white.jpeg",
-        label: "Ivory Bouquet",
-        badge: "Light Contrast",
-        desc: "Ivory floral skirt paired with a fitted black long-sleeve bodice",
+        url: "/dress/variants/red-long.webp",
+        label: "Red floral",
+        badge: "Long sleeve",
+        desc: "Red long",
+      },
+      {
+        url: "/dress/variants/pink-short.webp",
+        label: "Pink floral",
+        badge: "Short sleeve",
+        desc: "Pink short",
+      },
+      {
+        url: "/dress/variants/pink-long.webp",
+        label: "Pink floral",
+        badge: "Long sleeve",
+        desc: "Pink long",
+      },
+      {
+        url: "/dress/variants/white-short.webp",
+        label: "White floral",
+        badge: "Short sleeve",
+        desc: "White short",
+      },
+      {
+        url: "/dress/variants/white-long.webp",
+        label: "White long",
+        badge: "Long sleeve",
+        desc: "White long",
+      },
+      {
+        url: "/dress/variants/bodian-short.webp",
+        label: "Polka dot",
+        badge: "Short sleeve",
+        desc: "Bodian short",
+      },
+      {
+        url: "/dress/variants/bodian-long.webp",
+        label: "Polka dot",
+        badge: "Long sleeve",
+        desc: "Bodian long",
+      },
+      {
+        url: "/dress/variants/fangge-cx-short.webp",
+        label: "Multicolor stripe",
+        badge: "Short sleeve",
+        desc: "Fangge-CX short",
+      },
+      {
+        url: "/dress/variants/fangge-cx-long.webp",
+        label: "Multicolor stripe",
+        badge: "Long sleeve",
+        desc: "Fangge-CX long",
+      },
+      {
+        url: "/dress/variants/black-short.webp",
+        label: "Tropical floral",
+        badge: "Short sleeve",
+        desc: "Black short",
+      },
+      {
+        url: "/dress/variants/black-long.webp",
+        label: "Tropical floral",
+        badge: "Long sleeve",
+        desc: "Black long",
       },
     ],
   },

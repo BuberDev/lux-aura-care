@@ -863,9 +863,22 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   });
 
   const selectedVariant = productVariants.find((variant) => variant.id === selectedVariantId) ?? productVariants[0];
+  const hasSplitVariantPicker = productVariants.length > 0 && productVariants.every(
+    (variant) => Boolean(variant.styleFamily && variant.sleeveLength)
+  );
+  const styleFamilyOptions = hasSplitVariantPicker
+    ? productVariants.filter(
+        (variant, index) =>
+          productVariants.findIndex((candidate) => candidate.styleFamily === variant.styleFamily) === index
+      )
+    : [];
+  const selectedStyleFamily = selectedVariant?.styleFamily;
+  const selectedSleeveLength = selectedVariant?.sleeveLength;
   const sizeVariants = selectedVariant?.sizes ?? productSizes;
   const selectedSize = sizeVariants.find((size) => size.id === selectedSizeId) ?? sizeVariants[0];
   const hasSizeVariants = sizeVariants.length > 0;
+  const variantPickerLabel = product.variantPickerLabel ?? "Choose color";
+  const selectedVariantPickerLabel = product.selectedVariantPickerLabel ?? "Selected color";
   const checkoutPending = isPurchasable && stockLoading;
   const stockUnavailable = isPurchasable && !stockLoading && stockAvailable === false;
   const canCheckout = isPurchasable && !stockLoading && stockAvailable !== false;
@@ -882,7 +895,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     quantity: selectedQuantity * unitsPerSelection,
     locale,
   });
-  const checkoutLabel = hasSizeVariants ? "Order selected size" : hasColorVariants ? "Order selected color" : "Order now";
+  const checkoutLabel = hasSizeVariants
+    ? "Order selected size"
+    : hasColorVariants && product.variantPickerLabel
+      ? "Order selected style"
+      : hasColorVariants
+        ? "Order selected color"
+        : "Order now";
   const showLowStock = !stockLoading && stockQuantity !== null && stockQuantity > 0 && stockQuantity <= 15;
   const showSaleCountdown = Boolean(saleActive && timeLeft);
   const trustBadgeLabel = (() => {
@@ -1005,6 +1024,24 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     if (nextGalleryIndex >= 0) {
       setActiveGalleryIndex(nextGalleryIndex);
     }
+  };
+
+  const handleStyleFamilySelect = (styleFamily: string) => {
+    const nextVariant = productVariants.find(
+      (variant) =>
+        variant.styleFamily === styleFamily && variant.sleeveLength === selectedSleeveLength
+    ) ?? productVariants.find((variant) => variant.styleFamily === styleFamily);
+
+    if (nextVariant) handleVariantSelect(nextVariant.id);
+  };
+
+  const handleSleeveLengthSelect = (sleeveLength: "short" | "long") => {
+    const nextVariant = productVariants.find(
+      (variant) =>
+        variant.styleFamily === selectedStyleFamily && variant.sleeveLength === sleeveLength
+    );
+
+    if (nextVariant) handleVariantSelect(nextVariant.id);
   };
 
   const decreaseQuantity = () => {
@@ -1355,46 +1392,128 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
               {hasColorVariants && selectedVariant && (
                 <div className="space-y-2 rounded-xl border border-border-subtle bg-surface-subtle p-3">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
-                      <T text={"Choose color"} />
-                    </p>
-                    <p className="min-w-0 text-right text-[10px] font-semibold text-text-secondary">
-                      <T text={"Selected color"} />:{" "}
-                      <span className="text-text-primary"><T text={selectedVariant.label} /></span>
-                    </p>
-                  </div>
+                  {hasSplitVariantPicker ? (
+                    <>
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                          <T text="Choose pattern" />
+                        </p>
+                        <p className="min-w-0 text-right text-[10px] font-semibold text-text-secondary">
+                          <T text="Selected pattern" />:{" "}
+                          <span className="text-text-primary"><T text={selectedStyleFamily ?? ""} /></span>
+                        </p>
+                      </div>
 
-                  <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label={text("Choose color")}>
-                    {productVariants.map((variant) => {
-                      const isSelected = selectedVariant.id === variant.id;
+                      <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3" role="radiogroup" aria-label={text("Choose pattern")}>
+                        {styleFamilyOptions.map((variant) => {
+                          const isSelected = selectedStyleFamily === variant.styleFamily;
 
-                      return (
-                        <button
-                          key={variant.id}
-                          type="button"
-                          role="radio"
-                          aria-checked={isSelected}
-                          onClick={() => handleVariantSelect(variant.id)}
-                          className={`flex min-h-9 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-left text-xs font-bold transition-all duration-200 ${
-                            isSelected
-                              ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
-                              : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
-                          }`}
-                        >
-                          <span
-                            className="size-4 shrink-0 rounded-full border shadow-inner"
-                            style={{
-                              background: variant.swatchHex,
-                              borderColor: variant.swatchBorderHex ?? "var(--border-subtle)",
-                            }}
-                            aria-hidden="true"
-                          />
-                          <span className="min-w-0 leading-tight text-[11px]"><T text={variant.label} /></span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                          return (
+                            <button
+                              key={variant.styleFamily}
+                              type="button"
+                              role="radio"
+                              aria-checked={isSelected}
+                              onClick={() => handleStyleFamilySelect(variant.styleFamily ?? "")}
+                              className={`flex min-h-10 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-left text-xs font-bold transition-all duration-200 ${
+                                isSelected
+                                  ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
+                                  : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                              }`}
+                            >
+                              <span
+                                className="size-4 shrink-0 rounded-full border shadow-inner"
+                                style={{
+                                  background: variant.swatchHex,
+                                  borderColor: variant.swatchBorderHex ?? "var(--border-subtle)",
+                                }}
+                                aria-hidden="true"
+                              />
+                              <span className="min-w-0 leading-tight text-[11px]"><T text={variant.styleFamily ?? ""} /></span>
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      <div className="mt-3 border-t border-border-subtle pt-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                            <T text="Sleeve length" />
+                          </p>
+                          <span className="text-[10px] font-bold text-accent-gold">
+                            <T text={selectedSleeveLength === "long" ? "Long sleeve" : "Short sleeve"} />
+                          </span>
+                        </div>
+                        <div className="mt-1.5 grid grid-cols-2 gap-1.5" role="radiogroup" aria-label={text("Sleeve length")}>
+                          {(["short", "long"] as const).map((sleeveLength) => {
+                            const isSelected = selectedSleeveLength === sleeveLength;
+                            const label = sleeveLength === "short" ? "Short sleeve" : "Long sleeve";
+
+                            return (
+                              <button
+                                key={sleeveLength}
+                                type="button"
+                                role="radio"
+                                aria-checked={isSelected}
+                                onClick={() => handleSleeveLengthSelect(sleeveLength)}
+                                className={`flex min-h-10 items-center justify-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-extrabold transition-all duration-200 ${
+                                  isSelected
+                                    ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
+                                    : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                                }`}
+                              >
+                                {isSelected && <Check className="size-3.5 shrink-0 text-accent-gold" aria-hidden="true" />}
+                                <T text={label} />
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                          <T text={variantPickerLabel} />
+                        </p>
+                        <p className="min-w-0 text-right text-[10px] font-semibold text-text-secondary">
+                          <T text={selectedVariantPickerLabel} />:{" "}
+                          <span className="text-text-primary"><T text={selectedVariant.label} /></span>
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label={text(variantPickerLabel)}>
+                        {productVariants.map((variant) => {
+                          const isSelected = selectedVariant.id === variant.id;
+
+                          return (
+                            <button
+                              key={variant.id}
+                              type="button"
+                              role="radio"
+                              aria-checked={isSelected}
+                              onClick={() => handleVariantSelect(variant.id)}
+                              className={`flex min-h-9 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-left text-xs font-bold transition-all duration-200 ${
+                                isSelected
+                                  ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
+                                  : "border-border-subtle text-text-secondary hover:border-border-strong hover:text-text-primary"
+                              }`}
+                            >
+                              <span
+                                className="size-4 shrink-0 rounded-full border shadow-inner"
+                                style={{
+                                  background: variant.swatchHex,
+                                  borderColor: variant.swatchBorderHex ?? "var(--border-subtle)",
+                                }}
+                                aria-hidden="true"
+                              />
+                              <span className="min-w-0 leading-tight text-[11px]"><T text={variant.label} /></span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
 
@@ -1408,7 +1527,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   </div>
 
                   <div
-                    className={hasProductSizes ? "grid grid-cols-2 gap-2" : "grid grid-cols-3 gap-1.5 sm:grid-cols-6"}
+                    className={hasProductSizes ? "grid grid-cols-2 gap-2" : "grid grid-cols-4 gap-1.5"}
                     role="radiogroup"
                     aria-label={text(hasProductSizes ? "Choose volume" : "Choose size")}
                   >
@@ -1430,7 +1549,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                           aria-disabled={!isAvailable}
                           disabled={!isAvailable}
                           onClick={() => setSelectedSizeId(size.id)}
-                          className={`relative flex min-h-10 items-center justify-between gap-2 rounded-lg border px-3 py-1.5 text-xs font-extrabold transition-all duration-200 ${
+                          className={`relative flex min-h-10 items-center gap-2 rounded-lg border py-1.5 text-xs font-extrabold transition-all duration-200 ${
+                            hasProductSizes ? "justify-between px-3" : "justify-center px-2"
+                          } ${
                             isSelected
                               ? "border-accent-gold bg-accent-gold/10 text-text-primary shadow-[0_0_10px_rgba(201,169,110,0.1)]"
                               : isAvailable
@@ -1442,7 +1563,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                             {isSelected && <Check className="size-3.5 shrink-0 text-accent-gold" aria-hidden="true" />}
                             <span className="text-sm font-extrabold">{size.label}</span>
                           </span>
-                          <span className="text-[10px] font-semibold text-text-secondary">{sizePrice}</span>
+                          {hasProductSizes && (
+                            <span className="text-[10px] font-semibold text-text-secondary">{sizePrice}</span>
+                          )}
                         </button>
                       );
                     })}
@@ -1924,7 +2047,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
                         <div className="mt-4 flex flex-wrap gap-2">
                           <span className="rounded-full border border-border-subtle bg-background-primary px-3 py-1 text-[11px] font-semibold text-text-secondary">
-                            <T text={"Color"} />: {review.color}
+                            <T text={"Pattern"} />: <T text={review.color} />
                           </span>
                           <span className="rounded-full border border-border-subtle bg-background-primary px-3 py-1 text-[11px] font-semibold text-text-secondary">
                             <T text={"Size"} />: {review.size}

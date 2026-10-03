@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "content:test": "npm --prefix content-engine test",
+    "content:typecheck": "npm --prefix content-engine run typecheck",
+    "publisher:install": "./automation/install-local-publisher.sh",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -15,17 +18,21 @@
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@radix-ui/react-slot": "^1.2.4",
+    "@vercel/blob": "^2.8.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.8.0",
+    "marked": "^18.0.14",
     "motion": "^12.38.0",
     "next": "16.2.3",
     "pg": "^8.22.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^6.12.2",
-    "tailwind-merge": "^3.5.0"
+    "sanitize-html": "^2.18.0",
+    "tailwind-merge": "^3.5.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -33,7 +40,7 @@
     "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vercel/blob": "^2.6.1",
+    "@types/sanitize-html": "^2.16.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
     "prisma": "^7.8.0",

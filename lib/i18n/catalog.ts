@@ -12,6 +12,26 @@ const shopProductTranslationCatalog = Object.fromEntries(
 
 export const translationCatalog = {
   ...shopProductTranslationCatalog,
+  "Evidence-led editorial": {
+    "en": "Evidence-led editorial",
+    "pl": "Redakcja oparta na źródłach"
+  },
+  "Sources checked before publication": {
+    "en": "Sources checked before publication",
+    "pl": "Źródła sprawdzone przed publikacją"
+  },
+  "Editorial standard": {
+    "en": "Editorial standard",
+    "pl": "Standard redakcyjny"
+  },
+  "Claims are checked against the public sources listed in the guide. Health content is educational and does not replace personalized medical advice.": {
+    "en": "Claims are checked against the public sources listed in the guide. Health content is educational and does not replace personalized medical advice.",
+    "pl": "Twierdzenia są weryfikowane na podstawie publicznych źródeł wymienionych w poradniku. Treści zdrowotne mają charakter edukacyjny i nie zastępują indywidualnej porady medycznej."
+  },
+  "Products mentioned": {
+    "en": "Products mentioned",
+    "pl": "Wspomniane produkty"
+  },
   "Privacy Policy": {
     "en": "Privacy Policy",
     "pl": "Polityka prywatności"
@@ -7078,11 +7098,11 @@ export const translationCatalog = {
   },
   "Choose and Style It With Confidence": {
     "en": "Choose and Style It With Confidence",
-    "pl": "Wybierz kolor i noś go po swojemu"
+    "pl": "Wybierz wariant i noś go po swojemu"
   },
   "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own.": {
     "en": "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own.",
-    "pl": "Porównaj kolory, wybierz rozmiar i dobierz kilka przemyślanych dodatków, aby dopasować fason do swojego stylu."
+    "pl": "Porównaj wzory i długości rękawa, wybierz rozmiar i dobierz kilka przemyślanych dodatków, aby dopasować fason do swojego stylu."
   },
   "Tip 0": {
     "en": "Tip 0",
@@ -7094,7 +7114,7 @@ export const translationCatalog = {
   },
   "Found the color that feels like you?": {
     "en": "Found the color that feels like you?",
-    "pl": "Masz już swój kolor?"
+    "pl": "Masz już swój wariant?"
   },
   "Compare every color now; final price, sizes and ordering will appear here after verification.": {
     "en": "Compare every color now; final price, sizes and ordering will appear here after verification.",
@@ -7115,6 +7135,178 @@ export const translationCatalog = {
   "A defined waist and sweeping floral skirt in four distinctive colorways.": {
     "en": "A defined waist and sweeping floral skirt in four distinctive colorways.",
     "pl": "Podkreślona talia i rozkloszowany, kwiatowy dół w czterech wyrazistych wersjach kolorystycznych."
+  },
+  "A defined waist, sweeping floral skirt and 14 supplier-confirmed style options.": {
+    "en": "A defined waist, sweeping floral skirt and 14 supplier-confirmed style options.",
+    "pl": "Podkreślona talia, rozkloszowany kwiatowy dół i 14 wariantów potwierdzonych przez dostawcę."
+  },
+  "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Choose from 14 print and sleeve combinations, then select your size from S to 5XL.": {
+    "en": "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Choose from 14 print and sleeve combinations, then select your size from S to 5XL.",
+    "pl": "Sukienka maxi do kostek z prostym dekoltem, podkreśloną wysoką talią i miękko układającym się dołem w kształcie litery A. Wybierz jeden z 14 wariantów wzoru i rękawa, a następnie rozmiar od S do 5XL."
+  },
+  "Fourteen supplier-confirmed print and sleeve combinations": {
+    "en": "Fourteen supplier-confirmed print and sleeve combinations",
+    "pl": "14 kombinacji wzoru i długości rękawa potwierdzonych przez dostawcę"
+  },
+  "Short- and long-sleeve options for year-round styling": {
+    "en": "Short- and long-sleeve options for year-round styling",
+    "pl": "Warianty z krótkim i długim rękawem na różne pory roku"
+  },
+  "Available in sizes S–5XL across every style": {
+    "en": "Available in sizes S–5XL across every style",
+    "pl": "Rozmiary od S do 5XL dostępne w każdym wariancie"
+  },
+  "Choose the print and sleeve length that best suits the occasion": {
+    "en": "Choose the print and sleeve length that best suits the occasion",
+    "pl": "Wybierz wzór i długość rękawa najlepiej dopasowane do okazji"
+  },
+  "Which styles are available?": {
+    "en": "Which styles are available?",
+    "pl": "Jakie warianty są dostępne?"
+  },
+  "Choose from 14 supplier-confirmed combinations covering green, red, pink, white, black, polka-dot and multicolor prints with short or long sleeves.": {
+    "en": "Choose from 14 supplier-confirmed combinations covering green, red, pink, white, black, polka-dot and multicolor prints with short or long sleeves.",
+    "pl": "Wybierz spośród 14 wariantów potwierdzonych przez dostawcę: zielonych, czerwonych, różowych, białych, czarnych, w groszki i wielokolorowych — z krótkim albo długim rękawem."
+  },
+  "The dress is available in sizes S, M, L, XL, 2XL, 3XL, 4XL and 5XL in every style.": {
+    "en": "The dress is available in sizes S, M, L, XL, 2XL, 3XL, 4XL and 5XL in every style.",
+    "pl": "Każdy wariant sukienki jest dostępny w rozmiarach S, M, L, XL, 2XL, 3XL, 4XL i 5XL."
+  },
+  "Choose style": {
+    "en": "Choose style",
+    "pl": "Wybierz wariant"
+  },
+  "Selected style": {
+    "en": "Selected style",
+    "pl": "Wybrany wariant"
+  },
+  "Order selected style": {
+    "en": "Order selected style",
+    "pl": "Zamów wybrany wariant"
+  },
+  "Choose pattern": {
+    "en": "Choose pattern",
+    "pl": "Wybierz wzór"
+  },
+  "Selected pattern": {
+    "en": "Selected pattern",
+    "pl": "Wybrany wzór"
+  },
+  "Sleeve length": {
+    "en": "Sleeve length",
+    "pl": "Długość rękawa"
+  },
+  "Short sleeve": {
+    "en": "Short sleeve",
+    "pl": "Krótki rękaw"
+  },
+  "Long sleeve": {
+    "en": "Long sleeve",
+    "pl": "Długi rękaw"
+  },
+  "Green floral": {
+    "en": "Green floral",
+    "pl": "Turkusowy w bordowe kwiaty"
+  },
+  "Red floral": {
+    "en": "Red floral",
+    "pl": "Czerwony z białym kwiatowym dołem"
+  },
+  "Polka dot": {
+    "en": "Polka dot",
+    "pl": "Czarny w groszki"
+  },
+  "Pink floral": {
+    "en": "Pink floral",
+    "pl": "Pudrowy róż w kwiaty"
+  },
+  "White floral": {
+    "en": "White floral",
+    "pl": "Biały ogród kwiatowy"
+  },
+  "Multicolor stripe": {
+    "en": "Multicolor stripe",
+    "pl": "Wielokolorowe pasy"
+  },
+  "Tropical floral": {
+    "en": "Tropical floral",
+    "pl": "Tropikalna zieleń"
+  },
+  "Order selected size": {
+    "en": "Order selected size",
+    "pl": "Zamów wybrany rozmiar"
+  },
+  "Green short": {
+    "en": "Green short",
+    "pl": "Zielony — krótki rękaw"
+  },
+  "Red long": {
+    "en": "Red long",
+    "pl": "Czerwony — długi rękaw"
+  },
+  "Red short": {
+    "en": "Red short",
+    "pl": "Czerwony — krótki rękaw"
+  },
+  "Bodian short": {
+    "en": "Bodian short",
+    "pl": "Czarne groszki — krótki rękaw"
+  },
+  "Pink short": {
+    "en": "Pink short",
+    "pl": "Różowy — krótki rękaw"
+  },
+  "White long": {
+    "en": "White long",
+    "pl": "Biały — długi rękaw"
+  },
+  "Black short": {
+    "en": "Black short",
+    "pl": "Czarny — krótki rękaw"
+  },
+  "White short": {
+    "en": "White short",
+    "pl": "Biały — krótki rękaw"
+  },
+  "Pink long": {
+    "en": "Pink long",
+    "pl": "Różowy — długi rękaw"
+  },
+  "Green long": {
+    "en": "Green long",
+    "pl": "Zielony — długi rękaw"
+  },
+  "Bodian long": {
+    "en": "Bodian long",
+    "pl": "Czarne groszki — długi rękaw"
+  },
+  "Fangge-CX long": {
+    "en": "Fangge-CX long",
+    "pl": "Wielokolorowy — długi rękaw"
+  },
+  "Fangge-CX short": {
+    "en": "Fangge-CX short",
+    "pl": "Wielokolorowy — krótki rękaw"
+  },
+  "Black long": {
+    "en": "Black long",
+    "pl": "Czarny — długi rękaw"
+  },
+  "Pink short-sleeve option with burgundy florals and teal leaves": {
+    "en": "Pink short-sleeve option with burgundy florals and teal leaves",
+    "pl": "Różowy wariant z krótkim rękawem, bordowymi kwiatami i turkusowymi liśćmi"
+  },
+  "Black short-sleeve option with a deep floral palette": {
+    "en": "Black short-sleeve option with a deep floral palette",
+    "pl": "Czarny wariant z krótkim rękawem i wyrazistym kwiatowym wzorem"
+  },
+  "Green floral skirt paired with a clean black short-sleeve bodice": {
+    "en": "Green floral skirt paired with a clean black short-sleeve bodice",
+    "pl": "Zielony kwiatowy dół zestawiony z czarną górą z krótkim rękawem"
+  },
+  "White floral skirt paired with a fitted black long-sleeve bodice": {
+    "en": "White floral skirt paired with a fitted black long-sleeve bodice",
+    "pl": "Biały kwiatowy dół zestawiony z dopasowaną czarną górą z długim rękawem"
   },
   "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Compare Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet on the same product page before choosing your color.": {
     "en": "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Compare Black Rose, Emerald Bloom, Blush Garden and Ivory Bouquet on the same product page before choosing your color.",
@@ -7335,6 +7527,10 @@ export const translationCatalog = {
   "Color": {
     "en": "Color",
     "pl": "Kolor"
+  },
+  "Pattern": {
+    "en": "Pattern",
+    "pl": "Wzór"
   },
   "Size": {
     "en": "Size",

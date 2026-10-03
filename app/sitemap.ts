@@ -6,8 +6,14 @@ import { SITE_URL } from "@/lib/site";
 import { defaultLocale, locales, type Locale } from "@/lib/i18n/config";
 import { localizePathname } from "@/lib/i18n/path";
 import { localizeProduct } from "@/lib/product-localization";
+import { getPublishedGeneratedArticles } from "@/lib/generated-articles";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Generated articles are written after deployment, so the sitemap must query
+// the database at request time instead of freezing the build-time article set.
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const generatedArticles = await getPublishedGeneratedArticles("en");
   const routeDefinitions: Array<{
     path: string;
     changeFrequency: "daily" | "weekly" | "monthly";
@@ -26,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: `/blog/${article.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.75,
+      lastModified: new Date(article.publishedAt),
+    })),
+    ...generatedArticles.map((article) => ({
+      path: `/blog/${article.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
       lastModified: new Date(article.publishedAt),
     })),
     ...shopProducts.map((product) => ({

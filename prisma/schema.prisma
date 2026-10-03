@@ -11,11 +11,65 @@ datasource db {
 model MediaAsset {
   id        String   @id @default(cuid())
   productId String
-  type      String   // "favorites_ugc" or "shop_ugc_array"
+  type      String // "favorites_ugc" or "shop_ugc_array"
   url       String
   index     Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@unique([productId, url])
+}
+
+model Article {
+  id               String       @id @default(cuid())
+  title            String
+  titlePl          String?
+  slug             String       @unique
+  excerpt          String
+  excerptPl        String?
+  content          String       @db.Text
+  contentPl        String?      @db.Text
+  featuredImage    String
+  imageAlt         String
+  imageAltPl       String?
+  status           String       @default("draft")
+  category         String       @default("skincare")
+  tags             String[]     @default([])
+  tagsPl           String[]     @default([])
+  seoTitle         String
+  seoTitlePl       String?
+  seoDescription   String
+  seoDescriptionPl String?
+  seoKeywords      String[]     @default([])
+  seoKeywordsPl    String[]     @default([])
+  readingTime      Int
+  readingTimePl    Int?
+  visualPlan       Json?
+  publishedAt      DateTime?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  contentRuns      ContentRun[]
+
+  @@index([status, publishedAt(sort: Desc)])
+}
+
+model ContentRun {
+  id           String   @id @default(cuid())
+  weekKey      String
+  successKey   String?  @unique
+  status       String
+  mode         String
+  topic        String?
+  format       String?
+  sourceUrls   Json     @default("[]")
+  articleId    String?
+  article      Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  metrics      Json     @default("{}")
+  errorStage   String?
+  errorMessage String?  @db.Text
+  runUrl       String?
+  createdAt    DateTime @default(now())
+
+  @@index([weekKey, status])
+  @@index([createdAt])
 }

@@ -32,6 +32,8 @@ import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeProduct, localizeProducts } from "@/lib/product-localization";
+import { GeneratedArticleView } from "@/components/generated-article-view";
+import { getGeneratedArticleBySlug } from "@/lib/generated-articles";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -53,7 +55,33 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const locale = await getRequestLocale();
+  const generatedArticle = await getGeneratedArticleBySlug(slug, locale);
   const sourceArticle = getArticleBySlug(slug);
+
+  if (generatedArticle) {
+    return {
+      title: generatedArticle.seoTitle,
+      description: generatedArticle.seoDescription,
+      alternates: getLocalizedAlternates(`/blog/${generatedArticle.slug}`, locale),
+      keywords: generatedArticle.seoKeywords,
+      openGraph: {
+        title: generatedArticle.title,
+        description: generatedArticle.excerpt,
+        url: localizePathname(`/blog/${generatedArticle.slug}`, locale),
+        images: [{ url: generatedArticle.heroImage, width: 1536, height: 864, alt: generatedArticle.heroAlt }],
+        type: "article",
+        publishedTime: generatedArticle.publishedAt,
+        authors: ["Lux Aura Editorial"],
+        locale: locale === "pl" ? "pl_PL" : "en_US",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: generatedArticle.title,
+        description: generatedArticle.excerpt,
+        images: [generatedArticle.heroImage],
+      },
+    };
+  }
 
   if (!sourceArticle) {
     return {
@@ -144,6 +172,12 @@ async function ArticleProductBlock({ productId }: { productId: string }) {
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const locale = await getRequestLocale();
+  const generatedArticle = await getGeneratedArticleBySlug(slug, locale);
+
+  if (generatedArticle) {
+    return <GeneratedArticleView article={generatedArticle} locale={locale} />;
+  }
+
   const sourceArticle = getArticleBySlug(slug);
 
   if (!sourceArticle) {

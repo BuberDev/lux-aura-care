@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/content-engine/node_modules
+/content-engine/out
 /.pnp
 .pnp.*
 .yarn/*

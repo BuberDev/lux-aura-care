@@ -1,0 +1,37 @@
+{
+  "name": "lux-aura-care-content-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local, self-healing health and beauty editorial publisher for Lux Aura Care, scheduled three times per week.",
+  "scripts": {
+    "build": "echo 'no build step — tsx runs TypeScript directly'",
+    "test": "vitest run",
+    "run": "tsx src/run.ts",
+    "prepare:local": "PREPARE_ONLY=true MODE=publish tsx src/run.ts",
+    "publish:prepared": "tsx src/publish-prepared.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.527",
+    "@remotion/fonts": "4.0.527",
+    "@remotion/layout-utils": "4.0.527",
+    "@remotion/renderer": "4.0.527",
+    "ai": "^7.0.114",
+    "fast-xml-parser": "^5.2.5",
+    "image-size": "^2.0.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "4.0.527",
+    "sharp": "^0.35.4",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.25",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  }
+}

@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lux Aura Care
+
+Lux Aura Care is a multilingual Next.js storefront and editorial journal for skincare, beauty, body care, and wellbeing products.
+
+The project includes an automated, evidence-led article publisher derived from the IT Finance publishing system. See [the publisher guide](docs/AUTOMATED_ARTICLE_PUBLISHER.md) for its architecture, editorial safeguards, environment variables, and operating commands.
 
 ## Getting Started
 

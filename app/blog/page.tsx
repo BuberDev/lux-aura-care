@@ -24,6 +24,10 @@ import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { localizeProduct } from "@/lib/product-localization";
 import { getRequestLocale } from "@/lib/i18n/request";
+import {
+  generatedArticleCard,
+  getPublishedGeneratedArticles,
+} from "@/lib/generated-articles";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
@@ -67,6 +71,7 @@ function getSelectedCategory(value?: string | string[]) {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const locale = await getRequestLocale();
+  const generatedArticles = (await getPublishedGeneratedArticles(locale)).map(generatedArticleCard);
   const filters = await searchParams;
   const selectedCategoryId = getSelectedCategory(filters.category);
   const selectedCategorySource =
@@ -77,11 +82,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     ? localizeContent(locale, selectedCategorySource)
     : undefined;
 
+  const allArticles = [...generatedArticles, ...articles].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
   const visibleArticles = localizeContent(
     locale,
     selectedCategorySource
-      ? articles.filter((article) => article.categoryId === selectedCategorySource.id)
-      : articles
+      ? allArticles.filter((article) => article.categoryId === selectedCategorySource.id)
+      : allArticles
   );
   const localizedCategories = localizeContent(locale, categories);
 
@@ -198,44 +206,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </div>
           ) : null}
 
-            {!selectedCategory ? (
-              <InlineCtaPanel
-                className="mt-10"
-                eyebrow="Need quick product wins?"
-                title="Open a guide, then compare the top picks in one flow"
-                description="Readers convert more confidently when they read one focused guide first and shop with context."
-                primaryHref="/favorites"
-                primaryLabel="View Amazon Favorites"
-                secondaryHref="/"
-                secondaryLabel="Back to Landing"
-              />
-            ) : null}
-
-            {selectedCategory && categoryPicks.length > 0 ? (
-              <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <div className="mb-8 flex items-end justify-between border-b border-border-subtle pb-4">
-                  <div>
-                    <h2 className="font-heading text-3xl text-text-primary">
-                      <T text={"Essential"} /> {selectedCategory.name} <T text={"Favorites"} />
-                    </h2>
-                    <p className="mt-2 text-text-secondary">
-                      <T text={"Direct Amazon links to high-signal picks for this category."} />
-                    </p>
-                  </div>
-                </div>
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                  {categoryPicks.map((item) => (
-                    <ProductCard
-                      key={item.product.id}
-                      product={item.product}
-                      compact
-                      featuredBadge={item.badge}
-                      ctaLabel="View on Amazon"
-                    />
-                  ))}
-                </div>
-              </div>
-            ) : null}
           </Container>
       </Section>
 
@@ -258,6 +228,45 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               <ArticleCard key={article.slug} article={article} />
             ))}
           </div>
+
+          {selectedCategory && categoryPicks.length > 0 ? (
+            <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className="mb-8 flex items-end justify-between border-b border-border-subtle pb-4">
+                <div>
+                  <h2 className="font-heading text-3xl text-text-primary">
+                    <T text={"Essential"} /> {selectedCategory.name} <T text={"Favorites"} />
+                  </h2>
+                  <p className="mt-2 text-text-secondary">
+                    <T text={"Direct Amazon links to high-signal picks for this category."} />
+                  </p>
+                </div>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {categoryPicks.map((item) => (
+                  <ProductCard
+                    key={item.product.id}
+                    product={item.product}
+                    compact
+                    featuredBadge={item.badge}
+                    ctaLabel="View on Amazon"
+                  />
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {!selectedCategory ? (
+            <InlineCtaPanel
+              className="mt-12"
+              eyebrow="Need quick product wins?"
+              title="Open a guide, then compare the top picks in one flow"
+              description="Readers convert more confidently when they read one focused guide first and shop with context."
+              primaryHref="/favorites"
+              primaryLabel="View Amazon Favorites"
+              secondaryHref="/"
+              secondaryLabel="Back to Landing"
+            />
+          ) : null}
         </Container>
       </Section>
 

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-500.css";
 import "@fontsource/inter/latin-600.css";
@@ -132,7 +133,11 @@ export default async function RootLayout({
   return (
     <html lang={locale} data-theme="dark" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
+        <Script
+          id="lux-aura-theme-initialization"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: toJsonLd(organizationJsonLd) }}

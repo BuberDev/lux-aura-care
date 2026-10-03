@@ -1,0 +1,138 @@
+import { z } from 'zod';
+
+import { runStep, type ProviderConfig } from '../llm/provider';
+import { countWords, extractHeadings, extractLinks } from '../quality/parse';
+import type { ArticleMeta, ArticleVisualPlan } from './types';
+
+const localizedVisualSchema = z.object({
+    id: z.string().min(3).max(80),
+    title: z.string().min(5).max(160),
+    placementAfterHeading: z.string().min(3).max(200).nullable(),
+    caption: z.string().min(20).max(350),
+    altText: z.string().min(20).max(300),
+});
+
+const polishLocalizationSchema = z.object({
+    title: z.string().min(20).max(120),
+    excerpt: z.string().min(60).max(300),
+    seoTitle: z.string().min(20).max(70),
+    seoDescription: z.string().min(100).max(200),
+    keywords: z.array(z.string().min(2).max(60)).min(3).max(12),
+    tags: z.array(z.string().min(2).max(40)).min(1).max(8),
+    contentMarkdown: z.string().min(1500).max(60000),
+    imageAlt: z.string().min(10).max(200),
+    visualAssets: z.array(localizedVisualSchema).min(3).max(4),
+});
+
+export type PolishArticleLocalization = z.infer<typeof polishLocalizationSchema>;
+
+function sortedUrls(markdown: string): string[] {
+    return extractLinks(markdown).map((link) => link.url).sort();
+}
+
+/**
+ * Translation is allowed to change prose only. URLs, heading structure and visual
+ * asset identifiers are publication invariants because the storefront and figure
+ * placement depend on them.
+ */
+export function validatePolishLocalization(
+    localization: PolishArticleLocalization,
+    englishMarkdown: string,
+    visualPlan: ArticleVisualPlan,
+): PolishArticleLocalization {
+    const parsed = polishLocalizationSchema.parse(localization);
+    const englishUrls = sortedUrls(englishMarkdown);
+    const polishUrls = sortedUrls(parsed.contentMarkdown);
+    if (JSON.stringify(englishUrls) !== JSON.stringify(polishUrls)) {
+        throw new Error('Polskie tłumaczenie zmieniło lub usunęło URL-e artykułu');
+    }
+
+    const englishHeadings = extractHeadings(englishMarkdown);
+    const polishHeadings = extractHeadings(parsed.contentMarkdown);
+    if (englishHeadings.length !== polishHeadings.length) {
+        throw new Error(`Polskie tłumaczenie zmieniło strukturę nagłówków (${englishHeadings.length} → ${polishHeadings.length})`);
+    }
+    if (countWords(parsed.contentMarkdown) < Math.floor(countWords(englishMarkdown) * 0.65)) {
+        throw new Error('Polskie tłumaczenie jest podejrzanie krótkie');
+    }
+
+    const expectedIds = visualPlan.assets.map((asset) => asset.id).sort();
+    const actualIds = parsed.visualAssets.map((asset) => asset.id).sort();
+    if (JSON.stringify(expectedIds) !== JSON.stringify(actualIds)) {
+        throw new Error('Polskie tłumaczenie nie obejmuje dokładnie wszystkich grafik');
+    }
+    for (const asset of parsed.visualAssets) {
+        const sourceAsset = visualPlan.assets.find((candidate) => candidate.id === asset.id);
+        if (!sourceAsset) throw new Error(`Nieznana grafika w tłumaczeniu: ${asset.id}`);
+        if (sourceAsset.role === 'cover' && asset.placementAfterHeading !== null) {
+            throw new Error(`Okładka ${asset.id} nie może mieć polskiego miejsca osadzenia`);
+        }
+        if (
+            sourceAsset.role === 'inline' &&
+            (!asset.placementAfterHeading || !polishHeadings.some((heading) => heading.text === asset.placementAfterHeading))
+        ) {
+            throw new Error(`Polski nagłówek dla grafiki ${asset.id} nie istnieje w artykule`);
+        }
+    }
+    return parsed;
+}
+
+export async function translateArticleToPolish(
+    title: string,
+    contentMarkdown: string,
+    meta: ArticleMeta,
+    visualPlan: ArticleVisualPlan,
+    providerConfig: ProviderConfig,
+): Promise<PolishArticleLocalization> {
+    const visualText = visualPlan.assets.map((asset) => ({
+        id: asset.id,
+        role: asset.role,
+        title: asset.title,
+        placementAfterHeading: asset.placementAfterHeading,
+        caption: asset.caption,
+        altText: asset.altText,
+    }));
+    const prompt = `Przetłumacz gotowy artykuł Lux Aura Care z angielskiego na naturalny, redakcyjny język polski.
+
+ZASADY BEZWZGLĘDNE:
+1. Nie dodawaj ani nie usuwaj żadnych twierdzeń, ostrzeżeń, źródeł, sekcji lub rekomendacji produktowych.
+2. Zachowaj Markdown i dokładnie tę samą liczbę nagłówków w tej samej kolejności. Przetłumacz ich tekst.
+3. Zachowaj KAŻDY URL dokładnie znak w znak, w tym ścieżki /shop/... i adresy źródeł https://.... Tłumacz wyłącznie tekst linku.
+4. Nie wzmacniaj obietnic zdrowotnych ani kosmetycznych. Zachowaj ton edukacyjny i wszystkie zastrzeżenia.
+5. Przetłumacz także metadane, słowa kluczowe, tagi, tekst alternatywny oraz teksty każdej grafiki.
+6. Dla każdej grafiki zachowaj identyczne id. Dla grafiki inline placementAfterHeading ma być dokładnym polskim tekstem odpowiadającego nagłówka z przetłumaczonego artykułu; dla okładki ma pozostać null.
+7. Zwróć wyłącznie JSON zgodny ze schematem.
+
+TYTUŁ:
+${title}
+
+METADANE:
+${JSON.stringify({
+        excerpt: meta.excerpt,
+        seoTitle: meta.seoTitle,
+        seoDescription: meta.seoDescription,
+        keywords: meta.keywords,
+        tags: meta.tags,
+        imageAlt: meta.imageAlt,
+    }, null, 2)}
+
+TEKSTY GRAFIK:
+${JSON.stringify(visualText, null, 2)}
+
+ARTYKUŁ:
+${contentMarkdown}`;
+
+    const outcome = await runStep(
+        {
+            kind: 'json',
+            step: 'translate-pl',
+            systemPrompt: 'Jesteś polskim redaktorem i tłumaczem specjalizującym się w bezpiecznych treściach o pielęgnacji, beauty i wellbeing. Tłumacz wiernie, naturalnie i bez dopisywania faktów.',
+            prompt,
+            jsonSchema: z.toJSONSchema(polishLocalizationSchema) as Record<string, unknown>,
+            deepseek: { model: 'deepseek-v4-pro', thinking: false, temperature: 0.1, maxTokens: 9000 },
+        },
+        providerConfig,
+    );
+
+    return validatePolishLocalization(polishLocalizationSchema.parse(outcome.json), contentMarkdown, visualPlan);
+}

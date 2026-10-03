@@ -126,6 +126,95 @@ a {
   text-underline-offset: 0.2em;
 }
 
+.journal-prose {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.journal-prose > * + * {
+  margin-top: 1.25rem;
+}
+
+.journal-prose h2 {
+  margin-top: 3.5rem;
+  scroll-margin-top: 7rem;
+  color: var(--text-primary);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.journal-prose h3 {
+  margin-top: 2.25rem;
+  scroll-margin-top: 7rem;
+  color: var(--text-primary);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  line-height: 1.3;
+}
+
+.journal-prose a {
+  color: var(--accent-gold-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent-gold) 55%, transparent);
+}
+
+.journal-prose ul,
+.journal-prose ol {
+  margin-left: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.journal-prose ul {
+  list-style: disc;
+}
+
+.journal-prose ol {
+  list-style: decimal;
+}
+
+.journal-prose blockquote {
+  border-left: 3px solid var(--accent-gold);
+  padding-left: 1rem;
+  color: var(--text-primary);
+}
+
+.journal-prose .article-visual {
+  margin-block: 2.5rem;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  background: var(--surface-subtle);
+}
+
+.journal-prose .article-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.journal-prose .article-visual figcaption {
+  padding: 0.9rem 1.15rem;
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.journal-prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.journal-prose th,
+.journal-prose td {
+  border: 1px solid var(--border-subtle);
+  padding: 0.75rem;
+  text-align: left;
+}
+
 :focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
