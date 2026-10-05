@@ -98,6 +98,13 @@ describe('runStep — Claude Code jako tor główny', () => {
 });
 
 describe('runStep — budżet', () => {
+    it('nie wywołuje DeepSeek ani OpenRouter, gdy płatny fallback jest zablokowany', async () => {
+        mockedClaudeStep.mockResolvedValue({ ok: false, failure: { reason: 'timeout', detail: '' } });
+        await expect(runStep(config, providerConfig({ allowPaidFallback: false }))).rejects.toThrow(LlmStepFailedError);
+        expect(mockedDeepseekStep).not.toHaveBeenCalled();
+        expect(mockedSearchWeb).not.toHaveBeenCalled();
+    });
+
     it('rzuca BudgetExceededError przed wywołaniem DeepSeek, gdy budżet już wyczerpany', async () => {
         mockedClaudeStep.mockResolvedValue({ ok: false, failure: { reason: 'timeout', detail: '' } });
         const pc = providerConfig({ budget: { spentUsd: 1.0, capUsd: 1.0, inputTokens: 0, outputTokens: 0, apiCalls: 0 } });

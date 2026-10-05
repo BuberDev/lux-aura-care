@@ -581,6 +581,7 @@ async function main(): Promise<void> {
         env: process.env as NodeJS.ProcessEnv,
         budget,
         disableClaudeCode: env.disableClaudeCode,
+        allowPaidFallback: env.allowPaidLlmFallback,
     };
 
     console.log(`[weekly-article] start — runKey=${runKey}, isoWeek=${isoWeek}, mode=${env.mode}, force=${env.force}`);

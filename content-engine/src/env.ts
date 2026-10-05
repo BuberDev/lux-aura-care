@@ -17,6 +17,8 @@ export interface EngineEnv {
     weeklyArticleAuthorEmail?: string;
     /** Awaryjny wyłącznik toru głównego — do testów i na wypadek, gdyby integracja Claude Code wymagała szybkiego wyłączenia bez zmiany kodu. */
     disableClaudeCode: boolean;
+    /** Płatny fallback DeepSeek/OpenRouter jest opt-in, żeby harmonogram nie generował niekontrolowanych kosztów. */
+    allowPaidLlmFallback: boolean;
     /** Lokalny tryb dwuetapowy: przygotuj artykuł i briefy, ale poczekaj na grafiki z Codex Imagegen. */
     prepareOnly: boolean;
     /** Data slotu redakcyjnego (YYYY-MM-DD). Używana przez lokalny watchdog do odrabiania pominiętych publikacji. */
@@ -58,6 +60,7 @@ export function loadEnv(): EngineEnv {
         runUrl: process.env.RUN_URL || undefined,
         weeklyArticleAuthorEmail: process.env.WEEKLY_ARTICLE_AUTHOR_EMAIL || undefined,
         disableClaudeCode: process.env.DISABLE_CLAUDE_CODE === 'true' || process.env.DISABLE_CLAUDE_CODE === '1',
+        allowPaidLlmFallback: process.env.ALLOW_PAID_LLM_FALLBACK === 'true' || process.env.ALLOW_PAID_LLM_FALLBACK === '1',
         prepareOnly: process.env.PREPARE_ONLY === 'true' || process.env.PREPARE_ONLY === '1',
         scheduledFor: scheduledFor || undefined,
     };

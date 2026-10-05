@@ -10,8 +10,12 @@ NODE_BIN="/Users/dawidbubernak/.nvm/versions/node/v22.22.3/bin/node"
 CODEX_BIN="/Users/dawidbubernak/.nvm/versions/node/v20.19.2/bin/codex"
 LOCK_DIR="/Users/dawidbubernak/Library/Caches/com.luxauracare.article-publisher.lock"
 FAILURE_MARKER_PREFIX="/Users/dawidbubernak/Library/Caches/com.luxauracare.article-publisher.failure"
+ATTEMPT_MARKER_PREFIX="/Users/dawidbubernak/Library/Caches/com.luxauracare.article-publisher.attempt"
 ACTIVATION_DATE_FILE="$REPO_DIR/state/activation-date"
-export DISABLE_CLAUDE_CODE=true
+# Harmonogram używa Claude Code w ramach subskrypcji. Płatny DeepSeek/OpenRouter
+# jest jawnie zablokowany i nie może uruchomić się po błędzie toru głównego.
+export DISABLE_CLAUDE_CODE=false
+export ALLOW_PAID_LLM_FALLBACK=false
 export PATH="/Users/dawidbubernak/.local/bin:/Users/dawidbubernak/.nvm/versions/node/v20.19.2/bin:/Users/dawidbubernak/.nvm/versions/node/v22.22.3/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 if [[ -f "$ACTIVATION_DATE_FILE" ]]; then
     export SLOT_NOT_BEFORE="$(<"$ACTIVATION_DATE_FILE")"
@@ -65,6 +69,16 @@ if [[ $PREFLIGHT_STATUS -ne 0 || ! "$PENDING_DATE" =~ '^[0-9]{4}-[0-9]{2}-[0-9]{
     notify_final_failure "Preflight nie zwrócił poprawnego slotu (kod $PREFLIGHT_STATUS)."
     exit 1
 fi
+
+# Maksymalnie jedna pełna próba danego slotu na dzień kalendarzowy. Dzięki temu
+# cztery checkpointy watchdog-a nie powtarzają kosztownego przebiegu po tej samej awarii.
+ATTEMPT_DAY="$(TZ=Europe/Warsaw date +%F)"
+ATTEMPT_MARKER="${ATTEMPT_MARKER_PREFIX}.${PENDING_DATE}.${ATTEMPT_DAY}"
+if [[ -f "$ATTEMPT_MARKER" ]]; then
+    print -r -- "[luxauracare-watchdog] slot $PENDING_DATE był już dziś uruchamiany — pomijam kolejną próbę"
+    exit 0
+fi
+print -r -- "$(date -u +%FT%TZ)" > "$ATTEMPT_MARKER"
 
 print -r -- "[luxauracare-watchdog] uruchamiam slot $PENDING_DATE"
 cd "$ENGINE_DIR" || exit 1
@@ -123,4 +137,5 @@ if [[ $VERIFY_STATUS -ne 0 && $VERIFY_STATUS -ne 10 ]]; then
 fi
 
 rm -f "${FAILURE_MARKER_PREFIX}.${PENDING_DATE}"
+rm -f "$ATTEMPT_MARKER"
 print -r -- "[luxauracare-watchdog] slot $PENDING_DATE opublikowany i potwierdzony"

@@ -41,6 +41,8 @@ export interface ProviderConfig {
     fetchFn?: FetchFn;
     /** Testowe wymuszenie pominięcia toru głównego. */
     disableClaudeCode?: boolean;
+    /** Jawna zgoda na płatny tor DeepSeek/OpenRouter. Domyślnie zachowuje zgodność wsteczną. */
+    allowPaidFallback?: boolean;
 }
 
 /** Rzucane, gdy krok przekroczyłby twardy limit kosztu na uruchomienie (spec 4.4: 1,00 USD). */
@@ -105,6 +107,18 @@ export async function runStep(config: LlmStepConfig, providerConfig: ProviderCon
         }
         console.warn(`[llm] Claude Code zawiódł dla kroku '${config.step}': ${outcome.failure.reason} — ${outcome.failure.detail}`);
         attempts.push({ provider: 'claude-code', ok: false, reason: outcome.failure.reason });
+    }
+
+    // Harmonogram produkcyjny może całkowicie odciąć płatny tor awaryjny. Sprawdzenie
+    // jest przed OpenRouter i DeepSeek, więc przy braku zgody nie powstaje żaden koszt API.
+    if (providerConfig.allowPaidFallback === false) {
+        if (attempts.length === 0) {
+            attempts.push({ provider: 'claude-code', ok: false, reason: 'tor główny wyłączony, a płatny fallback zablokowany' });
+        }
+        throw new LlmStepFailedError(
+            config.step,
+            attempts.map((attempt) => ({ provider: attempt.provider, reason: attempt.reason ?? 'unknown' })),
+        );
     }
 
     // Tor awaryjny — sprawdź budżet PRZED wywołaniem (Claude Code nie liczy się do budżetu USD).
