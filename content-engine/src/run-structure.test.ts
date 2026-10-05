@@ -19,6 +19,19 @@ Banks can keep the customer experience while changing the settlement layer.`;
         expect(output).not.toContain('Current as of 30.09.2026');
     });
 
+    it('creates In brief when a date marker exists elsewhere in the article', () => {
+        const input = `Current as of 2026-10-05.
+
+## What changed
+
+Barrier care starts with a gentle cleanser. Introduce one active at a time. Daily sunscreen remains important.`;
+
+        const output = normalizeInBrief(input, '2026-10-05');
+
+        expect(output).toMatch(/^## In brief$/mu);
+        expect(output.match(/^[-*]\s+/gmu)).toHaveLength(3);
+    });
+
     it('keeps one occurrence of a source URL per H2 section', () => {
         const source = 'https://example.com/report';
         const input = `## One\n\n> **Section source:** [Report](${source})\n\n> **Section source:** [Report](${source})\n\n## Two\n\n[third](${source}) and [fourth](${source}).`;

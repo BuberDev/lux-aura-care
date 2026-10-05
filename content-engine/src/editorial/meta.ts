@@ -6,12 +6,15 @@ import { runStep, type ProviderConfig } from '../llm/provider';
 import type { ArticleMeta } from './types';
 
 const metaOutputSchema = z.object({
-    excerpt: z.string().min(60).max(300),
-    seoTitle: z.string().min(20).max(70),
-    seoDescription: z.string().min(100).max(200),
+    // Character limits are enforced deterministically by normalizeArticleMeta.
+    // Keep the provider schema permissive so a slightly overlong LLM value can
+    // be shortened instead of aborting an otherwise publication-ready article.
+    excerpt: z.string().min(1).max(2000),
+    seoTitle: z.string().min(1).max(2000),
+    seoDescription: z.string().min(1).max(2000),
     keywords: z.array(z.string()).min(3).max(12),
     tags: z.array(z.string()).min(1).max(8),
-    imageAlt: z.string().min(10).max(200),
+    imageAlt: z.string().min(1).max(2000),
     imageBrief: z.object({
         headline: z.string(),
         kicker: z.string(),

@@ -22,6 +22,7 @@ import { polishArticle } from './editorial/polish';
 import { ensureValidTitle } from './editorial/title';
 import { runQualityGate } from './quality/gate';
 import { countWords } from './quality/parse';
+import { repairHeadingStructure } from './quality/heading-structure';
 import {
     buildGenerationPrompt,
     externalVisualInputFilename,
@@ -60,10 +61,9 @@ interface RunContext {
 }
 
 function ensureCurrentDateMarker(contentMarkdown: string, currentDate: string): string {
-    if (/Current as of[:\s]+\d{4}-\d{2}-\d{2}/i.test(contentMarkdown)) return contentMarkdown;
-
     const summaryHeading = /^##\s+In brief\s*$/im;
     if (summaryHeading.test(contentMarkdown)) {
+        if (/Current as of[:\s]+\d{4}-\d{2}-\d{2}/i.test(contentMarkdown)) return contentMarkdown;
         return contentMarkdown.replace(summaryHeading, (heading) => `${heading}\n\nCurrent as of ${currentDate}.`);
     }
 
@@ -163,7 +163,9 @@ export function dedupeExternalLinksBySection(contentMarkdown: string): string {
 }
 
 function finalizeArticleStructure(contentMarkdown: string, currentDate: string): string {
-    return dedupeExternalLinksBySection(limitProductLinks(ensureProductLinks(normalizeInBrief(contentMarkdown, currentDate))));
+    const repairedBeforeSummary = repairHeadingStructure(contentMarkdown).contentMarkdown;
+    const finalized = dedupeExternalLinksBySection(limitProductLinks(ensureProductLinks(normalizeInBrief(repairedBeforeSummary, currentDate))));
+    return repairHeadingStructure(finalized).contentMarkdown;
 }
 
 /**
@@ -410,7 +412,28 @@ async function attemptTopic(
         finalMeta = await generateMeta(written.title, written.contentMarkdown, providerConfig, feedback);
         gate = runQualityGate(buildDraft(written.title, written.contentMarkdown, finalMeta), qualityContext);
         if (!gate.ok) {
-            throw new StageError('quality-gate', `Nadal błędy po ponownym pisaniu: ${gate.errors.map((e) => e.code).join(', ')}`);
+            const retryFeedback = gate.errors.map((error) => `- [${error.code}] ${error.message}`).join('\n');
+            const retryContentErrors = gate.errors.filter((error) => !metadataOnlyCodes.has(error.code));
+            if (retryContentErrors.length > 0) {
+                const retryIssues = retryContentErrors.map((error) => ({
+                    severity: 'major' as const,
+                    quote: `[${error.code}]`,
+                    problem: error.message,
+                    fix:
+                        error.code === 'word_count_too_low'
+                            ? 'Rozwiń istniejące, poparte źródłami sekcje do co najmniej 1300 słów bez dodawania nowych faktów.'
+                            : error.code === 'section_too_thin'
+                              ? 'Rozwiń wskazaną sekcję do co najmniej 40 słów bez dodawania nowych faktów.'
+                              : 'Popraw wyłącznie wskazany błąd, zachowując fakty i URL-e z gruntu prawdy.',
+                }));
+                const retried = await reviseArticle(written.title, written.contentMarkdown, retryIssues, factsPackage, okSources, providerConfig);
+                written = { title: written.title, contentMarkdown: finalizeArticleStructure(retried.contentMarkdown, currentDate) };
+            }
+            finalMeta = await generateMeta(written.title, written.contentMarkdown, providerConfig, retryFeedback);
+            gate = runQualityGate(buildDraft(written.title, written.contentMarkdown, finalMeta), qualityContext);
+            if (!gate.ok) {
+                throw new StageError('quality-gate', `Nadal błędy po dwóch celowanych poprawkach: ${gate.errors.map((e) => e.code).join(', ')}`);
+            }
         }
 
         // Ponowne pisanie tworzy nowy artykuł już po pierwszej krytyce. Nie wolno
@@ -425,7 +448,54 @@ async function attemptTopic(
             written = { ...written, contentMarkdown: finalizeArticleStructure(pruned.contentMarkdown, currentDate) };
             gate = runQualityGate(buildDraft(written.title, written.contentMarkdown, finalMeta), qualityContext);
             if (!gate.ok) {
-                throw new StageError('quality-gate', `Po bezpiecznym usunięciu blockerów pozostały błędy: ${gate.errors.map((e) => e.code).join(', ')}`);
+                // Bezpieczne usunięcie blockera może skrócić artykuł albo zostawić
+                // sąsiednią sekcję zbyt cienką. Wcześniej pipeline kończył wtedy cały
+                // slot, mimo że nadal miał zamknięty pakiet zweryfikowanych faktów.
+                // Dajemy mu jeden ograniczony przebieg odbudowy, a jego wynik znów
+                // przechodzi zarówno bramkę jakości, jak i krytykę faktograficzną.
+                const recoveryFeedback = gate.errors.map((error) => `- [${error.code}] ${error.message}`).join('\n');
+                const recoveryIssues = gate.errors.map((error) => ({
+                    severity: 'major' as const,
+                    quote: `[${error.code}]`,
+                    problem: error.message,
+                    fix:
+                        error.code === 'word_count_too_low'
+                            ? 'Rozwiń wyłącznie istniejące sekcje do co najmniej 1300 słów, używając tylko faktów i URL-i z gruntu prawdy.'
+                            : error.code === 'section_too_thin'
+                              ? 'Rozwiń wskazaną istniejącą sekcję do co najmniej 40 słów, bez dodawania nowych twierdzeń lub źródeł.'
+                              : 'Popraw dokładnie ten błąd bez dodawania nowych faktów, URL-i ani sekcji.',
+                }));
+                const recovered = await reviseArticle(
+                    written.title,
+                    written.contentMarkdown,
+                    recoveryIssues,
+                    factsPackage,
+                    okSources,
+                    providerConfig,
+                );
+                written = {
+                    title: written.title,
+                    contentMarkdown: finalizeArticleStructure(recovered.contentMarkdown, currentDate),
+                };
+                finalMeta = await generateMeta(written.title, written.contentMarkdown, providerConfig, recoveryFeedback);
+                gate = runQualityGate(buildDraft(written.title, written.contentMarkdown, finalMeta), qualityContext);
+                if (!gate.ok) {
+                    throw new StageError('quality-gate', `Po odbudowie bezpiecznie skróconego artykułu pozostały błędy: ${gate.errors.map((e) => e.code).join(', ')}`);
+                }
+
+                const recoveryCritique = await critiqueArticle(written.title, written.contentMarkdown, factsPackage, okSources, providerConfig);
+                if (hasBlocker(recoveryCritique)) {
+                    const recoveryPruned = pruneBlockerParagraphs(written.contentMarkdown, recoveryCritique.issues);
+                    if (recoveryPruned.removedParagraphs === 0) {
+                        throw new StageError('critique', `Blocker po odbudowie artykułu: ${recoveryCritique.issues.filter((i) => i.severity === 'blocker').map((i) => i.problem).join('; ')}`);
+                    }
+                    console.warn(`[weekly-article] po odbudowie usunięto ${recoveryPruned.removedParagraphs} akapitów z blockerami`);
+                    written = { ...written, contentMarkdown: finalizeArticleStructure(recoveryPruned.contentMarkdown, currentDate) };
+                    gate = runQualityGate(buildDraft(written.title, written.contentMarkdown, finalMeta), qualityContext);
+                    if (!gate.ok) {
+                        throw new StageError('quality-gate', `Ostateczna bezpieczna wersja nie przeszła bramki: ${gate.errors.map((e) => e.code).join(', ')}`);
+                    }
+                }
             }
         }
     }
@@ -741,8 +811,14 @@ async function main(): Promise<void> {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+    // Keep one referenced handle while long-lived inference HTTP requests are pending.
+    // Otherwise Node can terminate a still-valid top-level await with exit code 13
+    // when the HTTP client keeps only unref'ed sockets/timers.
+    const processKeepAlive = setInterval(() => undefined, 30_000);
     await main().catch((error) => {
         console.error('Nieoczekiwany błąd silnika:', error);
         process.exitCode = 1;
+    }).finally(() => {
+        clearInterval(processKeepAlive);
     });
 }

@@ -84,6 +84,7 @@ async function main(): Promise<void> {
     );
 }
 
+const processKeepAlive = setInterval(() => undefined, 30_000);
 await main().catch(async (error) => {
     const message = error instanceof Error ? error.message : String(error);
     console.error(`[weekly-article] publikacja przygotowanego artykułu nieudana: ${message}`);
@@ -103,4 +104,6 @@ await main().catch(async (error) => {
         console.error('Nie udało się zgłosić błędu publikacji:', reportError);
     }
     process.exitCode = 1;
+}).finally(() => {
+    clearInterval(processKeepAlive);
 });

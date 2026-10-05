@@ -67,7 +67,22 @@ cd "$RUNTIME_DIR/content-engine"
 
 /usr/bin/install -m 600 "$SOURCE_REPO/automation/com.luxauracare.article-publisher.plist" "$LAUNCH_AGENT"
 launchctl bootout "gui/$USER_ID/com.luxauracare.article-publisher" 2>/dev/null || true
-launchctl bootstrap "gui/$USER_ID" "$LAUNCH_AGENT"
+# launchd can briefly retain a just-stopped service while its process tree exits.
+# Retry for a few seconds so an update cannot leave the publisher unloaded.
+bootstrap_ok=false
+for attempt in 1 2 3 4 5; do
+    if launchctl bootstrap "gui/$USER_ID" "$LAUNCH_AGENT"; then
+        bootstrap_ok=true
+        break
+    fi
+    if [[ "$attempt" -lt 5 ]]; then
+        /bin/sleep 2
+    fi
+done
+if [[ "$bootstrap_ok" != true ]]; then
+    print -u2 -r -- "Nie udało się ponownie załadować LaunchAgenta po 5 próbach"
+    exit 1
+fi
 launchctl enable "gui/$USER_ID/com.luxauracare.article-publisher"
 
 print -r -- "Lux Aura Care Publisher zainstalowany w: $RUNTIME_DIR"

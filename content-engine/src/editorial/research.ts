@@ -66,12 +66,12 @@ with all content values in English):
 }
 Gdy data publikacji nie jest znana, ustaw "publishedAt": null (nie tekst typu "brak danych").`;
 
-    const outcome = await runStep(
+    const runResearch = (researchPrompt: string, step: string) => runStep(
         {
             kind: 'json',
-            step: 'research',
+            step,
             systemPrompt,
-            prompt,
+            prompt: researchPrompt,
             allowSearch: true,
             jsonSchema: z.toJSONSchema(factsPackageSchema) as Record<string, unknown>,
             deepseek: { model: 'deepseek-flash', thinking: false, temperature: 0.2, maxTokens: 4000 },
@@ -82,13 +82,34 @@ Gdy data publikacji nie jest znana, ustaw "publishedAt": null (nie tekst typu "b
         },
     );
 
-    const parsed = factsPackageSchema.parse(outcome.json);
-    if (usableSeedSources.length >= 2) {
-        const seedUrls = new Set(usableSeedSources.map((source) => canonicalizeUrl(source.url)));
-        const groundedInSeeds = parsed.facts.filter((fact) => seedUrls.has(canonicalizeUrl(fact.sourceUrl))).length;
-        if (groundedInSeeds < 3) {
-            throw new Error(`research: tylko ${groundedInSeeds} faktów pochodzi z pobranych źródeł startowych (wymagane ≥3)`);
-        }
+    const seedUrls = new Set(usableSeedSources.map((source) => canonicalizeUrl(source.url)));
+    const groundedCount = (factsPackage: FactsPackage) => factsPackage.facts
+        .filter((fact) => seedUrls.has(canonicalizeUrl(fact.sourceUrl))).length;
+
+    let outcome = await runResearch(prompt, 'research');
+    let parsed = factsPackageSchema.safeParse(outcome.json);
+    let failure = parsed.success ? '' : parsed.error.issues
+        .map((issue) => `${issue.path.join('.') || '(root)'}: ${issue.message}`)
+        .join('; ');
+    if (parsed.success && usableSeedSources.length >= 2 && groundedCount(parsed.data) < 3) {
+        failure = `tylko ${groundedCount(parsed.data)} faktów używa dokładnych URL-i źródeł startowych (wymagane co najmniej 3)`;
     }
-    return parsed;
+
+    if (failure) {
+        const repairPrompt = `${prompt}
+
+POPRZEDNI PAKIET RESEARCHU NIE PRZESZEDŁ WALIDACJI: ${failure}
+Zwróć ponownie CAŁY obiekt JSON. Co najmniej 3 fakty muszą używać dokładnych URL-i z sekcji źródeł startowych powyżej i wynikać z ich pobranej treści. Nie zwracaj komentarza ani częściowego obiektu.
+
+Poprzednia odpowiedź:
+${JSON.stringify(outcome.json)}`;
+        outcome = await runResearch(repairPrompt, 'research-repair');
+        parsed = factsPackageSchema.safeParse(outcome.json);
+    }
+
+    if (!parsed.success) throw parsed.error;
+    if (usableSeedSources.length >= 2 && groundedCount(parsed.data) < 3) {
+        throw new Error(`research: tylko ${groundedCount(parsed.data)} faktów pochodzi z pobranych źródeł startowych (wymagane ≥3)`);
+    }
+    return parsed.data;
 }

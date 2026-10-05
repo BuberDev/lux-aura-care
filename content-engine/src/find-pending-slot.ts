@@ -62,8 +62,11 @@ async function main(): Promise<void> {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+    const processKeepAlive = setInterval(() => undefined, 30_000);
     await main().catch((error) => {
         console.error(`[weekly-article] nie udało się sprawdzić zaległych slotów: ${error instanceof Error ? error.message : String(error)}`);
         process.exitCode = 1;
+    }).finally(() => {
+        clearInterval(processKeepAlive);
     });
 }

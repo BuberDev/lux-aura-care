@@ -26,7 +26,7 @@ Artykuł, metadane, podpisy i teksty alternatywne publikuj w profesjonalnym jęz
    - `brandFit`: czy wygląda jak autorski premium editorial Lux Aura Care i trzyma ciepłą czarno-kremowo-szampańską paletę,
    - `originality`: czy nie wygląda jak stock, szablon lub typowa generyczna grafika AI.
 
-   Każdy wynik musi wynosić co najmniej 8. Jeżeli nie wynosi, wygeneruj nową kompozycję z jedną precyzyjną korektą wynikającą z oceny. Maksymalnie dwie poprawki dla jednego assetu. Nie obniżaj progu i nie zatwierdzaj obrazu, którego znaczenie wymaga zgadywania.
+   Każdy wynik musi wynosić co najmniej 8. Jeżeli nie wynosi, wygeneruj nową kompozycję z jedną precyzyjną korektą wynikającą z oceny. Po dwóch nieudanych poprawkach nie porzucaj całego artykułu: obowiązkowo zacznij od nowej, prostszej metafory wizualnej opartej na innym fakcie z tego samego promptu i wykonaj maksymalnie dwie kolejne próby. Nowa koncepcja nie może powtarzać elementów wskazanych wcześniej jako błędne. Zakończ błędem dopiero po wyczerpaniu obu koncepcji albo po twardym błędzie narzędzia. Nie obniżaj progu i nie zatwierdzaj obrazu, którego znaczenie wymaga zgadywania.
 
 4. Po zaakceptowaniu wszystkich obrazów zapisz `content-engine/out/visual-review.json`:
 

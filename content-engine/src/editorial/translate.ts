@@ -122,17 +122,44 @@ ${JSON.stringify(visualText, null, 2)}
 ARTYKUŁ:
 ${contentMarkdown}`;
 
-    const outcome = await runStep(
+    const runTranslation = (translationPrompt: string, step: string) => runStep(
         {
             kind: 'json',
-            step: 'translate-pl',
+            step,
             systemPrompt: 'Jesteś polskim redaktorem i tłumaczem specjalizującym się w bezpiecznych treściach o pielęgnacji, beauty i wellbeing. Tłumacz wiernie, naturalnie i bez dopisywania faktów.',
-            prompt,
+            prompt: translationPrompt,
             jsonSchema: z.toJSONSchema(polishLocalizationSchema) as Record<string, unknown>,
             deepseek: { model: 'deepseek-v4-pro', thinking: false, temperature: 0.1, maxTokens: 9000 },
         },
         providerConfig,
     );
 
-    return validatePolishLocalization(polishLocalizationSchema.parse(outcome.json), contentMarkdown, visualPlan);
+    let nextPrompt = prompt;
+    let lastFailure = 'nieznany błąd walidacji';
+
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+        const outcome = await runTranslation(nextPrompt, attempt === 0 ? 'translate-pl' : `translate-pl-repair-${attempt}`);
+        const parsed = polishLocalizationSchema.safeParse(outcome.json);
+        if (parsed.success) {
+            try {
+                return validatePolishLocalization(parsed.data, contentMarkdown, visualPlan);
+            } catch (error) {
+                lastFailure = error instanceof Error ? error.message : String(error);
+            }
+        } else {
+            lastFailure = parsed.error.issues
+                .map((issue) => `${issue.path.join('.') || '(root)'}: ${issue.message}`)
+                .join('; ');
+        }
+
+        nextPrompt = `${prompt}
+
+POPRZEDNIA ODPOWIEDŹ NIE PRZESZŁA WALIDACJI: ${lastFailure}
+Zwróć ponownie CAŁY obiekt JSON. Nie zwracaj komentarza, fragmentu ani obiektu zagnieżdżonego w dodatkowym polu. Zachowaj wszystkie wymagane pola najwyższego poziomu i popraw wyłącznie wskazany błąd.
+
+POPRZEDNIA ODPOWIEDŹ DO NAPRAWY:
+${JSON.stringify(outcome.json)}`;
+    }
+
+    throw new Error(`Polskie tłumaczenie nie przeszło walidacji po 3 próbach: ${lastFailure}`);
 }
