@@ -6,25 +6,55 @@ import type { ArticleMeta, ArticleVisualPlan } from './types';
 
 const localizedVisualSchema = z.object({
     id: z.string().min(3).max(80),
-    title: z.string().min(5).max(160),
+    title: z.string().min(5).max(2000),
     placementAfterHeading: z.string().min(3).max(200).nullable(),
-    caption: z.string().min(20).max(350),
-    altText: z.string().min(20).max(300),
+    caption: z.string().min(20).max(2000),
+    altText: z.string().min(20).max(2000),
 });
 
 const polishLocalizationSchema = z.object({
-    title: z.string().min(20).max(120),
-    excerpt: z.string().min(60).max(300),
-    seoTitle: z.string().min(20).max(70),
-    seoDescription: z.string().min(100).max(200),
-    keywords: z.array(z.string().min(2).max(60)).min(3).max(12),
-    tags: z.array(z.string().min(2).max(40)).min(1).max(8),
+    title: z.string().min(20).max(2000),
+    excerpt: z.string().min(60).max(2000),
+    seoTitle: z.string().min(20).max(2000),
+    seoDescription: z.string().min(100).max(2000),
+    keywords: z.array(z.string().min(2).max(2000)).min(3).max(12),
+    tags: z.array(z.string().min(2).max(2000)).min(1).max(8),
     contentMarkdown: z.string().min(1500).max(60000),
-    imageAlt: z.string().min(10).max(200),
+    imageAlt: z.string().min(10).max(2000),
     visualAssets: z.array(localizedVisualSchema).min(3).max(4),
 });
 
 export type PolishArticleLocalization = z.infer<typeof polishLocalizationSchema>;
+
+function shortenAtWordBoundary(value: string, maxLength: number): string {
+    const normalized = value.replace(/\s+/gu, ' ').trim();
+    if (normalized.length <= maxLength) return normalized;
+    const slice = normalized.slice(0, maxLength + 1);
+    const lastSpace = slice.lastIndexOf(' ');
+    const shortened = (lastSpace >= Math.floor(maxLength * 0.6) ? slice.slice(0, lastSpace) : normalized.slice(0, maxLength))
+        .replace(/[\s,;:.!?–—-]+$/u, '')
+        .trim();
+    return `${shortened.slice(0, maxLength - 1)}…`;
+}
+
+function normalizeLocalizationLengths(localization: PolishArticleLocalization): PolishArticleLocalization {
+    return {
+        ...localization,
+        title: shortenAtWordBoundary(localization.title, 120),
+        excerpt: shortenAtWordBoundary(localization.excerpt, 300),
+        seoTitle: shortenAtWordBoundary(localization.seoTitle, 70),
+        seoDescription: shortenAtWordBoundary(localization.seoDescription, 200),
+        keywords: localization.keywords.map((keyword) => shortenAtWordBoundary(keyword, 60)),
+        tags: localization.tags.map((tag) => shortenAtWordBoundary(tag, 40)),
+        imageAlt: shortenAtWordBoundary(localization.imageAlt, 200),
+        visualAssets: localization.visualAssets.map((asset) => ({
+            ...asset,
+            title: shortenAtWordBoundary(asset.title, 160),
+            caption: shortenAtWordBoundary(asset.caption, 350),
+            altText: shortenAtWordBoundary(asset.altText, 300),
+        })),
+    };
+}
 
 function sortedUrls(markdown: string): string[] {
     return extractLinks(markdown).map((link) => link.url).sort();
@@ -142,7 +172,7 @@ ${contentMarkdown}`;
         const parsed = polishLocalizationSchema.safeParse(outcome.json);
         if (parsed.success) {
             try {
-                return validatePolishLocalization(parsed.data, contentMarkdown, visualPlan);
+                return validatePolishLocalization(normalizeLocalizationLengths(parsed.data), contentMarkdown, visualPlan);
             } catch (error) {
                 lastFailure = error instanceof Error ? error.message : String(error);
             }
