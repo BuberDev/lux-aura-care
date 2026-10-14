@@ -37,7 +37,8 @@ import type { ArticleBrief, ArticleFormat, ArticleLevel, ArticleMeta, TopicOptio
 import { canonicalizeUrl } from './harvest/normalize';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const HARD_COST_CAP_USD = 1.0;
+/** Identyfikator w rejestrze wydatków DeepSeek i raportach centrum CopyWritter. */
+const PUBLISHER_ID = 'lux-aura-care';
 const OUT_DIR = join(process.cwd(), 'out');
 
 class StageError extends Error {
@@ -572,7 +573,7 @@ async function main(): Promise<void> {
     const runKey = scheduledRunKey(now);
     const rotationNumber = editorialRotationNumber(now);
     const site = new SiteClient(env.siteUrl, env.cronSecret);
-    const budget: CostBudget = { spentUsd: 0, capUsd: HARD_COST_CAP_USD, inputTokens: 0, outputTokens: 0, apiCalls: 0 };
+    const budget: CostBudget = { spentUsd: 0, capUsd: env.deepseekArticleCapUsd, inputTokens: 0, outputTokens: 0, apiCalls: 0 };
     const providerConfig: ProviderConfig = {
         claudeModel: env.claudeModel,
         deepseekApiKey: env.deepseekApiKey,
@@ -580,8 +581,15 @@ async function main(): Promise<void> {
         cwd: process.cwd(),
         env: process.env as NodeJS.ProcessEnv,
         budget,
+        disableCodex: env.disableCodex,
         disableClaudeCode: env.disableClaudeCode,
         allowPaidFallback: env.allowPaidLlmFallback,
+        deepseekGuard: {
+            project: PUBLISHER_ID,
+            slot: env.scheduledFor ?? runKey,
+            ledgerPath: env.deepseekLedgerPath,
+            monthlyCapUsd: env.deepseekMonthlyCapUsd,
+        },
     };
 
     console.log(`[weekly-article] start — runKey=${runKey}, isoWeek=${isoWeek}, mode=${env.mode}, force=${env.force}`);

@@ -1,8 +1,8 @@
-// Wspólne typy warstwy LLM. Silnik ma dwa tory: Claude Code (subskrypcja, tor główny)
-// i DeepSeek (API, tor awaryjny). Oba torę zwracają ten sam kształt wyniku, żeby
-// reszta silnika nie musiała wiedzieć, który dostawca odpowiedział.
+// Wspólne typy warstwy LLM. Silnik ma trzy tory: Codex (subskrypcja, tor główny), Claude Code
+// (subskrypcja, drugi tor) i DeepSeek (płatne API, ostatni zapas). Wszystkie zwracają ten sam
+// kształt wyniku, żeby reszta silnika nie musiała wiedzieć, który dostawca odpowiedział.
 
-export type LlmProviderName = 'claude-code' | 'deepseek' | 'deepseek-via-openrouter';
+export type LlmProviderName = 'claude-code' | 'codex' | 'deepseek' | 'deepseek-via-openrouter';
 
 export interface LlmSource {
     url: string;
@@ -60,13 +60,13 @@ export interface MarkdownStepConfig {
 
 export type LlmStepConfig = JsonStepConfig | MarkdownStepConfig;
 
-/** Rzucany, gdy oba tory (Claude Code i DeepSeek) zawiodły dla jednego kroku. */
+/** Rzucany, gdy wszystkie dostępne tory (Codex, Claude Code, DeepSeek) zawiodły dla jednego kroku. */
 export class LlmStepFailedError extends Error {
     constructor(
         readonly step: string,
         readonly attempts: { provider: LlmProviderName; reason: string }[],
     ) {
-        super(`Krok LLM '${step}' zawiódł na obu torach: ${attempts.map((a) => `${a.provider}: ${a.reason}`).join(' | ')}`);
+        super(`Krok LLM '${step}' zawiódł na wszystkich torach: ${attempts.map((a) => `${a.provider}: ${a.reason}`).join(' | ')}`);
         this.name = 'LlmStepFailedError';
     }
 }

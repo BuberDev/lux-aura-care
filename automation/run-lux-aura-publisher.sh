@@ -12,10 +12,11 @@ LOCK_DIR="/Users/dawidbubernak/Library/Caches/com.luxauracare.article-publisher.
 FAILURE_MARKER_PREFIX="/Users/dawidbubernak/Library/Caches/com.luxauracare.article-publisher.failure"
 ATTEMPT_MARKER_PREFIX="/Users/dawidbubernak/Library/Caches/com.luxauracare.article-publisher.attempt"
 ACTIVATION_DATE_FILE="$REPO_DIR/state/activation-date"
-# Harmonogram używa Claude Code w ramach subskrypcji. Płatny DeepSeek/OpenRouter
-# jest jawnie zablokowany i nie może uruchomić się po błędzie toru głównego.
+# Łańcuch tekstu: Codex → Claude Code → DeepSeek (płatny, ostatni zapas w trybie oszczędnym,
+# limit 0,05 USD na artykuł i 1 USD miesięcznie łącznie dla wszystkich publisherów).
+export DISABLE_CODEX=false
 export DISABLE_CLAUDE_CODE=false
-export ALLOW_PAID_LLM_FALLBACK=false
+export ALLOW_PAID_LLM_FALLBACK=true
 export PATH="/Users/dawidbubernak/.local/bin:/Users/dawidbubernak/.nvm/versions/node/v20.19.2/bin:/Users/dawidbubernak/.nvm/versions/node/v22.22.3/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 if [[ -f "$ACTIVATION_DATE_FILE" ]]; then
     export SLOT_NOT_BEFORE="$(<"$ACTIVATION_DATE_FILE")"
@@ -82,14 +83,23 @@ print -r -- "$(date -u +%FT%TZ)" > "$ATTEMPT_MARKER"
 
 print -r -- "[luxauracare-watchdog] uruchamiam slot $PENDING_DATE"
 cd "$ENGINE_DIR" || exit 1
-PREPARE_ONLY=true MODE=publish SCHEDULED_FOR="$PENDING_DATE" \
-    "$NODE_BIN" --env-file=../.env --import tsx src/run.ts
-PREPARE_STATUS=$?
+EXPECTED_WEEK_KEY="$(SCHEDULED_FOR="$PENDING_DATE" "$NODE_BIN" --env-file=../.env --import tsx -e 'import { scheduledRunKey } from "./src/week.ts"; console.log(scheduledRunKey(new Date(`${process.env.SCHEDULED_FOR}T12:00:00.000Z`)))')"
+# Gotowy tekst czekający tylko na grafiki nie jest pisany od nowa — kolejna próba
+# dotyczy wyłącznie etapu, który się nie udał (oszczędza limity Claude/Codex i DeepSeek).
+if [[ -n "$EXPECTED_WEEK_KEY" && -f "$ENGINE_DIR/out/run-status.json" ]] && \
+    /usr/bin/jq -e --arg week "$EXPECTED_WEEK_KEY" '.status == "prepared" and .weekKey == $week' "$ENGINE_DIR/out/run-status.json" >/dev/null && \
+    [[ -f "$ENGINE_DIR/out/prepared.json" && -f "$ENGINE_DIR/out/visual-prompts.json" ]]; then
+    print -r -- "[luxauracare-watchdog] wznawiam wcześniej przygotowany slot $EXPECTED_WEEK_KEY"
+else
+    PREPARE_ONLY=true MODE=publish SCHEDULED_FOR="$PENDING_DATE" \
+        "$NODE_BIN" --env-file=../.env --import tsx src/run.ts
+    PREPARE_STATUS=$?
 
-if [[ $PREPARE_STATUS -ne 0 ]]; then
-    print -u2 -r -- "[luxauracare-watchdog] przygotowanie artykułu zakończyło się kodem $PREPARE_STATUS"
-    notify_final_failure "Przygotowanie artykułu dla slotu $PENDING_DATE zakończyło się kodem $PREPARE_STATUS."
-    exit "$PREPARE_STATUS"
+    if [[ $PREPARE_STATUS -ne 0 ]]; then
+        print -u2 -r -- "[luxauracare-watchdog] przygotowanie artykułu zakończyło się kodem $PREPARE_STATUS"
+        notify_final_failure "Przygotowanie artykułu dla slotu $PENDING_DATE zakończyło się kodem $PREPARE_STATUS."
+        exit "$PREPARE_STATUS"
+    fi
 fi
 
 if [[ ! -f "$ENGINE_DIR/out/run-status.json" || ! -f "$ENGINE_DIR/out/prepared.json" || ! -f "$ENGINE_DIR/out/visual-prompts.json" ]]; then
@@ -104,7 +114,7 @@ cd "$REPO_DIR" || exit 1
     --ephemeral \
     --skip-git-repo-check \
     -C "$REPO_DIR" \
-    -m gpt-5.6-sol \
+    -m gpt-6-luna \
     - < "$REPO_DIR/automation/lux-aura-local-publisher.md"
 CODEX_STATUS=$?
 
