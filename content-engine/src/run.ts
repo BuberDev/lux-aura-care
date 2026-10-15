@@ -63,12 +63,21 @@ interface RunContext {
 
 function ensureCurrentDateMarker(contentMarkdown: string, currentDate: string): string {
     const summaryHeading = /^##\s+In brief\s*$/im;
-    if (summaryHeading.test(contentMarkdown)) {
-        if (/Current as of[:\s]+\d{4}-\d{2}-\d{2}/i.test(contentMarkdown)) return contentMarkdown;
-        return contentMarkdown.replace(summaryHeading, (heading) => `${heading}\n\nCurrent as of ${currentDate}.`);
-    }
+    const marker = `Current as of ${currentDate}.`;
+    const markerPattern = /Current as of[:\s]+\d{4}-\d{2}-\d{2}\.?/i;
+    const heading = summaryHeading.exec(contentMarkdown);
+    if (!heading) return `## In brief\n\n${marker}\n\n${contentMarkdown}`;
 
-    return `## In brief\n\nCurrent as of ${currentDate}.\n\n${contentMarkdown}`;
+    const bodyStart = heading.index + heading[0].length;
+    const followingHeading = /^##\s+/gm;
+    followingHeading.lastIndex = bodyStart;
+    const next = followingHeading.exec(contentMarkdown);
+    const bodyEnd = next ? next.index : contentMarkdown.length;
+    let body = contentMarkdown.slice(bodyStart, bodyEnd);
+    body = markerPattern.test(body)
+        ? body.replace(markerPattern, marker)
+        : `\n\n${marker}\n\n${body.trimStart()}`;
+    return `${contentMarkdown.slice(0, bodyStart)}${body}${contentMarkdown.slice(bodyEnd)}`;
 }
 
 function normalizeSummaryPoint(value: string): string {
