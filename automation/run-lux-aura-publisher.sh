@@ -109,19 +109,29 @@ if [[ ! -f "$ENGINE_DIR/out/run-status.json" || ! -f "$ENGINE_DIR/out/prepared.j
 fi
 
 cd "$REPO_DIR" || exit 1
-"$CODEX_BIN" exec \
-    --dangerously-bypass-approvals-and-sandbox \
-    --ephemeral \
-    --skip-git-repo-check \
-    -C "$REPO_DIR" \
-    -m gpt-6-luna \
-    - < "$REPO_DIR/automation/lux-aura-local-publisher.md"
-CODEX_STATUS=$?
+VISUALS_VALID=true
+[[ -f "$ENGINE_DIR/out/visual-review.json" ]] || VISUALS_VALID=false
+while IFS= read -r EXPECTED_IMAGE; do
+    [[ -n "$EXPECTED_IMAGE" && -f "$ENGINE_DIR/out/codex-visuals/$EXPECTED_IMAGE" ]] || VISUALS_VALID=false
+done < <(/usr/bin/jq -r '.items[].expectedFilename' "$ENGINE_DIR/out/visual-prompts.json")
 
-if [[ $CODEX_STATUS -ne 0 ]]; then
-    print -u2 -r -- "[luxauracare-watchdog] generowanie grafik przez Codex zakończyło się kodem $CODEX_STATUS"
-    notify_final_failure "Generowanie grafik dla slotu $PENDING_DATE zakończyło się kodem $CODEX_STATUS."
-    exit "$CODEX_STATUS"
+if [[ "$VISUALS_VALID" == true ]]; then
+    print -r -- "[luxauracare-watchdog] zatwierdzony komplet grafik Imagegen jest gotowy — wznawiam bez ponownej generacji"
+else
+    "$CODEX_BIN" exec \
+        --dangerously-bypass-approvals-and-sandbox \
+        --ephemeral \
+        --skip-git-repo-check \
+        -C "$REPO_DIR" \
+        -m gpt-6-luna \
+        - < "$REPO_DIR/automation/lux-aura-local-publisher.md"
+    CODEX_STATUS=$?
+
+    if [[ $CODEX_STATUS -ne 0 ]]; then
+        print -u2 -r -- "[luxauracare-watchdog] generowanie grafik przez Codex zakończyło się kodem $CODEX_STATUS"
+        notify_final_failure "Generowanie grafik dla slotu $PENDING_DATE zakończyło się kodem $CODEX_STATUS."
+        exit "$CODEX_STATUS"
+    fi
 fi
 
 cd "$ENGINE_DIR" || exit 1
