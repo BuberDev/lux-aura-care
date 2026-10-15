@@ -8,6 +8,7 @@ import {
   getWeeklyContext,
   publishWeeklyArticle,
   recordFailure,
+  reschedulePublishedArticleDate,
   type StaticPostRef,
 } from "@/lib/weekly-article/persist";
 import {
@@ -67,6 +68,24 @@ export async function POST(request: Request) {
     );
   }
   const parsed = payloadSchema.safeParse(body);
+  if (new URL(request.url).searchParams.get("repairScheduledDate") === "1") {
+    const weekKey = (body as { weekKey?: unknown } | null)?.weekKey;
+    if (typeof weekKey !== "string" || !WEEK_KEY_PATTERN.test(weekKey)) {
+      return json({ error: "validation", issues: [{ path: "weekKey", message: "valid scheduled weekKey is required" }] }, 400);
+    }
+    try {
+      const repaired = await reschedulePublishedArticleDate(weekKey);
+      if (!repaired) return json({ error: "published_slot_not_found" }, 404);
+      revalidatePath("/blog");
+      revalidatePath("/sitemap.xml");
+      revalidatePath(`/blog/${repaired.url.split("/").pop()}`);
+      return json({ status: "rescheduled", weekKey, publishedAt: repaired.publishedAt.toISOString(), url: repaired.url }, 200);
+    } catch (error) {
+      console.error("weekly-article date repair failed:", error);
+      return json({ error: "internal" }, 500);
+    }
+  }
+
   if (!parsed.success) {
     return json({ error: "validation", issues: describeIssues(parsed.error) }, 400);
   }

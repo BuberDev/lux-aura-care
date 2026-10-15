@@ -185,6 +185,26 @@ export async function getWeeklyContext(
   };
 }
 
+/** Reconcile the public date of a previously published catch-up slot. */
+export async function reschedulePublishedArticleDate(weekKey: string) {
+  const publishedAt = scheduledPublishDate(weekKey);
+  if (!publishedAt) return null;
+
+  const run = await prisma.contentRun.findFirst({
+    where: { weekKey, status: "published" },
+    select: { articleId: true },
+    orderBy: { createdAt: "desc" },
+  });
+  if (!run?.articleId) return null;
+
+  const article = await prisma.article.update({
+    where: { id: run.articleId },
+    data: { publishedAt },
+    select: { slug: true },
+  });
+  return { publishedAt, url: articleUrl(article.slug) };
+}
+
 export async function publishWeeklyArticle(
   payload: PublishPayload,
   options: { dryRun: boolean; staticSlugs: ReadonlySet<string> },
