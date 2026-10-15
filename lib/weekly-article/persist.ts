@@ -58,6 +58,24 @@ export type PublishOutcome =
 
 const articleUrl = (slug: string) => new URL(`/blog/${slug}`, SITE_URL).toString();
 
+/** Preserve the scheduled calendar date when a missed slot is published later. */
+function scheduledPublishDate(weekKey: string): Date | null {
+  const match = /^(\d{4})-W(\d{2})-(MON|WED|FRI)$/.exec(weekKey);
+  if (!match) return null; // Legacy, unsuffixed keys have no scheduled weekday.
+
+  const year = Number(match[1]);
+  const week = Number(match[2]);
+  const weekdayOffset = { MON: 0, WED: 2, FRI: 4 }[match[3] as "MON" | "WED" | "FRI"];
+  const jan4 = new Date(Date.UTC(year, 0, 4));
+  const jan4MondayOffset = (jan4.getUTCDay() + 6) % 7;
+  const scheduled = new Date(Date.UTC(year, 0, 4 - jan4MondayOffset + (week - 1) * 7 + weekdayOffset, 12));
+
+  const thursday = new Date(scheduled);
+  thursday.setUTCDate(thursday.getUTCDate() + 3 - ((thursday.getUTCDay() + 6) % 7));
+  if (thursday.getUTCFullYear() !== year) return null;
+  return scheduled;
+}
+
 function jsonStringArray(value: Prisma.JsonValue): string[] {
   return Array.isArray(value)
     ? value.filter((item): item is string => typeof item === "string")
@@ -387,7 +405,7 @@ export async function publishWeeklyArticle(
           readingTime: readingTime(rendered.html),
           readingTimePl: readingTime(renderedPolish.html),
           visualPlan: payload.article.visualPlan as Prisma.InputJsonValue,
-          publishedAt: isPublish ? new Date() : null,
+          publishedAt: isPublish ? (scheduledPublishDate(payload.weekKey) ?? new Date()) : null,
         };
 
         const saved =
