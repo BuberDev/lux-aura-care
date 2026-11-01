@@ -643,6 +643,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const isScalpMassager = product.id === "silicone-scalp-massager";
   const isUltrasonicDiffuser = product.id === "ceramic-ultrasonic-diffuser";
   const isPlushRobe = product.id === "womens-plush-soft-robe";
+  const isSilkSleepMask = product.id === "mulberry-silk-sleep-mask";
+  const isFloralOilsSet = product.id === "essential-oils-set";
   const isPurchasable = Boolean(
     product.shopifyUrl
       || productSizes.some((size) => size.shopifyUrl)
@@ -913,7 +915,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     if (stockUnavailable) return stockStatus === "sold-out" ? "Out of stock" : "Unavailable";
     return null;
   })();
-  const productCategoryLabel = isPlushRobe
+  const productCategoryLabel = isSilkSleepMask
+    ? "Sleep & travel"
+    : isFloralOilsSet
+      ? "Home fragrance"
+      : isPlushRobe
     ? "Loungewear"
     : isScalpMassager
     ? "Scalp care"
@@ -928,7 +934,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       : product.category === "body-glow"
         ? "Body care"
         : "Skincare tool";
-  const usageEyebrow = isPlushRobe
+  const usageEyebrow = isSilkSleepMask
+    ? "REST & TRAVEL"
+    : isFloralOilsSet
+      ? "AROMA FOR YOUR SPACE"
+      : isPlushRobe
     ? "SIZE & FIT"
     : isScalpMassager
     ? "SCALP CARE STEP BY STEP"
@@ -941,7 +951,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "BODY CARE STEP BY STEP"
       : "FACIAL MASSAGE STEP BY STEP";
-  const usageTitle = isPlushRobe
+  const usageTitle = isSilkSleepMask
+    ? "Using Your Sleep Mask"
+    : isFloralOilsSet
+      ? "How to Use This Oil Set"
+      : isPlushRobe
     ? "Choosing Your Robe Size"
     : isScalpMassager
     ? "How to Wash and Massage Your Scalp"
@@ -954,7 +968,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "How to Use the Body Brush"
       : "How to Use It Without Guesswork";
-  const usageDescription = isPlushRobe
+  const usageDescription = isSilkSleepMask
+    ? "Place the mask over your eyes before sleeping, taking a short nap or resting while travelling. Position the elastic strap comfortably without pressure, then follow the product care instructions."
+    : isFloralOilsSet
+      ? "Use only in a compatible room diffuser. Follow its manual; the supplier recommends 3–5 drops per 100 ml of water, starting with fewer. Ventilate the room. Do not swallow, apply undiluted oils to skin or get them in your eyes. Keep away from children."
+      : isPlushRobe
     ? "Compare the measurements with a robe that fits you well. L measures 105 cm in length, 110 cm bust circumference, 42 cm at the shoulder and 52 cm for the sleeve. XL (supplier label 1XL) measures 108 cm, 120 cm, 44 cm and 54 cm respectively."
     : isScalpMassager
     ? "Wet your hair, apply shampoo and move the silicone brush in small, gentle circles without pressing hard. Rinse the brush after use, leave it to dry and avoid irritated or broken skin."
@@ -968,7 +986,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       ? "Use the brush on wet skin with gentle pressure, then rinse it well and leave it to dry completely."
       : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
   const customerReviews = product.reviews ?? [];
-  const finalEyebrow = isPlushRobe
+  const finalEyebrow = isSilkSleepMask
+    ? "A SOFTER MOMENT FOR REST"
+    : isFloralOilsSet
+      ? "A FLORAL NOTE FOR YOUR ROOM"
+      : isPlushRobe
     ? "SOFT COMFORT AFTER A BATH"
     : isScalpMassager
     ? "A GENTLE STEP FOR WASH DAY"
@@ -979,7 +1001,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "YOUR BODY-CARE ROUTINE"
       : "YOUR RADIANT COMPLEXION AWAITS";
-  const finalTitle = isPlushRobe
+  const finalTitle = isSilkSleepMask
+    ? "Make a little room for rest?"
+    : isFloralOilsSet
+      ? "Add a floral note to your space?"
+      : isPlushRobe
     ? "Ready for a softer start to the day?"
     : isScalpMassager
     ? "Ready to add a scalp massage to wash day?"
@@ -990,7 +1016,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "Ready to add it to your shower routine?"
       : "Ready to add it to your skincare routine?";
-  const relatedHeading = isPlushRobe
+  const relatedHeading = isSilkSleepMask
+    ? "Explore sleep and travel comfort"
+    : isFloralOilsSet
+      ? "Explore home fragrance"
+      : isPlushRobe
     ? "Explore home comfort"
     : isScalpMassager
     ? "Explore hair and scalp care"
