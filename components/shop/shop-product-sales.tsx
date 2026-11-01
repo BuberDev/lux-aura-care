@@ -642,6 +642,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const isSerumDuo = product.id === "vitamin-c-retinol-serum-duo";
   const isScalpMassager = product.id === "silicone-scalp-massager";
   const isUltrasonicDiffuser = product.id === "ceramic-ultrasonic-diffuser";
+  const isPlushRobe = product.id === "womens-plush-soft-robe";
   const isPurchasable = Boolean(
     product.shopifyUrl
       || productSizes.some((size) => size.shopifyUrl)
@@ -912,7 +913,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     if (stockUnavailable) return stockStatus === "sold-out" ? "Out of stock" : "Unavailable";
     return null;
   })();
-  const productCategoryLabel = isScalpMassager
+  const productCategoryLabel = isPlushRobe
+    ? "Loungewear"
+    : isScalpMassager
     ? "Scalp care"
     : isUltrasonicDiffuser
       ? "Home fragrance"
@@ -925,7 +928,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       : product.category === "body-glow"
         ? "Body care"
         : "Skincare tool";
-  const usageEyebrow = isScalpMassager
+  const usageEyebrow = isPlushRobe
+    ? "SIZE & FIT"
+    : isScalpMassager
     ? "SCALP CARE STEP BY STEP"
     : isUltrasonicDiffuser
       ? "HOME FRAGRANCE STEP BY STEP"
@@ -936,7 +941,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "BODY CARE STEP BY STEP"
       : "FACIAL MASSAGE STEP BY STEP";
-  const usageTitle = isScalpMassager
+  const usageTitle = isPlushRobe
+    ? "Choosing Your Robe Size"
+    : isScalpMassager
     ? "How to Wash and Massage Your Scalp"
     : isUltrasonicDiffuser
       ? "How to Use Your Diffuser"
@@ -947,7 +954,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "How to Use the Body Brush"
       : "How to Use It Without Guesswork";
-  const usageDescription = isScalpMassager
+  const usageDescription = isPlushRobe
+    ? "Compare the measurements with a robe that fits you well. L measures 105 cm in length, 110 cm bust circumference, 42 cm at the shoulder and 52 cm for the sleeve. XL (supplier label 1XL) measures 108 cm, 120 cm, 44 cm and 54 cm respectively."
+    : isScalpMassager
     ? "Wet your hair, apply shampoo and move the silicone brush in small, gentle circles without pressing hard. Rinse the brush after use, leave it to dry and avoid irritated or broken skin."
     : isUltrasonicDiffuser
       ? "Fill the 100 ml tank only to the marked line, add diffuser-safe oil as directed and place the unit on a level surface. Unplug it before cleaning and keep water away from the electrical connection."
@@ -959,7 +968,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       ? "Use the brush on wet skin with gentle pressure, then rinse it well and leave it to dry completely."
       : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
   const customerReviews = product.reviews ?? [];
-  const finalEyebrow = isScalpMassager
+  const finalEyebrow = isPlushRobe
+    ? "SOFT COMFORT AFTER A BATH"
+    : isScalpMassager
     ? "A GENTLE STEP FOR WASH DAY"
     : isUltrasonicDiffuser
       ? "A CALMING TOUCH FOR YOUR HOME"
@@ -968,7 +979,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "YOUR BODY-CARE ROUTINE"
       : "YOUR RADIANT COMPLEXION AWAITS";
-  const finalTitle = isScalpMassager
+  const finalTitle = isPlushRobe
+    ? "Ready for a softer start to the day?"
+    : isScalpMassager
     ? "Ready to add a scalp massage to wash day?"
     : isUltrasonicDiffuser
       ? "Ready to add a soft scent to your space?"
@@ -977,7 +990,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "Ready to add it to your shower routine?"
       : "Ready to add it to your skincare routine?";
-  const relatedHeading = isScalpMassager
+  const relatedHeading = isPlushRobe
+    ? "Explore home comfort"
+    : isScalpMassager
     ? "Explore hair and scalp care"
     : isUltrasonicDiffuser
       ? "Explore home fragrance"

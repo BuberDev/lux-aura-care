@@ -1,0 +1,89 @@
+{
+  "id": "gid://shopify/Product/15948081529180",
+  "title": "Miękki szlafrok polarowy na guziki",
+  "vendor": "Lux Aura Care",
+  "status": "ACTIVE",
+  "productType": "",
+  "descriptionHtml": "<p>Damski szlafrok z miękkiego polaru, zapinany z przodu na guziki. Długie rękawy i dwie kieszenie sprawdzają się po kąpieli oraz podczas spokojnego wieczoru w domu. Materiał: 100% poliester. Do wyboru trzy kolory i dwa rozmiary zgodnie z dostępnością.</p>\n<p>Miękka warstwa na chłodniejszy poranek i odpoczynek po pielęgnacji. Prosty, dłuższy fason z guzikami można łatwo rozpiąć, a kieszenie pomieszczą drobiazgi. Zestaw zawiera jeden szlafrok.</p>\n\n<p>Wymiary według tabeli dostawcy (cm): L — długość 105, biust 110, ramiona 42, rękaw 52; XL (oznaczenie dostawcy 1XL) — długość 108, biust 120, ramiona 44, rękaw 54. Przed zakupem porównaj wymiary z dobrze dopasowanym szlafrokiem.</p>\n\n<p>Pielęgnuj zgodnie z metką produktu.</p>\n",
+  "tags": [],
+  "totalInventory": 224,
+  "featuredImageUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sefed303fa94745a180d7987ac6195bc8q.webp?v=1793541274",
+  "images": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sefed303fa94745a180d7987ac6195bc8q.webp?v=1793541274",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72905939517788"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sc6c1906a213c4450b8439454c5731097s.webp?v=1793541275",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72905939550556"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S216c04b168654237bfc12109c42a20b2N.webp?v=1793541275",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72905939583324"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sd39963c6244143a79b999d4d9fc214e29.webp?v=1793541274",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72905939616092"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S2ec40ef22d8e4abf865c7d56a3758010d.webp?v=1793541275",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72905939648860"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se503b1169b1b4f29a13914891223610bh.webp?v=1793541275",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72905939681628"
+    }
+  ],
+  "totalVariants": 6,
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/59722700915036",
+      "title": "Różowy / XL",
+      "sku": "14:193#B;5:12668979",
+      "price": "179.99",
+      "inventoryQuantity": 50
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59722700947804",
+      "title": "Niebieski / XL",
+      "sku": "14:1254#A;5:12668979",
+      "price": "179.99",
+      "inventoryQuantity": 40
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59722700980572",
+      "title": "Zielony / XL",
+      "sku": "14:496#C;5:12668979",
+      "price": "179.99",
+      "inventoryQuantity": 47
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59722701013340",
+      "title": "Różowy / L",
+      "sku": "14:193#B;5:361385",
+      "price": "179.99",
+      "inventoryQuantity": 0
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59722701046108",
+      "title": "Niebieski / L",
+      "sku": "14:1254#A;5:361385",
+      "price": "179.99",
+      "inventoryQuantity": 41
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59722701078876",
+      "title": "Zielony / L",
+      "sku": "14:496#C;5:361385",
+      "price": "179.99",
+      "inventoryQuantity": 46
+    }
+  ],
+  "currencyCode": "PLN"
+}
