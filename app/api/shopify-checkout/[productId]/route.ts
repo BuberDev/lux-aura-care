@@ -144,7 +144,7 @@ function getBuyerCountryCode(request: NextRequest) {
     return "PL";
   }
 
-  return request.nextUrl.searchParams.get("locale") === "pl" ? "PL" : null;
+  return null;
 }
 
 function getCheckoutAcceptLanguage(request: NextRequest) {

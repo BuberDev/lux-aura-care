@@ -1,0 +1,94 @@
+{
+  "id": "gid://shopify/Product/15947770626396",
+  "title": "Ceramiczny dyfuzor zapachowy — 100 ml",
+  "vendor": "Lux Aura Care",
+  "status": "ACTIVE",
+  "productType": "",
+  "descriptionHtml": "<p>Ceramiczny dyfuzor zapachowy o pojemności 100 ml. Dwa wykończenia podstawy: białe i drewnopodobne. Wariant z wtyczką EU do użytku w Polsce.</p>\n<p>Subtelny zapach w domu i miękkie światło przy wieczornym odpoczynku. Ceramiczna osłona, ultradźwiękowe rozpraszanie zapachu i podświetlenie LED pozwalają dopasować dyfuzor do sypialni lub salonu. Napełnij zbiornik zgodnie z instrukcją i używaj olejku przeznaczonego do dyfuzorów. Nie przepełniaj zbiornika; odłącz urządzenie przed czyszczeniem.</p>\n",
+  "tags": [],
+  "totalInventory": 3776,
+  "featuredImageUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S75dc727b4e914ab4aa1759e9616040abA.webp?v=1793527084",
+  "images": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S75dc727b4e914ab4aa1759e9616040abA.webp?v=1793527084",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904486322524"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S5cc40d5e130f479caeba683ca720f04ar.webp?v=1793527083",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904486355292"
+    }
+  ],
+  "totalVariants": 8,
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/59721293267292",
+      "title": "White / UK / China Mainland",
+      "sku": "14:29#White;200007763:201336100;200009209:201532830#UK",
+      "price": "199.99",
+      "inventoryQuantity": 478
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293300060",
+      "title": "White / EU / China Mainland",
+      "sku": "14:29#White;200007763:201336100;200009209:201532828#EU",
+      "price": "199.99",
+      "inventoryQuantity": 389
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293332828",
+      "title": "White / US / China Mainland",
+      "sku": "14:29#White;200007763:201336100;200009209:201532829#US",
+      "price": "199.99",
+      "inventoryQuantity": 493
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293365596",
+      "title": "Wood grain / UK / China Mainland",
+      "sku": "14:203027829#Wood grain;200007763:201336100;200009209:201532830#UK",
+      "price": "199.99",
+      "inventoryQuantity": 493
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293398364",
+      "title": "White / AU / China Mainland",
+      "sku": "14:29#White;200007763:201336100;200009209:201618810#AU",
+      "price": "199.99",
+      "inventoryQuantity": 484
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293431132",
+      "title": "Wood grain / EU / China Mainland",
+      "sku": "14:203027829#Wood grain;200007763:201336100;200009209:201532828#EU",
+      "price": "199.99",
+      "inventoryQuantity": 452
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293463900",
+      "title": "Wood grain / US / China Mainland",
+      "sku": "14:203027829#Wood grain;200007763:201336100;200009209:201532829#US",
+      "price": "199.99",
+      "inventoryQuantity": 495
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721293496668",
+      "title": "Wood grain / AU / China Mainland",
+      "sku": "14:203027829#Wood grain;200007763:201336100;200009209:201618810#AU",
+      "price": "199.99",
+      "inventoryQuantity": 492
+    }
+  ],
+  "currencyCode": "PLN",
+  "verifiedSupplier": {
+    "id": "1005008347139401",
+    "destination": "PL",
+    "stock": 3776,
+    "stockEU": 841,
+    "productCostUSD": 27.35,
+    "shippingUSD": 0,
+    "landedPLN": 107.36,
+    "contributionPLN": 92.63,
+    "method": "AliExpress standard shipping"
+  }
+}

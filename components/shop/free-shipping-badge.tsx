@@ -1,7 +1,6 @@
 "use client";
 
 import { Truck, CheckCircle2 } from "lucide-react";
-import { useI18n } from "@/components/i18n-provider";
 import { T } from "@/components/translated-text";
 
 type FreeShippingBadgeProps = {
@@ -13,15 +12,13 @@ export function FreeShippingBadge({
   variant = "banner",
   className = "",
 }: FreeShippingBadgeProps) {
-  const { text } = useI18n();
-
   if (variant === "pill") {
     return (
       <div
         className={`inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400 backdrop-blur-md ${className}`}
       >
         <Truck className="size-3.5 text-emerald-400" aria-hidden="true" />
-        <span><T text="Free Shipping" /></span>
+        <span><T text="Free standard delivery to Poland" /></span>
       </div>
     );
   }
@@ -36,10 +33,10 @@ export function FreeShippingBadge({
         </div>
         <div className="min-w-0">
           <p className="font-bold text-text-primary">
-            <T text="Free Shipping" />
+            <T text="Free standard delivery to Poland" />
           </p>
           <p className="text-[10px] text-text-secondary">
-            <T text="Dispatched in 24-48 hours" />
+            <T text="No minimum order" />
           </p>
         </div>
       </div>
@@ -59,14 +56,11 @@ export function FreeShippingBadge({
           <div className="min-w-0 flex flex-col justify-center">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
               <p className="text-xs font-extrabold tracking-wide uppercase text-text-primary leading-none">
-                <T text="Free Shipping" />
+                <T text="Free standard delivery to Poland" />
               </p>
-              <span className="rounded-md bg-accent-gold/20 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-accent-gold border border-accent-gold/30 leading-none">
-                <T text="Fast dispatch" />
-              </span>
             </div>
             <p className="text-[10px] sm:text-[11px] text-text-secondary leading-tight truncate">
-              <T text="For all orders · Dispatched within 24-48h" />
+              <T text="No minimum order" />
             </p>
           </div>
         </div>
