@@ -640,6 +640,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const isFashion = product.category === "fashion";
   const isBodyCare = product.category === "body-glow";
   const isSerumDuo = product.id === "vitamin-c-retinol-serum-duo";
+  const isScalpMassager = product.id === "silicone-scalp-massager";
+  const isUltrasonicDiffuser = product.id === "ceramic-ultrasonic-diffuser";
   const isPurchasable = Boolean(
     product.shopifyUrl
       || productSizes.some((size) => size.shopifyUrl)
@@ -910,7 +912,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     if (stockUnavailable) return stockStatus === "sold-out" ? "Out of stock" : "Unavailable";
     return null;
   })();
-  const productCategoryLabel = isSerumDuo
+  const productCategoryLabel = isScalpMassager
+    ? "Scalp care"
+    : isUltrasonicDiffuser
+      ? "Home fragrance"
+      : isSerumDuo
     ? "Face serum duo"
     : isFashion
     ? "Style edit"
@@ -919,21 +925,33 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       : product.category === "body-glow"
         ? "Body care"
         : "Skincare tool";
-  const usageEyebrow = isSerumDuo
+  const usageEyebrow = isScalpMassager
+    ? "SCALP CARE STEP BY STEP"
+    : isUltrasonicDiffuser
+      ? "HOME FRAGRANCE STEP BY STEP"
+      : isSerumDuo
     ? "DAY & NIGHT SKINCARE"
     : isFashion
     ? "FIT & STYLING"
     : isBodyCare
       ? "BODY CARE STEP BY STEP"
       : "FACIAL MASSAGE STEP BY STEP";
-  const usageTitle = isSerumDuo
+  const usageTitle = isScalpMassager
+    ? "How to Wash and Massage Your Scalp"
+    : isUltrasonicDiffuser
+      ? "How to Use Your Diffuser"
+      : isSerumDuo
     ? "How to Use Both Serums"
     : isFashion
     ? "Choose and Style It With Confidence"
     : isBodyCare
       ? "How to Use the Body Brush"
       : "How to Use It Without Guesswork";
-  const usageDescription = isSerumDuo
+  const usageDescription = isScalpMassager
+    ? "Wet your hair, apply shampoo and move the silicone brush in small, gentle circles without pressing hard. Rinse the brush after use, leave it to dry and avoid irritated or broken skin."
+    : isUltrasonicDiffuser
+      ? "Fill the 100 ml tank only to the marked line, add diffuser-safe oil as directed and place the unit on a level surface. Unplug it before cleaning and keep water away from the electrical connection."
+      : isSerumDuo
     ? "Introduce retinol gradually and finish every morning routine with SPF 30 or higher."
     : isFashion
     ? "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own."
@@ -941,17 +959,29 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       ? "Use the brush on wet skin with gentle pressure, then rinse it well and leave it to dry completely."
       : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
   const customerReviews = product.reviews ?? [];
-  const finalEyebrow = isFashion
+  const finalEyebrow = isScalpMassager
+    ? "A GENTLE STEP FOR WASH DAY"
+    : isUltrasonicDiffuser
+      ? "A CALMING TOUCH FOR YOUR HOME"
+      : isFashion
     ? "YOUR NEXT POLISHED LOOK"
     : isBodyCare
       ? "YOUR BODY-CARE ROUTINE"
       : "YOUR RADIANT COMPLEXION AWAITS";
-  const finalTitle = isFashion
+  const finalTitle = isScalpMassager
+    ? "Ready to add a scalp massage to wash day?"
+    : isUltrasonicDiffuser
+      ? "Ready to add a soft scent to your space?"
+      : isFashion
     ? "Found the color that feels like you?"
     : isBodyCare
       ? "Ready to add it to your shower routine?"
       : "Ready to add it to your skincare routine?";
-  const relatedHeading = isFashion
+  const relatedHeading = isScalpMassager
+    ? "Explore hair and scalp care"
+    : isUltrasonicDiffuser
+      ? "Explore home fragrance"
+      : isFashion
     ? "Continue exploring Lux Aura Care"
     : isBodyCare
       ? "Pair it with body care"
