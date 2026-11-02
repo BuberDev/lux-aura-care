@@ -666,6 +666,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const [variantImageOverride, setVariantImageOverride] = useState<{
+    type: "image";
+    url: string;
+    label: string;
+    badge: string;
+    desc: string;
+    filter?: string;
+  } | null>(null);
   const [selectedVariantId, setSelectedVariantId] = useState(productVariants[0]?.id ?? "");
   const [selectedSizeId, setSelectedSizeId] = useState(
     productSizes.find((size) => size.available !== false)?.id
@@ -1008,13 +1016,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isFloralOilsSet
       ? "Use only in a compatible room diffuser. Follow its manual; the supplier recommends 3–5 drops per 100 ml of water, starting with fewer. Ventilate the room. Do not swallow, apply undiluted oils to skin or get them in your eyes. Keep away from children."
     : isDermaRoller
-      ? "Select one of the three listed lengths. The order contains one roller, not all three shown in the illustration. Read the manufacturer's instructions and contraindications before use."
+      ? "Select one of the three listed lengths. The order contains one roller in the selected length. Read the manufacturer's instructions and contraindications before use."
     : isNiacinamideSerum
       ? "Choose one 30 ml or 50 ml bottle. The price and checkout correspond to the selected capacity. Refer to the label for the complete ingredient list and use information."
     : isWhiteMuskCandle
       ? "Place the candle on a stable, heat-resistant surface and burn it under supervision. Keep it away from flammable materials while lit, and let the jar cool before handling."
     : isCollagenBodyOil
-      ? "Each bottle contains 100 ml. Choose a pack of three or five bottles; the photos show one bottle and its box, while the selected option states the pack quantity. Apply according to the product label."
+      ? "Each bottle contains 100 ml. Choose a pack of three or five bottles. The pack illustrations show the included bottles and cartons; the detail illustration shows one bottle close up. Apply according to the product label."
     : isRetinolCapsules
       ? "This offer is one container of 50 capsules. Check the product label for the full ingredient list, directions and precautions before use."
       : isPlushRobe
@@ -1133,8 +1141,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const stickyImage = selectedVariant?.image ?? product.image;
   const visibleGalleryImages = heroMedia.slice(0, VISIBLE_SHOP_GALLERY_IMAGES);
   const hiddenGalleryCount = Math.max(heroMedia.length - VISIBLE_SHOP_GALLERY_IMAGES, 0);
-  const activeHeroItem = heroMedia[activeGalleryIndex] ?? heroMedia[0];
-  const lightboxItem = heroMedia[lightboxIndex] ?? heroMedia[0];
+  const activeHeroItem = variantImageOverride ?? heroMedia[activeGalleryIndex] ?? heroMedia[0];
+  const lightboxItem = variantImageOverride && isLightboxOpen && lightboxIndex === activeGalleryIndex
+    ? variantImageOverride
+    : heroMedia[lightboxIndex] ?? heroMedia[0];
   const heroThumbSrc = (item: HeroMediaItem) =>
     item.type === "video" ? item.poster ?? product.image : item.url;
   const heroMediaAlt = (item: HeroMediaItem) => {
@@ -1173,7 +1183,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       (item) => item.type === "image" && item.url === nextVariant.image
     );
     if (nextGalleryIndex >= 0) {
+      setVariantImageOverride(null);
       setActiveGalleryIndex(nextGalleryIndex);
+    } else if (nextVariant.image) {
+      setVariantImageOverride({
+        type: "image",
+        url: nextVariant.image,
+        label: nextVariant.label,
+        badge: nextVariant.label,
+        desc: nextVariant.imageAlt ?? nextVariant.label,
+      });
     }
   };
 
@@ -1250,8 +1269,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       if (e.key === "Escape") {
         setIsLightboxOpen(false);
       } else if (e.key === "ArrowRight") {
+        setVariantImageOverride(null);
         setLightboxIndex(prev => (prev + 1) % heroMedia.length);
       } else if (e.key === "ArrowLeft") {
+        setVariantImageOverride(null);
         setLightboxIndex(prev => (prev - 1 + heroMedia.length) % heroMedia.length);
       }
     };
@@ -1382,8 +1403,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       <button
                         key={`${img.url}-${i}`}
                         type="button"
-                        onClick={() => setActiveGalleryIndex(i)}
-                        onMouseEnter={() => setActiveGalleryIndex(i)}
+                        onClick={() => {
+                          setVariantImageOverride(null);
+                          setActiveGalleryIndex(i);
+                        }}
+                        onMouseEnter={() => {
+                          setVariantImageOverride(null);
+                          setActiveGalleryIndex(i);
+                        }}
                         aria-label={text(img.label)}
                         aria-pressed={activeGalleryIndex === i}
                         aria-controls="shop-product-gallery-image"
@@ -1861,6 +1888,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </section>
+
+      {product.mediaDisclosure && (
+        <div className="border-b border-border-subtle pb-3">
+          <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
+            <p className="text-[11px] text-text-secondary">
+              <T text={product.mediaDisclosure} />
+            </p>
+          </Container>
+        </div>
+      )}
 
       {/* Product information strip */}
       <section className="border-t border-b border-border-subtle py-8 bg-surface-subtle">
@@ -2474,7 +2511,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {heroMedia.map((img, idx) => (
                 <button
                   key={`lightbox-thumb-${idx}`}
-                  onClick={() => setLightboxIndex(idx)}
+                  onClick={() => {
+                    setVariantImageOverride(null);
+                    setLightboxIndex(idx);
+                  }}
                   className={`relative aspect-square w-full rounded-xl overflow-hidden border transition-all duration-300 ${
                     lightboxIndex === idx
                       ? "border-accent-gold ring-2 ring-accent-gold/40 scale-[1.03]"
@@ -2506,7 +2546,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               
               {/* Left Navigation Arrow */}
               <button
-                onClick={() => setLightboxIndex(prev => (prev - 1 + heroMedia.length) % heroMedia.length)}
+                onClick={() => {
+                  setVariantImageOverride(null);
+                  setLightboxIndex(prev => (prev - 1 + heroMedia.length) % heroMedia.length);
+                }}
                 className="absolute left-2 md:left-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
                 title={text("Previous image (Left Arrow)")}
               >
@@ -2553,7 +2596,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
               {/* Right Navigation Arrow */}
               <button
-                onClick={() => setLightboxIndex(prev => (prev + 1) % heroMedia.length)}
+                onClick={() => {
+                  setVariantImageOverride(null);
+                  setLightboxIndex(prev => (prev + 1) % heroMedia.length);
+                }}
                 className="absolute right-2 md:right-4 z-10 p-3 rounded-full bg-surface-glass hover:bg-black/80 text-text-primary border border-border-subtle hover:border-border-strong hover:scale-105 transition-all shadow-xl"
                 title={text("Next image (Right Arrow)")}
               >
@@ -2591,7 +2637,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {heroMedia.map((_, idx) => (
               <button
                 key={`lightbox-dot-${idx}`}
-                onClick={() => setLightboxIndex(idx)}
+                onClick={() => {
+                  setVariantImageOverride(null);
+                  setLightboxIndex(idx);
+                }}
                 className={`size-2.5 rounded-full transition-all duration-300 ${
                   lightboxIndex === idx ? "bg-accent-gold w-6" : "bg-white/20 hover:bg-white/40"
                 }`}

@@ -75,6 +75,7 @@ export type ShopProduct = {
   faq: { q: string; a: string }[];
   shopifyUrl?: string;
   category: "skincare" | "body-glow" | "fashion" | "bundle";
+  mediaDisclosure?: string;
   purchaseStatus?: "available" | "coming-soon";
   isNew?: boolean;
   isBestSeller?: boolean;
@@ -1018,12 +1019,13 @@ export const shopProducts: ShopProduct[] = [
     id: "professional-derma-roller",
     name: "Professional Derma Roller — 540 Micro-Needles",
     tagline: "Choose one roller in the needle length you prefer.",
-    description: "A black-handled roller with a head described by the supplier as having 540 micro-needles. Choose one length: 0.2 mm, 0.25 mm or 0.3 mm. This offer is for one selected roller; the illustration shows the available options together. This is not an ordinary facial massage roller. Read the manufacturer's instructions and contraindications before use.",
+    description: "A black-handled roller with a head described by the supplier as having 540 micro-needles. Choose one length: 0.2 mm, 0.25 mm or 0.3 mm. This offer is for one roller in the selected length. This is not an ordinary facial massage roller. Read the manufacturer's instructions and contraindications before use.",
     price: 109.99,
     compareAtPrice: 109.99,
     currency: "PLN",
-    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974",
-    imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935",
+    imageAlt: "AI illustration of one black-handled derma roller with a single roller head",
+    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "Choose a length",
     benefits: [
       "Choose from 0.2 mm, 0.25 mm and 0.3 mm options",
@@ -1034,12 +1036,11 @@ export const shopProducts: ShopProduct[] = [
     howToUse: [
       "Choose one needle-length option from the selector",
       "The order includes one roller in the selected length",
-      "The image shows three available options together; it does not show a three-piece set",
       "Before use, read the manufacturer's instructions and contraindications; this is not an ordinary facial massage roller",
     ],
     faq: [
       { q: "Which lengths can I choose?", a: "Choose 0.2 mm, 0.25 mm or 0.3 mm in the selector. The order includes one roller in the selected length." },
-      { q: "Are all three rollers included?", a: "No. The image shows the three available options together. You receive one roller in the length you select." },
+      { q: "How many rollers are included?", a: "One roller in the length you select." },
       { q: "What should I know before use?", a: "This is not an ordinary facial massage roller. Read the manufacturer's instructions and contraindications before use." },
     ],
     shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1",
@@ -1047,12 +1048,14 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Needle length",
     selectedVariantPickerLabel: "Selected length",
     variants: [
-      { id: "0.25mm", label: "0.25 mm", colorName: "0.25 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1" },
-      { id: "0.2mm", label: "0.2 mm", colorName: "0.2 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545912156:1" },
-      { id: "0.3mm", label: "0.3 mm", colorName: "0.3 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545944924:1" },
+      { id: "0.25mm", label: "0.25 mm", colorName: "0.25 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "AI illustration of one black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1" },
+      { id: "0.2mm", label: "0.2 mm", colorName: "0.2 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "AI illustration of one black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545912156:1" },
+      { id: "0.3mm", label: "0.3 mm", colorName: "0.3 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "AI illustration of one black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545944924:1" },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", label: "Needle length options", badge: "Illustration", desc: "AI-edited supplier illustration with three available roller lengths; one selected roller is included" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", label: "Derma roller", badge: "Single roller", desc: "AI illustration of one black-handled derma roller with a single roller head" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-detail-ai-2026-11-02.png?v=1793649318", label: "Roller head detail", badge: "Head detail", desc: "Close-up AI illustration of a single derma roller head" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-lifestyle-ai-2026-11-02.png?v=1793649326", label: "Product detail", badge: "One roller", desc: "AI illustration showing one derma roller on a light surface" },
     ],
   },
 
@@ -1064,8 +1067,9 @@ export const shopProducts: ShopProduct[] = [
     price: 109.99,
     compareAtPrice: 109.99,
     currency: "PLN",
-    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S924fe3927c194dd2b7f9bffef7306192W.webp?v=1793560314",
-    imageAlt: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 30 ml bottle",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917",
+    imageAlt: "AI illustration of the LGRAMER niacinamide serum in a 30 ml bottle",
+    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "Choose bottle size",
     benefits: [
       "LGRAMER facial serum",
@@ -1089,12 +1093,13 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Bottle size",
     selectedVariantPickerLabel: "Selected size",
     variants: [
-      { id: "30ml", label: "30 ml", colorName: "30 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S924fe3927c194dd2b7f9bffef7306192W.webp?v=1793560314", imageAlt: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 30 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593786204:1" },
-      { id: "50ml", label: "50 ml", colorName: "50 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sa398fec87cf74d06b856d627354597c88.webp?v=1793560314", imageAlt: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 50 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593753436:1" },
+      { id: "30ml", label: "30 ml", colorName: "30 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917", imageAlt: "AI illustration of the LGRAMER niacinamide serum in a 30 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593786204:1" },
+      { id: "50ml", label: "50 ml", colorName: "50 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-50-hero-ai-2026-11-02.png?v=1793649270", imageAlt: "AI illustration of the LGRAMER niacinamide serum in a 50 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593753436:1" },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S924fe3927c194dd2b7f9bffef7306192W.webp?v=1793560314", label: "30 ml bottle", badge: "30 ml", desc: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 30 ml bottle" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sa398fec87cf74d06b856d627354597c88.webp?v=1793560314", label: "50 ml bottle", badge: "50 ml", desc: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 50 ml bottle" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917", label: "30 ml bottle", badge: "30 ml", desc: "AI illustration of the LGRAMER niacinamide serum in a 30 ml bottle" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-detail-ai-2026-11-02.png?v=1793649278", label: "Pump and cap detail", badge: "Bottle detail", desc: "Close-up AI illustration of the serum pump and protective cap" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-lifestyle-ai-2026-11-02.png?v=1793649301", label: "Serum on a vanity", badge: "30 ml bottle", desc: "AI illustration of the LGRAMER serum in a 30 ml bottle on a light vanity" },
     ],
   },
 
@@ -1106,8 +1111,9 @@ export const shopProducts: ShopProduct[] = [
     price: 119.99,
     compareAtPrice: 119.99,
     currency: "PLN",
-    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S66d42356aeca42239b9a840d903e36edo.webp?v=1793560926",
-    imageAlt: "One White Musk scented candle in a lidded amber glass jar",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926",
+    imageAlt: "AI illustration of a single candle in a lidded amber glass jar",
+    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "White Musk",
     benefits: [
       "White Musk fragrance",
@@ -1131,10 +1137,12 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Fragrance",
     selectedVariantPickerLabel: "Selected fragrance",
     variants: [
-      { id: "white-musk", label: "White Musk", colorName: "White Musk", swatchHex: "#c6a16c", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S66d42356aeca42239b9a840d903e36edo.webp?v=1793560926", imageAlt: "One White Musk scented candle in a lidded amber glass jar", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726651392348:1" },
+      { id: "white-musk", label: "White Musk", colorName: "White Musk", swatchHex: "#c6a16c", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926", imageAlt: "AI illustration of a single candle in a lidded amber glass jar", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726651392348:1" },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S66d42356aeca42239b9a840d903e36edo.webp?v=1793560926", label: "White Musk candle", badge: "Amber glass", desc: "One White Musk soy wax candle in an amber glass jar with a lid" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926", label: "Candle in amber glass", badge: "Amber glass", desc: "AI illustration of a single candle in a lidded amber glass jar" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-detail-ai-2026-11-02.png?v=1793649293", label: "Glass and label detail", badge: "Jar detail", desc: "Close-up AI illustration of amber glass and the candle label" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-lifestyle-ai-2026-11-02.png?v=1793649309", label: "Candle on a side table", badge: "Home setting", desc: "AI illustration of a lit candle on a stone side table" },
     ],
   },
 
@@ -1142,12 +1150,13 @@ export const shopProducts: ShopProduct[] = [
     id: "body-oil",
     name: "OceAura Collagen Body Oil — 3 or 5 × 100 ml",
     tagline: "Body oil in pump bottles; choose a pack of three or five.",
-    description: "OceAura body oil for body care and massage. Each bottle contains 100 ml and has a pump. The supplier lists collagen, vitamin E and rosemary oil among the ingredients; refer to the product label for the full ingredient list and use information. Choose a boxed pack of three or five individual 100 ml bottles. Each photo shows one bottle and its box; the selected option states how many bottles are included.",
+    description: "OceAura body oil for body care and massage. Each bottle contains 100 ml and has a pump. The supplier lists collagen, vitamin E and rosemary oil among the ingredients; refer to the product label for the full ingredient list and use information. Choose a boxed pack of three or five individual 100 ml bottles. The pack illustrations show the included quantity; a separate product-detail illustration shows a close-up of one bottle.",
     price: 159.99,
     compareAtPrice: 159.99,
     currency: "PLN",
-    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se2e7392f78954d8ba49b7aaafe2c6f5aQ.webp?v=1793561674",
-    imageAlt: "One 100 ml OceAura body oil bottle and box, representing the three-bottle pack option",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898",
+    imageAlt: "AI-generated supplier-reference illustration of the 3 × 100 ml OceAura body oil pack with three bottles and cartons",
+    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "Body oil",
     benefits: [
       "OceAura body oil in 100 ml pump bottles",
@@ -1158,12 +1167,12 @@ export const shopProducts: ShopProduct[] = [
     howToUse: [
       "Choose a pack of three or five 100 ml bottles",
       "Apply according to the product label",
-      "The selected option states the number of bottles included",
+      "The pack illustrations show the included bottles and cartons; the detail illustration shows one bottle close up",
       "Refer to the product label for the full ingredients and use information",
     ],
     faq: [
       { q: "How many bottles are in each pack?", a: "Choose three or five individual 100 ml bottles. Each bottle comes in its own box." },
-      { q: "Does the photo show the whole pack?", a: "Each photo shows one bottle and its box. The selected option states whether the pack contains three or five bottles." },
+      { q: "What do the pack images show?", a: "The 3-bottle and 5-bottle illustrations show the corresponding quantity with cartons. A separate product-detail illustration shows a close-up of one bottle." },
       { q: "Where can I find the full ingredient list?", a: "The supplier lists collagen, vitamin E and rosemary oil among the ingredients. Refer to the product label for the full ingredient list and use information." },
     ],
     shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1",
@@ -1171,12 +1180,13 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Pack size",
     selectedVariantPickerLabel: "Selected pack",
     variants: [
-      { id: "3x100ml", label: "3 × 100 ml · 3 bottles", colorName: "3 × 100 ml · 3 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se2e7392f78954d8ba49b7aaafe2c6f5aQ.webp?v=1793561674", imageAlt: "One 100 ml OceAura body oil bottle and box, representing the three-bottle pack option", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1", price: 159.99, compareAtPrice: 159.99 },
-      { id: "5x100ml", label: "5 × 100 ml · 5 bottles", colorName: "5 × 100 ml · 5 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Scc9e4785777e4fa2909ed618845525ebc.webp?v=1793561674", imageAlt: "One 100 ml OceAura body oil bottle and box, representing the five-bottle pack option", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717944156:1", price: 199.99, compareAtPrice: 199.99 },
+      { id: "3x100ml", label: "3 × 100 ml · 3 bottles", colorName: "3 × 100 ml · 3 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898", imageAlt: "AI illustration of the OceAura body oil pack with three 100 ml bottles and cartons", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1", price: 159.99, compareAtPrice: 159.99 },
+      { id: "5x100ml", label: "5 × 100 ml · 5 bottles", colorName: "5 × 100 ml · 5 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909", imageAlt: "AI illustration of the OceAura body oil pack with five 100 ml bottles and cartons", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717944156:1", price: 199.99, compareAtPrice: 199.99 },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se2e7392f78954d8ba49b7aaafe2c6f5aQ.webp?v=1793561674", label: "3-bottle pack", badge: "3 × 100 ml", desc: "One 100 ml pump bottle and its box, shown to represent the pack of three bottles" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Scc9e4785777e4fa2909ed618845525ebc.webp?v=1793561674", label: "5-bottle pack", badge: "5 × 100 ml", desc: "One 100 ml pump bottle and its box, shown to represent the pack of five bottles" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898", label: "3-bottle pack", badge: "3 × 100 ml", desc: "AI illustration of the OceAura body oil pack with three 100 ml bottles and cartons" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909", label: "5-bottle pack", badge: "5 × 100 ml", desc: "AI illustration of the OceAura body oil pack with five 100 ml bottles and cartons" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-detail-ai-2026-11-02.png?v=1793649246", label: "Bottle and pump detail", badge: "100 ml bottle", desc: "Close-up AI illustration of one OceAura 100 ml bottle and its pump" },
     ],
   },
 
@@ -1188,8 +1198,9 @@ export const shopProducts: ShopProduct[] = [
     price: 119.99,
     compareAtPrice: 119.99,
     currency: "PLN",
-    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/fduay-retinol-capsules-clean-ai-edit.png?v=1793646295",
-    imageAlt: "AI-edited supplier illustration of FDUAY retinol and collagen face serum capsules in a container of 50",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289",
+    imageAlt: "AI illustration of the FDUAY retinol capsule container with 50 capsules",
+    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "50 capsules",
     benefits: [
       "One container containing 50 capsules",
@@ -1210,7 +1221,9 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726740619612:1",
     category: "skincare",
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/fduay-retinol-capsules-clean-ai-edit.png?v=1793646295", label: "50 capsules", badge: "50 count", desc: "AI-edited supplier illustration of FDUAY face serum capsules; one container of 50" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289", label: "50-capsule container", badge: "50 capsules", desc: "AI illustration of the FDUAY retinol capsule container with 50 capsules" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-detail-ai-2026-11-02.png?v=1793649334", label: "Capsule detail", badge: "Product detail", desc: "Close-up AI illustration of two capsules beside the FDUAY container" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-lifestyle-ai-2026-11-02.png?v=1793649342", label: "Container on a vanity", badge: "Product setting", desc: "AI illustration of the FDUAY capsule container on a vanity" },
     ],
   },
 
