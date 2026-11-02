@@ -645,6 +645,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const isPlushRobe = product.id === "womens-plush-soft-robe";
   const isSilkSleepMask = product.id === "mulberry-silk-sleep-mask";
   const isFloralOilsSet = product.id === "essential-oils-set";
+  const isDermaRoller = product.id === "professional-derma-roller";
+  const isNiacinamideSerum = product.id === "niacinamide-toner";
+  const isWhiteMuskCandle = product.id === "candle-set";
+  const isCollagenBodyOil = product.id === "body-oil";
+  const isRetinolCapsules = product.id === "retinol-serum";
   const isPurchasable = Boolean(
     product.shopifyUrl
       || productSizes.some((size) => size.shopifyUrl)
@@ -921,6 +926,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       ? "Home fragrance"
       : isPlushRobe
     ? "Loungewear"
+    : isDermaRoller
+      ? "Microneedling tool"
+    : isNiacinamideSerum
+      ? "Facial serum"
+    : isWhiteMuskCandle
+      ? "Home fragrance"
+    : isCollagenBodyOil
+      ? "Body oil"
+    : isRetinolCapsules
+      ? "Face serum capsules"
     : isScalpMassager
     ? "Scalp care"
     : isUltrasonicDiffuser
@@ -938,6 +953,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? "REST & TRAVEL"
     : isFloralOilsSet
       ? "AROMA FOR YOUR SPACE"
+    : isDermaRoller
+      ? "CHOOSING A NEEDLE LENGTH"
+    : isNiacinamideSerum
+      ? "CHOOSE YOUR BOTTLE SIZE"
+    : isWhiteMuskCandle
+      ? "CANDLE CARE"
+    : isCollagenBodyOil
+      ? "PACKAGE DETAILS"
+    : isRetinolCapsules
+      ? "PRODUCT DETAILS"
       : isPlushRobe
     ? "SIZE & FIT"
     : isScalpMassager
@@ -955,6 +980,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? "Using Your Sleep Mask"
     : isFloralOilsSet
       ? "How to Use This Oil Set"
+    : isDermaRoller
+      ? "Choosing a Derma Roller Length"
+    : isNiacinamideSerum
+      ? "Choosing Your Serum Size"
+    : isWhiteMuskCandle
+      ? "Using Your Candle Safely"
+    : isCollagenBodyOil
+      ? "Choosing Your Body Oil Pack"
+    : isRetinolCapsules
+      ? "About This 50-Capsule Container"
       : isPlushRobe
     ? "Choosing Your Robe Size"
     : isScalpMassager
@@ -972,6 +1007,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? "Place the mask over your eyes before sleeping, taking a short nap or resting while travelling. Position the elastic strap comfortably without pressure, then follow the product care instructions."
     : isFloralOilsSet
       ? "Use only in a compatible room diffuser. Follow its manual; the supplier recommends 3–5 drops per 100 ml of water, starting with fewer. Ventilate the room. Do not swallow, apply undiluted oils to skin or get them in your eyes. Keep away from children."
+    : isDermaRoller
+      ? "Select one of the three listed lengths. The order contains one roller, not all three shown in the illustration. Read the manufacturer's instructions and contraindications before use."
+    : isNiacinamideSerum
+      ? "Choose one 30 ml or 50 ml bottle. The price and checkout correspond to the selected capacity. Refer to the label for the complete ingredient list and use information."
+    : isWhiteMuskCandle
+      ? "Place the candle on a stable, heat-resistant surface and burn it under supervision. Keep it away from flammable materials while lit, and let the jar cool before handling."
+    : isCollagenBodyOil
+      ? "Each bottle contains 100 ml. Choose a pack of three or five bottles; the photos show one bottle and its box, while the selected option states the pack quantity. Apply according to the product label."
+    : isRetinolCapsules
+      ? "This offer is one container of 50 capsules. Check the product label for the full ingredient list, directions and precautions before use."
       : isPlushRobe
     ? "Compare the measurements with a robe that fits you well. L measures 105 cm in length, 110 cm bust circumference, 42 cm at the shoulder and 52 cm for the sleeve. XL (supplier label 1XL) measures 108 cm, 120 cm, 44 cm and 54 cm respectively."
     : isScalpMassager
@@ -990,6 +1035,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? "A SOFTER MOMENT FOR REST"
     : isFloralOilsSet
       ? "A FLORAL NOTE FOR YOUR ROOM"
+    : isDermaRoller
+      ? "A CONSIDERED CHOICE FOR YOUR ROUTINE"
+    : isNiacinamideSerum
+      ? "A SIMPLE SIZE CHOICE"
+    : isWhiteMuskCandle
+      ? "A WARM NOTE FOR YOUR SPACE"
+    : isCollagenBodyOil
+      ? "BODY CARE, IN YOUR CHOSEN PACK"
+    : isRetinolCapsules
+      ? "A CLEAR LOOK AT THE PRODUCT DETAILS"
       : isPlushRobe
     ? "SOFT COMFORT AFTER A BATH"
     : isScalpMassager
@@ -1005,6 +1060,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? "Make a little room for rest?"
     : isFloralOilsSet
       ? "Add a floral note to your space?"
+    : isDermaRoller
+      ? "Choose your roller length"
+    : isNiacinamideSerum
+      ? "Choose your serum size"
+    : isWhiteMuskCandle
+      ? "Add White Musk to your space"
+    : isCollagenBodyOil
+      ? "Choose your body oil pack"
+    : isRetinolCapsules
+      ? "Review the label before use"
       : isPlushRobe
     ? "Ready for a softer start to the day?"
     : isScalpMassager
@@ -1020,6 +1085,16 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     ? "Explore sleep and travel comfort"
     : isFloralOilsSet
       ? "Explore home fragrance"
+    : isDermaRoller
+      ? "Explore skincare tools"
+    : isNiacinamideSerum
+      ? "Explore face serums"
+    : isWhiteMuskCandle
+      ? "Explore home fragrance"
+    : isCollagenBodyOil
+      ? "Explore body care"
+    : isRetinolCapsules
+      ? "Explore skincare"
       : isPlushRobe
     ? "Explore home comfort"
     : isScalpMassager
@@ -1038,8 +1113,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const scienceDescription = isSerumDuo
     ? "See what each serum contributes and how to introduce the duo comfortably into morning and evening skincare."
     : "Review the materials, shape and practical details before deciding whether this product fits your routine.";
-  const selectedUnitPrice = product.price * unitsPerSelection;
-  const selectedCompareAtUnitPrice = product.compareAtPrice * unitsPerSelection;
+  const selectedUnitPrice = (selectedVariant?.price ?? product.price) * unitsPerSelection;
+  const selectedCompareAtUnitPrice =
+    (selectedVariant?.compareAtPrice ?? product.compareAtPrice) * unitsPerSelection;
   const selectedSubtotal = selectedUnitPrice * selectedQuantity;
   const productPrice = formatShopPrice(selectedUnitPrice, product.currency, locale);
   const productCompareAtPrice = formatShopPrice(selectedCompareAtUnitPrice, product.currency, locale);

@@ -19,6 +19,8 @@ export type ShopProductVariant = {
   image: string;
   imageAlt: string;
   shopifyUrl?: string;
+  price?: number;
+  compareAtPrice?: number;
   sizes?: ShopProductSizeVariant[];
 };
 
@@ -1009,6 +1011,206 @@ export const shopProducts: ShopProduct[] = [
     category: "skincare",
     gallery: [
       { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sf55ca1c89f934e829a83af4379a0ed33q.webp?v=1793547009", label: "Floral series", badge: "Six floral scents", desc: "EUQEE Floral Series set of six 10 ml essential oil bottles" },
+    ],
+  },
+
+  {
+    id: "professional-derma-roller",
+    name: "Professional Derma Roller — 540 Micro-Needles",
+    tagline: "Choose one roller in the needle length you prefer.",
+    description: "A black-handled roller with a head described by the supplier as having 540 micro-needles. Choose one length: 0.2 mm, 0.25 mm or 0.3 mm. This offer is for one selected roller; the illustration shows the available options together. This is not an ordinary facial massage roller. Read the manufacturer's instructions and contraindications before use.",
+    price: 109.99,
+    compareAtPrice: 109.99,
+    currency: "PLN",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974",
+    imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller",
+    badge: "Choose a length",
+    benefits: [
+      "Choose from 0.2 mm, 0.25 mm and 0.3 mm options",
+      "The supplier describes the roller head as having 540 micro-needles",
+      "Black handle with a compact roller head",
+      "One roller in the selected length",
+    ],
+    howToUse: [
+      "Choose one needle-length option from the selector",
+      "The order includes one roller in the selected length",
+      "The image shows three available options together; it does not show a three-piece set",
+      "Before use, read the manufacturer's instructions and contraindications; this is not an ordinary facial massage roller",
+    ],
+    faq: [
+      { q: "Which lengths can I choose?", a: "Choose 0.2 mm, 0.25 mm or 0.3 mm in the selector. The order includes one roller in the selected length." },
+      { q: "Are all three rollers included?", a: "No. The image shows the three available options together. You receive one roller in the length you select." },
+      { q: "What should I know before use?", a: "This is not an ordinary facial massage roller. Read the manufacturer's instructions and contraindications before use." },
+    ],
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1",
+    category: "skincare",
+    variantPickerLabel: "Needle length",
+    selectedVariantPickerLabel: "Selected length",
+    variants: [
+      { id: "0.25mm", label: "0.25 mm", colorName: "0.25 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1" },
+      { id: "0.2mm", label: "0.2 mm", colorName: "0.2 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545912156:1" },
+      { id: "0.3mm", label: "0.3 mm", colorName: "0.3 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", imageAlt: "AI-edited supplier illustration showing three available derma roller lengths; offer is one selected roller", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545944924:1" },
+    ],
+    gallery: [
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/derma-roller-supplier-clean-ai-edit.png?v=1793559974", label: "Needle length options", badge: "Illustration", desc: "AI-edited supplier illustration with three available roller lengths; one selected roller is included" },
+    ],
+  },
+
+  {
+    id: "niacinamide-toner",
+    name: "LGRAMER Niacinamide 12% + Zinc 2% Face Serum",
+    tagline: "Choose a 30 ml or 50 ml bottle.",
+    description: "A facial serum from LGRAMER. The product label states Niacinamide 12% + Zinc 2%. This offer is for one pump bottle in either 30 ml or 50 ml. Refer to the product label for the full ingredient list and use information.",
+    price: 109.99,
+    compareAtPrice: 109.99,
+    currency: "PLN",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S924fe3927c194dd2b7f9bffef7306192W.webp?v=1793560314",
+    imageAlt: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 30 ml bottle",
+    badge: "Choose bottle size",
+    benefits: [
+      "LGRAMER facial serum",
+      "The label states Niacinamide 12% + Zinc 2%",
+      "Choose one 30 ml or 50 ml pump bottle",
+      "The selected size is shown in the variant selector",
+    ],
+    howToUse: [
+      "Choose the 30 ml or 50 ml single-bottle option",
+      "The checkout matches the selected bottle size",
+      "The listed offer is one bottle; multipacks are not included",
+      "Refer to the product label for complete ingredient and use information",
+    ],
+    faq: [
+      { q: "Which bottle sizes can I choose?", a: "Choose one 30 ml or 50 ml pump bottle." },
+      { q: "Are the multipacks included?", a: "No. This offer is for one bottle in the selected capacity; other multipack options are not included." },
+      { q: "Where can I find complete ingredient information?", a: "Check the product label for the complete ingredient list and use guidance." },
+    ],
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593786204:1",
+    category: "skincare",
+    variantPickerLabel: "Bottle size",
+    selectedVariantPickerLabel: "Selected size",
+    variants: [
+      { id: "30ml", label: "30 ml", colorName: "30 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S924fe3927c194dd2b7f9bffef7306192W.webp?v=1793560314", imageAlt: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 30 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593786204:1" },
+      { id: "50ml", label: "50 ml", colorName: "50 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sa398fec87cf74d06b856d627354597c88.webp?v=1793560314", imageAlt: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 50 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593753436:1" },
+    ],
+    gallery: [
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S924fe3927c194dd2b7f9bffef7306192W.webp?v=1793560314", label: "30 ml bottle", badge: "30 ml", desc: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 30 ml bottle" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sa398fec87cf74d06b856d627354597c88.webp?v=1793560314", label: "50 ml bottle", badge: "50 ml", desc: "LGRAMER Niacinamide 12% + Zinc 2% serum in a 50 ml bottle" },
+    ],
+  },
+
+  {
+    id: "candle-set",
+    name: "Soy Wax Candle in Amber Glass — White Musk",
+    tagline: "A single lidded candle in an amber glass jar.",
+    description: "A White Musk scented candle in a brown amber glass jar with a lid. The supplier describes it as handmade and made from soy wax. This offer includes one candle. Small finish variations may occur with handmade items. Burn under supervision on a stable, heat-resistant surface.",
+    price: 119.99,
+    compareAtPrice: 119.99,
+    currency: "PLN",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S66d42356aeca42239b9a840d903e36edo.webp?v=1793560926",
+    imageAlt: "One White Musk scented candle in a lidded amber glass jar",
+    badge: "White Musk",
+    benefits: [
+      "White Musk fragrance",
+      "Amber glass jar with a lid",
+      "Soy wax, according to the supplier specification",
+      "One handmade candle in this offer",
+    ],
+    howToUse: [
+      "Place the candle on a stable, heat-resistant surface",
+      "Burn under supervision",
+      "Keep the candle away from flammable materials while lit",
+      "Let the candle cool before handling the jar or lid",
+    ],
+    faq: [
+      { q: "Which fragrance is offered?", a: "This offer is for White Musk only." },
+      { q: "What is included with the candle?", a: "One White Musk scented candle in an amber glass jar with a lid." },
+      { q: "What is the candle made from?", a: "The supplier specification describes the candle as handmade and made from soy wax." },
+    ],
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726651392348:1",
+    category: "skincare",
+    variantPickerLabel: "Fragrance",
+    selectedVariantPickerLabel: "Selected fragrance",
+    variants: [
+      { id: "white-musk", label: "White Musk", colorName: "White Musk", swatchHex: "#c6a16c", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S66d42356aeca42239b9a840d903e36edo.webp?v=1793560926", imageAlt: "One White Musk scented candle in a lidded amber glass jar", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726651392348:1" },
+    ],
+    gallery: [
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S66d42356aeca42239b9a840d903e36edo.webp?v=1793560926", label: "White Musk candle", badge: "Amber glass", desc: "One White Musk soy wax candle in an amber glass jar with a lid" },
+    ],
+  },
+
+  {
+    id: "body-oil",
+    name: "OceAura Collagen Body Oil — 3 or 5 × 100 ml",
+    tagline: "Body oil in pump bottles; choose a pack of three or five.",
+    description: "OceAura body oil for body care and massage. Each bottle contains 100 ml and has a pump. The supplier lists collagen, vitamin E and rosemary oil among the ingredients; refer to the product label for the full ingredient list and use information. Choose a boxed pack of three or five individual 100 ml bottles. Each photo shows one bottle and its box; the selected option states how many bottles are included.",
+    price: 159.99,
+    compareAtPrice: 159.99,
+    currency: "PLN",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se2e7392f78954d8ba49b7aaafe2c6f5aQ.webp?v=1793561674",
+    imageAlt: "One 100 ml OceAura body oil bottle and box, representing the three-bottle pack option",
+    badge: "Body oil",
+    benefits: [
+      "OceAura body oil in 100 ml pump bottles",
+      "Choose a pack with three or five individual bottles",
+      "Each bottle comes in its own box",
+      "The selected option identifies the pack quantity",
+    ],
+    howToUse: [
+      "Choose a pack of three or five 100 ml bottles",
+      "Apply according to the product label",
+      "The selected option states the number of bottles included",
+      "Refer to the product label for the full ingredients and use information",
+    ],
+    faq: [
+      { q: "How many bottles are in each pack?", a: "Choose three or five individual 100 ml bottles. Each bottle comes in its own box." },
+      { q: "Does the photo show the whole pack?", a: "Each photo shows one bottle and its box. The selected option states whether the pack contains three or five bottles." },
+      { q: "Where can I find the full ingredient list?", a: "The supplier lists collagen, vitamin E and rosemary oil among the ingredients. Refer to the product label for the full ingredient list and use information." },
+    ],
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1",
+    category: "body-glow",
+    variantPickerLabel: "Pack size",
+    selectedVariantPickerLabel: "Selected pack",
+    variants: [
+      { id: "3x100ml", label: "3 × 100 ml · 3 bottles", colorName: "3 × 100 ml · 3 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se2e7392f78954d8ba49b7aaafe2c6f5aQ.webp?v=1793561674", imageAlt: "One 100 ml OceAura body oil bottle and box, representing the three-bottle pack option", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1", price: 159.99, compareAtPrice: 159.99 },
+      { id: "5x100ml", label: "5 × 100 ml · 5 bottles", colorName: "5 × 100 ml · 5 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Scc9e4785777e4fa2909ed618845525ebc.webp?v=1793561674", imageAlt: "One 100 ml OceAura body oil bottle and box, representing the five-bottle pack option", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717944156:1", price: 199.99, compareAtPrice: 199.99 },
+    ],
+    gallery: [
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Se2e7392f78954d8ba49b7aaafe2c6f5aQ.webp?v=1793561674", label: "3-bottle pack", badge: "3 × 100 ml", desc: "One 100 ml pump bottle and its box, shown to represent the pack of three bottles" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Scc9e4785777e4fa2909ed618845525ebc.webp?v=1793561674", label: "5-bottle pack", badge: "5 × 100 ml", desc: "One 100 ml pump bottle and its box, shown to represent the pack of five bottles" },
+    ],
+  },
+
+  {
+    id: "retinol-serum",
+    name: "FDUAY Retinol + Collagen Face Serum Capsules — 50 Count",
+    tagline: "One container of 50 capsules for facial skincare.",
+    description: "FDUAY face serum capsules in an oil formulation. The supplier label names retinol and collagen; the supplier does not state the retinol concentration. This offer contains one container of 50 capsules. Refer to the product label for the full ingredient list and directions.",
+    price: 119.99,
+    compareAtPrice: 119.99,
+    currency: "PLN",
+    image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/fduay-retinol-capsules-clean-ai-edit.png?v=1793646295",
+    imageAlt: "AI-edited supplier illustration of FDUAY retinol and collagen face serum capsules in a container of 50",
+    badge: "50 capsules",
+    benefits: [
+      "One container containing 50 capsules",
+      "Supplier label names retinol and collagen",
+      "Oil-form serum capsules for facial skincare",
+      "Refer to the label for full ingredients and directions",
+    ],
+    howToUse: [
+      "This offer is for one container of 50 capsules",
+      "Check the label for directions and full ingredient information before use",
+      "Refer to the product label for directions and precautions",
+    ],
+    faq: [
+      { q: "How many capsules are included?", a: "One container of 50 capsules." },
+      { q: "Which ingredients are named?", a: "The supplier label names retinol and collagen, but does not state the retinol concentration. Refer to the label for the full ingredient list." },
+      { q: "Where can I find directions for use?", a: "Refer to the product label for directions and precautions." },
+    ],
+    shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726740619612:1",
+    category: "skincare",
+    gallery: [
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/fduay-retinol-capsules-clean-ai-edit.png?v=1793646295", label: "50 capsules", badge: "50 count", desc: "AI-edited supplier illustration of FDUAY face serum capsules; one container of 50" },
     ],
   },
 
