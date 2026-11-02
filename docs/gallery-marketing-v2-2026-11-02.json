@@ -1,0 +1,261 @@
+{
+  "order": {
+    "body-oil": [
+      "body-3pack",
+      "body-massage",
+      "body-dose",
+      "body-5pack",
+      "body-detail",
+      "body-afterbath"
+    ],
+    "niacinamide-toner": [
+      "nia-30-hero",
+      "nia-apply",
+      "nia-dose",
+      "nia-detail",
+      "nia-travel"
+    ],
+    "candle-set": [
+      "candle-hero",
+      "candle-room",
+      "candle-light",
+      "candle-detail",
+      "candle-bath"
+    ],
+    "professional-derma-roller": [
+      "derma-hero",
+      "derma-face",
+      "derma-grip",
+      "derma-detail",
+      "derma-prepare"
+    ],
+    "retinol-serum": [
+      "retinol-hero",
+      "retinol-apply",
+      "retinol-capsule",
+      "retinol-detail",
+      "retinol-evening"
+    ]
+  },
+  "variantOnly": [
+    "nia-50-hero"
+  ],
+  "media": [
+    {
+      "key": "body-3pack",
+      "product": "body-oil",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898",
+      "fileId": "gid://shopify/MediaImage/72924191031644",
+      "filename": "lux-gallery-body-3pack-ai-2026-11-02.png",
+      "alt": "Ilustracja AI na podstawie materiałów dostawcy — body-3pack"
+    },
+    {
+      "key": "body-5pack",
+      "product": "body-oil",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909",
+      "fileId": "gid://shopify/MediaImage/72924191261020",
+      "filename": "lux-gallery-body-5pack-ai-2026-11-02.png",
+      "alt": "Ilustracja AI na podstawie materiałów dostawcy — body-5pack"
+    },
+    {
+      "key": "body-detail",
+      "product": "body-oil",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-detail-ai-2026-11-02.png?v=1793649246",
+      "fileId": "gid://shopify/MediaImage/72924233957724",
+      "filename": "lux-gallery-body-detail-ai-2026-11-02.png",
+      "alt": "Detal pompki i etykiety pojedynczej butelki OceAura 100 ml — ilustracja AI"
+    },
+    {
+      "key": "nia-30-hero",
+      "product": "niacinamide-toner",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917",
+      "fileId": "gid://shopify/MediaImage/72924191326556",
+      "filename": "lux-gallery-nia-30-hero-ai-2026-11-02.png",
+      "alt": "Ilustracja AI na podstawie materiałów dostawcy — nia-30-hero"
+    },
+    {
+      "key": "nia-50-hero",
+      "product": "niacinamide-toner",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-50-hero-ai-2026-11-02.png?v=1793649270",
+      "fileId": "gid://shopify/MediaImage/72924235366748",
+      "filename": "lux-gallery-nia-50-hero-ai-2026-11-02.png",
+      "alt": "Serum LGRAMER 50 ml z niacynamidem 12% i cynkiem 2% — ilustracja AI"
+    },
+    {
+      "key": "nia-detail",
+      "product": "niacinamide-toner",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-detail-ai-2026-11-02.png?v=1793649278",
+      "fileId": "gid://shopify/MediaImage/72924236022108",
+      "filename": "lux-gallery-nia-detail-ai-2026-11-02.png",
+      "alt": "Zbliżenie pompki i osłonki serum LGRAMER — ilustracja AI"
+    },
+    {
+      "key": "candle-hero",
+      "product": "candle-set",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926",
+      "fileId": "gid://shopify/MediaImage/72924191523164",
+      "filename": "lux-gallery-candle-hero-ai-2026-11-02.png",
+      "alt": "Ilustracja AI na podstawie materiałów dostawcy — candle-hero"
+    },
+    {
+      "key": "candle-detail",
+      "product": "candle-set",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-detail-ai-2026-11-02.png?v=1793649293",
+      "fileId": "gid://shopify/MediaImage/72924236644700",
+      "filename": "lux-gallery-candle-detail-ai-2026-11-02.png",
+      "alt": "Detal bursztynowego szkła i etykiety świecy Aroma Sensation — ilustracja AI"
+    },
+    {
+      "key": "derma-hero",
+      "product": "professional-derma-roller",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935",
+      "fileId": "gid://shopify/MediaImage/72924191916380",
+      "filename": "lux-gallery-derma-hero-ai-2026-11-02.png",
+      "alt": "Ilustracja AI na podstawie materiałów dostawcy — derma-hero"
+    },
+    {
+      "key": "derma-detail",
+      "product": "professional-derma-roller",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-detail-ai-2026-11-02.png?v=1793649318",
+      "fileId": "gid://shopify/MediaImage/72924237889884",
+      "filename": "lux-gallery-derma-detail-ai-2026-11-02.png",
+      "alt": "Zbliżenie fioletowej głowicy derma rollera — ilustracja AI"
+    },
+    {
+      "key": "retinol-hero",
+      "product": "retinol-serum",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289",
+      "fileId": "gid://shopify/MediaImage/72924236448092",
+      "filename": "lux-gallery-retinol-hero-ai-2026-11-02.png",
+      "alt": "Opakowanie FDUAY z 50 kapsułkami retinolu — ilustracja AI"
+    },
+    {
+      "key": "retinol-detail",
+      "product": "retinol-serum",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-detail-ai-2026-11-02.png?v=1793649334",
+      "fileId": "gid://shopify/MediaImage/72924238905692",
+      "filename": "lux-gallery-retinol-detail-ai-2026-11-02.png",
+      "alt": "Dwie różowe kapsułki i opakowanie FDUAY — ilustracja AI"
+    },
+    {
+      "key": "body-dose",
+      "product": "body-oil",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-dose-ai-v2-2026-11-02.png?v=1793651437",
+      "fileId": "gid://shopify/MediaImage/72924378169692",
+      "filename": "lux-story-body-dose-ai-v2-2026-11-02.png",
+      "alt": "Dozowanie pompką — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "body-massage",
+      "product": "body-oil",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-massage-ai-v2-2026-11-02.png?v=1793650988",
+      "fileId": "gid://shopify/MediaImage/72924345696604",
+      "filename": "lux-story-body-massage-ai-v2-2026-11-02.png",
+      "alt": "Masaż po kąpieli — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "body-afterbath",
+      "product": "body-oil",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-afterbath-ai-v2-2026-11-02.png?v=1793651273",
+      "fileId": "gid://shopify/MediaImage/72924366209372",
+      "filename": "lux-story-body-afterbath-ai-v2-2026-11-02.png",
+      "alt": "Codzienna pielęgnacja ciała — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "nia-dose",
+      "product": "niacinamide-toner",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-dose-ai-v2-2026-11-02.png?v=1793651445",
+      "fileId": "gid://shopify/MediaImage/72924379251036",
+      "filename": "lux-story-nia-dose-ai-v2-2026-11-02.png",
+      "alt": "Wygodne dozowanie — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "nia-apply",
+      "product": "niacinamide-toner",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-apply-ai-v2-2026-11-02.png?v=1793650998",
+      "fileId": "gid://shopify/MediaImage/72924345860444",
+      "filename": "lux-story-nia-apply-ai-v2-2026-11-02.png",
+      "alt": "Aplikacja serum — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "nia-travel",
+      "product": "niacinamide-toner",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-travel-ai-v2-2026-11-02.png?v=1793651284",
+      "fileId": "gid://shopify/MediaImage/72924366799196",
+      "filename": "lux-story-nia-travel-ai-v2-2026-11-02.png",
+      "alt": "Pielęgnacja w podróży — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "candle-light",
+      "product": "candle-set",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-light-ai-v2-2026-11-02.png?v=1793651247",
+      "fileId": "gid://shopify/MediaImage/72924365029724",
+      "filename": "lux-story-candle-light-ai-v2-2026-11-02.png",
+      "alt": "Zapalanie świecy — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "candle-room",
+      "product": "candle-set",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-room-ai-v2-2026-11-02.png?v=1793651222",
+      "fileId": "gid://shopify/MediaImage/72924363981148",
+      "filename": "lux-story-candle-room-ai-v2-2026-11-02.png",
+      "alt": "Wieczór z książką — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "candle-bath",
+      "product": "candle-set",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-bath-ai-v2-2026-11-02.png?v=1793651293",
+      "fileId": "gid://shopify/MediaImage/72924366963036",
+      "filename": "lux-story-candle-bath-ai-v2-2026-11-02.png",
+      "alt": "Domowe spa — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "derma-face",
+      "product": "professional-derma-roller",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-face-ai-v2-2026-11-02.png?v=1793651231",
+      "fileId": "gid://shopify/MediaImage/72924364505436",
+      "filename": "lux-story-derma-face-ai-v2-2026-11-02.png",
+      "alt": "Przygotowanie do użycia — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "derma-grip",
+      "product": "professional-derma-roller",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-grip-ai-v2-2026-11-02.png?v=1793651254",
+      "fileId": "gid://shopify/MediaImage/72924365226332",
+      "filename": "lux-story-derma-grip-ai-v2-2026-11-02.png",
+      "alt": "Kształt i wielkość w dłoni — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "derma-prepare",
+      "product": "professional-derma-roller",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-prepare-ai-v2-2026-11-02.png?v=1793651302",
+      "fileId": "gid://shopify/MediaImage/72924367487324",
+      "filename": "lux-story-derma-prepare-ai-v2-2026-11-02.png",
+      "alt": "Miejsce na pielęgnację — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "retinol-capsule",
+      "product": "retinol-serum",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-capsule-ai-v2-2026-11-02.png?v=1793651263",
+      "fileId": "gid://shopify/MediaImage/72924365685084",
+      "filename": "lux-story-retinol-capsule-ai-v2-2026-11-02.png",
+      "alt": "Kapsułka w dłoniach — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "retinol-apply",
+      "product": "retinol-serum",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-apply-ai-v2-2026-11-02.png?v=1793651239",
+      "fileId": "gid://shopify/MediaImage/72924364702044",
+      "filename": "lux-story-retinol-apply-ai-v2-2026-11-02.png",
+      "alt": "Wieczorna aplikacja — ilustracja zastosowania produktu, AI"
+    },
+    {
+      "key": "retinol-evening",
+      "product": "retinol-serum",
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-evening-ai-v2-2026-11-02.png?v=1793651310",
+      "fileId": "gid://shopify/MediaImage/72924367618396",
+      "filename": "lux-story-retinol-evening-ai-v2-2026-11-02.png",
+      "alt": "Pielęgnacja przed snem — ilustracja zastosowania produktu, AI"
+    }
+  ]
+}

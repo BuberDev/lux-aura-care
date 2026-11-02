@@ -1383,6 +1383,22 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       )}
                     </div>
 
+                    {product.mediaDisclosure && activeHeroItem.type === "image" && (
+                      <div className="mt-3 space-y-0.5 text-center sm:text-left" aria-live="polite">
+                        <div className="flex items-center justify-center gap-2 sm:justify-start">
+                          <p className="text-sm font-semibold text-text-primary">
+                            <T text={activeHeroItem.label} />
+                          </p>
+                          <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-accent-gold">
+                            <T text={"AI illustration"} />
+                          </span>
+                        </div>
+                        <p className="text-xs text-text-secondary">
+                          <T text={activeHeroItem.desc} />
+                        </p>
+                      </div>
+                    )}
+
                     {activeHeroItem.type === "image" && (
                       <button
                         type="button"

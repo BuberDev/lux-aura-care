@@ -1024,7 +1024,7 @@ export const shopProducts: ShopProduct[] = [
     compareAtPrice: 109.99,
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935",
-    imageAlt: "AI illustration of one black-handled derma roller with a single roller head",
+    imageAlt: "One black-handled derma roller with a single roller head",
     mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "Choose a length",
     benefits: [
@@ -1048,14 +1048,16 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Needle length",
     selectedVariantPickerLabel: "Selected length",
     variants: [
-      { id: "0.25mm", label: "0.25 mm", colorName: "0.25 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "AI illustration of one black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1" },
-      { id: "0.2mm", label: "0.2 mm", colorName: "0.2 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "AI illustration of one black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545912156:1" },
-      { id: "0.3mm", label: "0.3 mm", colorName: "0.3 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "AI illustration of one black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545944924:1" },
+      { id: "0.25mm", label: "0.25 mm", colorName: "0.25 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "One black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545879388:1" },
+      { id: "0.2mm", label: "0.2 mm", colorName: "0.2 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "One black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545912156:1" },
+      { id: "0.3mm", label: "0.3 mm", colorName: "0.3 mm", swatchHex: "#393939", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", imageAlt: "One black-handled derma roller with a single roller head", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726545944924:1" },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", label: "Derma roller", badge: "Single roller", desc: "AI illustration of one black-handled derma roller with a single roller head" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-detail-ai-2026-11-02.png?v=1793649318", label: "Roller head detail", badge: "Head detail", desc: "Close-up AI illustration of a single derma roller head" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-lifestyle-ai-2026-11-02.png?v=1793649326", label: "Product detail", badge: "One roller", desc: "AI illustration showing one derma roller on a light surface" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935", label: "Derma roller", badge: "Single roller", desc: "One roller with a black handle and single roller head" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-face-ai-v2-2026-11-02.png?v=1793651231", label: "Preparing near the cheek", badge: "Before-use preparation", desc: "The roller held beside the cheek during preparation" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-grip-ai-v2-2026-11-02.png?v=1793651254", label: "Handle and head in hand", badge: "Grip and scale", desc: "The handle and roller head held in the hand for scale" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-detail-ai-2026-11-02.png?v=1793649318", label: "Roller head detail", badge: "Head detail", desc: "A close view of the roller head" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-prepare-ai-v2-2026-11-02.png?v=1793651302", label: "Before-use setup", badge: "Preparation", desc: "One roller laid out on a clear surface before use" },
     ],
   },
 
@@ -1068,7 +1070,7 @@ export const shopProducts: ShopProduct[] = [
     compareAtPrice: 109.99,
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917",
-    imageAlt: "AI illustration of the LGRAMER niacinamide serum in a 30 ml bottle",
+    imageAlt: "LGRAMER niacinamide serum in a 30 ml pump bottle",
     mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "Choose bottle size",
     benefits: [
@@ -1093,13 +1095,15 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Bottle size",
     selectedVariantPickerLabel: "Selected size",
     variants: [
-      { id: "30ml", label: "30 ml", colorName: "30 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917", imageAlt: "AI illustration of the LGRAMER niacinamide serum in a 30 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593786204:1" },
-      { id: "50ml", label: "50 ml", colorName: "50 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-50-hero-ai-2026-11-02.png?v=1793649270", imageAlt: "AI illustration of the LGRAMER niacinamide serum in a 50 ml bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593753436:1" },
+      { id: "30ml", label: "30 ml", colorName: "30 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917", imageAlt: "LGRAMER niacinamide serum in a 30 ml pump bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593786204:1" },
+      { id: "50ml", label: "50 ml", colorName: "50 ml", swatchHex: "#d5d0c6", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-50-hero-ai-2026-11-02.png?v=1793649270", imageAlt: "LGRAMER niacinamide serum in a 50 ml pump bottle", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726593753436:1" },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917", label: "30 ml bottle", badge: "30 ml", desc: "AI illustration of the LGRAMER niacinamide serum in a 30 ml bottle" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-detail-ai-2026-11-02.png?v=1793649278", label: "Pump and cap detail", badge: "Bottle detail", desc: "Close-up AI illustration of the serum pump and protective cap" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-lifestyle-ai-2026-11-02.png?v=1793649301", label: "Serum on a vanity", badge: "30 ml bottle", desc: "AI illustration of the LGRAMER serum in a 30 ml bottle on a light vanity" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917", label: "30 ml bottle", badge: "Pump bottle", desc: "The pump dispenses serum without unscrewing the bottle" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-apply-ai-v2-2026-11-02.png?v=1793650998", label: "Applying serum", badge: "Face-care routine", desc: "Facial serum applied to the cheek as part of skincare" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-dose-ai-v2-2026-11-02.png?v=1793651445", label: "Pump dispensing serum", badge: "Pump dispenser", desc: "The pump lets you dispense serum without unscrewing the bottle" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-detail-ai-2026-11-02.png?v=1793649278", label: "Pump and cap detail", badge: "Bottle detail", desc: "A closer look at the pump and protective cap" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-travel-ai-v2-2026-11-02.png?v=1793651284", label: "Serum in a travel setting", badge: "30 ml bottle", desc: "The 30 ml serum bottle shown in a travel setting" },
     ],
   },
 
@@ -1112,7 +1116,7 @@ export const shopProducts: ShopProduct[] = [
     compareAtPrice: 119.99,
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926",
-    imageAlt: "AI illustration of a single candle in a lidded amber glass jar",
+    imageAlt: "One candle in an amber glass jar with a lid",
     mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "White Musk",
     benefits: [
@@ -1137,12 +1141,14 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Fragrance",
     selectedVariantPickerLabel: "Selected fragrance",
     variants: [
-      { id: "white-musk", label: "White Musk", colorName: "White Musk", swatchHex: "#c6a16c", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926", imageAlt: "AI illustration of a single candle in a lidded amber glass jar", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726651392348:1" },
+      { id: "white-musk", label: "White Musk", colorName: "White Musk", swatchHex: "#c6a16c", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926", imageAlt: "One candle in an amber glass jar with a lid", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726651392348:1" },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926", label: "Candle in amber glass", badge: "Amber glass", desc: "AI illustration of a single candle in a lidded amber glass jar" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-detail-ai-2026-11-02.png?v=1793649293", label: "Glass and label detail", badge: "Jar detail", desc: "Close-up AI illustration of amber glass and the candle label" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-lifestyle-ai-2026-11-02.png?v=1793649309", label: "Candle on a side table", badge: "Home setting", desc: "AI illustration of a lit candle on a stone side table" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926", label: "Candle in amber glass", badge: "Amber glass", desc: "White Musk candle in a lidded amber glass jar" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-room-ai-v2-2026-11-02.png?v=1793651222", label: "Reading by candlelight", badge: "Home fragrance", desc: "Soft candlelight beside a book in a reading room" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-light-ai-v2-2026-11-02.png?v=1793651247", label: "Lighting the candle", badge: "Candle care", desc: "A hand lighting the candle wick" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-detail-ai-2026-11-02.png?v=1793649293", label: "Glass and label detail", badge: "Jar detail", desc: "Amber glass and candle label shown close up" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-bath-ai-v2-2026-11-02.png?v=1793651293", label: "Unlit candle in bathroom", badge: "Bathroom setting", desc: "An unlit candle set out in a bathroom setting" },
     ],
   },
 
@@ -1155,7 +1161,7 @@ export const shopProducts: ShopProduct[] = [
     compareAtPrice: 159.99,
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898",
-    imageAlt: "AI-generated supplier-reference illustration of the 3 × 100 ml OceAura body oil pack with three bottles and cartons",
+    imageAlt: "OceAura body oil three-pack with three 100 ml pump bottles and cartons",
     mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "Body oil",
     benefits: [
@@ -1180,13 +1186,16 @@ export const shopProducts: ShopProduct[] = [
     variantPickerLabel: "Pack size",
     selectedVariantPickerLabel: "Selected pack",
     variants: [
-      { id: "3x100ml", label: "3 × 100 ml · 3 bottles", colorName: "3 × 100 ml · 3 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898", imageAlt: "AI illustration of the OceAura body oil pack with three 100 ml bottles and cartons", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1", price: 159.99, compareAtPrice: 159.99 },
-      { id: "5x100ml", label: "5 × 100 ml · 5 bottles", colorName: "5 × 100 ml · 5 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909", imageAlt: "AI illustration of the OceAura body oil pack with five 100 ml bottles and cartons", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717944156:1", price: 199.99, compareAtPrice: 199.99 },
+      { id: "3x100ml", label: "3 × 100 ml · 3 bottles", colorName: "3 × 100 ml · 3 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898", imageAlt: "OceAura body oil three-pack with three 100 ml pump bottles and cartons", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717976924:1", price: 159.99, compareAtPrice: 159.99 },
+      { id: "5x100ml", label: "5 × 100 ml · 5 bottles", colorName: "5 × 100 ml · 5 bottles", swatchHex: "#8d795f", image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909", imageAlt: "OceAura body oil five-pack with five 100 ml pump bottles and cartons", shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726717944156:1", price: 199.99, compareAtPrice: 199.99 },
     ],
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898", label: "3-bottle pack", badge: "3 × 100 ml", desc: "AI illustration of the OceAura body oil pack with three 100 ml bottles and cartons" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909", label: "5-bottle pack", badge: "5 × 100 ml", desc: "AI illustration of the OceAura body oil pack with five 100 ml bottles and cartons" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-detail-ai-2026-11-02.png?v=1793649246", label: "Bottle and pump detail", badge: "100 ml bottle", desc: "Close-up AI illustration of one OceAura 100 ml bottle and its pump" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898", label: "3-bottle pack", badge: "3 × 100 ml", desc: "Three 100 ml pump bottles and their cartons in the three-bottle pack" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-massage-ai-v2-2026-11-02.png?v=1793650988", label: "Oil massage on the lower leg", badge: "Body-care routine", desc: "A body-oil massage shown on the lower leg" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-dose-ai-v2-2026-11-02.png?v=1793651437", label: "Pump in use", badge: "Pump dispenser", desc: "The pump dispenses oil directly from the bottle" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-5pack-ai-2026-11-02.png?v=1793648909", label: "5-bottle pack", badge: "5 × 100 ml", desc: "Five 100 ml pump bottles and their cartons in the five-bottle pack" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-detail-ai-2026-11-02.png?v=1793649246", label: "Bottle and pump detail", badge: "100 ml bottle", desc: "A close view of one 100 ml bottle and its pump" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-afterbath-ai-v2-2026-11-02.png?v=1793651273", label: "After-bath body care", badge: "Body-care routine", desc: "Body oil set out as part of an after-bath care routine" },
     ],
   },
 
@@ -1199,7 +1208,7 @@ export const shopProducts: ShopProduct[] = [
     compareAtPrice: 119.99,
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289",
-    imageAlt: "AI illustration of the FDUAY retinol capsule container with 50 capsules",
+    imageAlt: "FDUAY oil-form face serum capsules in a 50-count container",
     mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
     badge: "50 capsules",
     benefits: [
@@ -1221,9 +1230,11 @@ export const shopProducts: ShopProduct[] = [
     shopifyUrl: "https://imp082-pj.myshopify.com/cart/59726740619612:1",
     category: "skincare",
     gallery: [
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289", label: "50-capsule container", badge: "50 capsules", desc: "AI illustration of the FDUAY retinol capsule container with 50 capsules" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-detail-ai-2026-11-02.png?v=1793649334", label: "Capsule detail", badge: "Product detail", desc: "Close-up AI illustration of two capsules beside the FDUAY container" },
-      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-lifestyle-ai-2026-11-02.png?v=1793649342", label: "Container on a vanity", badge: "Product setting", desc: "AI illustration of the FDUAY capsule container on a vanity" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289", label: "50-capsule container", badge: "50 capsules", desc: "One container with 50 oil-form serum capsules" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-apply-ai-v2-2026-11-02.png?v=1793651239", label: "Applying capsule serum", badge: "Facial skincare", desc: "Oil-form capsule serum applied to the cheek" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-capsule-ai-v2-2026-11-02.png?v=1793651263", label: "Handling one capsule", badge: "Single capsule", desc: "One capsule held in the hands before use" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-detail-ai-2026-11-02.png?v=1793649334", label: "Capsule detail", badge: "Product detail", desc: "Two capsules and the container shown close up" },
+      { url: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-evening-ai-v2-2026-11-02.png?v=1793651310", label: "Evening skincare setting", badge: "Bedside setting", desc: "The capsule container arranged by the bedside for an evening skincare routine" },
     ],
   },
 
