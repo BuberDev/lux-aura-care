@@ -1,0 +1,58 @@
+{
+  "id": "gid://shopify/Product/15948170658140",
+  "title": "EUQEE — zestaw 6 olejków eterycznych, 6 × 10 ml",
+  "vendor": "Lux Aura Care",
+  "status": "ACTIVE",
+  "productType": "",
+  "descriptionHtml": "<p>Zestaw EUQEE zawiera sześć buteleczek olejków eterycznych po 10 ml, pipetę i pudełko prezentowe. Przeznaczony do rozpylania zapachu w kompatybilnym dyfuzorze. Wybierz kompozycję zapachów: klasyczną, kwiatową albo drzewną.</p>\n<p>Wariant klasyczny: lawenda, eukaliptus, mięta pieprzowa, drzewo herbaciane, słodka pomarańcza i trawa cytrynowa.<br>\nWariant kwiatowy: lawenda, róża, ylang-ylang, jaśmin, geranium i rumianek.<br>\nWariant drzewny: drzewo sandałowe, eukaliptus, cedr, kadzidłowiec, cynamon i mirra.</p>\n\n<p>Stosuj zgodnie z instrukcją swojego dyfuzora. Dostawca wskazuje 3–5 kropli na 100 ml wody; zacznij od mniejszej ilości i wietrz pomieszczenie. Nie spożywaj. Nie stosuj nierozcieńczonych olejków bezpośrednio na skórę. Unikaj kontaktu z oczami i błonami śluzowymi. Przechowuj poza zasięgiem dzieci.</p>\n\n<p>Nie deklarujemy certyfikowanych upraw ekologicznych ani działania leczniczego.</p>\n",
+  "tags": [],
+  "totalInventory": 109,
+  "featuredImageUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sb2522276561c4d038197e0a10a07ac55O.webp?v=1793547008",
+  "images": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sb2522276561c4d038197e0a10a07ac55O.webp?v=1793547008",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72906611065180"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S4e76b5ff71be45b3abbf3c3aeac40f2bL.webp?v=1793547009",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72906611097948"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sf55ca1c89f934e829a83af4379a0ed33q.webp?v=1793547009",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72906611130716"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S5c94192b23434fb5bd88decef951f265o.webp?v=1793547009",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72906611163484"
+    }
+  ],
+  "totalVariants": 3,
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/59723808178524",
+      "title": "Classic Series Set / 10mlx6",
+      "sku": "14:173#Classic Series Set;400030001:75366552#10mlx6",
+      "price": "139.99",
+      "inventoryQuantity": 6
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59723808211292",
+      "title": "Floral Series Set / 10mlx6",
+      "sku": "14:29#Floral Series Set;400030001:75366552#10mlx6",
+      "price": "139.99",
+      "inventoryQuantity": 97
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59723808244060",
+      "title": "Woody Series Set / 10mlx6",
+      "sku": "14:10#Woody Series Set;400030001:75366552#10mlx6",
+      "price": "139.99",
+      "inventoryQuantity": 6
+    }
+  ],
+  "currencyCode": "PLN"
+}

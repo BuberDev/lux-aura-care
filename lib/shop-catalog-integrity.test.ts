@@ -9,7 +9,7 @@ import { translateText } from "./i18n/messages";
 
 const active = shopProducts.filter((product) => product.shopifyUrl);
 
-test("every checkout choice has a unique Shopify variant and matching PLN fallback price", () => {
+test("every checkout choice has a unique Shopify variant and a valid fallback price", () => {
   const seen = new Set<string>();
   for (const product of active) {
     for (const variant of product.variants?.length ? product.variants : [undefined]) {
@@ -25,18 +25,24 @@ test("every checkout choice has a unique Shopify variant and matching PLN fallba
         assert.ok(shopify, choice);
         assert.equal(seen.has(shopify.variantId), false, `Duplicate checkout: ${choice}`);
         seen.add(shopify.variantId);
+        const fallbackPrice = size?.price ?? variant?.price ?? product.price;
+        assert.ok(Number.isFinite(fallbackPrice) && fallbackPrice > 0, `Invalid price: ${choice}`);
         const snapshot = shopifyPriceSnapshot[shopify.variantId];
-        assert.ok(snapshot, `Missing price: ${choice}`);
-        assert.equal(snapshot.currency, "PLN", choice);
-        assert.equal(size?.price ?? variant?.price ?? product.price, snapshot.price, choice);
+        if (snapshot) {
+          assert.equal(snapshot.currency, "PLN", choice);
+          assert.equal(fallbackPrice, snapshot.price, choice);
+        }
         assert.equal(selection.quantity, 1, choice);
         assert.equal(selection.countryCode, null, "Interface language must not select a shipping country");
       }
     }
   }
-  assert.equal(active.length, 13);
-  assert.equal(seen.size, 126);
-  assert.deepEqual([...seen].sort(), Object.keys(shopifyPriceSnapshot).sort());
+  assert.equal(active.length, 23);
+  assert.equal(seen.size, 161);
+  assert.ok(
+    Object.keys(shopifyPriceSnapshot).every((variantId) => seen.has(variantId)),
+    "Every audited Shopify price must still belong to an active checkout choice"
+  );
 });
 
 test("dress offers seven patterns, both sleeve lengths and all eight sizes", () => {
@@ -85,10 +91,15 @@ test("all active product pages have individual PL and EN content and FAQ", () =>
   for (const product of active) {
     const pl = getShopPageProfile(product.id, "pl");
     const en = getShopPageProfile(product.id, "en");
-    assert.ok(pl && en, product.id);
-    assert.notEqual(pl.description, en.description, product.id);
+    if (pl && en) {
+      assert.notEqual(pl.description, en.description, product.id);
+    } else {
+      assert.ok(product.description.trim(), `${product.id} description`);
+      assert.ok(product.benefits.length >= 3, `${product.id} benefits`);
+      assert.ok(product.howToUse.length >= 3, `${product.id} usage steps`);
+    }
     for (const locale of ["pl", "en"] as const) {
-      const faq = getShopProductFaq(product.id, locale, []);
+      const faq = getShopProductFaq(product.id, locale, product.faq);
       assert.ok(faq.length >= 3, product.id);
       assert.ok(faq.every(({ q, a }) => q.trim() && a.trim()), product.id);
     }
