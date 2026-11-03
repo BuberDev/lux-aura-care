@@ -337,6 +337,14 @@ export const shopProductPolishCopy: Record<string, string> = {
     "Porównaj tę samą dojrzałą cerę przed rozpoczęciem regularnej pielęgnacji i po jej konsekwentnym stosowaniu. Różnica jest celowo naturalna: więcej blasku, gładszy wygląd i wypoczęte wykończenie, bez ukrywania prawdziwej struktury skóry.",
   "Before regular use": "Przed regularnym stosowaniem",
   "After regular use": "Po regularnym stosowaniu",
+  "Before and after": "Przed i po",
+  "Product results": "Efekty stosowania produktu",
+  "Before": "Przed",
+  "After": "Po",
+  "Before using {product}": "Przed stosowaniem produktu: {product}",
+  "After using {product}": "Po stosowaniu produktu: {product}",
+  "Individual results vary. Photos do not guarantee the same result.":
+    "Efekty są indywidualne. Zdjęcia nie gwarantują uzyskania takiego samego rezultatu.",
   "Drag to compare": "Przesuń, aby porównać",
   "Move the comparison slider": "Przesuń suwak porównania przed i po",
   "Mature complexion before starting a consistent Vitamin C and retinol routine":

@@ -33,6 +33,7 @@ import { CustomerRatingSummary } from "@/components/shop/customer-rating-summary
 import { PaymentMethods } from "@/components/shop/payment-methods";
 import { FreeShippingBadge } from "@/components/shop/free-shipping-badge";
 import { BeforeAfterComparison } from "@/components/shop/before-after-comparison";
+import { ProductResultsComparison } from "@/components/shop/product-results-comparison";
 import {
   trackShopAddToCart,
   trackShopBeginCheckout,
@@ -43,6 +44,7 @@ import {
 type ShopProductSalesProps = {
   readonly product: ShopProduct;
   readonly related: ShopProduct[];
+  readonly beforeAfterImageExtension: string | null;
 };
 
 type ProductUgcGalleryProps = {
@@ -625,7 +627,7 @@ const detailedScienceBenefits: Record<string, {
   ]
 };
 
-export function ShopProductSales({ product, related }: ShopProductSalesProps) {
+export function ShopProductSales({ product, related, beforeAfterImageExtension }: ShopProductSalesProps) {
   const { locale, text } = useI18n();
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
@@ -2055,6 +2057,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       )}
 
       {isSerumDuo && <BeforeAfterComparison />}
+      {beforeAfterImageExtension && (
+        <ProductResultsComparison
+          productId={product.id}
+          productName={product.name}
+          imageExtension={beforeAfterImageExtension}
+        />
+      )}
 
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
       {scienceBenefits.length > 0 && (
