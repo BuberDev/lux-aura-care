@@ -1,0 +1,82 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+Miękki szlafrok polarowy na guziki
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Advanced Mapping
+Basic Mapping
+Advanced Mapping
+Global
+Action
+Store Product	
+	Default Supplier	Supplier Variant	Quantity	
+ 
+	
+ 
+	
+ 
+	
+ 
+	
+ 
+
+
+Różowy / XL
+	
+	
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+	
+B-1XL
+	
+
+
+Niebieski / XL
+	
+	
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+	
+A-1XL
+	
+
+
+Zielony / XL
+	
+	
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+	
+C-1XL
+	
+
+
+Różowy / L
+	
+	
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+	
+B-L
+	
+
+
+Niebieski / L
+	
+	
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+	
+A-L
+	
+
+
+Zielony / L
+	
+	
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+	
+C-L
+	
+Save

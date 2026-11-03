@@ -1,0 +1,1258 @@
+{
+  "product": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/dress_red.jpg?v=1789373869",
+      "altText": "Blush pink Floral Grace maxi dress with burgundy flowers and short sleeves",
+      "mediaId": "gid://shopify/MediaImage/72104431124828"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/dress_black.jpg?v=1789373869",
+      "altText": "Black Floral Grace maxi dress with pink rose print and short sleeves",
+      "mediaId": "gid://shopify/MediaImage/72104431157596"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/dress_green.jpg?v=1789373870",
+      "altText": "Emerald green Floral Grace maxi dress with red flowers and a black bodice",
+      "mediaId": "gid://shopify/MediaImage/72104431190364"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/dress_white.jpg?v=1789373869",
+      "altText": "Ivory Floral Grace maxi dress with red flowers and a black long-sleeve bodice",
+      "mediaId": "gid://shopify/MediaImage/72104431223132"
+    }
+  ],
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/59112652800348",
+      "title": "Green short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652833116",
+      "title": "Green short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652865884",
+      "title": "Green short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652898652",
+      "title": "Green short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652931420",
+      "title": "Green short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652964188",
+      "title": "Green short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827006300",
+      "title": "Green short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827039068",
+      "title": "Green short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827071836",
+      "title": "Red long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827104604",
+      "title": "Red long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827137372",
+      "title": "Red long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827170140",
+      "title": "Red long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827202908",
+      "title": "Red long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827235676",
+      "title": "Red long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827268444",
+      "title": "Red long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827301212",
+      "title": "Red long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827333980",
+      "title": "Red short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827366748",
+      "title": "Red short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827399516",
+      "title": "Red short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827432284",
+      "title": "Red short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827465052",
+      "title": "Red short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827497820",
+      "title": "Red short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827530588",
+      "title": "Red short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827563356",
+      "title": "Red short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827596124",
+      "title": "Bodian short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827628892",
+      "title": "Bodian short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827661660",
+      "title": "Bodian short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827694428",
+      "title": "Bodian short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827727196",
+      "title": "Bodian short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827759964",
+      "title": "Bodian short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827792732",
+      "title": "Bodian short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827825500",
+      "title": "Bodian short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652407132",
+      "title": "Pink short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652439900",
+      "title": "Pink short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652472668",
+      "title": "Pink short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652505436",
+      "title": "Pink short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652538204",
+      "title": "Pink short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652570972",
+      "title": "Pink short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827858268",
+      "title": "Pink short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827891036",
+      "title": "Pink short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652996956",
+      "title": "White long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653029724",
+      "title": "White long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653062492",
+      "title": "White long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653095260",
+      "title": "White long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653128028",
+      "title": "White long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653160796",
+      "title": "White long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827923804",
+      "title": "White long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827956572",
+      "title": "White long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652603740",
+      "title": "Black short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652636508",
+      "title": "Black short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652669276",
+      "title": "Black short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652702044",
+      "title": "Black short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652734812",
+      "title": "Black short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652767580",
+      "title": "Black short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827989340",
+      "title": "Black short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828022108",
+      "title": "Black short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828054876",
+      "title": "White short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828087644",
+      "title": "White short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828120412",
+      "title": "White short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828153180",
+      "title": "White short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828185948",
+      "title": "White short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828218716",
+      "title": "White short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828251484",
+      "title": "White short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828284252",
+      "title": "White short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828317020",
+      "title": "Pink long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828349788",
+      "title": "Pink long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828382556",
+      "title": "Pink long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828415324",
+      "title": "Pink long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828448092",
+      "title": "Pink long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828480860",
+      "title": "Pink long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828513628",
+      "title": "Pink long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828546396",
+      "title": "Pink long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828579164",
+      "title": "Green long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828611932",
+      "title": "Green long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828644700",
+      "title": "Green long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828677468",
+      "title": "Green long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828710236",
+      "title": "Green long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828743004",
+      "title": "Green long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828775772",
+      "title": "Green long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828808540",
+      "title": "Green long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828841308",
+      "title": "Bodian long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828874076",
+      "title": "Bodian long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828906844",
+      "title": "Bodian long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828939612",
+      "title": "Bodian long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828972380",
+      "title": "Bodian long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829005148",
+      "title": "Bodian long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829037916",
+      "title": "Bodian long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829070684",
+      "title": "Bodian long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829103452",
+      "title": "Fangge-CX long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829136220",
+      "title": "Fangge-CX long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829168988",
+      "title": "Fangge-CX long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829201756",
+      "title": "Fangge-CX long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829234524",
+      "title": "Fangge-CX long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829267292",
+      "title": "Fangge-CX long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829300060",
+      "title": "Fangge-CX long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829332828",
+      "title": "Fangge-CX long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829365596",
+      "title": "Fangge-CX short / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829398364",
+      "title": "Fangge-CX short / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829431132",
+      "title": "Fangge-CX short / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829463900",
+      "title": "Fangge-CX short / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829496668",
+      "title": "Fangge-CX short / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829529436",
+      "title": "Fangge-CX short / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829562204",
+      "title": "Fangge-CX short / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829594972",
+      "title": "Fangge-CX short / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829627740",
+      "title": "Black long / S",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829660508",
+      "title": "Black long / M",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829693276",
+      "title": "Black long / L",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829726044",
+      "title": "Black long / XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829758812",
+      "title": "Black long / 2XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829791580",
+      "title": "Black long / 3XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829824348",
+      "title": "Black long / 4XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829857116",
+      "title": "Black long / 5XL",
+      "media": {
+        "nodes": [],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": null
+        }
+      }
+    }
+  ]
+}

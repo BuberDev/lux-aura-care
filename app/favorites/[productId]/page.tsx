@@ -51,6 +51,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title,
     description: product.benefit,
+    robots: { index: false, follow: false },
     alternates: getLocalizedProductAlternates(sourceProduct, locale),
     keywords: [
       product.categoryId,

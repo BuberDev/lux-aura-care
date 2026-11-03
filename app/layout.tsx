@@ -21,9 +21,8 @@ import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { generateOrganizationJsonLd, toJsonLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
-import { products, siteMeta } from "@/lib/site-data";
+import { siteMeta } from "@/lib/site-data";
 import { shopProducts } from "@/lib/shop-data";
-import { localizeProducts } from "@/lib/product-localization";
 
 import "./globals.css";
 
@@ -117,18 +116,11 @@ export default async function RootLayout({
   const locale = await getRequestLocale();
   const cookieStore = await cookies();
   const consentGranted = cookieStore.get("lux_consent")?.value === "granted";
-  const searchProducts = [
-    ...localizeProducts(locale, products).map((product) => ({
-      id: `favorite-${product.id}`,
-      name: product.name,
-      href: `/favorites/${product.slug}`,
-    })),
-    ...localizeContent(locale, shopProducts).map((product) => ({
-      id: `shop-${product.id}`,
-      name: product.name,
-      href: `/shop/${product.id}`,
-    })),
-  ];
+  const searchProducts = localizeContent(locale, shopProducts).map((product) => ({
+    id: `shop-${product.id}`,
+    name: product.name,
+    href: `/shop/${product.id}`,
+  }));
 
   return (
     <html lang={locale} data-theme="dark" suppressHydrationWarning>

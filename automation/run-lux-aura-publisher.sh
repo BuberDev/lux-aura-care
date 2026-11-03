@@ -119,11 +119,16 @@ if [[ "$VISUALS_VALID" == true ]]; then
     print -r -- "[luxauracare-watchdog] zatwierdzony komplet grafik Imagegen jest gotowy — wznawiam bez ponownej generacji"
 else
     "$CODEX_BIN" exec \
-        --dangerously-bypass-approvals-and-sandbox \
+        --ignore-user-config \
+        --ignore-rules \
         --ephemeral \
         --skip-git-repo-check \
         -C "$REPO_DIR" \
         -m gpt-6-luna \
+        -c approval_policy=never \
+        -c default_permissions=copywriter-images \
+        -c 'permissions.copywriter-images={extends=":workspace",filesystem={":root"="deny",":minimal"="read","/System/Library/OpenSSL"="read","~/.nvm/versions/node"="read","~/.codex/generated_images"="read",":workspace_roots"={".env"="deny",".env.*"="deny"}}}' \
+        -c shell_environment_policy.inherit=core \
         - < "$REPO_DIR/automation/lux-aura-local-publisher.md"
     CODEX_STATUS=$?
 

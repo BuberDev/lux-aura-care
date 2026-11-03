@@ -1,0 +1,120 @@
+{
+  "supplier": "1005007827294869",
+  "country": "PL",
+  "currency": "USD",
+  "productCost": 23,
+  "shippingCost": 0,
+  "landedPLN": 90.28,
+  "retailPLN": 179.99,
+  "contributionPLN": 89.71,
+  "shippingEstimate": "9-16days for B-1XL, estimate not promise",
+  "rows": [
+    [
+      "https://ae01.alicdn.com/kf/Sd39963c6244143a79b999d4d9fc214e29.jpg",
+      "14:193#B;5:12668979",
+      "B",
+      "1XL",
+      "23.00",
+      "$ 0.00",
+      "--",
+      "23.00",
+      "49.84",
+      "179.99",
+      "23",
+      "50",
+      "50"
+    ],
+    [
+      "https://ae01.alicdn.com/kf/S2ec40ef22d8e4abf865c7d56a3758010d.jpg",
+      "14:1254#A;5:12668979",
+      "A",
+      "1XL",
+      "23.00",
+      "$ 0.00",
+      "--",
+      "23.00",
+      "49.84",
+      "179.99",
+      "90.28",
+      "40",
+      "40"
+    ],
+    [
+      "https://ae01.alicdn.com/kf/Se503b1169b1b4f29a13914891223610bh.jpg",
+      "14:496#C;5:12668979",
+      "C",
+      "1XL",
+      "23.00",
+      "$ 0.00",
+      "--",
+      "23.00",
+      "49.84",
+      "179.99",
+      "90.28",
+      "47",
+      "47"
+    ],
+    [
+      "https://ae01.alicdn.com/kf/Sd39963c6244143a79b999d4d9fc214e29.jpg",
+      "14:193#B;5:361385",
+      "B",
+      "L",
+      "23.00",
+      "$ 0.00",
+      "--",
+      "23.00",
+      "49.84",
+      "179.99",
+      "90.28",
+      "0",
+      "0"
+    ],
+    [
+      "https://ae01.alicdn.com/kf/S2ec40ef22d8e4abf865c7d56a3758010d.jpg",
+      "14:1254#A;5:361385",
+      "A",
+      "L",
+      "23.00",
+      "$ 0.00",
+      "--",
+      "23.00",
+      "49.84",
+      "179.99",
+      "90.28",
+      "41",
+      "41"
+    ],
+    [
+      "https://ae01.alicdn.com/kf/Se503b1169b1b4f29a13914891223610bh.jpg",
+      "14:496#C;5:361385",
+      "C",
+      "L",
+      "23.00",
+      "$ 0.00",
+      "--",
+      "23.00",
+      "49.84",
+      "179.99",
+      "90.28",
+      "46",
+      "46"
+    ]
+  ],
+  "spec": "SPECIFICATIONS\n\n\n\n\nBrand Name: XiaoTu\n\nCN: Shandong\n\nCraft of Weaving: Knit\n\nDresses Length: Knee-Length\n\nFabric Type: Fleece\n\nGender: Women\n\nHigh-concerned chemical: none\n\nItem 1: Female Robe\n\nItem 2: Female Autumn Winter Robes\n\nItem 3: Female Casual Bathrobe\n\nItem 4: Peignoirs for women\n\nItem 5: Women night gown with belt\n\nItem 6: Female Long Sleeve Bathrobe\n\nItem 7: Women Warm Sleepwear robe\n\nItem 8: Ladies Fleece Sleeping Robes\n\nItem Type: ROBES\n\nMaterial: POLYESTER\n\nMaterial Composition: 100% Polyester\n\nModel Number: 24092904\n\nObscene Picture: No\n\nOrigin: Mainland China\n\nPattern Type: Solid\n\nSeason: Autumn\n\nSexually Suggestive: No\n\nSleeve Length(cm): Full\n\nStyle: basics\n\nThickness: normal\n\nsize_info: {\"sizeInfoList\":[{\"length\":{\"cm\":\"105\",\"inch\":\"41.34\"},\"size\":\"L\",\"vid\":361385},{\"length\":{\"cm\":\"108\",\"inch\":\"42.52\"},\"size\":\"1XL\",\"vid\":12668979}]}\n\n\n",
+  "sizeChart": {
+    "L": {
+      "length": 105,
+      "bust": 110,
+      "shoulder": 42,
+      "sleeve": 52
+    },
+    "XL": {
+      "supplierSize": "1XL",
+      "length": 108,
+      "bust": 120,
+      "shoulder": 44,
+      "sleeve": 54
+    }
+  },
+  "note": "B pink, A blue, C green. Pink L stock0. Rows capturedafter save before price-quote reload, costsaboveverifiedinpreviousfulltable."
+}

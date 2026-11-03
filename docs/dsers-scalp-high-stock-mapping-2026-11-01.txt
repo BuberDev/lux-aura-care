@@ -1,0 +1,40 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+Silikonowa szczoteczka do masażu skóry głowy
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Basic Mapping
+Basic Mapping
+Advanced Mapping
+Store Product
+Silikonowa szczoteczka do masażu skóry głowy
+Default Supplier
+1pc Silicone Shampoo Brush Body Massage Brush Bath Shower Brush Salon Hairdressing Tool Scalp Massage Comb Hair Washing Comb
+Backup Supplier
+Select a Backup Supplier
+
+Color
+
+Green
+Blue
+Pink
+White
+Color
+Green
+Blue
+Pink
+White
+
+--
+
+--
+--
+--
+--
+Save

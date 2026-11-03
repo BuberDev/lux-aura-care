@@ -1,10 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import { getShopifyVariantFromUrl, getShopProductById } from "@/lib/shop-data";
+import { selectCheckoutItem } from "@/lib/shop-checkout-selection";
 
 const CHECKOUT_HOSTS = new Set(["shop.app", "checkout.shopify.com"]);
 const STOREFRONT_API_VERSION = "2026-07";
-const MAX_CHECKOUT_QUANTITY = 10;
+const CHECKOUT_REQUEST_TIMEOUT_MS = 5000;
 
 const CART_CREATE_MUTATION = `
   mutation CreateCart($input: CartInput!) {
@@ -30,35 +31,29 @@ type CheckoutRouteContext = {
 export async function GET(request: NextRequest, context: CheckoutRouteContext) {
   const { productId } = await context.params;
   const product = getShopProductById(productId);
-  const selectedVariantId = request.nextUrl.searchParams.get("variantId");
-  const selectedVariant = product?.variants?.find((variant) => variant.id === selectedVariantId);
-  const selectedSizeId = request.nextUrl.searchParams.get("sizeId");
-  const selectedSize = (selectedVariant?.sizes ?? product?.sizes)?.find(
-    (size) => size.id === selectedSizeId
-  );
-  const selectedShopifyUrl = selectedSize?.shopifyUrl ?? selectedVariant?.shopifyUrl ?? product?.shopifyUrl;
-  const shopifyVariant = selectedShopifyUrl ? parseShopifyVariant(selectedShopifyUrl) : null;
-  const checkoutQuantity = parseCheckoutQuantity(request.nextUrl.searchParams.get("quantity"));
-  const buyerCountryCode = getBuyerCountryCode(request);
-
   if (!product) {
     return redirectToProduct(request, productId);
   }
 
-  if (!shopifyVariant || product.purchaseStatus === "coming-soon") {
+  const selection = selectCheckoutItem(product, request.nextUrl.searchParams);
+  const shopifyVariant = selection?.shopifyUrl ? parseShopifyVariant(selection.shopifyUrl) : null;
+  if (!selection || !shopifyVariant || product.purchaseStatus === "coming-soon") {
     return redirectToProduct(request, productId);
   }
 
   const storefrontCheckoutUrl = await createStorefrontCheckoutUrl({
     storeOrigin: shopifyVariant.storeOrigin,
     shopifyVariantId: shopifyVariant.variantId,
-    quantity: checkoutQuantity,
-    buyerCountryCode,
+    quantity: selection.quantity,
+    buyerCountryCode: selection.countryCode,
   });
 
   if (storefrontCheckoutUrl) {
     return noIndexRedirect(storefrontCheckoutUrl);
   }
+
+  // Ajax cart checkout cannot preserve an explicit market selection.
+  if (selection.countryCode) return redirectToProduct(request, productId);
 
   try {
     const acceptLanguage = getCheckoutAcceptLanguage(request);
@@ -71,9 +66,10 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       method: "POST",
       headers: requestHeaders,
       body: JSON.stringify({
-        items: [{ id: Number(shopifyVariant.variantId), quantity: checkoutQuantity }],
+        items: [{ id: Number(shopifyVariant.variantId), quantity: selection.quantity }],
       }),
       cache: "no-store",
+      signal: AbortSignal.timeout(CHECKOUT_REQUEST_TIMEOUT_MS),
     });
 
     if (!cartResponse.ok) {
@@ -96,6 +92,7 @@ export async function GET(request: NextRequest, context: CheckoutRouteContext) {
       },
       redirect: "manual",
       cache: "no-store",
+      signal: AbortSignal.timeout(CHECKOUT_REQUEST_TIMEOUT_MS),
     });
     const checkoutUrl = checkoutResponse.headers.get("location");
 
@@ -128,25 +125,6 @@ function redirectToProduct(request: NextRequest, productId: string) {
   return noIndexRedirect(fallbackUrl);
 }
 
-function parseCheckoutQuantity(value: string | null) {
-  const parsed = Number(value);
-
-  if (!Number.isFinite(parsed)) {
-    return 1;
-  }
-
-  return Math.max(1, Math.min(MAX_CHECKOUT_QUANTITY, Math.trunc(parsed)));
-}
-
-function getBuyerCountryCode(request: NextRequest) {
-  const explicitCountry = request.nextUrl.searchParams.get("country")?.toUpperCase();
-  if (explicitCountry === "PL") {
-    return "PL";
-  }
-
-  return request.nextUrl.searchParams.get("locale") === "pl" ? "PL" : null;
-}
-
 function getCheckoutAcceptLanguage(request: NextRequest) {
   if (request.nextUrl.searchParams.get("locale") === "pl") {
     return "pl-PL,pl;q=0.9";
@@ -164,10 +142,10 @@ async function createStorefrontCheckoutUrl({
   storeOrigin: string;
   shopifyVariantId: string;
   quantity: number;
-  buyerCountryCode: "PL" | null;
+  buyerCountryCode: string | null;
 }) {
   const token = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN?.trim();
-  if (!token || !buyerCountryCode) {
+  if (!token) {
     return null;
   }
 
@@ -184,7 +162,7 @@ async function createStorefrontCheckoutUrl({
           query: CART_CREATE_MUTATION,
           variables: {
             input: {
-              buyerIdentity: { countryCode: buyerCountryCode },
+              ...(buyerCountryCode ? { buyerIdentity: { countryCode: buyerCountryCode } } : {}),
               lines: [
                 {
                   merchandiseId: `gid://shopify/ProductVariant/${shopifyVariantId}`,
@@ -195,6 +173,7 @@ async function createStorefrontCheckoutUrl({
           },
         }),
         cache: "no-store",
+        signal: AbortSignal.timeout(CHECKOUT_REQUEST_TIMEOUT_MS),
       }
     );
 

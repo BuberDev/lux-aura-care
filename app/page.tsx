@@ -12,19 +12,14 @@ import { CTAButton } from "@/components/cta-button";
 import { Heading } from "@/components/heading";
 import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { NewsletterBlock } from "@/components/newsletter-block";
-import { ProductCard } from "@/components/product-card";
-import { RoutineSection } from "@/components/sections/routine-section";
-import { TopPicksSection } from "@/components/sections/top-picks-section";
-import { BundlesSection } from "@/components/sections/bundles-section";
 import { Section } from "@/components/section";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
-import { categories, getAmazonFavorites, getFeaturedArticles, products, siteMeta } from "@/lib/site-data";
+import { categories, getFeaturedArticles, siteMeta } from "@/lib/site-data";
 import { shopProducts } from "@/lib/shop-data";
 import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { getRequestLocale } from "@/lib/i18n/request";
-import { localizeProducts } from "@/lib/product-localization";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { resolveShopProductsForLocale } from "@/lib/shop-currency";
 
@@ -87,13 +82,11 @@ function formatShopPrice(amount: number, currency: string, locale: string) {
 export default async function HomePage() {
   const locale = await getRequestLocale();
   const featuredArticles = localizeContent(locale, getFeaturedArticles());
-  const favorites = localizeProducts(locale, getAmazonFavorites());
-  const localizedProducts = localizeProducts(locale, products);
   const marketShopProducts = await resolveShopProductsForLocale(shopProducts, locale);
   const localizedShopProducts = localizeContent(locale, marketShopProducts);
   const localizedCategories = localizeContent(locale, categories);
   const localizedTrustSignals = localizeContent(locale, trustSignals);
-  const heroProducts = localizedProducts.map((product) => ({
+  const heroProducts = localizedShopProducts.map((product) => ({
     src: product.image,
     alt: product.imageAlt,
     name: product.name,
@@ -313,10 +306,6 @@ export default async function HomePage() {
       </Section>
       {/* ===== END SHOP SECTION ===== */}
 
-      <TopPicksSection />
-
-      <BundlesSection />
-
       <Section id="categories" className="[content-visibility:auto] [contain-intrinsic-size:1px_900px]">
         <Container>
           <Heading
@@ -357,40 +346,6 @@ export default async function HomePage() {
               <ArticleCard key={article.slug} article={article} />
             ))}
           </div>
-        </Container>
-      </Section>
-
-      <RoutineSection />
-
-      <Section id="amazon-favorites" className="[content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
-        <Container>
-          <Heading
-            eyebrow="Amazon Finds"
-            title="Curated product picks with clear trust signals"
-            description="Practical beauty and self-care products selected for repeat use, strong shopper signals, and easy comparison."
-          />
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {favorites.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                compact
-                detailsHref={`/favorites/${product.slug}`}
-              />
-            ))}
-          </div>
-
-          <InlineCtaPanel
-            className="mt-12"
-            eyebrow="Ready to compare"
-            title="Open the strongest picks while the product details are fresh"
-            description="Compare the curated favorites in one flow and keep your cart focused around the result you actually want."
-            primaryHref="/favorites"
-            primaryLabel="Compare curated favorites"
-            secondaryHref="/blog"
-            secondaryLabel="Read more guides"
-          />
         </Container>
       </Section>
 

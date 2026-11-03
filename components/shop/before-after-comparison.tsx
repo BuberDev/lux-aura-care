@@ -1,128 +1,66 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { Check, MoveHorizontal, ShieldCheck, Sparkles, SunMedium } from "lucide-react";
-
 import { Container } from "@/components/container";
-import { T } from "@/components/translated-text";
 import { useI18n } from "@/components/i18n-provider";
 
-const comparisonPoints = [
+const routineSteps = [
   {
-    icon: SunMedium,
-    title: "Before consistent care",
-    description: "Skin may look dull, uneven and less rested when the routine changes from day to day.",
+    image: "/vitamin-c-retinol-serum-duo/before-care-landscape.webp",
+    label: { pl: "Przed użyciem", en: "Before use" },
+    detail: {
+      pl: "Przykładowa modelka przed rozpoczęciem pielęgnacji serum.",
+      en: "An illustrative model before starting the serum routine.",
+    },
+    alt: { pl: "Przykładowa modelka z naturalną strukturą skóry przed pielęgnacją", en: "Illustrative model with natural skin texture before the routine" },
   },
   {
-    icon: Sparkles,
-    title: "After consistent care",
-    description: "Regular care can support a brighter, smoother-looking and more hydrated complexion.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "What supports the change",
-    description: "Vitamin C in the morning, SPF every day and retinol introduced gradually at night.",
+    image: "/product-demonstrations/vitamin-c-retinol-serum-duo-in-use.webp",
+    label: { pl: "W pielęgnacji", en: "In the routine" },
+    detail: {
+      pl: "Przykładowa aplikacja serum na twarz — bez obietnicy konkretnego efektu.",
+      en: "An example of facial serum application, without promising a specific result.",
+    },
+    alt: { pl: "Przykładowa modelka nakładająca serum na policzek", en: "Illustrative model applying serum to her cheek" },
   },
 ] as const;
 
-export function BeforeAfterComparison() {
-  const { text } = useI18n();
-  const [position, setPosition] = useState(52);
+export function ProductRoutineSection() {
+  const { locale } = useI18n();
+  const pl = locale === "pl";
 
   return (
-    <section className="relative overflow-hidden border-b border-border-subtle bg-surface-subtle/35 py-12 sm:py-16">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_50%_0%,rgba(201,169,110,0.13),transparent_70%)]" />
-      <Container className="relative px-2 sm:px-5 md:px-10 lg:px-16">
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-10">
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-accent-gold sm:text-xs">
-            <T text={"CONSISTENCY YOU CAN SEE"} />
+    <section id="product-routine" data-product-section="product-routine" aria-labelledby="product-routine-title" className="border-b border-border-subtle bg-surface-subtle/35 py-12 sm:py-16">
+      <Container className="px-4 sm:px-5 md:px-10 lg:px-16">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-gold sm:text-xs">
+            {pl ? "Przed użyciem / w praktyce" : "Before use / in practice"}
           </p>
-          <h2 className="mt-2 font-serif text-3xl font-semibold leading-tight text-text-primary sm:text-4xl">
-            <T text={"See what a steady routine can change"} />
+          <h2 id="product-routine-title" className="mt-3 font-serif text-2xl font-semibold leading-tight text-text-primary sm:text-3xl lg:text-4xl">
+            {pl ? "Zobacz, jak włączyć serum do pielęgnacji" : "See how serum fits into your routine"}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-secondary sm:text-base">
-            <T text={"Compare the same mature complexion before and after consistent care. The change is intentionally subtle: more glow, smoother-looking texture and a rested finish, while real skin still looks like real skin."} />
-          </p>
-        </div>
-
-        <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,0.55fr)] lg:items-stretch">
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-border-subtle bg-[#ead8bf] shadow-[0_24px_70px_rgba(41,31,20,0.16)] sm:aspect-[4/3]">
-            <Image
-              src="/vitamin-c-retinol-serum-duo/before-care-landscape.webp"
-              alt={text("Mature complexion before starting a consistent Vitamin C and retinol routine")}
-              fill
-              sizes="(max-width: 1023px) calc(100vw - 1rem), 68vw"
-              className="object-cover object-top"
-            />
-            <div
-              className="absolute inset-0 overflow-hidden"
-              style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
-            >
-              <Image
-                src="/vitamin-c-retinol-serum-duo/after-care-landscape-v2.webp"
-                alt={text("Mature complexion after consistent Vitamin C and retinol care")}
-                fill
-                sizes="(max-width: 1023px) calc(100vw - 1rem), 68vw"
-                className="object-cover object-top"
-              />
-            </div>
-
-            <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between p-3 sm:p-4">
-              <span className="rounded-full border border-white/35 bg-black/55 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-white backdrop-blur-md">
-                <T text={"Before regular use"} />
-              </span>
-              <span className="rounded-full border border-white/35 bg-white/85 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-stone-900 backdrop-blur-md">
-                <T text={"After regular use"} />
-              </span>
-            </div>
-
-            <div
-              className="pointer-events-none absolute inset-y-0 z-10 w-px bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.12),0_0_18px_rgba(0,0,0,0.28)]"
-              style={{ left: `${position}%` }}
-            >
-              <span className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/60 bg-[#a17f45] text-white shadow-xl sm:size-11">
-                <MoveHorizontal className="size-5" aria-hidden="true" />
-              </span>
-            </div>
-
-            <input
-              type="range"
-              min="8"
-              max="92"
-              value={position}
-              onChange={(event) => setPosition(Number(event.target.value))}
-              aria-label={text("Move the comparison slider")}
-              className="absolute inset-0 z-20 size-full cursor-ew-resize opacity-0"
-            />
-
-            <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10 flex justify-center sm:bottom-4">
-              <span className="rounded-full border border-white/25 bg-black/50 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur-md">
-                <T text={"Drag to compare"} />
-              </span>
-            </div>
-          </div>
-
-          <aside className="flex flex-col justify-center rounded-2xl border border-border-subtle bg-background-primary/65 p-4 shadow-sm sm:p-5">
-            <div className="divide-y divide-border-subtle">
-              {comparisonPoints.map(({ icon: Icon, title, description }) => (
-                <div key={title} className="flex gap-3 py-4 first:pt-1 last:pb-1">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-accent-gold/25 bg-accent-gold/10 text-accent-gold">
-                    <Icon className="size-4" aria-hidden="true" />
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 sm:gap-6">
+            {routineSteps.map((step) => (
+              <figure key={step.label.en} className="overflow-hidden rounded-2xl border border-border-subtle bg-background-primary">
+                <div className="relative aspect-[4/3] bg-[#eee7dc]">
+                  <Image src={step.image} alt={pl ? step.alt.pl : step.alt.en} fill sizes="(max-width: 639px) 94vw, (max-width: 1023px) 46vw, 480px" className="object-contain p-2 sm:p-4" />
+                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-stone-900 shadow-sm">
+                    {pl ? step.label.pl : step.label.en}
                   </span>
-                  <div>
-                    <h3 className="text-sm font-bold text-text-primary"><T text={title} /></h3>
-                    <p className="mt-1 text-xs leading-relaxed text-text-secondary"><T text={description} /></p>
-                  </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-4 flex items-start gap-2 rounded-xl border border-accent-gold/20 bg-accent-gold/10 p-3 text-[11px] leading-relaxed text-text-secondary">
-              <Check className="mt-0.5 size-3.5 shrink-0 text-accent-gold" aria-hidden="true" />
-              <p><T text={"Illustrative comparison of a possible cosmetic effect. Individual results depend on skin condition, regular use and daily sun protection."} /></p>
-            </div>
-          </aside>
+                <figcaption className="min-h-24 px-4 py-4 sm:px-5 sm:py-5">
+                  <p className="text-sm font-semibold leading-6 text-text-primary">{pl ? step.detail.pl : step.detail.en}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className="mt-5 grid gap-3 text-xs leading-6 text-text-secondary sm:grid-cols-2">
+            <p><strong className="text-text-primary">{pl ? "Rano: " : "Morning: "}</strong>{pl ? "witamina C, a następnie ochrona SPF." : "Vitamin C, followed by SPF protection."}</p>
+            <p><strong className="text-text-primary">{pl ? "Wieczorem: " : "Evening: "}</strong>{pl ? "retinol wprowadzany stopniowo, zgodnie z instrukcją produktu." : "Introduce retinol gradually, following the product directions."}</p>
+          </div>
+          <p className="mt-4 text-xs leading-6 text-text-secondary">
+            {pl ? "Przykładowe ujęcia: skóra przed pielęgnacją i aplikacja serum. Rezultaty mogą się różnić." : "Illustrative scenes: skin before the routine and serum application. Individual results may vary."}
+          </p>
         </div>
       </Container>
     </section>

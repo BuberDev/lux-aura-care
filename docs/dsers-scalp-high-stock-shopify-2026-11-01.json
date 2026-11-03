@@ -1,0 +1,80 @@
+{
+  "id": "gid://shopify/Product/15947770036572",
+  "title": "Silikonowa szczoteczka do masażu skóry głowy",
+  "vendor": "Lux Aura Care",
+  "status": "ACTIVE",
+  "productType": "",
+  "descriptionHtml": "<p>W zestawie: jedna silikonowa szczoteczka do masażu skóry głowy w wybranym kolorze.</p>\n<p>Delikatny masaż podczas mycia włosów. Miękkie wypustki i wygodny uchwyt ułatwiają rozprowadzenie szamponu. Przesuwaj szczoteczkę krótkimi ruchami, bez mocnego dociskania. Po użyciu wypłucz i pozostaw do wyschnięcia. Nie stosuj na podrażnionej ani uszkodzonej skórze.</p>\n",
+  "tags": [],
+  "totalInventory": 3048,
+  "featuredImageUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sd15aa5c49ebd4b17ba307ac46c182cc0J.webp?v=1793526825",
+  "images": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sd15aa5c49ebd4b17ba307ac46c182cc0J.webp?v=1793526825",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476524892"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sb9998267b6a041ff88cb74f51c1297d3f.webp?v=1793526824",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476557660"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S7c8489ae2944440ba33f32dd78442ffat.webp?v=1793526825",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476590428"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Sc0ea3854639f42f9a58b70227354fba2Y.webp?v=1793526825",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476623196"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S65bfe9e5465f45da8e350c72548c4e531.webp?v=1793526825",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476655964"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/Saed478c4e3f44dceb5214fdb80284f26Q.webp?v=1793526825",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476688732"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/S79f387b8aaa243e8976c35a24345706eJ.webp?v=1793526826",
+      "altText": "",
+      "mediaId": "gid://shopify/MediaImage/72904476721500"
+    }
+  ],
+  "totalVariants": 4,
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/59721290350940",
+      "title": "Green",
+      "sku": "14:691#Green",
+      "price": "109.99",
+      "inventoryQuantity": 87
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721290383708",
+      "title": "Blue",
+      "sku": "14:10#Blue",
+      "price": "109.99",
+      "inventoryQuantity": 65
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721290416476",
+      "title": "Pink",
+      "sku": "14:175#Pink",
+      "price": "109.99",
+      "inventoryQuantity": 204
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59721290449244",
+      "title": "White",
+      "sku": "14:193#White",
+      "price": "109.99",
+      "inventoryQuantity": 465
+    }
+  ],
+  "currencyCode": "PLN"
+}

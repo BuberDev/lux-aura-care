@@ -1,0 +1,92 @@
+[
+  {
+    "key": "body-dose",
+    "path": "output/product-media/published/2026-11-02/body-oil/body-dose.png",
+    "product": "body-oil",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-dose-ai-v2-2026-11-02.png?v=1793651437"
+  },
+  {
+    "key": "body-massage",
+    "path": "output/product-media/published/2026-11-02/body-oil/body-massage.png",
+    "product": "body-oil",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-massage-ai-v2-2026-11-02.png?v=1793650988"
+  },
+  {
+    "key": "body-afterbath",
+    "path": "output/product-media/published/2026-11-02/body-oil/body-afterbath.png",
+    "product": "body-oil",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-body-afterbath-ai-v2-2026-11-02.png?v=1793651273"
+  },
+  {
+    "key": "nia-dose",
+    "path": "output/product-media/published/2026-11-02/niacinamide-toner/nia-dose.png",
+    "product": "niacinamide-toner",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-dose-ai-v2-2026-11-02.png?v=1793651445"
+  },
+  {
+    "key": "nia-apply",
+    "path": "output/product-media/published/2026-11-02/niacinamide-toner/nia-apply.png",
+    "product": "niacinamide-toner",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-apply-ai-v2-2026-11-02.png?v=1793650998"
+  },
+  {
+    "key": "nia-travel",
+    "path": "output/product-media/published/2026-11-02/niacinamide-toner/nia-travel.png",
+    "product": "niacinamide-toner",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-nia-travel-ai-v2-2026-11-02.png?v=1793651284"
+  },
+  {
+    "key": "candle-light",
+    "path": "output/product-media/published/2026-11-02/candle-set/candle-light.png",
+    "product": "candle-set",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-light-ai-v2-2026-11-02.png?v=1793651247"
+  },
+  {
+    "key": "candle-room",
+    "path": "output/product-media/published/2026-11-02/candle-set/candle-room.png",
+    "product": "candle-set",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-room-ai-v2-2026-11-02.png?v=1793651222"
+  },
+  {
+    "key": "candle-bath",
+    "path": "output/product-media/published/2026-11-02/candle-set/candle-bath.png",
+    "product": "candle-set",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-candle-bath-ai-v2-2026-11-02.png?v=1793651293"
+  },
+  {
+    "key": "derma-face",
+    "path": "output/product-media/published/2026-11-02/professional-derma-roller/derma-face.png",
+    "product": "professional-derma-roller",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-face-ai-v2-2026-11-02.png?v=1793651231"
+  },
+  {
+    "key": "derma-grip",
+    "path": "output/product-media/published/2026-11-02/professional-derma-roller/derma-grip.png",
+    "product": "professional-derma-roller",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-grip-ai-v2-2026-11-02.png?v=1793651254"
+  },
+  {
+    "key": "derma-prepare",
+    "path": "output/product-media/published/2026-11-02/professional-derma-roller/derma-prepare.png",
+    "product": "professional-derma-roller",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-derma-prepare-ai-v2-2026-11-02.png?v=1793651302"
+  },
+  {
+    "key": "retinol-capsule",
+    "path": "output/product-media/published/2026-11-02/retinol-serum/retinol-capsule.png",
+    "product": "retinol-serum",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-capsule-ai-v2-2026-11-02.png?v=1793651263"
+  },
+  {
+    "key": "retinol-apply",
+    "path": "output/product-media/published/2026-11-02/retinol-serum/retinol-apply.png",
+    "product": "retinol-serum",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-apply-ai-v2-2026-11-02.png?v=1793651239"
+  },
+  {
+    "key": "retinol-evening",
+    "path": "output/product-media/published/2026-11-02/retinol-serum/retinol-evening.png",
+    "product": "retinol-serum",
+    "shopifyUrl": "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-story-retinol-evening-ai-v2-2026-11-02.png?v=1793651310"
+  }
+]

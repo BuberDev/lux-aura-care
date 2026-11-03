@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { LocalizedLink } from "@/components/localized-link";
 import { notFound } from "next/navigation";
-import { ArrowRight, ExternalLink, Flame, Layers3 } from "lucide-react";
+import { ArrowRight, Layers3 } from "lucide-react";
 
 import { ArticleCard } from "@/components/article-card";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
-import { AffiliateLink } from "@/components/affiliate-link";
 import { InlineCtaPanel } from "@/components/inline-cta-panel";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { getAffiliateRoute } from "@/lib/affiliate";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import { articleShopCrossLink } from "@/lib/blog-shop-cross-links";
 import { getShopProductById } from "@/lib/shop-data";
@@ -20,9 +18,6 @@ import {
   articles,
   getArticleBySlug,
   getCategoryById,
-  getProductById,
-  getProductProof,
-  getProductsByIds,
   getRelatedArticles,
   siteMeta,
 } from "@/lib/site-data";
@@ -31,7 +26,6 @@ import { LocalizedDate } from "@/components/localized-date";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { getRequestLocale } from "@/lib/i18n/request";
-import { localizeProduct, localizeProducts } from "@/lib/product-localization";
 import { GeneratedArticleView } from "@/components/generated-article-view";
 import { getGeneratedArticleBySlug } from "@/lib/generated-articles";
 
@@ -119,56 +113,6 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   };
 }
 
-async function ArticleProductBlock({ productId }: { productId: string }) {
-  const locale = await getRequestLocale();
-  const sourceProduct = getProductById(productId);
-
-  if (!sourceProduct) {
-    return null;
-  }
-
-  const product = localizeProduct(locale, sourceProduct);
-  const proof = getProductProof(product.id);
-
-  return (
-    <div className="my-10 rounded-3xl border border-accent-gold/30 bg-surface-subtle p-6 md:p-8">
-      <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)] md:items-center">
-        <div className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-border-subtle">
-          <Image
-            src={product.image}
-            alt={product.imageAlt}
-            fill
-            sizes="(max-width: 768px) 100vw, 220px"
-            className="object-cover"
-          />
-        </div>
-
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge><T text={product.trustSignal} /></Badge>
-          </div>
-
-          <h3 className="font-heading text-2xl leading-tight"><T text={product.name} /></h3>
-          <p className="text-sm leading-relaxed text-text-secondary"><T text={product.benefit} /></p>
-
-          <ul className="space-y-2">
-            {proof.highlights.slice(0, 3).map((highlight) => (
-              <li key={highlight} className="text-sm text-text-secondary">
-                • <T text={highlight} />
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-xs uppercase tracking-[0.16em] text-accent-gold">
-            {locale === "pl" ? "Rekomendacja redakcyjna" : "Editorial recommendation"}
-          </p>
-          <CTAButton href={getAffiliateRoute(product.id, "article-product-block")} label="Check on Amazon" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const locale = await getRequestLocale();
@@ -191,12 +135,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     locale,
     getRelatedArticles(article.slug, article.categoryId)
   );
-  const stickyProducts = localizeProducts(locale, getProductsByIds([
-    "silk-sleep-mask",
-    "retinol-serum",
-    "body-oil",
-    "bath-salts",
-  ]));
 
   const crossLinkShopProductId = articleShopCrossLink[sourceArticle.slug];
   const sourceCrossLinkProduct = crossLinkShopProductId
@@ -235,7 +173,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   };
 
   const hookPoints = article.sections.slice(0, 3).map((section) => section.title);
-  const firstProduct = getProductById(article.sections[0]?.productId ?? "");
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -324,14 +261,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <CTAButton href="/favorites" label="View Amazon Favorites" />
-              {firstProduct ? (
-                <CTAButton
-                  href={getAffiliateRoute(firstProduct.id, "article-hero")}
-                  label="Check First Product"
-                  variant="secondary"
-                />
+              {crossLinkProduct ? (
+                <CTAButton href={`/shop/${crossLinkProduct.id}`} label="Shop This Pick" />
               ) : null}
+              <CTAButton
+                href="/shop"
+                label="Shop all products"
+                variant={crossLinkProduct ? "secondary" : undefined}
+              />
             </div>
           </div>
         </Container>
@@ -348,25 +285,18 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   <p className="mt-4 text-base leading-relaxed text-text-secondary">{section.copy}</p>
 
                   {(index + 1) % 2 === 0 ? (
-                    <>
-                      <ArticleProductBlock productId={section.productId} />
-                      <InlineCtaPanel
-                        eyebrow="Keep momentum"
-                        title="Save this pick while your routine context is fresh"
-                        description="Readers who click during the guide are more likely to complete their routine setup the same day."
-                        primaryHref="/favorites"
-                        primaryLabel="See More Favorites"
-                        secondaryHref="/blog"
-                        secondaryLabel="Continue Reading"
-                      />
-                    </>
+                    <InlineCtaPanel
+                      eyebrow="Keep momentum"
+                      title="Save this pick while your routine context is fresh"
+                      description="Readers who click during the guide are more likely to complete their routine setup the same day."
+                      primaryHref="/shop"
+                      primaryLabel="Shop skincare tools"
+                      secondaryHref="/blog"
+                      secondaryLabel="Continue Reading"
+                    />
                   ) : null}
                 </div>
               ))}
-
-              {article.sections.length % 2 !== 0 ? (
-                <ArticleProductBlock productId={article.sections[article.sections.length - 1].productId} />
-              ) : null}
             </article>
 
             <aside className="hidden lg:block lg:sticky lg:top-28">
@@ -389,35 +319,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   ))}
                 </nav>
 
-                <div className="rounded-2xl border border-border-subtle bg-surface-raised p-4">
-                  <p className="mb-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-accent-gold">
-                    <Flame className="size-4" aria-hidden="true" />
-                    <T text={"Popular This Week"} />
-                  </p>
-                  <ul className="space-y-3">
-                    {stickyProducts.slice(0, 3).map((product) => {
-                      return (
-                        <li key={product.id}>
-                          <AffiliateLink
-                            href={getAffiliateRoute(product.id, "article-sidebar")}
-                            fallbackLabel={false}
-                            className="group block rounded-lg border border-transparent px-2 py-2 text-sm text-text-secondary transition-colors hover:border-border-subtle hover:text-text-primary"
-                          >
-                            <span className="flex items-center justify-between gap-2">
-                              {product.name}
-                              <ExternalLink className="size-3.5 opacity-70 transition-opacity group-hover:opacity-100" />
-                            </span>
-                            <span className="mt-1 block text-xs uppercase tracking-[0.14em] text-accent-gold">
-                              {locale === "pl" ? "Zobacz rekomendację" : "View recommendation"}
-                            </span>
-                          </AffiliateLink>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-
-                <CTAButton href="/favorites" label="Browse All Favorites" className="w-full" />
+                <CTAButton href="/shop" label="Shop all products" className="w-full" />
 
                 {crossLinkProduct ? (
                   <div className="rounded-2xl border border-accent-gold/30 bg-accent-gold/5 p-4">

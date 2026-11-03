@@ -31,7 +31,6 @@ function HoverFooter() {
       title: "Shop & Support",
       links: [
         { label: "Shop Lux Aura Care", href: "/shop" },
-        { label: "Amazon Favorites", href: "/favorites" },
         { label: "Contact Us", href: "/contact" },
         { label: "Shipping & Returns", href: "/returns", pulse: true },
       ],

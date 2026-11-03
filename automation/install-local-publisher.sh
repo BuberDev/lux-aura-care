@@ -12,9 +12,26 @@ SITE_ENV_SOURCE="${PUBLISHER_SITE_ENV_SOURCE:-$SOURCE_REPO/.env.publisher}"
 USER_ID="$(id -u)"
 export PATH="/Users/dawidbubernak/.nvm/versions/node/v22.22.3/bin:/Users/dawidbubernak/.nvm/versions/node/v20.19.2/bin:/Users/dawidbubernak/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+if (( $# > 1 )) || { (( $# == 1 )) && [[ "$1" != "--automation-only" ]]; }; then
+    print -u2 -r -- "Użycie: $0 [--automation-only]"
+    exit 2
+fi
+
 if [[ "$RUNTIME_DIR" != "/Users/dawidbubernak/Library/Application Support/LuxAuraCarePublisher" ]]; then
     print -u2 -r -- "Odmowa instalacji: nieoczekiwana ścieżka runtime"
     exit 1
+fi
+
+if [[ "${1:-}" == "--automation-only" ]]; then
+    if [[ ! -d "$RUNTIME_DIR/content-engine" ]]; then
+        print -u2 -r -- "Brak zainstalowanego runtime content-engine: $RUNTIME_DIR/content-engine"
+        exit 1
+    fi
+    mkdir -p "$RUNTIME_DIR/automation"
+    /usr/bin/install -m 700 "$SOURCE_REPO/automation/run-lux-aura-publisher.sh" "$RUNTIME_DIR/automation/run-lux-aura-publisher.sh"
+    /usr/bin/install -m 600 "$SOURCE_REPO/automation/lux-aura-local-publisher.md" "$RUNTIME_DIR/automation/lux-aura-local-publisher.md"
+    print -r -- "Zaktualizowano wyłącznie automatyzację w: $RUNTIME_DIR/automation"
+    exit 0
 fi
 
 mkdir -p "$RUNTIME_DIR/content-engine" "$RUNTIME_DIR/automation" "$RUNTIME_DIR/state" "/Users/dawidbubernak/Library/LaunchAgents" "/Users/dawidbubernak/Library/Logs"

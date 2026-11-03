@@ -1,0 +1,63 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+Ceramiczny dyfuzor zapachowy — 100 ml
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Basic Mapping
+Basic Mapping
+Advanced Mapping
+Store Product
+Ceramiczny dyfuzor zapachowy — 100 ml
+Default Supplier
+Essential Oil Diffuser 100ml Ceramic Ultrasonic Aroma Diffuser Humidifier Timer Setting 7 LED Colors Changing Lights For Home
+Backup Supplier
+Select a Backup Supplier
+
+Color
+
+White
+Wood grain
+
+Plug Type
+
+UK
+EU
+US
+AU
+
+Ships From
+
+China Mainland
+Color
+White
+Wood grain
+Plug Type
+UK
+EU
+US
+AU
+Ships From
+China Mainland
+
+--
+
+--
+--
+
+--
+
+--
+--
+--
+--
+
+--
+
+--
+Save

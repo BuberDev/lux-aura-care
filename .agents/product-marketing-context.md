@@ -6,6 +6,22 @@ purchase support and no placeholder-like UI.
 
 Core standards:
 
+- Keep free standard delivery prominent in the product hero. Shopify audited
+  2026-10-03: standard delivery to Poland is 0 PLN without a minimum order;
+  express to Poland is 65 PLN. International is currently 71 PLN, despite
+  the owner's intention to offer standard delivery free globally; changing
+  that rate awaits approval. Qualify the current free-delivery claim as
+  "to Poland" in PL and EN. Supplier freight is a merchant cost included in
+  product pricing, not grounds to remove the customer-facing free offer.
+
+- Fulfillment exception: the branded Lux Aura Face Roller & Gua Sha Set
+  (`lux-aura-face-roller-gua-sha-set`, both finishes) is the owner's stock,
+  purchased in China and dispatched personally from home. It is sold through
+  Shopify, not fulfilled through DSers. Never map it to an AliExpress supplier
+  or promise unconfirmed dispatch times. This overrides the general DSers rule
+  for non-Amazon products. The separately named Rose Quartz Gua Sha & Jade
+  Roller Set is a different catalog entry; do not confuse the two.
+
 - Every interactive visual cue must be honest. A play icon must play a video or
   open a clearly identifiable video player.
 - UGC should build confidence by showing real product use, not by adding generic

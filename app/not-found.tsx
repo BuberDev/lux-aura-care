@@ -18,10 +18,10 @@ export default function NotFound() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <CTAButton href="/blog" label="Go to Blog" />
             <LocalizedLink
-              href="/favorites"
+              href="/shop"
               className="inline-flex h-12 items-center rounded-full border border-border-default px-6 text-sm uppercase tracking-[0.12em] text-text-secondary transition-colors hover:text-text-primary"
             >
-              <T text={"Amazon Favorites"} />
+              <T text={"Shop Lux Aura Care"} />
             </LocalizedLink>
           </div>
         </div>

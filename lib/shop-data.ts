@@ -1,4 +1,5 @@
 import { mediaUrl } from "./media-url";
+import { shopifyPriceSnapshot } from "./shopify-price-snapshot";
 
 export type ShopProductGalleryItem = {
   url: string;
@@ -9,6 +10,8 @@ export type ShopProductGalleryItem = {
 };
 
 export type ShopProductVariant = {
+  price?: number;
+  compareAtPrice?: number;
   id: string;
   label: string;
   colorName: string;
@@ -23,6 +26,8 @@ export type ShopProductVariant = {
 };
 
 export type ShopProductSizeVariant = {
+  price?: number;
+  compareAtPrice?: number;
   id: string;
   label: string;
   shopifyUrl?: string;
@@ -73,6 +78,8 @@ export type ShopProduct = {
   faq: { q: string; a: string }[];
   shopifyUrl?: string;
   category: "skincare" | "body-glow" | "fashion" | "bundle";
+  /** Owner-stocked products must be excluded from DSers supplier mapping. */
+  fulfillment?: "owner" | "supplier";
   purchaseStatus?: "available" | "coming-soon";
   isNew?: boolean;
   isBestSeller?: boolean;
@@ -134,7 +141,7 @@ function floralGraceVariant({
   };
 }
 
-export const shopProducts: ShopProduct[] = [
+const catalogProducts: ShopProduct[] = [
  /*  {
     id: "dermaplaning-razor-kit",
     name: "Glow Ritual Face Razor Kit",
@@ -594,6 +601,7 @@ export const shopProducts: ShopProduct[] = [
   {
     id: "lux-aura-face-roller-gua-sha-set",
     name: "Lux Aura Face Roller & Gua Sha Set",
+    fulfillment: "owner",
     tagline: "A branded 2-piece face massage set in black stone or rose quartz.",
     description:
       "A signature Lux Aura Care face roller and gua sha set for a simple face massage over serum or facial oil. Choose black stone with gold hardware or rose quartz with rose-gold hardware; both finishes include polished edges, double-ended rollers, and branded details that look elevated on your vanity.",
@@ -966,13 +974,12 @@ export const shopProducts: ShopProduct[] = [
         id: "30-ml",
         label: "30 ml",
         supportingText: "Standard size",
-        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112638710108:1",
+        shopifyUrl: "https://imp082-pj.myshopify.com/cart/59338007511388:1",
       },
       {
         id: "60-ml",
         label: "60 ml",
         supportingText: "Double supply",
-        checkoutQuantity: 2,
         shopifyUrl: "https://imp082-pj.myshopify.com/cart/59112638710108:1",
       },
     ],
@@ -1426,9 +1433,10 @@ export const shopProducts: ShopProduct[] = [
     tagline: "A defined waist, sweeping floral skirt and 14 supplier-confirmed style options.",
     description:
       "An ankle-length maxi dress with a clean neckline, defined high waist and a flowing A-line skirt. Choose from 14 print and sleeve combinations, then select your size from S to 5XL.",
-    price: 24.99,
-    compareAtPrice: 24.99,
-    currency: "USD",
+    // All 112 Shopify variants verified at 229.99 PLN on 2026-10-03.
+    price: 229.99,
+    compareAtPrice: 229.99,
+    currency: "PLN",
     image: "/dress/variants/green-short.webp",
     imageAlt: "Floral Grace maxi dress in the turquoise floral short-sleeve variant",
     badge: "New",
@@ -1759,6 +1767,26 @@ export const shopProducts: ShopProduct[] = [
     ],
   },
 ];
+
+function snapshotForUrl(url?: string) {
+  const variantId = url ? getShopifyVariantFromUrl(url)?.variantId : null;
+  return variantId ? shopifyPriceSnapshot[variantId] : undefined;
+}
+
+export const shopProducts: ShopProduct[] = catalogProducts.map((product) => {
+  const defaultUrl = product.sizes?.[0]?.shopifyUrl ?? product.shopifyUrl;
+  return {
+    ...product,
+    ...snapshotForUrl(defaultUrl),
+    shopifyUrl: defaultUrl,
+    sizes: product.sizes?.map((size) => ({ ...size, ...snapshotForUrl(size.shopifyUrl) })),
+    variants: product.variants?.map((variant) => ({
+      ...variant,
+      ...snapshotForUrl(variant.shopifyUrl),
+      sizes: variant.sizes?.map((size) => ({ ...size, ...snapshotForUrl(size.shopifyUrl) })),
+    })),
+  };
+});
 
 export function getShopProductById(id: string): ShopProduct | undefined {
   return shopProducts.find((p) => p.id === id);

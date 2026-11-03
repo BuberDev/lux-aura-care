@@ -89,8 +89,9 @@ export default async function ReturnsPage() {
 
               <Section title="5. Dostawa">
                 <p>
-                  Dostępne metody dostawy, koszty i orientacyjny czas realizacji wyświetlane są w koszyku przed dokonaniem płatności i mogą się różnić w zależności od kraju dostawy.
+                  Dostawa standardowa do Polski jest bezpłatna, bez minimalnej wartości zamówienia. Dostawa ekspresowa do Polski jest dodatkowo płatna — 65 zł. Stawki dla pozostałych krajów oraz dostępne metody sprawdzisz po podaniu adresu w kasie, przed płatnością.
                 </p>
+                <p>Czas transportu zależy od produktu, przewoźnika i kraju doręczenia. Bezpłatna dostawa standardowa nie oznacza dostawy ekspresowej.</p>
               </Section>
 
               <Section title="6. Uszkodzony lub niewłaściwy produkt">
@@ -135,8 +136,9 @@ export default async function ReturnsPage() {
 
               <Section title="5. Shipping">
                 <p>
-                  Available delivery methods, costs, and estimated timing are shown in your cart before you pay, and may vary by destination country.
+                  Standard delivery to Poland is free, with no minimum order. Express delivery to Poland costs 65 PLN. Enter your address at checkout to review rates for other countries and available delivery methods before payment.
                 </p>
+                <p>Transit time depends on the product, carrier and destination. Free standard delivery does not include express delivery.</p>
               </Section>
 
               <Section title="6. Damaged or incorrect items">

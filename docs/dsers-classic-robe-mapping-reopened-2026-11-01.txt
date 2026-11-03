@@ -1,0 +1,54 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+Miękki szlafrok polarowy na guziki
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Basic Mapping
+Basic Mapping
+Advanced Mapping
+Store Product
+Miękki szlafrok polarowy na guziki
+Default Supplier
+Select a Default Supplier
+Backup Supplier
+Select a Backup Supplier
+
+Color
+
+Różowy
+Niebieski
+Zielony
+
+Size
+
+XL
+L
+
+--
+
+--
+--
+--
+
+--
+
+--
+--
+
+--
+
+--
+--
+--
+
+--
+
+--
+--
+Save

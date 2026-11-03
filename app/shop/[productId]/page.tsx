@@ -11,6 +11,7 @@ import { getRequestLocale } from "@/lib/i18n/request";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
 import { getShopUgcVideosFromDb } from "@/lib/db/media";
 import { resolveShopProductsForLocale } from "@/lib/shop-currency";
+import { getShopPageProfile, getShopProductFaq } from "@/lib/shop-page-engine";
 import {
   generateFaqJsonLd,
   generateShopProductJsonLd,
@@ -29,16 +30,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sourceProduct = getShopProductById(productId);
   if (!sourceProduct) return { title: translateText(locale, "Product Not Found") };
   const product = localizeContent(locale, sourceProduct);
+  const description = getShopPageProfile(product.id, locale)?.description ?? product.description;
 
   return {
     title: {
       absolute: `${product.name} | ${translateText(locale, "Lux Aura Care Shop")}`,
     },
-    description: product.description,
+    description,
     alternates: getLocalizedAlternates(`/shop/${product.id}`, locale),
     openGraph: {
       title: product.name,
-      description: product.description,
+      description,
       url: localizePathname(`/shop/${product.id}`, locale),
       images: [{ url: product.image, alt: product.imageAlt }],
       type: "website",
@@ -70,6 +72,9 @@ export default async function ShopProductPage({ params }: Props) {
         : getShopifyCheckoutRoute(sourceProduct.id),
     ugcVideos: dbVideos.length > 0 ? dbVideos : sourceProduct.ugcVideos,
   };
+  const pageProfile = getShopPageProfile(product.id, locale);
+  product.description = pageProfile?.description ?? product.description;
+  product.faq = getShopProductFaq(product.id, locale, product.faq);
   const related = localizeContent(locale, marketRelatedProducts);
 
   const productJsonLd = generateShopProductJsonLd({

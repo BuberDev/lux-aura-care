@@ -1,0 +1,79 @@
+{
+  "country": "PL",
+  "total": 85,
+  "rows": [
+    {
+      "color": "Pea Green",
+      "quantity": 5
+    },
+    {
+      "color": "Red",
+      "quantity": 2
+    },
+    {
+      "color": "Golden",
+      "quantity": 0
+    },
+    {
+      "color": "Emerald",
+      "quantity": 21
+    },
+    {
+      "color": "Peacock Blue",
+      "quantity": 6
+    },
+    {
+      "color": "Navy Blue",
+      "quantity": 7
+    },
+    {
+      "color": "Mauve",
+      "quantity": 4
+    },
+    {
+      "color": "Ivory",
+      "quantity": 5
+    },
+    {
+      "color": "Baby Blue",
+      "quantity": 0
+    },
+    {
+      "color": "Coffee",
+      "quantity": 8
+    },
+    {
+      "color": "Charcoal",
+      "quantity": 3
+    },
+    {
+      "color": "Blush Pink",
+      "quantity": 4
+    },
+    {
+      "color": "Black",
+      "quantity": 5
+    },
+    {
+      "color": "Taupe",
+      "quantity": 5
+    },
+    {
+      "color": "Silver Grey",
+      "quantity": 0
+    },
+    {
+      "color": "Sand",
+      "quantity": 5
+    },
+    {
+      "color": "Pink",
+      "quantity": 5
+    },
+    {
+      "color": "Golden yellow",
+      "quantity": 0
+    }
+  ],
+  "note": "Supplier stock reread after restart; Shopify corrected using compareQuantity. All14positivecolorsremainoffered."
+}

@@ -6,7 +6,9 @@ Artykuł, metadane, podpisy i teksty alternatywne publikuj w profesjonalnym jęz
 
 ## Zasady bezwzględne
 
-- Pracuj wyłącznie w bieżącym katalogu roboczym lokalnego publikatora Lux Aura Care. Nie przechodź do innych projektów ani katalogów użytkownika poza wynikami wbudowanego Imagegen.
+- Pracuj wyłącznie w bieżącym katalogu roboczym lokalnego publikatora Lux Aura Care. Nie wykonuj `find` ani `rg` skanów katalogu domowego, Desktop, Library ani innych projektów.
+- Źródłem obrazu może być wyłącznie wynik bieżącego wywołania Imagegen. Skopiuj PNG z dokładnej ścieżki zwróconej przez narzędzie (dozwolony katalog wynikowy: `/Users/dawidbubernak/.codex/generated_images`). Jeśli wynik zawiera dane obrazu zamiast ścieżki, zapisz te dane bezpośrednio do oczekiwanego pliku w `content-engine/out/codex-visuals/`; duże dane przekazuj porcjami, bez umieszczania całego obrazu w jednym poleceniu. Nie szukaj zastępczych plików ani nie używaj obrazów z innych sesji/projektów. Jeśli narzędzie nie zwróci ani użytecznej ścieżki, ani danych obrazu, zakończ z błędem.
+- Sandbox powłoki jest twardą granicą dostępu. Nie obchodź jej ani nie proś o rozszerzenie dostępu. Nie odczytuj `.env` i nie próbuj przywracać sekretów środowiska; generowanie grafik ich nie wymaga.
 - Nie używaj Vercel AI Gateway, Recraft ani zewnętrznego API obrazów. Użyj skillu `$imagegen` w domyślnym trybie wbudowanym.
 - Nie odczytuj ani nie wypisuj wartości sekretów z `.env`. Plik może być przekazany wyłącznie procesowi przez `node --env-file`.
 - Nie publikuj bez dokładnie jednej okładki, 2–3 grafik śródtekstowych oraz pozytywnej oceny każdej z nich.

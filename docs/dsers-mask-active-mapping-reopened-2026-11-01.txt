@@ -1,0 +1,92 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+Jedwabna opaska do spania — 20 × 8,5 cm
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Basic Mapping
+Basic Mapping
+Advanced Mapping
+Store Product
+Jedwabna opaska do spania — 20 × 8,5 cm
+Default Supplier
+100% Mulberry Silk Sleep Mask for Man and Woman Eye Cover Large Blindfold for Total Blackout Size 20X8.5cm
+Backup Supplier
+Select a Backup Supplier
+
+Color
+
+Pea Green
+Red
+Golden
+Emerald
+Peacock Blue
+Navy Blue
+Mauve
+Ivory
+Baby Blue
+Coffee
+Charcoal
+Blush Pink
+Black
+Taupe
+Silver Grey
+Sand
+Pink
+Golden yellow
+
+Ships From
+
+China Mainland
+Color
+Pea Green
+Red
+Golden
+Emerald
+Peacock Blue
+Navy Blue
+Mauve
+Ivory
+Baby Blue
+Coffee
+Charcoal
+Blush Pink
+Black
+Taupe
+Silver Grey
+Sand
+Pink
+Golden yellow
+Ships From
+China Mainland
+
+--
+
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+
+--
+
+--
+Save

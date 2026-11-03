@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-01",
+  "destination": "PL",
+  "source": "DSers Import list Variants; product 1005007389489746",
+  "productCurrency": "USD",
+  "rows": [
+    {
+      "sku": "14:691#Green",
+      "cost": 1.83,
+      "shipping": 0.99,
+      "stockPL": 87
+    },
+    {
+      "sku": "14:10#Blue",
+      "cost": 1.96,
+      "shipping": 0.99,
+      "stockPL": 65
+    },
+    {
+      "sku": "14:175#Pink",
+      "cost": 2.18,
+      "shipping": 0.99,
+      "stockPL": 204
+    },
+    {
+      "sku": "14:193#White",
+      "cost": 2.04,
+      "shipping": 0.99,
+      "stockPL": 465
+    }
+  ],
+  "maxCostPLN": 12.45,
+  "contributionPLN": 97.54,
+  "pricePLN": 109.99,
+  "stockTotalPL": 821,
+  "stockGlobalNotPL": 3048,
+  "shippingMethod": "AliExpress Selection Standard",
+  "note": "Shopify imported global stock values. Corrected four variant inventories with compareQuantity to Poland supplier stock, then verified using get_inventory_levels. No future stock guarantee."
+}

@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/go/", "/pin/", "/api/"],
+        disallow: ["/go/", "/pin/", "/api/", "/favorites", "/amazon-com/"],
       },
       {
         userAgent: ["GPTBot", "Google-Extended", "CCBot", "anthropic-ai", "Omgilibot"],

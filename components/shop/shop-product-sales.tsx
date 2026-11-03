@@ -24,7 +24,7 @@ import { Container } from "@/components/container";
 import { LocalizedLink } from "@/components/localized-link";
 import { useI18n } from "@/components/i18n-provider";
 import type { ShopProduct } from "@/lib/shop-data";
-import { localizeContent } from "@/lib/i18n/messages";
+import { getShopPageProfile, getShopProductFaq, getShopUsageSteps } from "@/lib/shop-page-engine";
 import { T } from "@/components/translated-text";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterBlock } from "@/components/newsletter-block";
@@ -32,7 +32,12 @@ import { LocalizedDate } from "@/components/localized-date";
 import { CustomerRatingSummary } from "@/components/shop/customer-rating-summary";
 import { PaymentMethods } from "@/components/shop/payment-methods";
 import { FreeShippingBadge } from "@/components/shop/free-shipping-badge";
-import { BeforeAfterComparison } from "@/components/shop/before-after-comparison";
+import {
+  ProductTrustStrip, ProductStorySections, ProductUseDemonstration,
+  ProductComparisonTable, ProductPurchaseAssurance,
+} from "@/components/shop/product-page-engine";
+import { ProductRoutineSection } from "@/components/shop/before-after-comparison";
+import { SampleReviewPreview } from "@/components/shop/sample-review-preview";
 import {
   trackShopAddToCart,
   trackShopBeginCheckout,
@@ -47,16 +52,9 @@ type ShopProductSalesProps = {
 
 type ProductUgcGalleryProps = {
   readonly productName: string;
-  readonly poster: string;
+  readonly posters: string[];
   readonly videos: string[];
-};
-
-type HeroUgcVideoCardProps = {
-  readonly title: string;
-  readonly description: string;
-  readonly duration: string;
-  readonly videoUrl: string;
-  readonly poster: string;
+  readonly titles: string[];
 };
 
 type StockStatus = "available" | "sold-out" | "store-unavailable" | "unknown";
@@ -74,75 +72,7 @@ function formatShopPrice(amount: number, currency: string, locale: string) {
   }).format(amount);
 }
 
-function HeroUgcVideoCard({
-  title,
-  description,
-  duration,
-  videoUrl,
-  poster,
-}: HeroUgcVideoCardProps) {
-  const { text } = useI18n();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [hasStarted, setHasStarted] = useState(false);
-
-  const handlePlay = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    setHasStarted(true);
-    video.controls = true;
-    void video.play().catch(() => {
-      setHasStarted(false);
-    });
-  };
-
-  return (
-    <article className="group relative w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface-subtle shadow-xl transition-all duration-300 hover:border-accent-gold/40 hover:shadow-2xl">
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-black">
-        <video
-          ref={videoRef}
-          src={videoUrl}
-          poster={poster}
-          controls={hasStarted}
-          playsInline
-          preload="metadata"
-          onPlay={() => setHasStarted(true)}
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-        >
-          <T text={"Your browser does not support the video tag."} />
-        </video>
-
-        {!hasStarted && (
-          <button
-            type="button"
-            onClick={handlePlay}
-            aria-label={`${text("Watch video")}: ${text(title)}`}
-            className="absolute inset-0 flex items-center justify-center bg-black/25 text-white transition duration-300 hover:bg-black/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-gold"
-          >
-            <span className="flex size-14 items-center justify-center rounded-full border border-accent-gold/40 bg-black/60 text-accent-gold shadow-2xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
-              <Play className="ml-1 size-6 fill-current" aria-hidden="true" />
-            </span>
-          </button>
-        )}
-
-        <span className="absolute right-3.5 top-3.5 rounded-full border border-white/20 bg-black/65 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md">
-          <T text={duration} />
-        </span>
-      </div>
-
-      <div className="p-5 sm:p-6">
-        <h3 className="text-base font-bold leading-snug text-text-primary">
-          <T text={title} />
-        </h3>
-        <p className="mt-2 text-xs leading-relaxed text-text-secondary sm:text-sm">
-          <T text={description} />
-        </p>
-      </div>
-    </article>
-  );
-}
-
-function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryProps) {
+function ProductUgcGallery({ productName, posters, videos, titles }: ProductUgcGalleryProps) {
   const { text } = useI18n();
   const galleryRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLUListElement>(null);
@@ -254,8 +184,8 @@ function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryPro
                     videoRefs.current[index] = element;
                   }}
                   src={videoUrl}
-                  poster={poster}
-                  aria-label={`${productName}: ${text("customer demonstration")} ${index + 1} ${text("of")} ${videos.length}`}
+                  poster={posters[index] ?? posters[0]}
+                  aria-label={`${productName}: ${titles[index] ?? text("Product demonstration")}`}
                   controls
                   loop
                   muted
@@ -267,6 +197,7 @@ function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryPro
                   <T text={"Your browser does not support the video tag."} />
                 </video>
               </div>
+              <p className="mt-3 text-center text-xs font-medium leading-5 text-text-secondary">{titles[index] ?? text("See the product in use")}</p>
             </li>
           ))}
         </ul>
@@ -302,7 +233,7 @@ function ProductUgcGallery({ productName, poster, videos }: ProductUgcGalleryPro
               key={videoUrl}
               type="button"
               onClick={() => scrollToVideo(index)}
-              aria-label={`${text("Show video")} ${index + 1}`}
+              aria-label={`${text("Show video")}: ${titles[index] ?? text("Product demonstration")}`}
               aria-controls="product-ugc-carousel"
               aria-current={activeIndex === index ? "true" : undefined}
               className={`h-2 rounded-full transition-all duration-300 ${
@@ -363,276 +294,10 @@ function buildCheckoutUrl({
   return directUrl;
 }
 
-const detailedScienceBenefits: Record<string, {
-  title: string;
-  desc: string;
-  badge: string;
-}[]> = {
-  "dermaplaning-razor-kit": [
-    {
-      title: "Swedish Sandvik Steel",
-      desc: "Forged from world-renowned Sweden-made Sandvik stainless steel, ensuring a razor-sharp edge that glides effortlessly without dragging or dulling quickly.",
-      badge: "Blade Tech"
-    },
-    {
-      title: "Micro-Safety Guards",
-      desc: "Fine safety guards help make the blade easier to control. Follow the instructions, use light pressure, and stop if irritation occurs.",
-      badge: "Derm Guard"
-    },
-    {
-      title: "3x Serum Infusion",
-      desc: "Removing surface buildup and peach fuzz can leave skin feeling smoother and help skincare spread more evenly.",
-      badge: "Max Absorption"
-    }
-  ],
-  "clear-skin-patches": [
-    {
-      title: "Osmotic Fluid Pull",
-      desc: "Hydrocolloid material covers the blemish and absorbs surface fluid while helping discourage touching and picking.",
-      badge: "Impurity Vacuum"
-    },
-    {
-      title: "Moist Occlusive Shield",
-      desc: "Creates a sealed, sterile environment that locks in natural moisture. This prevents dry crusting, stops scarring, and accelerates epidermal repair.",
-      badge: "Barrier Cure"
-    },
-    {
-      title: "Tapered Edge Invisible Fit",
-      desc: "Engineered with ultra-thin, hydro-matte tapered edges that blend seamlessly with any skin tone. Undetectable on camera and perfect under makeup.",
-      badge: "Invisible Shield"
-    }
-  ],
-  "skin-ritual-bundle": [
-    {
-      title: "The Sunday Reset",
-      desc: "Use the Glow Ritual Face Razor once a week to sweep away dead skin and fuzz, setting a clean slate that multiplies the effectiveness of your weekly treatments.",
-      badge: "Step 1: Exfoliate"
-    },
-    {
-      title: "The Spot Rescue",
-      desc: "When an unexpected blemish pops up, seal it immediately with a hydrocolloid patch. Sucks out impurities overnight while you sleep peacefully.",
-      badge: "Step 2: Defend"
-    },
-    {
-      title: "Synergistic Glow Impact",
-      desc: "The absolute best value. Together, these two steps build a smooth, clear, and high-glow complexion, with a better bundle price than buying separately.",
-      badge: "Result: Radiance"
-    }
-  ],
-  "gua-sha-jade-roller-set": [
-    {
-      title: "Lymphatic Drainage",
-      desc: "Gentle massage can provide a cooling, soothing ritual and may temporarily improve the appearance of puffiness.",
-      badge: "De-Puff Tech"
-    },
-    {
-      title: "Crystalline Cooling",
-      desc: "Authentic Rose Quartz holds natural cold temperatures exceptionally well. This natural cooling constricts blood vessels, calming inflammation and tightening pores.",
-      badge: "Cryo Calm"
-    },
-    {
-      title: "Myofascial Release",
-      desc: "Deep pressure massage along muscle fibers releases tightness and smooths the fascia. This helps melt away fine expression lines and tension in the brow and jaw.",
-      badge: "Muscle Sculpt"
-    }
-  ],
-  "lux-aura-face-roller-gua-sha-set": [
-    {
-      title: "Roller + Gua Sha Duo",
-      desc: "Use the roller first for a cooling prep step, then follow with gua sha strokes along the jawline, cheekbones, and brow area.",
-      badge: "2-Step Massage"
-    },
-    {
-      title: "Polished Glide Finish",
-      desc: "Black stone and rose quartz finishes are designed to glide over facial oil or serum without pulling at delicate skin.",
-      badge: "Smooth Glide"
-    },
-    {
-      title: "Looks Good on the Vanity",
-      desc: "Gold Lux Aura Care details on the tools and packaging make the set feel polished, practical, and gift-ready.",
-      badge: "Signature Look"
-    }
-  ],
-  "bian-stone-gua-sha": [
-    {
-      title: "Volcanic Bian Stone",
-      desc: "Hand-polished black Bian stone offers an ultra-smooth mineral surface that glides over facial oil without pulling or dragging delicate skin.",
-      badge: "Stone Craft"
-    },
-    {
-      title: "Contour-Mapped Shape",
-      desc: "The stick profile follows the jawline, cheeks, and brow bone, while the pointed end reaches the under-eye and brow area with precision.",
-      badge: "Face Fit"
-    },
-    {
-      title: "Chill-Ready Ritual",
-      desc: "Cool the stone in the fridge before use for a refreshing morning massage — 5–10 minutes with light pressure is all it takes.",
-      badge: "Cool Touch"
-    }
-  ],
-  "gold-eye-patches": [
-    {
-      title: "24K Gold Hydrogel",
-      desc: "Gold-toned hydrogel patches hug the under-eye curve and stay cool against the skin, turning a 20-minute treatment into a genuinely relaxing ritual.",
-      badge: "Gold Formula"
-    },
-    {
-      title: "Collagen + Hyaluronic Serum",
-      desc: "Each patch is soaked in marine collagen and hyaluronic acid serum that delivers deep hydration exactly where fine lines and dryness show first.",
-      badge: "Deep Hydration"
-    },
-    {
-      title: "30 Full Treatments",
-      desc: "60 patches per pack means a full month of under-eye care — use before events for a quick de-puff or overnight as part of your evening ritual.",
-      badge: "Month Supply"
-    }
-  ],
-  "vibro-glow-face-massager": [
-    {
-      title: "6,000 Micro-Vibrations",
-      desc: "Gentle high-frequency vibration stimulates the skin's surface and helps serum spread evenly, adding a salon-style step to a 5-minute home routine.",
-      badge: "Vibro Tech"
-    },
-    {
-      title: "T-Bar Ergonomics",
-      desc: "The lightweight T-bar shape follows the cheekbone, jawline, and brow bone, so every contour of the face gets consistent, comfortable contact.",
-      badge: "Full Contour"
-    },
-    {
-      title: "USB Rechargeable",
-      desc: "One full charge lasts roughly 18 five-minute sessions. No batteries, no cables during use — just pick it up and glide.",
-      badge: "Cordless"
-    }
-  ],
-  "centella-collagen-sleep-masks": [
-    {
-      title: "Centella Soothing Base",
-      desc: "Centella asiatica extract is included in the soothing, fragrance-free formula, making the mask a calm final step after serums and actives.",
-      badge: "Calm Formula"
-    },
-    {
-      title: "8-Hour Moisture Lock",
-      desc: "The no-rinse overnight layer seals your evening skincare in place while you sleep, so you wake up to visibly plumper, hydrated skin.",
-      badge: "Overnight Seal"
-    },
-    {
-      title: "30-Night Supply",
-      desc: "Thirty single-use sachets cover a full month of use — hygienic, travel-friendly, and easy to keep consistent.",
-      badge: "Month Ritual"
-    }
-  ],
-  "vitamin-c-retinol-serum-duo": [
-    {
-      title: "Vitamin C by Day",
-      desc: "The morning serum targets dullness and dark spots. Follow with SPF — the duo is designed as a complete, ordered routine, not a single product.",
-      badge: "AM Brighten"
-    },
-    {
-      title: "Retinol by Night",
-      desc: "The evening serum supports skin renewal while you sleep. Start 2–3 nights per week and build up gradually as your skin adjusts.",
-      badge: "PM Renew"
-    },
-    {
-      title: "Lightweight & Fragrance-Free",
-      desc: "Both serums absorb fast with no greasy residue and no added fragrance — formulated with mature and reactive skin in mind.",
-      badge: "Clean Feel"
-    }
-  ],
-  "resin-body-gua-sha-tool": [
-    {
-      title: "Large-Format Coverage",
-      desc: "The wide resin board covers thighs, arms, and abdomen in single long strokes, so a full-body session takes minutes instead of half an hour.",
-      badge: "Body Scale"
-    },
-    {
-      title: "Ergonomic Oil-Proof Grip",
-      desc: "Lightweight resin keeps a secure grip even with body oil on your hands — firm, controlled strokes without slipping.",
-      badge: "Sure Grip"
-    },
-    {
-      title: "Circulation Ritual",
-      desc: "Used with body oil in upward strokes, the board turns post-shower moisturising into a firm massage ritual that leaves skin feeling smoother.",
-      badge: "Massage Flow"
-    }
-  ],
-  "natural-bristle-spa-brush": [
-    {
-      title: "Natural Firm Bristles",
-      desc: "Plant-fibre bristles deliver effective dry or wet exfoliation, sweeping away dead skin cells so body lotion spreads more evenly.",
-      badge: "Deep Exfoliation"
-    },
-    {
-      title: "Detachable Long Handle",
-      desc: "The wooden handle detaches for close-up work and extends to reach the entire back — a full spa brush-down without help.",
-      badge: "Full Reach"
-    },
-    {
-      title: "Dry-Brush Ritual",
-      desc: "Five minutes of dry brushing before the shower, working upward from the feet, is the classic foundation of an at-home body-glow routine.",
-      badge: "Pre-Shower Step"
-    }
-  ],
-  "exfoliating-spa-body-brush": [
-    {
-      title: "Soft Bristles",
-      desc: "Soft plant-fibre bristles help lift dead skin during a gentle shower massage without requiring strong pressure.",
-      badge: "Gentle Daily Care"
-    },
-    {
-      title: "Secure Wrist Strap",
-      desc: "The built-in strap helps keep the wet brush steady and comfortable in your hand throughout the shower.",
-      badge: "Shower Grip"
-    },
-    {
-      title: "Consistent Exfoliation",
-      desc: "Regular use with gentle circular motions can leave body skin feeling smoother and ready for lotion.",
-      badge: "Smoother Feel"
-    }
-  ],
-  "ice-face-roller-gua-sha-set": [
-    {
-      title: "Cold-Holding Steel",
-      desc: "Stainless steel keeps its chill for 20–30 minutes out of the freezer — far longer than stone — for a genuinely cooling morning massage.",
-      badge: "Cryo Steel"
-    },
-    {
-      title: "60-Second De-Puff",
-      desc: "Cold contact can temporarily improve the appearance of puffiness and refresh tired skin — roll from neck to forehead before makeup.",
-      badge: "Morning Reset"
-    },
-    {
-      title: "Roller + Board Duo",
-      desc: "The roller covers large areas fast while the matching gua sha board sculpts along the jawline and cheekbones — two tools, one ritual.",
-      badge: "2-Piece Set"
-    }
-  ],
-  "seaweed-collagen-crystal-mask": [
-    {
-      title: "Crystal Hydrogel Fit",
-      desc: "The hydrogel sheet conforms closely to facial contours and holds serum against the skin for the full 20–30 minute wear time.",
-      badge: "Second Skin"
-    },
-    {
-      title: "Seaweed + Marine Collagen",
-      desc: "Each mask carries 30 ml of serum with seaweed extract and marine collagen for an intensive hydration-focused treatment.",
-      badge: "30ml Serum"
-    },
-    {
-      title: "Event-Ready Glow",
-      desc: "A single 20-minute session leaves skin looking dewy and luminous — the go-to step before occasions when you want a glass-skin finish.",
-      badge: "Instant Lumen"
-    }
-  ]
-};
-
 export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const { locale, text } = useI18n();
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
-  const hasDiscount = product.compareAtPrice > product.price;
-  const discount = hasDiscount
-    ? Math.round((1 - product.price / product.compareAtPrice) * 100)
-    : 0;
   const productVariants = product.variants ?? [];
   const productSizes = product.sizes ?? [];
   const hasColorVariants = productVariants.length > 0;
@@ -648,11 +313,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       )
   );
 
-  const scienceBenefits = localizeContent(
-    locale,
-    detailedScienceBenefits[product.id] ?? []
-  );
-  const salesStory = product.salesStory;
+  const pageProfile = getShopPageProfile(product.id, locale);
 
   // Interactive States
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
@@ -729,7 +390,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
   // --- Flash sale countdown: real end date from product data ---
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
-  const saleActive = Boolean(product.flashSaleEndsAt) && hasDiscount;
+  const saleActive = Boolean(product.flashSaleEndsAt) && product.compareAtPrice > product.price;
 
   useEffect(() => {
     if (!product.flashSaleEndsAt) return;
@@ -818,32 +479,22 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   };
 
   // Gallery Variations (uses real multi-images if defined, otherwise falls back to simulated filters)
-  const galleryImages = product.gallery || [
-    { 
-      url: product.image, 
-      label: "Main Display", 
-      badge: product.badge,
-      desc: "Premium packaging and contents"
-    },
-    { 
-      url: product.image, 
-      label: "Swedish Guard Close-up", 
-      badge: "Precision",
-      desc: "Micro-safety guards details (Sweden steel)",
-      filter: "brightness-[1.15] contrast-[1.05]" 
-    },
-    { 
-      url: product.image, 
-      label: "Sensory Texture View", 
-      badge: "Luxury Touch",
-      desc: "Ergonomic, lightweight handle and finish",
-      filter: "brightness-[0.9] sepia-[0.1]" 
-    }
-  ];
-  const getUgcPoster = (index: number) =>
-    index === 0
+  const galleryImages = product.gallery?.length
+    ? product.gallery
+    : [{ url: product.image, label: "Product image", badge: product.badge, desc: product.imageAlt }];
+  const signatureSet = product.id === "lux-aura-face-roller-gua-sha-set";
+  const getUgcPoster = (index: number) => signatureSet
+    ? index === 0
       ? "/lux-aura-face-roller-gua-sha-set/lux-aura-face-roller-gua-sha-podcast-ugc-pl-poster.webp"
-      : "/lux-aura-face-roller-gua-sha-set/ugc_pl_set_pink_roller_pink_guasha-poster.webp";
+      : "/lux-aura-face-roller-gua-sha-set/ugc_pl_set_pink_roller_pink_guasha-poster.webp"
+    : product.image;
+  const ugcTitles = signatureSet
+    ? locale === "pl"
+      ? ["Zobacz zestaw i jego wykończenie", "Roller i gua sha podczas masażu twarzy"]
+      : ["See the set and its finish", "Roller and gua sha in a face massage"]
+    : locale === "pl"
+      ? ["Zobacz produkt w użyciu", "Poznaj sposób użycia produktu"]
+      : ["See the product in use", "See how to use the product"];
 
   // Product images plus real UGC videos near the front, so social visitors
   // can evaluate the exact item without leaving the purchase flow.
@@ -855,9 +506,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     heroMedia.splice(Math.min(1 + index, heroMedia.length), 0, {
       type: "video",
       url: videoUrl,
-      label: index === 0 ? "Set walkthrough video" : "Roller in use video",
-      badge: "Watch video",
-      desc: "Product video embedded near the image gallery",
+      label: ugcTitles[index] ?? (locale === "pl" ? "Zobacz produkt w użyciu" : "See the product in use"),
+      badge: locale === "pl" ? "Film produktu" : "Product video",
+      desc: ugcTitles[index] ?? (locale === "pl" ? "Zobacz produkt w użyciu" : "See the product in use"),
       poster: getUgcPoster(index),
     });
   });
@@ -896,7 +547,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     locale,
   });
   const checkoutLabel = hasSizeVariants
-    ? "Order selected size"
+    ? hasProductSizes ? "Order selected volume" : "Order selected size"
     : hasColorVariants && product.variantPickerLabel
       ? "Order selected style"
       : hasColorVariants
@@ -918,29 +569,13 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       ? "Bundle"
       : product.category === "body-glow"
         ? "Body care"
-        : "Skincare tool";
-  const usageEyebrow = isSerumDuo
-    ? "DAY & NIGHT SKINCARE"
-    : isFashion
-    ? "FIT & STYLING"
-    : isBodyCare
-      ? "BODY CARE STEP BY STEP"
-      : "FACIAL MASSAGE STEP BY STEP";
-  const usageTitle = isSerumDuo
-    ? "How to Use Both Serums"
-    : isFashion
-    ? "Choose and Style It With Confidence"
-    : isBodyCare
-      ? "How to Use the Body Brush"
-      : "How to Use It Without Guesswork";
-  const usageDescription = isSerumDuo
-    ? "Introduce retinol gradually and finish every morning routine with SPF 30 or higher."
-    : isFashion
-    ? "Compare the colorways, select your size and use a few considered styling details to make the silhouette your own."
-    : isBodyCare
-      ? "Use the brush on wet skin with gentle pressure, then rinse it well and leave it to dry completely."
-      : "Follow this simple, professional step-by-step guideline to completely refresh your facial epidermis in minutes.";
+        : "Skincare";
+  const usageEyebrow = locale === "pl" ? (isFashion ? "DOBÓR I STYLIZACJA" : "KROK PO KROKU") : (isFashion ? "FIT & STYLING" : "STEP BY STEP");
+  const usageTitle = locale === "pl" ? (isFashion ? "Dopasuj sukienkę do siebie" : "Jak korzystać z produktu") : (isFashion ? "Make the dress your own" : "How to use your product");
+  const usageDescription = pageProfile?.use ?? "";
+
   const customerReviews = product.reviews ?? [];
+  const productFaq = getShopProductFaq(product.id, locale, product.faq);
   const finalEyebrow = isFashion
     ? "YOUR NEXT POLISHED LOOK"
     : isBodyCare
@@ -956,15 +591,10 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     : isBodyCare
       ? "Pair it with body care"
       : "Pair it with your skincare";
-  const scienceEyebrow = isSerumDuo ? "DAY + NIGHT FORMULAS" : "CONSIDERED DESIGN";
-  const scienceTitle = isSerumDuo
-    ? "Two Complementary Steps, One Clear Routine"
-    : "What Makes This Product Practical";
-  const scienceDescription = isSerumDuo
-    ? "See what each serum contributes and how to introduce the duo comfortably into morning and evening skincare."
-    : "Review the materials, shape and practical details before deciding whether this product fits your routine.";
-  const selectedUnitPrice = product.price * unitsPerSelection;
-  const selectedCompareAtUnitPrice = product.compareAtPrice * unitsPerSelection;
+  const selectedUnitPrice = (selectedSize?.price ?? selectedVariant?.price ?? product.price) * unitsPerSelection;
+  const selectedCompareAtUnitPrice = (selectedSize?.compareAtPrice ?? selectedVariant?.compareAtPrice ?? product.compareAtPrice) * unitsPerSelection;
+  const hasDiscount = selectedCompareAtUnitPrice > selectedUnitPrice;
+  const discount = hasDiscount ? Math.round((1 - selectedUnitPrice / selectedCompareAtUnitPrice) * 100) : 0;
   const selectedSubtotal = selectedUnitPrice * selectedQuantity;
   const productPrice = formatShopPrice(selectedUnitPrice, product.currency, locale);
   const productCompareAtPrice = formatShopPrice(selectedCompareAtUnitPrice, product.currency, locale);
@@ -992,21 +622,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
     return productVariants.find((variant) => variant.image === item.url)?.imageAlt
       ?? `${product.name}: ${text(item.label)}`;
   };
-  const previewUgcVideos = ugcVideos.slice(0, 2).map((videoUrl, index) => ({
-    videoUrl,
-    poster: getUgcPoster(index),
-    title: index === 0 ? "Set walkthrough" : "Rose quartz roller in use",
-    description:
-      index === 0
-        ? "A short creator video that shows the set and explains how it fits into skincare."
-        : "A close real-use clip showing the roller, pace, and light pressure on the face.",
-    duration: index === 0 ? "41 sec" : "24 sec",
-  }));
-
-  useEffect(() => {
-    setSelectedQuantity((current) => Math.min(current, maxSelectableQuantity));
-  }, [maxSelectableQuantity]);
-
   const handleVariantSelect = (variantId: string) => {
     const nextVariant = productVariants.find((variant) => variant.id === variantId);
     if (!nextVariant) return;
@@ -1146,7 +761,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       </div>
 
       {/* 2. HIGH-CONVERTING HERO & BUY BOX SECTION */}
-      <section ref={heroSectionRef} className="relative py-6 md:py-16">
+      <section data-product-section="hero" ref={heroSectionRef} className="relative py-6 md:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start relative z-10">
             
@@ -1157,6 +772,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   <div className="sm:col-start-2">
                     <div
                       id="shop-product-gallery-image"
+                      data-product-section="gallery"
                       className="theme-on-image relative aspect-square overflow-hidden rounded-xl border border-border-subtle bg-surface-subtle"
                     >
                       {activeHeroItem.type === "video" ? (
@@ -1313,8 +929,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   {product.name}
                 </h1>
                 <p className="text-xs sm:text-sm leading-relaxed text-text-secondary">
-                  {product.description}
+                  {pageProfile?.description ?? product.description}
                 </p>
+                {isSerumDuo && <a href="#product-routine" className="mt-3 inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold text-accent-gold underline decoration-accent-gold/40 underline-offset-4 transition hover:decoration-accent-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-gold">
+                  {locale === "pl" ? "Zobacz porównanie przed / po" : "Explore the before / after comparison"}
+                  <ChevronRight className="size-3.5" aria-hidden="true" />
+                </a>}
               </div>
 
               {/* Price Block & Save Indicator */}
@@ -1343,8 +963,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                 )}
               </div>
 
-              {/* Free Shipping Badge */}
-              <FreeShippingBadge variant="banner" />
+              <FreeShippingBadge />
 
               {/* Real availability panel */}
               {(showLowStock || showSaleCountdown) && (
@@ -1535,7 +1154,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       const isSelected = selectedSize.id === size.id;
                       const isAvailable = size.available !== false;
                       const sizePrice = formatShopPrice(
-                        product.price * (size.checkoutQuantity ?? 1),
+                        (size.price ?? selectedVariant?.price ?? product.price) * (size.checkoutQuantity ?? 1),
                         product.currency,
                         locale
                       );
@@ -1679,8 +1298,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {isPurchasable && <PaymentMethods />}
 
               {/* Benefit Bullet points list */}
-              <ul className="space-y-2 pt-1 text-xs">
-                {product.benefits.map((benefit) => (
+              <ul data-product-section="benefits" className="space-y-2 pt-1 text-xs">
+                {(pageProfile?.benefits ?? product.benefits).map((benefit) => (
                   <li key={benefit} className="flex items-start gap-2.5" style={{ color: "var(--text-secondary)" }}>
                     <Check className="size-4 mt-0.5 shrink-0" style={{ color: "var(--accent-gold)" }} />
                     <span><T text={benefit} /></span>
@@ -1692,7 +1311,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
               {canCheckout && (
               <div className="grid grid-cols-3 gap-1.5 border-t border-border-subtle pt-3 sm:gap-2">
                 {[
-                  { icon: Truck, text: "Delivery options", sub: "Shown at checkout" },
+                  { icon: Truck, text: locale === "pl" ? "Darmowa dostawa" : "Free delivery", sub: locale === "pl" ? "Standardowa do Polski" : "Standard to Poland" },
                   { icon: ShieldCheck, text: "Secure checkout", sub: "Processed by Shopify" },
                   { icon: RotateCcw, text: "14-day returns", sub: "EU right of withdrawal" },
                 ].map(({ icon: Icon, text, sub }) => (
@@ -1711,199 +1330,11 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
         </Container>
       </section>
 
-      {/* Product information strip */}
-      <section className="border-t border-b border-border-subtle py-8 bg-surface-subtle">
-        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { label: "Exact item", value: "Product-specific gallery" },
-              { label: "Specifications", value: "Shown in the description" },
-              { label: "Usage", value: "Step-by-step guidance" },
-              { label: "Questions", value: "Contact support before ordering" }
-            ].map(({ label, value }) => (
-              <div key={label} className="space-y-1">
-                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={label} /></p>
-                <p className="text-xs text-text-primary font-medium"><T text={value} /></p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* DEDICATED RITUAL STORY, DEMONSTRATION & CONTENTS SECTION */}
-      {salesStory && (
-        <section className="border-b border-border-subtle py-14 sm:py-20 bg-surface-subtle/30">
-          <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
-            {/* Header */}
-            <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
-              <span
-                className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent-gold"
-              >
-                <T text={salesStory.eyebrow} />
-              </span>
-              <h2
-                className="mt-3 text-2xl font-semibold leading-tight text-text-primary sm:text-4xl md:text-5xl"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              >
-                <T text={salesStory.title} />
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-text-secondary sm:text-base max-w-2xl mx-auto">
-                <T text={salesStory.description} />
-              </p>
-            </div>
-
-            {/* 3 Highlights Cards */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-              {salesStory.highlights.map((highlight, idx) => (
-                <div
-                  key={highlight.title}
-                  className="group relative rounded-2xl border border-border-subtle bg-surface-subtle p-6 transition-all duration-300 hover:border-accent-gold/40 hover:shadow-lg sm:p-7"
-                >
-                  <div className="mb-4 flex items-center justify-between">
-                    <div
-                      className="flex size-10 items-center justify-center rounded-xl border border-accent-gold/25 bg-accent-gold/10 text-accent-gold"
-                    >
-                      <Check className="size-5" strokeWidth={2} aria-hidden="true" />
-                    </div>
-                    <span className="text-2xl font-serif font-bold text-text-primary/15">
-                      0{idx + 1}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-text-primary">
-                    <T text={highlight.title} />
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-text-secondary sm:text-sm">
-                    <T text={highlight.desc} />
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* What you get + Best used with Dual Box */}
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
-              {[
-                {
-                  title: "What you get",
-                  badge: "Included in box",
-                  items: [
-                    "Double-ended face roller",
-                    "Matching gua sha tool",
-                    "Branded gift-ready packaging",
-                  ],
-                },
-                {
-                  title: "Best used with",
-                  badge: "Expert recommendation",
-                  items: [
-                    "Facial oil or serum for slip",
-                    "Light pressure, never dragging",
-                    "A short 5-minute massage",
-                  ],
-                },
-              ].map((group) => (
-                <div
-                  key={group.title}
-                  className="rounded-2xl border border-border-subtle bg-surface-subtle p-6 sm:p-8 shadow-sm"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-accent-gold">
-                      <T text={group.title} />
-                    </p>
-                    <span className="rounded-full border border-border-subtle bg-background-primary/60 px-2.5 py-0.5 text-[10px] font-medium text-text-secondary">
-                      <T text={group.badge} />
-                    </span>
-                  </div>
-                  <ul className="space-y-3">
-                    {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed text-text-secondary"
-                      >
-                        <Check className="mt-0.5 size-4 shrink-0 text-accent-gold" aria-hidden="true" />
-                        <span><T text={item} /></span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            {/* Video Demonstration Cards */}
-            {previewUgcVideos.length > 0 && (
-              <div className="mt-14 max-w-5xl mx-auto border-t border-border-subtle pt-12">
-                <div className="rounded-3xl border border-border-subtle bg-surface-subtle/80 p-6 sm:p-10 md:p-12 shadow-2xl backdrop-blur-md">
-                  <div className="text-center mb-8 sm:mb-10">
-                    <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-accent-gold">
-                      <T text={"Product videos"} />
-                    </span>
-                    <h3
-                      className="mt-2 text-2xl font-semibold text-text-primary sm:text-3xl md:text-4xl"
-                      style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-                    >
-                      <T text={"Watch the set before you choose"} />
-                    </h3>
-                  </div>
-
-                  <div className="grid gap-6 sm:grid-cols-2 lg:gap-8 max-w-4xl mx-auto">
-                    {previewUgcVideos.map((video) => (
-                      <HeroUgcVideoCard
-                        key={video.videoUrl}
-                        title={video.title}
-                        description={video.description}
-                        duration={video.duration}
-                        videoUrl={video.videoUrl}
-                        poster={video.poster}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-          </Container>
-        </section>
-      )}
-
-      {isSerumDuo && <BeforeAfterComparison />}
-
-      {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
-      {scienceBenefits.length > 0 && (
-      <section className="border-b border-border-subtle py-12 sm:py-16">
-        <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={scienceEyebrow} /></span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mt-2 mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              <T text={scienceTitle} />
-            </h2>
-            <p className="text-sm md:text-base text-text-secondary">
-              <T text={scienceDescription} />
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
-            {scienceBenefits.map((science, idx) => (
-              <div 
-                key={science.title} 
-                className="space-y-4 rounded-2xl border border-border-subtle bg-surface-subtle p-5 transition-all duration-500 hover:border-accent-gold/30 hover:bg-surface-subtle hover:shadow-[0_10px_30px_rgba(201,169,110,0.05)] sm:p-6 md:p-8"
-              >
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-extrabold tracking-widest text-accent-gold uppercase bg-accent-gold/10 px-3 py-1 rounded-full border border-accent-gold/20">
-                    <T text={science.badge} />
-                  </span>
-                  <span className="text-2xl font-bold text-text-primary/20 font-serif">0{idx + 1}</span>
-                </div>
-                <h3 className="text-xl font-bold text-text-primary font-serif"><T text={science.title} /></h3>
-                <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                  <T text={science.desc} />
-                </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-      )}
+      <ProductTrustStrip product={product} />
+      {pageProfile && <ProductStorySections product={product} profile={pageProfile} />}
 
       {/* 7. Step-by-step usage guide */}
-      <section className="border-b border-border-subtle bg-surface-subtle py-12 sm:py-16">
+      <section data-product-section="how-it-works" className="border-b border-border-subtle bg-surface-subtle py-12 sm:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={usageEyebrow} /></span>
@@ -1917,7 +1348,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
 
           <div className={hasUgcVideos ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,420px)] lg:items-start max-w-6xl mx-auto" : "max-w-4xl mx-auto"}>
             <ol className={`grid gap-6 ${hasUgcVideos ? "sm:grid-cols-2" : "md:grid-cols-3"}`}>
-              {product.howToUse.map((step, i) => (
+              {getShopUsageSteps(product.id, locale, product.howToUse).map((step, i) => (
                 <li
                   key={step}
                   className="relative flex flex-col gap-4 rounded-2xl border border-border-subtle bg-surface-subtle p-5 transition-all duration-300 hover:border-border-default sm:p-6 md:p-8"
@@ -1943,17 +1374,21 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
             {hasUgcVideos && (
               <ProductUgcGallery
                 productName={product.name}
-                poster={product.image}
+                posters={ugcVideos.map((_, index) => getUgcPoster(index))}
                 videos={ugcVideos}
+                titles={ugcTitles}
               />
             )}
           </div>
         </Container>
       </section>
 
+      {pageProfile && (isSerumDuo ? <ProductRoutineSection /> : <ProductUseDemonstration product={product} profile={pageProfile} fashion={isFashion} variantId={selectedVariant?.id} />)}
+      {pageProfile && <ProductComparisonTable product={product} profile={pageProfile} />}
+
       {/* Supplier review excerpts supplied with this product listing */}
       {customerReviews.length > 0 && product.rating && (
-        <section id="customer-reviews" className="scroll-mt-24 border-b border-border-subtle py-12 sm:py-16">
+        <section id="customer-reviews" data-product-section="reviews" className="scroll-mt-24 border-b border-border-subtle py-12 sm:py-16">
           <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
             <div className="mx-auto max-w-6xl">
               <div className="grid gap-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start">
@@ -2074,9 +1509,9 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </Container>
         </section>
       )}
-
+      {customerReviews.length === 0 && <SampleReviewPreview productId={product.id} />}
       {/* 9. FAQ ACCORDION SECTION */}
-      <section className="border-b border-border-subtle py-12 sm:py-16">
+      <section data-product-section="faq" className="border-b border-border-subtle py-12 sm:py-16">
         <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-[0.2em]" style={{ color: "var(--accent-gold)" }}><T text={"CONFIDENCE IN MIND"} /></span>
@@ -2089,12 +1524,14 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
 
           <div className="max-w-2xl mx-auto space-y-4">
-            {product.faq.map(({ q, a }, idx) => (
+            {productFaq.map(({ q, a }, idx) => (
               <div
                 key={q}
                 className="rounded-xl border border-border-subtle overflow-hidden bg-surface-subtle hover:border-border-default transition-all duration-300"
               >
                 <button 
+                  aria-expanded={openFAQIndex === idx}
+                  aria-controls={`product-faq-${idx}`}
                   onClick={() => setOpenFAQIndex(prev => prev === idx ? null : idx)}
                   className="w-full flex items-center justify-between p-5 cursor-pointer text-text-primary font-semibold text-left text-sm md:text-base hover:bg-surface-subtle"
                 >
@@ -2104,6 +1541,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                   }`} />
                 </button>
                 <div 
+                  id={`product-faq-${idx}`}
+                  hidden={openFAQIndex !== idx}
                   className={`transition-all duration-300 ease-in-out overflow-hidden ${
                     openFAQIndex === idx ? "max-h-60 opacity-100 border-t border-border-subtle" : "max-h-0 opacity-0"
                   }`}
@@ -2117,6 +1556,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </section>
+
+      <ProductPurchaseAssurance fulfillment={product.fulfillment} />
 
       {/* 11. FINAL HIGH IMPACT CTA */}
       <section className="relative overflow-hidden border-t border-border-subtle py-16 text-center sm:py-20">
@@ -2212,7 +1653,7 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                     <div className="min-w-0 flex-1 flex flex-col justify-between">
                       <div>
                         <p className="text-sm font-bold text-text-primary truncate group-hover:text-accent-gold transition-colors">{rel.name}</p>
-                        <p className="text-[11px] mt-0.5 text-text-secondary line-clamp-1">{rel.tagline}</p>
+                        <p className="text-[11px] mt-0.5 text-text-secondary line-clamp-1">{getShopPageProfile(rel.id, locale)?.solution ?? rel.tagline}</p>
                       </div>
                       <div className="flex items-center justify-between pt-1">
                         <div className="flex items-baseline gap-2">
@@ -2246,6 +1687,8 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
       {/* 12. RESPONSIVE FLOATING BOTTOM STICKY CHECKOUT DRAWER */}
       {canCheckout && (
       <div
+        data-product-section="sticky-add-to-cart"
+        inert={!showStickyDrawer}
         className={`fixed bottom-0 left-0 right-0 z-40 flex items-center justify-between border-t border-border-default bg-surface-glass px-2 py-3.5 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] backdrop-blur-lg transition-transform duration-500 ease-out sm:px-4 ${
           showStickyDrawer ? "translate-y-0" : "translate-y-full"
         }`}

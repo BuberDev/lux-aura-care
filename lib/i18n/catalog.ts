@@ -570,7 +570,7 @@ export const translationCatalog = {
   },
   "24K Gold Collagen Eye Patches": {
     "en": "24K Gold Collagen Eye Patches",
-    "pl": "Kolagenowe płatki pod oczy z 24-karatowego złota"
+    "pl": "Złote płatki pod oczy z kolagenem — 60 szt."
   },
   "24K Gold Collagen Eye Patches skincare treatment": {
     "en": "24K Gold Collagen Eye Patches skincare treatment",
@@ -966,7 +966,7 @@ export const translationCatalog = {
   },
   "Amazon Favorites": {
     "en": "Amazon Favorites",
-    "pl": "Ulubione Amazonki"
+    "pl": "Polecane z Amazon"
   },
   "An effortless body-care upgrade that leaves skin polished and luminous.": {
     "en": "An effortless body-care upgrade that leaves skin polished and luminous.",
@@ -1438,7 +1438,7 @@ export const translationCatalog = {
   },
   "Clear Skin Hydrocolloid Patches": {
     "en": "Clear Skin Hydrocolloid Patches",
-    "pl": "Przezroczyste plastry hydrokoloidowe na skórę"
+    "pl": "Plastry hydrokoloidowe Clear Skin — 24 szt."
   },
   "Clear Skin Hydrocolloid Patches (24 patches)": {
     "en": "Clear Skin Hydrocolloid Patches (24 patches)",
@@ -2954,11 +2954,11 @@ export const translationCatalog = {
   },
   "Lux Aura": {
     "en": "Lux Aura",
-    "pl": "Aura Lux"
+    "pl": "Lux Aura"
   },
   "Lux Aura Care": {
-    "en": "Luxury Aura Care",
-    "pl": "Luksusowa pielęgnacja aury"
+    "en": "Lux Aura Care",
+    "pl": "Lux Aura Care"
   },
   "Lux Aura Care | Luxury Self-Care & Ritual Guides": {
     "en": "Lux Aura Care | Luxury Self-Care & Ritual Guides",
@@ -2974,7 +2974,7 @@ export const translationCatalog = {
   },
   "Lux Aura Care. All rights reserved.": {
     "en": "Lux Aura Care. All rights reserved.",
-    "pl": "Pielęgnacja Lux Aura. Wszelkie prawa zastrzeżone."
+    "pl": "Lux Aura Care. Wszelkie prawa zastrzeżone."
   },
   "Lux Aura Editorial": {
     "en": "Lux Aura Editorial",
@@ -2994,7 +2994,7 @@ export const translationCatalog = {
   },
   "Luxe Patches": {
     "en": "Luxe Patches",
-    "pl": "Luksusowe łatki"
+    "pl": "Płatki pod oczy"
   },
   "Luxe Set": {
     "en": "Luxe Set",
@@ -3970,7 +3970,7 @@ export const translationCatalog = {
   },
   "Rose Quartz Gua Sha & Jade Roller Set": {
     "en": "Rose Quartz Gua Sha & Jade Roller Set",
-    "pl": "Zestaw rolek gua sha i jadeitu z różowego kwarcu"
+    "pl": "Roller i gua sha z różowego kwarcu"
   },
   "Rose quartz gua sha and roller next to facial oil": {
     "en": "Rose quartz gua sha and roller next to facial oil",
@@ -6126,7 +6126,7 @@ export const translationCatalog = {
   },
   "Black Stone": {
     "en": "Black Stone",
-    "pl": "Black Stone"
+    "pl": "Czarny kamień"
   },
   "Lux Aura Care black stone face roller and gua sha set with gold hardware": {
     "en": "Lux Aura Care black stone face roller and gua sha set with gold hardware",
@@ -6534,7 +6534,7 @@ export const translationCatalog = {
   },
   "Black Stone Lifestyle": {
     "en": "Black Stone Lifestyle",
-    "pl": "Black stone lifestyle"
+    "pl": "Czarny kamień w codziennej pielęgnacji"
   },
   "Black stone set styled for polished at-home skincare": {
     "en": "Black stone set styled for polished at-home skincare",
@@ -7235,6 +7235,14 @@ export const translationCatalog = {
   "Order selected size": {
     "en": "Order selected size",
     "pl": "Zamów wybrany rozmiar"
+  },
+  "Order selected volume": {
+    "en": "Order selected volume",
+    "pl": "Zamów wybraną pojemność"
+  },
+  "Choose volume": {
+    "en": "Choose volume",
+    "pl": "Wybierz pojemność"
   },
   "Green short": {
     "en": "Green short",

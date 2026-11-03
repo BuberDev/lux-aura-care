@@ -1,0 +1,85 @@
+{
+  "capturedOn": "2026-10-03",
+  "primaryLocale": "pl",
+  "note": "Pre-write title backup. Intended updates; execution results are documented in dsers-integration.md.",
+  "products": [
+    {
+      "id": "gid://shopify/Product/15816994357596",
+      "handle": "clear-skin-patches",
+      "previousTitle": "Clear Skin Hydrocolloid Patches — 24 szt.",
+      "newTitle": "Plastry hydrokoloidowe Clear Skin — 24 szt."
+    },
+    {
+      "id": "gid://shopify/Product/15816995176796",
+      "handle": "gold-eye-patches",
+      "previousTitle": "24K Gold Collagen Eye Patches — 60 szt.",
+      "newTitle": "Złote płatki pod oczy z kolagenem — 60 szt."
+    },
+    {
+      "id": "gid://shopify/Product/15816994947420",
+      "handle": "gua-sha-jade-roller-set",
+      "previousTitle": "Premium Rose Quartz Gua Sha & Jade Roller Set — Lymphatic Drainage Facial Massager",
+      "newTitle": "Roller i gua sha z różowego kwarcu"
+    },
+    {
+      "id": "gid://shopify/Product/15816997568860",
+      "handle": "lux-aura-face-roller-gua-sha-set",
+      "previousTitle": "Lux Aura Face Roller & Gua Sha Set",
+      "newTitle": "Zestaw rollera do twarzy i gua sha Lux Aura"
+    },
+    {
+      "id": "gid://shopify/Product/15816995635548",
+      "handle": "vibro-glow-face-massager",
+      "previousTitle": "Vibro-Glow Face Massager",
+      "newTitle": "Wibrujący masażer do twarzy Vibro-Glow"
+    },
+    {
+      "id": "gid://shopify/Product/15816995799388",
+      "handle": "centella-collagen-sleep-masks",
+      "previousTitle": "Centella Collagen Sleep Masks (30 pcs)",
+      "newTitle": "Nocne maski z wąkrotą i kolagenem — 30 szt."
+    },
+    {
+      "id": "gid://shopify/Product/15816995995996",
+      "handle": "vitamin-c-retinol-serum-duo",
+      "previousTitle": "Vitamin C Day + Retinol Night Serum Duo",
+      "newTitle": "Duet serum: witamina C na dzień i retinol na noc"
+    },
+    {
+      "id": "gid://shopify/Product/15816996192604",
+      "handle": "resin-body-gua-sha-tool",
+      "previousTitle": "Resin Body Gua Sha Lymph Tool",
+      "newTitle": "Gua sha z żywicy do masażu ciała"
+    },
+    {
+      "id": "gid://shopify/Product/15816996389212",
+      "handle": "natural-bristle-spa-brush",
+      "previousTitle": "Natural Bristle Spa Body Brush",
+      "newTitle": "Szczotka Spa do ciała z naturalnym włosiem"
+    },
+    {
+      "id": "gid://shopify/Product/15816996618588",
+      "handle": "exfoliating-spa-body-brush",
+      "previousTitle": "Exfoliating Spa Body Brush",
+      "newTitle": "Szczotka spa do peelingu ciała"
+    },
+    {
+      "id": "gid://shopify/Product/15816996847964",
+      "handle": "ice-face-roller-gua-sha-set",
+      "previousTitle": "Ice Face Roller & Gua Sha Steel Set",
+      "newTitle": "Stalowy zestaw: chłodzący roller i gua sha"
+    },
+    {
+      "id": "gid://shopify/Product/15816997044572",
+      "handle": "seaweed-collagen-crystal-mask",
+      "previousTitle": "Seaweed Collagen Crystal Hydration Mask",
+      "newTitle": "Nawilżająca maska hydrożelowa z algami i kolagenem"
+    },
+    {
+      "id": "gid://shopify/Product/15816998715740",
+      "handle": "floral-grace-maxi-dress",
+      "previousTitle": "Sukienka damska",
+      "newTitle": "Sukienka maxi Floral Grace"
+    }
+  ]
+}

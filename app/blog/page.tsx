@@ -5,16 +5,13 @@ import { ArticleCard } from "@/components/article-card";
 import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
 import { InlineCtaPanel } from "@/components/inline-cta-panel";
-import { TopPicksSection } from "@/components/sections/top-picks-section";
 import { Section } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { ProductCard } from "@/components/product-card";
 import { generateBreadcrumbsJsonLd, toAbsoluteUrl, toJsonLd } from "@/lib/seo";
 import {
   articles,
   categories,
   getCategoryById,
-  getTopPicksByCategory,
   isCategoryId,
   siteMeta,
 } from "@/lib/site-data";
@@ -22,7 +19,6 @@ import { cn } from "@/lib/utils";
 import { T } from "@/components/translated-text";
 import { getLocalizedAlternates, localizePathname } from "@/lib/i18n/path";
 import { localizeContent, translateText } from "@/lib/i18n/messages";
-import { localizeProduct } from "@/lib/product-localization";
 import { getRequestLocale } from "@/lib/i18n/request";
 import {
   generatedArticleCard,
@@ -101,12 +97,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       : []),
   ]);
 
-  const categoryPicks = selectedCategory
-    ? getTopPicksByCategory(selectedCategory.id).map((item) => ({
-        ...localizeContent(locale, item),
-        product: localizeProduct(locale, item.product),
-      }))
-    : [];
   const blogJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -229,48 +219,18 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             ))}
           </div>
 
-          {selectedCategory && categoryPicks.length > 0 ? (
-            <div className="mt-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="mb-8 flex items-end justify-between border-b border-border-subtle pb-4">
-                <div>
-                  <h2 className="font-heading text-3xl text-text-primary">
-                    <T text={"Essential"} /> {selectedCategory.name} <T text={"Favorites"} />
-                  </h2>
-                  <p className="mt-2 text-text-secondary">
-                    <T text={"Direct Amazon links to high-signal picks for this category."} />
-                  </p>
-                </div>
-              </div>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {categoryPicks.map((item) => (
-                  <ProductCard
-                    key={item.product.id}
-                    product={item.product}
-                    compact
-                    featuredBadge={item.badge}
-                    ctaLabel="View on Amazon"
-                  />
-                ))}
-              </div>
-            </div>
-          ) : null}
-
-          {!selectedCategory ? (
-            <InlineCtaPanel
-              className="mt-12"
-              eyebrow="Need quick product wins?"
-              title="Open a guide, then compare the top picks in one flow"
-              description="Readers convert more confidently when they read one focused guide first and shop with context."
-              primaryHref="/favorites"
-              primaryLabel="View Amazon Favorites"
-              secondaryHref="/"
-              secondaryLabel="Back to Landing"
-            />
-          ) : null}
+          <InlineCtaPanel
+            className="mt-12"
+            eyebrow="Need quick product wins?"
+            title="Open a guide, then compare the top picks in one flow"
+            description="Readers convert more confidently when they read one focused guide first and shop with context."
+            primaryHref="/shop"
+            primaryLabel="Shop skincare tools"
+            secondaryHref="/"
+            secondaryLabel="Back to Landing"
+          />
         </Container>
       </Section>
-
-      <TopPicksSection className="pt-0" />
     </>
   );
 }

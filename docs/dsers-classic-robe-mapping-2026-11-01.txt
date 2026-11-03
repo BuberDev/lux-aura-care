@@ -1,0 +1,50 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+Miękki szlafrok polarowy na guziki
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Basic Mapping
+Basic Mapping
+Advanced Mapping
+Store Product
+Miękki szlafrok polarowy na guziki
+Default Supplier
+Autumn Winter Women Warm Fleece Robe Ladies Soft Bathrobe Female Long Sleeve Dressing Gown Solid Robes Simple Home Clothes
+Backup Supplier
+Select a Backup Supplier
+
+Color
+
+Różowy
+Niebieski
+Zielony
+
+Size
+
+XL
+L
+Color
+B
+A
+C
+Size
+1XL
+L
+
+--
+
+--
+--
+--
+
+--
+
+--
+--
+Save

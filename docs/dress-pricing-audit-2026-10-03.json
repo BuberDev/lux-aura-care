@@ -1,0 +1,606 @@
+{
+  "date": "2026-10-03",
+  "product": "floral-grace-maxi-dress",
+  "supplierItem": "1005006058910366",
+  "destination": "PL",
+  "packQuantity": 1,
+  "supplierCurrency": "USD",
+  "productCostRange": [
+    3.64,
+    4.86
+  ],
+  "fx": {
+    "plnPerUsd": 3.8881,
+    "source": "NBP 192/A/NBP/2026",
+    "date": "2026-10-02"
+  },
+  "sellingPricePLN": 229.99,
+  "contributionPolicyPLN": 160,
+  "shippingQuotes": [
+    {
+      "sku": "Green short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:17:10.246Z"
+    },
+    {
+      "sku": "Pink short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:17:11.331Z"
+    },
+    {
+      "sku": "Pink short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:17:12.002Z"
+    },
+    {
+      "sku": "Pink short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:25.575Z"
+    },
+    {
+      "sku": "Pink short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:26.646Z"
+    },
+    {
+      "sku": "Pink short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:27.293Z"
+    },
+    {
+      "sku": "Pink short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:27.938Z"
+    },
+    {
+      "sku": "Pink short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:28.590Z"
+    },
+    {
+      "sku": "Pink short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:29.226Z"
+    },
+    {
+      "sku": "Black point short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:29.880Z"
+    },
+    {
+      "sku": "Black point short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:30.522Z"
+    },
+    {
+      "sku": "Black point short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:31.165Z"
+    },
+    {
+      "sku": "Black point short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:31.809Z"
+    },
+    {
+      "sku": "Black point short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:43.774Z"
+    },
+    {
+      "sku": "Black point short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:44.533Z"
+    },
+    {
+      "sku": "Black point short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:45.193Z"
+    },
+    {
+      "sku": "Black point short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:45.838Z"
+    },
+    {
+      "sku": "Black point long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:46.486Z"
+    },
+    {
+      "sku": "Black white short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:47.127Z"
+    },
+    {
+      "sku": "Black white short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:47.767Z"
+    },
+    {
+      "sku": "Black white short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:48.409Z"
+    },
+    {
+      "sku": "Black white short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:49.056Z"
+    },
+    {
+      "sku": "Black white short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:49.692Z"
+    },
+    {
+      "sku": "Black white short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:50.336Z"
+    },
+    {
+      "sku": "Black white short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:18:51.309Z"
+    },
+    {
+      "sku": "Black white short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:00.330Z"
+    },
+    {
+      "sku": "leaves green short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:00.971Z"
+    },
+    {
+      "sku": "leaves green short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:01.611Z"
+    },
+    {
+      "sku": "leaves green short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:02.356Z"
+    },
+    {
+      "sku": "leaves green short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:03.321Z"
+    },
+    {
+      "sku": "leaves green short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:03.961Z"
+    },
+    {
+      "sku": "leaves green short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:04.614Z"
+    },
+    {
+      "sku": "leaves green short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:05.246Z"
+    },
+    {
+      "sku": "leaves green short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:05.896Z"
+    },
+    {
+      "sku": "Color bar short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:06.533Z"
+    },
+    {
+      "sku": "Color bar short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:07.177Z"
+    },
+    {
+      "sku": "Color bar short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:19:08.776Z"
+    },
+    {
+      "sku": "Green short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:20:45.052Z"
+    },
+    {
+      "sku": "Green short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:20:47.941Z"
+    },
+    {
+      "sku": "Green short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:20:50.396Z"
+    },
+    {
+      "sku": "Color bar long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:20:52.849Z"
+    },
+    {
+      "sku": "Green long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:20:55.299Z"
+    },
+    {
+      "sku": "Green long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:20:57.732Z"
+    },
+    {
+      "sku": "Green long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:21:06.869Z"
+    },
+    {
+      "sku": "Green long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:21:09.309Z"
+    },
+    {
+      "sku": "Green long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:21:11.307Z"
+    },
+    {
+      "sku": "Green long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:27:40.811Z"
+    },
+    {
+      "sku": "Green long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:28:49.740Z"
+    },
+    {
+      "sku": "Green long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:28:52.179Z"
+    },
+    {
+      "sku": "Pink long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:28:54.724Z"
+    },
+    {
+      "sku": "Pink long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:28:57.270Z"
+    },
+    {
+      "sku": "Pink long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:28:59.801Z"
+    },
+    {
+      "sku": "Pink long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:29:02.350Z"
+    },
+    {
+      "sku": "Pink long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:29:04.261Z"
+    },
+    {
+      "sku": "Pink long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:33:46.805Z"
+    },
+    {
+      "sku": "Pink long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:33:49.910Z"
+    },
+    {
+      "sku": "Pink long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:33:52.368Z"
+    },
+    {
+      "sku": "Red long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:33:54.831Z"
+    },
+    {
+      "sku": "Red long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:33:56.967Z"
+    },
+    {
+      "sku": "Red long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:33:59.417Z"
+    },
+    {
+      "sku": "Red long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:34:01.860Z"
+    },
+    {
+      "sku": "Red long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:34:04.294Z"
+    },
+    {
+      "sku": "Red long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:35.833Z"
+    },
+    {
+      "sku": "Red long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:38.600Z"
+    },
+    {
+      "sku": "Red long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:41.067Z"
+    },
+    {
+      "sku": "Black point long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:43.420Z"
+    },
+    {
+      "sku": "Black point long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:44.915Z"
+    },
+    {
+      "sku": "Black point long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:47.267Z"
+    },
+    {
+      "sku": "Black point long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:49.755Z"
+    },
+    {
+      "sku": "Black point long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:52.215Z"
+    },
+    {
+      "sku": "Black point long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:35:54.664Z"
+    },
+    {
+      "sku": "Black point long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:46:20.304Z"
+    },
+    {
+      "sku": "Red short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:32.312Z"
+    },
+    {
+      "sku": "Red short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:46:38.767Z"
+    },
+    {
+      "sku": "Red short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:37.606Z"
+    },
+    {
+      "sku": "Red short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:40.079Z"
+    },
+    {
+      "sku": "Red short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:42.440Z"
+    },
+    {
+      "sku": "Red short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:44.911Z"
+    },
+    {
+      "sku": "Red short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:46.736Z"
+    },
+    {
+      "sku": "Red short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:49.208Z"
+    },
+    {
+      "sku": "Black white long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:51.132Z"
+    },
+    {
+      "sku": "Black white long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:53.157Z"
+    },
+    {
+      "sku": "Black white long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:55.741Z"
+    },
+    {
+      "sku": "Black white long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:40:58.358Z"
+    },
+    {
+      "sku": "Black white long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:21.414Z"
+    },
+    {
+      "sku": "Black white long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:23.993Z"
+    },
+    {
+      "sku": "Black white long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:47:12.132Z"
+    },
+    {
+      "sku": "Black white long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:29.175Z"
+    },
+    {
+      "sku": "leaves green long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:31.770Z"
+    },
+    {
+      "sku": "leaves green long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:33.947Z"
+    },
+    {
+      "sku": "leaves green long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:36.529Z"
+    },
+    {
+      "sku": "leaves green long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:39.104Z"
+    },
+    {
+      "sku": "leaves green long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:41.676Z"
+    },
+    {
+      "sku": "leaves green long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:44.143Z"
+    },
+    {
+      "sku": "leaves green long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:46.739Z"
+    },
+    {
+      "sku": "leaves green long-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:41:49.225Z"
+    },
+    {
+      "sku": "Color bar long-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:15.806Z"
+    },
+    {
+      "sku": "Color bar long-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:18.686Z"
+    },
+    {
+      "sku": "Color bar long-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:21.141Z"
+    },
+    {
+      "sku": "Color bar long-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:24.217Z"
+    },
+    {
+      "sku": "Color bar long-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:26.719Z"
+    },
+    {
+      "sku": "Color bar long-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:28.621Z"
+    },
+    {
+      "sku": "Color bar long-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:43:31.099Z"
+    },
+    {
+      "sku": "Color bar short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:40.564Z"
+    },
+    {
+      "sku": "Color bar short-XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:42.826Z"
+    },
+    {
+      "sku": "Color bar short-L",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:45.022Z"
+    },
+    {
+      "sku": "Color bar short-M",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:47.287Z"
+    },
+    {
+      "sku": "Color bar short-S",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:49.468Z"
+    },
+    {
+      "sku": "Green short-5XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:51.652Z"
+    },
+    {
+      "sku": "Green short-4XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:53.859Z"
+    },
+    {
+      "sku": "Green short-3XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:44:56.083Z"
+    },
+    {
+      "sku": "Green short-2XL",
+      "shipping": "AliExpress standard shipping\n\nCN\n\nUS $12.62\n\n10~21days\n\nAvailable\n\nAliExpress Premium Shipping\n\nCN\n\nUS $28.08\n\n10~14days\n\nAvailable",
+      "checkedAt": "2026-10-03T14:45:40.462Z"
+    }
+  ],
+  "unverifiedShipping": [],
+  "coverageNote": "All 112 supplier SKU combinations individually observed with AliExpress standard shipping USD 12.62 to Poland. Temporary No Shipping responses were reselected and rechecked successfully. Supplier costs are DSers estimates, not guaranteed future invoices. Product cost uses the upper end of the full product range, USD 4.86; not a claim of SKU-specific unit-cost precision.",
+  "maxEstimatedLandedCostPLN": 67.97,
+  "estimatedContributionPLN": 162.02,
+  "contributionExcludes": "Taxes, payment fees, FX spread, returns and other operating costs.",
+  "shopifyVerification": {
+    "variants": 112,
+    "price": "229.99",
+    "currency": "PLN",
+    "imagesMapped": 112
+  },
+  "deployment": {
+    "id": "dpl_GBkjpzRshWGFcpQHJv2yQQkacVip",
+    "url": "https://lux-aura-care-ega2v6uce-buberdevs-projects.vercel.app",
+    "production": "https://luxauracare.com",
+    "status": "READY",
+    "scope": "Dress price/currency and qualified standard-delivery badge only. Other local Product Page Engine changes were not deployed."
+  },
+  "checkoutVerification": {
+    "variant": "Green long / 5XL",
+    "quantity": 1,
+    "pricePLN": 229.99,
+    "correctVariantImage": true,
+    "orderSubmitted": false
+  }
+}

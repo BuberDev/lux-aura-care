@@ -1,0 +1,790 @@
+{
+  "checkedAt": "2026-10-03",
+  "productId": "15816998715740",
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/59112652800348",
+      "title": "Green short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652833116",
+      "title": "Green short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652865884",
+      "title": "Green short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652898652",
+      "title": "Green short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652931420",
+      "title": "Green short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652964188",
+      "title": "Green short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827006300",
+      "title": "Green short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827039068",
+      "title": "Green short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480411996",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827071836",
+      "title": "Red long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827104604",
+      "title": "Red long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827137372",
+      "title": "Red long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827170140",
+      "title": "Red long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827202908",
+      "title": "Red long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827235676",
+      "title": "Red long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827268444",
+      "title": "Red long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827301212",
+      "title": "Red long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384480674140",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827333980",
+      "title": "Red short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827366748",
+      "title": "Red short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827399516",
+      "title": "Red short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827432284",
+      "title": "Red short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827465052",
+      "title": "Red short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827497820",
+      "title": "Red short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827530588",
+      "title": "Red short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827563356",
+      "title": "Red short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481100124",
+      "alt": "Sukienka maxi Floral Grace — Czerwona z białym kwiatowym dołem — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827596124",
+      "title": "Bodian short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827628892",
+      "title": "Bodian short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827661660",
+      "title": "Bodian short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827694428",
+      "title": "Bodian short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827727196",
+      "title": "Bodian short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827759964",
+      "title": "Bodian short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827792732",
+      "title": "Bodian short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827825500",
+      "title": "Bodian short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384481919324",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652407132",
+      "title": "Pink short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652439900",
+      "title": "Pink short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652472668",
+      "title": "Pink short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652505436",
+      "title": "Pink short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652538204",
+      "title": "Pink short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652570972",
+      "title": "Pink short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827858268",
+      "title": "Pink short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827891036",
+      "title": "Pink short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485785948",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652996956",
+      "title": "White long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653029724",
+      "title": "White long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653062492",
+      "title": "White long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653095260",
+      "title": "White long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653128028",
+      "title": "White long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112653160796",
+      "title": "White long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827923804",
+      "title": "White long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827956572",
+      "title": "White long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384485196124",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652603740",
+      "title": "Black short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652636508",
+      "title": "Black short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652669276",
+      "title": "Black short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652702044",
+      "title": "Black short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652734812",
+      "title": "Black short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59112652767580",
+      "title": "Black short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338827989340",
+      "title": "Black short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828022108",
+      "title": "Black short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384488046940",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828054876",
+      "title": "White short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828087644",
+      "title": "White short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828120412",
+      "title": "White short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828153180",
+      "title": "White short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828185948",
+      "title": "White short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828218716",
+      "title": "White short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828251484",
+      "title": "White short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828284252",
+      "title": "White short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489128284",
+      "alt": "Sukienka maxi Floral Grace — Biały ogród kwiatowy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828317020",
+      "title": "Pink long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828349788",
+      "title": "Pink long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828382556",
+      "title": "Pink long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828415324",
+      "title": "Pink long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828448092",
+      "title": "Pink long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828480860",
+      "title": "Pink long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828513628",
+      "title": "Pink long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828546396",
+      "title": "Pink long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384489455964",
+      "alt": "Sukienka maxi Floral Grace — Pudrowy róż w kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828579164",
+      "title": "Green long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828611932",
+      "title": "Green long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828644700",
+      "title": "Green long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828677468",
+      "title": "Green long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828710236",
+      "title": "Green long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828743004",
+      "title": "Green long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828775772",
+      "title": "Green long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828808540",
+      "title": "Green long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494436700",
+      "alt": "Sukienka maxi Floral Grace — Turkusowa w bordowe kwiaty — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828841308",
+      "title": "Bodian long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828874076",
+      "title": "Bodian long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828906844",
+      "title": "Bodian long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828939612",
+      "title": "Bodian long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338828972380",
+      "title": "Bodian long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829005148",
+      "title": "Bodian long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829037916",
+      "title": "Bodian long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829070684",
+      "title": "Bodian long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494141788",
+      "alt": "Sukienka maxi Floral Grace — Czarna w groszki — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829103452",
+      "title": "Fangge-CX long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829136220",
+      "title": "Fangge-CX long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829168988",
+      "title": "Fangge-CX long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829201756",
+      "title": "Fangge-CX long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829234524",
+      "title": "Fangge-CX long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829267292",
+      "title": "Fangge-CX long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829300060",
+      "title": "Fangge-CX long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829332828",
+      "title": "Fangge-CX long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494633308",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829365596",
+      "title": "Fangge-CX short / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829398364",
+      "title": "Fangge-CX short / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829431132",
+      "title": "Fangge-CX short / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829463900",
+      "title": "Fangge-CX short / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829496668",
+      "title": "Fangge-CX short / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829529436",
+      "title": "Fangge-CX short / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829562204",
+      "title": "Fangge-CX short / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829594972",
+      "title": "Fangge-CX short / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384494960988",
+      "alt": "Sukienka maxi Floral Grace — Wielokolorowe pasy — krótki rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829627740",
+      "title": "Black long / S",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829660508",
+      "title": "Black long / M",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829693276",
+      "title": "Black long / L",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829726044",
+      "title": "Black long / XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829758812",
+      "title": "Black long / 2XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829791580",
+      "title": "Black long / 3XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829824348",
+      "title": "Black long / 4XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    },
+    {
+      "id": "gid://shopify/ProductVariant/59338829857116",
+      "title": "Black long / 5XL",
+      "price": "229.99",
+      "mediaId": "gid://shopify/MediaImage/72384495190364",
+      "alt": "Sukienka maxi Floral Grace — Tropikalna zieleń — długi rękaw"
+    }
+  ]
+}

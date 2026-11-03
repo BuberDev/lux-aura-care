@@ -1,0 +1,47 @@
+Manage Suppliers For Products
+You can manage suppliers for store products by mapping supplier product to store product.
+EUQEE — zestaw 6 olejków eterycznych, 6 × 10 ml
+Open in store
+Import supplier to Favorites
+Search
+AliExpress
+	
+OK
+Map to supplier
+Current In Use：
+Basic Mapping
+Basic Mapping
+Advanced Mapping
+Store Product
+EUQEE — zestaw 6 olejków eterycznych, 6 × 10 ml
+Default Supplier
+EUQEE Essential Oils Set 6 Bottles 10ml Pure Natural Aromatherapy Oils for Humidifier Diffusers Making Candle Soap Air Freshener
+Backup Supplier
+Select a Backup Supplier
+
+Color
+
+Classic Series Set
+Floral Series Set
+Woody Series Set
+
+Net Contents
+
+10mlx6
+Color
+Classic Series Set
+Floral Series Set
+Woody Series Set
+Net Contents
+10mlx6
+
+--
+
+--
+--
+--
+
+--
+
+--
+Save
