@@ -1,6 +1,31 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
-## Sekcja zdjęć przed i po — LOKALNIE, 2026-11-03
+## Incydent katalogu i naprawa produkcji — 2026-11-03
+
+PRODUKCJA NAPRAWIONA. Automatyczne wdrożenie `main` po commicie `2adfc8a`
+zastąpiło właściwy katalog wersją bez 10 opublikowanych ofert, dlatego ich
+adresy (m.in. `professional-derma-roller`) zwracały 404. Najpierw przywrócono
+poprzednie poprawne wdrożenie `dpl_5pT599pezhxZvL5nYebh83aFjAVn`, a następnie
+scalono kompletny katalog do `main` w commicie `45e484d`.
+
+Pierwszy preview scalenia został poprawnie zbudowany, ale Vercel odrzucił
+publikację funkcji `shop/[productId]` o rozmiarze 785,32 MB. Przyczyną było
+dynamiczne skanowanie `public` przez `node:fs`, które wciągało 778 MB mediów do
+śladu funkcji. Commit `10ed776` przeniósł wykrywanie par `before`/`after` do
+klienta; nowa funkcja ma 3,19 MB. Preview
+`dpl_Be6GuUzkXiq7hL45AWWfVDR4kAPy` przeszedł, a produkcyjne wdrożenie
+`dpl_EsXgUDkXppUwHeNu62D765nMej5G` jest READY i obsługuje domeny główne.
+
+Zweryfikowano lokalny build 93 stron, TypeScript, pełny ESLint (0 błędów,
+2 wcześniejsze ostrzeżenia w `content-engine`), 13 testów katalogu/checkoutu
+oraz lokalnie 48 tras. Po wdrożeniu wszystkie 23 aktywne produkty w PL i EN
+oraz oba indeksy sklepu dały 48/48 odpowiedzi HTTP 200; `before.png` i
+`after.png` dermarollera także dały 200. Znaczniki „ilustracja AI” nie
+występują w kodzie interfejsu ani produkcyjnym HTML; historyczne opisy pozostają
+wyłącznie w wewnętrznych plikach audytowych. Host przeglądarki narzędziowej był
+niedostępny, więc nie wykonano dodatkowego produkcyjnego zrzutu wizualnego.
+
+## Sekcja zdjęć przed i po — PRODUKCJA, 2026-11-03
 
 Przygotowano obsługę porównania na stronach produktów. Kod w worktree
 `lux-aura-care-finish-five`, commit `b160e24`; katalog `public/<product-id>/`
@@ -8,9 +33,10 @@ przyjmuje `before` i `after` w zgodnym formacie `.webp`, `.jpg`, `.jpeg` albo
 `.png`. Sekcja pojawia się tylko wtedy, gdy para istnieje. Dla
 `professional-derma-roller` dodano parę `before.png` i `after.png` (941 × 1672 px)
 w commitach `31c1851` na `main` i `d8c2c30` w worktree galerii. Instrukcja:
-`docs/product-results-images.md`.
-Lint i TypeScript przeszły; build Next 16.2.3 przeszedł z tymczasowym kluczem
-Resend, bo lokalny `RESEND_API_KEY` nie był dostępny. Zmiany nie wdrożono.
+`docs/product-results-images.md`. Wykrywanie odbywa się po stronie klienta
+przez lekkie zapytania HEAD, dzięki czemu dodanie poprawnej pary do folderu
+produktu nie wymaga wpisu w rejestrze i nie pakuje całego `public` do funkcji.
+Lint, TypeScript, lokalny build Next 16.2.3, preview i produkcja przeszły.
 
 ## Galerie: użycie i różne scenerie — 2026-11-02, wersja 2
 
