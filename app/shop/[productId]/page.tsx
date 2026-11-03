@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import { notFound } from "next/navigation";
 import {
   getShopifyCheckoutRoute,
@@ -21,18 +19,6 @@ import {
 } from "@/lib/seo";
 
 type Props = { params: Promise<{ productId: string }> };
-
-function getProductResultsExtension(productId: string) {
-  const productDirectory = join(process.cwd(), "public", productId);
-  const supportedExtensions = [".webp", ".jpg", ".jpeg", ".png"];
-  return (
-    supportedExtensions.find(
-      (extension) =>
-        existsSync(join(productDirectory, `before${extension}`)) &&
-        existsSync(join(productDirectory, `after${extension}`))
-    ) ?? null
-  );
-}
 
 export async function generateStaticParams() {
   return shopProducts.map((p) => ({ productId: p.id }));
@@ -68,7 +54,6 @@ export default async function ShopProductPage({ params }: Props) {
   const locale = await getRequestLocale();
   const sourceProduct = getShopProductById(productId);
   if (!sourceProduct) notFound();
-  const beforeAfterImageExtension = getProductResultsExtension(sourceProduct.id);
 
   const dbVideos = await getShopUgcVideosFromDb(sourceProduct.id);
   const sourceRelatedProducts = shopProducts
@@ -118,11 +103,7 @@ export default async function ShopProductPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toJsonLd(faqJsonLd) }}
       />
-      <ShopProductSales
-        product={product}
-        related={related}
-        beforeAfterImageExtension={beforeAfterImageExtension}
-      />
+      <ShopProductSales product={product} related={related} />
     </>
   );
 }

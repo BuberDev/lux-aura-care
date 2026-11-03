@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { MoveHorizontal } from "lucide-react";
 
@@ -11,16 +11,48 @@ import { useI18n } from "@/components/i18n-provider";
 type ProductResultsComparisonProps = {
   readonly productId: string;
   readonly productName: string;
-  readonly imageExtension: string;
 };
+
+const supportedExtensions = [".webp", ".jpg", ".jpeg", ".png"] as const;
+
+async function imageExists(url: string, signal: AbortSignal) {
+  try {
+    const response = await fetch(url, { method: "HEAD", signal });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
 
 export function ProductResultsComparison({
   productId,
   productName,
-  imageExtension,
 }: ProductResultsComparisonProps) {
   const { text } = useI18n();
   const [position, setPosition] = useState(50);
+  const [imageExtension, setImageExtension] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    void Promise.all(
+      supportedExtensions.map(async (extension) => {
+        const [beforeExists, afterExists] = await Promise.all([
+          imageExists(`/${productId}/before${extension}`, controller.signal),
+          imageExists(`/${productId}/after${extension}`, controller.signal),
+        ]);
+        return beforeExists && afterExists ? extension : null;
+      })
+    ).then((extensions) => {
+      if (!controller.signal.aborted) {
+        setImageExtension(extensions.find(Boolean) ?? null);
+      }
+    });
+
+    return () => controller.abort();
+  }, [productId]);
+
+  if (!imageExtension) return null;
 
   return (
     <section className="border-b border-border-subtle bg-surface-subtle/35 py-12 sm:py-16">

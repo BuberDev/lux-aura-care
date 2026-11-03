@@ -49,7 +49,6 @@ import {
 type ShopProductSalesProps = {
   readonly product: ShopProduct;
   readonly related: ShopProduct[];
-  readonly beforeAfterImageExtension: string | null;
 };
 
 type ProductUgcGalleryProps = {
@@ -558,7 +557,7 @@ const detailedScienceBenefits: Record<string, {
   ]
 };
 
-export function ShopProductSales({ product, related, beforeAfterImageExtension }: ShopProductSalesProps) {
+export function ShopProductSales({ product, related }: ShopProductSalesProps) {
   const { locale, text } = useI18n();
   const ugcVideos = product.ugcVideos ?? [];
   const hasUgcVideos = ugcVideos.length > 0;
@@ -1933,13 +1932,7 @@ export function ShopProductSales({ product, related, beforeAfterImageExtension }
         </section>
       )}
 
-      {beforeAfterImageExtension && (
-        <ProductResultsComparison
-          productId={product.id}
-          productName={product.name}
-          imageExtension={beforeAfterImageExtension}
-        />
-      )}
+      <ProductResultsComparison productId={product.id} productName={product.name} />
 
       {/* 6. DETAILED BENEFIT CARDS (DEEP DIVE SCIENCE) */}
       {!pageProfile && scienceBenefits.length > 0 && (
