@@ -6,8 +6,9 @@ Przygotowano obsługę porównania na stronach produktów. Kod w worktree
 `lux-aura-care-finish-five`, commit `b160e24`; katalog `public/<product-id>/`
 przyjmuje `before` i `after` w zgodnym formacie `.webp`, `.jpg`, `.jpeg` albo
 `.png`. Sekcja pojawia się tylko wtedy, gdy para istnieje. Dla
-`professional-derma-roller` katalog zawiera na razie wyłącznie `.gitkeep`, więc
-zdjęcia efektów i sekcja nie są widoczne. Instrukcja: `docs/product-results-images.md`.
+`professional-derma-roller` dodano parę `before.png` i `after.png` (941 × 1672 px)
+w commitach `31c1851` na `main` i `d8c2c30` w worktree galerii. Instrukcja:
+`docs/product-results-images.md`.
 Lint i TypeScript przeszły; build Next 16.2.3 przeszedł z tymczasowym kluczem
 Resend, bo lokalny `RESEND_API_KEY` nie był dostępny. Zmiany nie wdrożono.
 
