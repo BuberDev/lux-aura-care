@@ -38,6 +38,7 @@ Pliki w `public/` są już pogrupowane w katalogach produktów. Nie przenosiłem
 | `public/cosrx-snail-mucin/` | 8 |
 | `public/customer-avatars/` | 6 |
 | `public/derma-roller/` | 14 |
+| `public/professional-derma-roller/` | 0 |
 | `public/dermaplaning-razor-kit/` | 6 |
 | `public/dress/` | 18 |
 | `public/dry-brush/` | 1 |

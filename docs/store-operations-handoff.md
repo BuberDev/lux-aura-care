@@ -1,5 +1,16 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Sekcja zdjęć przed i po — LOKALNIE, 2026-11-03
+
+Przygotowano obsługę porównania na stronach produktów. Kod w worktree
+`lux-aura-care-finish-five`, commit `b160e24`; katalog `public/<product-id>/`
+przyjmuje `before` i `after` w zgodnym formacie `.webp`, `.jpg`, `.jpeg` albo
+`.png`. Sekcja pojawia się tylko wtedy, gdy para istnieje. Dla
+`professional-derma-roller` katalog zawiera na razie wyłącznie `.gitkeep`, więc
+zdjęcia efektów i sekcja nie są widoczne. Instrukcja: `docs/product-results-images.md`.
+Lint i TypeScript przeszły; build Next 16.2.3 przeszedł z tymczasowym kluczem
+Resend, bo lokalny `RESEND_API_KEY` nie był dostępny. Zmiany nie wdrożono.
+
 ## Galerie: użycie i różne scenerie — 2026-11-02, wersja 2
 
 PRODUKCJA: pięć ofert ma 26 widocznych ujęć: olejek 6, pozostałe po 5.
