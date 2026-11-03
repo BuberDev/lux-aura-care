@@ -743,5 +743,20 @@ export const shopProductPolishCopy: Record<string, string> = {
   "New product — no reviews yet": "Nowy produkt — jeszcze bez opinii",
   "We publish reviews only after verifying their source.":
     "Publikujemy wyłącznie opinie o potwierdzonym źródle.",
+  "Customer reviews": "Opinie klientów",
+  "Product rating summary": "Podsumowanie ocen produktu",
+  "Read selected customer comments together with their source and order details.":
+    "Przeczytaj wybrane komentarze klientek wraz ze źródłem i szczegółami zamówienia.",
+  "This preview shows the intended review layout. The copy is editorial sample text, not customer feedback.":
+    "Ten podgląd pokazuje docelowy układ opinii. Treści są przykładami redakcyjnymi, a nie komentarzami klientek.",
+  "No review excerpts have been published for this product yet.":
+    "Dla tego produktu nie opublikowano jeszcze treści opinii.",
+  "Rating and comments come from the supplier product listing.":
+    "Ocena i komentarze pochodzą z oferty produktu u dostawcy.",
+  "Review layout preview": "Podgląd układu opinii",
+  "Each sample will be replaced when an authentic review is available.":
+    "Każdy przykład zostanie zastąpiony, gdy pojawi się autentyczna opinia.",
+  "Editorial example": "Przykład redakcyjny",
+  "Ask about this product": "Zapytaj o ten produkt",
   "Tip": "Wskazówka",
 };

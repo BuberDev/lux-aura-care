@@ -1,5 +1,22 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Profesjonalna sekcja opinii produktowych — 2026-11-03
+
+WDROŻENIE PRZYGOTOWANE: wszystkie aktywne strony produktowe korzystają z jednego
+komponentu opinii. Istniejące opinie dostawcy są prezentowane jako czytelne,
+poziome wpisy z autorem, oceną, datą, wariantem, rozmiarem i liczbą oznaczeń
+„przydatne”. Zachowano bez zmian ich treść, źródło, oceny, liczniki oraz dane
+produktu. Oznaczone przykłady redakcyjne nadal są wyraźnie odróżnione od opinii
+klientek. Produkty bez opublikowanych treści opinii, w tym
+`professional-derma-roller`, mają uczciwy stan pusty i działający odnośnik do
+kontaktu zamiast fikcyjnego formularza lub nieaktywnego przycisku.
+
+Układ sprawdzono w trzech wariantach danych (opublikowane opinie, przykłady
+redakcyjne, brak opinii) przy szerokościach 1440, 768 i 390 px. Lint zmienionego
+komponentu według taste-skill: 0 błędów i 0 ostrzeżeń. TypeScript, pełny build
+93 stron, 13 testów sklepu i ESLint przeszły; pełny ESLint nadal zgłasza tylko
+2 wcześniejsze ostrzeżenia w `content-engine`.
+
 ## Pionowe porównanie zdjęć przed i po — 2026-11-03
 
 PRODUKCJA: sekcję rezultatów zmieniono z suwaka przycinającego fotografie do
