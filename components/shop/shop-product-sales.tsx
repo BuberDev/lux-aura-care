@@ -1383,15 +1383,12 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
                       )}
                     </div>
 
-                    {product.mediaDisclosure && activeHeroItem.type === "image" && (
+                    {product.showGalleryCaptions && activeHeroItem.type === "image" && (
                       <div className="mt-3 space-y-0.5 text-center sm:text-left" aria-live="polite">
                         <div className="flex items-center justify-center gap-2 sm:justify-start">
                           <p className="text-sm font-semibold text-text-primary">
                             <T text={activeHeroItem.label} />
                           </p>
-                          <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-accent-gold">
-                            <T text={"AI illustration"} />
-                          </span>
                         </div>
                         <p className="text-xs text-text-secondary">
                           <T text={activeHeroItem.desc} />
@@ -1904,16 +1901,6 @@ export function ShopProductSales({ product, related }: ShopProductSalesProps) {
           </div>
         </Container>
       </section>
-
-      {product.mediaDisclosure && (
-        <div className="border-b border-border-subtle pb-3">
-          <Container className={PRODUCT_PAGE_CONTAINER_CLASS}>
-            <p className="text-[11px] text-text-secondary">
-              <T text={product.mediaDisclosure} />
-            </p>
-          </Container>
-        </div>
-      )}
 
       {/* Product information strip */}
       <section className="border-t border-b border-border-subtle py-8 bg-surface-subtle">

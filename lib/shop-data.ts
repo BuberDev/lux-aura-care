@@ -75,7 +75,7 @@ export type ShopProduct = {
   faq: { q: string; a: string }[];
   shopifyUrl?: string;
   category: "skincare" | "body-glow" | "fashion" | "bundle";
-  mediaDisclosure?: string;
+  showGalleryCaptions?: boolean;
   purchaseStatus?: "available" | "coming-soon";
   isNew?: boolean;
   isBestSeller?: boolean;
@@ -1025,7 +1025,7 @@ export const shopProducts: ShopProduct[] = [
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-derma-hero-ai-2026-11-02.png?v=1793648935",
     imageAlt: "One black-handled derma roller with a single roller head",
-    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
+    showGalleryCaptions: true,
     badge: "Choose a length",
     benefits: [
       "Choose from 0.2 mm, 0.25 mm and 0.3 mm options",
@@ -1071,7 +1071,7 @@ export const shopProducts: ShopProduct[] = [
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-nia-30-hero-ai-2026-11-02.png?v=1793648917",
     imageAlt: "LGRAMER niacinamide serum in a 30 ml pump bottle",
-    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
+    showGalleryCaptions: true,
     badge: "Choose bottle size",
     benefits: [
       "LGRAMER facial serum",
@@ -1117,7 +1117,7 @@ export const shopProducts: ShopProduct[] = [
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-candle-hero-ai-2026-11-02.png?v=1793648926",
     imageAlt: "One candle in an amber glass jar with a lid",
-    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
+    showGalleryCaptions: true,
     badge: "White Musk",
     benefits: [
       "White Musk fragrance",
@@ -1162,7 +1162,7 @@ export const shopProducts: ShopProduct[] = [
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-body-3pack-ai-2026-11-02.png?v=1793648898",
     imageAlt: "OceAura body oil three-pack with three 100 ml pump bottles and cartons",
-    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
+    showGalleryCaptions: true,
     badge: "Body oil",
     benefits: [
       "OceAura body oil in 100 ml pump bottles",
@@ -1209,7 +1209,7 @@ export const shopProducts: ShopProduct[] = [
     currency: "PLN",
     image: "https://cdn.shopify.com/s/files/1/1055/0132/7708/files/lux-gallery-retinol-hero-ai-2026-11-02.png?v=1793649289",
     imageAlt: "FDUAY oil-form face serum capsules in a 50-count container",
-    mediaDisclosure: "Gallery illustrations created with AI from supplier references.",
+    showGalleryCaptions: true,
     badge: "50 capsules",
     benefits: [
       "One container containing 50 capsules",
