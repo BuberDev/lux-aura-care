@@ -48,4 +48,32 @@ export const sampleReviewCopy: Record<string, { pl: readonly string[]; en: reado
     pl: ["Maska dobrze przylega do twarzy i pozwala mi zrobić krótką przerwę na pielęgnację.", "Podoba mi się żelowa forma maski. Nakładam ją wieczorem, kiedy mam więcej czasu dla siebie.", "Pojedyncze maski łatwo przechować i zabrać w podróż. Wybieram je, kiedy chcę poświęcić chwilę na spokojną pielęgnację.", "Żelowa powierzchnia jest przyjemna w dotyku. Po nałożeniu mogę odpocząć bez ciągłego poprawiania maski."],
     en: ["The mask sits comfortably on my face and gives me a short pause for skincare.", "I like the gel format. I use it in the evening when I have more time for myself.", "Individual masks are easy to store and take on a trip. I choose one when I want a quiet skincare moment.", "The gel surface feels pleasant. Once applied, I can relax without constantly adjusting the mask."],
   },
+  "dermaplaning-razor-kit": {
+    pl: ["Ostrzyk jest precyzyjny, a jedno przejście po policzku zajmuje mi dosłownie chwilę.", "Makijaż nakłada się później wyraźnie gładziej. Używam go raz na 1–2 tygodnie, zgodnie z instrukcją.", "Osłonka daje mi kontrolę nad kątem ostrza, więc czuję się pewnie nawet przy pierwszym użyciu.", "Po zabiegu serum wsiąka szybciej niż zwykle. Trzymam się przerwy między sesjami, jak zaleca producent."],
+    en: ["The blade is precise, and one pass over my cheek takes just a moment.", "Makeup clearly goes on smoother afterward. I use it once every 1–2 weeks, following the instructions.", "The guard gives me control over the blade angle, so I feel confident even on the first use.", "Serum seems to absorb faster afterward. I stick to the recommended gap between sessions."],
+  },
+  "bian-stone-gua-sha": {
+    pl: ["Kamień jest gładki i dobrze prowadzi się wzdłuż linii żuchwy z olejkiem do twarzy.", "Lubię schłodzić go przed porannym masażem — chłodna powierzchnia od razu budzi.", "Zaokrąglony koniec dobrze sprawdza mi się przy kości policzkowej, a płaska strona przy szczęce.", "Narzędzie jest solidne w dłoni i łatwo opłukać je po użyciu z olejkiem."],
+    en: ["The stone is smooth and glides well along the jawline when I use it with facial oil.", "I like chilling it before a morning massage — the cool surface wakes me up right away.", "The rounded end works well on my cheekbone, and the flat edge along my jaw.", "The tool feels solid in hand and is easy to rinse after using it with oil."],
+  },
+  "ceramic-ultrasonic-diffuser": {
+    pl: ["Ceramiczna obudowa pasuje do wnętrza, a delikatne podświetlenie LED jest przyjemne wieczorem.", "Włączam dyfuzor na kilka kropel olejku, kiedy zaczynam wieczorną pielęgnację — tworzy miły rytuał.", "Mgiełka jest subtelna, nie przytłacza zapachem małego pomieszczenia.", "Cichy w działaniu, więc mogę zostawić go włączonego podczas czytania przed snem."],
+    en: ["The ceramic housing fits my room, and the soft LED light feels pleasant in the evening.", "I turn it on with a few drops of oil when I start my evening skincare — it makes for a nice ritual.", "The mist is subtle and does not overwhelm a small room with scent.", "It runs quietly, so I can leave it on while reading before bed."],
+  },
+  "mulberry-silk-sleep-mask": {
+    pl: ["Jedwab jest delikatny dla skóry wokół oczu i nie zostawia odcisków po nocy.", "Pasek dobrze reguluje się na głowie, więc maska nie przesuwa się podczas snu.", "Zabieram ją w podróż w dołączonym woreczku — nie zajmuje miejsca w bagażu.", "Chłodna, gładka faktura jest przyjemna nawet podczas krótkiej drzemki w ciągu dnia."],
+    en: ["The silk feels gentle on the skin around my eyes and leaves no creases after the night.", "The strap adjusts well, so the mask does not shift while I sleep.", "I take it with me in the included pouch — it barely takes up space in my bag.", "The cool, smooth texture feels pleasant even for a short daytime nap."],
+  },
+  "essential-oils-set": {
+    pl: ["Sześć zapachów daje mi wybór zależnie od nastroju — najczęściej sięgam po lawendę wieczorem.", "Krople dozuję dołączoną pipetą, więc łatwo utrzymać stałe proporcje w dyfuzorze.", "Zestaw w pudełku upominkowym dobrze się prezentuje i jest wygodny do przechowywania.", "Różany i rumiankowy zapach dobrze komponują się z moją wieczorną rutyną przed snem."],
+    en: ["Six scents give me a choice depending on my mood — I reach for lavender most evenings.", "I measure drops with the included dropper, so it is easy to keep a consistent ratio in the diffuser.", "The gift-boxed set looks nice and is convenient to store.", "The rose and chamomile scents pair well with my evening wind-down routine."],
+  },
+  "niacinamide-toner": {
+    pl: ["Pompka dozuje dokładnie tyle serum, ile potrzebuję na jedną aplikację.", "Wklepuję je po oczyszczeniu twarzy, przed kremem — dobrze wchodzi w skórę bez lepkości.", "Wybrałam butelkę 30 ml na próbę, zanim zdecyduję się na większą pojemność.", "Serum nie zostawia tłustego filmu, więc używam go też rano pod makijaż."],
+    en: ["The pump dispenses just the right amount of serum for one application.", "I pat it in after cleansing, before moisturiser — it sinks in well without feeling sticky.", "I chose the 30 ml bottle to try it before deciding on the larger size.", "The serum does not leave a greasy film, so I also use it in the morning under makeup."],
+  },
+  "retinol-serum": {
+    pl: ["Kapsułki są wygodne w dawkowaniu — jedna starcza na całą twarz bez odmierzania.", "Włączyłam je do wieczornej rutyny, stopniowo, zgodnie z informacją na etykiecie.", "Formuła olejowa dobrze się rozprowadza i nie zostawia uczucia ściągnięcia.", "Pojemnik ze 50 kapsułkami starcza mi na długo przy użyciu kilka razy w tygodniu."],
+    en: ["The capsules are convenient to dose — one is enough for my whole face with no measuring.", "I introduced it into my evening routine gradually, following the label information.", "The oil formula spreads easily and does not leave a tight feeling.", "The container of 50 capsules lasts me a long time when used a few times a week."],
+  },
 };

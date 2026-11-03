@@ -734,6 +734,8 @@ export const shopProductPolishCopy: Record<string, string> = {
   "Available to order": "Dostępny do zamówienia",
   "review": "opinia",
   "reviews": "opinii",
+  "Show all": "Zobacz wszystkie",
+  "Show fewer reviews": "Pokaż mniej opinii",
   "Customer ratings": "Oceny klientów",
   "First customer reviews": "Pierwsze opinie klientów",
   "No verified rating has been published for this product yet.":
@@ -747,6 +749,8 @@ export const shopProductPolishCopy: Record<string, string> = {
   "Product rating summary": "Podsumowanie ocen produktu",
   "Read selected customer comments together with their source and order details.":
     "Przeczytaj wybrane komentarze klientek wraz ze źródłem i szczegółami zamówienia.",
+  "Read comments shared by customers who have used this product.":
+    "Przeczytaj komentarze klientów, którzy używali tego produktu.",
   "This preview shows the intended review layout. The copy is editorial sample text, not customer feedback.":
     "Ten podgląd pokazuje docelowy układ opinii. Treści są przykładami redakcyjnymi, a nie komentarzami klientek.",
   "No review excerpts have been published for this product yet.":

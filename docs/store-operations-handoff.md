@@ -1,5 +1,56 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Odkrycie: 3 produkty celowo zarchiwizowane (nie błąd) — 2026-11-03
+
+Podczas sprawdzania 404 na `/shop/dermaplaning-razor-kit` i `/shop/bian-stone-gua-sha`
+ustalono przyczyną: w `lib/shop-data.ts` te dwa produkty oraz `skin-ritual-bundle`
+są zakomentowane (`/* ... */`), nie usunięte z pliku. To świadome działanie
+właściciela, nie regresja: commity `47f20e21` („remove:Glow Ritual Face Razor Kit
+and Skin Ritual Starter Kit”, 2026-10-02) i `db3295dd` („remove (archive):Black
+Bian Stone Gua Sha Stick”, 2026-10-02) z historii repo. `catalogProducts` ma więc
+23 aktywne pozycje, nie 26. Nie odkomentowano niczego — przywrócenie tych
+produktów do sklepu wymaga wyraźnej decyzji właściciela, nie jest to naprawa buga.
+
+## Awatary klientów i zwijana lista opinii — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-03
+
+Do 7 opinii `professional-derma-roller` (Anna, Magdalena, Katarzyna, Ewa,
+Piotr, Tomasz, Natalia) dopięto wygenerowane awatary z
+`public/professional-derma-roller/customer-avatars/*.webp` (pole
+`ShopProductReview.avatar`, już wcześniej obecne w typie). Komponent opinii
+(`components/shop/product-reviews-section.tsx`) renderuje teraz okrągłe zdjęcie
+zamiast inicjału, gdy `avatar` jest ustawiony; produkty bez awatarów nadal
+pokazują inicjał — bez zmian. Te same dane zasilają już istniejący,
+niemodyfikowany komponent `customer-rating-summary.tsx` (chroniony wyjątkiem
+właściciela), więc 5 nakładających się twarzy w hero też pokazuje te zdjęcia
+zamiast domyślnych `/customer-avatars/avatar-*.png`.
+
+Sekcja opinii pokazuje teraz domyślnie 3 pierwsze opinie dla każdego produktu
+i przycisk „Zobacz wszystkie N opinii” / „Pokaż mniej opinii” z płynnym
+rozwinięciem (CSS `grid-template-rows` + fade, bez nowej zależności). Nie
+zmieniono ocen, liczników, treści opinii ani samego komponentu
+`customer-rating-summary.tsx`.
+
+Zweryfikowano lokalnie: TypeScript, ESLint zmienionych plików i pełny
+`next build` (93 strony) przeszły bez błędów. Zrzuty z headless Chrome
+(`/pl/shop/professional-derma-roller`) potwierdziły: domyślnie widoczne 3
+opinie z awatarami, kliknięcie przycisku płynnie odsłania pozostałe 4
+(wszystkie z poprawnymi awatarami), strzałka się obraca, ponowne kliknięcie
+zwija z powrotem do 3. Zmiana jest tylko w worktree — niescalona i
+niewdrożona.
+
+Dodatkowo, na wyraźną prośbę właściciela o "przeniesienie" sekcji opinii na
+inne strony pielęgnacyjne: **odmówiono kopiowania** dosłownie tych samych
+nazwanych opinii dermarollera (i tych samych zdjęć przed/po) pod niepowiązane
+produkty — to byłyby fałszywe, zdublowane opinie/dowody, zakazane również
+przez własną zasadę właściciela w AGENTS.md. Zamiast tego dodano unikalny,
+oznaczony podgląd opinii ("editorial sample", `lib/shop-review-preview.ts`)
+do 5 produktów pielęgnacyjnych, które go wcześniej nie miały:
+`ceramic-ultrasonic-diffuser`, `mulberry-silk-sleep-mask`, `essential-oils-set`,
+`niacinamide-toner`, `retinol-serum`. Zweryfikowano lokalnie (status sekcji
+"sample" na każdej z 5 stron). Sekcja "przed/po" pozostaje bez zmian — już
+jest wpięta uniwersalnie i aktywuje się sama, gdy dla produktu pojawi się
+para `before.*`/`after.*`; nie zduplikowano istniejącej pary dermarollera.
+
 ## Profesjonalna sekcja opinii produktowych — 2026-11-03
 
 WDROŻENIE PRZYGOTOWANE: wszystkie aktywne strony produktowe korzystają z jednego

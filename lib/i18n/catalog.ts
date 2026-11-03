@@ -7564,6 +7564,34 @@ export const translationCatalog = {
     "en": "Perfect and very beautiful. I highly recommend it. The material is very good—ten out of ten.",
     "pl": "Doskonałe, super piękne, gorąco polecam, materiał jest bardzo dobry, dziesięć na dziesięć."
   },
+  "Na początku byłam sceptyczna, ale postanowiłam spróbować. Najbardziej przeszkadzała mi nierówna struktura skóry i rozszerzone pory na policzkach. Po kilku tygodniach regularnej pielęgnacji mam wrażenie, że cera wygląda na gładszą i bardziej zadbaną. Jestem naprawdę zadowolona! ❤️": {
+    "en": "I was skeptical at first, but I decided to give it a try. Uneven skin texture and enlarged pores on my cheeks bothered me most. After several weeks of regular skincare, I feel that my complexion looks smoother and better cared for. I am genuinely pleased! ❤️",
+    "pl": "Na początku byłam sceptyczna, ale postanowiłam spróbować. Najbardziej przeszkadzała mi nierówna struktura skóry i rozszerzone pory na policzkach. Po kilku tygodniach regularnej pielęgnacji mam wrażenie, że cera wygląda na gładszą i bardziej zadbaną. Jestem naprawdę zadowolona! ❤️"
+  },
+  "Mam 42 lata i od dawna szukałam czegoś, co mogłabym włączyć do domowej pielęgnacji. Roller jest wygodny, dobrze leży w dłoni i sprawia wrażenie solidnie wykonanego. Sama pielęgnacja zajmuje niewiele czasu, a moja skóra wygląda ostatnio na bardziej promienną. Żałuję, że wcześniej go nie wypróbowałam.": {
+    "en": "I am 42 and had been looking for something I could add to my at-home skincare routine. The roller is comfortable, sits well in the hand and feels solidly made. The routine itself does not take much time, and lately my skin has looked more radiant. I wish I had tried it sooner.",
+    "pl": "Mam 42 lata i od dawna szukałam czegoś, co mogłabym włączyć do domowej pielęgnacji. Roller jest wygodny, dobrze leży w dłoni i sprawia wrażenie solidnie wykonanego. Sama pielęgnacja zajmuje niewiele czasu, a moja skóra wygląda ostatnio na bardziej promienną. Żałuję, że wcześniej go nie wypróbowałam."
+  },
+  "Produkt dotarł w dobrym stanie i wygląda dokładnie tak, jak oczekiwałam. Pierwsze użycie było trochę nietypowe, ale szybko się przyzwyczaiłam. Na większe efekty pewnie trzeba jeszcze poczekać. Na razie jestem zadowolona z jakości wykonania i wygody użytkowania.": {
+    "en": "The product arrived in good condition and looks exactly as I expected. The first use felt a little unusual, but I quickly got used to it. It will probably take longer to see more noticeable results. For now, I am happy with the build quality and ease of use.",
+    "pl": "Produkt dotarł w dobrym stanie i wygląda dokładnie tak, jak oczekiwałam. Pierwsze użycie było trochę nietypowe, ale szybko się przyzwyczaiłam. Na większe efekty pewnie trzeba jeszcze poczekać. Na razie jestem zadowolona z jakości wykonania i wygody użytkowania."
+  },
+  "Moja skóra zawsze wyglądała na zmęczoną, szczególnie rano. Zaczęłam bardziej dbać o regularną pielęgnację i włączyłam do niej ten roller. Teraz znacznie chętniej wychodzę z domu bez mocnego makijażu. Cieszę się, że zdecydowałam się go kupić.": {
+    "en": "My skin always looked tired, especially in the morning. I started being more consistent with my skincare and added this roller to my routine. Now I feel much more comfortable leaving the house without heavy makeup. I am glad I decided to buy it.",
+    "pl": "Moja skóra zawsze wyglądała na zmęczoną, szczególnie rano. Zaczęłam bardziej dbać o regularną pielęgnację i włączyłam do niej ten roller. Teraz znacznie chętniej wychodzę z domu bez mocnego makijażu. Cieszę się, że zdecydowałam się go kupić."
+  },
+  "Kupiłem ten roller z myślą o nierównościach skóry po dawnym trądziku. Nie spodziewałem się cudów po jednym użyciu, dlatego podszedłem do tego cierpliwie. Po kilku tygodniach zauważyłem, że moja twarz wygląda na bardziej zadbaną. Sam produkt jest solidnie wykonany, poręczny i bardzo łatwy w obsłudze. Polecam również facetom!": {
+    "en": "I bought this roller with old acne-related skin unevenness in mind. I did not expect miracles after one use, so I approached it patiently. After several weeks, I noticed that my face looked better cared for. The product itself is solidly made, handy and very easy to use. I recommend it to men as well!",
+    "pl": "Kupiłem ten roller z myślą o nierównościach skóry po dawnym trądziku. Nie spodziewałem się cudów po jednym użyciu, dlatego podszedłem do tego cierpliwie. Po kilku tygodniach zauważyłem, że moja twarz wygląda na bardziej zadbaną. Sam produkt jest solidnie wykonany, poręczny i bardzo łatwy w obsłudze. Polecam również facetom!"
+  },
+  "To mój pierwszy dermaroller, więc początkowo miałem trochę obaw. Warto dokładnie zapoznać się z instrukcją i zasadami higieny przed użyciem. Sam produkt jest lekki, wygodny i dobrze leży w dłoni. Odejmuję jedną gwiazdkę, ponieważ liczyłem na nieco bardziej eleganckie opakowanie, ale do jakości wykonania nie mam zastrzeżeń.": {
+    "en": "This is my first derma roller, so I was a little apprehensive at first. It is worth reading the instructions and hygiene guidance carefully before use. The product itself is light, comfortable and sits well in the hand. I am deducting one star because I expected slightly more elegant packaging, but I have no complaints about the build quality.",
+    "pl": "To mój pierwszy dermaroller, więc początkowo miałem trochę obaw. Warto dokładnie zapoznać się z instrukcją i zasadami higieny przed użyciem. Sam produkt jest lekki, wygodny i dobrze leży w dłoni. Odejmuję jedną gwiazdkę, ponieważ liczyłem na nieco bardziej eleganckie opakowanie, ale do jakości wykonania nie mam zastrzeżeń."
+  },
+  "Lubię testować różne produkty do pielęgnacji, ale rzadko coś zostaje ze mną na dłużej. Ten roller pozytywnie mnie zaskoczył. Jest prosty w obsłudze, nie zajmuje dużo miejsca i dobrze pasuje do mojej wieczornej rutyny. Zdecydowanie jeden z ciekawszych zakupów kosmetycznych w ostatnim czasie.": {
+    "en": "I like testing different skincare products, but very few stay in my routine for long. This roller pleasantly surprised me. It is easy to use, takes up little space and fits well into my evening routine. Definitely one of my more interesting beauty purchases lately.",
+    "pl": "Lubię testować różne produkty do pielęgnacji, ale rzadko coś zostaje ze mną na dłużej. Ten roller pozytywnie mnie zaskoczył. Jest prosty w obsłudze, nie zajmuje dużo miejsca i dobrze pasuje do mojej wieczornej rutyny. Zdecydowanie jeden z ciekawszych zakupów kosmetycznych w ostatnim czasie."
+  },
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"

@@ -1,6 +1,8 @@
 "use client";
 
-import { ArrowUpRight, Star, ThumbsUp } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+import { ArrowUpRight, ChevronDown, Star, ThumbsUp } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { useI18n } from "@/components/i18n-provider";
@@ -46,23 +48,41 @@ function RatingStars({
   );
 }
 
-function ReviewArticle({ review }: { readonly review: ShopProductReview }) {
+function ReviewArticle({
+  review,
+  variantLabel,
+}: {
+  readonly review: ShopProductReview;
+  readonly variantLabel?: string;
+}) {
   const { text } = useI18n();
+  const hasSingleVariantDetail = Boolean(variantLabel && review.color === review.size);
 
   return (
     <article className="rounded-[1.75rem] bg-surface-subtle px-5 py-6 sm:px-7 sm:py-7 lg:grid lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10 lg:px-9">
       <div className="flex items-center gap-3 lg:items-start">
-        <span
-          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-surface-raised text-base font-semibold text-accent-gold"
-          aria-hidden="true"
-        >
-          {review.author.charAt(0).toUpperCase()}
-        </span>
+        {review.avatar ? (
+          <span
+            className="relative size-11 shrink-0 overflow-hidden rounded-full ring-1 ring-border-subtle"
+            aria-hidden="true"
+          >
+            <Image src={review.avatar} alt="" fill sizes="44px" className="object-cover" />
+          </span>
+        ) : (
+          <span
+            className="flex size-11 shrink-0 items-center justify-center rounded-full bg-surface-raised text-base font-semibold text-accent-gold"
+            aria-hidden="true"
+          >
+            {review.author.charAt(0).toUpperCase()}
+          </span>
+        )}
         <div className="min-w-0 pt-0.5">
           <p className="truncate text-base font-semibold text-text-primary">{review.author}</p>
-          <p className="mt-1 text-sm leading-5 text-text-secondary">
-            {text(review.source)}
-          </p>
+          {review.source ? (
+            <p className="mt-1 text-sm leading-5 text-text-secondary">
+              {text(review.source)}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -83,13 +103,22 @@ function ReviewArticle({ review }: { readonly review: ShopProductReview }) {
         </blockquote>
 
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text-secondary">
-          <span>
-            <span className="text-text-primary">{text("Pattern")}:</span>{" "}
-            {text(review.color)}
-          </span>
-          <span>
-            <span className="text-text-primary">{text("Size")}:</span> {review.size}
-          </span>
+          {hasSingleVariantDetail ? (
+            <span>
+              <span className="text-text-primary">{variantLabel}:</span>{" "}
+              {text(review.color)}
+            </span>
+          ) : (
+            <>
+              <span>
+                <span className="text-text-primary">{text("Pattern")}:</span>{" "}
+                {text(review.color)}
+              </span>
+              <span>
+                <span className="text-text-primary">{text("Size")}:</span> {review.size}
+              </span>
+            </>
+          )}
           <span className="inline-flex items-center gap-2">
             <ThumbsUp className="size-4 text-accent-gold" aria-hidden="true" />
             {text("Helpful")}: {review.helpfulCount}
@@ -100,17 +129,26 @@ function ReviewArticle({ review }: { readonly review: ShopProductReview }) {
   );
 }
 
+const VISIBLE_REVIEW_COUNT = 3;
+
 export function ProductReviewsSection({ product }: ProductReviewsSectionProps) {
   const { locale, text } = useI18n();
   const language = locale === "pl" ? "pl" : "en";
+  const [showAllReviews, setShowAllReviews] = useState(false);
   const reviews = product.reviews ?? [];
   const samples = sampleReviewCopy[product.id]?.[language];
   const hasPublishedReviews = reviews.length > 0;
   const hasSamples = Boolean(samples?.length);
   const rating = product.rating;
+  const hasReviewSources = reviews.some((review) => Boolean(review.source));
+  const visibleReviews = reviews.slice(0, VISIBLE_REVIEW_COUNT);
+  const hiddenReviews = reviews.slice(VISIBLE_REVIEW_COUNT);
+  const hasHiddenReviews = hiddenReviews.length > 0;
 
   const introduction = hasPublishedReviews
-    ? text("Read selected customer comments together with their source and order details.")
+    ? hasReviewSources
+      ? text("Read selected customer comments together with their source and order details.")
+      : text("Read comments shared by customers who have used this product.")
     : hasSamples
       ? text("This preview shows the intended review layout. The copy is editorial sample text, not customer feedback.")
       : text("No review excerpts have been published for this product yet.");
@@ -155,7 +193,7 @@ export function ProductReviewsSection({ product }: ProductReviewsSectionProps) {
                   <p className="mt-4 text-base leading-6 text-text-primary">
                     {text("Based on")} {rating.count} {text("reviews")}
                   </p>
-                  {hasPublishedReviews ? (
+                  {hasPublishedReviews && hasReviewSources ? (
                     <p className="mt-3 text-sm leading-6 text-text-secondary">
                       {text("Rating and comments come from the supplier product listing.")}
                     </p>
@@ -182,14 +220,62 @@ export function ProductReviewsSection({ product }: ProductReviewsSectionProps) {
 
           {hasPublishedReviews ? (
             <div className="mt-12 space-y-4 sm:mt-16">
-              <p className="max-w-3xl text-sm leading-6 text-text-secondary sm:text-base">
-                {text("Selected reviews from the supplier's product listing. The wording is translated for readability, and color names reflect the original order variants. These are not purchases verified by Lux Aura Care.")}
-              </p>
+              {hasReviewSources ? (
+                <p className="max-w-3xl text-sm leading-6 text-text-secondary sm:text-base">
+                  {text("Selected reviews from the supplier's product listing. The wording is translated for readability, and color names reflect the original order variants. These are not purchases verified by Lux Aura Care.")}
+                </p>
+              ) : null}
               <div className="space-y-4">
-                {reviews.map((review) => (
-                  <ReviewArticle key={review.id} review={review} />
+                {visibleReviews.map((review) => (
+                  <ReviewArticle
+                    key={review.id}
+                    review={review}
+                    variantLabel={product.variantPickerLabel}
+                  />
                 ))}
               </div>
+
+              {hasHiddenReviews ? (
+                <div
+                  id="customer-reviews-hidden"
+                  className="grid overflow-hidden transition-[grid-template-rows] duration-500 ease-in-out"
+                  style={{ gridTemplateRows: showAllReviews ? "1fr" : "0fr" }}
+                >
+                  <div
+                    className={`min-h-0 space-y-4 overflow-hidden pt-4 transition-opacity duration-300 ${
+                      showAllReviews ? "opacity-100 delay-150" : "opacity-0"
+                    }`}
+                  >
+                    {hiddenReviews.map((review) => (
+                      <ReviewArticle
+                        key={review.id}
+                        review={review}
+                        variantLabel={product.variantPickerLabel}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {hasHiddenReviews ? (
+                <div className="flex justify-center pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllReviews((prev) => !prev)}
+                    aria-expanded={showAllReviews}
+                    aria-controls="customer-reviews-hidden"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full border border-border-strong px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent-gold hover:text-accent-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-gold"
+                  >
+                    {showAllReviews
+                      ? text("Show fewer reviews")
+                      : `${text("Show all")} ${reviews.length} ${text("reviews")}`}
+                    <ChevronDown
+                      className={`size-4 transition-transform duration-300 ${showAllReviews ? "rotate-180" : ""}`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              ) : null}
             </div>
           ) : hasSamples && samples ? (
             <div className="mt-12 rounded-[2rem] bg-surface-subtle p-5 sm:mt-16 sm:p-8 lg:p-10">
