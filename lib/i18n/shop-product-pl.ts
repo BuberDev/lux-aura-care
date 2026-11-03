@@ -340,6 +340,8 @@ export const shopProductPolishCopy: Record<string, string> = {
   "After regular use": "Po regularnym stosowaniu",
   "Before and after": "Przed i po",
   "Product results": "Efekty stosowania produktu",
+  "Compare the complete before and after photographs side by side.":
+    "Porównaj obok siebie pełne kadry przed i po stosowaniu produktu.",
   "Before": "Przed",
   "After": "Po",
   "Before using {product}": "Przed stosowaniem produktu: {product}",

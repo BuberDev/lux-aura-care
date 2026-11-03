@@ -1,5 +1,18 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Pionowe porównanie zdjęć przed i po — 2026-11-03
+
+PRODUKCJA: sekcję rezultatów zmieniono z suwaka przycinającego fotografie do
+dwóch pełnych pionowych kadrów ustawionych obok siebie. Układ zachowuje
+proporcje 941 × 1672 px, podpisy „Przed” i „Po” oraz informację o indywidualnych
+rezultatach; dwie kolumny pozostają widoczne także przy szerokości 390 px.
+Automatyczne wykrywanie par `before`/`after` i brak sekcji przy niepełnej parze
+pozostały bez zmian. Nie zmieniano zdjęć, produktu, ceny, checkoutu, opinii ani
+ocen. TypeScript, ESLint, build 93 stron i 13 testów sklepu przeszły. Lint
+zmienionego komponentu według taste-skill: 0 błędów i 0 ostrzeżeń; kontrola
+renderu objęła 1440, 768 i 390 px. Pozostałe wskazania inspektora dotyczą
+zastanych elementów całej strony poza tą sekcją.
+
 ## Incydent katalogu i naprawa produkcji — 2026-11-03
 
 PRODUKCJA NAPRAWIONA. Automatyczne wdrożenie `main` po commicie `2adfc8a`
