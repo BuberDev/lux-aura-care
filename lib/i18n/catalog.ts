@@ -7707,6 +7707,50 @@ export const translationCatalog = {
   "Świetnie pasuje do mojej wieczornej rutyny. Nie trzeba długo masować, żeby poczuć przyjemne rozluźnienie. W dodatku masażer nie zajmuje miejsca w kosmetyczce, więc zabieram go też na wyjazdy. Jestem zadowolona z zakupu.": {
     "en": "It fits perfectly into my evening routine. You do not need to massage for long to feel a pleasant release of tension. Plus, the massager does not take up space in a makeup bag, so I take it on trips too. I am happy with the purchase.",
     "pl": "Świetnie pasuje do mojej wieczornej rutyny. Nie trzeba długo masować, żeby poczuć przyjemne rozluźnienie. W dodatku masażer nie zajmuje miejsca w kosmetyczce, więc zabieram go też na wyjazdy. Jestem zadowolona z zakupu."
+  },
+  "Zielony": {
+    "en": "Green",
+    "pl": "Zielony"
+  },
+  "Różowy": {
+    "en": "Pink",
+    "pl": "Różowy"
+  },
+  "Niebieski": {
+    "en": "Blue",
+    "pl": "Niebieski"
+  },
+  "Biały": {
+    "en": "White",
+    "pl": "Biały"
+  },
+  "Mam długie włosy i zawsze trudno było mi dotrzeć szamponem do skóry głowy. Z tą szczoteczką mycie jest dużo przyjemniejsze. Wypustki są miękkie, a po spłukaniu mam przyjemne uczucie świeżości.": {
+    "en": "I have long hair and it was always hard for me to get shampoo to my scalp. Washing is much more pleasant with this brush. The tips are soft, and after rinsing I have a pleasant feeling of freshness.",
+    "pl": "Mam długie włosy i zawsze trudno było mi dotrzeć szamponem do skóry głowy. Z tą szczoteczką mycie jest dużo przyjemniejsze. Wypustki są miękkie, a po spłukaniu mam przyjemne uczucie świeżości."
+  },
+  "Najbardziej lubię ten moment, kiedy robię sobie krótki masaż pod prysznicem. Nie trzeba mocno naciskać, żeby poczuć delikatne masowanie. Wygodnie leży w dłoni i łatwo ją opłukać. Mała rzecz, a bardzo uprzyjemnia pielęgnację.": {
+    "en": "I like the moment most when I give myself a short massage in the shower. You do not need to press hard to feel the gentle massaging. It sits comfortably in the hand and is easy to rinse off. A small thing, but it makes the routine much more pleasant.",
+    "pl": "Najbardziej lubię ten moment, kiedy robię sobie krótki masaż pod prysznicem. Nie trzeba mocno naciskać, żeby poczuć delikatne masowanie. Wygodnie leży w dłoni i łatwo ją opłukać. Mała rzecz, a bardzo uprzyjemnia pielęgnację."
+  },
+  "Dobrze rozprowadza szampon u nasady i nie plącze mi włosów, kiedy używam jej delikatnie, małymi ruchami. Obawiałam się sztywnych kolców, ale silikonowe wypustki są elastyczne. Bardzo fajny dodatek do mycia włosów.": {
+    "en": "It spreads shampoo well at the roots and does not tangle my hair when I use it gently, with small movements. I was worried about stiff bristles, but the silicone tips are flexible. A really nice addition to hair washing.",
+    "pl": "Dobrze rozprowadza szampon u nasady i nie plącze mi włosów, kiedy używam jej delikatnie, małymi ruchami. Obawiałam się sztywnych kolców, ale silikonowe wypustki są elastyczne. Bardzo fajny dodatek do mycia włosów."
+  },
+  "Kupiłam z ciekawości i szybko weszła do mojej rutyny. Po intensywnym dniu kilka minut masażu skóry głowy jest naprawdę odprężające. Do tego nie zajmuje dużo miejsca w łazience i łatwo utrzymać ją w czystości.": {
+    "en": "I bought it out of curiosity and it quickly became part of my routine. After an intense day, a few minutes of scalp massage is genuinely relaxing. It also does not take up much space in the bathroom and is easy to keep clean.",
+    "pl": "Kupiłam z ciekawości i szybko weszła do mojej rutyny. Po intensywnym dniu kilka minut masażu skóry głowy jest naprawdę odprężające. Do tego nie zajmuje dużo miejsca w łazience i łatwo utrzymać ją w czystości."
+  },
+  "Używam po treningu podczas mycia włosów. Dobrze leży w dłoni nawet pod prysznicem, a silikonowe końcówki są przyjemniejsze niż drapanie paznokciami. Prosty, praktyczny gadżet, który faktycznie polubiłem.": {
+    "en": "I use it after a workout while washing my hair. It sits well in the hand even in the shower, and the silicone tips are more pleasant than scratching with nails. A simple, practical gadget that I actually grew to like.",
+    "pl": "Używam po treningu podczas mycia włosów. Dobrze leży w dłoni nawet pod prysznicem, a silikonowe końcówki są przyjemniejsze niż drapanie paznokciami. Prosty, praktyczny gadżet, który faktycznie polubiłem."
+  },
+  "Nie spodziewałem się, że będę regularnie korzystać z takiej szczoteczki. Masaż jest delikatny, szampon łatwo się rozprowadza, a całość dobrze się trzyma podczas mycia. Jestem zadowolony z wykonania.": {
+    "en": "I did not expect to use a brush like this regularly. The massage is gentle, shampoo spreads easily, and it holds up well during washing. I am happy with the build quality.",
+    "pl": "Nie spodziewałem się, że będę regularnie korzystać z takiej szczoteczki. Masaż jest delikatny, szampon łatwo się rozprowadza, a całość dobrze się trzyma podczas mycia. Jestem zadowolony z wykonania."
+  },
+  "Wybrałam różową i bardzo mi się podoba. Przy każdym myciu poświęcam chwilę na masaż skóry głowy. Wypustki są elastyczne, a sama szczoteczka lekka i wygodna. Zdecydowanie umila mi wieczorny prysznic!": {
+    "en": "I chose the pink one and I really like it. With every wash, I take a moment for a scalp massage. The tips are flexible, and the brush itself is light and comfortable. It definitely makes my evening shower more pleasant!",
+    "pl": "Wybrałam różową i bardzo mi się podoba. Przy każdym myciu poświęcam chwilę na masaż skóry głowy. Wypustki są elastyczne, a sama szczoteczka lekka i wygodna. Zdecydowanie umila mi wieczorny prysznic!"
   }
 } satisfies Record<
   string,

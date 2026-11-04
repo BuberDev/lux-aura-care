@@ -1,5 +1,39 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie i przed/po dla silicone-scalp-massager — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Właściciel dostarczył 7 opinii (Paulina, Kinga, Justyna, Dorota, Krzysztof,
+Sławomir, Weronika) z awatarami oraz parę przed/po dla
+`silicone-scalp-massager`. Pole `color` w opiniach odpowiada realnym
+wariantom produktu (Zielony/Różowy/Niebieski/Biały — zgodne z istniejącymi
+`variants` tego produktu), `size` nie dotyczy (produkt nie ma rozmiarów) —
+wykorzystano wprowadzoną przy vibro-glow zmianę typu (`color`/`size`
+opcjonalne), więc wiersz "Rozmiar" po prostu się nie wyświetla.
+
+Przed wdrożeniem przed/po zgłosiłem właścicielowi zastrzeżenie: dostarczone
+zdjęcia "przed" i "po" przedstawiają tę samą osobę w dwóch różnych
+pomieszczeniach — "przed" to potargane włosy w łazience, "po" to gładkie,
+wymodelowane włosy (blow-out) w sypialni. To nie wygląda na ciągłą sesję, a
+silikonowa szczoteczka do masażu skóry głowy pod prysznicem fizycznie nie
+daje efektu pełnej stylizacji fryzury — ryzyko sugerowania nieprawdziwej
+skuteczności produktu. Właściciel został o tym poinformowany i świadomie
+zdecydował: "Użyj zdjęć jak dostarczone". Zdjęcia opublikowano zgodnie z tą
+decyzją, bez zmian i bez dodatkowego oznaczenia (zgodnie ze standardową
+decyzją właściciela "Generuj/używaj bez zmian w oznaczeniu" z wcześniejszych
+produktów) — ale to świadome ryzyko właściciela, nie moja ocena, że obrazy są
+wiarygodne. Jeśli temat wróci (reklamacja, audyt zgodności reklamowej),
+to jest miejsce z pełnym kontekstem decyzji.
+
+Awatary przeniesione do `public/customer-avatars/scalp-massager/*.webp`,
+zdjęcia przed/po do `public/silicone-scalp-massager/before.png` i
+`after.png` (ścieżka wg `id` produktu, nie nazwy folderu roboczego
+`public/scalp-massager/`). Pozostały w folderze roboczym: główne zdjęcie
+produktu i plik UGC `.mp4` — nieużyte w tym zadaniu, niewykorzystane
+dotąd w `lib/shop-data.ts`; do ewentualnego dodania do galerii osobno.
+TypeScript, ESLint, `next build` (93 strony) i zrzuty ekranu przeszły —
+brak literalnego `null`, brak wiersza "Rozmiar" w UI. Niewdrożone na
+produkcję.
+
 ## Opinie dla vibro-glow-face-massager (bez przed/po) — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
 
 Właściciel dostarczył 7 opinii (Renata, Karolina, Beata, Marta, Marcin,
