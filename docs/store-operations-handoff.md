@@ -1,5 +1,37 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie i przed/po dla resin-body-gua-sha-tool — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Właściciel dostarczył 7 opinii (Anna, Magdalena, Katarzyna, Ewa, Piotr,
+Tomasz, Natalia) z awatarami oraz parę przed/po dla
+`resin-body-gua-sha-tool`. Pliki już leżały pod poprawną ścieżką zgodną z
+`id` produktu (`public/resin-body-gua-sha-tool/`), więc nie trzeba było ich
+przenosić — przeniesione zostały tylko awatary, do
+`public/customer-avatars/resin-body-gua-sha/*.webp`. Opinie nie mają
+koloru/rozmiaru (produkt nie ma wariantów) — wykorzystano opcjonalne
+`color`/`size` wprowadzone przy vibro-glow.
+
+Przy weryfikacji zdjęć przed/po popełniłem błąd: pierwsze obejrzenie plików
+`before.png`/`after.png` przez narzędzie podglądu obrazów pokazało mi
+zbliżenie twarzy i dekoltu, co niesłusznie wyglądało na niezgodne z tym
+produktem (ten gua sha jest opisany jako "nie do twarzy" w jego własnym
+FAQ) — zgłosiłem to jako ryzyko i zapytałem właściciela, który mimo to
+zdecydował "Użyj zdjęć jak dostarczone". Przy ponownej weryfikacji (plik
+pobrany bezpośrednio z działającego serwera deweloperskiego, suma MD5
+zgodna z plikiem w repo, zrzut ekranu z realnie wyrenderowanej strony)
+okazało się, że to pierwsze podejrzenie było błędne — prawdziwa treść
+`before.png`/`after.png` to pełna sylwetka (uda, nogi, brzuch) w tym samym
+stroju, w dwóch podobnych wnętrzach sypialnianych — czyli dokładnie partie
+ciała, do których produkt jest przeznaczony. Przyczyna pierwszego błędnego
+podglądu nie jest jasna (prawdopodobnie usterka w narzędziu podglądu
+obrazów, nie problem z samym plikiem) — ale ostateczna, zweryfikowana
+treść jest prawidłowa i zgodna z produktem. Decyzja właściciela okazała się
+trafna niezależnie od tego nieporozumienia.
+
+TypeScript, ESLint, `next build` (93 strony) i zrzuty ekranu przeszły —
+brak literalnego `null`, brak zbędnego wiersza wariantu w UI, przed/po
+renderuje się poprawnie. Niewdrożone na produkcję.
+
 ## Opinie i przed/po dla silicone-scalp-massager — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
 
 Właściciel dostarczył 7 opinii (Paulina, Kinga, Justyna, Dorota, Krzysztof,

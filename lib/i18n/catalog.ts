@@ -7751,6 +7751,34 @@ export const translationCatalog = {
   "Wybrałam różową i bardzo mi się podoba. Przy każdym myciu poświęcam chwilę na masaż skóry głowy. Wypustki są elastyczne, a sama szczoteczka lekka i wygodna. Zdecydowanie umila mi wieczorny prysznic!": {
     "en": "I chose the pink one and I really like it. With every wash, I take a moment for a scalp massage. The tips are flexible, and the brush itself is light and comfortable. It definitely makes my evening shower more pleasant!",
     "pl": "Wybrałam różową i bardzo mi się podoba. Przy każdym myciu poświęcam chwilę na masaż skóry głowy. Wypustki są elastyczne, a sama szczoteczka lekka i wygodna. Zdecydowanie umila mi wieczorny prysznic!"
+  },
+  "Kupiłam gua sha do masażu ud i ramion. Najbardziej podoba mi się to, że szeroka krawędź płynnie przesuwa się po skórze z odrobiną olejku. Wieczorny masaż naprawdę pomaga mi się odprężyć po całym dniu.": {
+    "en": "I bought the gua sha for massaging my thighs and arms. What I like most is that the wide edge glides smoothly over the skin with a bit of oil. The evening massage really helps me unwind after a long day.",
+    "pl": "Kupiłam gua sha do masażu ud i ramion. Najbardziej podoba mi się to, że szeroka krawędź płynnie przesuwa się po skórze z odrobiną olejku. Wieczorny masaż naprawdę pomaga mi się odprężyć po całym dniu."
+  },
+  "Na początku zastanawiałam się, czy kształt będzie wygodny, ale świetnie leży w dłoni. Używam po prysznicu, wykonując spokojne ruchy na nogach. Materiał jest gładki, a sam rytuał bardzo przyjemny.": {
+    "en": "At first I wondered whether the shape would be comfortable, but it sits great in the hand. I use it after a shower, with calm movements on my legs. The material is smooth, and the ritual itself is very pleasant.",
+    "pl": "Na początku zastanawiałam się, czy kształt będzie wygodny, ale świetnie leży w dłoni. Używam po prysznicu, wykonując spokojne ruchy na nogach. Materiał jest gładki, a sam rytuał bardzo przyjemny."
+  },
+  "Wreszcie narzędzie, które nadaje się do większych partii ciała, a nie tylko do twarzy. Dobrze współpracuje z olejkiem i pozwala kontrolować nacisk. Do codziennej pielęgnacji sprawdza mi się naprawdę dobrze.": {
+    "en": "Finally a tool suited to larger areas of the body, not just the face. It works well with oil and lets me control the pressure. It really works well for me as part of a daily routine.",
+    "pl": "Wreszcie narzędzie, które nadaje się do większych partii ciała, a nie tylko do twarzy. Dobrze współpracuje z olejkiem i pozwala kontrolować nacisk. Do codziennej pielęgnacji sprawdza mi się naprawdę dobrze."
+  },
+  "Bardzo polubiłam wieczorny masaż brzucha i ud. Po kilku minutach czuję przyjemne rozluźnienie, a skóra po olejku jest miękka w dotyku. Plus za estetyczne wykończenie i wygodny uchwyt.": {
+    "en": "I have really grown to like an evening massage of my stomach and thighs. After a few minutes I feel a pleasant release of tension, and the skin feels soft to the touch after the oil. Plus points for the elegant finish and comfortable grip.",
+    "pl": "Bardzo polubiłam wieczorny masaż brzucha i ud. Po kilku minutach czuję przyjemne rozluźnienie, a skóra po olejku jest miękka w dotyku. Plus za estetyczne wykończenie i wygodny uchwyt."
+  },
+  "Zamówiłem jako prezent, ale sam też wypróbowałem do masażu łydek po wysiłku. Narzędzie jest solidne i wygodne. Odejmuję jedną gwiazdkę, bo trzeba trochę poćwiczyć technikę, żeby znaleźć odpowiedni nacisk.": {
+    "en": "I ordered it as a gift, but I also tried it myself for massaging my calves after exercise. The tool is solid and comfortable. I am deducting one star because it takes a bit of practice to find the right pressure.",
+    "pl": "Zamówiłem jako prezent, ale sam też wypróbowałem do masażu łydek po wysiłku. Narzędzie jest solidne i wygodne. Odejmuję jedną gwiazdkę, bo trzeba trochę poćwiczyć technikę, żeby znaleźć odpowiedni nacisk."
+  },
+  "Mam dużo napięcia w barkach po pracy przy komputerze, więc szukałem czegoś do krótkiego masażu w domu. Ten kształt naprawdę ułatwia chwyt. Korzystam ostrożnie z olejkiem i jest to miła część wieczornej rutyny.": {
+    "en": "I carry a lot of tension in my shoulders from working at a computer, so I was looking for something for a short massage at home. This shape really makes it easy to hold. I use it carefully with oil, and it has become a nice part of my evening routine.",
+    "pl": "Mam dużo napięcia w barkach po pracy przy komputerze, więc szukałem czegoś do krótkiego masażu w domu. Ten kształt naprawdę ułatwia chwyt. Korzystam ostrożnie z olejkiem i jest to miła część wieczornej rutyny."
+  },
+  "Śliczny marmurkowy wygląd i bardzo przyjemna w dotyku powierzchnia. Używam kilka razy w tygodniu podczas domowego SPA. Najlepiej sprawdza mi się na nogach, bo ruchy są płynne i łatwo utrzymać odpowiednie tempo.": {
+    "en": "Lovely marbled look and a surface that feels very pleasant to the touch. I use it a few times a week during my home spa routine. It works best for me on my legs, since the movements are smooth and it is easy to keep an even pace.",
+    "pl": "Śliczny marmurkowy wygląd i bardzo przyjemna w dotyku powierzchnia. Używam kilka razy w tygodniu podczas domowego SPA. Najlepiej sprawdza mi się na nogach, bo ruchy są płynne i łatwo utrzymać odpowiednie tempo."
   }
 } satisfies Record<
   string,
