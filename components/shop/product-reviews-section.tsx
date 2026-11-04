@@ -56,7 +56,10 @@ function ReviewArticle({
   readonly variantLabel?: string;
 }) {
   const { text } = useI18n();
-  const hasSingleVariantDetail = Boolean(variantLabel && review.color === review.size);
+  const hasSingleVariantDetail = Boolean(
+    variantLabel && review.color && review.color === review.size,
+  );
+  const hasVariantDetail = Boolean(review.color || review.size);
 
   return (
     <article className="rounded-[1.75rem] bg-surface-subtle px-5 py-6 sm:px-7 sm:py-7 lg:grid lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10 lg:px-9">
@@ -106,19 +109,23 @@ function ReviewArticle({
           {hasSingleVariantDetail ? (
             <span>
               <span className="text-text-primary">{variantLabel}:</span>{" "}
-              {text(review.color)}
+              {text(review.color as string)}
             </span>
-          ) : (
+          ) : hasVariantDetail ? (
             <>
-              <span>
-                <span className="text-text-primary">{text("Pattern")}:</span>{" "}
-                {text(review.color)}
-              </span>
-              <span>
-                <span className="text-text-primary">{text("Size")}:</span> {review.size}
-              </span>
+              {review.color ? (
+                <span>
+                  <span className="text-text-primary">{text("Pattern")}:</span>{" "}
+                  {text(review.color)}
+                </span>
+              ) : null}
+              {review.size ? (
+                <span>
+                  <span className="text-text-primary">{text("Size")}:</span> {review.size}
+                </span>
+              ) : null}
             </>
-          )}
+          ) : null}
           <span className="inline-flex items-center gap-2">
             <ThumbsUp className="size-4 text-accent-gold" aria-hidden="true" />
             {text("Helpful")}: {review.helpfulCount}

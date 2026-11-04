@@ -57,8 +57,8 @@ export type ShopProductReview = {
   body: string;
   date: string;
   source: string | null;
-  color: string;
-  size: string;
+  color?: string;
+  size?: string;
   helpfulCount: number;
 };
 
@@ -977,6 +977,79 @@ const catalogProducts: ShopProduct[] = [
     category: "skincare",
     isBestSeller: true,
     flashSaleEndsAt: "2026-06-30T23:59:59Z",
+    rating: { value: 5.0, count: 184 },
+    reviews: [
+      {
+        id: "vibro-glow-review-001",
+        author: "Renata",
+        avatar: "/customer-avatars/vibro-glow/renata.webp",
+        rating: 5,
+        body: "Najczęściej używam go wieczorem, razem z serum. Delikatne wibracje są przyjemne, a końcówka dobrze przesuwa się po policzkach i linii żuchwy. Cały masaż zajmuje mi kilka minut i stał się moim ulubionym etapem pielęgnacji.",
+        date: "2026-10-28",
+        source: null,
+        helpfulCount: 0,
+      },
+      {
+        id: "vibro-glow-review-002",
+        author: "Karolina",
+        avatar: "/customer-avatars/vibro-glow/karolina.webp",
+        rating: 5,
+        body: "Zależało mi na czymś prostym, co nie będzie leżało zapomniane w szufladzie. Ten masażer jest mały i wygodny, więc naprawdę po niego sięgam. Najbardziej lubię używać go rano, kiedy twarz wygląda na zmęczoną.",
+        date: "2026-10-12",
+        source: null,
+        helpfulCount: 0,
+      },
+      {
+        id: "vibro-glow-review-003",
+        author: "Beata",
+        avatar: "/customer-avatars/vibro-glow/beata.webp",
+        rating: 5,
+        body: "Mam 46 lat i lubię poświęcić sobie chwilę po pracy. Używam Vibro-Glow z ulubionym olejkiem do twarzy. Masaż jest łagodny, nic nie ciągnie skóry, a po zakończeniu cera wygląda na bardziej wypoczętą. Bardzo przyjemny rytuał.",
+        date: "2026-09-23",
+        source: null,
+        helpfulCount: 0,
+      },
+      {
+        id: "vibro-glow-review-004",
+        author: "Marta",
+        avatar: "/customer-avatars/vibro-glow/marta.webp",
+        rating: 5,
+        body: "Dobrze leży w dłoni i nie trzeba się uczyć skomplikowanej obsługi. Wystarczy odrobina serum i kilka spokojnych ruchów. Podoba mi się też elegancki wygląd urządzenia — zostawiam je na półce w łazience, bo często po nie sięgam.",
+        date: "2026-09-07",
+        source: null,
+        helpfulCount: 0,
+      },
+      {
+        id: "vibro-glow-review-005",
+        author: "Marcin",
+        avatar: "/customer-avatars/vibro-glow/marcin.webp",
+        rating: 5,
+        body: "Kupiłem na prezent dla partnerki, ale sam też przetestowałem. Wibracje są subtelne i masaż po długim dniu przy komputerze jest naprawdę relaksujący. Na plus poręczny rozmiar i solidne wykończenie.",
+        date: "2026-08-21",
+        source: null,
+        helpfulCount: 0,
+      },
+      {
+        id: "vibro-glow-review-006",
+        author: "Andrzej",
+        avatar: "/customer-avatars/vibro-glow/andrzej.webp",
+        rating: 5,
+        body: "Przyznam, że wcześniej nie używałem takich urządzeń. Vibro-Glow okazał się zaskakująco prosty w obsłudze. Stosuję go głównie do krótkiego masażu twarzy po goleniu, kiedy skóra nie jest podrażniona. Wygodny i estetyczny sprzęt.",
+        date: "2026-08-04",
+        source: null,
+        helpfulCount: 0,
+      },
+      {
+        id: "vibro-glow-review-007",
+        author: "Weronika",
+        avatar: "/customer-avatars/vibro-glow/weronika.webp",
+        rating: 5,
+        body: "Świetnie pasuje do mojej wieczornej rutyny. Nie trzeba długo masować, żeby poczuć przyjemne rozluźnienie. W dodatku masażer nie zajmuje miejsca w kosmetyczce, więc zabieram go też na wyjazdy. Jestem zadowolona z zakupu.",
+        date: "2026-07-16",
+        source: null,
+        helpfulCount: 0,
+      },
+    ],
     ugcVideos: [
       mediaUrl("/vibro-glow-face-massager/ugc-Vibro-Glow_Face_Massager.mp4"),
       mediaUrl("/vibro-glow-face-massager/ugc-2-Vibro-Glow_Face_Massager.mp4"),

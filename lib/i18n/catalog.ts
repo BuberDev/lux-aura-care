@@ -7679,6 +7679,34 @@ export const translationCatalog = {
   "Złote płatki wyglądają ślicznie, ale najważniejsze, że ich używanie jest po prostu przyjemne. Nakładam je rano, kiedy szykuję się do pracy, a w międzyczasie robię kawę. Skóra pod oczami jest potem miękka i mam ochotę powtarzać ten rytuał. ❤️": {
     "en": "The gold patches look lovely, but what matters most is that using them is simply pleasant. I apply them in the morning while getting ready for work, making coffee in the meantime. The skin under my eyes feels soft afterward, and I want to repeat the ritual. ❤️",
     "pl": "Złote płatki wyglądają ślicznie, ale najważniejsze, że ich używanie jest po prostu przyjemne. Nakładam je rano, kiedy szykuję się do pracy, a w międzyczasie robię kawę. Skóra pod oczami jest potem miękka i mam ochotę powtarzać ten rytuał. ❤️"
+  },
+  "Najczęściej używam go wieczorem, razem z serum. Delikatne wibracje są przyjemne, a końcówka dobrze przesuwa się po policzkach i linii żuchwy. Cały masaż zajmuje mi kilka minut i stał się moim ulubionym etapem pielęgnacji.": {
+    "en": "I most often use it in the evening, together with serum. The gentle vibrations are pleasant, and the tip glides well over the cheeks and jawline. The whole massage takes me just a few minutes and has become my favorite step of skincare.",
+    "pl": "Najczęściej używam go wieczorem, razem z serum. Delikatne wibracje są przyjemne, a końcówka dobrze przesuwa się po policzkach i linii żuchwy. Cały masaż zajmuje mi kilka minut i stał się moim ulubionym etapem pielęgnacji."
+  },
+  "Zależało mi na czymś prostym, co nie będzie leżało zapomniane w szufladzie. Ten masażer jest mały i wygodny, więc naprawdę po niego sięgam. Najbardziej lubię używać go rano, kiedy twarz wygląda na zmęczoną.": {
+    "en": "I wanted something simple that would not end up forgotten in a drawer. This massager is small and comfortable, so I actually reach for it. I like using it most in the morning, when my face looks tired.",
+    "pl": "Zależało mi na czymś prostym, co nie będzie leżało zapomniane w szufladzie. Ten masażer jest mały i wygodny, więc naprawdę po niego sięgam. Najbardziej lubię używać go rano, kiedy twarz wygląda na zmęczoną."
+  },
+  "Mam 46 lat i lubię poświęcić sobie chwilę po pracy. Używam Vibro-Glow z ulubionym olejkiem do twarzy. Masaż jest łagodny, nic nie ciągnie skóry, a po zakończeniu cera wygląda na bardziej wypoczętą. Bardzo przyjemny rytuał.": {
+    "en": "I am 46 and I like to take a moment for myself after work. I use Vibro-Glow with my favorite facial oil. The massage is gentle, nothing pulls on the skin, and afterward my complexion looks more rested. A very pleasant ritual.",
+    "pl": "Mam 46 lat i lubię poświęcić sobie chwilę po pracy. Używam Vibro-Glow z ulubionym olejkiem do twarzy. Masaż jest łagodny, nic nie ciągnie skóry, a po zakończeniu cera wygląda na bardziej wypoczętą. Bardzo przyjemny rytuał."
+  },
+  "Dobrze leży w dłoni i nie trzeba się uczyć skomplikowanej obsługi. Wystarczy odrobina serum i kilka spokojnych ruchów. Podoba mi się też elegancki wygląd urządzenia — zostawiam je na półce w łazience, bo często po nie sięgam.": {
+    "en": "It sits well in the hand, and you do not need to learn complicated operation. A bit of serum and a few calm movements are enough. I also like the elegant look of the device — I leave it on the shelf in the bathroom because I reach for it often.",
+    "pl": "Dobrze leży w dłoni i nie trzeba się uczyć skomplikowanej obsługi. Wystarczy odrobina serum i kilka spokojnych ruchów. Podoba mi się też elegancki wygląd urządzenia — zostawiam je na półce w łazience, bo często po nie sięgam."
+  },
+  "Kupiłem na prezent dla partnerki, ale sam też przetestowałem. Wibracje są subtelne i masaż po długim dniu przy komputerze jest naprawdę relaksujący. Na plus poręczny rozmiar i solidne wykończenie.": {
+    "en": "I bought it as a gift for my partner, but I tested it myself too. The vibrations are subtle, and the massage after a long day at the computer is genuinely relaxing. Plus points for the handy size and solid finish.",
+    "pl": "Kupiłem na prezent dla partnerki, ale sam też przetestowałem. Wibracje są subtelne i masaż po długim dniu przy komputerze jest naprawdę relaksujący. Na plus poręczny rozmiar i solidne wykończenie."
+  },
+  "Przyznam, że wcześniej nie używałem takich urządzeń. Vibro-Glow okazał się zaskakująco prosty w obsłudze. Stosuję go głównie do krótkiego masażu twarzy po goleniu, kiedy skóra nie jest podrażniona. Wygodny i estetyczny sprzęt.": {
+    "en": "I admit I had not used devices like this before. Vibro-Glow turned out to be surprisingly simple to operate. I mainly use it for a short facial massage after shaving, when the skin is not irritated. A comfortable and good-looking device.",
+    "pl": "Przyznam, że wcześniej nie używałem takich urządzeń. Vibro-Glow okazał się zaskakująco prosty w obsłudze. Stosuję go głównie do krótkiego masażu twarzy po goleniu, kiedy skóra nie jest podrażniona. Wygodny i estetyczny sprzęt."
+  },
+  "Świetnie pasuje do mojej wieczornej rutyny. Nie trzeba długo masować, żeby poczuć przyjemne rozluźnienie. W dodatku masażer nie zajmuje miejsca w kosmetyczce, więc zabieram go też na wyjazdy. Jestem zadowolona z zakupu.": {
+    "en": "It fits perfectly into my evening routine. You do not need to massage for long to feel a pleasant release of tension. Plus, the massager does not take up space in a makeup bag, so I take it on trips too. I am happy with the purchase.",
+    "pl": "Świetnie pasuje do mojej wieczornej rutyny. Nie trzeba długo masować, żeby poczuć przyjemne rozluźnienie. W dodatku masażer nie zajmuje miejsca w kosmetyczce, więc zabieram go też na wyjazdy. Jestem zadowolona z zakupu."
   }
 } satisfies Record<
   string,

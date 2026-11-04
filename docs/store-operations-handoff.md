@@ -1,5 +1,24 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie dla vibro-glow-face-massager (bez przed/po) — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Właściciel dostarczył 7 opinii (Renata, Karolina, Beata, Marta, Marcin,
+Andrzej, Weronika) z awatarami dla `vibro-glow-face-massager`. Bez pary
+przed/po — sekcja "Efekty stosowania produktu" pozostaje ukryta (poprawne
+zachowanie). Ten produkt nie ma żadnych wariantów (brak `variantPickerLabel`,
+brak `variants`), więc pola `color`/`size` w dostarczonych danych były `null`.
+Zamiast fabrykować fałszywy wariant, zmieniono typ `ShopProductReview.color`/
+`size` na opcjonalny i `ReviewArticle` w `components/shop/product-reviews-section.tsx`
+tak, by wiersz z wariantem (wcześniej zawsze renderowany jako "Pattern"/"Size")
+całkowicie się nie wyświetlał, gdy opinia nie ma ani `color`, ani `size` — to
+zmiana współdzielonego komponentu używanego przez wszystkie strony produktowe,
+wstecznie kompatybilna (pozostałe produkty mają `color`/`size` ustawione).
+Awatary przeniesione do `public/customer-avatars/vibro-glow/*.webp`; robocze
+pliki (`vibro-glow-reviews.json`, `lux-aura-care-vibro-glow.zip`) posprzątane.
+TypeScript, ESLint, `next build` (93 strony) i zrzut ekranu przeszły — brak
+literalnego `null`, brak wiersza "Pattern"/"Size" w UI. Niewdrożone na
+produkcję.
+
 ## Opinie dla gold-eye-patches (bez przed/po) — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
 
 Ten sam zabieg: właściciel dostarczył 7 opinii (Agnieszka, Katarzyna, Monika,
