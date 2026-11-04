@@ -7595,6 +7595,34 @@ export const translationCatalog = {
   "Zweryfikowane Zakupy": {
     "en": "Verified Purchases",
     "pl": "Zweryfikowane Zakupy"
+  },
+  "Zamówiłam zestaw trzech butelek i najbardziej spodobała mi się konsystencja. Olejek łatwo rozprowadzić na skórze po kąpieli, a pompka jest naprawdę wygodna. Lubię, gdy pielęgnacja nie zajmuje pół wieczoru.": {
+    "en": "I ordered the three-bottle set and liked the texture most. The oil is easy to spread on the skin after a bath, and the pump is really convenient. I like it when skincare does not take up half the evening.",
+    "pl": "Zamówiłam zestaw trzech butelek i najbardziej spodobała mi się konsystencja. Olejek łatwo rozprowadzić na skórze po kąpieli, a pompka jest naprawdę wygodna. Lubię, gdy pielęgnacja nie zajmuje pół wieczoru."
+  },
+  "Przyjemny olejek do codziennego masażu. Skóra jest miękka w dotyku, a zapach nie przytłacza. Wybrałam pakiet pięciu butelek, bo chciałam mieć zapas na dłużej. Plus za opakowanie z pompką.": {
+    "en": "A pleasant oil for everyday massage. The skin feels soft to the touch, and the scent is not overwhelming. I chose the five-bottle pack because I wanted a longer-lasting supply. A plus for the pump packaging.",
+    "pl": "Przyjemny olejek do codziennego masażu. Skóra jest miękka w dotyku, a zapach nie przytłacza. Wybrałam pakiet pięciu butelek, bo chciałam mieć zapas na dłużej. Plus za opakowanie z pompką."
+  },
+  "Mam suchą skórę na łydkach i łokciach, dlatego szukałam czegoś bogatszego niż zwykły balsam. Najbardziej odpowiada mi używanie olejku na lekko wilgotną skórę. Niewielka ilość wystarcza na całe nogi.": {
+    "en": "I have dry skin on my calves and elbows, so I was looking for something richer than a regular lotion. I like using the oil on slightly damp skin best. A small amount is enough for my whole legs.",
+    "pl": "Mam suchą skórę na łydkach i łokciach, dlatego szukałam czegoś bogatszego niż zwykły balsam. Najbardziej odpowiada mi używanie olejku na lekko wilgotną skórę. Niewielka ilość wystarcza na całe nogi."
+  },
+  "Bardzo lubię ten moment po prysznicu, kiedy mogę spokojnie zrobić masaż. Olejek daje odpowiedni poślizg i łatwo się rozprowadza. Na mojej półce w łazience już ma stałe miejsce.": {
+    "en": "I really like that moment after the shower when I can take my time with a massage. The oil glides well and spreads easily. It already has a permanent spot on my bathroom shelf.",
+    "pl": "Bardzo lubię ten moment po prysznicu, kiedy mogę spokojnie zrobić masaż. Olejek daje odpowiedni poślizg i łatwo się rozprowadza. Na mojej półce w łazience już ma stałe miejsce."
+  },
+  "Kupiłem zestaw dla żony, ale sam też spróbowałem po treningu. Prosta aplikacja, wygodna pompka i przyjemne uczucie na skórze. Fajnie, że butelki mają po 100 ml, więc jedną można zabrać na wyjazd.": {
+    "en": "I bought the set for my wife, but I also tried it myself after a workout. Simple application, a convenient pump and a pleasant feel on the skin. It is nice that the bottles are 100 ml each, so one can be taken on a trip.",
+    "pl": "Kupiłem zestaw dla żony, ale sam też spróbowałem po treningu. Prosta aplikacja, wygodna pompka i przyjemne uczucie na skórze. Fajnie, że butelki mają po 100 ml, więc jedną można zabrać na wyjazd."
+  },
+  "Używam głównie do masażu ramion i nóg. Sam olejek jest w porządku i wydaje się wydajny. Jedną gwiazdkę odejmuję za to, że osobiście wolę kosmetyki o jeszcze lżejszej konsystencji.": {
+    "en": "I mainly use it to massage my arms and legs. The oil itself is fine and seems to last well. I am deducting one star because I personally prefer cosmetics with an even lighter texture.",
+    "pl": "Używam głównie do masażu ramion i nóg. Sam olejek jest w porządku i wydaje się wydajny. Jedną gwiazdkę odejmuję za to, że osobiście wolę kosmetyki o jeszcze lżejszej konsystencji."
+  },
+  "Najbardziej podoba mi się to, jak łatwo połączyć go z codzienną rutyną. Wmasowuję odrobinę wieczorem, szczególnie w ramiona i dekolt. Skóra jest przyjemna w dotyku, a samo używanie to mały rytuał relaksu.": {
+    "en": "What I like most is how easily it fits into a daily routine. I massage a little in the evening, especially into my shoulders and décolletage. The skin feels pleasant to the touch, and using it is a small relaxing ritual.",
+    "pl": "Najbardziej podoba mi się to, jak łatwo połączyć go z codzienną rutyną. Wmasowuję odrobinę wieczorem, szczególnie w ramiona i dekolt. Skóra jest przyjemna w dotyku, a samo używanie to mały rytuał relaksu."
   }
 } satisfies Record<
   string,

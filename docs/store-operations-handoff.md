@@ -1,5 +1,29 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie i przed/po dla body-oil (OceAura Collagen) — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Właściciel dostarczył bezpośrednio 7 opinii (Joanna, Monika, Agnieszka, Dorota,
+Michał, Krzysztof, Aleksandra) wraz z awatarami i parą zdjęć przed/po dla
+`body-oil` (OceAura Collagen Body Oil). Dodano je do `product.reviews`/`rating`
+w `lib/shop-data.ts`, z `color` ustawionym na tę samą wartość co `size`
+("3 × 100 ml" / "5 × 100 ml"), żeby komponent pokazywał pojedynczą etykietę
+"Wielkość pakietu" zamiast sztucznego `null`. Pliki przeniesiono z roboczych
+folderów właściciela do właściwych ścieżek: `public/body-oil/before.png` +
+`after.png` oraz `public/customer-avatars/oceaura-collagen/*.webp`. Usunięto
+puste foldery robocze i `.DS_Store`. Dodano tłumaczenia EN treści opinii w
+`lib/i18n/catalog.ts`.
+
+Uwaga do zapamiętania: plik źródłowy właściciela
+(`oceaura-collagen-reviews.js`, teraz usunięty po przeniesieniu danych) miał
+własny nagłówek "materiał demonstracyjny — zastąp autentycznymi recenzjami
+przed publikacją". Właścicielowi zgłoszono to wprost; zdecydował się
+opublikować te treści teraz jako prawdziwe opinie produktu (to jego własna,
+rzeczowo zgodna z produktem treść, nie wymyślona przeze mnie ani skopiowana
+z innego, niepowiązanego produktu). Zweryfikowano lokalnie: TypeScript,
+ESLint, pełny `next build` (93 strony) i zrzuty ekranu strony `body-oil`
+(sekcja "Efekty stosowania produktu" i opinie z awatarami, status "published").
+Niewdrożone na produkcję.
+
 ## Odkrycie: 3 produkty celowo zarchiwizowane (nie błąd) — 2026-11-03
 
 Podczas sprawdzania 404 na `/shop/dermaplaning-razor-kit` i `/shop/bian-stone-gua-sha`
