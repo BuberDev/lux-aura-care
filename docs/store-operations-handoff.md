@@ -1,5 +1,18 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie dla gold-eye-patches (bez przed/po) — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Ten sam zabieg: właściciel dostarczył 7 opinii (Agnieszka, Katarzyna, Monika,
+Ewa, Piotr, Tomasz, Natalia) z awatarami dla `gold-eye-patches`. Tym razem
+nie dostarczono pary przed/po — sekcja "Efekty stosowania produktu" pozostaje
+ukryta dla tego produktu (poprawne zachowanie, nie brak). Pola `color`/`size`
+w opiniach były już naturalnie różne ("Złoty" / "60 szt. (30 par)"), więc
+renderują się jako dwa osobne pola bez dodatkowych poprawek. Awatary
+przeniesione do `public/customer-avatars/gold-collagen-eye-patches/*.webp`
+(ścieżka zgodna z polem `avatar` w dostarczonych danych); robocze pliki
+źródłowe posprzątane. TypeScript, ESLint, `next build` (93 strony) i zrzut
+ekranu przeszły, brak literalnego `null` w UI. Niewdrożone na produkcję.
+
 ## Opinie i przed/po dla clear-skin-patches — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
 
 Ten sam zabieg co dla `body-oil`: właściciel dostarczył 7 opinii (Zuzanna,

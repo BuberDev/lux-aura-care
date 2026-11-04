@@ -7651,6 +7651,34 @@ export const translationCatalog = {
   "Wrzuciłam paczkę do szuflady w łazience i sięgam po nią zawsze, kiedy pojawi się niespodzianka na twarzy. Największy plus za prostotę i to, że plaster osłania konkretne miejsce. Naprawdę fajne rozwiązanie do codziennej kosmetyczki!": {
     "en": "I put the pack in my bathroom drawer and reach for it whenever a surprise shows up on my face. Big plus for the simplicity and for covering one specific spot. A really nice addition to an everyday makeup bag!",
     "pl": "Wrzuciłam paczkę do szuflady w łazience i sięgam po nią zawsze, kiedy pojawi się niespodzianka na twarzy. Największy plus za prostotę i to, że plaster osłania konkretne miejsce. Naprawdę fajne rozwiązanie do codziennej kosmetyczki!"
+  },
+  "Najbardziej lubię ten moment, kiedy zdejmuję płatki po porannej pielęgnacji. Skóra pod oczami jest przyjemnie nawilżona i wygląda na bardziej wypoczętą. Do tego piękny złoty kolor — od razu mam wrażenie małego domowego SPA. ✨": {
+    "en": "I love the moment when I take the patches off after my morning routine the most. The skin under my eyes feels pleasantly hydrated and looks more rested. Plus the beautiful gold color — it instantly feels like a little home spa. ✨",
+    "pl": "Najbardziej lubię ten moment, kiedy zdejmuję płatki po porannej pielęgnacji. Skóra pod oczami jest przyjemnie nawilżona i wygląda na bardziej wypoczętą. Do tego piękny złoty kolor — od razu mam wrażenie małego domowego SPA. ✨"
+  },
+  "Przechowuję opakowanie w chłodnym miejscu, bo uwielbiam uczucie odświeżenia, jakie dają te płatki. Są wygodne, dobrze dopasowują się pod oczami i nie muszę podczas ich noszenia siedzieć bez ruchu. Bardzo przyjemny dodatek do wieczornej rutyny.": {
+    "en": "I keep the pack in a cool place because I love the refreshing feeling these patches give. They are comfortable, fit well under the eyes, and I do not have to sit still while wearing them. A very pleasant addition to my evening routine.",
+    "pl": "Przechowuję opakowanie w chłodnym miejscu, bo uwielbiam uczucie odświeżenia, jakie dają te płatki. Są wygodne, dobrze dopasowują się pod oczami i nie muszę podczas ich noszenia siedzieć bez ruchu. Bardzo przyjemny dodatek do wieczornej rutyny."
+  },
+  "Mam 44 lata i zwykle rano widać po mnie każdą krótszą noc. Płatki świetnie sprawdzają się jako szybki, przyjemny rytuał przed makijażem. Okolica pod oczami wygląda po nich na świeższą, a korektor łatwiej mi się rozprowadza.": {
+    "en": "I am 44, and every short night usually shows on my face in the morning. The patches work great as a quick, pleasant ritual before makeup. The under-eye area looks fresher afterward, and concealer goes on more easily.",
+    "pl": "Mam 44 lata i zwykle rano widać po mnie każdą krótszą noc. Płatki świetnie sprawdzają się jako szybki, przyjemny rytuał przed makijażem. Okolica pod oczami wygląda po nich na świeższą, a korektor łatwiej mi się rozprowadza."
+  },
+  "W końcu opakowanie, które nie kończy się po kilku użyciach! Jest aż 30 par, więc mogę spokojnie włączyć je do regularnej pielęgnacji. Same płatki są miękkie, nie przeszkadzają i zostawiają skórę przyjemną w dotyku. Jestem zadowolona.": {
+    "en": "Finally a pack that does not run out after a few uses! There are a full 30 pairs, so I can comfortably add them to my regular routine. The patches themselves are soft, do not get in the way, and leave the skin feeling pleasant. I am happy with them.",
+    "pl": "W końcu opakowanie, które nie kończy się po kilku użyciach! Jest aż 30 par, więc mogę spokojnie włączyć je do regularnej pielęgnacji. Same płatki są miękkie, nie przeszkadzają i zostawiają skórę przyjemną w dotyku. Jestem zadowolona."
+  },
+  "Kupiłem je na prezent dla żony. Spodobało jej się zarówno opakowanie, jak i to, że płatków jest dużo. Mówi, że szczególnie lubi je stosować po ciężkim dniu, kiedy chce przez chwilę odpocząć. Prezent okazał się trafiony.": {
+    "en": "I bought them as a gift for my wife. She liked both the packaging and the fact that there are so many patches. She says she especially likes using them after a tough day when she wants to relax for a bit. The gift was a hit.",
+    "pl": "Kupiłem je na prezent dla żony. Spodobało jej się zarówno opakowanie, jak i to, że płatków jest dużo. Mówi, że szczególnie lubi je stosować po ciężkim dniu, kiedy chce przez chwilę odpocząć. Prezent okazał się trafiony."
+  },
+  "Nigdy wcześniej nie używałem płatków pod oczy, ale spróbowałem tych razem z partnerką. Bardzo przyjemnie chłodzą i są dużo wygodniejsze, niż się spodziewałem. Teraz czasami sam po nie sięgam po długim dniu przed komputerem.": {
+    "en": "I had never used under-eye patches before, but I tried these with my partner. They cool very pleasantly and are much more comfortable than I expected. Now I sometimes reach for them myself after a long day at the computer.",
+    "pl": "Nigdy wcześniej nie używałem płatków pod oczy, ale spróbowałem tych razem z partnerką. Bardzo przyjemnie chłodzą i są dużo wygodniejsze, niż się spodziewałem. Teraz czasami sam po nie sięgam po długim dniu przed komputerem."
+  },
+  "Złote płatki wyglądają ślicznie, ale najważniejsze, że ich używanie jest po prostu przyjemne. Nakładam je rano, kiedy szykuję się do pracy, a w międzyczasie robię kawę. Skóra pod oczami jest potem miękka i mam ochotę powtarzać ten rytuał. ❤️": {
+    "en": "The gold patches look lovely, but what matters most is that using them is simply pleasant. I apply them in the morning while getting ready for work, making coffee in the meantime. The skin under my eyes feels soft afterward, and I want to repeat the ritual. ❤️",
+    "pl": "Złote płatki wyglądają ślicznie, ale najważniejsze, że ich używanie jest po prostu przyjemne. Nakładam je rano, kiedy szykuję się do pracy, a w międzyczasie robię kawę. Skóra pod oczami jest potem miękka i mam ochotę powtarzać ten rytuał. ❤️"
   }
 } satisfies Record<
   string,
