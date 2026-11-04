@@ -1,5 +1,23 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie i przed/po dla clear-skin-patches — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Ten sam zabieg co dla `body-oil`: właściciel dostarczył 7 opinii (Zuzanna,
+Klaudia, Karolina, Wiktoria, Paweł, Maciej, Julia) z awatarami oraz parę
+przed/po dla `clear-skin-patches`. Produkt nie miał wcześniej żadnego
+selektora wariantu, więc dodano `variantPickerLabel: "Pack size"` i ustawiono
+`color` na tę samą wartość co `size` ("24 szt.") we wszystkich 7 opiniach —
+bez tego pole "Pattern" pokazywałoby dosłowne `null`. Zweryfikowano zrzutem,
+że etykieta w UI brzmi "Wielkość pakietu: 24 szt.", bez śladu `null`. Pliki
+przeniesione z `public/clear-skin-patches/reviews/` i `before_after/` do
+`public/customer-avatars/clear-skin-patches/*.webp` i
+`public/clear-skin-patches/before.png`/`after.png`; foldery robocze i
+`.DS_Store` usunięte. Dodano tłumaczenia EN. TypeScript, ESLint, `next build`
+(93 strony) przeszły. Sample-preview wpis dla tego produktu w
+`lib/shop-review-preview.ts` pozostał nietknięty — jest teraz nieużywany,
+bo prawdziwe opinie mają pierwszeństwo (działanie zgodne z istniejącym
+zamierzeniem komponentu). Niewdrożone na produkcję.
+
 ## Opinie i przed/po dla body-oil (OceAura Collagen) — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
 
 Właściciel dostarczył bezpośrednio 7 opinii (Joanna, Monika, Agnieszka, Dorota,

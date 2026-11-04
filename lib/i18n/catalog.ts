@@ -7623,6 +7623,34 @@ export const translationCatalog = {
   "Najbardziej podoba mi się to, jak łatwo połączyć go z codzienną rutyną. Wmasowuję odrobinę wieczorem, szczególnie w ramiona i dekolt. Skóra jest przyjemna w dotyku, a samo używanie to mały rytuał relaksu.": {
     "en": "What I like most is how easily it fits into a daily routine. I massage a little in the evening, especially into my shoulders and décolletage. The skin feels pleasant to the touch, and using it is a small relaxing ritual.",
     "pl": "Najbardziej podoba mi się to, jak łatwo połączyć go z codzienną rutyną. Wmasowuję odrobinę wieczorem, szczególnie w ramiona i dekolt. Skóra jest przyjemna w dotyku, a samo używanie to mały rytuał relaksu."
+  },
+  "Mam taki odruch, że ciągle dotykam niedoskonałości na twarzy. Te plasterki bardzo mi to ułatwiają — naklejam jeden na wieczór i przestaję się tym przejmować. Są wygodne i nie muszę smarować całej twarzy. Zestaw 24 sztuk jest bardzo praktyczny.": {
+    "en": "I have a habit of constantly touching blemishes on my face. These patches make it much easier — I apply one in the evening and stop worrying about it. They are comfortable, and I do not need to put product on my whole face. The 24-count set is very practical.",
+    "pl": "Mam taki odruch, że ciągle dotykam niedoskonałości na twarzy. Te plasterki bardzo mi to ułatwiają — naklejam jeden na wieczór i przestaję się tym przejmować. Są wygodne i nie muszę smarować całej twarzy. Zestaw 24 sztuk jest bardzo praktyczny."
+  },
+  "Najczęściej wyskakuje mi coś na brodzie akurat przed ważnym wyjściem. Teraz mam te plasterki w kosmetyczce i przynajmniej nie kombinuję z kilkoma kosmetykami naraz. Dobrze trzymają się na suchej skórze, a rano miejsce wygląda u mnie spokojniej.": {
+    "en": "Something usually pops up on my chin right before an important occasion. Now I keep these patches in my makeup bag and at least do not mix several products at once. They stay on well on dry skin, and the spot looks calmer by morning.",
+    "pl": "Najczęściej wyskakuje mi coś na brodzie akurat przed ważnym wyjściem. Teraz mam te plasterki w kosmetyczce i przynajmniej nie kombinuję z kilkoma kosmetykami naraz. Dobrze trzymają się na suchej skórze, a rano miejsce wygląda u mnie spokojniej."
+  },
+  "Podoba mi się, że są różne rozmiary kółeczek. Można dobrać plaster do konkretnego miejsca, zamiast przyklejać coś dużo większego. Na twarzy wyglądają dyskretnie, a samo naklejanie zajmuje kilka sekund. Mała rzecz, ale bardzo przydatna.": {
+    "en": "I like that the circles come in different sizes. You can match a patch to a specific spot instead of sticking on something much bigger. They look discreet on the face, and applying one takes a few seconds. A small thing, but very useful.",
+    "pl": "Podoba mi się, że są różne rozmiary kółeczek. Można dobrać plaster do konkretnego miejsca, zamiast przyklejać coś dużo większego. Na twarzy wyglądają dyskretnie, a samo naklejanie zajmuje kilka sekund. Mała rzecz, ale bardzo przydatna."
+  },
+  "Stosuję je głównie na noc po umyciu i dokładnym osuszeniu twarzy. U mnie nie odklejają się podczas snu, a rano bez problemu je zdejmuję. Lubię to, że nie trzeba robić wokół jednej krostki całej pielęgnacyjnej operacji 😂": {
+    "en": "I mainly use them at night after washing and thoroughly drying my face. They do not come off while I sleep, and I remove them easily in the morning. I like that I do not have to turn one blemish into a whole skincare production 😂",
+    "pl": "Stosuję je głównie na noc po umyciu i dokładnym osuszeniu twarzy. U mnie nie odklejają się podczas snu, a rano bez problemu je zdejmuję. Lubię to, że nie trzeba robić wokół jednej krostki całej pielęgnacyjnej operacji 😂"
+  },
+  "Nie mam rozbudowanej pielęgnacji, więc szukałem czegoś prostego na pojedyncze niedoskonałości. Naklejam, zostawiam i tyle. Plaster jest cienki, nie przeszkadza i pomaga mi nie ruszać tego miejsca palcami. Dokładnie o coś takiego mi chodziło.": {
+    "en": "I do not have an elaborate skincare routine, so I was looking for something simple for single blemishes. I stick it on, leave it, and that is it. The patch is thin, does not get in the way, and keeps my fingers off the spot. Exactly what I was after.",
+    "pl": "Nie mam rozbudowanej pielęgnacji, więc szukałem czegoś prostego na pojedyncze niedoskonałości. Naklejam, zostawiam i tyle. Plaster jest cienki, nie przeszkadza i pomaga mi nie ruszać tego miejsca palcami. Dokładnie o coś takiego mi chodziło."
+  },
+  "Same plastry są wygodne i dobrze spełniają swoją funkcję. Jedną gwiazdkę odejmuję za wielkość opakowania — przy częstym stosowaniu 24 sztuki dość szybko się kończą. Chętnie kupiłbym od razu większy zestaw.": {
+    "en": "The patches themselves are comfortable and do their job well. I am deducting one star for the pack size — with frequent use, 24 patches run out fairly quickly. I would happily buy a bigger set right away.",
+    "pl": "Same plastry są wygodne i dobrze spełniają swoją funkcję. Jedną gwiazdkę odejmuję za wielkość opakowania — przy częstym stosowaniu 24 sztuki dość szybko się kończą. Chętnie kupiłbym od razu większy zestaw."
+  },
+  "Wrzuciłam paczkę do szuflady w łazience i sięgam po nią zawsze, kiedy pojawi się niespodzianka na twarzy. Największy plus za prostotę i to, że plaster osłania konkretne miejsce. Naprawdę fajne rozwiązanie do codziennej kosmetyczki!": {
+    "en": "I put the pack in my bathroom drawer and reach for it whenever a surprise shows up on my face. Big plus for the simplicity and for covering one specific spot. A really nice addition to an everyday makeup bag!",
+    "pl": "Wrzuciłam paczkę do szuflady w łazience i sięgam po nią zawsze, kiedy pojawi się niespodzianka na twarzy. Największy plus za prostotę i to, że plaster osłania konkretne miejsce. Naprawdę fajne rozwiązanie do codziennej kosmetyczki!"
   }
 } satisfies Record<
   string,
