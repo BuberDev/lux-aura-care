@@ -1,5 +1,40 @@
 # Pamięć operacyjna sklepu — punkt startowy
 
+## Opinie i przed/po dla natural-bristle-spa-brush — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
+
+Właściciel dostarczył 7 opinii (Elżbieta, Sylwia, Patrycja, Marek, Iwona,
+Oliwia, Rafał) z awatarami oraz parę przed/po dla `natural-bristle-spa-brush`.
+Pliki robocze leżały pod niepoprawnymi ścieżkami — przeniesione:
+awatary z `public/natural-bristle-spa-brush/customer-avatars/` do
+`public/customer-avatars/natural-bristle-spa-brush/*.webp`; zdjęcia przed/po
+z `public/natural-bristle-spa-brush/before_after/{before,after}.png` do
+`public/natural-bristle-spa-brush/{before,after}.png` (wymóg komponentu
+`ProductResultsComparison` — ścieżka musi być bezpośrednio pod `id`
+produktu). Opinie nie mają koloru/rozmiaru (produkt nie ma wariantów).
+
+Sprawdziłem zdjęcia przed/po pod kątem spójności z produktem (szczotka do
+suchego/mokrego szczotkowania ciała): before pokazuje tę samą modelkę w
+ręczniku ze zmartwioną miną i widocznie szorstką/suchą skórą na ramieniu;
+after pokazuje tę samą modelkę, ten sam wystrój, spokojny uśmiech, gładszą
+skórę i widoczną drewnianą rączkę szczotki w kadrze. Spójne ze sobą i z
+produktem — bez zastrzeżeń, nic nie zgłaszałem właścicielowi.
+
+Odrębny system `product-demonstrations` w `product-page-engine.tsx` (sekcja
+"Przed użyciem / w praktyce") miał już wcześniej poprawny wpis dla tego
+produktu (`natural-bristle-spa-brush-before.webp`, podpis o trudno
+dostępnych plecach) — to inny, generyczny/ilustracyjny komponent niż
+`ProductResultsComparison`; nic tam nie zmieniano.
+
+Niewykorzystane pliki pozostawione bez zmian (poza zakresem zadania):
+`public/natural-bristle-spa-brush/Natural_Bristle_Spa_Brush.jpg` i
+`public/natural-bristle-spa-brush/ugc-wan27-polish-voiceover.mp4`
+(nieużywane w `lib/shop-data.ts`, inny plik UGC jest już podpięty).
+
+TypeScript, ESLint i `next build` (93 trasy) przeszły. Zweryfikowano w
+przeglądarce: `data-review-status="published"`, brak literalnego "null",
+wszystkie 7 awatarów zwraca 200, para przed/po i ilustracyjne zdjęcie
+`product-demonstrations` poprawnie się rozwiązują.
+
 ## Opinie i przed/po dla resin-body-gua-sha-tool — LOKALNIE ZWERYFIKOWANE, NIEWDROŻONE, 2026-11-04
 
 Właściciel dostarczył 7 opinii (Anna, Magdalena, Katarzyna, Ewa, Piotr,

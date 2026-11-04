@@ -7779,6 +7779,34 @@ export const translationCatalog = {
   "Śliczny marmurkowy wygląd i bardzo przyjemna w dotyku powierzchnia. Używam kilka razy w tygodniu podczas domowego SPA. Najlepiej sprawdza mi się na nogach, bo ruchy są płynne i łatwo utrzymać odpowiednie tempo.": {
     "en": "Lovely marbled look and a surface that feels very pleasant to the touch. I use it a few times a week during my home spa routine. It works best for me on my legs, since the movements are smooth and it is easy to keep an even pace.",
     "pl": "Śliczny marmurkowy wygląd i bardzo przyjemna w dotyku powierzchnia. Używam kilka razy w tygodniu podczas domowego SPA. Najlepiej sprawdza mi się na nogach, bo ruchy są płynne i łatwo utrzymać odpowiednie tempo."
+  },
+  "Największy plus za odpinaną rączkę. Do pleców używam jej w całości, a przy masażu nóg zdejmuję uchwyt i trzymam samą szczotkę. Bardzo praktyczne rozwiązanie, szczególnie gdy chcę zrobić sobie krótkie domowe SPA.": {
+    "en": "The biggest plus is the detachable handle. For my back I use it fully assembled, and for leg massage I remove the handle and just hold the brush head. A very practical solution, especially when I want a quick at-home spa session.",
+    "pl": "Największy plus za odpinaną rączkę. Do pleców używam jej w całości, a przy masażu nóg zdejmuję uchwyt i trzymam samą szczotkę. Bardzo praktyczne rozwiązanie, szczególnie gdy chcę zrobić sobie krótkie domowe SPA."
+  },
+  "Używam kilka razy w tygodniu przed prysznicem. Włosie jest dość zdecydowane, więc zaczęłam od bardzo lekkich ruchów. Po szczotkowaniu skóra na nogach jest przyjemnie gładka w dotyku. Lubię ten rytuał!": {
+    "en": "I use it a few times a week before showering. The bristles are quite firm, so I started with very light strokes. After brushing, the skin on my legs feels pleasantly smooth. I love this ritual!",
+    "pl": "Używam kilka razy w tygodniu przed prysznicem. Włosie jest dość zdecydowane, więc zaczęłam od bardzo lekkich ruchów. Po szczotkowaniu skóra na nogach jest przyjemnie gładka w dotyku. Lubię ten rytuał!"
+  },
+  "Nie spodziewałam się, że tak polubię szczotkowanie na sucho. Szczotka dobrze leży w dłoni, nie jest ciężka i łatwo nią dotrzeć do pleców. Wygląda ładnie i sprawia wrażenie solidnie wykonanej.": {
+    "en": "I did not expect to like dry brushing this much. The brush sits well in the hand, it is not heavy, and it easily reaches my back. It looks nice and feels solidly made.",
+    "pl": "Nie spodziewałam się, że tak polubię szczotkowanie na sucho. Szczotka dobrze leży w dłoni, nie jest ciężka i łatwo nią dotrzeć do pleców. Wygląda ładnie i sprawia wrażenie solidnie wykonanej."
+  },
+  "Kupiłem głównie do masażu pleców, bo trudno mi tam sięgnąć zwykłą szczotką. Długa rączka naprawdę pomaga. Naturalne włosie jest przyjemne przy delikatnym nacisku, a po użyciu mam uczucie odświeżenia.": {
+    "en": "I bought it mainly for massaging my back, since it is hard for me to reach there with a regular brush. The long handle really helps. The natural bristles feel pleasant with gentle pressure, and I feel refreshed afterward.",
+    "pl": "Kupiłem głównie do masażu pleców, bo trudno mi tam sięgnąć zwykłą szczotką. Długa rączka naprawdę pomaga. Naturalne włosie jest przyjemne przy delikatnym nacisku, a po użyciu mam uczucie odświeżenia."
+  },
+  "Od dawna szukałam szczotki z naturalnym włosiem i wygodnym uchwytem. Ta spełniła moje oczekiwania. Używam jej głównie na łydkach i ramionach, a potem nakładam balsam. Bardzo przyjemny sposób na zakończenie dnia.": {
+    "en": "I had been looking for a brush with natural bristles and a comfortable handle for a long time. This one met my expectations. I mainly use it on my calves and arms, then apply body lotion. A very pleasant way to end the day.",
+    "pl": "Od dawna szukałam szczotki z naturalnym włosiem i wygodnym uchwytem. Ta spełniła moje oczekiwania. Używam jej głównie na łydkach i ramionach, a potem nakładam balsam. Bardzo przyjemny sposób na zakończenie dnia."
+  },
+  "Fajnie, że można korzystać zarówno z długiej rączki, jak i z samej główki szczotki. Przy codziennej pielęgnacji to naprawdę ułatwia sprawę. Szczotka wygląda estetycznie i po kilku użyciach nadal jest w świetnym stanie.": {
+    "en": "It is great that you can use either the long handle or just the brush head. It really makes everyday care easier. The brush looks elegant and is still in great condition after several uses.",
+    "pl": "Fajnie, że można korzystać zarówno z długiej rączki, jak i z samej główki szczotki. Przy codziennej pielęgnacji to naprawdę ułatwia sprawę. Szczotka wygląda estetycznie i po kilku użyciach nadal jest w świetnym stanie."
+  },
+  "Prosty, solidny produkt bez zbędnych dodatków. Używam po treningach do delikatnego masażu nóg. Na początku trzeba wyczuć nacisk, ale później korzystanie jest bardzo wygodne. Dobrze, że uchwyt można odczepić.": {
+    "en": "A simple, solid product without unnecessary extras. I use it after workouts for a gentle leg massage. At first you need to get a feel for the pressure, but after that it is very comfortable to use. It is good that the handle can be detached.",
+    "pl": "Prosty, solidny produkt bez zbędnych dodatków. Używam po treningach do delikatnego masażu nóg. Na początku trzeba wyczuć nacisk, ale później korzystanie jest bardzo wygodne. Dobrze, że uchwyt można odczepić."
   }
 } satisfies Record<
   string,
